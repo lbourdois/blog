@@ -8,7 +8,7 @@ title: "A propos"
 
 Loïck BOURDOIS  
 Je suis diplômé depuis septembre 2019 d’un Master de Modélisation Statistique obtenu à l’Université de Bordeaux.  
-Je travaille à présent au Centre de Recherche Inserm-Université de Bordeaux U1219 « Bordeaux population health » au sein de l’équipe [IETO] (https://www.bordeaux-population-health.center/les-equipes/prevention-et-prise-en-charge-des-traumatismes-ieto/) (Injury Epidemiology Transport Occupation).  
+Je travaille à présent au Centre de Recherche Inserm-Université de Bordeaux U1219 « Bordeaux population health » au sein de l’équipe [IETO](https://www.bordeaux-population-health.center/les-equipes/prevention-et-prise-en-charge-des-traumatismes-ieto/) (Injury Epidemiology Transport Occupation).  
 Dans le cadre de mon travail, je suis amené à appliquer les techniques de NLP les plus récentes à des données médicales issues du Centre Hospitalier Universitaire de Bordeaux.    
 
 
