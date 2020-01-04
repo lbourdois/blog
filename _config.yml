@@ -107,8 +107,8 @@ analytics:
 
 # Site Author
 author:
-  name             : "Loïck BOURDOIS"
-  avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
+  name             : "Loick BOURDOIS"
+  avatar           : "/assets/images/bio-photo.jpg"
   bio              : "Voir la page "A propos" pour ma biographie."
   location         : "Bordeaux"
   email            :
