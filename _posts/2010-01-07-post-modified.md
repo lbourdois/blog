@@ -7,7 +7,7 @@ tags:
 ---
 
 
-# <span style="color: #FF0000"><u> Avant-propos </u></span>
+# <span style="color: #FF0000"> **Avant-propos** </span>
  
 
 Cet article est une traduction de l’article de Jay Alammar : [The illustrated word2vec](https://jalammar.github.io/illustrated-word2vec/).   Ainsi si dans l’article vous lisez des « Je » ou des « Jay », cela provient d’exemple de l’article original que je n’ai pas pu traduire autrement. 
@@ -20,8 +20,12 @@ Cet article est une traduction de l’article de Jay Alammar : [The illustrated 
 Sur une échelle de 0 à 100, dans quelle mesure êtes-vous introverti/extraverti (où 0 est le plus introverti et 100 le plus extraverti) ?   Avez-vous déjà passé un test de personnalité comme le MBTI – ou mieux encore, le test des cinq grands traits de personnalité ? Si vous ne l’avez pas fait, ce sont des tests qui vous posent une liste de questions, puis vous notent sur un certain nombre d’axes, l’introversion/extraversion étant l’un d’eux.
 
 
+<p align="center">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/big-five-personality-traits-score.png">
+</p>
+
 ![big-five-personality-traits-score](https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/big-five-personality-traits-score.png)   
-*Exemple de résultat d’un test des cinq grands traits de personnalité. Il aurait une capacité prédictive de réussite scolaire, personnelle, et professionnelle. Pour effectuer ce test : https://projects.fivethirtyeight.com/personality-quiz/. *
+*Exemple de résultat d’un test des cinq grands traits de personnalité. Il aurait une capacité prédictive de réussite scolaire, personnelle, et professionnelle. Pour effectuer ce test : https://projects.fivethirtyeight.com/personality-quiz/.*
 
 
 
