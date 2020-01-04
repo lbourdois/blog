@@ -173,22 +173,48 @@ Si l’on voulait donner un exemple d’une application de NLP, l’un des meill
 Cette tâche peut être traitée par un modèle linguistique. Un modèle linguistique peut prendre une liste de mots (disons deux mots) et tenter de prédire le mot qui les suit.
 
 Dans la capture d’écran ci-dessus, nous pouvons penser que le modèle est celui qui a tenu compte des deux mots et qui a retourné une liste de suggestions (« not » étant celui avec la plus forte probabilité) :
+<center>
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/thou-shalt-_.png">
+</figure>   
+</center>
 
 On peut penser que le modèle ressemble à cette boîte noire :
+<center>
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/language_model_blackbox.png">
+</figure>   
+</center>
+
 
 Mais dans la pratique, le modèle ne produit pas un seul mot. Il produit en fait un score de probabilité pour tous les mots qu’il connaît (le « vocabulaire » du modèle, qui peut varier de quelques milliers à plus d’un million de mots). L’application doit alors trouver les mots avec les scores les plus élevés et les présenter à l’utilisateur.
+<center>
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/language_model_blackbox_output_vector.png">
+</figure>   
+</center>
 
-Après avoir été entraînés, les premiers modèles de langage neuronal (Bengio 2003) calculent une prédiction en trois étapes :
+Après avoir été entraînés, les premiers modèles de langage neuronal ([Bengio 2003](http://www.jmlr.org/papers/volume3/bengio03a/bengio03a.pdf)) calculent une prédiction en trois étapes :
+<center>
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/skipgram-language-model-training-2.png">
+</figure>   
+</center>
 
 La première étape est la plus pertinente pour nous lorsque nous discutons de d’embeddings.
 
 L’un des résultats du processus d’entraînement est une matrice qui contient un embedding pour chaque mot de notre vocabulaire. Pendant le temps de prédiction, nous recherchons simplement les embeddings du mot d’entrée, et nous les utilisons pour calculer la prédiction :
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/neural-language-model-embedding.png">
+</figure>   
+</center>
 
 Passons à présent au processus d’entraînement pour en savoir plus sur la façon dont la matrice d’embeddings a été créé.
+<br><br><br>
 
 
- 
-# 5. Language Model Training
+
+# <span style="color: #FF0000"> **5. Language Model Training** </span> 
 
 Les modèles linguistiques ont un avantage énorme sur la plupart des autres modèles de machine learning. Cet avantage est que nous sommes en mesure de les entraîner sur des textes courants dont nous disposons en abondance. Pensez à tous les livres, articles, contenus Wikipédia et autres formes de données textuelles que nous avons. Comparez ceci aux autres modèles qui ont besoin d’annotations faites à la main et de données spécialement collectées…
 
