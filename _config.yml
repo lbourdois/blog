@@ -107,7 +107,7 @@ analytics:
 
 # Site Author
 author:
-  name             : "Loick BOURDOIS"
+  name             : "Loïck Bourdois"
   avatar           : "/assets/images/bio-photo.jpg"
   bio              : "Voir la page "A propos" pour ma biographie."
   location         : "Bordeaux"
@@ -121,7 +121,7 @@ author:
       # url: "https://twitter.com/"
     - label: "LinkedIn"
       icon: "fab fa-fw fa-linkedin"
-      url: "https://www.linkedin.com/in/loïck-bourdois/"
+      url: "https://fr.linkedin.com/in/lo%C3%AFck-bourdois-111488171"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
       url: "https://github.com/lbourdois"
@@ -138,7 +138,7 @@ footer:
       # url: "https://twitter.com/"
     - label: "LinkedIn"
       icon: "fab fa-fw fa-linkedin"
-      url: "https://www.linkedin.com/in/loïck-bourdois/"
+      url: "https://fr.linkedin.com/in/lo%C3%AFck-bourdois-111488171"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
       url: "https://github.com/lbourdois"
