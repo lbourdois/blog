@@ -11,16 +11,15 @@ tags:
 # Avant-propos
 
 Cet article est une traduction de l’article de Jay Alammar : [The illustrated word2vec](https://jalammar.github.io/illustrated-word2vec/).   Ainsi si dans l’article vous lisez des « Je » ou des « Jay », cela provient d’exemple de l’article original que je n’ai pas pu traduire autrement. 
-<br>
-<br>
+
 
 
 # 1. Exemple d’introduction
 
 Sur une échelle de 0 à 100, dans quelle mesure êtes-vous introverti/extraverti (où 0 est le plus introverti et 100 le plus extraverti) ?   Avez-vous déjà passé un test de personnalité comme le MBTI – ou mieux encore, le test des cinq grands traits de personnalité ? Si vous ne l’avez pas fait, ce sont des tests qui vous posent une liste de questions, puis vous notent sur un certain nombre d’axes, l’introversion/extraversion étant l’un d’eux.
 
-{:.center}
-![big-five-personality-traits-score](https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/big-five-personality-traits-score.png)   
+
+![100% center](https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/big-five-personality-traits-score.png)   
 *Exemple de résultat d’un test des cinq grands traits de personnalité. Il aurait une capacité prédictive de réussite scolaire, personnelle, et professionnelle. Pour effectuer ce test : https://projects.fivethirtyeight.com/personality-quiz/. *
 
 
@@ -50,11 +49,12 @@ Les scores obtenus représentent plus fidèlement la personnalité que ceux obte
 
 Deux idées centrales se dégagent de ce premier exemple :
 
-    nous pouvons représenter les gens (et les choses) comme des vecteurs de nombres.
-    nous pouvons facilement calculer à quel point les vecteurs sont similaires les uns aux autres. 
+ -   nous pouvons représenter les gens (et les choses) comme des vecteurs de nombres.
+ -   nous pouvons facilement calculer à quel point les vecteurs sont similaires les uns aux autres. 
 
-<br>
-<br>
+
+
+
 # 2. Word Embeddings
 
 Avec cette introduction, nous pouvons regarder des exemples de vecteurs de mots entraînés (aussi appelés word embeddings) et commencer à examiner certaines de leurs propriétés intéressantes.
@@ -75,23 +75,21 @@ Voici une autre liste d’exemples (comparez en regardant verticalement à la re
 
 Quelques points à signaler :
 
-    Il y a une colonne rouge traversant tous les mots. Ils sont donc similaires le long de cette dimension (mains ne savons pas à quoi chaque dimension correspond).
-    Vous pouvez voir comment « woman » et « girl » sont semblables l’une à l’autre dans beaucoup d’endroits. Il en va de même pour « man » et « boy ».
-    « boy » et « girl » ont aussi des endroits où ils se ressemblent, mais où ils sont différents de « woman » ou « man ». Serait-ce le codage d’une vague conception de la jeunesse ? possible.
-    Tous les mots sauf le dernier sont des mots qui représentent les gens. J’ai ajouté un objet (water) pour montrer les différences entre les catégories. On peut voir, par exemple, une colonne bleue descendre jusqu’en bas et s’arrêter une fois arriver à l’embedding de « water ».
-    Il y a des endroits clairs où « king » et « queen » sont semblables l’un à l’autre et distincts de tous les autres. Cela pourrait-il s’agir d’un vague concept de royauté ?
+-    Il y a une colonne rouge traversant tous les mots. Ils sont donc similaires le long de cette dimension (mains ne savons pas à quoi chaque dimension correspond).
+-    Vous pouvez voir comment « woman » et « girl » sont semblables l’une à l’autre dans beaucoup d’endroits. Il en va de même pour « man » et « boy ».
+-    « boy » et « girl » ont aussi des endroits où ils se ressemblent, mais où ils sont différents de « woman » ou « man ». Serait-ce le codage d’une vague conception de la jeunesse ? possible.
+-    Tous les mots sauf le dernier sont des mots qui représentent les gens. J’ai ajouté un objet (water) pour montrer les différences entre les catégories. On peut voir, par exemple, une colonne bleue descendre jusqu’en bas et s’arrêter une fois arriver à l’embedding de « water ».
+-    Il y a des endroits clairs où « king » et « queen » sont semblables l’un à l’autre et distincts de tous les autres. Cela pourrait-il s’agir d’un vague concept de royauté ?
 
 
-<br>
-<br>
+
 # 3. Analogies
 
 Les exemples célèbres qui montrent une incroyable propriété d’embedding est le concept d’analogies. Nous pouvons ajouter et soustraire des insertions de mots et arriver à des résultats intéressants. L’exemple le plus célèbre est la formule : « king » – « man » + »woman » :
 En utilisant la bibliothèque Gensim en Python nous pouvons ajouter et soustraire des vecteurs de mots. La fonction indique aussi les mots les plus similaires au vecteur résultant avec la valeur de similitude via le cosinus.
 
 
-<br>
-<br>
+ 
 # 4. Language modeling
 
 Maintenant que nous nous sommes penchés sur les embeddings entrainés, nous allons en apprendre davantage sur le processus d’entraînement. Mais avant d’en arriver à Word2vec, nous devons nous pencher sur un parent conceptuel aux word embeddings : le neural language model.
@@ -116,8 +114,7 @@ L’un des résultats du processus d’entraînement est une matrice qui contien
 Passons à présent au processus d’entraînement pour en savoir plus sur la façon dont la matrice d’embeddings a été créé.
 
 
-<br>
-<br>
+ 
 # 5. Language Model Training
 
 Les modèles linguistiques ont un avantage énorme sur la plupart des autres modèles de machine learning. Cet avantage est que nous sommes en mesure de les entraîner sur des textes courants dont nous disposons en abondance. Pensez à tous les livres, articles, contenus Wikipédia et autres formes de données textuelles que nous avons. Comparez ceci aux autres modèles qui ont besoin d’annotations faites à la main et de données spécialement collectées…
@@ -141,8 +138,7 @@ Et très rapidement, nous disposons d’un ensemble de données plus vaste dont 
 Dans la pratique, les modèles ont tendance à être entraînés pendant que nous glissons la fenêtre. Mais je trouve plus clair de séparer logiquement la phase « génération du jeu de données » de la phase d’entraînement. Outre les approches de modélisation du langage fondées sur les réseaux neuronaux, une technique appelée N-grams a été couramment utilisée pour former des modèles de langage. Pour voir comment le passage des N-grammes aux modèles neuronaux se reflète sur les produits du monde réel vous pouvez lire l’article suivant : https://blog.swiftkey.com/neural-networks-a-meaningful-leap-for-mobile-typing/ (en anglais). Cet exemple montre comment les propriétés algorithmiques des incorporations peuvent être décrites dans un discours marketing.
 
 
-<br>
-<br>
+
 # 6. Regarder des deux côtés
 
 Sachant ce que vous avez lu plus tôt dans l’exemple d’introduction, remplissez le blanc :
@@ -154,8 +150,7 @@ Cela change complètement ce qui devrait aller dans le blanc. Le mot « red » e
 Voyons comment nous pouvons ajuster la façon dont nous entraînons le modèle pour tenir compte de cela.
 
 
-<br>
-<br>
+
 # 7. Skipgram
 
 Au lieu de regarder seulement deux mots avant le mot cible, nous pouvons aussi regarder deux mots après lui.
@@ -183,10 +178,6 @@ Quelques positions plus tard, nous avons beaucoup d’autres exemples :
 
 
 
-
-
-<br>
-<br>
 # 8. Revisiting the training process
 
 Maintenant que nous avons notre ensemble de données d’entraînement de Skipgram que nous avons extrait d’un texte, voyons comment nous l’utilisons pour former un modèle de langage neuronal qui prédit le mot voisin.
@@ -206,8 +197,6 @@ Bien que cela élargisse notre compréhension du processus, ce n’est pas encor
 
 
 
-<br>
-<br>
 # 9. Negative Sampling
 
 Rappelez-vous les trois étapes de la façon dont ce modèle de langage neuronal calcule sa prédiction :
@@ -237,16 +226,13 @@ Cette idée s’inspire de Noise-contrastive estimation. Nous comparons le signa
 
 
 
-<br>
-<br>
 # 10. Skipgram with Negative Sampling (SGNS)
 
 Nous avons maintenant couvert deux des idées centrales de Word2vec. Associées, elles s’appellent Skipgram with Negative Sampling (« skipgram avec un échantillonnage négatif »).
 
 
 
-<br>
-<br>
+
  # 11. Processus d'entraînement de Word2vec
 
 Maintenant que nous avons établi les deux idées centrales du SGNS, nous pouvons examiner de plus près le processus d’entraînement de word2vec.  
@@ -278,8 +264,7 @@ L’embeddings continue d’être amélioré pendant que nous parcourons l’ens
 
 
 
-<br>
-<br>
+
 # 12. Window size and number of negative samples
 
 La taille de la fenêtre et le nombre d’échantillons négatifs sont deux hyperparamètres clés dans le processus d’entraînement de word2vec.
@@ -294,8 +279,7 @@ Le nombre d’échantillons négatifs est un autre facteur du processus d’entr
  
 
 
-<br>
-<br>
+
 # Conclusion
 
 J’espère pouvoir ajouter un tutoriel sous forme de notebook plus tard si j’ai le temps.
