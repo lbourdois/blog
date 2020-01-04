@@ -11,7 +11,7 @@ tags:
 # Avant-propos
 
 Cet article est une traduction de l’article de Jay Alammar : [The illustrated word2vec](https://jalammar.github.io/illustrated-word2vec/).   Ainsi si dans l’article vous lisez des « Je » ou des « Jay », cela provient d’exemple de l’article original que je n’ai pas pu traduire autrement. 
-
+<br><br>
 
 
 # 1. Exemple d’introduction
@@ -19,7 +19,7 @@ Cet article est une traduction de l’article de Jay Alammar : [The illustrated 
 Sur une échelle de 0 à 100, dans quelle mesure êtes-vous introverti/extraverti (où 0 est le plus introverti et 100 le plus extraverti) ?   Avez-vous déjà passé un test de personnalité comme le MBTI – ou mieux encore, le test des cinq grands traits de personnalité ? Si vous ne l’avez pas fait, ce sont des tests qui vous posent une liste de questions, puis vous notent sur un certain nombre d’axes, l’introversion/extraversion étant l’un d’eux.
 
 
-![100% center](https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/big-five-personality-traits-score.png)   
+![big-five-personality-traits-score](https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/big-five-personality-traits-score.png)   
 *Exemple de résultat d’un test des cinq grands traits de personnalité. Il aurait une capacité prédictive de réussite scolaire, personnelle, et professionnelle. Pour effectuer ce test : https://projects.fivethirtyeight.com/personality-quiz/. *
 
 
@@ -175,7 +175,7 @@ Nous glissons ensuite notre fenêtre vers la position suivante :
 Ce qui génère nos quatre exemples suivants :
 
 Quelques positions plus tard, nous avons beaucoup d’autres exemples :
-
+<br><br>
 
 
 # 8. Revisiting the training process
@@ -193,7 +193,7 @@ Ce vecteur d’erreur peut maintenant être utilisé pour mettre à jour le mod�
 Voilà qui conclut la première étape d’entraînement. Nous procédons de la même façon avec le prochain échantillon de notre ensemble de données, puis le suivant, jusqu’à ce que nous ayons couvert tous les échantillons de l’ensemble de données. Cela conclut une « epoch » d’entraînement. Nous recommençons pendant un certain nombre d’époques, et nous obtenons alors notre modèle entraîné. Nous pouvons en extraire la matrice d’embedding et l’utiliser pour toute autre application.
 
 Bien que cela élargisse notre compréhension du processus, ce n’est pas encore la façon dont word2vec est réellement formé. Il nous manque quelques idées clés.
-
+<br><br>
 
 
 
@@ -223,13 +223,13 @@ Pour y remédier, nous devons introduire des échantillons négatifs dans notre 
 Nous assignons ensuite comme mot de sortie des mots pris au hasard dans notre vocabulaire.
 
 Cette idée s’inspire de Noise-contrastive estimation. Nous comparons le signal réel (exemples positifs de mots voisins) avec le bruit (mots choisis au hasard qui ne sont pas voisins). Il en résulte un grand compromis entre l’efficacité informatique et l’efficacité statistique.
-
+<br><br>
 
 
 # 10. Skipgram with Negative Sampling (SGNS)
 
 Nous avons maintenant couvert deux des idées centrales de Word2vec. Associées, elles s’appellent Skipgram with Negative Sampling (« skipgram avec un échantillonnage négatif »).
-
+<br><br>
 
 
 
@@ -263,7 +263,7 @@ L’étape de d’entraînement est terminée. Nous en ressortons avec des embed
 L’embeddings continue d’être amélioré pendant que nous parcourons l’ensemble de nos données un certain nombre de fois. Nous pouvons alors arrêter le processus d’entraînement, abandonnons la Context matrix et utilisons l’Embedding matrix comme pré-entrainées pour la tâche suivante.
 
 
-
+<br><br>
 
 # 12. Window size and number of negative samples
 
@@ -277,7 +277,7 @@ Des fenêtres de plus grande taille (15-50, ou même plus) mènent à des embedd
 
 Le nombre d’échantillons négatifs est un autre facteur du processus d’entraînement. L’article original prescrit 5-20 comme étant un bon nombre d’échantillons négatifs. Il indique également que 2-5 semble être suffisant quand vous avez un ensemble de données assez grand. La valeur par défaut de Gensim est de 5 échantillons négatifs.
  
-
+<br><br>
 
 
 # Conclusion
