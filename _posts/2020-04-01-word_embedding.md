@@ -4,6 +4,9 @@ categories:
   - NLP
 tags:
   - word embedding en français
+header :
+    overlay_image: "https://maelfabien.github.io/assets/images/wolf.jpg"
+
 ---
 
 
@@ -220,30 +223,63 @@ Passons à présent au processus d’entraînement pour en savoir plus sur la fa
 Les modèles linguistiques ont un avantage énorme sur la plupart des autres modèles de machine learning. Cet avantage est que nous sommes en mesure de les entraîner sur des textes courants dont nous disposons en abondance. Pensez à tous les livres, articles, contenus Wikipédia et autres formes de données textuelles que nous avons. Comparez ceci aux autres modèles qui ont besoin d’annotations faites à la main et de données spécialement collectées…
 
 Nous attribuons aux mots leurs embeddings en regardant les autres mots à côté desquels ils ont tendance à apparaître. La mécanique est la suivante :
+- Nous recevons beaucoup de données textuelles (disons, tous les articles de Wikipedia, par exemple). 
+- Nous avons une fenêtre (disons de trois mots) que nous faisons glisser sur tout ce texte.
+- La fenêtre coulissante génère des exemples de formation pour notre modèle.
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/wikipedia-sliding-window.png">
+</figure>   
+</center>
 
-     Nous recevons beaucoup de données textuelles (disons, tous les articles de Wikipedia, par exemple). 
-    Nous avons une fenêtre (disons de trois mots) que nous faisons glisser sur tout ce texte.
-    La fenêtre coulissante génère des exemples de formation pour notre modèle.
 
 Lorsque la fenêtre glisse sur le texte, nous générons (virtuellement) un ensemble de données que nous utilisons pour entraîner un modèle. Pour voir exactement comment cela se fait, voyons comment la fenêtre coulissante traite cette phrase : « Thou shalt not make a machine in the likeness of a human mind » (Tu ne feras pas une machine à l’image d’un esprit humain).
 
 Lorsque nous commençons, la fenêtre est sur les trois premiers mots de la phrase :
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/lm-sliding-window.png">
+</figure>   
+</center>
+
 
 Nous prenons les deux premiers mots pour des features et le troisième mot pour un label :
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/wikipedia-sliding-window-2.png">
+</figure>   
+</center>
+
 
 Nous glissons ensuite notre fenêtre à la position suivante et créons un deuxième échantillon :
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/wikipedia-sliding-window-3.png">
+</figure>   
+</center>
+
 
 Et très rapidement, nous disposons d’un ensemble de données plus vaste dont les mots ont tendance à apparaître après différentes paires de mots :
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/wikipedia-sliding-window-4.png">
+</figure>   
+</center>
 
-Dans la pratique, les modèles ont tendance à être entraînés pendant que nous glissons la fenêtre. Mais je trouve plus clair de séparer logiquement la phase « génération du jeu de données » de la phase d’entraînement. Outre les approches de modélisation du langage fondées sur les réseaux neuronaux, une technique appelée N-grams a été couramment utilisée pour former des modèles de langage. Pour voir comment le passage des N-grammes aux modèles neuronaux se reflète sur les produits du monde réel vous pouvez lire l’article suivant : https://blog.swiftkey.com/neural-networks-a-meaningful-leap-for-mobile-typing/ (en anglais). Cet exemple montre comment les propriétés algorithmiques des incorporations peuvent être décrites dans un discours marketing.
+
+Dans la pratique, les modèles ont tendance à être entraînés pendant que nous glissons la fenêtre. Mais je trouve plus clair de séparer logiquement la phase « génération du jeu de données » de la phase d’entraînement. Outre les approches de modélisation du langage fondées sur les réseaux neuronaux, une technique appelée N-grams a été couramment utilisée pour former des modèles de langage. Pour voir comment le passage des N-grammes aux modèles neuronaux se reflète sur les produits du monde réel vous pouvez lire l’article suivant : [https://blog.swiftkey.com/neural-networks-a-meaningful-leap-for-mobile-typing/](https://blog.swiftkey.com/neural-networks-a-meaningful-leap-for-mobile-typing/) (en anglais). Cet exemple montre comment les propriétés algorithmiques des incorporations peuvent être décrites dans un discours marketing.
+<br><br><br>
 
 
 
-# 6. Regarder des deux côtés
+# <span style="color: #FF0000"> **6. Regarder des deux côtés** </span> 
 
 Sachant ce que vous avez lu plus tôt dans l’exemple d’introduction, remplissez le blanc :
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/jay_was_hit_by_a_.png">
+</figure>   
+</center>
 
 Je suis sûr que la plupart des gens devineraient que le mot bus va dans le vide. Mais si je vous donnais une autre information, un mot après le blanc, cela changerait-il votre réponse ?
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/jay_was_hit_by_a_bus.png">
+</figure>   
+</center>
 
 Cela change complètement ce qui devrait aller dans le blanc. Le mot « red » est maintenant le plus susceptible d’aller dans le blanc. Ce que nous apprenons de ceci est que les mots avant et après un mot spécifique ont une valeur informationnelle. Il s’avère que la prise en compte des deux sens (mots à gauche et à droite du mot que l’on devine) conduit à un meilleur word embeddings.
 
@@ -251,8 +287,7 @@ Voyons comment nous pouvons ajuster la façon dont nous entraînons le modèle p
 
 
 
-# 7. Skipgram
-
+# <span style="color: #FF0000"> **7. Skipgram** </span> 
 Au lieu de regarder seulement deux mots avant le mot cible, nous pouvons aussi regarder deux mots après lui.
 
 Si nous faisons cela, l’ensemble de données que nous construisons et entrainons virtuellement ressemblerait à ceci :
