@@ -1,14 +1,18 @@
 ---
-title: "Post: Modified Date"
-last_modified_at: 2016-03-09T16:20:02-05:00
+title: "ILLUSTRATION DU WORD EMBEDDING ET DU WORD2VEC"
 categories:
-  - Blog
+  - NLP
 tags:
-  - Post Formats
-  - readability
-  - standard
+  - word embedding en français
 ---
 
-This post has been updated and should show a modified date if used in a layout.
 
-All children, except one, grow up. They soon know that they will grow up, and the way Wendy knew was this. One day when she was two years old she was playing in a garden, and she plucked another flower and ran with it to her mother. I suppose she must have looked rather delightful, for Mrs. Darling put her hand to her heart and cried, "Oh, why can't you remain like this for ever!" This was all that passed between them on the subject, but henceforth Wendy knew that she must grow up. You always know after you are two. Two is the beginning of the end.
+
+# Avant-propos
+
+Cet article est une traduction de l’article de Jay Alammar : [The illustrated word2vec] (https://jalammar.github.io/illustrated-word2vec/). Ainsi si dans l’article vous lisez des « Je » ou des « Jay », cela provient d’exemple de l’article original que je n’ai pas pu traduire autrement. 
+
+
+# 1. Exemple d’introduction
+
+Sur une échelle de 0 à 100, dans quelle mesure êtes-vous introverti/extraverti (où 0 est le plus introverti et 100 le plus extraverti) ? Avez-vous déjà passé un test de personnalité comme le MBTI – ou mieux encore, le test des cinq grands traits de personnalité ? Si vous ne l’avez pas fait, ce sont des tests qui vous posent une liste de questions, puis vous notent sur un certain nombre d’axes, l’introversion/extraversion étant l’un d’eux.
