@@ -14,6 +14,7 @@
 # remote_theme           : "mmistakes/minimal-mistakes"
 minimal_mistakes_skin    : "default" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
 
+
 # Site Settings
 locale                   : "en-US"
 title                    : "Loïck BOURDOIS"
@@ -107,9 +108,9 @@ analytics:
 
 # Site Author
 author:
-  name             : "MM"
+  name             : "Your Name"
   avatar           : "/assets/images/bio-photo.jpg"
-  bio              : "Voir la page "A propos" pour ma biographie."
+  bio              : "Voir la page **A propos** pour ma biographie."
   location         : "Bordeaux"
   email            :
   links:
