@@ -297,28 +297,78 @@ Voyons comment nous pouvons ajuster la façon dont nous entraînons le modèle p
 
 # <span style="color: #FF0000"> **7. Skipgram** </span> 
 Au lieu de regarder seulement deux mots avant le mot cible, nous pouvons aussi regarder deux mots après lui.
+<center>
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/continuous-bag-of-words-example.png">
+</figure>   
+</center>
 
 Si nous faisons cela, l’ensemble de données que nous construisons et entrainons virtuellement ressemblerait à ceci :
+<center>
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/continuous-bag-of-words-dataset.png">
+</figure>   
+</center>
 
-C’est ce qu’on appelle une architecture de « continuous bag of words ».
+C’est ce qu’on appelle une architecture de **continuous bag of words**.
 
-   Une autre architecture qui a aussi tendance à donner de bons résultats fait les choses un peu différemment. Au lieu de deviner un mot en fonction de son contexte (les mots avant et après), cette autre architecture essaie de deviner les mots voisins en utilisant le mot courant. On peut penser à la fenêtre qu’il glisse sur le texte d’entraînement comme ressemblant à ceci :
-Le mot dans la fente beige serait le mot d’entrée, chaque case rose serait une sortie possible.
+
+Une autre architecture qui a aussi tendance à donner de bons résultats fait les choses un peu différemment. Au lieu de deviner un mot en fonction de son contexte (les mots avant et après), cette autre architecture essaie de deviner les mots voisins en utilisant le mot courant. On peut penser à la fenêtre qu’il glisse sur le texte d’entraînement comme ressemblant à ceci :
+<center>
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/skipgram-sliding-window.png">
+  <figcaption>Le mot dans la fente beige serait le mot d’entrée, chaque case rose serait une sortie possible.</figcaption>
+</figure>   
+</center>
+
 
 Les cases roses sont de différentes nuances parce que cette fenêtre coulissante crée en fait quatre échantillons distincts dans notre ensemble de données d’entraînement :
+<center>
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/skipgram-sliding-window-2.png">
+</figure>   
+</center>
 
-Cette méthode s’appelle l’architecture skipgram.
+Cette méthode s’appelle l’architecture **skipgram**.
+
 
 Nous pouvons visualiser la fenêtre coulissante comme suit :
+<center>
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/skipgram-sliding-window-1.png">
+</figure>   
+</center>
 
 Cela ajouterait ces quatre échantillons à notre ensemble de données d’entraînement :
+<center>
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/skipgram-sliding-window-2.1.png">
+</figure>   
+</center>
+
 
 Nous glissons ensuite notre fenêtre vers la position suivante :
+<center>
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/skipgram-sliding-window-3.png">
+</figure>   
+</center>
 
 Ce qui génère nos quatre exemples suivants :
+<center>
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/skipgram-sliding-window-4.png">
+</figure>   
+</center>
 
 Quelques positions plus tard, nous avons beaucoup d’autres exemples :
-<br><br>
+<center>
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/skipgram-sliding-window-5.png">
+</figure>   
+</center>
+<br><br><br>
+
 
 
 # 8. Revisiting the training process
