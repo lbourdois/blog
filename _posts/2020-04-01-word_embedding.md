@@ -209,6 +209,7 @@ Après avoir été entraînés, les premiers modèles de langage neuronal ([Beng
 La première étape est la plus pertinente pour nous lorsque nous discutons de d’embeddings.
 
 L’un des résultats du processus d’entraînement est une matrice qui contient un embedding pour chaque mot de notre vocabulaire. Pendant le temps de prédiction, nous recherchons simplement les embeddings du mot d’entrée, et nous les utilisons pour calculer la prédiction :
+<center>
 <figure class="image">
   <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/neural-language-model-embedding.png">
 </figure>   
