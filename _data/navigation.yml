@@ -1,6 +1,6 @@
 main:
   - title: "Accueil"
-    url: /
+    url: https://lbourdois.github.io/blog/
   - title: "Posts"
     url: /posts/
   - title: "Categories"
