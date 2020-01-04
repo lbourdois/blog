@@ -15,10 +15,7 @@
 # in the templates via {{ site.myvariable }}.
 title: Loïck BOURDOIS
 email:
-description: >- # this means to ignore newlines until "baseurl:"
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
+description: Blog personnel de Loïck BOURDOIS
 twitter_username: username
 github_username: lbourdois
 minimal_mistakes_skin: default
@@ -58,7 +55,7 @@ plugins:
   - jekyll-include-cache
 
 author:
-  name   : "Loick BOURDOIS"
+  name   : "Loïck BOURDOIS"
   avatar : "/assets/images/bio-photo.jpg"
   bio              : "Voir la page **A propos** pour ma biographie."
   location         : "Bordeaux"
