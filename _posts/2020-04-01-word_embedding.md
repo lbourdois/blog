@@ -342,7 +342,7 @@ Nous pouvons visualiser la fenêtre coulissante comme suit :
 Cela ajouterait ces quatre échantillons à notre ensemble de données d’entraînement :
 <center>
 <figure class="image">
-  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/skipgram-sliding-window-2.1.png">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/skipgram-sliding-window-2-1.png">
 </figure>   
 </center>
 
@@ -371,94 +371,196 @@ Quelques positions plus tard, nous avons beaucoup d’autres exemples :
 
 
 
-# 8. Revisiting the training process
+# <span style="color: #FF0000"> **8. Revisiting the training process** </span> 
 
 Maintenant que nous avons notre ensemble de données d’entraînement de Skipgram que nous avons extrait d’un texte, voyons comment nous l’utilisons pour former un modèle de langage neuronal qui prédit le mot voisin.
+<center>
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/skipgram-language-model-training.png">
+</figure>   
+</center>
+
 
 Nous commençons par le premier échantillon de notre ensemble de données. Nous saisissons la caractéristique et l’envoyons au modèle non entrainé en lui demandant de prédire un mot voisin approprié.
+<center>
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/skipgram-language-model-training-2-1.png">
+</figure>   
+</center>
+
 
 Le modèle conduit les trois étapes et produit un vecteur de prédiction (avec une probabilité assignée à chaque mot de son vocabulaire). Comme le modèle n’est pas entrainé, sa prédiction est certainement erronée à ce stade. Mais ce n’est pas grave. Nous savons quel mot il aurait dû deviner :
+<center>
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/skipgram-language-model-training-3.png">
+</figure>   
+</center>
 
 Nous soustrayons les deux vecteurs pour obtenir un vecteur d’erreur :
+<center>
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/skipgram-language-model-training-4.png">
+</figure>   
+</center>
 
 Ce vecteur d’erreur peut maintenant être utilisé pour mettre à jour le modèle de sorte que la prochaine fois, il est un peu plus susceptible de deviner «thou» quand il a «not» en entrée.
+<center>
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/skipgram-language-model-training-5.png">
+</figure>   
+</center>
 
 Voilà qui conclut la première étape d’entraînement. Nous procédons de la même façon avec le prochain échantillon de notre ensemble de données, puis le suivant, jusqu’à ce que nous ayons couvert tous les échantillons de l’ensemble de données. Cela conclut une « epoch » d’entraînement. Nous recommençons pendant un certain nombre d’époques, et nous obtenons alors notre modèle entraîné. Nous pouvons en extraire la matrice d’embedding et l’utiliser pour toute autre application.
 
 Bien que cela élargisse notre compréhension du processus, ce n’est pas encore la façon dont word2vec est réellement formé. Il nous manque quelques idées clés.
-<br><br>
+<br><br><br>
 
 
 
-# 9. Negative Sampling
-
+# <span style="color: #FF0000"> **9. Negative Samplings** </span> 
 Rappelez-vous les trois étapes de la façon dont ce modèle de langage neuronal calcule sa prédiction :
+<center>
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/language-model-expensive.png">
+</figure>   
+</center>
 
 La troisième étape est très coûteuse d’un point de vue informatique (computationnel). Nous devons faire quelque chose pour améliorer nos performances.
 
 Une façon de faire est de diviser notre cible en deux étapes :
+1) Générer des word embeddings de haute qualité (pas besoin de prédire le mot suivant).                                        
+2) Utiliser ces word embeddings de haute qualité pour entraîner un modèle de langage et faire la prédiction du mot suivant.
 
-    Générer des word embeddings de haute qualité (pas besoin de prédire le mot suivant).                                        
-    Utiliser ces word embeddings de haute qualité pour entraîner un modèle de langage et faire la prédiction du mot suivant.
 
 Nous nous concentrerons sur l’étape 1.
 
 Pour générer des embeddings de haute qualité, nous pouvons passer d’un modèle de la prédiction d’un mot voisin à un modèle qui prend le mot d’entrée et le mot de sortie, et sort un score indiquant s’ils sont voisins ou non (0 pour « non voisin », 1 pour « voisin »).
+<center>
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/predict-neighboring-word.png">
+</figure>   
+</center>
 
 Ce simple changement transforme le modèle dont nous avons besoin. Nous passons d’un réseau neuronal à un modèle de régression logistique qui est ainsi beaucoup plus simple et beaucoup plus rapide à calculer.
 
 Ce changement nécessite de changer la structure de notre ensemble de données : le label est maintenant une nouvelle colonne avec les valeurs 0 ou 1. Ils seront tous à 1 puisque tous les mots que nous avons ajoutés sont voisins.
+<center>
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/word2vec-training-dataset.png">
+</figure>   
+</center>
+
 
 Le temps d’exécution est considérablement réduit, pouvant maintenant traiter des millions d’exemples en quelques minutes. Mais il y a une faille à combler. Si tous nos exemples sont positifs (cible : 1), nous nous ouvrons à la possibilité d’un modèle qui renvoie toujours 1 – atteignant 100% de précision, mais n’apprenant rien et générant des embeddings de déchets.
 
 Pour y remédier, nous devons introduire des échantillons négatifs dans notre ensemble de données, c’est à dire des échantillons de mots qui ne sont pas voisins. Notre modèle doit retourner 0 pour ces échantillons. C’est un défi que le modèle doit relever avec acharnement, mais toujours à une vitesse fulgurante.
+<center>
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/word2vec-negative-sampling.png">
+</figure>   
+</center>
+
+
 
 Nous assignons ensuite comme mot de sortie des mots pris au hasard dans notre vocabulaire.
 
-Cette idée s’inspire de Noise-contrastive estimation. Nous comparons le signal réel (exemples positifs de mots voisins) avec le bruit (mots choisis au hasard qui ne sont pas voisins). Il en résulte un grand compromis entre l’efficacité informatique et l’efficacité statistique.
-<br><br>
+Cette idée s’inspire de [Noise-contrastive estimation](http://proceedings.mlr.press/v9/gutmann10a/gutmann10a.pdf). Nous comparons le signal réel (exemples positifs de mots voisins) avec le bruit (mots choisis au hasard qui ne sont pas voisins). Il en résulte un grand compromis entre l’efficacité informatique et l’efficacité statistique.
+<center>
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/word2vec-negative-sampling-2.png">
+</figure>   
+</center>
+<br><br><br>
 
 
-# 10. Skipgram with Negative Sampling (SGNS)
 
+# <span style="color: #FF0000"> **10. Skipgram with Negative Sampling (SGNS)** </span> 
 Nous avons maintenant couvert deux des idées centrales de Word2vec. Associées, elles s’appellent Skipgram with Negative Sampling (« skipgram avec un échantillonnage négatif »).
-<br><br>
+<center>
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/skipgram-with-negative-sampling.png">
+</figure>   
+</center>
+<br><br><br>
 
 
 
- # 11. Processus d'entraînement de Word2vec
-
+# <span style="color: #FF0000"> **11. Processus d'entraînement de Word2vec** </span> 
 Maintenant que nous avons établi les deux idées centrales du SGNS, nous pouvons examiner de plus près le processus d’entraînement de word2vec.  
 
 Avant le début du processus d’entraînement, nous prétraitons le texte sur lequel nous formons le modèle. Dans cette étape, nous déterminons la taille de notre vocabulaire (nous l’appellerons vocab_size, disons, 10 000) et quels mots lui appartiennent.
 
 Au début de la phase d’entraînement, nous créons deux matrices – une Embedding matrix et une Context matrix. Ces deux matrices ont un embedding pour chaque mot de notre vocabulaire (vocab_size est donc une de leurs dimensions). La seconde dimension est la longueur que nous voulons que chaque vecteur d’embedding soit (une valeur généralement utilisée de embedding_size est 300, mais nous avons regardé un exemple de 50 plus tôt dans ce post).
+<center>
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/word2vec-embedding-context-matrix.png">
+</figure>   
+</center>
+
 
 Au début de l’entraînement, nous initialisons ces matrices avec des valeurs aléatoires. Ensuite, nous commençons le processus. A chaque étape de l’entraînement, nous prenons un exemple positif et les exemples négatifs qui y sont associés. Prenons notre premier groupe :
+<center>
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/word2vec-training-example.png">
+</figure>   
+</center>
 
 Maintenant nous avons quatre mots : le mot d’entrée not et les mots de sortie/contexte : thou (le voisin actuel), aaron et taco (les exemples négatifs).
 
 Nous procédons à la recherche de leurs embeddings. Pour le mot d’entrée, nous regardons dans l’Embedding matrix. Pour les mots de contexte, nous regardons dans la Context matrix.
+<center>
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/word2vec-lookup-embeddings.png">
+</figure>   
+</center>
 
 Ensuite, nous effectuons le produit scalaire de l’embeddings d’entrée avec chacun des embeddings de contexte. Dans chaque cas, cela donnerait un nombre, ce nombre indique la similarité entre les embeddings d’entrée et de contexte.
+<center>
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/word2vec-training-dot-product.png">
+</figure>   
+</center>
 
-Nous devons maintenant trouver un moyen de transformer ces scores en quelque chose qui ressemble à des probabilités. Nous avons besoin qu’ils soient tous positifs et qu’ils aient des valeurs entre zéro et un. Pour cela, nous utilisons  la fonction sigmoïde.
 
-Vous pouvez voir que le taco a le score le plus élevé et qu’aaron a toujours le score le plus bas avant et après les opérations sigmoïdes.
+Nous devons maintenant trouver un moyen de transformer ces scores en quelque chose qui ressemble à des probabilités. Nous avons besoin qu’ils soient tous positifs et qu’ils aient des valeurs entre zéro et un. Pour cela, nous utilisons  la fonction [sigmoïde](https://fr.wikipedia.org/wiki/Sigmo%C3%AFde_(math%C3%A9matiques)).
+<center>
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/word2vec-training-dot-product-sigmoid.png">
+</figure>   
+</center>
+
+Vous pouvez voir que taco a le score le plus élevé et qu’aaron a toujours le score le plus bas avant et après les opérations sigmoïdes.
 
 Maintenant que le modèle non entraîné a fait une prédiction, et vu que nous avons un label auquel la comparer, calculons l’erreur dans la prédiction du modèle. Pour ce faire, il suffit de soustraire les scores sigmoïdes des labels (targets).
-error = target – sigmoid_scores
+<center>
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/word2vec-training-error">
+  <figcaption>error = target – sigmoid_scores</figcaption>
+</figure>   
+</center>
+
 
 Nous pouvons maintenant utiliser ce score d’erreur pour ajuster les embeddings de not, thou, aaron, et taco afin que la prochaine fois que nous ferons ce calcul, le résultat soit plus proche des scores cibles.
+<center>
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/word2vec-training-update.png">
+</figure>   
+</center>
 
-L’étape de d’entraînement est terminée. Nous en ressortons avec des embeddings légèrement meilleurs pour les mots impliqués dans cette étape (not, thou, aaron, and taco). Nous passons alors à l’échantillon positif (et les échantillons négatifs associés) suivant et recommençons le même processus.
+L’étape d’entraînement est terminée. Nous en ressortons avec des embeddings légèrement meilleurs pour les mots impliqués dans cette étape (not, thou, aaron, and taco). Nous passons alors à l’échantillon positif (et les échantillons négatifs associés) suivant et recommençons le même processus.
+<center>
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/word2vec-training-example-2-1.png">
+</figure>   
+</center>
+
 
 L’embeddings continue d’être amélioré pendant que nous parcourons l’ensemble de nos données un certain nombre de fois. Nous pouvons alors arrêter le processus d’entraînement, abandonnons la Context matrix et utilisons l’Embedding matrix comme pré-entrainées pour la tâche suivante.
+<br><br><br>
 
 
-<br><br>
 
-# 12. Window size and number of negative samples
+# <span style="color: #FF0000"> **12. Window size and number of negative samples** </span> 
 
 La taille de la fenêtre et le nombre d’échantillons négatifs sont deux hyperparamètres clés dans le processus d’entraînement de word2vec.
 
@@ -469,10 +571,9 @@ Une heuristique est que des fenêtres de petite taille (2-15) conduisent à des 
 Des fenêtres de plus grande taille (15-50, ou même plus) mènent à des embeddings où la similarité donne une indication sur la parenté des mots. Dans la pratique, vous devrez souvent fournir des annotations qui guident le processus d’embeddings menant à une similarité utile pour votre tâche. La taille par défaut de la fenêtre de Gensim est 5 (deux mots avant et deux mots après le mot entré, en plus du mot entré lui-même).
 
 Le nombre d’échantillons négatifs est un autre facteur du processus d’entraînement. L’article original prescrit 5-20 comme étant un bon nombre d’échantillons négatifs. Il indique également que 2-5 semble être suffisant quand vous avez un ensemble de données assez grand. La valeur par défaut de Gensim est de 5 échantillons négatifs.
- 
-<br><br>
+ <br><br><br>
 
 
-# Conclusion
 
+# <span style="color: #FF0000"> **Conclusion** </span> 
 J’espère pouvoir ajouter un tutoriel sous forme de notebook plus tard si j’ai le temps.
