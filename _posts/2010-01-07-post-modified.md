@@ -17,12 +17,12 @@ Cet article est une traduction de l’article de Jay Alammar : [The illustrated 
 
 Sur une échelle de 0 à 100, dans quelle mesure êtes-vous introverti/extraverti (où 0 est le plus introverti et 100 le plus extraverti) ?   Avez-vous déjà passé un test de personnalité comme le MBTI – ou mieux encore, le test des cinq grands traits de personnalité ? Si vous ne l’avez pas fait, ce sont des tests qui vous posent une liste de questions, puis vous notent sur un certain nombre d’axes, l’introversion/extraversion étant l’un d’eux.
 
-| [big-five-personality-traits-score](https://github.com/lbourdois/blog/blob/master/assets/images/word_embeddings/big-five-personality-traits-score.png) | 
+| [big-five-personality-traits-score](https://github.com/lbourdois/blog/assets/images/word_embeddings/big-five-personality-traits-score.png) | 
 |:--:| 
 | *Exemple de résultat d’un test des cinq grands traits de personnalité. Il aurait une capacité prédictive de réussite scolaire, personnelle, et professionnelle. Pour effectuer ce test : https://projects.fivethirtyeight.com/personality-quiz/. * |
 
 
-![image](https://maelfabien.github.io/assets/images/tabh1.jpg){:height="100%" width="100%"}
+
 
 Imaginez avoir obtenu 38/100 comme score d’introversion/extraversion. Nous pouvons tracer cela de cette façon :  
 
