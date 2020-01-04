@@ -384,7 +384,7 @@ Maintenant que nous avons notre ensemble de données d’entraînement de Skipgr
 Nous commençons par le premier échantillon de notre ensemble de données. Nous saisissons la caractéristique et l’envoyons au modèle non entrainé en lui demandant de prédire un mot voisin approprié.
 <center>
 <figure class="image">
-  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/skipgram-language-model-training-2-1.png">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/skipgram-language-model-training-2.png">
 </figure>   
 </center>
 
@@ -534,7 +534,7 @@ Vous pouvez voir que taco a le score le plus élevé et qu’aaron a toujours le
 Maintenant que le modèle non entraîné a fait une prédiction, et vu que nous avons un label auquel la comparer, calculons l’erreur dans la prédiction du modèle. Pour ce faire, il suffit de soustraire les scores sigmoïdes des labels (targets).
 <center>
 <figure class="image">
-  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/word2vec-training-error">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/word2vec-training-error.png">
   <figcaption>error = target – sigmoid_scores</figcaption>
 </figure>   
 </center>
@@ -550,7 +550,7 @@ Nous pouvons maintenant utiliser ce score d’erreur pour ajuster les embeddings
 L’étape d’entraînement est terminée. Nous en ressortons avec des embeddings légèrement meilleurs pour les mots impliqués dans cette étape (not, thou, aaron, and taco). Nous passons alors à l’échantillon positif (et les échantillons négatifs associés) suivant et recommençons le même processus.
 <center>
 <figure class="image">
-  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/word2vec-training-example-2-1.png">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/word2vec-training-example-2.png">
 </figure>   
 </center>
 
