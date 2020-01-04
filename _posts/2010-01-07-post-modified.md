@@ -25,7 +25,6 @@ Sur une échelle de 0 à 100, dans quelle mesure êtes-vous introverti/extravert
   <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/big-five-personality-traits-score.png">
   <figcaption>Exemple de résultat d’un test des cinq grands traits de personnalité. Il aurait une capacité prédictive de réussite scolaire, personnelle, et professionnelle. Pour effectuer ce test : https://projects.fivethirtyeight.com/personality-quiz/.</figcaption>
 </figure>                                                                                                                                             </center>
-<br>
 
 
 Imaginez avoir obtenu 38/100 comme score d’introversion/extraversion. Nous pouvons tracer cela de cette façon :
@@ -34,14 +33,14 @@ Imaginez avoir obtenu 38/100 comme score d’introversion/extraversion. Nous pou
   <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/introversion-extraversion-100.png">
 </figure>   
 </center>
-<br>
+
 
 On se ramène à une échelle comprise entre -1 à 1 :
 <center>
 <figure class="image">
   <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/introversion-extraversion-1.png">                                                                                                                                      </figure>   
 </center>
-<br>
+
 
 Dans quelle mesure avez-vous l’impression de connaître une personne en ne connaissant que cette seule information à son sujet ? Pas grand-chose. Les gens sont complexes. Ajoutons donc une autre dimension : le score d’un autre trait du test.
 Nous pouvons représenter les deux dimensions comme un point sur le graphique, ou mieux encore, comme un vecteur de l’origine à ce point.
@@ -51,7 +50,6 @@ Nous pouvons représenter les deux dimensions comme un point sur le graphique, o
   <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/two-traits-vector.png">
   <figcaption>Nous n’affichons pas tous les traits que nous prenons en compte. L’objectif est de s’habituer au fait de ne pas savoir ce que chaque dimension représente.</figcaption>
 </figure>                                                                                                                                             </center>
-<br>
 
 
 On peut maintenant dire que ce vecteur représente partiellement ma personnalité. L’utilité d’une telle représentation apparaît quand on veut comparer deux autres personnes à moi. Disons que je me fais renverser par un bus et que j’ai besoin d’être remplacé par quelqu’un avec une personnalité similaire. Dans la figure suivante, laquelle des deux personnes me ressemble le plus ?
@@ -60,7 +58,6 @@ On peut maintenant dire que ce vecteur représente partiellement ma personnalit�
 <figure class="image">
   <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/personality-two-persons.png">                                                                                                                                      </figure>   
 </center>
-<br>
 
 
 Lorsqu’il s’agit de vecteurs, un moyen courant de calculer un score de similarité est le [Cosinus](https://fr.wikipedia.org/wiki/Similarit%C3%A9_cosinus) :
@@ -69,7 +66,6 @@ Lorsqu’il s’agit de vecteurs, un moyen courant de calculer un score de simil
   <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/cosine-similarity.png">
   <figcaption>Person #1 me ressemble le plus.  Les vecteurs pointant dans la même direction (la longueur joue également un rôle) ont un score de similitude cosinus plus élevé.</figcaption>
 </figure>                                                                                                                                             </center>
-<br>
 
  
 Encore une fois, deux dimensions ne suffisent pas pour saisir suffisamment d’information sur les différences entre les gens. Des décennies de recherche en psychologie ont mené à cinq traits principaux (et beaucoup de sous-traits). Utilisons donc les cinq dimensions dans notre comparaison :
@@ -77,7 +73,6 @@ Encore une fois, deux dimensions ne suffisent pas pour saisir suffisamment d’i
 <figure class="image">
   <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/big-five-vectors.png">                                                                                                                                      </figure>   
 </center>
-<br>
   
 
 Le problème avec les cinq dimensions est que nous perdons la capacité de dessiner des flèches nettes comme en deux dimensions. C’est un défi commun en machine learning où nous devons souvent penser dans un espace plus vaste. Ce qui est bien, c’est que le cosinus_similarité fonctionne toujours, avec n’importe quel nombre de dimensions :
@@ -87,7 +82,6 @@ Le problème avec les cinq dimensions est que nous perdons la capacité de dessi
   <figcaption>
 Les scores obtenus représentent plus fidèlement la personnalité que ceux obtenus à deux dimensions..</figcaption>
 </figure>                                                                                                                                             </center>
-<br>
 
 
 Deux idées centrales se dégagent de ce premier exemple :
