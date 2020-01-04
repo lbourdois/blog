@@ -19,6 +19,7 @@ Cet article est une traduction de l’article de Jay Alammar : [The illustrated 
 
 Sur une échelle de 0 à 100, dans quelle mesure êtes-vous introverti/extraverti (où 0 est le plus introverti et 100 le plus extraverti) ?   Avez-vous déjà passé un test de personnalité comme le MBTI – ou mieux encore, le test des cinq grands traits de personnalité ? Si vous ne l’avez pas fait, ce sont des tests qui vous posent une liste de questions, puis vous notent sur un certain nombre d’axes, l’introversion/extraversion étant l’un d’eux.
 
+{:.center}
 ![big-five-personality-traits-score](https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/big-five-personality-traits-score.png)   
 *Exemple de résultat d’un test des cinq grands traits de personnalité. Il aurait une capacité prédictive de réussite scolaire, personnelle, et professionnelle. Pour effectuer ce test : https://projects.fivethirtyeight.com/personality-quiz/. *
 
@@ -113,7 +114,11 @@ La première étape est la plus pertinente pour nous lorsque nous discutons de d
 L’un des résultats du processus d’entraînement est une matrice qui contient un embedding pour chaque mot de notre vocabulaire. Pendant le temps de prédiction, nous recherchons simplement les embeddings du mot d’entrée, et nous les utilisons pour calculer la prédiction :
 
 Passons à présent au processus d’entraînement pour en savoir plus sur la façon dont la matrice d’embeddings a été créé.
-5. Language Model Training
+
+
+<br>
+<br>
+# 5. Language Model Training
 
 Les modèles linguistiques ont un avantage énorme sur la plupart des autres modèles de machine learning. Cet avantage est que nous sommes en mesure de les entraîner sur des textes courants dont nous disposons en abondance. Pensez à tous les livres, articles, contenus Wikipédia et autres formes de données textuelles que nous avons. Comparez ceci aux autres modèles qui ont besoin d’annotations faites à la main et de données spécialement collectées…
 
@@ -134,7 +139,11 @@ Nous glissons ensuite notre fenêtre à la position suivante et créons un deuxi
 Et très rapidement, nous disposons d’un ensemble de données plus vaste dont les mots ont tendance à apparaître après différentes paires de mots :
 
 Dans la pratique, les modèles ont tendance à être entraînés pendant que nous glissons la fenêtre. Mais je trouve plus clair de séparer logiquement la phase « génération du jeu de données » de la phase d’entraînement. Outre les approches de modélisation du langage fondées sur les réseaux neuronaux, une technique appelée N-grams a été couramment utilisée pour former des modèles de langage. Pour voir comment le passage des N-grammes aux modèles neuronaux se reflète sur les produits du monde réel vous pouvez lire l’article suivant : https://blog.swiftkey.com/neural-networks-a-meaningful-leap-for-mobile-typing/ (en anglais). Cet exemple montre comment les propriétés algorithmiques des incorporations peuvent être décrites dans un discours marketing.
-6. Regarder des deux côtés
+
+
+<br>
+<br>
+# 6. Regarder des deux côtés
 
 Sachant ce que vous avez lu plus tôt dans l’exemple d’introduction, remplissez le blanc :
 
@@ -143,7 +152,11 @@ Je suis sûr que la plupart des gens devineraient que le mot bus va dans le vide
 Cela change complètement ce qui devrait aller dans le blanc. Le mot « red » est maintenant le plus susceptible d’aller dans le blanc. Ce que nous apprenons de ceci est que les mots avant et après un mot spécifique ont une valeur informationnelle. Il s’avère que la prise en compte des deux sens (mots à gauche et à droite du mot que l’on devine) conduit à un meilleur word embeddings.
 
 Voyons comment nous pouvons ajuster la façon dont nous entraînons le modèle pour tenir compte de cela.
-7. Skipgram
+
+
+<br>
+<br>
+# 7. Skipgram
 
 Au lieu de regarder seulement deux mots avant le mot cible, nous pouvons aussi regarder deux mots après lui.
 
@@ -167,7 +180,14 @@ Nous glissons ensuite notre fenêtre vers la position suivante :
 Ce qui génère nos quatre exemples suivants :
 
 Quelques positions plus tard, nous avons beaucoup d’autres exemples :
-8. Revisiting the training process
+
+
+
+
+
+<br>
+<br>
+# 8. Revisiting the training process
 
 Maintenant que nous avons notre ensemble de données d’entraînement de Skipgram que nous avons extrait d’un texte, voyons comment nous l’utilisons pour former un modèle de langage neuronal qui prédit le mot voisin.
 
@@ -182,7 +202,13 @@ Ce vecteur d’erreur peut maintenant être utilisé pour mettre à jour le mod�
 Voilà qui conclut la première étape d’entraînement. Nous procédons de la même façon avec le prochain échantillon de notre ensemble de données, puis le suivant, jusqu’à ce que nous ayons couvert tous les échantillons de l’ensemble de données. Cela conclut une « epoch » d’entraînement. Nous recommençons pendant un certain nombre d’époques, et nous obtenons alors notre modèle entraîné. Nous pouvons en extraire la matrice d’embedding et l’utiliser pour toute autre application.
 
 Bien que cela élargisse notre compréhension du processus, ce n’est pas encore la façon dont word2vec est réellement formé. Il nous manque quelques idées clés.
-9. Negative Sampling
+
+
+
+
+<br>
+<br>
+# 9. Negative Sampling
 
 Rappelez-vous les trois étapes de la façon dont ce modèle de langage neuronal calcule sa prédiction :
 
@@ -208,13 +234,19 @@ Pour y remédier, nous devons introduire des échantillons négatifs dans notre 
 Nous assignons ensuite comme mot de sortie des mots pris au hasard dans notre vocabulaire.
 
 Cette idée s’inspire de Noise-contrastive estimation. Nous comparons le signal réel (exemples positifs de mots voisins) avec le bruit (mots choisis au hasard qui ne sont pas voisins). Il en résulte un grand compromis entre l’efficacité informatique et l’efficacité statistique.
-10. Skipgram with Negative Sampling (SGNS)
+
+
+
+<br>
+<br>
+# 10. Skipgram with Negative Sampling (SGNS)
 
 Nous avons maintenant couvert deux des idées centrales de Word2vec. Associées, elles s’appellent Skipgram with Negative Sampling (« skipgram avec un échantillonnage négatif »).
-<br>
-<br>
 
 
+
+<br>
+<br>
  # 11. Processus d'entraînement de Word2vec
 
 Maintenant que nous avons établi les deux idées centrales du SGNS, nous pouvons examiner de plus près le processus d’entraînement de word2vec.  
@@ -243,7 +275,12 @@ Nous pouvons maintenant utiliser ce score d’erreur pour ajuster les embeddings
 L’étape de d’entraînement est terminée. Nous en ressortons avec des embeddings légèrement meilleurs pour les mots impliqués dans cette étape (not, thou, aaron, and taco). Nous passons alors à l’échantillon positif (et les échantillons négatifs associés) suivant et recommençons le même processus.
 
 L’embeddings continue d’être amélioré pendant que nous parcourons l’ensemble de nos données un certain nombre de fois. Nous pouvons alors arrêter le processus d’entraînement, abandonnons la Context matrix et utilisons l’Embedding matrix comme pré-entrainées pour la tâche suivante.
-12. Window size and number of negative samples
+
+
+
+<br>
+<br>
+# 12. Window size and number of negative samples
 
 La taille de la fenêtre et le nombre d’échantillons négatifs sont deux hyperparamètres clés dans le processus d’entraînement de word2vec.
 
@@ -255,7 +292,10 @@ Des fenêtres de plus grande taille (15-50, ou même plus) mènent à des embedd
 
 Le nombre d’échantillons négatifs est un autre facteur du processus d’entraînement. L’article original prescrit 5-20 comme étant un bon nombre d’échantillons négatifs. Il indique également que 2-5 semble être suffisant quand vous avez un ensemble de données assez grand. La valeur par défaut de Gensim est de 5 échantillons négatifs.
  
- 
- # Conclusion
+
+
+<br>
+<br>
+# Conclusion
 
 J’espère pouvoir ajouter un tutoriel sous forme de notebook plus tard si j’ai le temps.
