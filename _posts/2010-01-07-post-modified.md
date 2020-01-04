@@ -22,7 +22,7 @@ Sur une échelle de 0 à 100, dans quelle mesure êtes-vous introverti/extravert
 
 <center>
 <figure class="image">
-  <img src="{{https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/big-five-personality-traits-score.png }}"">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/big-five-personality-traits-score.png">
   <figcaption>{{Exemple de résultat d’un test des cinq grands traits de personnalité. Il aurait une capacité prédictive de réussite scolaire, personnelle, et professionnelle. Pour effectuer ce test : https://projects.fivethirtyeight.com/personality-quiz/.}}</figcaption>
 </figure>                                                                                                                                             </center>
 <br>
@@ -53,9 +53,8 @@ Deux idées centrales se dégagent de ce premier exemple :
  -   nous pouvons facilement calculer à quel point les vecteurs sont similaires les uns aux autres. 
 
 
-
-
-# 2. Word Embeddings
+<br><br><br>
+# <span style="color: #FF0000"> **2. Word Embeddings** </span>
 
 Avec cette introduction, nous pouvons regarder des exemples de vecteurs de mots entraînés (aussi appelés word embeddings) et commencer à examiner certaines de leurs propriétés intéressantes.
 
