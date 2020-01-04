@@ -147,10 +147,11 @@ Quelques points à signaler :
 
 # <span style="color: #FF0000"> **3. Analogies** </span>
 
-Les exemples célèbres qui montrent une incroyable propriété d’embedding est le concept d’analogies. Nous pouvons ajouter et soustraire des insertions de mots et arriver à des résultats intéressants. L’exemple le plus célèbre est la formule : « king » – « man » + »woman » :
+Les exemples célèbres qui montrent une incroyable propriété d’embedding est le concept d’analogies. Nous pouvons ajouter et soustraire des insertions de mots et arriver à des résultats intéressants.  
+L’exemple le plus célèbre est la formule : « king » – « man » + »woman » :
 <center>
 <figure class="image">
-  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/king-manwoman-gensim.png">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/king-man%2Bwoman-gensim.png">
   <figcaption>En utilisant la bibliothèque Gensim en Python nous pouvons ajouter et soustraire des vecteurs de mots. La fonction indique aussi les mots les plus similaires au vecteur résultant avec la valeur de similitude via le cosinus.</figcaption>
 </figure>                                                                                                                                             </center>
 <br><br><br>
@@ -164,7 +165,7 @@ Maintenant que nous nous sommes penchés sur les embeddings entrainés, nous all
 Si l’on voulait donner un exemple d’une application de NLP, l’un des meilleurs exemples serait la fonction de prédiction du mot suivant d’un clavier de smartphone. C’est une caractéristique que des milliards de gens utilisent des centaines de fois par jour.
 <center>
 <figure class="image">
-  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/swiftkey-keyboard-1.png">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/swiftkey-keyboard.png">
   <figcaption>«Thou shalt» (Tu feras)</figcaption>
 </figure>                                                                                                                                             </center>
 
