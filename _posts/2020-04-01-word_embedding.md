@@ -4,8 +4,9 @@ categories:
   - NLP
 tags:
   - word embedding en français
+excerpt : "NLP"
 header :
-    overlay_image: "https://maelfabien.github.io/assets/images/wolf.jpg"
+    overlay_image: "word2vec-blog.png"
 
 ---
 
