@@ -19,7 +19,7 @@ Sur une échelle de 0 à 100, dans quelle mesure êtes-vous introverti/extravert
 
 
 <div class="img-div-any-width" markdown="0">
-  <image src="/assets/images/word_embeddings/big-five-personality-traits-score.png>
+  <image src="blog/assets/images/word_embeddings/big-five-personality-traits-score.png>
   <br />
    Exemple de résultat d’un test des cinq grands traits de personnalité. Il aurait une capacité prédictive de réussite scolaire, personnelle, et professionnelle. Pour effectuer ce test : https://projects.fivethirtyeight.com/personality-quiz/. 
 </div>
