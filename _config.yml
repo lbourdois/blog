@@ -16,26 +16,27 @@ minimal_mistakes_skin    : "default" # "air", "aqua", "contrast", "dark", "dirt"
 
 # Site Settings
 locale                   : "en-US"
-title                    : ""
+title                    : "Loïck BOURDOIS"
 title_separator          : "-"
+subtitle                 : # site tagline that appears below site title in masthead
 name                     : "Loïck BOURDOIS"
 description              : "Blog de Loïck BOURDOIS"
-url                      : https://lbourdois.github.io/
+url                      : # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
-teaser                   : # Default teaser image "assets/images/contents/main-cover.jpg"
-logo                     : https://github.com/lbourdois/blog/blob/master/assets/images/logo_blog_lb.png # path of logo image to display in the masthead, e.g. "/assets/images/88x88.png"
+teaser                   : # path of fallback teaser image, e.g. "/assets/images/500x300.png"
+logo                     : /assets/images/logo_blog_lb.png # path of logo image to display in the masthead, e.g. "/assets/images/88x88.png"
 masthead_title           : # overrides the website title displayed in the masthead, use " " for no title
 # breadcrumbs            : false # true, false (default)
 words_per_minute         : 200
 comments:
-  provider               : "disqus" # "discourse", "facebook", "google-plus", "staticman", "staticman_v2", "utterances", "custom"
+  provider               : # false (default), "disqus", "discourse", "facebook", "staticman", "staticman_v2", "utterances", "custom"
   disqus:
-    shortname            : "loïckbourdois-github-io" # https://help.disqus.com/customer/portal/articles/466208-what-s-a-shortname-
+    shortname            : # https://help.disqus.com/customer/portal/articles/466208-what-s-a-shortname-
   discourse:
     server               : # https://meta.discourse.org/t/embedding-discourse-comments-via-javascript/31963 , e.g.: meta.discourse.org
   facebook:
-# https://developers.facebook.com/docs/plugins/comments
+    # https://developers.facebook.com/docs/plugins/comments
     appid                :
     num_posts            : # 5 (default)
     colorscheme          : # "light" (default), "dark"
@@ -83,7 +84,7 @@ naver_site_verification  :
 
 # Social Sharing
 twitter:
-  username               : 
+  username               :
 facebook:
   username               :
   app_id                 :
@@ -98,48 +99,51 @@ social:
 
 # Analytics
 analytics:
-  provider               : google # false (default), "google", "google-universal", "custom"
+  provider               : false # false (default), "google", "google-universal", "custom"
   google:
-    tracking_id          : "UA-93578320-5"
+    tracking_id          :
     anonymize_ip         : # true, false (default)
 
 
 # Site Author
 author:
-  name             : "Maël Fabien"
-  avatar           : "/assets/images/profile.jpg"
-  bio              : "Learning to teach machines to learn"
-  location         : "Paris"
-  email            : 
+  name             : "Loïck BOURDOIS"
+  avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
+  bio              : "Voir la page "A propos" pour ma biographie."
+  location         : "Bordeaux"
+  email            :
   links:
-    - label: "Mail"
+    - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
-      url: mailto:mael.fabien@gmail.com
+      # url: mailto:your.name@email.com
+    - label: "Twitter"
+      icon: "fab fa-fw fa-twitter-square"
+      # url: "https://twitter.com/"
     - label: "LinkedIn"
       icon: "fab fa-fw fa-linkedin"
-      url: "https://www.linkedin.com/in/mael-fabien/"
+      url: "https://www.linkedin.com/in/loïck-bourdois/"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
-      url: "https://github.com/maelfabien/"
+      url: "https://github.com/lbourdois"
+
 
 # Site Footer
 footer:
   links:
+    - label: "Email"
+      icon: "fas fa-fw fa-envelope-square"
+      # url: mailto:your.name@email.com
     - label: "Twitter"
       icon: "fab fa-fw fa-twitter-square"
-      url: https://twitter.com/
-    - label: "Facebook"
-      icon: "fab fa-fw fa-facebook-square"
-      # url:
-    - label: "GitHub"
-      icon: "fab fa-fw fa-github"
-      url: "https://github.com/lbourdois"
-    - label: "GitLab"
-      icon: "fab fa-fw fa-gitlab"
-      # url:
+      # url: "https://twitter.com/"
     - label: "LinkedIn"
       icon: "fab fa-fw fa-linkedin"
       url: "https://www.linkedin.com/in/loïck-bourdois/"
+    - label: "GitHub"
+      icon: "fab fa-fw fa-github"
+      url: "https://github.com/lbourdois"
+
+
 
 
 # Reading Files
@@ -178,27 +182,7 @@ keep_files:
 encoding: "utf-8"
 markdown_ext: "markdown,mkdown,mkdn,mkd,md"
 
-# Collections
-collections:
-  dl:
-    output: true
-    permalink: /:collection/:path/
-  projects:
-    output: true
-    permalink: /:collection/:path/
-  ml:
-    output: true
-    permalink: /:collection/:path/
-  st:
-    output: true
-    permalink: /:collection/:path/
-  bigdata:
-    output: true
-    permalink: /:collection/:path/
-  tuto:
-    output: true
-    permalink: /:collection/:path/
-    
+
 # Conversion
 markdown: kramdown
 highlighter: rouge
@@ -222,7 +206,7 @@ kramdown:
 # Sass/SCSS
 sass:
   sass_dir: _sass
-  style: compressed # http://sass-lang.com/documentation/file.SASS_REFERENCE.html#output_style
+  style: compressed # https://sass-lang.com/documentation/file.SASS_REFERENCE.html#output_style
 
 
 # Outputting
@@ -238,7 +222,6 @@ plugins:
   - jekyll-sitemap
   - jekyll-gist
   - jekyll-feed
-  - jemoji
   - jekyll-include-cache
 
 # mimic GitHub Pages with --safe
@@ -247,7 +230,6 @@ whitelist:
   - jekyll-sitemap
   - jekyll-gist
   - jekyll-feed
-  - jemoji
   - jekyll-include-cache
 
 
@@ -259,8 +241,8 @@ whitelist:
 #  - Archive page should exist at path when using Liquid method or you can
 #    expect broken links (especially with breadcrumbs enabled)
 #  - <base_path>/tags/my-awesome-tag/index.html ~> path: /tags/
-#  - <base_path/categories/my-awesome-category/index.html ~> path: /categories/
-#  - <base_path/my-awesome-category/index.html ~> path: /
+#  - <base_path>/categories/my-awesome-category/index.html ~> path: /categories/
+#  - <base_path>/my-awesome-category/index.html ~> path: /
 category_archive:
   type: liquid
   path: /categories/
@@ -281,7 +263,7 @@ tag_archive:
 
 
 # HTML Compression
-# - http://jch.penibelst.de/
+# - https://jch.penibelst.de/
 compress_html:
   clippings: all
   ignore:
