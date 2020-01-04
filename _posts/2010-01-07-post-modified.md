@@ -31,13 +31,16 @@ Sur une échelle de 0 à 100, dans quelle mesure êtes-vous introverti/extravert
 Imaginez avoir obtenu 38/100 comme score d’introversion/extraversion. Nous pouvons tracer cela de cette façon :
 <center>
 <figure class="image">
-  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/introversion-extraversion-100.png">                                                                                                                                      </center>
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/introversion-extraversion-100.png">
+</figure>   
+</center>
 <br>
 
 On se ramène à une échelle comprise entre -1 à 1 :
 <center>
 <figure class="image">
-  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/introversion-extraversion-1.png">                                                                                                                                      </center>
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/introversion-extraversion-1.png">                                                                                                                                      </figure>   
+</center>
 <br>
 
 Dans quelle mesure avez-vous l’impression de connaître une personne en ne connaissant que cette seule information à son sujet ? Pas grand-chose. Les gens sont complexes. Ajoutons donc une autre dimension : le score d’un autre trait du test.
@@ -55,11 +58,12 @@ On peut maintenant dire que ce vecteur représente partiellement ma personnalit�
 
 <center>
 <figure class="image">
-  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/personality-two-persons.png">                                                                                                                                      </center>
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/personality-two-persons.png">                                                                                                                                      </figure>   
+</center>
 <br>
 
-Lorsqu’il s’agit de vecteurs, un moyen courant de calculer un score de similarité est le [Cosinus](https://fr.wikipedia.org/wiki/Similarit%C3%A9_cosinus) :
 
+Lorsqu’il s’agit de vecteurs, un moyen courant de calculer un score de similarité est le [Cosinus](https://fr.wikipedia.org/wiki/Similarit%C3%A9_cosinus) :
 <center>
 <figure class="image">
   <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/cosine-similarity.png">
@@ -71,7 +75,8 @@ Lorsqu’il s’agit de vecteurs, un moyen courant de calculer un score de simil
 Encore une fois, deux dimensions ne suffisent pas pour saisir suffisamment d’information sur les différences entre les gens. Des décennies de recherche en psychologie ont mené à cinq traits principaux (et beaucoup de sous-traits). Utilisons donc les cinq dimensions dans notre comparaison :
 <center>
 <figure class="image">
-  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/big-five-vectors.png">                                                                                                                                      </center>
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/big-five-vectors.png">                                                                                                                                      </figure>   
+</center>
 <br>
   
 
