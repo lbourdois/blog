@@ -227,6 +227,7 @@ Nous attribuons aux mots leurs embeddings en regardant les autres mots à côté
 - Nous recevons beaucoup de données textuelles (disons, tous les articles de Wikipedia, par exemple). 
 - Nous avons une fenêtre (disons de trois mots) que nous faisons glisser sur tout ce texte.
 - La fenêtre coulissante génère des exemples de formation pour notre modèle.
+<center>
 <figure class="image">
   <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/wikipedia-sliding-window.png">
 </figure>   
@@ -236,6 +237,7 @@ Nous attribuons aux mots leurs embeddings en regardant les autres mots à côté
 Lorsque la fenêtre glisse sur le texte, nous générons (virtuellement) un ensemble de données que nous utilisons pour entraîner un modèle. Pour voir exactement comment cela se fait, voyons comment la fenêtre coulissante traite cette phrase : « Thou shalt not make a machine in the likeness of a human mind » (Tu ne feras pas une machine à l’image d’un esprit humain).
 
 Lorsque nous commençons, la fenêtre est sur les trois premiers mots de la phrase :
+<center>
 <figure class="image">
   <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/lm-sliding-window.png">
 </figure>   
@@ -243,6 +245,7 @@ Lorsque nous commençons, la fenêtre est sur les trois premiers mots de la phra
 
 
 Nous prenons les deux premiers mots pour des features et le troisième mot pour un label :
+<center>
 <figure class="image">
   <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/wikipedia-sliding-window-2.png">
 </figure>   
@@ -257,6 +260,7 @@ Nous glissons ensuite notre fenêtre à la position suivante et créons un deuxi
 
 
 Et très rapidement, nous disposons d’un ensemble de données plus vaste dont les mots ont tendance à apparaître après différentes paires de mots :
+<center>
 <figure class="image">
   <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/wikipedia-sliding-window-4.png">
 </figure>   
@@ -271,12 +275,14 @@ Dans la pratique, les modèles ont tendance à être entraînés pendant que nou
 # <span style="color: #FF0000"> **6. Regarder des deux côtés** </span> 
 
 Sachant ce que vous avez lu plus tôt dans l’exemple d’introduction, remplissez le blanc :
+<center>
 <figure class="image">
   <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/jay_was_hit_by_a_.png">
 </figure>   
 </center>
 
 Je suis sûr que la plupart des gens devineraient que le mot bus va dans le vide. Mais si je vous donnais une autre information, un mot après le blanc, cela changerait-il votre réponse ?
+<center>
 <figure class="image">
   <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/jay_was_hit_by_a_bus.png">
 </figure>   
@@ -285,7 +291,7 @@ Je suis sûr que la plupart des gens devineraient que le mot bus va dans le vide
 Cela change complètement ce qui devrait aller dans le blanc. Le mot « red » est maintenant le plus susceptible d’aller dans le blanc. Ce que nous apprenons de ceci est que les mots avant et après un mot spécifique ont une valeur informationnelle. Il s’avère que la prise en compte des deux sens (mots à gauche et à droite du mot que l’on devine) conduit à un meilleur word embeddings.
 
 Voyons comment nous pouvons ajuster la façon dont nous entraînons le modèle pour tenir compte de cela.
-
+<br><br><br>
 
 
 # <span style="color: #FF0000"> **7. Skipgram** </span> 
