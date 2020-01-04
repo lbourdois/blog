@@ -248,14 +248,14 @@ Lorsque nous commençons, la fenêtre est sur les trois premiers mots de la phra
 Nous prenons les deux premiers mots pour des features et le troisième mot pour un label :
 <center>
 <figure class="image">
-  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/wikipedia-sliding-window-2.png">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/lm-sliding-window-2.png">
 </figure>   
 </center>
 
 
 Nous glissons ensuite notre fenêtre à la position suivante et créons un deuxième échantillon :
 <figure class="image">
-  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/wikipedia-sliding-window-3.png">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/lm-sliding-window-3.png">
 </figure>   
 </center>
 
@@ -263,7 +263,7 @@ Nous glissons ensuite notre fenêtre à la position suivante et créons un deuxi
 Et très rapidement, nous disposons d’un ensemble de données plus vaste dont les mots ont tendance à apparaître après différentes paires de mots :
 <center>
 <figure class="image">
-  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/wikipedia-sliding-window-4.png">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/lm-sliding-window-4.png">
 </figure>   
 </center>
 
