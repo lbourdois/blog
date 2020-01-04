@@ -79,8 +79,7 @@ Le problème avec les cinq dimensions est que nous perdons la capacité de dessi
 <center>
 <figure class="image">
   <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/embeddings-cosine-personality.png">
-  <figcaption>
-Les scores obtenus représentent plus fidèlement la personnalité que ceux obtenus à deux dimensions..</figcaption>
+  <figcaption> Les scores obtenus représentent plus fidèlement la personnalité que ceux obtenus à deux dimensions.</figcaption>
 </figure>                                                                                                                                             </center>
 
 
@@ -91,47 +90,85 @@ Deux idées centrales se dégagent de ce premier exemple :
 
 
 
+
 # <span style="color: #FF0000"> **2. Word Embeddings** </span>
 
 Avec cette introduction, nous pouvons regarder des exemples de vecteurs de mots entraînés (aussi appelés word embeddings) et commencer à examiner certaines de leurs propriétés intéressantes.
 
 Voici un word embeddings  pour le mot « king » (via GloVe vector qui est entraîné sur Wikipedia) :
+<center>
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/king-wikipedia.png">                                                                                                                                      </figure>   
+</center>
+
 
 C’est une liste de 50 numéros. Nous ne pouvons pas dire grand-chose en regardant les valeurs. Mais regardons-le un peu pour pouvoir le comparer à d’autres vecteurs de mots. Mettons tous ces chiffres sur une ligne :
+<center>
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/king-white-embedding.png">                                                                                                                                      </figure>   
+</center>
 
 Colorons ensuite les cellules en fonction de leurs valeurs (rouge si elles sont proches de 2, blanc si elles sont proches de 0, bleu si elles sont proches de -2) :
+<center>
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/king-colored-embedding.png">                                                                                                                                      </figure>   
+</center>
+
 
 Jusqu’à la fin de cette partie, continuons en ignorant les chiffres et en ne regardant que les couleurs pour indiquer les valeurs des cellules.
+<br>
 
-    Comparons maintenant « King » à d’autres mots :
+
+Comparons maintenant « King » à d’autres mots :
+<center>
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/king-man-woman-embedding.png">                                                                                                                                      </figure>   
+</center>
 
 Vous voyez comme les mots « Man » et « Woman » sont beaucoup plus semblables l’un à l’autre qu’ils ne le sont à « King » ? Ces représentations vectorielles saisissent une bonne partie de l’information, du sens et des associations de ces mots.
 
 Voici une autre liste d’exemples (comparez en regardant verticalement à la recherche de colonnes de couleurs similaires) :
+<center>
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/queen-woman-girl-embeddings.png">                                                                                                                                      </figure>   
+</center>
+<br>
+
 
 Quelques points à signaler :
-
 -    Il y a une colonne rouge traversant tous les mots. Ils sont donc similaires le long de cette dimension (mains ne savons pas à quoi chaque dimension correspond).
 -    Vous pouvez voir comment « woman » et « girl » sont semblables l’une à l’autre dans beaucoup d’endroits. Il en va de même pour « man » et « boy ».
 -    « boy » et « girl » ont aussi des endroits où ils se ressemblent, mais où ils sont différents de « woman » ou « man ». Serait-ce le codage d’une vague conception de la jeunesse ? possible.
 -    Tous les mots sauf le dernier sont des mots qui représentent les gens. J’ai ajouté un objet (water) pour montrer les différences entre les catégories. On peut voir, par exemple, une colonne bleue descendre jusqu’en bas et s’arrêter une fois arriver à l’embedding de « water ».
 -    Il y a des endroits clairs où « king » et « queen » sont semblables l’un à l’autre et distincts de tous les autres. Cela pourrait-il s’agir d’un vague concept de royauté ?
+<br><br><br>
 
 
 
-# 3. Analogies
+# <span style="color: #FF0000"> **3. Analogies** </span>
 
 Les exemples célèbres qui montrent une incroyable propriété d’embedding est le concept d’analogies. Nous pouvons ajouter et soustraire des insertions de mots et arriver à des résultats intéressants. L’exemple le plus célèbre est la formule : « king » – « man » + »woman » :
-En utilisant la bibliothèque Gensim en Python nous pouvons ajouter et soustraire des vecteurs de mots. La fonction indique aussi les mots les plus similaires au vecteur résultant avec la valeur de similitude via le cosinus.
+<center>
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/king-manwoman-gensim.png">
+  <figcaption>En utilisant la bibliothèque Gensim en Python nous pouvons ajouter et soustraire des vecteurs de mots. La fonction indique aussi les mots les plus similaires au vecteur résultant avec la valeur de similitude via le cosinus.</figcaption>
+</figure>                                                                                                                                             </center>
+<br><br><br>
 
 
- 
-# 4. Language modeling
+
+# <span style="color: #FF0000"> **4. Language modeling** </span> 
 
 Maintenant que nous nous sommes penchés sur les embeddings entrainés, nous allons en apprendre davantage sur le processus d’entraînement. Mais avant d’en arriver à Word2vec, nous devons nous pencher sur un parent conceptuel aux word embeddings : le neural language model.
 
 Si l’on voulait donner un exemple d’une application de NLP, l’un des meilleurs exemples serait la fonction de prédiction du mot suivant d’un clavier de smartphone. C’est une caractéristique que des milliards de gens utilisent des centaines de fois par jour.
-«Thou shalt» (Tu feras)
+<center>
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/swiftkey-keyboard-1.png">
+  <figcaption>«Thou shalt» (Tu feras)</figcaption>
+</figure>                                                                                                                                             </center>
+
+
 
 Cette tâche peut être traitée par un modèle linguistique. Un modèle linguistique peut prendre une liste de mots (disons deux mots) et tenter de prédire le mot qui les suit.
 
