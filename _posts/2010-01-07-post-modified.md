@@ -7,11 +7,12 @@ tags:
 ---
 
 
-
-# Avant-propos
+# <span style="color: #FF0000"><u> Avant-propos </u></span>
+ 
 
 Cet article est une traduction de l’article de Jay Alammar : [The illustrated word2vec](https://jalammar.github.io/illustrated-word2vec/).   Ainsi si dans l’article vous lisez des « Je » ou des « Jay », cela provient d’exemple de l’article original que je n’ai pas pu traduire autrement. 
 <br><br>
+
 
 
 # 1. Exemple d’introduction
