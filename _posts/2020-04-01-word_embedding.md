@@ -563,12 +563,23 @@ L’embeddings continue d’être amélioré pendant que nous parcourons l’ens
 # <span style="color: #FF0000"> **12. Window size and number of negative samples** </span> 
 
 La taille de la fenêtre et le nombre d’échantillons négatifs sont deux hyperparamètres clés dans le processus d’entraînement de word2vec.
+<center>
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/word2vec-window-size.png">
+</figure>   
+</center>
 
 La taille de la fenêtre la plus adaptée varie en fonction de la tâche à effectuer.    
 
 Une heuristique est que des fenêtres de petite taille (2-15) conduisent à des embeddings avec des scores de similarité élevés entre deux embeddings. Cela signifie que les mots sont interchangeables (remarquez que les antonymes sont souvent interchangeables si l’on considère seulement les mots environnants. Par exemple, bon et mauvais apparaissent souvent dans des contextes similaires).
 
 Des fenêtres de plus grande taille (15-50, ou même plus) mènent à des embeddings où la similarité donne une indication sur la parenté des mots. Dans la pratique, vous devrez souvent fournir des annotations qui guident le processus d’embeddings menant à une similarité utile pour votre tâche. La taille par défaut de la fenêtre de Gensim est 5 (deux mots avant et deux mots après le mot entré, en plus du mot entré lui-même).
+
+<center>
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/word2vec-negative-samples.png">
+</figure>   
+</center>
 
 Le nombre d’échantillons négatifs est un autre facteur du processus d’entraînement. L’article original prescrit 5-20 comme étant un bon nombre d’échantillons négatifs. Il indique également que 2-5 semble être suffisant quand vous avez un ensemble de données assez grand. La valeur par défaut de Gensim est de 5 échantillons négatifs.
  <br><br><br>
