@@ -103,23 +103,48 @@ Une vidéo réalisée par un doctorant dans le domaine qui récapitule l’ensem
 Pour apporter un peu de valeur ajoutée par rapport aux articles cités dans la partie précédente, j’évoque dans celle-ci le modèle **ELMo** (**Embeddings from Language Models**) qui est basé sur un LSTM bidirectionnel.
 Pour cette partie, je me base sur un article du blog de Jay Alammar : [The illustrated BERT, ELMo, and co. (How NLP cracked transfer learning)](https://jalammar.github.io/illustrated-bert/). 
 Entrons dans le vif du sujet. 
-
-
+<br>
 
 Si par exemple nous utilisons la représentation GloVe du mot « stick », alors ce mot est représenté par un unique vecteur, peu importe le contexte.
 
-« Attendez une minute », disent plusieurs chercheurs (Peters et. al., 2017, McCann et. al., 2017, et encore une fois Peters et. al., 2018 in the ELMo paper), « stick » a plusieurs sens selon la manière dont où il est utilisé (cf. toutes les définitions de traduction proposées par le Larousse). Pourquoi ne pas lui donner un embedding basé sur le contexte dans lequel il est utilisé ? A la fois pour capturer le sens du mot dans ce contexte ainsi que d’autres informations contextuelles. C’est ainsi qu’ont vu le jour les contextualized word-embeddings.
+« Attendez une minute », disent plusieurs chercheurs ([Peters et. al., 2017](https://arxiv.org/abs/1705.00108), [McCann et. al., 2017](https://arxiv.org/abs/1708.00107), et encore une fois [Peters et. al., 2018](https://arxiv.org/pdf/1802.05365.pdf) dans le papier d'ELMo), « stick » a plusieurs sens selon la manière dont où il est utilisé (cf. toutes les définitions de traduction proposées par le [Larousse](https://www.larousse.fr/dictionnaires/anglais-francais/stick/614911)). Pourquoi ne pas lui donner un embedding basé sur le contexte dans lequel il est utilisé ? A la fois pour capturer le sens du mot dans ce contexte ainsi que d’autres informations contextuelles. C’est ainsi qu’ont vu le jour les **contextualized word-embeddings**.
 
 Au lieu d’utiliser un embedding fixe pour chaque mot, ELMo examine l’ensemble de la phrase avant d’assigner une embedding à chaque mot qu’elle contient. Il utilise un LSTM bidirectionnel formé sur une tâche spécifique pour pouvoir créer ces embedding.
+<center>
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/RNN-LSTM-GRU-ELMO/GRU%20architechture.png">
+</figure>                                                                                                                              
+</center>
+<br><br>
+
 
 ELMo a constitué un pas important vers le pré-entraînement dans le contexte du NLP. En effet, nous pouvons l’entraîner sur un ensemble massif de données dans la langue de notre ensemble de données, et ensuite nous pouvons l’utiliser comme un composant dans d’autres modèles qui ont besoin de traiter le langage.
 
 Plus précisément, ELMo est entraîné à prédire le mot suivant dans une séquence de mots – une tâche appelée modélisation du langage (Language Modeling). C’est pratique car nous disposons d’une grande quantité de données textuelles dont un tel modèle peut s’inspirer sans avoir besoin de labellisation.
-Une étape dans le processus de pré-entraînement d’ELMo : ayant « Let’s stick to » comme entrée, prédisons le mot suivant le plus probable. Lorsqu’il est formé sur un grand ensemble de données, le modèle commence à se familiariser avec les modèles linguistiques. Il est peu probable qu’il puisse deviner avec précision le mot suivant dans cet exemple. De façon plus réaliste, après un mot comme « hang », il attribuera une probabilité plus élevée à un mot comme « out » (pour épeler « hang out ») qu’à « camera ».
+<center>
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/RNN-LSTM-GRU-ELMO/GRU%20architechture.png">
+  <figcaption> Une étape dans le processus de pré-entraînement d’ELMo : ayant « Let’s stick to » comme entrée, prédisons le mot suivant le plus probable. Lorsqu’il est formé sur un grand ensemble de données, le modèle commence à se familiariser avec les modèles linguistiques. Il est peu probable qu’il puisse deviner avec précision le mot suivant dans cet exemple. De façon plus réaliste, après un mot comme « hang », il attribuera une probabilité plus élevée à un mot comme « out » (pour épeler « hang out ») qu’à « camera ». </figcaption>
+</figure>                                                                                                                              
+</center>
+<br><br>
+
 
 ELMo va même plus loin et forme un LSTM bidirectionnel – de sorte que son modèle linguistique n’a pas seulement le sens du mot suivant, mais aussi du mot précédent.
+<center>
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/RNN-LSTM-GRU-ELMO/GRU%20architechture.png">
+</figure>                                                                                                                              
+</center>
+<br><br>
+
 
 ELMo propose l’embedding contextualisé en regroupant les états cachés (et l’embedding initial) d’une certaine manière (concaténation suivie d’une sommation pondérée).
+<center>
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/RNN-LSTM-GRU-ELMO/GRU%20architechture.png">
+</figure>                                                                                                                              
+</center>
 <br><br><br>
 
 
