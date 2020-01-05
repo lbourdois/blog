@@ -112,7 +112,7 @@ Si par exemple nous utilisons la représentation GloVe du mot « stick », alors
 Au lieu d’utiliser un embedding fixe pour chaque mot, ELMo examine l’ensemble de la phrase avant d’assigner une embedding à chaque mot qu’elle contient. Il utilise un LSTM bidirectionnel formé sur une tâche spécifique pour pouvoir créer ces embedding.
 <center>
 <figure class="image">
-  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/RNN-LSTM-GRU-ELMO/GRU%20architechture.png">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/RNN-LSTM-GRU-ELMO/elmo-word-embedding.png">
 </figure>                                                                                                                              
 </center>
 <br><br>
@@ -123,7 +123,7 @@ ELMo a constitué un pas important vers le pré-entraînement dans le contexte d
 Plus précisément, ELMo est entraîné à prédire le mot suivant dans une séquence de mots – une tâche appelée modélisation du langage (Language Modeling). C’est pratique car nous disposons d’une grande quantité de données textuelles dont un tel modèle peut s’inspirer sans avoir besoin de labellisation.
 <center>
 <figure class="image">
-  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/RNN-LSTM-GRU-ELMO/GRU%20architechture.png">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/RNN-LSTM-GRU-ELMO/bert-language-modeling.png">
   <figcaption> Une étape dans le processus de pré-entraînement d’ELMo : ayant « Let’s stick to » comme entrée, prédisons le mot suivant le plus probable. Lorsqu’il est formé sur un grand ensemble de données, le modèle commence à se familiariser avec les modèles linguistiques. Il est peu probable qu’il puisse deviner avec précision le mot suivant dans cet exemple. De façon plus réaliste, après un mot comme « hang », il attribuera une probabilité plus élevée à un mot comme « out » (pour épeler « hang out ») qu’à « camera ». </figcaption>
 </figure>                                                                                                                              
 </center>
@@ -133,7 +133,7 @@ Plus précisément, ELMo est entraîné à prédire le mot suivant dans une séq
 ELMo va même plus loin et forme un LSTM bidirectionnel – de sorte que son modèle linguistique n’a pas seulement le sens du mot suivant, mais aussi du mot précédent.
 <center>
 <figure class="image">
-  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/RNN-LSTM-GRU-ELMO/GRU%20architechture.png">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/RNN-LSTM-GRU-ELMO/elmo-forward-backward-language-model-embedding.png">
 </figure>                                                                                                                              
 </center>
 <br><br>
@@ -142,7 +142,7 @@ ELMo va même plus loin et forme un LSTM bidirectionnel – de sorte que son mod
 ELMo propose l’embedding contextualisé en regroupant les états cachés (et l’embedding initial) d’une certaine manière (concaténation suivie d’une sommation pondérée).
 <center>
 <figure class="image">
-  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/RNN-LSTM-GRU-ELMO/GRU%20architechture.png">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/RNN-LSTM-GRU-ELMO/elmo-embedding.png">
 </figure>                                                                                                                              
 </center>
 <br><br><br>
