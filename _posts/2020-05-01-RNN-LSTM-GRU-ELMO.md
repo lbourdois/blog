@@ -2,12 +2,11 @@
 title: "LES RNN, LES LSTM, LES GRU ET ELMO"
 categories:
   - NLP
+tags:
   - ELMO expliqué en français
   - RNN
   - LSTM
   - GRU
-tags:
-  - ELMO expliqué en français
 excerpt : "NLP"
 header :
     overlay_image: "https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/word2vec-blog.png"
