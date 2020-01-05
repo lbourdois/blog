@@ -154,7 +154,7 @@ ELMo propose l’embedding contextualisé en regroupant les états cachés (et l
 Si vous préférez regarder des vidéos plutôt que de lire, je vous conseil très fortement de regarder celle effectué par [César Laurent](https://mila.quebec/personne/cesar-laurent/).
 Il résume en un peu plus d’une heure tout ce qu’il faut savoir sur le sujet. 
 César Laurent étant doctorant au MILA sous la co-direction de [Pascal Vincent](https://mila.quebec/personne/pascal-vincent/) et [Yoshua Bengio](https://mila.quebec/personne/bengio-yoshua/) :
-<iframe  title="YouTube video player" width="480" height="390" src="https://www.youtube.com/watch?v=dOpgDv88UOo" frameborder="0" allowfullscreen></iframe>
+<a href="https://www.youtube.com/watch?v=dOpgDv88UOo" target="_blank"></a>
 <br><br>
 
 Enfin, même si ces techniques ne sont plus à la mode dans la communauté NLP depuis environ deux ans du fait de l’apparition des différentes architectures liées au Transformer, il ne faut pas les enterrer.
