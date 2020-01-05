@@ -30,7 +30,7 @@ Je me contente d’énoncer les grandes idées et vous renvoie vers d’autres a
 Les **RNN** (**recurrent neural network** ou réseaux de neurones récurrents en français) sont des réseaux de neurones qui ont jusqu’à encore environ deux ans, été majoritairement utilisé dans le cadre de problème de NLP.
 <center>
 <figure class="image">
-  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/big-five-personality-traits-score.png">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/RNN-LSTM-GRU-ELMO/RNN.png">
   <figcaption>h_{ini} est un paramètre que vous devez choisir (par exemple la matrice nulle).  
 U,  V et  W sont trois matrices de poids (avec notamment V la matrice des poids récurrents).  
 Ces trois matrices sont les mêmes pour chaque étape *t*.  
@@ -57,7 +57,7 @@ Les portes sont au nombre de 3 et les états au nombre de 2 :
 
 <center>
 <figure class="image">
-  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/big-five-personality-traits-score.png">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/RNN-LSTM-GRU-ELMO/LSTM%20architechture.png">
   <figcaption>Image provenant de l’[article Medium de Shi Yan](https://medium.com/mlreview/understanding-lstm-and-its-diagrams-37e2f46f1714) que nous avons traduit et légèrement modifiée
 </figcaption>
 </figure>                                                                                                                              
@@ -76,7 +76,7 @@ Le nombre de portes passe à 2 et celui d’état à 1 :
 
 <center>
 <figure class="image">
-  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/big-five-personality-traits-score.png">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/RNN-LSTM-GRU-ELMO/GRU%20architechture.png">
   <figcaption>Image que nous avons conçu en reprenant la charte graphique adopté par Shi Yan dans son article</figcaption>
 </figure>                                                                                                                              
 </center>
