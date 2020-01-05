@@ -4,9 +4,6 @@ categories:
   - NLP
 tags:
   - ELMO expliqué en français
-  - RNN
-  - LSTM
-  - GRU
 excerpt : "NLP"
 header :
     overlay_image: "https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/word2vec-blog.png"
