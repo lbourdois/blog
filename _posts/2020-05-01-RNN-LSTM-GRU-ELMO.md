@@ -9,7 +9,7 @@ tags:
   - GRU
 excerpt : "NLP"
 header :
-    overlay_image: "https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/word2vec-blog.png"
+    overlay_image: "https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/RNN-LSTM-GRU-ELMO/ELMO_blog.png"
     
 ---
 
