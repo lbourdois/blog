@@ -32,7 +32,7 @@ Les **RNN** (**recurrent neural network** ou réseaux de neurones récurrents en
   <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/RNN-LSTM-GRU-ELMO/RNN.png">
   <figcaption>h_{ini} est un paramètre que vous devez choisir (par exemple la matrice nulle).<br>  
 U,  V et  W sont trois matrices de poids (avec notamment V la matrice des poids récurrents).  
-Ces trois matrices sont les mêmes pour chaque étape *t*.  
+    Ces trois matrices sont les mêmes pour chaque étape <i>t</i>.  
 Les valeurs de ces matrices sont apprises lors de la phase d’entraînement du réseau.  
 </figcaption>
 </figure>                                                                                                                              
