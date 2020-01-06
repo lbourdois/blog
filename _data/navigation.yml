@@ -8,4 +8,23 @@ main:
   - title: "A propos"
     url: /about/
     
-    
+
+
+sidebar-sample:
+  - title: "Le Bag-of-word"
+    url: /NLP/
+  - title: "Le Word Embedding"
+    url: /NLP/
+  - title: "Les RNN, les LSTM et ELMo"
+    url: /NLP/
+  - title: "Le Seq2seq et le processus d’attention"
+    url: /NLP/
+  - title: "Le Transformer"
+    url: /NLP/
+  - title: "Les architectures issues du Transformer"
+  children:
+      - title: "Le GPT2"
+        url: /NLP/
+      - title: "BERT"
+        url: /NLP/
+  
