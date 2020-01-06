@@ -11,9 +11,6 @@ header :
 toc: true
 toc_sticky: true
 author_profile: false
-sidebar:
-    nav: sidebar-sample
-    
 ---
 
 
