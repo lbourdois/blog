@@ -9,8 +9,7 @@ main:
     url: /about/
     
 
-
-sidebar-sample:
+foo:
   - title: "Le Bag-of-word"
     url: /NLP/
   - title: "Le Word Embedding"
