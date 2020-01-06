@@ -18,11 +18,11 @@ sidebar-sample:
 #   url: /nlp/RNN-LSTM-GRU-ELMO/
   - title: LE SEQ2SEQ ET LE PROCESSUS D'ATTENTION
 #   url: /nlp/Seq2seq-et-attention/
-  - title: LE TRANSFORMERS
+  - title: LE TRANSFORMER
 #   url: /nlp/
-#- title: ARCHITECHTURES ISSUES DU TRANSFORMERS
-#children:
-#  - title: "LE GPT2"
+  - title: ARCHITECHTURES ISSUES DU TRANSFORMERS
+  children:
+  - title: "LE GPT2"
 #         url: /nlp/
 #  - title: "BERT"
 #         url: /nlp/
