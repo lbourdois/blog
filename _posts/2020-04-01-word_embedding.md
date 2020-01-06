@@ -7,7 +7,11 @@ tags:
 excerpt : "NLP"
 header :
     overlay_image: "https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/word2vec-blog.png"
-
+toc: true
+toc_sticky: true
+sidebar:
+    nav: sidebar-sample
+    
 ---
 
 
