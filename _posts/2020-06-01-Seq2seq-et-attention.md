@@ -34,7 +34,7 @@ Un modèle formé fonctionnerait comme ça :
 <video width="100%" height="auto" loop autoplay controls>
   <source src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Seq2seq-attention/seq2seq_1.mp4" type="video/mp4">
 </video>
-
+<br><br><br>
 
 
 
@@ -44,19 +44,15 @@ Sous le capot, le modèle est composé d’un encoder et d’un decoder.
 L’ encoder traite chaque élément de la séquence d’entrée. 
 Il compile les informations qu’il capture dans un vecteur (appelé context).
 Après avoir traité toute la séquence d’entrée, l’encoder envoie le context au decoder, qui commence à produire la séquence de sortie item par item. 
-<center>
-<figure class="image">
-  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/RNN-LSTM-GRU-ELMO/LSTM%20architechture.png">
-</figure>                                                                                                                              
-</center>
+<video width="100%" height="auto" loop autoplay controls>
+  <source src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Seq2seq-attention/seq2seq_2.mp4" type="video/mp4">
+</video>
 <br>
 
 La même logique est appliquée dans le cas de la traduction automatique.
-<center>
-<figure class="image">
-  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/RNN-LSTM-GRU-ELMO/LSTM%20architechture.png">
-</figure>                                                                                                                              
-</center>
+<video width="100%" height="auto" loop autoplay controls>
+  <source src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Seq2seq-attention/seq2seq_3.mp4" type="video/mp4">
+</video>
 <br>
 
 Le context est un vecteur (un tableau de nombres essentiellement) dans le cas de la traduction automatique. 
