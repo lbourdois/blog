@@ -7,23 +7,3 @@ main:
     url: /tags/
   - title: "A propos"
     url: /about/
-    
-
-sidebar-sample :
-  - title: "Le Bag-of-word"
-    url: /nlp/
-  - title: "Le Word Embedding"
-    url: /2020-04-01-word_embedding
-  - title: "Les RNN, les LSTM et ELMo"
-    url: /nlp/
-  - title: "Le Seq2seq et le processus d’attention"
-    url: /nlp/
-  - title: "Le Transformer"
-    url: /nlp/
-  - title: "Les architectures issues du Transformer"
-  children:
-      - title: "Le GPT2"
-        url: /nlp/
-      - title: "BERT"
-        url: /nlp/
-  
