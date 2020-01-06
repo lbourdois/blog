@@ -3,8 +3,8 @@ title: "LE SEQ2SEQ ET LE PROCESSUS D’ATTENTION"
 categories:
   - NLP
 tags:
-  - Modèles séquenciels expliqué en français
-  - RNN
+  - Modèles séquenciels expliqués en français
+  - Processus d'attention nlp
 excerpt : "NLP"
 header :
     overlay_image: "https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/RNN-LSTM-GRU-ELMO/ELMO_blog.png"
@@ -97,7 +97,7 @@ Ils transforment les mots en espaces vectoriels qui capturent une grande partie 
 
 Maintenant que nous avons présenté nos principaux vecteurs, récapitulons la mécanique d’un RNN et établissons un visuel pour décrire ces modèles :
 <video width="100%" height="auto" loop autoplay controls>
-  <source src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Seq2seq-attention/seq2seq_4.mp4" type="video/mp4">
+  <source src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Seq2seq-attention/RNN_1.mp4" type="video/mp4">
 </video>
 <center>
 <figure class="image">
