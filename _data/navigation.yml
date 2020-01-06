@@ -21,8 +21,8 @@ sidebar-sample:
   - title: LE TRANSFORMER
 #   url: /nlp/
   - title: ARCHITECHTURES ISSUES DU TRANSFORMERS
-  children:
-    - title: "LE GPT2"
+    children:
+      - title: "LE GPT2"
 #         url: /nlp/
 #  - title: "BERT"
 #         url: /nlp/
