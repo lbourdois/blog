@@ -2,7 +2,7 @@ main:
   - title: "Posts"
     url: /posts/
   - title: "NLP"
-    url: /NLP/
+    url: /nlp/
   - title: "Tags"
     url: /tags/
   - title: "A propos"
@@ -11,19 +11,19 @@ main:
 
 sidebar-sample :
   - title: "Le Bag-of-word"
-    url: _pages/NLP/
+    url: /nlp/
   - title: "Le Word Embedding"
-    url: _posts/2020-04-01-word_embedding
+    url: /2020-04-01-word_embedding
   - title: "Les RNN, les LSTM et ELMo"
-    url: _pages/NLP/
+    url: /nlp/
   - title: "Le Seq2seq et le processus d’attention"
-    url: _pages/NLP/
+    url: /nlp/
   - title: "Le Transformer"
-    url: _pages/NLP/
+    url: /nlp/
   - title: "Les architectures issues du Transformer"
   children:
       - title: "Le GPT2"
-        url: _pages/NLP/
+        url: /nlp/
       - title: "BERT"
-        url: _pages/NLP/
+        url: /nlp/
   
