@@ -29,23 +29,23 @@ Voici quelques exemples d’applications :
 
 Je les ai récapitulé dans l’ordre chronologique de leur apparition / popularité d’utilisation. 
 Les liens renvoient vers des articles du blog sauf mention contraire :
-- Le bag-of-word
+- Le bag-of-word<br>
 → l’[article de présentation](https://www.actuia.com/contribution/victorbigand/tutoriel-tal-pour-les-debutants-classification-de-texte/) (article externe au blog qui traite bien le sujet; je ne voyais pas l’intérêt de faire un doublon)
     
-- Le word embedding
+- Le word embedding<br>
 → l’[article de présentation](https://lbourdois.github.io/blog/nlp/word_embedding/)
 
-- Les RNN, les LSTM et ELMo
+- Les RNN, les LSTM et ELMo<br>
 → l’[article de présentation](https://lbourdois.github.io/blog/nlp/RNN-LSTM-GRU-ELMO/)
 
-- Le Seq2seq et le processus d’attention
+- Le Seq2seq et le processus d’attention<br>
 → l’[article de présentation](https://lbourdois.github.io/blog/nlp/Seq2seq-et-attention/)
 
-- Le Transformer
+- Le Transformer<br>
 → l’article de présentation
 
-- Les architectures issues du Transformer
+- Les architectures issues du Transformer<br>
  Il en existe de nombreuses : une liste non exhaustive est disponible en conclusion de l’article de présentation du Transformer.<br>
-Je présente plus en détails celles que j’ai l’occasion d’utiliser professionnellement.
-→ BERT : l’article de présentation et le tutoriel associé
-→ le GPT-2 : l’article de présentation
+Je présente plus en détails celles que j’ai l’occasion d’utiliser professionnellement.<br>
+→ BERT : l’article de présentation et le tutoriel associé<br>
+→ le GPT-2 : l’article de présentation<br>
