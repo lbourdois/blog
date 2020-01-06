@@ -9,21 +9,21 @@ main:
     url: /about/
     
 
-foo:
+sidebar-sample :
   - title: "Le Bag-of-word"
-    url: /NLP/
+    url: _pages/NLP/
   - title: "Le Word Embedding"
-    url: /NLP/
+    url: _posts/2020-04-01-word_embedding
   - title: "Les RNN, les LSTM et ELMo"
-    url: /NLP/
+    url: _pages/NLP/
   - title: "Le Seq2seq et le processus d’attention"
-    url: /NLP/
+    url: _pages/NLP/
   - title: "Le Transformer"
-    url: /NLP/
+    url: _pages/NLP/
   - title: "Les architectures issues du Transformer"
   children:
       - title: "Le GPT2"
-        url: /NLP/
+        url: _pages/NLP/
       - title: "BERT"
-        url: /NLP/
+        url: _pages/NLP/
   
