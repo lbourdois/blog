@@ -14,7 +14,7 @@ sidebar-sample:
 #  url: /nlp/
   - title: Le word embedding
 #   url: /nlp/word_embedding/
-  - title: Les RNN, les LSTM, les GRU et ELMo
+  - title: Les RNN les LSTM les GRU et ELMo
 #   url: /nlp/RNN-LSTM-GRU-ELMO/
   - title: Le Seq2seq et le processus d’attention
 #   url: /nlp/Seq2seq-et-attention/
@@ -22,7 +22,7 @@ sidebar-sample:
 #   url: /nlp/
   - title: Les architectures issues du Transformer
   children:
-      - title: "Le GPT-2"
+      - title: "Le GPT2"
 #         url: /nlp/
       - title: "BERT"
 #         url: /nlp/
