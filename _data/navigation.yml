@@ -14,11 +14,11 @@ sidebar-sample:
 #      url: /nlp/
   - title: LE WORD EMBEDDING
 #      url: /nlp/word_embedding/
-- title: RNN, LSTM, GRU ET ELMO
+  - title: RNN, LSTM, GRU ET ELMO
 #   url: /nlp/RNN-LSTM-GRU-ELMO/
-- title: LE SEQ2SEQ ET LE PROCESSUS D'ATTENTION
+  - title: LE SEQ2SEQ ET LE PROCESSUS D'ATTENTION
 #   url: /nlp/Seq2seq-et-attention/
-- title: LE TRANSFORMERS
+  - title: LE TRANSFORMERS
 #   url: /nlp/
 #- title: ARCHITECHTURES ISSUES DU TRANSFORMERS
 #children:
