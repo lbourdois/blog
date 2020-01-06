@@ -20,9 +20,9 @@ sidebar-sample:
 #   url: /nlp/Seq2seq-et-attention/
 - title: LE TRANSFORMERS
 #   url: /nlp/
-- title: ARCHITECHTURES ISSUES DU TRANSFORMERS
-children:
-  - title: "LE GPT2"
+#- title: ARCHITECHTURES ISSUES DU TRANSFORMERS
+#children:
+#  - title: "LE GPT2"
 #         url: /nlp/
-  - title: "BERT"
+#  - title: "BERT"
 #         url: /nlp/
