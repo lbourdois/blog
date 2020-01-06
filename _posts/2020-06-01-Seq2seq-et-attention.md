@@ -31,12 +31,11 @@ L'objectif de cet article est qu'il puisse être un compagnon utile à la lectur
 
 Un sequence-to-sequence model est un modèle qui prend une séquence d’éléments (mots, lettres, caractéristiques d’une image…etc) et en sort une autre séquence. 
 Un modèle formé fonctionnerait comme ça :
-<center>
-<figure class="image">
-  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/RNN-LSTM-GRU-ELMO/LSTM%20architechture.png">
-</figure>                                                                                                                              
-</center>
-<br><br><br>
+<video width="100%" height="auto" loop autoplay controls>
+  <source src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Seq2seq-attention/seq2seq_1.mp4" type="video/mp4">
+</video>
+
+
 
 
 # <span style="color: #FF0000"> **2. Regardons sous le capot** </span>
@@ -214,12 +213,12 @@ Un tutoriel sur l’implémentation en Python (TensorFlow) d’un tel modèle es
 
 
 
-# <span style="color: #FF0000"> **Conclusion* </span>
+# <span style="color: #FF0000"> *Conclusion* </span>
 
 
 Cet article est une introduction au mécanisme d’attention. 
 Il se veut assez général car il existe en réalité plusieurs variantes de ce mécanisme (pratiquement une variante par modèle de Transformers). 
 Ainsi si vous n’avez pas forcément tout compris, nous revenons plus en détails sur ces variantes dans les articles consacrés au Transformer, au modèle BERT et au modèle GPT-2.
 
-Si vous préférez les vidéos aux textes, vous pouvez regarder la vidéo de présentation du phénomène d’attention par [César Laurent](https://mila.quebec/personne/cesar-laurent/) (doctorant au MILA sous la co-direction de [Pascal Vincent](https://mila.quebec/personne/pascal-vincent/) et [Yoshua Bengio](https://mila.quebec/personne/bengio-yoshua/)) : [https://www.youtube.com/watch?v=stD_mY2OYj4](https://www.youtube.com/watch?v=stD_mY2OYj4).
+Si vous préférez les vidéos aux textes, vous pouvez regarder la vidéo de présentation du phénomène d’attention par [César Laurent](https://mila.quebec/personne/cesar-laurent/) (doctorant au MILA sous la co-direction de [Pascal Vincent](https://mila.quebec/personne/pascal-vincent/) et [Yoshua Bengio](https://mila.quebec/personne/bengio-yoshua/)) : [https://www.youtube.com/watch?v=stD_mY2OYj4](https://www.youtube.com/watch?v=stD_mY2OYj4).<br>
 Il donne des exemples d’application tel que la traduction ou encore la génération de légende à partir d’un texte ou d’une vidéo.
