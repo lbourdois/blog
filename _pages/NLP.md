@@ -31,16 +31,16 @@ Voici quelques exemples d’applications :
 Je les ai récapitulé dans l’ordre chronologique de leur apparition / popularité d’utilisation. 
 Les liens renvoient vers des articles du blog sauf mention contraire :
 - Le bag-of-word
-→ l’article de présentation (article externe au blog qui traite bien le sujet; je ne voyais pas l’intérêt de faire un doublon)
+→ l’[article de présentation](https://www.actuia.com/contribution/victorbigand/tutoriel-tal-pour-les-debutants-classification-de-texte/) (article externe au blog qui traite bien le sujet; je ne voyais pas l’intérêt de faire un doublon)
     
 - Le word embedding
-→ l’article de présentation
+→ l’[article de présentation](https://lbourdois.github.io/blog/nlp/word_embedding/)
 
 - Les RNN, les LSTM et ELMo
-→ l’article de présentation
+→ l’[article de présentation](https://lbourdois.github.io/blog/nlp/RNN-LSTM-GRU-ELMO/)
 
 - Le Seq2seq et le processus d’attention
-→ l’article de présentation
+→ l’[article de présentation](https://lbourdois.github.io/blog/nlp/Seq2seq-et-attention/)
 
 - Le Transformer
 → l’article de présentation
