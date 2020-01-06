@@ -172,7 +172,7 @@ Le « scorage » se fait à chaque pas de temps (nouveau mot) du côté du decod
 <br>
 Regardons maintenant comment fonctionne le processus de l’attention et regroupons le tout dans la visualisation qui suit :
 
-1) Le decoder d’attention prend en entrée l’embedding du token <END>, ainsi qu’un état caché initial (h<down>init</down>).<br>
+1) Le decoder d’attention prend en entrée l’embedding du token <END>, ainsi qu’un état caché initial ($h_{init}$).<br>
 2) Le RNN traite ces entrées, produisant une sortie et un nouveau vecteur d’état caché ($h_{4}$). La sortie est supprimée.<br>
 3) L’étape d’attention : nous utilisons les états cachés de l’encoder et le vecteur ($h_{4}$) pour calculer un vecteur de context ($C_{4}$) pour cette étape.<br>
 4) Nous concaténons $h_{4}$ et $C_{4}$ en un seul vecteur.<br>
