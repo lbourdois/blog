@@ -11,7 +11,7 @@ main:
 
 sidebar-sample:
   - title: LE BAG OF WORD
-#      url: /nlp/
+    url: /nlp/
   - title: LE WORD EMBEDDING
 #      url: /nlp/word_embedding/
   - title: RNN, LSTM, GRU ET ELMO
