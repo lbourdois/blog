@@ -18,11 +18,11 @@ L’objectif étant de permettre à des ordinateurs de traiter le langage nature
 ## Quelles sont les applications concrètes du NLP ?
 
 Voici quelques exemples d’applications :
-– traduction automatique
-– classification de texte (analyse de sentiment)
-– génération de texte (résumé)
-– réponses à des questions complèxes (chatbox)
-– reconnaissance vocale
+- traduction automatique
+- classification de texte (analyse de sentiment)
+- génération de texte (résumé)
+- réponses à des questions complèxes (chatbox)
+- reconnaissance vocale
 <br><br>
 
 
