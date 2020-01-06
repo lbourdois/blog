@@ -12,7 +12,6 @@ header :
     overlay_image: "https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/RNN-LSTM-GRU-ELMO/ELMO_blog.png"
 toc: true
 toc_sticky: true
-author_profile: false
 sidebar:
     nav: sidebar-sample    
 ---
