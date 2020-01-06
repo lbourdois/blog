@@ -342,7 +342,7 @@ Nous pouvons visualiser la fenêtre coulissante comme suit :
 Cela ajouterait ces quatre échantillons à notre ensemble de données d’entraînement :
 <center>
 <figure class="image">
-  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/skipgram-sliding-window-2-1.png">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/skipgram-sliding-window-2.png">
 </figure>   
 </center>
 
