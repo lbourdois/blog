@@ -34,6 +34,13 @@ Un modèle formé fonctionnerait comme ça :
 <video width="100%" height="auto" loop autoplay controls>
   <source src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Seq2seq-attention/seq2seq_1.mp4" type="video/mp4">
 </video>
+<br>
+
+En traduction automatique, une séquence est une série de mots, traités les uns après les autres.
+Le résultat est, donc de même, une série de mots :
+<video width="100%" height="auto" loop autoplay controls>
+  <source src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Seq2seq-attention/seq2seq_2.mp4" type="video/mp4">
+</video>
 <br><br><br>
 
 
@@ -45,13 +52,13 @@ L’ encoder traite chaque élément de la séquence d’entrée.
 Il compile les informations qu’il capture dans un vecteur (appelé context).
 Après avoir traité toute la séquence d’entrée, l’encoder envoie le context au decoder, qui commence à produire la séquence de sortie item par item. 
 <video width="100%" height="auto" loop autoplay controls>
-  <source src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Seq2seq-attention/seq2seq_2.mp4" type="video/mp4">
+  <source src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Seq2seq-attention/seq2seq_3.mp4" type="video/mp4">
 </video>
 <br>
 
 La même logique est appliquée dans le cas de la traduction automatique.
 <video width="100%" height="auto" loop autoplay controls>
-  <source src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Seq2seq-attention/seq2seq_3.mp4" type="video/mp4">
+  <source src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Seq2seq-attention/seq2seq_4.mp4" type="video/mp4">
 </video>
 <br>
 
@@ -59,7 +66,7 @@ Le context est un vecteur (un tableau de nombres essentiellement) dans le cas de
 L’encoder et le decoder ont tendance à être tous deux des réseaux neuronaux récurrents.
 <center>
 <figure class="image">
-  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/RNN-LSTM-GRU-ELMO/LSTM%20architechture.png">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Seq2seq-attention/context.png">
   <figcaption>
   Le context est un vecteur de flottants. Plus loin dans ce billet, nous allons visualiser les vecteurs en couleur en assignant des couleurs plus claires aux cellules avec des valeurs plus élevées.
   </figcaption>
@@ -79,7 +86,7 @@ Pour transformer un mot en vecteur, nous nous tournons vers les méthodes de wor
 Ils transforment les mots en espaces vectoriels qui capturent une grande partie de l’information sémantique des mots (ex : roi – homme + femme = reine).
 <center>
 <figure class="image">
-  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/RNN-LSTM-GRU-ELMO/LSTM%20architechture.png">
+   <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Seq2seq-attention/embedding.png">
   <figcaption>
   Nous devons transformer les mots d’entrée en vecteurs avant de les traiter. Cette transformation se fait à l’aide d’un algorithme de word embedding. Nous pouvons utiliser des embeddings pré-entrainés ou entrainer nos propres embeddings sur notre ensemble de données.
   Typiquement un embedding est de taille 200 ou 300. Nous montrons ici un vecteur de taille quatre pour plus de simplicité.
@@ -89,9 +96,11 @@ Ils transforment les mots en espaces vectoriels qui capturent une grande partie 
 <br>
 
 Maintenant que nous avons présenté nos principaux vecteurs, récapitulons la mécanique d’un RNN et établissons un visuel pour décrire ces modèles :
+<video width="100%" height="auto" loop autoplay controls>
+  <source src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Seq2seq-attention/seq2seq_4.mp4" type="video/mp4">
+</video>
 <center>
 <figure class="image">
-  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/RNN-LSTM-GRU-ELMO/LSTM%20architechture.png">
   <figcaption>
 L’étape RNN suivante prend le deuxième vecteur d’entrée et l’état caché #1 pour créer la sortie de cette étape.
 </figcaption>
@@ -105,11 +114,9 @@ Comme l’encoder et le decoder sont tous deux des RNN, chaque fois que l’une 
 
 Regardons les états cachés de l’encoder.
 Remarquez comment le dernier état caché est en fait le context que nous transmettons au decoder :
-<center>
-<figure class="image">
-  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/RNN-LSTM-GRU-ELMO/LSTM%20architechture.png">
-</figure>
-</center>
+<video width="100%" height="auto" loop autoplay controls>
+  <source src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Seq2seq-attention/seq2seq_5.mp4" type="video/mp4">
+</video>
 <br>
 
 
@@ -120,11 +127,9 @@ Voyons maintenant une autre façon de visualiser un sequence-to-sequence model.
 Cette animation facilitera la compréhension des graphiques statiques qui décrivent ces modèles. 
 C’est ce qu’on appelle une vue « déroulée » où au lieu de montrer le decoder, on en montre une copie pour chaque pas de temps.
 De cette façon, nous pouvons examiner les entrées et les sorties de chaque étape.
-<center>
-<figure class="image">
-  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/RNN-LSTM-GRU-ELMO/LSTM%20architechture.png">
-</figure>
-</center>
+<video width="100%" height="auto" loop autoplay controls>
+  <source src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Seq2seq-attention/seq2seq_6.mp4" type="video/mp4">
+</video>
 <br><br><br>
 
 
@@ -137,7 +142,7 @@ Ces articles introduisirent et affinèrent une technique appelée « Attention �
 L’attention permet au modèle de se concentrer sur les parties pertinentes de la séquence d’entrée si nécessaire. 
 <center>
 <figure class="image">
-  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/RNN-LSTM-GRU-ELMO/LSTM%20architechture.png">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Seq2seq-attention/attention.png">
 </figure>
 </center>
 <br>
@@ -149,21 +154,19 @@ Continuons à regarder les modèles d’attention à ce haut niveau d’abstract
 Un modèle d’attention diffère d’un sequence-to-sequence model classique de deux façons principales :
 
 * Tout d’abord, l’encoder transmet beaucoup plus de données au decoder. Au lieu de passer le dernier état caché de l’étape d’encodage, l’encoder passe tous les états cachés au decoder :
-<center>
-<figure class="image">
-  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/RNN-LSTM-GRU-ELMO/LSTM%20architechture.png">
-</figure>
-</center>
+<video width="100%" height="auto" loop autoplay controls>
+  <source src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Seq2seq-attention/seq2seq_7.mp4" type="video/mp4">
+</video>
 <br>
 *    Deuxièmement, un decoder d’attention fait une étape supplémentaire avant de produire sa sortie. Afin de se concentrer sur les parties de l’entrée qui sont pertinentes, le decoder fait ce qui suit :
 
   *    Il regarde l’ensemble des états cachés de l’encoder qu’il a reçu (chaque état caché de l’encoder  est le plus souvent associé à un certain mot dans la phrase d’entrée).
   *    Il donne un score à chaque état caché (on passe l’étape de comment le scoring se fait pour le moment)
   *    Il multiplie chaque état caché par son score attribué via softmax (amplifiant ainsi les états cachés avec des scores élevés, et noyant les états cachés avec des scores faibles) 
-<figure class="image">
-  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/RNN-LSTM-GRU-ELMO/LSTM%20architechture.png">
-</figure>
-</center>
+<video width="100%" height="auto" loop autoplay controls>
+  <source src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Seq2seq-attention/attention_process.mp4" type="video/mp4">
+</video>
+<br>
 Le « scorage » se fait à chaque pas de temps (nouveau mot) du côté du decoder.
 
 <br>
@@ -176,17 +179,15 @@ Regardons maintenant comment fonctionne le processus de l’attention et regroup
 5) Nous faisons passer ce vecteur par un réseau neuronal feedforward (un réseau formé conjointement avec le modèle).
 6) La sortie du réseau feedforward indique le mot de sortie de ce pas de temps (= la traduction du mot en entrée).
 7) On répète les étapes précédentes pour chaque mots. L’état caché fournit en entrée n’étant plus l’initial mais celui de la couche précédente (h_{4} dans notre exemple) et l’embedding n’est plus celui du token <END> mais celui obtenu pour la traduction du premier mot (sortie de l’étape 6). 
-<figure class="image">
-  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/RNN-LSTM-GRU-ELMO/LSTM%20architechture.png">
-</figure>
-</center>
+<video width="100%" height="auto" loop autoplay controls>
+  <source src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Seq2seq-attention/attention_tensor_dance.mp4" type="video/mp4">
+</video>
 
 
 Une autre façon de voir à quelle partie de la phrase d’entrée nous prêtons attention à chaque étape de décodage : 
-<figure class="image">
-  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/RNN-LSTM-GRU-ELMO/LSTM%20architechture.png">
-</figure>
-</center>
+<video width="100%" height="auto" loop autoplay controls>
+  <source src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Seq2seq-attention/seq2seq_9.mp4" type="video/mp4">
+</video>
 
 
 Notons que le modèle n’associe pas seulement le premier mot de la sortie avec le premier mot de l’entrée.
@@ -194,7 +195,7 @@ En fait, il a appris pendant la phase d’entrainement la façon dont sont liés
 Un exemple de ce mécanisme est donné dans l’article de [Bahdanau et al., 2014](https://arxiv.org/abs/1409.0473) :
 <center>
 <figure class="image">
-  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/RNN-LSTM-GRU-ELMO/LSTM%20architechture.png">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Seq2seq-attention/attention_sentence.png">
   <figcaption>
 Nous pouvons voir comment le modèle a fait attention pour la sortie de « European Economic Area ». En français, l’ordre de ces mots est inversé (« zone économique européenne ») par rapport à l’anglais.
 Tous les autres mots de la phrase sont dans le même ordre.
