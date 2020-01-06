@@ -10,7 +10,7 @@ main:
 
 
 sidebar-sample:
-  - title: Le bag-of-word
+  - title: Le bag of word
   url: /nlp/
   - title: Le word embedding
   url: /nlp/word_embedding/
