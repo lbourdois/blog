@@ -202,8 +202,6 @@ Tous les autres mots de la phrase sont dans le même ordre.
 </figcaption>
 </figure>
 </center>
-<br>
-
 
 Un tutoriel sur l’implémentation en Python (TensorFlow) d’un tel modèle est disponible sur ce Github : [https://github.com/tensorflow/nmt](https://github.com/tensorflow/nmt).
 <br><br><br>
