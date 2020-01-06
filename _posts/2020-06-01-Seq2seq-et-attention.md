@@ -213,7 +213,7 @@ Un tutoriel sur l’implémentation en Python (TensorFlow) d’un tel modèle es
 
 
 
-# <span style="color: #FF0000"> *Conclusion* </span>
+# <span style="color: #FF0000"> **Conclusion** </span>
 
 
 Cet article est une introduction au mécanisme d’attention. 
