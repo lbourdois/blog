@@ -11,18 +11,3 @@ main:
 
 sidebar-sample:
   - title: Le bag of word
-#  url: /nlp/
-  - title: Le word embedding
-#   url: /nlp/word_embedding/
-  - title: Les RNN les LSTM les GRU et ELMo
-#   url: /nlp/RNN-LSTM-GRU-ELMO/
-  - title: Le Seq2seq et le processus d’attention
-#   url: /nlp/Seq2seq-et-attention/
-  - title: Le Transformer
-#   url: /nlp/
-  - title: Les architectures issues du Transformer
-  children:
-      - title: "Le GPT2"
-#         url: /nlp/
-      - title: "BERT"
-#         url: /nlp/
