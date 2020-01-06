@@ -3,9 +3,7 @@ title: NLP
 layout: single
 permalink: /nlp/
 author_profile: false
-sidebar:
-  nav: "foo"
-  
+
 ---
 
 
