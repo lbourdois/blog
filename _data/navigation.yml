@@ -7,3 +7,7 @@ main:
     url: /tags/
   - title: "A propos"
     url: /about/
+
+
+sidebar-sample:
+  - title: Getting Started
