@@ -42,7 +42,7 @@ Les liens renvoient vers des articles du blog sauf mention contraire :
 → l’[article de présentation](https://lbourdois.github.io/blog/nlp/Seq2seq-et-attention/)
 
 - Le Transformer<br>
-→ l’article de présentation
+→ l’[article de présentation](https://lbourdois.github.io/blog/nlp/Transformer/)
 
 - Les architectures issues du Transformer<br>
  Il en existe de nombreuses : une liste non exhaustive est disponible en conclusion de l’article de présentation du Transformer.<br>
