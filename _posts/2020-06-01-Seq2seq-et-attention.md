@@ -13,6 +13,8 @@ toc_sticky: true
 author_profile: false
 sidebar:
     nav: sidebar-sample
+use_math: true
+
 ---
 
 
