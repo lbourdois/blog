@@ -78,7 +78,7 @@ Le composant de décodage est une pile de decoders du même nombre.
 Les encoders sont tous identiques mais ils ne partagent pas leurs poids. Chacun est divisé en deux sous-couches :
 <center>
 <figure class="image">
-  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Transformer/Transformer_encodeR.png">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Transformer/Transformer_encoder.png">
  </figure>
  </center>
  
