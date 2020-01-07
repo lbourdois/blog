@@ -181,13 +181,13 @@ Le « scorage » se fait à chaque pas de temps (nouveau mot) du côté du decod
 <br>
 Regardons maintenant comment fonctionne le processus de l’attention et regroupons le tout dans la visualisation qui suit :
 
-1) Le decoder d’attention prend en entrée l’embedding du token <END>, ainsi qu’un état caché initial ($$h_{init}$$).<br>
-2) Le RNN traite ces entrées, produisant une sortie et un nouveau vecteur d’état caché ($$h_{4}$$). La sortie est supprimée.<br>
-3) L’étape d’attention : nous utilisons les états cachés de l’encoder et le vecteur ($$h_{4}$$) pour calculer un vecteur de context ($$C_{4}$$) pour cette étape.<br>
-4) Nous concaténons $$h_{4}$$ et $$C_{4}$$ en un seul vecteur.<br>
+1) Le decoder d’attention prend en entrée l’embedding du token <END>, ainsi qu’un état caché initial ($h_{init}$).<br>
+2) Le RNN traite ces entrées, produisant une sortie et un nouveau vecteur d’état caché ($h_{4}$). La sortie est supprimée.<br>
+3) L’étape d’attention : nous utilisons les états cachés de l’encoder et le vecteur ($h_{4}$) pour calculer un vecteur de context ($C_{4}$) pour cette étape.<br>
+4) Nous concaténons $h_{4}$ et $C_{4}$ en un seul vecteur.<br>
 5) Nous faisons passer ce vecteur par un réseau neuronal feedforward (un réseau formé conjointement avec le modèle).<br>
 6) La sortie du réseau feedforward indique le mot de sortie de ce pas de temps (= la traduction du mot en entrée).<br>
-7) On répète les étapes précédentes pour chaque mots. L’état caché fournit en entrée n’étant plus l’initial mais celui de la couche précédente ($$h_{4}$$ dans notre exemple) et l’embedding n’est plus celui du token <END> mais celui obtenu pour la traduction du premier mot (sortie de l’étape 6).<br> 
+7) On répète les étapes précédentes pour chaque mots. L’état caché fournit en entrée n’étant plus l’initial mais celui de la couche précédente ($h_{4}$ dans notre exemple) et l’embedding n’est plus celui du token <END> mais celui obtenu pour la traduction du premier mot (sortie de l’étape 6).<br> 
 <video width="100%" height="auto" loop autoplay controls>
   <source src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Seq2seq-attention/attention_tensor_dance.mp4" type="video/mp4">
 </video>
