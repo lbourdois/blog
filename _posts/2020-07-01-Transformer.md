@@ -178,7 +178,7 @@ Vous pouvez jouer avec la visualisation interactive en consultant le [notebook T
 # <span style="color: #FF0000"> **5. L'auto-attention en détail** </span>
 Voyons d’abord comment calculer l’auto-attention à l’aide de vecteurs, puis comment elle est réellement mise en œuvre à l’aide de matrices.
 
-La première étape du calcul de l’auto-attention consiste à créer trois vecteurs à partir de chacun des vecteurs d’entrée \(x_{i}\) de l’encoder (dans ce cas, l’embedding de chaque mot).
+La première étape du calcul de l’auto-attention consiste à créer trois vecteurs à partir de chacun des vecteurs d’entrée \(x_{i}\)  de l’encoder (dans ce cas, l’embedding de chaque mot).
 
 Chaque vecteur d’entrée \(x_{i}\) est utilisé de trois manières différentes dans l’opération d’auto-attention :
 *  Il est comparé à tous les autres vecteurs pour établir les pondérations pour sa propre production \(y_{i}\). Cela forme le vecteur de requête (Query en anglais et dans les figures suivantes).
@@ -208,7 +208,7 @@ Le score détermine le degré de concentration à placer sur les autres parties 
 
 Le score est calculé en prenant le produit scalaire du vecteur de requête avec le vecteur clé du mot que nous évaluons.
 Donc, si nous traitons l’auto-attention pour le mot en position #1, le premier score serait le produit scalaire de \(q_{1}\) et \(k_{1}\).
-Le deuxième score serait le produit scalaire de \(q_{1}\) et \(k_{2}\).
+Le deuxième score serait le produit scalaire de $\(q_{1}\)$ et $\(k_{2}\)$.
 <center>
 <figure class="image">
   <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Transformer/transformer_self_attention_score.png">
