@@ -19,7 +19,7 @@ sidebar-sample:
   - title: LE SEQ2SEQ ET LE PROCESSUS D'ATTENTION
     url: /nlp/Seq2seq-et-attention/
   - title: LE TRANSFORMER
-    url: /nlp/
+    url: /nlp/Transformer/
   - title: ARCHITECHTURES ISSUES DU TRANSFORMERS
     children:
       - title: "LE GPT2"
