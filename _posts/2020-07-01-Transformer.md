@@ -267,3 +267,33 @@ Résumons toutes ces étapes sous la forme d’un tableau et itérons le process
 Voilà qui conclut le calcul de l’auto-attention. Les vecteurs zi résultants peuvent être envoyés au réseau feed-forward. En pratique cependant, ce calcul est effectué sous forme de matrice pour un traitement plus rapide. Regardons donc comment cela se déroule, maintenant que nous avons vu l’intuition du calcul au niveau d’un vecteur.
 <br><br><br>
 
+
+
+# <span style="color: #FF0000"> **6. Les matrices de calcul de l'auto-attention** </span>
+a première étape consiste à calculer les matrices Requête, Clé et Valeur. Pour ce faire, nous concaténons nos embeddings dans une matrice X et nous la multiplions par les matrices de poids que nous avons entraînés ($W^{Q}$, $W^{K}$, $W^{V}$).
+<center>
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/big-five-personality-traits-score.png">
+  <figcaption>
+  Chaque ligne de la matrice X correspond à un mot de la phrase d’entrée.
+  Nous voyons à nouveau la différence de taille entre le vecteur d’embedding (512, ou 4 cases dans la figure), et les vecteurs q/k/v (64, ou 3 cases dans la figure).
+  </figcaption>
+</figure>
+</center>
+
+
+Enfin, puisqu’il s’agit de matrices, nous pouvons condenser les étapes 2 à 6 en une seule formule pour calculer les sorties de la couche d’auto-attention.
+<center>
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/big-five-personality-traits-score.png">
+</figure>
+</center>
+<br><br><br>
+
+
+
+# <span style="color: #FF0000"> **7. La bête à plusieurs têtes** </span>
+
+
+
+
