@@ -116,7 +116,7 @@ Après avoir intégré les mots dans notre séquence d’entrée, chacun d’ent
 <center>
 <figure class="image">
   <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/big-five-personality-traits-score.png">
->/figure>
+</figure>
 </center>
  
 Nous commençons à voir une propriété clé du Transformer : dans chacune des positions, le mot circule à travers son propre chemin dans l’encoder. Il y a des dépendances entre ces chemins dans la couche d’auto-attention.
