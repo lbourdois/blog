@@ -166,7 +166,6 @@ Un modèle d’attention diffère d’un sequence-to-sequence model classique de
 <video width="100%" height="auto" loop autoplay controls>
   <source src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Seq2seq-attention/seq2seq_7.mp4" type="video/mp4">
 </video>
-<br>
 *    Deuxièmement, un decoder d’attention fait une étape supplémentaire avant de produire sa sortie. Afin de se concentrer sur les parties de l’entrée qui sont pertinentes, le decoder fait ce qui suit :
 
   *    Il regarde l’ensemble des états cachés de l’encoder qu’il a reçu (chaque état caché de l’encoder  est le plus souvent associé à un certain mot dans la phrase d’entrée).
