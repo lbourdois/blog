@@ -299,7 +299,7 @@ Enfin, puisqu’il s’agit de matrices, nous pouvons condenser les étapes 2 à
 
 
 # <span style="color: #FF0000"> **7. La bête à plusieurs têtes** </span>
-Au lieu d’exécuter une seule fonction d’attention les auteurs de l’article ont trouvé avantageux de projeter linéairement les requêtes, les clés et les valeurs h fois avec différentes projections linéaires apprises sur les dimensions \(d_{k}\), \(d_{k}\) et \(d_{v}\), respectivement.
+Au lieu d’exécuter une seule fonction d’attention les auteurs de l’article ont trouvé avantageux de projeter linéairement les requêtes, les clés et les valeurs h fois avec différentes projections linéaires apprises sur les dimensions $$d_{k}$$, $$d_{k}$$ et $$d_{v}$$, respectivement.
 
 Ce mécanisme est appelé « attention à têtes multiples ». 
 Cela améliore les performances de la couche d’attention de deux façons :
