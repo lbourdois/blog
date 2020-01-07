@@ -178,16 +178,16 @@ Vous pouvez jouer avec la visualisation interactive en consultant le [notebook T
 # <span style="color: #FF0000"> **5. L'auto-attention en détail** </span>
 Voyons d’abord comment calculer l’auto-attention à l’aide de vecteurs, puis comment elle est réellement mise en œuvre à l’aide de matrices.
 
-La première étape du calcul de l’auto-attention consiste à créer trois vecteurs à partir de chacun des vecteurs d’entrée \(x_{i}\)  de l’encoder (dans ce cas, l’embedding de chaque mot).
+La première étape du calcul de l’auto-attention consiste à créer trois vecteurs à partir de chacun des vecteurs d’entrée $$x_{i}$$  de l’encoder (dans ce cas, l’embedding de chaque mot).
 
-Chaque vecteur d’entrée \(x_{i}\) est utilisé de trois manières différentes dans l’opération d’auto-attention :
-*  Il est comparé à tous les autres vecteurs pour établir les pondérations pour sa propre production \(y_{i}\). Cela forme le vecteur de requête (Query en anglais et dans les figures suivantes).
-*  Il est comparé à tous les autres vecteurs pour établir les pondérations pour la sortie du j-ème vecteur \(y_{j}\). Cela forme le vecteur de clé (Key).
+Chaque vecteur d’entrée $$x_{i}$$ est utilisé de trois manières différentes dans l’opération d’auto-attention :
+*  Il est comparé à tous les autres vecteurs pour établir les pondérations pour sa propre production $$y_{i}$$. Cela forme le vecteur de requête (Query en anglais et dans les figures suivantes).
+*  Il est comparé à tous les autres vecteurs pour établir les pondérations pour la sortie du j-ème vecteur $$y_{j}$$. Cela forme le vecteur de clé (Key).
 *  Il est utilisé comme partie de la somme pondérée pour calculer chaque vecteur de sortie une fois que les pondérations ont été établies. Cela forme le vecteur de valeur (Value). 
 
 
 Ces vecteurs sont créés en multipliant l’embedding par trois matrices que nous avons formées pendant le processus d’entraînement.
-On a donc : \(q_{i}\) = \(W^{q}\) \(x_{i}\) ,  \(k_{i}\) = \(W^{k}\) \(x_{i}\) et \(v_{i}\) = \(W^{v}\) \(x_{i}\)
+On a donc : $$q_{i}$$ = $$W^{q}$$ $$x_{i}$$ ,  $$k_{i}$$ = $$W^{k}$$ $$x_{i}$$ et $$v_{i}$$ = $$W^{v}$$ $$x_{i}$$
 
 Notez que ces nouveaux vecteurs sont de plus petite dimension que le vecteur d’embedding (64 contre 512). 
 Ils n’ont pas besoin d’être plus petits. C’est un choix d’architecture pour rendre la computation des têtes d’attentions constante.
@@ -207,8 +207,8 @@ Nous devons noter chaque mot de la phrase d’entrée par rapport à ce mot.
 Le score détermine le degré de concentration à placer sur les autres parties de la phrase d’entrée au fur et à mesure que nous codons un mot à une certaine position.
 
 Le score est calculé en prenant le produit scalaire du vecteur de requête avec le vecteur clé du mot que nous évaluons.
-Donc, si nous traitons l’auto-attention pour le mot en position #1, le premier score serait le produit scalaire de \(q_{1}\) et \(k_{1}\).
-Le deuxième score serait le produit scalaire de \(q_{1}\) et \(k_{2}\).
+Donc, si nous traitons l’auto-attention pour le mot en position #1, le premier score serait le produit scalaire de $$q_{1}$$ et $$k_{1}$$.
+Le deuxième score serait le produit scalaire de $$q_{1}$$ et $$k_{2}$$.
 <center>
 <figure class="image">
   <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Transformer/transformer_self_attention_score.png">
@@ -276,7 +276,7 @@ Voilà qui conclut le calcul de l’auto-attention. Les vecteurs zi résultants 
 
 
 # <span style="color: #FF0000"> **6. Les matrices de calcul de l'auto-attention** </span>
-a première étape consiste à calculer les matrices Requête, Clé et Valeur. Pour ce faire, nous concaténons nos embeddings dans une matrice X et nous la multiplions par les matrices de poids que nous avons entraînés (W^{Q}, W^{K}, W^{V}).
+a première étape consiste à calculer les matrices Requête, Clé et Valeur. Pour ce faire, nous concaténons nos embeddings dans une matrice X et nous la multiplions par les matrices de poids que nous avons entraînés ($$W^{Q}$$, $$W^{K}$$, $$W^{V}$$).
 <center>
 <figure class="image">
   <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Transformer/self-attention-matrix-calculation.png">
@@ -304,7 +304,7 @@ Au lieu d’exécuter une seule fonction d’attention les auteurs de l’articl
 Ce mécanisme est appelé « attention à têtes multiples ». 
 Cela améliore les performances de la couche d’attention de deux façons :
 * Il élargit la capacité du modèle à se concentrer sur différentes positions. 
-Prenons l’exemple suivant : « Marie a donné des roses à Susane » (exemple provenant du blog de [Peter Bloem](http://www.peterbloem.nl/blog/transformers), en anglais). Nous voyons que le mot « donné » a des relations différentes aux différentes parties de la phrase. « Marie » exprime qui fait le don, « roses » exprime ce qui est donné, et « Susane » exprime qui est le destinataire. En une seule opération d’auto-attention, toutes ces informations ne font que s’additionner. Si c’était Suzanne qui avait donné les roses plutôt que Marie, le vecteur de sortie \(z_{donné}\) serait le même, même si le sens a changé. 
+Prenons l’exemple suivant : « Marie a donné des roses à Susane » (exemple provenant du blog de [Peter Bloem](http://www.peterbloem.nl/blog/transformers), en anglais). Nous voyons que le mot « donné » a des relations différentes aux différentes parties de la phrase. « Marie » exprime qui fait le don, « roses » exprime ce qui est donné, et « Susane » exprime qui est le destinataire. En une seule opération d’auto-attention, toutes ces informations ne font que s’additionner. Si c’était Suzanne qui avait donné les roses plutôt que Marie, le vecteur de sortie $$z_{donné}$$ serait le même, même si le sens a changé. 
 * Il donne à la couche d’attention de multiples « sous-espaces de représentation ». Comme nous le verrons plus loin, avec l’attention à plusieurs têtes, nous n’avons pas seulement un, mais plusieurs ensembles de matrices de poids Query/Key/Value (le Transformer utilise huit têtes d’attention, donc nous obtenons huit ensembles pour chaque encoder/decoder).  Chacun de ces ensembles est initialisé au hasard. Ensuite, après l’entraînement, chaque ensemble est utilisé pour projeter les embedding d’entrée (ou les vecteurs des encoder/decoder inférieurs) dans un sous-espace de représentation différent.
 <center>
 <figure class="image">
@@ -329,7 +329,7 @@ Si nous faisons le même calcul d’auto-attention que nous avons décrit ci-des
 
 Il nous reste donc un petit défi à relever. La couche de feed-forward n’attend pas huit matrices – elle attend une matrice unique (un vecteur pour chaque mot). Nous avons donc besoin d’un moyen de condenser ces huit éléments en une seule matrice.
 
-Comment faire cela ? En concaténant les matrices puis les multipliant par une matrice de poids supplémentaire \(W_{O}\).
+Comment faire cela ? En concaténant les matrices puis les multipliant par une matrice de poids supplémentaire $$W_{O}$$.
 <center>
 <figure class="image">
  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Transformer/transformer_attention_heads_weight_matrix_o.png">
