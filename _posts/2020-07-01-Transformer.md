@@ -14,10 +14,12 @@ toc_sticky: true
 author_profile: false
 sidebar:
     nav: sidebar-sample
+    
 ---
 
-<script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"> </script> 
-
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
 
 
 # <span style="color: #FF0000"> **Avant-propos** </span>
@@ -340,12 +342,12 @@ Résumons l’ensemble des étapes sous la forme d’un unique graphique récapi
 </figure>
 </center>
 
-Maintenant que nous avons abordé les têtes d’attention, revoyons notre exemple pour voir où les différentes têtes d’attention se concentrent alors que nous codons le mot  » it  » dans notre phrase d’exemple :
+Maintenant que nous avons abordé les têtes d’attention, revoyons notre exemple pour voir où les différentes têtes d’attention se concentrent alors que nous codons le mot « it  » dans notre phrase d’exemple :
 <center>
 <figure class="image">
   <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/big-five-personality-traits-score.png">
   <figcaption>
-  Comme nous codons le mot « it », une tête d’attention (traits en orange) se concentre sur « the animal », tandis qu’une autre (traits en vert) se concentre sur   « tired ». 
+  Comme nous codons le mot « it », une tête d’attention (traits en orange) se concentre sur « the animal », tandis qu’une autre (traits en vert) se concentre sur « tired ». 
   </figcaption>
 </figure>
 </center>
