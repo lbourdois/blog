@@ -54,7 +54,7 @@ Commençons par considérer le modèle comme une boîte noire.
 Dans une application de traduction automatique, il prendrait une phrase dans une langue et la traduirait dans une autre.
 <center>
 <figure class="image">
-  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Transformer/The_transformer_3.png">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Transformer/the_transformer_3.png">
  </figure>
  </center>
 
@@ -78,7 +78,7 @@ Le composant de décodage est une pile de decoders du même nombre.
 Les encoders sont tous identiques mais ils ne partagent pas leurs poids. Chacun est divisé en deux sous-couches :
 <center>
 <figure class="image">
-  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Transformer/transformer_encode.png">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Transformer/Transformer_encodeR.png">
  </figure>
  </center>
  
