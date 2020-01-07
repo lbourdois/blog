@@ -54,14 +54,14 @@ Commençons par considérer le modèle comme une boîte noire.
 Dans une application de traduction automatique, il prendrait une phrase dans une langue et la traduirait dans une autre.
 <center>
 <figure class="image">
-  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Transformer/the_transformer_3.png">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Transformer/The_transformer_3.png">
  </figure>
  </center>
 
 En ouvrant la boite, nous voyons un composant d’encodage, un composant de décodage et des connexions entre eux.
 <center>
 <figure class="image">
-  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Transformer/the_transformer_encoders_decoders.png">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Transformer/The_transformer_encoders_decoders.png">
  </figure>
  </center>
  
@@ -70,7 +70,7 @@ Le composant d’encodage est une pile d’encoders (l’article empile six enco
 Le composant de décodage est une pile de decoders du même nombre.
 <center>
 <figure class="image">
-  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Transformer/the_transformer_encoder_decoder_stack.png">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Transformer/The_transformer_encoder_decoder_stack.png">
  </figure>
  </center>
  
