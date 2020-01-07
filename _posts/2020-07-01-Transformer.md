@@ -92,7 +92,7 @@ Le même réseau feed-forward est appliqué indépendamment à chaque encoder.
 Le decoder possède ces deux couches, mais entre elles se trouve une couche d’attention qui aide le decoder à se concentrer sur les parties pertinentes de la phrase d’entrée (comme dans les modèles seq2seq).
 <center>
 <figure class="image">
-  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Transformer/transformer_decoder.png">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Transformer/Transformer_decoder.png">
  </figure>
  </center>
 <br><br><br>
