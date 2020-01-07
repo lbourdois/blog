@@ -373,14 +373,14 @@ ne chose qui manque dans le modèle tel que nous l’avons décrit jusqu’à pr
 Pour y remédier, le Transformer ajoute un vecteur à chaque embedding d’entrée. Ces vecteurs suivent un modèle spécifique que le modèle apprend ce qui l’aide à déterminer la position de chaque mot (ou la distance entre les différents mots dans la séquence). L’intuition ici est que l’ajout de ces valeurs à l’embedding fournit des distances significatives entre les vecteurs d’embedding une fois qu’ils sont projetés dans les vecteurs Q/K/V (puis pendant l’application du produit scalaire).
 <center>
 <figure class="image">
-  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Transformer/transformer_positional_encoding_vectors..png">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Transformer/transformer_positional_encoding_vectors.png">
 </figure>
 </center>
 
 Si nous supposons que l’embedding a une dimension de 4, les codages positionnels ressembleraient à ceci :
 <center>
 <figure class="image">
-  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Transformer/transformer_positional_encoding_example3.png">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Transformer/transformer_positional_encoding_example.png">
 </figure>
 </center>
 
@@ -534,7 +534,7 @@ Après avoir entraîné le modèle pendant suffisamment de temps sur un ensemble
 
 <center>
 <figure class="image">
-<img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Transformer/output_trained_model_probability_distribution.png">
+<img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Transformer/output_trained_model_probability_distributions.png">
 </figure>
 </center>
 
