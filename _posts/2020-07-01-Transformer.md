@@ -208,7 +208,7 @@ Le score détermine le degré de concentration à placer sur les autres parties 
 
 Le score est calculé en prenant le produit scalaire du vecteur de requête avec le vecteur clé du mot que nous évaluons.
 Donc, si nous traitons l’auto-attention pour le mot en position #1, le premier score serait le produit scalaire de \(q_{1}\) et \(k_{1}\).
-Le deuxième score serait le produit scalaire de $\(q_{1}\)$ et $\(k_{2}\)$.
+Le deuxième score serait le produit scalaire de \(q_{1}\) et \(k_{2}\).
 <center>
 <figure class="image">
   <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Transformer/transformer_self_attention_score.png">
@@ -276,7 +276,7 @@ Voilà qui conclut le calcul de l’auto-attention. Les vecteurs zi résultants 
 
 
 # <span style="color: #FF0000"> **6. Les matrices de calcul de l'auto-attention** </span>
-a première étape consiste à calculer les matrices Requête, Clé et Valeur. Pour ce faire, nous concaténons nos embeddings dans une matrice X et nous la multiplions par les matrices de poids que nous avons entraînés ($W^{Q}$, $W^{K}$, $W^{V}$).
+a première étape consiste à calculer les matrices Requête, Clé et Valeur. Pour ce faire, nous concaténons nos embeddings dans une matrice X et nous la multiplions par les matrices de poids que nous avons entraînés (W^{Q}, W^{K}, W^{V}).
 <center>
 <figure class="image">
   <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Transformer/self-attention-matrix-calculation.png">
@@ -540,7 +540,7 @@ Après avoir entraîné le modèle pendant suffisamment de temps sur un ensemble
 
 Comme le modèle produit les sorties une à la fois, nous pouvons supposer que le modèle choisit le mot ayant la probabilité la plus élevée à partir de cette distribution de probabilité et jette le reste. C’est une façon faire (appellé greedy decoding).
 
-Une autre façon de le faire serait de s’accrocher, par exemple, aux deux premiers mots (disons,  » I  » et  » a  » par exemple), puis, à l’étape suivante, d’exécuter le modèle deux fois : une fois en supposant que la première position de sortie était le mot  » I « , et une autre fois en supposant que la première position de sortie était  » me ». La version la moins erronée étant retenue, en considérant les positions #1 et #2. Nous répétons ceci pour les positions #2 et #3, etc… Cette méthode est appelée « beam search ».
+Une autre façon de le faire serait de s’accrocher, par exemple, aux deux premiers mots (disons,  « I  » et  « a  » par exemple), puis, à l’étape suivante, d’exécuter le modèle deux fois : une fois en supposant que la première position de sortie était le mot  « I » , et une autre fois en supposant que la première position de sortie était  « me ». La version la moins erronée étant retenue, en considérant les positions #1 et #2. Nous répétons ceci pour les positions #2 et #3, etc… Cette méthode est appelée « beam search ».
 
 Dans notre exemple, beam_size était deux (parce que nous avons comparé les résultats après avoir calculé les beams (faisceaux) pour les positions #1 et #2), et top_beams est aussi deux (puisque nous avons gardé deux mots). Ce sont deux hyperparamètres que vous pouvez expérimenter.
 <br><br><br>
