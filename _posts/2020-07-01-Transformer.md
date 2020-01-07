@@ -187,7 +187,7 @@ Chaque vecteur d’entrée \(x_{i}\) est utilisé de trois manières différente
 
 
 Ces vecteurs sont créés en multipliant l’embedding par trois matrices que nous avons formées pendant le processus d’entraînement.
-On a donc : $$q_{i} = W^{q} x_{i} ,  k_{i} = W^{k} x_{i} et v_{i} = W^{v} x_{i}$$
+On a donc : \(q_{i}\) = \(W^{q}\) \(x_{i}\) ,  \(k_{i}\) = \(W^{k}\) \(x_{i}\) et \(v_{i}\) = \(W^{v}\) \(x_{i}\)
 
 Notez que ces nouveaux vecteurs sont de plus petite dimension que le vecteur d’embedding (64 contre 512). 
 Ils n’ont pas besoin d’être plus petits. C’est un choix d’architecture pour rendre la computation des têtes d’attentions constante.
