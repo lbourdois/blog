@@ -300,9 +300,9 @@ Au lieu d’exécuter une seule fonction d’attention les auteurs de l’articl
 
 Ce mécanisme est appelé « attention à têtes multiples ». 
 Cela améliore les performances de la couche d’attention de deux façons :
-* 1. Il élargit la capacité du modèle à se concentrer sur différentes positions. 
+* Il élargit la capacité du modèle à se concentrer sur différentes positions. 
 Prenons l’exemple suivant : « Marie a donné des roses à Susane » (exemple provenant du blog de [Peter Bloem](http://www.peterbloem.nl/blog/transformers), en anglais). Nous voyons que le mot « donné » a des relations différentes aux différentes parties de la phrase. « Marie » exprime qui fait le don, « roses » exprime ce qui est donné, et « Susane » exprime qui est le destinataire. En une seule opération d’auto-attention, toutes ces informations ne font que s’additionner. Si c’était Suzanne qui avait donné les roses plutôt que Marie, le vecteur de sortie \(z_{donné}\) serait le même, même si le sens a changé. 
-* 2. Il donne à la couche d’attention de multiples « sous-espaces de représentation ». Comme nous le verrons plus loin, avec l’attention à plusieurs têtes, nous n’avons pas seulement un, mais plusieurs ensembles de matrices de poids Query/Key/Value (le Transformer utilise huit têtes d’attention, donc nous obtenons huit ensembles pour chaque encoder/decoder).  Chacun de ces ensembles est initialisé au hasard. Ensuite, après l’entraînement, chaque ensemble est utilisé pour projeter les embedding d’entrée (ou les vecteurs des encoder/decoder inférieurs) dans un sous-espace de représentation différent.
+* Il donne à la couche d’attention de multiples « sous-espaces de représentation ». Comme nous le verrons plus loin, avec l’attention à plusieurs têtes, nous n’avons pas seulement un, mais plusieurs ensembles de matrices de poids Query/Key/Value (le Transformer utilise huit têtes d’attention, donc nous obtenons huit ensembles pour chaque encoder/decoder).  Chacun de ces ensembles est initialisé au hasard. Ensuite, après l’entraînement, chaque ensemble est utilisé pour projeter les embedding d’entrée (ou les vecteurs des encoder/decoder inférieurs) dans un sous-espace de représentation différent.
 <center>
 <figure class="image">
   <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/big-five-personality-traits-score.png">
@@ -358,8 +358,8 @@ Si nous ajoutons toutes les têtes d’attention sur l’image, les choses peuve
 <br><br>
 
 Un outil de visualisation dynamique des têtes d’attention très intéressant est proposé par Jesse Vig. Celui-ci est intitulé [BertViz](https://github.com/jessevig/bertviz). Un article Medium présentant l’application de cet outil au modèle BERT est disponible [ici](https://towardsdatascience.com/deconstructing-bert-part-2-visualizing-the-inner-workings-of-attention-60a16d86b5c1) (en anglais). Depuis la rédaction de cet article, l’outil a été élargi et prend maintenant en compte toutes les architectures de Transformers proposées par l’équipe d’[Huggingface](https://github.com/huggingface/transformers) (cf. la conclusion). Une vidéo de présentation :
-<br><br><br>
-VIDEO A METTRE
+
+{% include video id="358488181" provider="vimeo" %}
 <br><br><br>
 
 
