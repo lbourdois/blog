@@ -54,14 +54,14 @@ Commençons par considérer le modèle comme une boîte noire.
 Dans une application de traduction automatique, il prendrait une phrase dans une langue et la traduirait dans une autre.
 <center>
 <figure class="image">
-  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Transfomer/the_transformer_3.png">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Transformer/the_transformer_3.png">
  </figure>
  </center>
 
 En ouvrant la boite, nous voyons un composant d’encodage, un composant de décodage et des connexions entre eux.
 <center>
 <figure class="image">
-  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Transfomer/the_transformer_encoders_decoders.png">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Transformer/the_transformer_encoders_decoders.png">
  </figure>
  </center>
  
@@ -70,7 +70,7 @@ Le composant d’encodage est une pile d’encoders (l’article empile six enco
 Le composant de décodage est une pile de decoders du même nombre.
 <center>
 <figure class="image">
-  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Transfomer/the_transformer_encoder_decoder_stack.png">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Transformer/the_transformer_encoder_decoder_stack.png">
  </figure>
  </center>
  
@@ -78,7 +78,7 @@ Le composant de décodage est une pile de decoders du même nombre.
 Les encoders sont tous identiques mais ils ne partagent pas leurs poids. Chacun est divisé en deux sous-couches :
 <center>
 <figure class="image">
-  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Transfomer/transformer_encode.png">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Transformer/transformer_encode.png">
  </figure>
  </center>
  
@@ -92,7 +92,7 @@ Le même réseau feed-forward est appliqué indépendamment à chaque encoder.
 Le decoder possède ces deux couches, mais entre elles se trouve une couche d’attention qui aide le decoder à se concentrer sur les parties pertinentes de la phrase d’entrée (comme dans les modèles seq2seq).
 <center>
 <figure class="image">
-  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Transfomer/transformer_decoder.png">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Transformer/transformer_decoder.png">
  </figure>
  </center>
 <br><br><br>
@@ -105,7 +105,7 @@ Maintenant que nous avons vu les principales composantes du modèle, commençons
 Comme c’est le cas dans les applications NLP en général, nous commençons par transformer chaque mot d’entrée en vecteur à l’aide d’un algorithme d’embedding.
 <center>
 <figure class="image">
-  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Transfomer/embeddings.png">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Transformer/embeddings.png">
   <figcaption>
   Chaque mot est mis dans un vecteur de taille 512. Nous représentons ces vecteurs avec ces simples boîtes.
   </figcaption>
@@ -120,7 +120,7 @@ La taille de la liste est un hyperparamètre que nous pouvons définir. Il s’a
 Après avoir intégré les mots dans notre séquence d’entrée, chacun d’entre eux traverse chacune des deux couches de l’encoder.
 <center>
 <figure class="image">
-  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Transfomer/encoder_with_tensors.png">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Transformer/encoder_with_tensors.png">
 </figure>
 </center>
 
@@ -138,7 +138,7 @@ Ensuite, nous allons commuter l’exemple sur une phrase plus courte et regarder
 Comme nous l’avons déjà mentionné, un encoder reçoit une liste de vecteurs en entrée. Il traite cette liste en passant ces vecteurs dans une couche d’auto-attention, puis dans un réseau feed-forward, et enfin envoie la sortie vers le haut au codeur suivant.
 <center>
 <figure class="image">
-  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Transfomer/encoder_with_tensors_2.png">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Transformer/encoder_with_tensors_2.png">
   <figcaption>
   Le mot à chaque position passe par un processus d’auto-attention. Ensuite, chacun d’eux passe par un réseau feed-forward (le même réseau réseau feed-forward pour chaque vecteur mais chacun le traverse séparément).
   </figcaption>
@@ -164,7 +164,7 @@ L’auto-attention est la méthode que le Transformer utilise pour améliorer la
 
 <center>
 <figure class="image">
-  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Transfomer/transformer_self-attention_visualization.png">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Transformer/transformer_self-attention_visualization.png">
   <figcaption>
   Comme nous codons le mot « it » dans l’encodeur#5 (le codeur supérieur de la pile), une partie du mécanisme d’attention se concentrait sur « The Animal ».
   </figcaption>
@@ -193,7 +193,7 @@ Notez que ces nouveaux vecteurs sont de plus petite dimension que le vecteur d�
 Ils n’ont pas besoin d’être plus petits. C’est un choix d’architecture pour rendre la computation des têtes d’attentions constante.
 <center>
 <figure class="image">
-  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Transfomer/transformer_self_attention_vectors.png">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Transformer/transformer_self_attention_vectors.png">
   <figcaption>
   Les nombres indiqués en rouge correspondent aux dimensions de chaque vecteur/matrices
   </figcaption>
@@ -211,7 +211,7 @@ Donc, si nous traitons l’auto-attention pour le mot en position #1, le premier
 Le deuxième score serait le produit scalaire de \(q_{1}\) et \(k_{2}\).
 <center>
 <figure class="image">
-  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Transfomer/transformer_self_attention_score.png">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Transformer/transformer_self_attention_score.png">
 </figure>
 </center>
 
@@ -224,7 +224,7 @@ Il pourrait y avoir d’autres valeurs possibles que la racine carrée de la dim
 L’ application de la fonction Softmax permet de normaliser les scores pour qu’ils soient tous positifs et somment à 1.
 <center>
 <figure class="image">
-  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Transfomer/self-attention_softmax.png">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Transformer/self-attention_softmax.png">
 </figure>
 </center>
 Ce score softmax détermine à quel point chaque mot sera exprimé à sa position. Il est donc logique que le mot à sa position aura le score softmax le plus élevé, mais le score des autres mots permet de déterminer leur pertinence par rapport au mot traité.
@@ -236,7 +236,7 @@ La cinquième étape consiste à multiplier chaque vecteur de valeur par le scor
 La sixième étape consiste à résumer les vecteurs de valeurs pondérées. Ceci produit la sortie de la couche d’auto-attention à cette position (ici pour le premier mot).
 <center>
 <figure class="image">
-  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Transfomer/self-attention-output.png">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Transformer/self-attention-output.png">
 </figure>
 </center>
 <br><br>
@@ -279,7 +279,7 @@ Voilà qui conclut le calcul de l’auto-attention. Les vecteurs zi résultants 
 a première étape consiste à calculer les matrices Requête, Clé et Valeur. Pour ce faire, nous concaténons nos embeddings dans une matrice X et nous la multiplions par les matrices de poids que nous avons entraînés ($W^{Q}$, $W^{K}$, $W^{V}$).
 <center>
 <figure class="image">
-  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Transfomer/self-attention-matrix-calculation.png">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Transformer/self-attention-matrix-calculation.png">
   <figcaption>
   Chaque ligne de la matrice X correspond à un mot de la phrase d’entrée.
   Nous voyons à nouveau la différence de taille entre le vecteur d’embedding (512, ou 4 cases dans la figure), et les vecteurs q/k/v (64, ou 3 cases dans la figure).
@@ -291,7 +291,7 @@ a première étape consiste à calculer les matrices Requête, Clé et Valeur. P
 Enfin, puisqu’il s’agit de matrices, nous pouvons condenser les étapes 2 à 6 en une seule formule pour calculer les sorties de la couche d’auto-attention.
 <center>
 <figure class="image">
-  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Transfomer/softmax_matrix.png">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Transformer/softmax_matrix.png">
 </figure>
 </center>
 <br><br><br>
@@ -308,7 +308,7 @@ Prenons l’exemple suivant : « Marie a donné des roses à Susane » (exemple 
 * Il donne à la couche d’attention de multiples « sous-espaces de représentation ». Comme nous le verrons plus loin, avec l’attention à plusieurs têtes, nous n’avons pas seulement un, mais plusieurs ensembles de matrices de poids Query/Key/Value (le Transformer utilise huit têtes d’attention, donc nous obtenons huit ensembles pour chaque encoder/decoder).  Chacun de ces ensembles est initialisé au hasard. Ensuite, après l’entraînement, chaque ensemble est utilisé pour projeter les embedding d’entrée (ou les vecteurs des encoder/decoder inférieurs) dans un sous-espace de représentation différent.
 <center>
 <figure class="image">
-  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Transfomer/transformer_attention_heads_qkv.png">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Transformer/transformer_attention_heads_qkv.png">
   <figcaption>
   Avec une plusieurs têtes d’attention, nous avons maintenons des matrices de poids Q/K/V distinctes pour chaque tête, ce qui donne des matrices Q/K/V différentes. Comme nous l’avons fait auparavant, nous multiplions X par les matrices WQ/WK/WV pour produire des matrices Q/K/V.
   </figcaption>
@@ -319,7 +319,7 @@ Si nous faisons le même calcul d’auto-attention que nous avons décrit ci-des
 
 <center>
 <figure class="image">
-  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Transfomer/transformer_attention_heads_z.png">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Transformer/transformer_attention_heads_z.png">
   <figcaption>
   On obtient 8 matrices Zi de dimension 64 et 8×64 = 512
   </figcaption>
@@ -332,21 +332,21 @@ Il nous reste donc un petit défi à relever. La couche de feed-forward n’atte
 Comment faire cela ? En concaténant les matrices puis les multipliant par une matrice de poids supplémentaire \(W_{O}\).
 <center>
 <figure class="image">
- <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Transfomer/transformer_attention_heads_weight_matrix_o.png">
+ <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Transformer/transformer_attention_heads_weight_matrix_o.png">
 </figure>
 </center>
 
 Résumons l’ensemble des étapes sous la forme d’un unique graphique récapitulatif :
 <center>
 <figure class="image">
- <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Transfomer/transformer_multi-headed_self-attention-recap.png">
+ <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Transformer/transformer_multi-headed_self-attention-recap.png">
 </figure>
 </center>
 
 Maintenant que nous avons abordé les têtes d’attention, revoyons notre exemple pour voir où les différentes têtes d’attention se concentrent alors que nous codons le mot « it  » dans notre phrase d’exemple :
 <center>
 <figure class="image">
- <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Transfomer/transformer_self-attention_visualization_2.png">
+ <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Transformer/transformer_self-attention_visualization_2.png">
   <figcaption>
   Comme nous codons le mot « it », une tête d’attention (traits en orange) se concentre sur « the animal », tandis qu’une autre (traits en vert) se concentre sur « tired ». 
   </figcaption>
@@ -355,7 +355,7 @@ Maintenant que nous avons abordé les têtes d’attention, revoyons notre exemp
 Si nous ajoutons toutes les têtes d’attention sur l’image, les choses peuvent être plus difficiles à interpréter :
 <center>
 <figure class="image">
- <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Transfomer/transformer_self-attention_visualization_3.png">
+ <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Transformer/transformer_self-attention_visualization_3.png">
 </figure>
 </center>
 <br><br>
@@ -373,21 +373,21 @@ ne chose qui manque dans le modèle tel que nous l’avons décrit jusqu’à pr
 Pour y remédier, le Transformer ajoute un vecteur à chaque embedding d’entrée. Ces vecteurs suivent un modèle spécifique que le modèle apprend ce qui l’aide à déterminer la position de chaque mot (ou la distance entre les différents mots dans la séquence). L’intuition ici est que l’ajout de ces valeurs à l’embedding fournit des distances significatives entre les vecteurs d’embedding une fois qu’ils sont projetés dans les vecteurs Q/K/V (puis pendant l’application du produit scalaire).
 <center>
 <figure class="image">
-  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/big-five-personality-traits-score.png">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Transformer/transformer_positional_encoding_vectors..png">
 </figure>
 </center>
 
 Si nous supposons que l’embedding a une dimension de 4, les codages positionnels ressembleraient à ceci :
 <center>
 <figure class="image">
-  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/big-five-personality-traits-score.png">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Transformer/transformer_positional_encoding_example3.png">
 </figure>
 </center>
 
 Dans la figure suivante, chaque ligne correspond à l’encodage positionnel d’un vecteur. Ainsi, la première ligne serait le vecteur que nous ajouterions à l’embedding du premier mot dans une séquence d’entrée. Chaque ligne contient 512 valeurs, chacune ayant une valeur comprise entre 1 et -1. Nous les avons codés par couleur pour que le motif soit visible.
 <center>
 <figure class="image">
-  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/big-five-personality-traits-score.png">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Transformer/transformer_positional_encoding_large_example.png">
   <figcaption>
   Un exemple réel d’encodage positionnel pour 20 mots (lignes) avec une taille d’embedding de 512 (colonnes). Vous pouvez voir qu’il semble divisé en deux au centre. C’est parce que les valeurs de la moitié gauche sont générées par une fonction (qui utilise le sinus), et la moitié droite est générée par une autre fonction (qui utilise le cosinus). Ils sont ensuite concaténés pour former chacun des vecteurs d’encodage positionnel.
   </figcaption>
@@ -407,7 +407,7 @@ Un détail de l’architecture de l’encoder que nous devons mentionner avant d
 Si nous devons visualiser les vecteurs et l’opération de normalisation associée à l’auto-attention, cela ressemblerait à ceci :
 <center>
 <figure class="image">
-  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/big-five-personality-traits-score.png">
+<img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Transformer/transformer_resideual_layer_norm_2.png">
   <figcaption>
   Les résidus sont représentés en pointillé et sont ajoutés avant la normalisation. 10% de dropout est appliqué à cette étape
   </figcaption>
@@ -419,7 +419,7 @@ Cela vaut également pour les sous-couches du decoder.
 Par exemple un Transformer de 2 encoders et decoders empilés ressemblerait à ceci :
 <center>
 <figure class="image">
-  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/big-five-personality-traits-score.png">
+<img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Transformer/transformer_resideual_layer_norm_3.png">
 </figure>
 </center>
 <br><br><br>
@@ -469,7 +469,7 @@ Supposons que notre modèle connaisse 10 000 mots anglais uniques (le « vocabul
 La couche softmax transforme ensuite ces scores en probabilités (tous positifs dont la somme vaut 1). La cellule ayant la probabilité la plus élevée est choisie et le mot qui lui est associé est produit comme sortie pour ce pas de temps.
 <center>
 <figure class="image">
-  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/big-five-personality-traits-score.png">
+<img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Transformer/transformer_decoder_output_softmax.png">
 </figure>
 </center>
 <br><br><br>
@@ -484,14 +484,14 @@ Pendant l’entraînement, un modèle non entraîné passerait exactement par le
 Pour visualiser ceci, supposons que notre vocabulaire de sortie ne contient que six mots (« a », « am », « i »,  » thanks »,  » student », et « <eos> »).
 <center>
 <figure class="image">
-  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/big-five-personality-traits-score.png">
+<img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Transformer/vocabulary.png">
 </figure>
 </center>
   
 Une fois que nous avons défini notre vocabulaire de sortie, nous pouvons utiliser un vecteur de la même largeur pour indiquer chaque mot de notre vocabulaire. C’est ce qu’on appelle aussi le one-hot encoding. Ainsi, par exemple, nous pouvons indiquer le mot « am » à l’aide du vecteur suivant :
 <center>
 <figure class="image">
-  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/big-five-personality-traits-score.png">
+<img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Transformer/one-hot-vocabulary-example.png">
 </figure>
 </center>
 
@@ -504,8 +504,8 @@ Après cette récapitulation, discutons de la fonction de perte du modèle, la m
 Disons que nous sommes à la première étape de la phase d’entraînement et que nous souhaitons traduire « merci » en « thanks ». Ce que cela signifie, c’est que nous voulons que la sortie soit une distribution de probabilité indiquant le mot « merci ». Mais comme ce modèle n’est pas encore entraîné, il est peu probable que cela se produise tout de suite.
 <center>
 <figure class="image">
-  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/big-five-personality-traits-score.png">
-    <figcaption>
+<img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Transformer/transformer_logits_output_and_label.png">
+<figcaption>
 Comme les paramètres (poids) du modèle sont tous initialisés de façon aléatoire, le modèle (non entraîné) produit une distribution de probabilités avec des valeurs arbitraires pour chaque cellule/mot. Nous pouvons le comparer avec la sortie réelle, puis ajuster tous les poids du modèle à l’aide de la rétropropagation pour obtenir une sortie plus proche de la sortie souhaitée.
   </figcaption>
 </figure>
@@ -522,7 +522,7 @@ Mais notez qu’il s’agit d’un exemple trop simplifié. De façon plus réal
   
  <center>
 <figure class="image">
-  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/big-five-personality-traits-score.png">
+<img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Transformer/output_target_probability_distributions.png">
     <figcaption>
 Résultat optimal
   </figcaption>
@@ -534,7 +534,7 @@ Après avoir entraîné le modèle pendant suffisamment de temps sur un ensemble
 
 <center>
 <figure class="image">
-  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/big-five-personality-traits-score.png">
+<img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Transformer/output_trained_model_probability_distribution.png">
 </figure>
 </center>
 
