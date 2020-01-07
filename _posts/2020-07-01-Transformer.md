@@ -15,7 +15,10 @@ author_profile: false
 sidebar:
     nav: sidebar-sample
 ---
+
 <script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"> </script> 
+
+
 
 # <span style="color: #FF0000"> **Avant-propos** </span>
  
@@ -293,7 +296,285 @@ Enfin, puisqu’il s’agit de matrices, nous pouvons condenser les étapes 2 à
 
 
 # <span style="color: #FF0000"> **7. La bête à plusieurs têtes** </span>
+Au lieu d’exécuter une seule fonction d’attention les auteurs de l’article ont trouvé avantageux de projeter linéairement les requêtes, les clés et les valeurs h fois avec différentes projections linéaires apprises sur les dimensions \(d_{k}\), \(d_{k}\) et \(d_{v}\), respectivement.
+
+Ce mécanisme est appelé « attention à têtes multiples ». 
+Cela améliore les performances de la couche d’attention de deux façons :
+* 1. Il élargit la capacité du modèle à se concentrer sur différentes positions. 
+Prenons l’exemple suivant : « Marie a donné des roses à Susane » (exemple provenant du blog de [Peter Bloem](http://www.peterbloem.nl/blog/transformers), en anglais). Nous voyons que le mot « donné » a des relations différentes aux différentes parties de la phrase. « Marie » exprime qui fait le don, « roses » exprime ce qui est donné, et « Susane » exprime qui est le destinataire. En une seule opération d’auto-attention, toutes ces informations ne font que s’additionner. Si c’était Suzanne qui avait donné les roses plutôt que Marie, le vecteur de sortie \(z_{donné}\) serait le même, même si le sens a changé. 
+* 2. Il donne à la couche d’attention de multiples « sous-espaces de représentation ». Comme nous le verrons plus loin, avec l’attention à plusieurs têtes, nous n’avons pas seulement un, mais plusieurs ensembles de matrices de poids Query/Key/Value (le Transformer utilise huit têtes d’attention, donc nous obtenons huit ensembles pour chaque encoder/decoder).  Chacun de ces ensembles est initialisé au hasard. Ensuite, après l’entraînement, chaque ensemble est utilisé pour projeter les embedding d’entrée (ou les vecteurs des encoder/decoder inférieurs) dans un sous-espace de représentation différent.
+<center>
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/big-five-personality-traits-score.png">
+  <figcaption>
+  Avec une plusieurs têtes d’attention, nous avons maintenons des matrices de poids Q/K/V distinctes pour chaque tête, ce qui donne des matrices Q/K/V différentes. Comme nous l’avons fait auparavant, nous multiplions X par les matrices WQ/WK/WV pour produire des matrices Q/K/V.
+  </figcaption>
+</figure>
+</center>
+
+Si nous faisons le même calcul d’auto-attention que nous avons décrit ci-dessus, huit fois avec des matrices de poids différentes, nous obtenons huit matrices Z différentes.
+
+<center>
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/big-five-personality-traits-score.png">
+  <figcaption>
+  On obtient 8 matrices Zi de dimension 64 et 8×64 = 512
+  </figcaption>
+</figure>
+</center>
+
+
+Il nous reste donc un petit défi à relever. La couche de feed-forward n’attend pas huit matrices – elle attend une matrice unique (un vecteur pour chaque mot). Nous avons donc besoin d’un moyen de condenser ces huit éléments en une seule matrice.
+
+Comment faire cela ? En concaténant les matrices puis les multipliant par une matrice de poids supplémentaire \(W_{O}\).
+<center>
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/big-five-personality-traits-score.png">
+</figure>
+</center>
+
+Résumons l’ensemble des étapes sous la forme d’un unique graphique récapitulatif :
+<center>
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/big-five-personality-traits-score.png">
+</figure>
+</center>
+
+Maintenant que nous avons abordé les têtes d’attention, revoyons notre exemple pour voir où les différentes têtes d’attention se concentrent alors que nous codons le mot  » it  » dans notre phrase d’exemple :
+<center>
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/big-five-personality-traits-score.png">
+  <figcaption>
+  Comme nous codons le mot « it », une tête d’attention (traits en orange) se concentre sur « the animal », tandis qu’une autre (traits en vert) se concentre sur   « tired ». 
+  </figcaption>
+</figure>
+</center>
+Si nous ajoutons toutes les têtes d’attention sur l’image, les choses peuvent être plus difficiles à interpréter :
+<center>
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/big-five-personality-traits-score.png">
+</figure>
+</center>
+<br><br>
+
+Un outil de visualisation dynamique des têtes d’attention très intéressant est proposé par Jesse Vig. Celui-ci est intitulé [BertViz](https://github.com/jessevig/bertviz). Un article Medium présentant l’application de cet outil au modèle BERT est disponible [ici](https://towardsdatascience.com/deconstructing-bert-part-2-visualizing-the-inner-workings-of-attention-60a16d86b5c1) (en anglais). Depuis la rédaction de cet article, l’outil a été élargi et prend maintenant en compte toutes les architectures de Transformers proposées par l’équipe d’[Huggingface](https://github.com/huggingface/transformers) (cf. la conclusion). Une vidéo de présentation :
+<br><br><br>
+VIDEO A METTRE
+<br><br><br>
 
 
 
+# <span style="color: #FF0000"> **8. Le codage positionnel** </span>
+ne chose qui manque dans le modèle tel que nous l’avons décrit jusqu’à présent, est une façon de rendre compte de l’ordre des mots dans la séquence d’entrée.
+
+Pour y remédier, le Transformer ajoute un vecteur à chaque embedding d’entrée. Ces vecteurs suivent un modèle spécifique que le modèle apprend ce qui l’aide à déterminer la position de chaque mot (ou la distance entre les différents mots dans la séquence). L’intuition ici est que l’ajout de ces valeurs à l’embedding fournit des distances significatives entre les vecteurs d’embedding une fois qu’ils sont projetés dans les vecteurs Q/K/V (puis pendant l’application du produit scalaire).
+<center>
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/big-five-personality-traits-score.png">
+</figure>
+</center>
+
+Si nous supposons que l’embedding a une dimension de 4, les codages positionnels ressembleraient à ceci :
+<center>
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/big-five-personality-traits-score.png">
+</figure>
+</center>
+
+Dans la figure suivante, chaque ligne correspond à l’encodage positionnel d’un vecteur. Ainsi, la première ligne serait le vecteur que nous ajouterions à l’embedding du premier mot dans une séquence d’entrée. Chaque ligne contient 512 valeurs, chacune ayant une valeur comprise entre 1 et -1. Nous les avons codés par couleur pour que le motif soit visible.
+<center>
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/big-five-personality-traits-score.png">
+  <figcaption>
+  Un exemple réel d’encodage positionnel pour 20 mots (lignes) avec une taille d’embedding de 512 (colonnes). Vous pouvez voir qu’il semble divisé en deux au centre. C’est parce que les valeurs de la moitié gauche sont générées par une fonction (qui utilise le sinus), et la moitié droite est générée par une autre fonction (qui utilise le cosinus). Ils sont ensuite concaténés pour former chacun des vecteurs d’encodage positionnel.
+  </figcaption>
+</figure>
+</center>
+
+La formule du codage positionnel est décrite dans le document (section 3.5). Vous pouvez voir le code de génération des encodages positionnels dans [get_timing_signal_1d()](https://github.com/tensorflow/tensor2tensor/blob/23bd23b9830059fbc349381b70d9429b5c40a139/tensor2tensor/layers/common_attention.py).
+
+Ce n’est pas la seule méthode possible pour le codage positionnel. Il offre cependant l’avantage de pouvoir s’adapter à des longueurs de séquences invisibles (par exemple, si notre modèle entrainé est appelé à traduire une phrase plus longue que n’importe laquelle de celles de notre série de séquences d’entraînement).
+<br><br><br>
+
+
+
+# <span style="color: #FF0000"> **9. Les résidus** </span>
+Un détail de l’architecture de l’encoder que nous devons mentionner avant de continuer est que chaque sous-couche (auto-attention, feed-forward) dans chaque codeur a une connexion résiduelle autour de lui (Add sur le graphique ci-dessous) et est suivie d’une étape de normalisation.
+
+Si nous devons visualiser les vecteurs et l’opération de normalisation associée à l’auto-attention, cela ressemblerait à ceci :
+<center>
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/big-five-personality-traits-score.png">
+  <figcaption>
+  Les résidus sont représentés en pointillé et sont ajoutés avant la normalisation. 10% de dropout est appliqué à cette étape
+  </figcaption>
+</figure>
+</center>
+
+Cela vaut également pour les sous-couches du decoder.
+
+Par exemple un Transformer de 2 encoders et decoders empilés ressemblerait à ceci :
+<center>
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/big-five-personality-traits-score.png">
+</figure>
+</center>
+<br><br><br>
+
+
+
+# <span style="color: #FF0000"> **10. Le decoder** </span>
+aintenant que nous avons couvert la plupart des concepts du côté des encoders, nous savons aussi comment fonctionnent les composants des decoders. Mais jetons un coup d’œil à la façon dont ils travaillent ensemble.
+
+L’encoder commence par traiter la séquence d’entrée. La sortie de l’encoder supérieur est ensuite transformée en un ensemble de vecteurs d’attention K et V. Ceux-ci doivent être utilisés par chaque decoder dans sa couche « attention codeur-décodeur » qui permet au decoder de se concentrer sur les endroits appropriés dans la séquence d’entrée :
+<center>
+<figure class="image">
+  <img src="https://jalammar.github.io/images/t/transformer_decoding_1.gif">
+  <figcaption>
+  Après avoir terminé la phase d’encodage, nous commençons la phase de décodage. Chaque étape de la phase de décodage produit un élément de la séquence de sortie (la traduction en anglais dans ce cas).
+  </figcaption>
+</figure>
+</center>
+
+Les étapes suivantes répètent le processus jusqu’à ce qu’un symbole spécial indique au decoder que le Transformer a complété entièrement la sortie. La sortie de chaque étape (mot ici) est envoyée au decoder le plus bas pour le traitement du mot suivant. Et tout comme nous l’avons fait avec les entrées encoder, nous « embeddons » et ajoutons un codage positionnel à ces entrées decoder pour indiquer la position de chaque mot.
+<center>
+<figure class="image">
+  <img src="https://jalammar.github.io/images/t/transformer_decoding_2.gif">
+  <figcaption>
+  Après avoir terminé la phase d’encodage, nous commençons la phase de décodage. Chaque étape de la phase de décodage produit un élément de la séquence de sortie (la traduction en anglais dans ce cas).
+  </figcaption>
+</figure>
+</center>
+
+
+Les couches d’auto-attention du decoder fonctionnent d’une manière légèrement différente de celle de l’encoder.
+
+Dans le décoder, la couche d’auto-attention ne peut s’occuper que des positions antérieures dans la séquence de sortie. Ceci est fait en masquant les positions futures (en les réglant sur -inf) avant l’étape softmax du calcul de l’auto-attention. Ce processus est détaillé dans la fiche 5.
+
+La couche « Encoder-Decoder Attention » fonctionne comme une auto-attention à plusieurs têtes, sauf qu’elle crée sa matrice de requêtes à partir de la couche inférieure, et prend la matrice des clés et des valeurs à la sortie de la pile de codeurs.
+<br><br><br>
+
+
+
+# <span style="color: #FF0000"> **11. Les couches finales : linéaire et sofmax** </span>
+La pile de decoders délivre un vecteur de float. Comment le transfomer en mots ? C’est le travail de la couche Linéaire qui est suivie d’une couche Softmax.
+
+La couche linéaire est un simple réseau neuronal entièrement connecté qui projette le vecteur produit par la pile de decoders dans un vecteur beaucoup (beaucoup) plus grand appelé vecteur logits.
+
+Supposons que notre modèle connaisse 10 000 mots anglais uniques (le « vocabulaire de sortie » de notre modèle) qu’il a appris de son ensemble de données d’entraînement. Cela rendrait le vecteur logit large de 10 000 cellules, chaque cellule correspondant au score d’un mot unique. C’est ainsi que nous interprétons la sortie du modèle suivie de la couche linéaire.
+
+La couche softmax transforme ensuite ces scores en probabilités (tous positifs dont la somme vaut 1). La cellule ayant la probabilité la plus élevée est choisie et le mot qui lui est associé est produit comme sortie pour ce pas de temps.
+<center>
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/big-five-personality-traits-score.png">
+</figure>
+</center>
+<br><br><br>
+
+
+
+# <span style="color: #FF0000"> **12. L'entraînement** </span>
+Maintenant que nous avons couvert l’ensemble du processus d’un Transformer entrainé, il serait utile de jeter un coup d’œil à l’intuition de l’entraînement du modèle.
+
+Pendant l’entraînement, un modèle non entraîné passerait exactement par le même processus. Mais puisque nous l’entraînons sur un ensemble de données d’entraînement labellisé, nous pouvons comparer sa sortie avec la sortie correcte réelle.
+
+Pour visualiser ceci, supposons que notre vocabulaire de sortie ne contient que six mots (« a », « am », « i »,  » thanks »,  » student », et « <eos> »).
+<center>
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/big-five-personality-traits-score.png">
+</figure>
+</center>
+  
+Une fois que nous avons défini notre vocabulaire de sortie, nous pouvons utiliser un vecteur de la même largeur pour indiquer chaque mot de notre vocabulaire. C’est ce qu’on appelle aussi le one-hot encoding. Ainsi, par exemple, nous pouvons indiquer le mot « am » à l’aide du vecteur suivant :
+<center>
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/big-five-personality-traits-score.png">
+</figure>
+</center>
+
+Après cette récapitulation, discutons de la fonction de perte du modèle, la métrique que nous optimisons pendant la phase d’entraînement.
+<br><br><br>
+
+
+
+# <span style="color: #FF0000"> **13. La fonction de perte** </span>
+Disons que nous sommes à la première étape de la phase d’entraînement et que nous souhaitons traduire « merci » en « thanks ». Ce que cela signifie, c’est que nous voulons que la sortie soit une distribution de probabilité indiquant le mot « merci ». Mais comme ce modèle n’est pas encore entraîné, il est peu probable que cela se produise tout de suite.
+<center>
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/big-five-personality-traits-score.png">
+    <figcaption>
+Comme les paramètres (poids) du modèle sont tous initialisés de façon aléatoire, le modèle (non entraîné) produit une distribution de probabilités avec des valeurs arbitraires pour chaque cellule/mot. Nous pouvons le comparer avec la sortie réelle, puis ajuster tous les poids du modèle à l’aide de la rétropropagation pour obtenir une sortie plus proche de la sortie souhaitée.
+  </figcaption>
+</figure>
+</center>
+
+
+Comment comparer deux distributions de probabilités ? Nous soustrayons simplement l’une à l’autre. Pour plus de détails, voir l’entropie croisée et la divergence de Kullback-Leibler.
+
+Mais notez qu’il s’agit d’un exemple trop simplifié. De façon plus réaliste, nous utiliserons une phrase plus longue qu’un mot. Par exemple en entrée : « Je suis étudiant » et comme résultat attendu : « I am a student ».  Ce que cela signifie vraiment, c’est que nous voulons que notre modèle produise successivement des distributions de probabilités où :
+* Chaque distribution de probabilité est représentée par un vecteur de largeur vocab_size (6 dans notre exemple, mais de façon plus réaliste un nombre comme 3 000 ou 10 000)
+* La première distribution de probabilités a la probabilité la plus élevée à la cellule associée au mot « I »
+* La deuxième distribution de probabilité a la probabilité la plus élevée à la cellule associée au mot « am »
+* Et ainsi de suite jusqu’à ce que la cinquième distribution de sortie indique ‘<eos>’, auquel est également associée une cellule du vocabulaire à 10 000 éléments
+  
+ <center>
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/big-five-personality-traits-score.png">
+    <figcaption>
+Résultat optimal
+  </figcaption>
+</figure>
+</center>
+
+
+Après avoir entraîné le modèle pendant suffisamment de temps sur un ensemble de données suffisamment important, nous pouvons espérer un résultat semblable à ceci :
+
+<center>
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/big-five-personality-traits-score.png">
+</figure>
+</center>
+
+Comme le modèle produit les sorties une à la fois, nous pouvons supposer que le modèle choisit le mot ayant la probabilité la plus élevée à partir de cette distribution de probabilité et jette le reste. C’est une façon faire (appellé greedy decoding).
+
+Une autre façon de le faire serait de s’accrocher, par exemple, aux deux premiers mots (disons,  » I  » et  » a  » par exemple), puis, à l’étape suivante, d’exécuter le modèle deux fois : une fois en supposant que la première position de sortie était le mot  » I « , et une autre fois en supposant que la première position de sortie était  » me ». La version la moins erronée étant retenue, en considérant les positions #1 et #2. Nous répétons ceci pour les positions #2 et #3, etc… Cette méthode est appelée « beam search ».
+
+Dans notre exemple, beam_size était deux (parce que nous avons comparé les résultats après avoir calculé les beams (faisceaux) pour les positions #1 et #2), et top_beams est aussi deux (puisque nous avons gardé deux mots). Ce sont deux hyperparamètres que vous pouvez expérimenter.
+<br><br><br>
+
+
+
+# <span style="color: #FF0000"> **14. Pour aller plus loin** </span>
+Lire l’article [Attention Is All You Need](https://arxiv.org/abs/1706.03762) (article original où est détaillé plus techniquement les paramètres utilisé pour les couches de normalisation, dropout, etc…), le Transformer blog ([Transformer: A Novel Neural Network Architecture for Language Understanding](https://ai.googleblog.com/2017/08/transformer-novel-neural-network.html)), et le [Tensor2Tensor announcement](https://ai.googleblog.com/2017/06/accelerating-deep-learning-research.html).
+
+Jouer avec le [Jupyter Notebook de Tensor2Tensor](https://colab.research.google.com/github/tensorflow/tensor2tensor/blob/master/tensor2tensor/notebooks/hello_t2t.ipynb) et plus généralement xxplorer le Github [Tensor2Tensor](https://github.com/tensorflow/tensor2tensor).
+
+Des articles sur divers travaux utilisant les transformers :
+* [Depthwise Separable Convolutions for Neural Machine Translation](https://arxiv.org/abs/1706.03059)
+* [One Model To Learn Them All](https://arxiv.org/abs/1706.05137)
+* [Discrete Autoencoders for Sequence Models](https://arxiv.org/abs/1801.09797)
+* [Generating Wikipedia by Summarizing Long Sequences](https://arxiv.org/abs/1801.10198)
+* [Image Transformer](https://arxiv.org/abs/1802.05751)
+* [Training Tips for the Transformer Model](https://arxiv.org/abs/1804.00247)
+* [Self-Attention with Relative Position Representations](https://arxiv.org/abs/1803.02155)
+* [Fast Decoding in Sequence Models using Discrete Latent Variables](https://arxiv.org/abs/1803.03382)
+* [Adafactor: Adaptive Learning Rates with Sublinear Memory Cost](https://arxiv.org/abs/1804.04235)
+<br><br><br>
+
+
+
+# <span style="color: #FF0000"> **Conclusion** </span>
+L’architecture du Transformer présentée dans cet article est une rupture technologique dans le domaine du NLP. ENORMEMENT d’autres modèles basé sur ce Transformer « original » ont été dévoilés depuis. Une petite liste non exhaustive :
+<br><br><br>
+TABLEAU A METTRE
+<br><br><br>
+
+
+
+Les architectures sont régulièrement améliorées (fine-tuning, augmentation du nombre de paramètres utilisés, ou au contraire diminution dans le cadre de version distillée, etc…). On peut citer par exemple GPT-2 qui est la seconde version du GPT, RoBERTa qui est une version optimisée de BERT, etc…
+De nouvelles architectures font également leur apparition chaque mois (pratiquement semaine).
+
+Tout ceci fait qu’il est actuellement difficile de pouvoir dire quel modèle se démarquera nettement des autres dans le futur et donc nous concentrer exclusivement sur celui-ci (on peut néanmoins noter que BERT a fait beaucoup de petits).
+
+Ainsi dans le cadre d’un projet, il est important de vous tenir régulièrement informés sur les dernières nouveautés (vous pouvez pour ça par exemple consulter le classement [Glue Benchmark](https://gluebenchmark.com/leaderboard) ). Procédez également à des tests pour déterminer le modèle le plus efficace pour votre problème (vous pouvez par exemple consulter le [Github de l’équipe d’Huggingface](https://github.com/huggingface/transformers) qui facilite grandement l’utilisation de nombreuses architectures de Transformers).
 
