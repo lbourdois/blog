@@ -126,3 +126,4 @@ tag_archive:
 
 markdown: kramdown
 mathjax: true
+use_math: true
