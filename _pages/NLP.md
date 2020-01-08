@@ -47,5 +47,5 @@ Les liens renvoient vers des articles du blog sauf mention contraire :
 - Les architectures issues du Transformer<br>
  Il en existe de nombreuses : une liste non exhaustive est disponible en conclusion de l’article de présentation du Transformer.<br>
 Je présente plus en détails celles que j’ai l’occasion d’utiliser professionnellement.<br>
-→ BERT : l’article de présentation et le tutoriel associé<br>
+→ BERT : l’[article de présentation](https://lbourdois.github.io/blog/nlp/BERT/) et le [tutoriel associé](https://github.com/lbourdois/notebooks_blog/blob/master/Tutoriel%20application%20de%20BERT%20via%20DistillBERT.ipynb)<br>
 → le GPT-2 : l’article de présentation<br>
