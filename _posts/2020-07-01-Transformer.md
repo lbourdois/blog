@@ -567,12 +567,9 @@ Des articles sur divers travaux utilisant les transformers :
 
 
 # <span style="color: #FF0000"> **Conclusion** </span>
-L’architecture du Transformer présentée dans cet article est une rupture technologique dans le domaine du NLP. ENORMEMENT d’autres modèles basé sur ce Transformer « original » ont été dévoilés depuis. Une petite liste non exhaustive :
-
-<br><br><br>
-TABLEAU A METTRE
-<br><br><br>
-
+L’architecture du Transformer présentée dans cet article est une rupture technologique dans le domaine du NLP. ENORMEMENT d’autres modèles basé sur ce Transformer « original » ont été dévoilés depuis.<br>
+Vous pouvez consulter une liste non exhaustive de ces architechtures dans l'article du blog [BLABLA]().
+<br>
 
 Les architectures sont régulièrement améliorées (fine-tuning, augmentation du nombre de paramètres utilisés, ou au contraire diminution dans le cadre de version distillée, etc…). On peut citer par exemple GPT-2 qui est la seconde version du GPT, RoBERTa qui est une version optimisée de BERT, etc…
 De nouvelles architectures font également leur apparition chaque mois (pratiquement semaine).
