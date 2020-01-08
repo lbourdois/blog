@@ -27,8 +27,4 @@ sidebar-sample:
       - title: "BERT"
         url: /nlp/
       - title: "ETRE AUTONOME AVEC LES AUTRES ARCHITECTURES"
-        children:
-          - title: "LES BASES DE DONNEES UTILISÉES DANS LES PUBLICATIONS SCIENTIFIQUES"
-          url: /nlp/
-          - title: "LES DIFFERENTS TOKENIZERS"
-          url: /nlp/
+        url: /nlp/
