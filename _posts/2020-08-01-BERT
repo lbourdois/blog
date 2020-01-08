@@ -1,0 +1,290 @@
+---
+title: "ILLUSTRATION De BERT"
+categories:
+  - NLP
+tags:
+  - BERT NLP expliqué en français
+  - Illustration de BERT en français NLP
+  - BERT NLP en français
+excerpt : "NLP"
+header :
+    overlay_image: "https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Transformer/Transformers_blog.png"
+toc: true
+toc_sticky: true
+author_profile: false
+sidebar:
+    nav: sidebar-sample
+    
+---
+
+
+# <span style="color: #FF0000"> **Avant-propos** </span>
+ 
+Cet article est la traduction de toute la partie de l’article de Jay Alammar [The illustrated BERT, ELMo, and co. (How NLP cracked transfer learning)](https://jalammar.github.io/illustrated-bert/) en lien avec le modèle BERT.   
+La partie en lien avec le modèle ELMo a été traduite dans un autre article du blog (voir [ici]()https://lbourdois.github.io/blog/nlp/RNN-LSTM-GRU-ELMO/). 
+<br><br><br>
+
+
+
+# <span style="color: #FF0000"> **Introduction** </span>
+L’année 2018 a été un point d’inflexion pour le NLP. Notre compréhension conceptuelle de la façon de représenter les mots et les phrases d’une manière qui reflète le mieux les significations et les relations sous-jacentes évolue rapidement.
+De plus, la communauté du NLP a mis au point des outils incroyablement puissants que vous pouvez télécharger et utiliser librement dans vos propres modèles et pipelines.
+<center>
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Transformer/the_transformer_3.png">
+ </figure>
+ </center>
+
+L’une des dernières étapes de ce développement est la [parution](https://ai.googleblog.com/2018/11/open-sourcing-bert-state-of-art-pre.html) de [BERT](https://github.com/google-research/bert) (Bidirectional Encoder Representations from Transformers), un événement décrit comme marquant le début d’une nouvelle ère pour le NLP.
+BERT est un modèle qui a battu plusieurs records concernant des tâches basées sur le langage.
+Peu après la publication de l’article décrivant le modèle, l’équipe a également ouvert le code du modèle et mis à disposition des versions téléchargeables du modèle qui étaient déjà pré-entrainées sur d’énormes ensembles de données.
+Il s’agit d’un développement capital car il permet à quiconque qui construit un modèle de machine learning impliquant le traitement du langage d’utiliser cette base économisant ainsi le temps, l’énergie, les connaissances et les ressources qui auraient été consacrés à la formation d’un modèle de traitement de langue à partir de zéro.
+<br><br>
+
+BERT s’appuie sur un certain nombre d’idées qui ont récemment fait leur apparition dans la communauté du NLP,
+notamment l’[apprentissage séquentiel semi-supervisé](https://arxiv.org/abs/1511.01432) (par Andrew Dai et Quoc Le),
+[ELMo](https://arxiv.org/abs/1802.05365) (par Matthew Peters et des chercheurs de AI2 et UW CSE), 
+[ULMFiT](https://arxiv.org/abs/1801.06146) (par Fast.ai Jeremy Howard et Sebastian Ruder), 
+le [OpenAI transformer](https://s3-us-west-2.amazonaws.com/openai-assets/research-covers/language-unsupervised/language_understanding_paper.pdf) (par les chercheurs Radford, Narasimhan, Salimans et Sutskever) 
+et le [Transformer](https://arxiv.org/pdf/1706.03762.pdf) (Vaswani et al).
+<center>
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Transformer/embeddings.png">
+  <figcaption>
+   Les deux étapes du développement de BERT. Vous pouvez télécharger le modèle pré-entrainé à l’étape 1 (entrainé sur des données non annotées), et ne vous préoccuper que de sa mise au point à l’étape.
+  </figcaption>
+</figure>
+</center>
+<br><br><br>
+
+
+
+# <span style="color: #FF0000"> **1. Les travaux ayant aboutis aux raisonnements utilisés dans BERT** </span>
+## <span style="color: #FF0000"> **1.1 Récapilatif sur le word embeddings** </span>
+Pour que les mots soient traités par les modèles d’apprentissage automatique, ils ont besoin d’une certaine forme de représentation numérique que les modèles peuvent utiliser dans leurs calculs. Word2Vec a montré que nous pouvons utiliser un vecteur (une liste de nombres) pour représenter correctement les mots d’une manière qui capture les relations sémantiques ou liées au sens. Par exemple la capacité de dire si les mots sont similaires, ou opposés, ou si une paire de mots comme « Stockholm » et « Suède » ont la même relation entre eux que « Le Caire » et « Egypte » ont entre eux. Cela prendre aussi en compte des relations syntaxiques, ou grammaticales (par exemple, la relation entre « avait » et « a » est la même que celle entre « était » et « est »).
+<br><br>
+
+La pratique a fait émergée que c’était une excellente idée d’utiliser des embeddings pré-entrainés sur de grandes quantités de données textuelles au lieu de les former avec le modèle sur ce qui était souvent un petit jeu de données. Il est donc devenu possible de télécharger une liste de mots et leurs embeddings générées par le pré-entraînement avec Word2Vec ou GloVe. Voici un exemple de l’embeddings GloVe du mot « stick » (avec une taille de vecteur de 200) :
+<center>
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Transformer/embeddings.png">
+  <figcaption>
+   Le GloVe word embedding  du mot  » stick  » – un vecteur de 200 float (arrondi à deux décimales près). Il se poursuit sur deux cents valeurs.
+  </figcaption>
+</figure>
+</center>
+Puisqu’ils sont grands et pleins de nombres, nous utiliserons la forme suivante dans les figures afin d’illustrer les vecteurs : 
+<center>
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Transformer/embeddings.png">
+</figure>
+</center>
+<br>
+<center>
+**Pour plus de détails, voir l’article du blog dédié au [word embedding](https://lbourdois.github.io/blog/nlp/word_embedding/)**
+</center>
+<br><br>
+
+## <span style="color: #FF0000"> **1.2 ELMo (l’importance du contexte)** </span>
+<center>
+**Pour plus de détails, voir l’article du blog dédié à [ELMo](https://lbourdois.github.io/blog/nlp/RNN-LSTM-GRU-ELMO/).**
+</center>
+<br><br>
+
+
+
+## <span style="color: #FF0000"> **1.3 ULM-FiT** </span>
+ULM-FiT a introduit des méthodes permettant d’utiliser efficacement une grande partie de ce que le modèle apprend au cours du pré-entrainement (plus que de simples embeddings et plus que des embeddings contextualisés). 
+ULM-FiT est ainsi un **moyen de transférer l’apprentissage** probablement aussi bien que la vision par ordinateur le permettait.
+<center>
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Transformer/embeddings.png">
+  <figcaption>
+   L'ULM-FiT de Fast.ai permet de faire du transfert d'apprentissage comme sur le principe de ce qui se fait en computer vision.
+   Une énorme avancée !
+  </figcaption>
+</figure>
+</center>
+<br><br>
+
+
+
+## <span style="color: #FF0000"> **1.4 Le Transformer (aller au-delà des LSTMs)** </span>
+La publication de l’article et du code sur le Transformer, mais surtout les résultats obtenus sur des tâches telles que la traduction automatique l’ont fait émerger comme un substitut aux LSTM. 
+Cette situation s’est accentuée du fait que que les Transformers traitent mieux les dépendances à long terme que les LSTM.
+<br>
+<center>
+**Pour plus de détails, voir l’article du blog dédié au [Transformer](https://lbourdois.github.io/blog/nlp/Transformer/)**
+</center>
+
+<br>
+La structure encodeur-décodeur du Transformer le rend très efficace pour la traduction automatique. 
+Mais comment l’utiliseriez-vous pour la classification des phrases ? 
+Comment l’utiliseriez-vous pour pré-entrainé un modèle linguistique qui peut être affiné pour d’autres tâches ?
+<br><br>
+
+
+
+## <span style="color: #FF0000"> **1.5 L’Open AI Transformer (Pré-entraînement d’un décodeur de Transformer pour la modélisation du langage)** </span>
+Il s’avère que nous n’avons pas besoin d’un Transformer complet pour adopter l’apprentissage par transfert dans le cadre de taches de NLP. Nous pouvons nous contenter du decoder du Transformer. Le decoder est un bon choix parce que c’est un choix naturel pour la modélisation du langage (prédire le mot suivant). En effet il est construit pour masquer les futurs tokens – une fonction précieuse lorsqu’il génère une traduction mot à mot.
+<center>
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Transformer/embeddings.png">
+  <figcaption>
+   L'ULM-FiT de Fast.ai permet de faire du transfert d'apprentissage comme sur le principe de ce qui se fait en computer vision.
+   Une énorme avancée !
+  </figcaption>
+</figure>
+</center>
+Le modèle empile douze couches de decoders. Puisqu’il n’y a pas d’encoder, les couches de decoders n’ont pas la sous-couche d’attention encoder-decoder comme dans le Transformer classique. Ils ont cependant toujours la couche d’auto-attention.
+
+Avec cette structure, nous pouvons procéder à l’entraînement du modèle sur la même tâche de modélisation du langage : prédire le mot suivant en utilisant des ensembles de données massifs (sans label). L’entraînement est réalisé sur 7.000 livres car ils permettent au modèle d’apprendre à associer des informations connexes même si elles sont séparées par beaucoup de texte – quelque chose que vous n’obtenez pas, par exemple, lorsque vous effectuez un entraînement avec des tweets, ou des articles.
+<center>
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Transformer/embeddings.png">
+</figure>
+</center>
+
+Maintenant que l’OpenAI Transformer est pré-entrainé et que ses couches ont été ajustées pour gérer raisonnablement le langage, nous pouvons commencer à l’utiliser pour des tâches plus spécialisées. L’article d’OpenAI décrit la structure à adopter différentes tâches :
+<center>
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Transformer/embeddings.png">
+</figure>
+</center>
+La version 2 du GPT est présentée dans un article du blog qui lui est dédié : [Illustration du GPT-2]() LIEN A METTRE !
+<br><br><br>
+
+
+
+# <span style="color: #FF0000"> **2. BERT : du decoder à l’encoder** </span>
+L’OpenAI Transformer nous a donné un modèle pré-entraîné finement paramétrable basé sur le Transformer. Mais il manque quelque chose dans cette transition des LSTM aux Transformers.       
+
+Le modèle linguistique d’ELMo est bidirectionnel, mais l’OpenAI Transformer ne forme qu’un modèle linguistique avancé. Pourrions-nous construire un modèle basé sur un Transformer dont le modèle linguistique regarde à la fois vers l’avant et vers l’arrière (dans le jargon technique :  » est conditionné à la fois par le contexte gauche et droit « ) ?  BERT a été conçu pour réaliser cela en utilisant une pile une pile d’encoders de Transformers entraînés.
+<br><br>
+
+
+## <span style="color: #FF0000"> **2.1 Architecture du modèle** </span>
+
+L’article présente deux tailles de modèles pour BERT :
+* BERT BASE de taille comparable à celle de l’OpenAI Transformer afin de comparer les performances.    
+* BERT LARGE, un modèle beaucoup plus grand qui a atteint l’état de l’art des résultats rapportés dans l’article.
+<center>
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Transformer/embeddings.png">
+</figure>
+</center>
+Les deux modèles BERT ont un grand nombre de couches d’encoders (appellées Transformer Block dans l’article d’origine) : douze pour la version de base, et vingt-quatre pour la version large. Ils ont également des réseaux feedforward plus grands (768 et 1024 unités cachées respectivement) et plus de têtes d’attention (12 et 16 respectivement) que la configuration par défaut dans l’implémentation initial du Transformer de Vaswani et al (6 couches de codeurs, 512 unités cachées, et 8 têtes d’attention).
+<br><br>
+
+
+## <span style="color: #FF0000"> **2.2 Entrées du modèle** </span>
+<center>
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Transformer/embeddings.png">
+</figure>
+</center>
+Le premier token d’entrée est un jeton spécial [CLS] pour des raisons qui apparaîtront plus tard. CLS est ici l’abréviation de Classification.
+
+Tout comme l’encoder du Transformer, BERT prend une séquence de mots en entrée qui remonte dans la pile. 
+Chaque couche applique l’auto-attention et transmet ses résultats à un réseau feed-forward, puis les transmet à l’encoder suivant.
+<center>
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Transformer/embeddings.png">
+</figure>
+</center>
+L’architecture est identique au Transformer jusqu’à présent (à part la taille, qui sont juste des configurations que nous pouvons définir).
+<br><br>
+
+rouver la bonne manière d’entraîner une pile d’encoders est un obstacle complexe que BERT résout en adoptant un concept de « modèle de langage masqué » (Masked LM en anglais) tiré de la littérature antérieure (il s’agit d’une Cloze task). Cette procédure consiste à prendre aléatoirement 15% des tokens en entrée puis à masquer 80% d’entre eux, en remplacer 10% par un autre token complètement aléatoire (un autre mot) et de ne rien faire dans le cas des 10% restant. L’objectif est que le modèle prédise correctement le token original modifié (via la coss entropy loss). Le modèle est donc obligé de conserver une représentation contextuelle distributionnelle de chaque jeton d’entrée.
+<center>
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Transformer/embeddings.png">
+</figure>
+</center>
+
+Afin d’améliorer BERT dans la gestion des relations existant entre plusieurs phrases, le processus de pré-entraînement comprend une tâche supplémentaire : étant donné deux phrases (A et B), B est-il susceptible d’être la phrase qui suit A, ou non ?
+<center>
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Transformer/embeddings.png">
+  <figcaption>
+   L'ULM-FiT de Fast.ai permet de faire du transfert d'apprentissage comme sur le principe de ce qui se fait en computer vision.
+   Une énorme avancée !
+  </figcaption>
+</figure>
+</center>
+<br><br>
+
+
+
+## <span style="color: #FF0000"> **2.3 Sorties du modèle** </span>
+Chaque position fournit un vecteur de taille hidden_size (768 dans BERT Base). Pour l’exemple de classification des phrases que nous avons examiné ci-dessus, nous nous concentrons uniquement sur la sortie de la première position (à laquelle nous avons passé le jeton spécial[CLS]).
+<center>
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Transformer/embeddings.png">
+</figure>
+</center>
+
+Ce vecteur peut maintenant être utilisé comme entrée pour un classificateur de notre choix. L’article obtient d’excellents résultats en utilisant simplement un réseau neuronal à une seule couche comme classificateur.
+<center>
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Transformer/embeddings.png">
+</figure>
+</center>
+Si vous avez plus de labels (par exemple si vous êtes un service de messagerie qui marque les e-mails avec « spam », « not spam », « social » et « promotion »), vous n’avez qu’à modifier le réseau du Classifier pour avoir plus de neurones de sortie qui passent ensuite par Softmax.
+<br><br>
+
+
+
+## <span style="color: #FF0000"> **2.4 Modèles spécifiques à une tâche** </span>
+<center>
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Transformer/embeddings.png">
+  <figcaption>
+   Le blog suivant fait un récapitulatif des informations liés à BERT sous la forme d’une F.A.Q : https://yashuseth.blog/2019/06/12/bert-explained-faqs-understand-bert-working/ (en anglais) 
+  </figcaption>
+</figure>
+</center>
+<br><br>
+
+
+
+## <span style="color: #FF0000"> **2.5 BERT pour l’extraction de features** </span>
+L’approche fine-tuning n’est pas l’unique manière d’utiliser BERT. Tout comme ELMo, vous pouvez utiliser BERT pré-entrainé pour créer des word embeddings contextualisés. Vous pouvez ensuite intégrer ces embeddings à votre modèle existant. 
+<center>
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Transformer/embeddings.png">
+</figure>
+</center>
+
+Quel vecteur fonctionne le mieux comme embedding contextualisé? Je pense que cela dépend de la tâche. L’article examine six choix (par rapport au modèle fine-tuned qui a obtenu une note de 96,4) :
+<center>
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Transformer/embeddings.png">
+</figure>
+</center>
+<br><br>
+
+
+
+## <span style="color: #FF0000"> **2.6 Test BERT** </span>
+La meilleure façon d’essayer BERT est d’utilise le notebook sur Google Colab : [BERT FineTuning with Cloud TPUs](https://colab.research.google.com/github/tensorflow/tpu/blob/master/tools/colab/bert_finetuning_with_cloud_tpus.ipynb). 
+Si vous n’avez jamais utilisé de TPU Cloud auparavant, c’est aussi un bon point de départ pour les essayer et le code BERT fonctionne également sur les TPU, CPU et GPU.
+
+L’étape suivante consisterait à examiner plus en détails le code contenu sur le Github de la publication de [BERT](https://github.com/google-research/bert) :
+* Le modèle est construit dans [modeling.py](https://github.com/google-research/bert/blob/master/modeling.py) (class BertModel) et est pratiquement identique à un  encoder du Transformer classique.
+* [run_classifier.py](https://github.com/google-research/bert/blob/master/run_classifier.py) est un exemple du processus fine-tuning. Il construit également la couche de classification pour le modèle supervisé. Si vous voulez construire votre propre classificateur, vérifiez la méthode create_model()dans ce fichier.
+* Plusieurs modèles pré-entraînés sont disponibles en téléchargement pour BERT Base et BERT Large : pour l’anglais, le chinois et un modèle multilingue couvrant 102 langues formées sur wikipedia.<br>
+Pour le français, voir le site  https://camembert-model.fr/ développé par l’Inria et Facebook (le modèle appliqué est [roBERTa](https://ai.facebook.com/blog/roberta-an-optimized-method-for-pretraining-self-supervised-nlp-systems/), l’architecture développée par Facebook inspirée de BERT de Google)
+* BERT ne considère pas les mots comme des tokens. Il regarde plutôt les WordPieces (par exemple : playing donne play + ##ing). [tokenization.py](https://github.com/google-research/bert/blob/master/tokenization.py) est le tokenizer qui transforme vos mots en wordPieces appropriés pour BERT.<br>
+Un article sur les différents tokenizers utilisés dans la litératture scientifique ets disponible sur le blog : METTRE LE LIEN
+<br><br>
+
+
+
+# <span style="color: #FF0000"> **Conclusion** </span>
+J’espère que cette présentation vous aura permis de comprendre les idées principales du modèle BERT.
+<br>
+Les auteurs de BERT réalise une comparaison avec ELMo et le GPT dans l’appendix de leur [article]5https://arxiv.org/pdf/1810.04805.pdf°.
+Cette appendix permet aussi de savoir comment est paramétrée chacune des étapes (le learning rate d’Adam utilisé, le nombre d’epochs appliqué, la taille des batchs, etc…).
+<br>
+Enfin, un tutoriel basique d’utilisation de ce modèle (classification binaire) est disponible dans un autre article du blog : LIEN A METTRE.
