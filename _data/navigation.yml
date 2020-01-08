@@ -22,9 +22,9 @@ sidebar-sample:
     url: /nlp/Transformer/
   - title: ARCHITECTURES ISSUES DU TRANSFORMER
     children:
-      - title: "LE GPT2"
-        url: /nlp/
       - title: "BERT"
+        url: /nlp/
+      - title: "LE GPT2"
         url: /nlp/
       - title: "LES TOKENIZERS"
         url: /nlp/
