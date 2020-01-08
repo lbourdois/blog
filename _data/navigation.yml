@@ -26,5 +26,9 @@ sidebar-sample:
         url: /nlp/
       - title: "BERT"
         url: /nlp/
+      - title: "LES TOKENIZERS"
+        url: /nlp/
+      - title: "LES BASES DE DONNEES UTILISÉES DANS LA LITERRATURE SCIENTIFIQUE"
+        url: /nlp/
       - title: "LES AUTRES ARCHITECTURES"
         url: /nlp/
