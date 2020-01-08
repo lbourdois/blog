@@ -17,11 +17,14 @@ sidebar:
 ---
 
 # <span style="color: #FF0000"> **Avant-propos** </span>
-L’architecture du Transformer présentée dans l'[article](https://lbourdois.github.io/blog/nlp/Transformer/) est une rupture technologique dans le domaine du NLP. ENORMEMENT d’autres modèles basé sur ce Transformer « original » ont été dévoilés depuis.<br>
-Les architectures sont régulièrement améliorées (fine-tuning, augmentation du nombre de paramètres utilisés, ou au contraire diminution dans le cadre de version distillée, etc…).<br>
-De nouvelles architectures font également leur apparition chaque mois (pratiquement semaine).<br>
-L'objectif de cet article est de présenter succintement quelques unes de ces architectures à savoir les principales utilisées en langue anglaise et en langue française.<br>
-Les architectures que j'ai eu l'occasion d'utiliser professionnellement font l'objet d'articles plus détaillés, à savoir le [GPT2]() et [BERT]()
+Les architectures que j'ai eu l'occasion d'utiliser professionnellement font l'objet d'articles détaillés, à savoir le [GPT2]() et [BERT]().
+Nénanmoins énormément d'autres architectures issues du Transformer existes. Le nombre de modèles étant conséquent, je ne prévois pas de faire une présentation détaillée de chacun.
+L'objectif de cet article est de faire un résumé succint de quelques unes de ces architectures notamment les principales utilisées en langue anglaise et en langue française.<br>
+
+
+Cet article est également le dernier de la série NLP. J'espère qu'après avoir lu les articles sur le [Transformer], le [GPT2], [BERT], [les Tokenizers] et les [Bases de données utilisées dans les articles scientifiques], le lecteur est capable de comprendre de lui même ces autres architectures.<br>
+
+Enfin, alors que les autres articles de la série NLP sont terminés, celui-ci à vocation à être actualisé au fur et à mesure de l'apparition de nouveaux modèles.
 <br><br><br>
 
 
