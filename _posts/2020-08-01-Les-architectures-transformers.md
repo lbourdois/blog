@@ -33,7 +33,7 @@ Enfin, alors que les autres articles de la série NLP sont terminés, celui-ci �
 
 | Modèle  | Description | Nb de paramètres  | Taille du vocabulaire  | Tokenizer utilisé  | Nb de tokens max pris en compte   |
 |:-:|:-:|:-:|:-:|:-:|:-:|
-| [GPT-2](https://openai.com/blog/better-language-models/) | Transformer unidirectionnel développé par OpenAI utilisant uniquement la partie decoder du Transformer original. | 4 versions : 124M, 355M, 774M ou 1.5 Mds  | 50K  | BPE  |  1024 |
+| [GPT-2](https://openai.com/blog/better-language-models/) | Transformer unidirectionnel développé par OpenAI utilisant uniquement la partie decoder du Transformer original. | 4 versions : 124M, 355M, 774M ou 1.5 Mds  | 50K  | BPE  |   |
 | [BERT](https://github.com/google-research/bert) |Transformer bidirectionnel développé par Google utilisant uniquement la partie encoder du Transformer original.   | Base : 108M, Large : 334M, XLarge : 1270M  | 30K  | WordPiece   |   |
 | [RoBERTa](https://github.com/pytorch/fairseq/tree/master/examples/roberta)  | Version optimisée de BERT développée par Facebook.   | Base : 125M, Large : 355M  | 50K | BPE |   |
 | [Distil*](https://github.com/huggingface/transformers/tree/master/examples/distillation)   | Versions distillées (plus petites donc plus rapides) de BERT, du GPT-2 et de RoBERTa développées par Huggingface.   | 66M pour DistillBERT, 82M pour DistillGPT2 et DistilRoBERTa  | Non communiqué   | Non communiqué   |   |
