@@ -31,7 +31,7 @@ Enfin, alors que les autres articles de la série NLP sont terminés, celui-ci �
 
 # <span style="color: #FF0000"> **Diverses architectures issues du Transformer** </span>
 
-| Modèle  | Description | Nb de paramètres  | Taille du vocabulaire  | Tokenizer utilisé  | Longueur max   |
+| Modèle  | Description | Nb de paramètres  | Taille du vocabulaire  | Tokenizer utilisé  | Nb max de tokens   |
 |:-:|:-:|:-:|:-:|:-:|:-:|
 | [GPT-2](https://openai.com/blog/better-language-models/) | Transformer unidirectionnel développé par OpenAI utilisant uniquement la partie decoder du Transformer original. | 4 versions : 124M, 355M, 774M ou 1.5 Mds  | 50K  | BPE  | 1024  |
 | [BERT](https://github.com/google-research/bert) |Transformer bidirectionnel développé par Google utilisant uniquement la partie encoder du Transformer original.   | Base : 108M, Large : 334M, XLarge : 1270M  | 30K  | WordPiece   |   |
