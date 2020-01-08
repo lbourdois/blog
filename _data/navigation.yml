@@ -20,9 +20,15 @@ sidebar-sample:
     url: /nlp/Seq2seq-et-attention/
   - title: LE TRANSFORMER
     url: /nlp/Transformer/
-  - title: ARCHITECHTURES ISSUES DU TRANSFORMERS
+  - title: ARCHITECHTURES ISSUES DU TRANSFORMER
     children:
       - title: "LE GPT2"
         url: /nlp/
       - title: "BERT"
+        url: /nlp/
+      - title: "ETRE AUTONOME AVEC LES AUTRES ARCHITECTURES"
+      children:
+       - title: "LES BASES DE DONNEES UTILISEES DANS LES PUBLICATIONS SCIENTIFIQUES"
+        url: /nlp/
+        - title: "LES DIFFERENTS TOKENIZERS"
         url: /nlp/
