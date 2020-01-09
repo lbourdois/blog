@@ -5,5 +5,4 @@ author_profile: true
 layout : single_index
 redirect_from: 
     - /about/
-    - /about.html
 ---
