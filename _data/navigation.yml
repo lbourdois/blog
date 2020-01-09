@@ -25,8 +25,8 @@ sidebar-sample:
       - title: "LE GPT2"
         url: /nlp/GPT2/
       - title: "LES TOKENIZERS"
-        url: /nlp/
+        url: /nlp/Les-tokenizers/
       - title: "LES BASES DE DONNEES UTILISÉES DANS LA LITERRATURE SCIENTIFIQUE"
-        url: /nlp/
+        url: /nlp/Les-bdd/
       - title: "LES AUTRES ARCHITECTURES"
         url: /nlp/Les-architectures-transformers/
