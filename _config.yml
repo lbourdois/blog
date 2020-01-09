@@ -16,7 +16,7 @@ minimal_mistakes_skin    : "default" # "air", "aqua", "contrast", "dark", "dirt"
 
 # Site Settings
 locale                   : "fr"
-title: Loïck BOURDOIS
+title: Blog personnel de Loïck BOURDOIS
 email:
 description: Blog personnel de Loïck BOURDOIS
 twitter_username: username
