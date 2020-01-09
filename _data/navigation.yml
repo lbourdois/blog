@@ -3,8 +3,6 @@ main:
     url: /posts/
   - title: "NLP"
     url: /nlp/
-#   - title: "Tags"
-#     url: /tags/
   - title: "A propos"
     url: /about/
 
