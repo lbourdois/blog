@@ -25,7 +25,7 @@ sidebar-sample:
       - title: "BERT"
         url: /nlp/BERT/
       - title: "LE GPT2"
-        url: /nlp/
+        url: /nlp/GPT2/
       - title: "LES TOKENIZERS"
         url: /nlp/
       - title: "LES BASES DE DONNEES UTILISÉES DANS LA LITERRATURE SCIENTIFIQUE"
