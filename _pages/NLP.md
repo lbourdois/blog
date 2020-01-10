@@ -30,7 +30,7 @@ Voici quelques exemples d’applications :
 Je les ai récapitulé dans l’ordre chronologique de leur apparition / popularité d’utilisation. 
 Les liens renvoient vers des articles du blog sauf mention contraire :
 - Le bag-of-word<br>
-→ l’[article de présentation](https://www.actuia.com/contribution/victorbigand/tutoriel-tal-pour-les-debutants-classification-de-texte/) (article externe au blog qui traite bien le sujet; je ne voyais pas l’intérêt de faire un doublon)
+→ l’[article de présentation](https://lbourdois.github.io/blog/nlp/Bag-of-word/)
     
 - Le word embedding<br>
 → l’[article de présentation](https://lbourdois.github.io/blog/nlp/word_embedding/)
