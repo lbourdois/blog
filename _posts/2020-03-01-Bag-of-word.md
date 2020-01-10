@@ -54,14 +54,16 @@ La complexité vient à la fois de la façon de concevoir le vocabulaire des mot
 Comme indiqué plus haut, je ne vais pas entrer dans les détails des différentes étapes de la méthode à savoir :
 * créer le vocabulaire de mots connus
 * et établir une mesure de la présence des mots connus.
-
+<br>
 Enonçons simplement les mots clés que vous pourrez ensuite chercher par vous même si les sites que je vous propose un peu plus loin n'ont pas répondu à toutes vos interogations.
-
+<br>
+  
 Le premier point lié au vocabulaire repose sur des étapes de : 
 * Normalisation du texte
 * Tokénization
 * Suppression des stopwords
 * Lemmatization (ou Stemming)
+<br>
 
 Le second point consacrée à la mesure peut être calculé de plusieurs manières différentes :
 *	Le comptage (compter le nombre de fois que chaque mot apparaît dans un document).
@@ -76,9 +78,19 @@ https://www.actuia.com/contribution/victorbigand/tutoriel-tal-pour-les-debutants
 explique bien le premier point TFIDF et a l'avantage de proposer la syntaxe python associée.
 - la [documentation de Scikit-learn](https://scikit-learn.org/stable/modules/feature_extraction.html#text-feature-extraction
 ) explique l'ensemble des techniques énoncées ainsi que les fonctions python utiles à la mise en place du BOW. Elle est cependant en anglais.
-
-
-Nous évoquons à l'instant la librairie Scikit-learn comme utile pour coder. Deux autres sont également fréquemment utilisées :
+<br>
+En plus de Scikit-learn évoqué à l'instanta, d'autres librairies Python sont également fréquemment utilisées :
 [Nltk](https://www.nltk.org/) (utilisée par Victor Bigand dans son tutoriel) et [SpaCy](https://spacy.io/).
+<br><br><br>
 
-pour ce qui est des librairies Python utiles
+
+
+# <span style="color: #FF0000"> **Conclusion** <span>
+Le bag-of-words model est très simple à comprendre et à mettre en œuvre.
+<br>
+Cette méthode souffre de néanmoins certaines lacunes :
+- le vocabulaire : pour être efficace, cette méthode exige que le vocabulaire soit conçut de manière extrêmement rigoureuse (les fautes d'orthographe par exemple peuvent poser problème)
+- le sens : ne pa sprendre en compte l’ordre des mots ne permet pas de prendre en compte le contexte et par conséquent le sens des mots dans le document (sémantique). 
+<br>
+Les méthodes présentées dans les autres articles du blog, permettent de prendre en compte ce problème.
+
