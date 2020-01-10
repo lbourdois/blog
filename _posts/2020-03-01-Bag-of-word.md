@@ -38,6 +38,7 @@ Le texte doit être converti en chiffres et notamment en vecteur.
 Un bag-of-words (BoW) est une représentation du texte qui décrit la présence de mots dans un document. Cela implique deux choses :
 *	Un vocabulaire de mots connus.
 * Une mesure de la présence des mots connus.
+
 Il s’agit d’un « sac » de mots, car toute information sur l’ordre ou la structure des mots dans le document est rejetée.
 Le modèle se préoccupe seulement de savoir si des mots connus se trouvent dans le document, et non pas où ils se trouvent dans le document.
 Ainsi, ** BoW il élimine toute l’information relative à l’ordre des mots** etmet l’accent sur l’occurrence des mots dans un document. 
