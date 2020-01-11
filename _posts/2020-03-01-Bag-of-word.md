@@ -6,7 +6,7 @@ tags:
   - bag of word en français
 excerpt : "NLP"
 header :
-    overlay_image: "https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Bag_of_word/BOW_blog.png"
+    overlay_image: "https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/BOW/BOW_blog.png"
 toc: true
 toc_sticky: true
 author_profile: false
