@@ -23,7 +23,7 @@ L'objectif de cet article est de faire un résumé succint de quelques unes de c
 
 
 Cet article est également le dernier de la série NLP.
-J'espère qu'après avoir lu les articles sur le [Transformer](https://lbourdois.github.io/blog/nlp/Transformer/), le [GPT2](https://lbourdois.github.io/blog/nlp/GPT2/), [BERT](https://lbourdois.github.io/blog/nlp/BERT/), [les Tokenizers](https://lbourdois.github.io/blog/nlp/Les-tokenizers/) et les [Bases de données utilisées dans les articles scientifiques](), le lecteur est capable de comprendre de lui même ces autres architectures.<br>
+J'espère qu'après avoir lu les articles sur le [Transformer](https://lbourdois.github.io/blog/nlp/Transformer/), le [GPT2](https://lbourdois.github.io/blog/nlp/GPT2/), [BERT](https://lbourdois.github.io/blog/nlp/BERT/), [les Tokenizers](https://lbourdois.github.io/blog/nlp/Les-tokenizers/) et les [Bases de données utilisées dans les articles scientifiques](https://lbourdois.github.io/blog/nlp/Taches-et-jeux-de-donnees-en-NLP/), le lecteur est capable de comprendre de lui même ces autres architectures.<br>
 
 Enfin, alors que les autres articles de la série NLP sont terminés, celui-ci à vocation à être actualisé au fur et à mesure de l'apparition de nouveaux modèles.
 <br><br><br>
