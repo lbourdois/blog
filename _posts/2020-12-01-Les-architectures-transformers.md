@@ -44,6 +44,7 @@ Enfin, alors que les autres articles de la série NLP sont terminés, celui-ci �
 | [ALBERT](https://github.com/google-research/google-research/tree/master/albert)   | Transformer développé par Google utilisant uniquement la partie encoder du Transformer original. C’est une version avec moins de paramètres de BERT permettant de réduire la consommation de mémoire et augmenter la vitesse d’entraînement.   | Base : 12M, Large : 18M, XLarge : 60M XXLarge : 235M  | 30K | SentencePiece    |
 | [BART](https://github.com/pytorch/fairseq/tree/master/examples/bart)   | Transformer développé par Facebook reprenant les parties encoder (bidirectionnel) et decoder (autorégressif) du Transformer original.   | Large : 400M  | Non communiqué dans le publication ou sur le GitHub   | BPE  | 
 | [T5](https://github.com/google-research/text-to-text-transfer-transformer)  | Transformer développé par Google reprenant les parties encoder et decoder du Transformer original.  | Base : 220M, Small : 60M, Large : 770M, Très Large : 2,8Mds et 11Mds.  | 32K  | SentencePiece  | 
+
 <br><br><br>
 
 
