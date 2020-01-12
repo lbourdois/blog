@@ -245,27 +245,27 @@ Résumons toutes ces étapes sous la forme d’un tableau et itérons le process
 
 <center>
 <figure class="image">
-  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/big-five-personality-traits-score.png">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Transformer/traitement_bonjour.png">
   <figcaption>
-  Tableau pour le traitement du mot « Bonjour »
+    Tableau pour le traitement du mot « Bonjour »
   </figcaption>
 </figure>
 </center>
 
 <center>
 <figure class="image">
-  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/big-five-personality-traits-score.png">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Transformer/traitement_je.png">
   <figcaption>
-  Tableau pour le traitement du mot « je »
+    Tableau pour le traitement du mot « je »
   </figcaption>
 </figure>
 </center>
 
 <center>
 <figure class="image">
-  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/big-five-personality-traits-score.png">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Transformer/traitement_suis.png">
   <figcaption>
-  Tableau pour le traitement du mot « suis »
+    Tableau pour le traitement du mot « suis »
   </figcaption>
 </figure>
 </center>
