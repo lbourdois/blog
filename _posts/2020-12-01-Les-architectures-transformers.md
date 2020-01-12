@@ -44,5 +44,14 @@ Enfin, alors que les autres articles de la série NLP sont terminés, celui-ci �
 | [ALBERT](https://github.com/google-research/google-research/tree/master/albert)   | Transformer développé par Google utilisant uniquement la partie encoder du Transformer original. C’est une version avec moins de paramètres de BERT permettant de réduire la consommation de mémoire et augmenter la vitesse d’entraînement.   | Base : 12M, Large : 18M, XLarge : 60M XXLarge : 235M  | 30K | SentencePiece    |
 | [BART](https://github.com/pytorch/fairseq/tree/master/examples/bart)   | Transformer développé par Facebook reprenant les parties encoder (bidirectionnel) et decoder (autorégressif) du Transformer original.   | Large : 400M  | Non communiqué dans le publication ou sur le GitHub   | BPE  | 
 | [T5](https://github.com/google-research/text-to-text-transfer-transformer)  | Transformer développé par Google reprenant les parties encoder et decoder du Transformer original.  | Base : 220M, Small : 60M, Large : 770M, Très Large : 2,8Mds et 11Mds.  | 32K  | SentencePiece  | 
+<br><br><br>
 
 
+
+# <span style="color: #FF0000"> **Conclusion** </span>
+Les architectures sont régulièrement améliorées (fine-tuning, augmentation du nombre de paramètres utilisés, ou au contraire diminution dans le cadre de version distillée, etc…). On peut citer par exemple GPT-2 qui est la seconde version du GPT, RoBERTa qui est une version optimisée de BERT, etc…
+De nouvelles architectures font également leur apparition chaque mois (pratiquement semaine).
+
+Tout ceci fait qu’il est actuellement difficile de pouvoir dire quel modèle se démarquera nettement des autres dans le futur et donc nous concentrer exclusivement sur celui-ci (on peut néanmoins noter que BERT a fait beaucoup de petits).
+
+Ainsi dans le cadre d’un projet, il est important de vous tenir régulièrement informés sur les dernières nouveautés (vous pouvez pour ça par exemple consulter le classement [Glue Benchmark](https://gluebenchmark.com/leaderboard) ). Procédez également à des tests pour déterminer le modèle le plus efficace pour votre problème (vous pouvez par exemple consulter le [Github de l’équipe d’Huggingface](https://github.com/huggingface/transformers) qui facilite grandement l’utilisation de nombreuses architectures de Transformers).
