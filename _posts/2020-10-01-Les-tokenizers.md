@@ -1,5 +1,5 @@
 ---
-title: "LEs TOKENIZERS"
+title: "LES TOKENIZERS"
 categories:
   - NLP
 tags:
