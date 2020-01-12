@@ -26,7 +26,7 @@ sidebar-sample:
         url: /nlp/GPT2/
       - title: "LES TOKENIZERS"
         url: /nlp/Les-tokenizers/
-      - title: "LES BASES DE DONNEES UTILISÉES DANS LA LITERRATURE SCIENTIFIQUE"
-        url: /nlp/Les-bdd/
+      - title: "TACHES ET JEUX DE DONNÉES TEST FREQUEMENT UTILISÉS DANS LES PUBLICATIONS DE NLP"
+        url: /nlp/Taches-et-jeux-de-donnees-en-NLP/
       - title: "LES AUTRES ARCHITECTURES"
         url: /nlp/Les-architectures-transformers/
