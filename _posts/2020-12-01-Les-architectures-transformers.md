@@ -7,7 +7,7 @@ tags:
   - Transformer NLP en français
 excerpt : "NLP"
 header :
-    overlay_image: "https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Transformer/Transformers_blog.png"
+    overlay_image: "https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/images/NLP_radom_blog.png"
 toc: true
 toc_sticky: true
 author_profile: false
@@ -17,12 +17,13 @@ sidebar:
 ---
 
 # <span style="color: #FF0000"> **Avant-propos** </span>
-Les architectures que j'ai eu l'occasion d'utiliser professionnellement font l'objet d'articles détaillés, à savoir le [GPT2]() et [BERT]().
+Les architectures que j'ai eu l'occasion d'utiliser professionnellement font l'objet d'articles détaillés, à savoir le [GPT2](https://lbourdois.github.io/blog/nlp/GPT2/) et [BERT](https://lbourdois.github.io/blog/nlp/BERT/).
 Nénanmoins énormément d'autres architectures issues du Transformer existes. Le nombre de modèles étant conséquent, je ne prévois pas de faire une présentation détaillée de chacun.
 L'objectif de cet article est de faire un résumé succint de quelques unes de ces architectures notamment les principales utilisées en langue anglaise et en langue française.<br>
 
 
-Cet article est également le dernier de la série NLP. J'espère qu'après avoir lu les articles sur le [Transformer](), le [GPT2](), [BERT](), [les Tokenizers]() et les [Bases de données utilisées dans les articles scientifiques](), le lecteur est capable de comprendre de lui même ces autres architectures.<br>
+Cet article est également le dernier de la série NLP.
+J'espère qu'après avoir lu les articles sur le [Transformer](https://lbourdois.github.io/blog/nlp/Transformer/), le [GPT2](https://lbourdois.github.io/blog/nlp/GPT2/), [BERT](https://lbourdois.github.io/blog/nlp/BERT/), [les Tokenizers](https://lbourdois.github.io/blog/nlp/Les-tokenizers/) et les [Bases de données utilisées dans les articles scientifiques](), le lecteur est capable de comprendre de lui même ces autres architectures.<br>
 
 Enfin, alors que les autres articles de la série NLP sont terminés, celui-ci à vocation à être actualisé au fur et à mesure de l'apparition de nouveaux modèles.
 <br><br><br>
