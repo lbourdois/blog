@@ -568,13 +568,5 @@ Des articles sur divers travaux utilisant les transformers :
 
 # <span style="color: #FF0000"> **Conclusion** </span>
 L’architecture du Transformer présentée dans cet article est une rupture technologique dans le domaine du NLP. ENORMEMENT d’autres modèles basé sur ce Transformer « original » ont été dévoilés depuis.<br>
-Vous pouvez consulter une liste non exhaustive de ces architechtures dans l'article du blog [BLABLA]().
-<br>
-
-Les architectures sont régulièrement améliorées (fine-tuning, augmentation du nombre de paramètres utilisés, ou au contraire diminution dans le cadre de version distillée, etc…). On peut citer par exemple GPT-2 qui est la seconde version du GPT, RoBERTa qui est une version optimisée de BERT, etc…
-De nouvelles architectures font également leur apparition chaque mois (pratiquement semaine).
-
-Tout ceci fait qu’il est actuellement difficile de pouvoir dire quel modèle se démarquera nettement des autres dans le futur et donc nous concentrer exclusivement sur celui-ci (on peut néanmoins noter que BERT a fait beaucoup de petits).
-
-Ainsi dans le cadre d’un projet, il est important de vous tenir régulièrement informés sur les dernières nouveautés (vous pouvez pour ça par exemple consulter le classement [Glue Benchmark](https://gluebenchmark.com/leaderboard) ). Procédez également à des tests pour déterminer le modèle le plus efficace pour votre problème (vous pouvez par exemple consulter le [Github de l’équipe d’Huggingface](https://github.com/huggingface/transformers) qui facilite grandement l’utilisation de nombreuses architectures de Transformers).
-
+J'entre plus en détails pour deux d'entre elles que j'ai eu l'occasion d'utiliser professionnelement : [BERT](https://lbourdois.github.io/blog/nlp/BERT/) et le [GPT2](https://lbourdois.github.io/blog/nlp/GPT2/).
+Pour les autres architectures, vous pouvez consulter une liste non exhaustive dans cet [article](https://lbourdois.github.io/blog/nlp/Les-architectures-transformers/) du blog.
