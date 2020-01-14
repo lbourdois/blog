@@ -35,8 +35,6 @@ Le modèle doit répondre à une série de questions en lien avec un jeu de donn
  Exemple de questions provenant de la base de données SquAD. Cet exemple est en lien avec les Normands mais de nombreux autres thèmes sont disponibles. De plus, seul le premier paragraphe est montré ici. Le texte intégral en comprend 38 autres.</figcaption>
 </figure>
 </center>
-<br>
-
  
 Les jeux de données anglophones communs : 
 - [SQuAD](https://rajpurkar.github.io/SQuAD-explorer/) (Stanford Question Answering Dataset): Un jeu de données sur la compréhension de la lecture, composé de questions posées sur un ensemble d’articles de Wikipédia, où la réponse à chaque question est un intervalle de texte.
