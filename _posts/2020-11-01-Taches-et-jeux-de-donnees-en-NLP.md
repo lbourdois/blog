@@ -30,7 +30,7 @@ La présentation des jeux de données anglophones se base sur l’[article de Li
 Le modèle doit répondre à une série de questions en lien avec un jeu de données test. Certaines questions peuvent ne pas avoir de réponses. Exemple : 
 <center>
 <figure class="image">
-  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/GPT2/transformer-encoder-block-2.png">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Taches-et-BDD/Questions-R%C3%A9ponses.png">
   <figcaption>
  Exemple de questions provenant de la base de données SquAD. Cet exemple est en lien avec les Normands mais de nombreux autres thèmes sont disponibles. De plus, seul le premier paragraphe est montré ici. Le texte intégral en comprend 38 autres.</figcaption>
 </figure>
@@ -49,7 +49,7 @@ Les jeux de données anglophones communs :
 Parmi un choix de propositions (souvent entre 2 et 4), le modèle doit choisir laquelle est la plus vraisemblable étant donné le texte fournit en entrée. Exemple :
 
 | Texte  | Proposition 1 (la plus vraisemblable) | Proposition 2  | 
-| Gina a égaré son téléphone chez ses grands-parents. Il n’était nulle part dans le salon. Elle a réalisé qu’elle était dans la voiture avant. Elle a pris les clés de son père et est sortie en courant.|	Elle a trouvé son téléphone dans la voiture.	Elle ne voulait plus son téléphone.|
+| Gina a égaré son téléphone chez ses grands-parents. Il n’était nulle part dans le salon. Elle a réalisé qu’elle était dans la voiture avant. Elle a pris les clés de son père et est sortie en courant.|	Elle a trouvé son téléphone dans la voiture. | Elle ne voulait plus son téléphone.|
 
 <br>
 Les jeux de données anglophones communs : 
