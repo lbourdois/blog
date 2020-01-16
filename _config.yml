@@ -60,7 +60,7 @@ plugins:
 author:
   name   : "Loïck BOURDOIS"
   avatar : "/assets/images/bio-photo.jpg"
-  bio              : "Passionné d'IA appliqué au domaine de la santé"
+  bio              : "Passionné d'IA appliquée au domaine de la santé"
   location         : "En francophonIA"
   links:
     - label: "Email"
