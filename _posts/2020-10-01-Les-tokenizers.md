@@ -35,11 +35,11 @@ Dans cet article, nous nous focaliserons donc sur le prétrainement en passent e
 
 # <span style="color: #FF0000"> **Vue d’ensemble** </span>
 Les modèles d’apprentissage machine nécessitent des entrées sous la forme de nombre pour pouvoir fonctionner. Le prétraitement est essentiellement le processus qui consiste à prendre un morceau de texte brut et à le convertir en nombres. Par conséquent, pour la plupart des applications, le prétraitement peut être divisé en trois étapes :
-- Étape 1 : Normalisation (nettoyage)
+- Étape 1 : Normalisation (nettoyage)<br>
 C'est là que nous nettoyons les données à l'avance pour éliminer les entrées non désirées et pour convertir certains caractères/séquences en formes canoniques.
-- Etape 2 : Segmentation (Tokenisation)
+- Etape 2 : Segmentation (Tokenisation)<br>
 C'est là que nous divisons le flux continu de caractères en entités. C'est probablement l'étape la plus complexe du processus et sera un point majeur de l’article.
-- Étape 3 : Numérisation
+- Étape 3 : Numérisation<br>
 C'est là que nous convertissons les entités textuelles en nombres/id pour pouvoir les fournir à  notre modèle. Bien que simple, cette étape peut introduire quelques problèmes désagréables dont nous parlerons plus tard.
 
 
@@ -51,19 +51,19 @@ Notez que ces étapes ne sont pas toujours clairement divisées. Par exemple, ce
 # <span style="color: #FF0000"> **1. Étape 1 : Normalisation (nettoyage)** </span>
 Dans le contexte du prétraitement en NLP, la normalisation se réfère au processus de nettoyage de l'entrée et de mise en correspondance des caractères/mots avec une forme canonique.
 
-Un exemple très simple de normalisation est de mettre tous les caractères en minuscule. Cela permet d'éviter que des mots comme " Hello " et " hello " soient traités différemment. La similarité entre ces mots est claire pour un humain, mais lorsqu'ils sont simplement mis en correspondance avec un seul entier, le modèle en aval n'a aucun moyen de comprendre qu'il s'agit du même mot sous-jacent. La normalisation permet d'éviter cette divergence.
+Un exemple très simple de normalisation est de mettre tous les caractères en minuscule. Cela permet d'éviter que des mots comme "Hello" et "hello" soient traités différemment. La similarité entre ces mots est claire pour un humain, mais lorsqu'ils sont simplement mis en correspondance avec un seul entier, le modèle en aval n'a aucun moyen de comprendre qu'il s'agit du même mot sous-jacent. La normalisation permet d'éviter cette divergence.
 
 Voici quelques autres étapes de normalisation que vous pourriez vouloir utiliser : 
 - Gérer les caractères répétitifs (par exemple "cooooool" -> "cool")
 - Manipulation des homoglyphes (par exemple "$tupide" -> "stupide")
-- Transformation des entrées spéciales telles que les URL, les adresses e-mail et les balises HTML à une forme canonique (par exemple "http://www.foo.com/bar" -> "[URL]")
+- Transformation des entrées spéciales telles que les URL, les adresses e-mail et les balises HTML à une forme canonique (par exemple "https://lbourdois.github.io/blog/nlp/Les-tokenizers/" -> "[URL]")
 - Normalisation unicode
 Je suppose que certains lecteurs n'ont jamais entendu parler de la normalisation unicode avant, donc je vais donner un rapide aperçu. En unicode, certains caractères qui sont effectivement les mêmes peuvent être représentés de plusieurs façons. Par exemple, le caractère ë peut être représenté comme un seul caractère unicode "ë" ou deux caractères unicode : le caractère "e" et un accent. La normalisation Unicode fait correspondre ces deux caractères à une forme unique et canonique. Pour plus de détails vous pouvez lire ce [post](https://withblue.ink/2019/03/11/why-you-need-to-normalize-unicode-strings.html) (en anglais).
 
 
 Vient maintenant la question importante : quels types de normalisation devrions-nous réellement appliquer ? Bien sûr, il n'y a pas de réponse claire à cette question, mais voici quelques lignes directrices et facteurs à prendre en considération :
-- Quelle quantité d'informations cruciales la normalisation supprime-t-elle ? Par exemple, dans les médias sociaux, dire "HELLO" et "Hello" peut avoir des nuances différentes. En même temps, traiter différemment "Hello world" et "hello world" peut ne pas avoir beaucoup de sens. Parfois, la majuscule peut indiquer une information grammaticale importante, comme le fait qu'un mot est un nom propre (p. ex., " New York "). 
-- De combien de données disposez-vous ? Si vous avez des quantités massives de données, vous aurez probablement besoin de moins de normalisation puisque le modèle pourrait simplement apprendre que " Hello " et " hello " sont le même mot sous-jacent à partir de leurs distrubutions. Mais pour la plupart des applications de NLP, vous n'avez pas un si grand corpus de données, donc vous pourriez une plus grande normalisation.
+- Quelle quantité d'informations cruciales la normalisation supprime-t-elle ? Par exemple, dans les médias sociaux, dire "HELLO" et "Hello" peut avoir des nuances différentes. En même temps, traiter différemment "Hello world" et "hello world" peut ne pas avoir beaucoup de sens. Parfois, la majuscule peut indiquer une information grammaticale importante, comme le fait qu'un mot est un nom propre (p. ex., "New York"). 
+- De combien de données disposez-vous ? Si vous avez des quantités massives de données, vous aurez probablement besoin de moins de normalisation puisque le modèle pourrait simplement apprendre que "Hello" et "hello" sont le même mot sous-jacent à partir de leurs distrubutions. Mais pour la plupart des applications de NLP, vous n'avez pas un si grand corpus de données, donc vous pourriez une plus grande normalisation.
 - Une grande taille de vocabulaire est-elle préjudiciable à votre application ? Moins de normalisation tend à conduire à un vocabulaire plus important, bien que cela dépende du type de tokenisation que vous utilisez. Si vous entraînez un modèle génératif, la couche softmax de sortie peut être un goulot d'étranglement majeur, et une taille de vocabulaire plus importante peut ralentir l'entraînement de manière significative. Cela peut aussi causer des problèmes de mémoire, qui peuvent nécessiter des tailles de lot plus petites, ralentissant encore plus la l’entraînement.
 <br><br><br>
 
@@ -85,8 +85,7 @@ Cela serait divisé en :
 
 Remarquez que le point est annexé au dernier mot. Nous ne voulons probablement pas cela, puisque le mot " télescope " a la même signification qu’il soit avec un point ou non. 	  Cette approche est donc fortement déconseillée ! 
 
-Une approche légèrement meilleure et qui fonctionne dans bien des cas consiste à utiliser des jetons basés sur la ponctuation comme :  
-<br>
+Une approche légèrement meilleure et qui fonctionne dans bien des cas consiste à utiliser des jetons basés sur la ponctuation comme :<br>  
 “I”, “saw”, “a”, “girl”, “with”, “a”, “telescope”, “.”
 <br>
 
@@ -179,14 +178,14 @@ Enfin, nous fusionnons "b" et "ed" car cette paire de symboles apparaît égalem
 Bien sûr, nous voulons faire la distinction entre "ed" comme un seul mot et le suffixe "ed", donc en réalité nous représenterions le suffixe comme "##ed". (Si ce symbole "##" préfixé vous semble familier, c'est parce que de nombreux modèles modernes pré-entrainés utilisent la tokenisation de sous-mots ; en d'autres termes, si vous voyez vos entrées tokénisées de cette façon, il est probable qu'il y ait une tokenisation de sous-mots qui se déroule quelque part dans les coulisses).
 
 L'exemple ci-dessus utilise des mots individuels, ce qui soulève la question suivante : que se passe-t-il lorsque nous utilisons des phrases entières ? Une des caractéristiques délicates du BPE est qu'il commence par tokeniser l'entrée, et ne fusionne que les bigrammes de symboles dans un seul token. C'est pour l'efficacité du calcul, puisque trouver le bigramme le plus fréquent est une opération coûteuse (s'il y a N symboles, c'est une opération O(N²) faite naïvement).
-Une autre question que vous pourriez vous poser est de savoir ce qui se passe si nous rencontrons un caractère unicode inédit dans le vocabulaire. Il existe plusieurs solutions à ce problème. L'une d'entre elles consiste simplement à associer des caractères invisibles à un Token " INCONNU ". Une autre est d'allouer un id à chaque caractère unicode possible même si nous ne le rencontrons pas dans le texte (ce n'est clairement pas réaliste, et c'est plus pour le plaisir de l'argumentation).
+Une autre question que vous pourriez vous poser est de savoir ce qui se passe si nous rencontrons un caractère unicode inédit dans le vocabulaire. Il existe plusieurs solutions à ce problème. L'une d'entre elles consiste simplement à associer des caractères invisibles à un Token "INCONNU". Une autre est d'allouer un id à chaque caractère unicode possible même si nous ne le rencontrons pas dans le texte (ce n'est clairement pas réaliste, et c'est plus pour le plaisir de l'argumentation).
 
 Une approche intelligente proposée par Open AI dans son [article sur le GPT-2](https://d4mucfpksywv.cloudfront.net/better-language-models/language_models_are_unsupervised_multitask_learners.pdf) est de traiter l'entrée comme une séquence d'octets au lieu de caractères unicode, et d'attribuer un identifiant à chaque octet possible. Puisque les caractères unicode sont représentés par un nombre variable d'octets, même si nous rencontrons un tout nouveau caractère, nous pouvons le décomposer en ses octets constitutifs dans le pire des cas, empêchant ainsi l'apparition de tokens inconnus.
 <br><br>
 
 
 ### <span style="color: #51C353"> **2.3.2 Wordpiece** </span>
-Peut-être le plus célèbre en raison de son utilisation dans BERT, Wordpiece est un autre algorithme de tokenisation en sous-mots largement utilisé. L'algorithme (décrit dans cet [article](https://static.googleusercontent.com/media/research.google.com/ja//pubs/archive/37842.pdf) ) est en fait pratiquement identique à BPE. La seule différence est qu'au lieu de fusionner le bigramme de symbole le plus fréquent, le modèle fusionne le bigramme qui, une fois fusionné, augmenterait la probabilité d'un modèle de langage unigramme entrainé sur les données d’entraînement.
+Peut-être le plus célèbre en raison de son utilisation dans BERT, Wordpiece est un autre algorithme de tokenisation en sous-mots largement utilisé. L'algorithme (décrit dans cet [article](https://static.googleusercontent.com/media/research.google.com/ja//pubs/archive/37842.pdf)) est en fait pratiquement identique à BPE. La seule différence est qu'au lieu de fusionner le bigramme de symbole le plus fréquent, le modèle fusionne le bigramme qui, une fois fusionné, augmenterait la probabilité d'un modèle de langage unigramme entrainé sur les données d’entraînement.
 <br>
 
 Attention. Ici et jusqu’à la fin du paragraphe, je traduis ce que l’auteur de l’article original à compris de cette méthode. En effet, il précise qu’il n’a pas trouvé de code source d’une implémentation de cette méthode et n’a donc pas pû la décortiquer en entier. Il explique donc ce qu’il a compris mais précise qu’il n’exclut pas de s’être tromper en abscence de code pour confirmer ou infirmer ses explications.
@@ -196,7 +195,7 @@ En supposant que nous fusionnons les symboles x et y, l'augmentation du logarith
 
 $$ \log p(x,y) - \log p(x) - \log p(y) = \log \displaystyle \frac{\log p(x) }{\log p(x) \log p(y) }  $$ 
  
-De nouveau, si le raisonnement est correct, ceci est donc équivalent à l'information mutuelle entre deux symboles, donc wordpiece peut être considéré comme une variante de BPE qui fusionne sur la base de l'information mutuelle au lieu de la fréquence.
+De nouveau, si le raisonnement est correct, ceci est donc équivalent à l'information mutuelle entre deux symboles, donc wordpiece peut être considéré comme une variante de BPE qui fusionne sur la base de l'information mutuelle au lieu de la fréquence.<br>
 [RoBERTa](https://arxiv.org/pdf/1907.11692.pdf) est une version « optimisée » de BERT. Dans leur publication, les auteurs utilisent BPE au lieu du Wordpiece de BERT, et ont trouvé que cette décision ne faisait pas une grande différence.
 <br><br>
 
@@ -227,7 +226,7 @@ Un autre problème subtil créé par la prétokenisation est qu'elle rend la dé
 <br>
 et
 <br>
-“I &nbsp;&nbsp;&nbsp;  like &nbsp;&nbsp;&nbsp;  natural &nbsp;&nbsp;&nbsp; language &nbsp;&nbsp;&nbsp;  processing”
+“I&nbsp;&nbsp;&nbsp;like &nbsp;&nbsp;&nbsp;natural&nbsp;&nbsp;&nbsp;language&nbsp;&nbsp;&nbsp;processing”
 <br>
 de la même manière, ce qui signifie que nous ne pouvons pas récupérer la forme de la phrase originale.
 <br>
@@ -236,7 +235,7 @@ de la même manière, ce qui signifie que nous ne pouvons pas récupérer la for
 <br>
 “I”, “_like”, “_natural”, “_lang”, “uage”, “_process”, “ing”
 <br>
-où le caractère espace est remplacé par le trait de soulignement (" _ ") pour plus de clarté.
+où le caractère espace est remplacé par le trait de soulignement ("&nbsp;_&nbsp;") pour plus de clarté.
 <br>
 Notez la distinction avec BPE, où la séquence ci-dessus avec les mêmes sous-mots pourrait être tokénisée par
 <br>
@@ -322,7 +321,7 @@ Cet [article](https://arxiv.org/pdf/1911.00359.pdf) traite de diverses préoccup
 
 
 ## <span style="color: #FFBF00"> **4.2 Preprocessing as Data Augmentation** </span>
-Le fait que les décisions de prétraitement sont quelque peu arbitraires et peuvent causer du bruit peut en fait être utilisé à notre avantage. Par exemple, un modèle qui est entrainé sur des données d'entrée entièrement en minuscules et un modèle qui est entrainé avec du surajustements peuvent être assemblés efficacement. Keita Kurita (l’auteur de l’article dont fait l’objet cette traduction) a utilisé cette technique pour se classer dans le top [1  % d'une compétition Kaggle] (http://mlexplained.com/2019/04/01/tricks-and-lessons-learned-from-getting-into-the-top-1-of-a-kaggle-competition/). Dans certains concours Kaggle de NLP, l'assemblage de plusieurs modèles en utilisant différentes étapes de prétraitement a été la clé de la victoire. 
+Le fait que les décisions de prétraitement sont quelque peu arbitraires et peuvent causer du bruit peut en fait être utilisé à notre avantage. Par exemple, un modèle qui est entrainé sur des données d'entrée entièrement en minuscules et un modèle qui est entrainé avec du surajustements peuvent être assemblés efficacement. Keita Kurita (l’auteur de l’article dont fait l’objet cette traduction) a utilisé cette technique pour se classer dans le top [1  % d'une compétition Kaggle](http://mlexplained.com/2019/04/01/tricks-and-lessons-learned-from-getting-into-the-top-1-of-a-kaggle-competition/). Dans certains concours Kaggle de NLP, l'assemblage de plusieurs modèles en utilisant différentes étapes de prétraitement a été la clé de la victoire. 
 L'idée d'utiliser le prétraitement comme augmentation des données est explorée dans cet [article](https://arxiv.org/abs/1804.10959) où les auteurs utilisent un modèle de langage unigramme pour échantillonner des tokenisations légèrement différentes du même texte. 
 <br><br>
 
