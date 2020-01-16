@@ -226,7 +226,7 @@ Un autre problème subtil créé par la prétokenisation est qu'elle rend la dé
 <br>
 et
 <br>
-“I&nbsp;&nbsp;&nbsp;like &nbsp;&nbsp;&nbsp;natural&nbsp;&nbsp;&nbsp;language&nbsp;&nbsp;&nbsp;processing”
+“I &nbsp;&nbsp;&nbsp; like &nbsp;&nbsp;&nbsp; natural &nbsp;&nbsp;&nbsp; language &nbsp;&nbsp;&nbsp; processing”
 <br>
 de la même manière, ce qui signifie que nous ne pouvons pas récupérer la forme de la phrase originale.
 <br>
@@ -235,7 +235,7 @@ de la même manière, ce qui signifie que nous ne pouvons pas récupérer la for
 <br>
 “I”, “_like”, “_natural”, “_lang”, “uage”, “_process”, “ing”
 <br>
-où le caractère espace est remplacé par le trait de soulignement ("&nbsp;_&nbsp;") pour plus de clarté.
+où le caractère espace est remplacé par le trait de soulignement (" _ ") pour plus de clarté.
 <br>
 Notez la distinction avec BPE, où la séquence ci-dessus avec les mêmes sous-mots pourrait être tokénisée par
 <br>
