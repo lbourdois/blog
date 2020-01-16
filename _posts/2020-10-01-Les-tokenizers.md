@@ -1,5 +1,5 @@
 ---
-title: "LES TOKENIZERS"
+title: "LE PRETRAITEMENT ET LES TOKENIZERS EN NLP"
 categories:
   - NLP
 tags:
