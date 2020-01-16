@@ -104,7 +104,7 @@ Spacy permet à l'utilisateur de spécifier des tokens spéciaux qui ne seront p
 
 <center>
 <figure class="image">
-  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/GPT2/transformer-encoder-block-2.png">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Tokenizers/Spacy.png">
   <figcaption> Exemple de comment fonctionne le tokenizer Spacy
   </figcaption>
 </figure>
@@ -150,28 +150,28 @@ BPE est un algorithme de tokenisation ascendante de sous-mots qui apprend un voc
 Pour illustrer cela, prenons un exemple. Supposons que nous ayons les mots " bed ", " ted ", " sad ", " beds " et " mad " à partir desquels nous voulons construire un vocabulaire BPE de taille 10. Nous commençons avec le vocabulaire minimal et les mots segmentés en caractères individuels.
 <center>
 <figure class="image">
-  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/GPT2/transformer-decoder-block-2.png">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Tokenizers/bpe1.png">
 </figure>
 </center>
 Le symbole bigramme le plus fréquent est "ed" qui apparaît 3 fois. Nous les fusionnons donc et ajoutons un nouveau symbole au vocabulaire.
 
 <center>
 <figure class="image">
-  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/GPT2/transformer-decoder-block-2.png">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Tokenizers/bpe2.png">
 </figure>
 </center>
 Le symbole suivant le plus fréquent (à égalité avec 2 apparitions) est "ad". Nous les fusionnons et ajoutons le nouveau symbole au vocabulaire une fois de plus. Cela porte la taille du vocabulaire à 9.
 
 <center>
 <figure class="image">
-  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/GPT2/transformer-decoder-block-2.png">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Tokenizers/bpe3.png">
 </figure>
 </center>
 Enfin, nous fusionnons "b" et "ed" car cette paire de symboles apparaît également deux fois, ce qui porte la taille du vocabulaire à 10 et met fin à notre construction de vocabulaire. La segmentation qui en résulte est ce que nous utiliserons pour la tokenisation en utilisant notre modèle BPE appris.
 
 <center>
 <figure class="image">
-  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/GPT2/transformer-decoder-block-2.png">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Tokenizers/bpe4.png">
 </figure>
 </center>
 
@@ -283,7 +283,7 @@ C'est particulièrement utile dans les situations où vous devez gérer des flux
 Les vocabulaires ouverts utilisent l'astuce du hachage, une méthode intelligente de numérisation qui fait correspondre les tokens aux ids en fonction de leurs valeurs de hachage. Par exemple, avec un id maximum de 100 000, vous pouvez utiliser une simple fonction de hachage (comme le hachage md5) pour transformer toute séquence de caractères unicode (ou d'octets) en un entier compris entre 0 et 100 000. Ce serait l'id du token. Puisque le vocabulaire est déterminé uniquement par la fonction de hachage, il n'a jamais besoin d'être reconstruit.
 <center>
 <figure class="image">
-  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/GPT2/transformer-decoder-block-2.png">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Tokenizers/hachage.png">
 </figure>
 </center>
   
