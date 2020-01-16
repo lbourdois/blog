@@ -101,15 +101,13 @@ Les tokenizers à base de règles nous permettent de tokeniser plus intelligemme
 Le tokenizer Spacy est un tokenizer moderne qui est largement utilisé pour une bonne raison : il est rapide, fournit des valeurs par défaut raisonnables et est facilement personnalisable. 
 
 Spacy permet à l'utilisateur de spécifier des tokens spéciaux qui ne seront pas segmentés, ou qui seront segmentés de certaines manières spécifiques. Par exemple, si vous voulez garder les ellipses comme un seul token, vous pouvez le spécifier comme une règle, et la règle aura la priorité sur les autres opérations de division. Pour en savoir plus sur le fonctionnement de la segmentation Spacy, Spacy se divise en espaces et examine ensuite chaque sous-chaîne individuelle. Il recherche d'abord les tokens spéciaux, et quand ces tokens ne sont pas présents, il divise certains préfixes (comme la ponctuation), puis les suffixes et les infixes.
-
 <center>
 <figure class="image">
   <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Tokenizers/Spacy.png">
-  <figcaption> Exemple de comment fonctionne le tokenizer Spacy
-  </figcaption>
+  <figcaption>Exemple de fonctionnent le tokenizer Spacy</figcaption>
 </figure>
 </center>
-<br>
+
 
 Toutes ces étapes sont personnalisables, ce qui signifie que vous pouvez adapter les règles de tokenisation à vos demandes. Vous pouvez consulter la [documentation officielle](https://spacy.io/usage/linguistic-features#how-tokenizer-works)  pour obtenir les informations les plus récentes et les plus approfondies.
 <br><br>
