@@ -24,7 +24,7 @@ sidebar-sample:
         url: /nlp/BERT/
       - title: "LE GPT2"
         url: /nlp/GPT2/
-      - title: "LES TOKENIZERS"
+      - title: "LE PRETRAITEMENT ET LES TOKENIZERS EN NLP"
         url: /nlp/Les-tokenizers/
       - title: "TACHES ET JEUX DE DONNÉES TEST FREQUEMENT UTILISÉS DANS LES PUBLICATIONS DE NLP"
         url: /nlp/Taches-et-jeux-de-donnees-en-NLP/
