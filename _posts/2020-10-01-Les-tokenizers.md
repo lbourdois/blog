@@ -194,10 +194,10 @@ Attention. Ici et jusqu’à la fin du paragraphe, je traduis ce que l’auteur 
 Si son raisonnement est correct, cela signifie qu'en plus de la fréquence du bigramme, la fréquence des symboles originaux qui constituent le bigramme est également prise en compte. Le logarithme de la probabilité d'une phrase dans un modèle de langage unigramme (en supposant l'indépendance entre les mots d'une phrase) est simplement la somme des logarithmes des fréquences des symboles qui la composent. Cela signifie que la fusion de deux symboles augmentera le logarithme de la probabilité totale du symbole fusionné et la diminuera le logarithme de la probabilité  des deux symboles originaux.
 En supposant que nous fusionnons les symboles x et y, l'augmentation du logarithme de la probabilité est : 
 
-$$ \log p(x,y) - \log p(x) - \log p(y) = \log \dispalystyle \frac{\log p(x) }{\log p(x) \log p(y) }  $$ 
+$$ \log p(x,y) - \log p(x) - \log p(y) = \log \displaystyle \frac{\log p(x) }{\log p(x) \log p(y) }  $$ 
  
 De nouveau, si le raisonnement est correct, ceci est donc équivalent à l'information mutuelle entre deux symboles, donc wordpiece peut être considéré comme une variante de BPE qui fusionne sur la base de l'information mutuelle au lieu de la fréquence.
-[RoBERTa] (https://arxiv.org/pdf/1907.11692.pdf) est une version « optimisée » de BERT. Dans leur publication, les auteurs utilisent BPE au lieu du Wordpiece de BERT, et ont trouvé que cette décision ne faisait pas une grande différence.
+[RoBERTa](https://arxiv.org/pdf/1907.11692.pdf) est une version « optimisée » de BERT. Dans leur publication, les auteurs utilisent BPE au lieu du Wordpiece de BERT, et ont trouvé que cette décision ne faisait pas une grande différence.
 <br><br>
 
 
@@ -210,10 +210,10 @@ La différence entre cette méthode et le wordpiece est que le wordpiece maximis
 
 Dans le tokenizer de l’unigram language model, la segmentation dépend du modèle de langue. Cela crée une dépendance cyclique : pour entraîner un modèle de langue, nous devons compter la fréquence de tous les mots d'un vocabulaire, ce qui nécessite de savoir comment segmenter le texte dans le corpus d'entraînement en premier lieu. Mais pour savoir comment segmenter le texte dans le corpus d'entraînement, nous avons besoin du modèle de langue !
 Pour gérer cette dépendance cyclique, le modèle de langue unigramme est entraîné selon le processus suivant : 
-* 1. Initialiser un grand vocabulaire provisoire. Ce vocabulaire pourrait être construit en utilisant un simple tokenizer à base de règles.
-* 2. Entraîner le modèle de langage unigramme en utilisant l'[algorithme EM](https://fr.wikipedia.org/wiki/Algorithme_esp%C3%A9rance-maximisation). 
-* 3. Réduire la taille du vocabulaire en supprimant les symboles qui contribuent le moins à la probabilité globale du modèle de langage sur l'ensemble d'apprentissage.
-* 4. Répétez les étapes 2 à 4 jusqu'à ce que la taille du vocabulaire soit suffisamment réduite.
+1. Initialiser un grand vocabulaire provisoire. Ce vocabulaire pourrait être construit en utilisant un simple tokenizer à base de règles.
+2. Entraîner le modèle de langage unigramme en utilisant l'[algorithme EM](https://fr.wikipedia.org/wiki/Algorithme_esp%C3%A9rance-maximisation). 
+3. Réduire la taille du vocabulaire en supprimant les symboles qui contribuent le moins à la probabilité globale du modèle de langage sur l'ensemble d'apprentissage.
+4. Répétez les étapes 2 à 4 jusqu'à ce que la taille du vocabulaire soit suffisamment réduite.
 L’unigram language model prend également soin de conserver les caractères individuels pour minimiser la probabilité de tokens hors du vocabulaire.
 <br><br>
 
@@ -260,7 +260,7 @@ Un autre facteur à prendre en compte est que l'apprentissage d'un tokenizer est
 
 
 
-# <span style="color: #FF0000"> **3. Étape 3 : Numérisation ** </span>
+# <span style="color: #FF0000"> **3. Étape 3 : Numérisation** </span>
 Une fois que nous avons les données tokénisées, la construction du vocabulaire semble relativement simple. En particulier pour les méthodes comme BPE et sentencepiece, le vocabulaire est construit automatiquement. Donc, fin de l'histoire, n'est-ce pas ? Eh bien, pas tout à fait. Il y a encore pas mal de questions auxquelles nous devons réfléchir.
 <br><br>
 
@@ -302,7 +302,7 @@ Lorsque vous n'avez pas assez de données non étiquetées, il y a quelques appr
 <br><br>
 
 
-## <span style="color: #FFBF00"> **3.5 Changement des vocabulaires préfabriqués  ** </span>
+## <span style="color: #FFBF00"> **3.5 Changement des vocabulaires préfabriqués** </span>
 Malgré toute la discussion ci-dessus sur la façon de gérer et de construire des vocabulaires, dans certains cas, nous n'avons même pas notre mot à dire sur le vocabulaire. Par exemple, si nous utilisons BERT, nous sommes la plupart du temps coincés avec le vocabulaire que les auteurs nous ont donné. Cela peut être un problème, par exemple, si nous voulons réduire la taille du vocabulaire pour tronquer la matrice d'embedding afin que le modèle tienne sur un téléphone. 
 Cet [article](https://arxiv.org/pdf/1909.11687.pdf) propose une approche intéressante pour résoudre ce problème. Il utilise une approche élève-enseignant (student-teacher) pour distiller un modèle enseignant, et entraine un modèle élève avec un vocabulaire réduit en alimentant modèle enseignant avec un mélange d'entrées tokénisées par le modèle élève et le modèle enseignant. Cette idée de mélanger les vocabulaires des élèves et du professeur est intéressante et semble être une idée qui mérite d'être explorée en dehors de la simple compression du modèle. 
 <br><br><br>
@@ -315,24 +315,24 @@ des mots à faible fréquence dans l'ensemble d’entraînement, une hypothèse 
 <br><br>
 
 
-## <span style="color: #FFBF00"> **4.1 Filtrage des données de faible qualité  ** </span>
+## <span style="color: #FFBF00"> **4.1 Filtrage des données de faible qualité** </span>
 Jusqu'à présent, nous avons discuté de la façon de traiter les données une fois que vous avez déjà un ensemble de données en place. Parfois, cependant, vous devez effectuer un filtrage supplémentaire avant/pendant la construction de l'ensemble de données. Par exemple, si vous voulez entraîner un modèle de langage basé sur un grand corpus, vous pouvez utiliser les données de Twitter. Cependant, les données de Twitter peuvent être très bruitées, contenant du charabia, du contenu dupliqué, d'autres langues et d'autres données de mauvaise qualité/non pertinentes que vous voulez exclure.  				                 Cet article (https://arxiv.org/pdf/1911.00359.pdf) traite de diverses préoccupations et méthodes concernant la construction de corpus monolingues de haute qualité pour diverses langues à l'aide de données Common Crawl. Leurs principales étapes de prétraitement comprennent la déduplication des documents à l'aide du hachage, la détection de la langue et le filtrage du contenu en fonction de leur score de perplexité sur un modèle linguistique.
 <br><br>
 
 
-## <span style="color: #FFBF00"> **4.2 Preprocessing as Data Augmentation ** </span>
+## <span style="color: #FFBF00"> **4.2 Preprocessing as Data Augmentation** </span>
 Le fait que les décisions de prétraitement sont quelque peu arbitraires et peuvent causer du bruit peut en fait être utilisé à notre avantage. Par exemple, un modèle qui est entrainé sur des données d'entrée entièrement en minuscules et un modèle qui est entrainé avec du surajustements peuvent être assemblés efficacement. Keita Kurita (l’auteur de l’article dont fait l’objet cette traduction) a utilisé cette technique pour se classer dans le premier 1 % d'une compétition Kaggle (http://mlexplained.com/2019/04/01/tricks-and-lessons-learned-from-getting-into-the-top-1-of-a-kaggle-competition/). Dans certains concours Kaggle de NLP, l'assemblage de plusieurs modèles en utilisant différentes étapes de prétraitement a été la clé de la victoire. 
 L'idée d'utiliser le prétraitement comme augmentation des données est explorée dans cet article (https://arxiv.org/abs/1804.10959) où les auteurs utilisent un modèle de langage unigramme pour échantillonner des tokenisations légèrement différentes du même texte. 
 <br><br>
 
 
-## <span style="color: #FFBF00"> **4.3 Stemming and Lemmatization  ** </span>
+## <span style="color: #FFBF00"> **4.3 Stemming and Lemmatization** </span>
 Le stemming et la lemmatization sont des formes extrêmes de normalisation qui ne sont généralement pas rentables en NLP moderne. La plupart des problèmes que le stemming et la lemmatisation adressent peuvent être résolus en utilisant des sous-mots symboliques, il n'y a donc tout simplement aucune raison d'utiliser ces étapes de prétraitement.
 <br><br><br>
 
 
 
-# <span style="color: #FF0000"> **Conclusion ** </span>
+# <span style="color: #FF0000"> **Conclusion** </span>
 Résumons l’article avec les principaux points évoqués :
 - Utilisez l'unicode. Cela permet de gérer à peut prêt toutes les langues. 	
 - Si vous utilisez un Transformer, assurez-vous que votre prétraitement correspond à celui utilisé par le modèle.
