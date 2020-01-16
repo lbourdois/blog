@@ -19,7 +19,7 @@ sidebar:
 
 # <span style="color: #FF0000"> **Avant-propos** </span>
  
-Cet article est une traduction de l’article de Keita Kurita [A Deep Dive into the Wonderful World of Preprocessing in NLP](https://mlexplained.com/2019/11/06/a-deep-dive-into-the-wonderful-world-of-preprocessing-in-nlp/ )).<br>
+Cet article est une traduction de l’article de Keita Kurita : [A Deep Dive into the Wonderful World of Preprocessing in NLP](https://mlexplained.com/2019/11/06/a-deep-dive-into-the-wonderful-world-of-preprocessing-in-nlp/).<br>
 <br><br><br>
 
 
@@ -49,7 +49,7 @@ Notez que ces étapes ne sont pas toujours clairement divisées. Par exemple, ce
 
 
 # <span style="color: #FF0000"> **1. Étape 1 : Normalisation (nettoyage)** </span>
-Dans le contexte du prétraitement en NLP, la normalisation se réfère au processus de nettoyage de l'entrée et de mise en correspondance des caractères/mots avec une forme " canonique ".
+Dans le contexte du prétraitement en NLP, la normalisation se réfère au processus de nettoyage de l'entrée et de mise en correspondance des caractères/mots avec une forme canonique.
 
 Un exemple très simple de normalisation est de mettre tous les caractères en minuscule. Cela permet d'éviter que des mots comme " Hello " et " hello " soient traités différemment. La similarité entre ces mots est claire pour un humain, mais lorsqu'ils sont simplement mis en correspondance avec un seul entier, le modèle en aval n'a aucun moyen de comprendre qu'il s'agit du même mot sous-jacent. La normalisation permet d'éviter cette divergence.
 
@@ -58,7 +58,7 @@ Voici quelques autres étapes de normalisation que vous pourriez vouloir utilise
 - Manipulation des homoglyphes (par exemple "$tupide" -> "stupide")
 - Transformation des entrées spéciales telles que les URL, les adresses e-mail et les balises HTML à une forme canonique (par exemple "http://www.foo.com/bar" -> "[URL]")
 - Normalisation unicode
-Je suppose que certains lecteurs n'ont jamais entendu parler de la normalisation unicode avant, donc je vais donner un rapide aperçu. En unicode, certains caractères qui sont effectivement les mêmes peuvent être représentés de plusieurs façons. Par exemple, le caractère ë peut être représenté comme un seul caractère unicode "ë" ou deux caractères unicode : le caractère "e" et un accent. La normalisation Unicode fait correspondre ces deux caractères à une forme unique et canonique. Pour plus de détails vous pouvez lire ce [post](https://withblue.ink/2019/03/11/why-you-need-to-normalize-unicode-strings.html)(en anglais).
+Je suppose que certains lecteurs n'ont jamais entendu parler de la normalisation unicode avant, donc je vais donner un rapide aperçu. En unicode, certains caractères qui sont effectivement les mêmes peuvent être représentés de plusieurs façons. Par exemple, le caractère ë peut être représenté comme un seul caractère unicode "ë" ou deux caractères unicode : le caractère "e" et un accent. La normalisation Unicode fait correspondre ces deux caractères à une forme unique et canonique. Pour plus de détails vous pouvez lire ce [post](https://withblue.ink/2019/03/11/why-you-need-to-normalize-unicode-strings.html) (en anglais).
 
 
 Vient maintenant la question importante : quels types de normalisation devrions-nous réellement appliquer ? Bien sûr, il n'y a pas de réponse claire à cette question, mais voici quelques lignes directrices et facteurs à prendre en considération :
@@ -119,13 +119,13 @@ Toutes ces étapes sont personnalisables, ce qui signifie que vous pouvez adapte
 ### <span style="color: #51C353"> **2.2.2 Moses** </span>
 Le tokenizer Moses est un tokenizer classique qui est beaucoup plus ancien que Spacy et qui est largement utilisé en traduction automatique. Comparé à Spacy, il est moins personnalisable. Je n'entrerai pas dans les détails concernant les spécificités du tokenizer Moses, principalement parce qu'il s'agit d'une collection de logiques complexes de normalisation et de segmentation (vous pouvez jeter un oeil à une implémentation python [ici](https://github.com/alvations/sacremoses/blob/master/sacremoses/tokenize.py)).
 
-Le tokenizer de Moïse remplace en interne certains tokens spéciaux (par exemple des ellipses) par des tokens personnalisés, et est un bon exemple de la façon dont la normalisation et la tokenisation ne sont pas toujours proprement divisées.
+Le tokenizer de Moses remplace en interne certains tokens spéciaux (par exemple des ellipses) par des tokens personnalisés, et est un bon exemple de la façon dont la normalisation et la tokenisation ne sont pas toujours proprement divisées.
 
 Moses fonctionne assez bien sur une langue simple, mais si vous manipulez du texte comme du texte de média social, il peut causer des problèmes avec certaines entrées comme les émoticônes. 
 <br><br>
 
 
-### <span style="color: #51C353"> **2.2.3 Limitations of Rule-based Tokenizers** </span>
+### <span style="color: #51C353"> **2.2.3 Limitations des tokenizers basés sur des règles** </span>
 Il y a quelques problèmes avec les tokenizers à base de règles. Le premier est leur capacité relativement limitée à gérer efficacement les mots rares. Par exemple, le mot " structurally " est relativement rare, mais le mot " structural " est commun, ce qui nous permet de déduire le sens de "structurellement" à partir d'un mot plus fréquent. Bien sûr, nous pourrions spécifier chaque mot rare comme une règle spéciale, mais cela devient clairement beaucoup trop complexe très rapidement. Cette incapacité à segmenter les mots en composantes significatives peut être particulièrement problématique pour des langues comme l'allemand, où les mots sont souvent composés en mettant ensemble de nombreuses parties indépendantes (on parle alors de langues "morphologiquement riches". Cet [article](https://www.thoughtco.com/longest-german-word-in-the-world-4061494)  en anglais montre l’exemple de mot allemand faisant plus de 63 lettres). 
 Un autre problème majeur est que toutes les langues ne divisent pas les mots via des espaces blancs. Le chinois et le japonais en sont d'excellents exemples. Ces langues exigent donc des règles beaucoup plus sophistiquées, ce qui signifie plus de complexité et - potentiellement - d'erreurs.
 Il existe une classe d'algorithmes qui tentent de résoudre ces problèmes, communément appelés méthodes de subword tokenization, que nous allons aborder dans la suite de ce document.
@@ -141,11 +141,11 @@ Nous allons passer en revue 4 algorithmes majeurs de tokenisation en sous-mots :
 ### <span style="color: #51C353"> **2.3.1 Byte-Pair Encoding (BPE)** </span>
 Le Byte-pair encoding (BPE) pour sous-mots a été proposée dans cet [article](https://arxiv.org/pdf/1508.07909.pdf), bien que l'idée de base (qui est un algorithme de compression) existe depuis 1994. Ce n'est pas une coïncidence si le BPE tire ses racines du domaine de la théorie de l'information et de la compression. L'idée de représenter des mots fréquents avec moins de symboles, et des mots moins fréquents avec plus de symboles est exactement l'idée derrière de nombreux schémas d'encodage tels que l'encodage de Huffman. BPE applique simplement les mêmes principes et techniques de façon intelligente à la tokenization.
 BPE est un algorithme de tokenisation ascendante de sous-mots qui apprend un vocabulaire de sous-mots d'une certaine taille (la taille du vocabulaire étant un hyperparamètre). L'idée de base est la suivante :
-* 1. Commencez par diviser tous les mots en caractères unicode. Chaque caractère unicode correspond à un symbole dans le vocabulaire final. Nous commencerons avec ce vocabulaire minimal et l'élargirons progressivement.
+1. Commencez par diviser tous les mots en caractères unicode. Chaque caractère unicode correspond à un symbole dans le vocabulaire final. Nous commencerons avec ce vocabulaire minimal et l'élargirons progressivement.
 
-* 2. Pendant que nous avons encore de la place dans le vocabulaire, faites ce qui suit : 
-  * 1. Trouvez le symbole bigramme le plus fréquent (paire de symboles)
-  * 2. Fusionnez ces symboles pour créer un nouveau symbole et ajoutez-le au vocabulaire. Ceci augmente la taille du vocabulaire de un.
+2. Pendant que nous avons encore de la place dans le vocabulaire, faites ce qui suit : 
+    1. Trouvez le symbole bigramme le plus fréquent (paire de symboles)
+    2. Fusionnez ces symboles pour créer un nouveau symbole et ajoutez-le au vocabulaire. Ceci augmente la taille du vocabulaire de un.
 <br>
 
 Pour illustrer cela, prenons un exemple. Supposons que nous ayons les mots " bed ", " ted ", " sad ", " beds " et " mad " à partir desquels nous voulons construire un vocabulaire BPE de taille 10. Nous commençons avec le vocabulaire minimal et les mots segmentés en caractères individuels.
@@ -181,7 +181,7 @@ Bien sûr, nous voulons faire la distinction entre "ed" comme un seul mot et le 
 L'exemple ci-dessus utilise des mots individuels, ce qui soulève la question suivante : que se passe-t-il lorsque nous utilisons des phrases entières ? Une des caractéristiques délicates du BPE est qu'il commence par tokeniser l'entrée, et ne fusionne que les bigrammes de symboles dans un seul token. C'est pour l'efficacité du calcul, puisque trouver le bigramme le plus fréquent est une opération coûteuse (s'il y a N symboles, c'est une opération O(N²) faite naïvement).
 Une autre question que vous pourriez vous poser est de savoir ce qui se passe si nous rencontrons un caractère unicode inédit dans le vocabulaire. Il existe plusieurs solutions à ce problème. L'une d'entre elles consiste simplement à associer des caractères invisibles à un Token " INCONNU ". Une autre est d'allouer un id à chaque caractère unicode possible même si nous ne le rencontrons pas dans le texte (ce n'est clairement pas réaliste, et c'est plus pour le plaisir de l'argumentation).
 
-Une approche intelligente proposée par Open AI dans son [article sur le GPT-2] (https://d4mucfpksywv.cloudfront.net/better-language-models/language_models_are_unsupervised_multitask_learners.pdf) est de traiter l'entrée comme une séquence d'octets au lieu de caractères unicode, et d'attribuer un identifiant à chaque octet possible. Puisque les caractères unicode sont représentés par un nombre variable d'octets, même si nous rencontrons un tout nouveau caractère, nous pouvons le décomposer en ses octets constitutifs dans le pire des cas, empêchant ainsi l'apparition de tokens inconnus.
+Une approche intelligente proposée par Open AI dans son [article sur le GPT-2](https://d4mucfpksywv.cloudfront.net/better-language-models/language_models_are_unsupervised_multitask_learners.pdf) est de traiter l'entrée comme une séquence d'octets au lieu de caractères unicode, et d'attribuer un identifiant à chaque octet possible. Puisque les caractères unicode sont représentés par un nombre variable d'octets, même si nous rencontrons un tout nouveau caractère, nous pouvons le décomposer en ses octets constitutifs dans le pire des cas, empêchant ainsi l'apparition de tokens inconnus.
 <br><br>
 
 
