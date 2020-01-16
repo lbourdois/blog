@@ -227,7 +227,7 @@ Un autre problème subtil créé par la prétokenisation est qu'elle rend la dé
 <br>
 et
 <br>
-“I       like       natural        language      processing”
+“I &nbsp;&nbsp;&nbsp;  like &nbsp;&nbsp;&nbsp;  natural &nbsp;&nbsp;&nbsp; language &nbsp;&nbsp;&nbsp;  processing”
 <br>
 de la même manière, ce qui signifie que nous ne pouvons pas récupérer la forme de la phrase originale.
 <br>
@@ -236,7 +236,7 @@ de la même manière, ce qui signifie que nous ne pouvons pas récupérer la for
 <br>
 “I”, “_like”, “_natural”, “_lang”, “uage”, “_process”, “ing”
 <br>
-où le caractère espace est remplacé par le trait de soulignement ("_") pour plus de clarté.
+où le caractère espace est remplacé par le trait de soulignement (" _ ") pour plus de clarté.
 <br>
 Notez la distinction avec BPE, où la séquence ci-dessus avec les mêmes sous-mots pourrait être tokénisée par
 <br>
@@ -316,13 +316,14 @@ des mots à faible fréquence dans l'ensemble d’entraînement, une hypothèse 
 
 
 ## <span style="color: #FFBF00"> **4.1 Filtrage des données de faible qualité** </span>
-Jusqu'à présent, nous avons discuté de la façon de traiter les données une fois que vous avez déjà un ensemble de données en place. Parfois, cependant, vous devez effectuer un filtrage supplémentaire avant/pendant la construction de l'ensemble de données. Par exemple, si vous voulez entraîner un modèle de langage basé sur un grand corpus, vous pouvez utiliser les données de Twitter. Cependant, les données de Twitter peuvent être très bruitées, contenant du charabia, du contenu dupliqué, d'autres langues et d'autres données de mauvaise qualité/non pertinentes que vous voulez exclure.  				                 Cet article (https://arxiv.org/pdf/1911.00359.pdf) traite de diverses préoccupations et méthodes concernant la construction de corpus monolingues de haute qualité pour diverses langues à l'aide de données Common Crawl. Leurs principales étapes de prétraitement comprennent la déduplication des documents à l'aide du hachage, la détection de la langue et le filtrage du contenu en fonction de leur score de perplexité sur un modèle linguistique.
+Jusqu'à présent, nous avons discuté de la façon de traiter les données une fois que vous avez déjà un ensemble de données en place. Parfois, cependant, vous devez effectuer un filtrage supplémentaire avant/pendant la construction de l'ensemble de données. Par exemple, si vous voulez entraîner un modèle de langage basé sur un grand corpus, vous pouvez utiliser les données de Twitter. Cependant, les données de Twitter peuvent être très bruitées, contenant du charabia, du contenu dupliqué, d'autres langues et d'autres données de mauvaise qualité/non pertinentes que vous voulez exclure.  				                 
+Cet [article](https://arxiv.org/pdf/1911.00359.pdf) traite de diverses préoccupations et méthodes concernant la construction de corpus monolingues de haute qualité pour diverses langues à l'aide de données Common Crawl. Leurs principales étapes de prétraitement comprennent la déduplication des documents à l'aide du hachage, la détection de la langue et le filtrage du contenu en fonction de leur score de perplexité sur un modèle linguistique.
 <br><br>
 
 
 ## <span style="color: #FFBF00"> **4.2 Preprocessing as Data Augmentation** </span>
-Le fait que les décisions de prétraitement sont quelque peu arbitraires et peuvent causer du bruit peut en fait être utilisé à notre avantage. Par exemple, un modèle qui est entrainé sur des données d'entrée entièrement en minuscules et un modèle qui est entrainé avec du surajustements peuvent être assemblés efficacement. Keita Kurita (l’auteur de l’article dont fait l’objet cette traduction) a utilisé cette technique pour se classer dans le premier 1 % d'une compétition Kaggle (http://mlexplained.com/2019/04/01/tricks-and-lessons-learned-from-getting-into-the-top-1-of-a-kaggle-competition/). Dans certains concours Kaggle de NLP, l'assemblage de plusieurs modèles en utilisant différentes étapes de prétraitement a été la clé de la victoire. 
-L'idée d'utiliser le prétraitement comme augmentation des données est explorée dans cet article (https://arxiv.org/abs/1804.10959) où les auteurs utilisent un modèle de langage unigramme pour échantillonner des tokenisations légèrement différentes du même texte. 
+Le fait que les décisions de prétraitement sont quelque peu arbitraires et peuvent causer du bruit peut en fait être utilisé à notre avantage. Par exemple, un modèle qui est entrainé sur des données d'entrée entièrement en minuscules et un modèle qui est entrainé avec du surajustements peuvent être assemblés efficacement. Keita Kurita (l’auteur de l’article dont fait l’objet cette traduction) a utilisé cette technique pour se classer dans le top [1  % d'une compétition Kaggle] (http://mlexplained.com/2019/04/01/tricks-and-lessons-learned-from-getting-into-the-top-1-of-a-kaggle-competition/). Dans certains concours Kaggle de NLP, l'assemblage de plusieurs modèles en utilisant différentes étapes de prétraitement a été la clé de la victoire. 
+L'idée d'utiliser le prétraitement comme augmentation des données est explorée dans cet [article](https://arxiv.org/abs/1804.10959) où les auteurs utilisent un modèle de langage unigramme pour échantillonner des tokenisations légèrement différentes du même texte. 
 <br><br>
 
 
