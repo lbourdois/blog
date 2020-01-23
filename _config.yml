@@ -18,7 +18,7 @@ minimal_mistakes_skin    : "default" # "air", "aqua", "contrast", "dark", "dirt"
 locale                   : "fr"
 title: Loïck BOURDOIS
 email:
-description: Blog personnel de Loïck BOURDOIS : NLP expliqué en français, Transformer NLP expliqué en français, BERT expliqué en français, GPT2 expliqué en français
+description: Blog personnel de Loïck BOURDOIS - NLP expliqué en français, Transformer NLP expliqué en français, BERT expliqué en français, GPT2 expliqué en français
 url : https://lbourdois.github.io
 twitter_username: username
 github_username: lbourdois
