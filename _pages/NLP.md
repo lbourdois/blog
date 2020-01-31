@@ -27,7 +27,7 @@ Voici une liste non exhaustive d'exemples d’applications :
 ## Quelles sont les méthodes employées pour mettre en place ces applications ?
 J'ai réalisé une série d'articles dédiée aux modèles statistiques utilisés en NLP.
 
-Dans un premier temps, vous trouverez les articles de présentation des modèles. Ils sont classés dans l’ordre chronologique de leur popularité d’utilisation. 
+Dans un premier temps, vous trouverez les articles de présentation des modèles. Ils sont classés dans l’ordre chronologique de leur popularité d’utilisation.<br> 
 Dans un second temps, vous trouverez les articles concernant les sujets utiles à connaître en NLP : les tokenizers, les bases de données, etc...
 
 * Le bag-of-word : l’[article de présentation](https://lbourdois.github.io/blog/nlp/Bag-of-word/)
