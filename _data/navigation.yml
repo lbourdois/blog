@@ -26,7 +26,7 @@ sidebar-sample:
         url: /nlp/GPT2/
       - title: "LE PRETRAITEMENT ET LES TOKENIZERS EN NLP"
         url: /nlp/Les-tokenizers/
-      - title: "TACHES ET JEUX DE DONNÉES TEST FREQUEMENT UTILISÉS DANS LES PUBLICATIONS DE NLP"
+      - title: "TACHES ET JEUX DE DONNÉES TEST FREQUEMMENT UTILISÉS DANS LES PUBLICATIONS DE NLP"
         url: /nlp/Taches-et-jeux-de-donnees-en-NLP/
       - title: "LES AUTRES ARCHITECTURES"
         url: /nlp/Les-architectures-transformers/
