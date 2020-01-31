@@ -4,7 +4,7 @@ title: "A faire"
 ---
 
 Je récapitule sur cette page ce que je compte ajouter par la suite sur le blog.  
-Du moins, ce que j'aimerais ajouter. En effet, je gère ce blog sur mon temps libre. Ainsi la rédaction d'article dépend fortement de mes disponibilités.<br>
+Du moins, ce que j'aimerais ajouter. En effet, je gère ce blog sur mon temps libre. Ainsi la rédaction d'article dépend fortement de mes disponibilités.<br><br>
 
 
 La TODO liste :
