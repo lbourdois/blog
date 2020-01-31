@@ -2,6 +2,7 @@
 title: Le NLP : Natural Language Processing 
 layout: single
 permalink: /nlp/
+
 ---
 
 
