@@ -9,6 +9,7 @@
 #
 # Review documentation to determine if you should use `theme` or `remote_theme`
 # https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/#installing-the-theme
+<meta name="google-site-verification" content="ouC89r8DsM44-CzfK9zKiulBYb7coucYBADYgNFnJpQ" />
 
 # theme                  : "minimal-mistakes-jekyll"
 # remote_theme           : "mmistakes/minimal-mistakes"
@@ -20,6 +21,7 @@ title: Loïck BOURDOIS
 email:
 description: "Blog personnel de Loïck BOURDOIS : NLP expliqué en français, Transformer NLP expliqué en français, BERT expliqué en français, GPT2 expliqué en français"
 url : https://lbourdois.github.io
+owner : <meta name="google-site-verification" content="ouC89r8DsM44-CzfK9zKiulBYb7coucYBADYgNFnJpQ" />
 twitter_username: username
 github_username: lbourdois
 minimal_mistakes_skin: default
