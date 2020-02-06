@@ -9,6 +9,6 @@ Du moins, ce que j'aimerais ajouter. En effet, je gère ce blog sur mon temps li
 
 La TODO liste :
 * effectuer une relecture de l'ensemble des articles publiés afin de corriger les fautes d'orthographe / fautes de frappes et ajuster certaines images
-* donner les preuves mathématiques de certains points énoncés dans plusieurs article
+* donner les preuves mathématiques de certains points énoncés dans plusieurs articles
 * réaliser un tutoriel pour chacune des méthodes (cela devrait me prendre le plus de temps)
 * ajouter la possibilité de commenter les articles ?
