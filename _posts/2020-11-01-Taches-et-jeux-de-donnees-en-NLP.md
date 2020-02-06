@@ -21,7 +21,8 @@ sidebar:
 Les publications scientifiques étant exclusivement en anglais, je fais en sorte de laisser les mots clés en anglais et de donner des explications en français (je ne sais même pas si certains mots ont une traduction en français). Le but étant que vous puissiez après lire de vous même n’importe quelle publication ou article de vulgarisation en anglais sur le sujet et les comprendre.
 Le domaine du NLP évoluant actuellement très rapidement il m’est impossible de présenter tous les nouveaux modèles par manque de temps. D’où là encore la nécessité que vous alliez consulter certaines sources anglophones par vous même.
 Un élément qui me semble important pour pouvoir comprendre n’importe quelle publication est de connaître les tâches qui servent à comparer les performances des différents modèles ainsi que les jeux de données test en lien avec ces tâches.
-La présentation des jeux de données anglophones se base sur l’[article de Lilian Weng](https://www.topbots.com/generalized-language-models-tasks-datasets/) (travaillant chez OpenAI). Celle des jeux de données francophones se base sur la [publication de l’équipe ayant développé le modèle CamemBERT](https://arxiv.org/pdf/1911.03894.pdf).
+La présentation des jeux de données anglophones se base sur l’[article de Lilian Weng](https://www.topbots.com/generalized-language-models-tasks-datasets/) (travaillant chez OpenAI). Merci à elle de m'avoir autorisé à effectuer cette traduction.<br>
+Celle des jeux de données francophones se base sur la [publication de l’équipe ayant développé le modèle CamemBERT](https://arxiv.org/pdf/1911.03894.pdf).
 <br><br><br>
 
 
