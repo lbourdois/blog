@@ -8,8 +8,8 @@ permalink: /nlp/
 
 ## Qu’est-ce que le NLP ?
 
-Le Natural Language Processing (NLP) ou le Traitement Automatique du Langage Naturel (TALN) en français est un domaine à l’intersection de l’informatique, de l’intelligence artificielle et de la linguistique.
-L’objectif de cette discipline est de permettre à des ordinateurs de traiter le langage naturel produits par des humains.
+Le Natural Language Processing (NLP), ou Traitement Automatique du Langage Naturel (TALN) en français, est un domaine à l’intersection de l’informatique, de l’intelligence artificielle et de la linguistique.
+L’objectif de cette discipline est de permettre à des ordinateurs de traiter le langage naturel produit par des humains.
 <br><br>
 
 
@@ -18,7 +18,8 @@ L’objectif de cette discipline est de permettre à des ordinateurs de traiter 
 Voici une liste non exhaustive d'exemples d’applications :
 - la traduction automatique
 - la classification de texte 
-- la génération de texte (résumé)
+- la génération de texte
+- la synthèse de document
 - la génération de réponses à des questions complèxes (chatbox)
 - la reconnaissance vocale
 <br><br>
@@ -42,7 +43,7 @@ Dans un second temps, vous trouverez les articles concernant les sujets utiles �
 
 * Les architectures issues du Transformer<br>
 Il en existe de nombreuses . Une liste non exhaustive est disponible dans le dernier article de la série consacrée au NLP : lire [l'article en question](https://lbourdois.github.io/blog/nlp/Les-architectures-transformers/)<br>
-Je présente plus en détails les architectures que j’ai eu l’occasion d’utiliser professionnellement.<br>
+Je présente plus en détails les architectures que j’ai eu l’occasion d’utiliser professionnellement :<br>
     * BERT : l’[article de présentation](https://lbourdois.github.io/blog/nlp/BERT/) et le [tutoriel associé](https://github.com/lbourdois/notebooks_blog/blob/master/Tutoriel%20application%20de%20BERT%20via%20DistillBERT.ipynb)<br>
     * le GPT-2 : l’[article de présentation](https://lbourdois.github.io/blog/nlp/GPT2/)<br>
   
