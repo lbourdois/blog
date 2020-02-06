@@ -6,6 +6,7 @@ tags:
   - Transformer NLP expliqué en français
   - Illustration du Transformer en français NLP
   - Transformer NLP en français
+  - Transformers NLP en français
 excerpt : "NLP"
 header :
     overlay_image: "https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Transformer/Transformers_blog.png"
@@ -24,7 +25,7 @@ sidebar:
 
 # <span style="color: #FF0000"> **Avant-propos** </span>
  
-Cet article est en grande partie une traduction de l’article de Jay Alammar : [The illustrated transformer](https://jalammar.github.io/illustrated-transformer/). 
+Cet article est en grande partie une traduction de l’article de Jay Alammar : [The illustrated transformer](https://jalammar.github.io/illustrated-transformer/). Merci à lui de m'avoir autorisé à effectuer cette traduction.
 J’ai ajouté des éléments supplémentaires quand j’estimais que cela été pertinent.
 <br><br><br>
 
@@ -246,27 +247,21 @@ Résumons toutes ces étapes sous la forme d’un tableau et itérons le process
 <center>
 <figure class="image">
   <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Transformer/traitement_bonjour.png">
-  <figcaption>
-    Tableau pour le traitement du mot « Bonjour »
-  </figcaption>
+  <figcaption>Tableau pour le traitement du mot « Bonjour »</figcaption>
 </figure>
 </center>
 
 <center>
 <figure class="image">
   <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Transformer/traitement_je.png">
-  <figcaption>
-    Tableau pour le traitement du mot « je »
-  </figcaption>
+  <figcaption>Tableau pour le traitement du mot « je »</figcaption>
 </figure>
 </center>
 
 <center>
 <figure class="image">
   <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Transformer/traitement_suis.png">
-  <figcaption>
-    Tableau pour le traitement du mot « suis »
-  </figcaption>
+  <figcaption>Tableau pour le traitement du mot « suis »</figcaption>
 </figure>
 </center>
 
@@ -568,5 +563,5 @@ Des articles sur divers travaux utilisant les transformers :
 
 # <span style="color: #FF0000"> **Conclusion** </span>
 L’architecture du Transformer présentée dans cet article est une rupture technologique dans le domaine du NLP. ENORMEMENT d’autres modèles basé sur ce Transformer « original » ont été dévoilés depuis.<br>
-J'entre plus en détails pour deux d'entre elles que j'ai eu l'occasion d'utiliser professionnelement : [BERT](https://lbourdois.github.io/blog/nlp/BERT/) et le [GPT2](https://lbourdois.github.io/blog/nlp/GPT2/).
+J'entre plus en détails pour deux d'entre eux que j'ai eu l'occasion d'utiliser professionnelement : [BERT](https://lbourdois.github.io/blog/nlp/BERT/) et le [GPT2](https://lbourdois.github.io/blog/nlp/GPT2/).
 Pour les autres architectures, vous pouvez consulter une liste non exhaustive dans cet [article](https://lbourdois.github.io/blog/nlp/Les-architectures-transformers/) du blog.
