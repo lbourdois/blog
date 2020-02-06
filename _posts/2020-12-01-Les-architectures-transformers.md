@@ -4,7 +4,9 @@ categories:
   - NLP
 tags:
   - Etat de l'art Transformers NLP en français
-  - Transformer NLP en français
+  - Transformers NLP en français
+  - CamemBERT NLP français
+  - FlauBERT NLP français
 excerpt : "NLP"
 header :
     overlay_image: "https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/NLP_radom_blog.png"
@@ -54,7 +56,7 @@ Enfin, alors que les autres articles de la série NLP sont terminés, celui-ci �
 Les architectures sont régulièrement améliorées (fine-tuning, augmentation du nombre de paramètres utilisés, ou au contraire diminution dans le cadre de version distillée, etc…). On peut citer par exemple GPT-2 qui est la seconde version du GPT, RoBERTa qui est une version optimisée de BERT, etc…  
 De nouvelles architectures font également leur apparition chaque mois (pratiquement semaine).
 
-Tout ceci fait qu’il est actuellement difficile de pouvoir dire quel modèle se démarquera nettement des autres dans le futur et donc nous concentrer exclusivement sur celui-ci. Cette réflexion est d'ailleurs actuellement utopique puisqu'il n'existe pas (**au moment où j'écris ces lignes et à ma connaissance**) d'architecture permettant de réaliser l'ensemble des tâches de NLP existantes. Par exemple, BERT ne permet pas de générer du texte comme le permet le GPT2. A contrario, le GPT2 n'est pas fait de base pour réaliser de la classification, comme le permet BERT.
+Tout ceci fait qu’il est actuellement difficile de pouvoir dire quel modèle se démarquera nettement des autres dans le futur et donc nous concentrer exclusivement sur celui-ci. Cette réflexion est d'ailleurs actuellement utopique puisqu'il n'existe pas (**au moment où j'écris ces lignes et à ma connaissance**) d'architecture permettant de réaliser l'ensemble des tâches de NLP existantes. Par exemple, BERT ne permet pas de générer du texte comme le permet le GPT2. A contrario, le GPT2 n'est pas fait de base pour réaliser de la classification, comme le permet BERT.<br>
 Pour les modèles actuellement disponibles en français, CamemBERT fait de la reconnaissance d'entités nommées alors que ce n'est pas le cas de FlauBERT. FlauBERT peut traiter le cas du question-answering ce que ne peut pas faire CamemBERT, etc...
 
 Ainsi dans le cadre d’un projet, il est important de connaître la tâche à effectuer pour appliquer le modèle le plus adéquate à votre problème (vous pouvez par exemple consulter le [Github de l’équipe d’Huggingface](https://github.com/huggingface/transformers) qui facilite grandement l’utilisation de nombreuses architectures de Transformers).
