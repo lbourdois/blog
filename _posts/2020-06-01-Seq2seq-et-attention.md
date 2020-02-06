@@ -23,7 +23,8 @@ sidebar:
 
 # <span style="color: #FF0000"> **Avant-propos** </span>
  
-Cet article est une traduction de l’article de Jay Alammar : [Visualizing neural machine translation mechanics of seq2seq models with attention](https://jalammar.github.io/visualizing-neural-machine-translation-mechanics-of-seq2seq-models-with-attention/).
+Cet article est une traduction de l’article de Jay Alammar : [Visualizing neural machine translation mechanics of seq2seq models with attention](https://jalammar.github.io/visualizing-neural-machine-translation-mechanics-of-seq2seq-models-with-attention/).<br>
+Merci à lui de m'avoir autorisé à effectuer cette traduction.
 <br><br><br>
 
 
