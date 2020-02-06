@@ -4,6 +4,7 @@ categories:
   - NLP
 tags:
   - bag of word en français
+  - bag of word NLP en français
 excerpt : "NLP"
 header :
     overlay_image: "https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/BOW/BOW_blog.png"
@@ -79,7 +80,7 @@ explique bien le premier point TFIDF et a l'avantage de proposer la syntaxe pyth
 - la [documentation de Scikit-learn](https://scikit-learn.org/stable/modules/feature_extraction.html#text-feature-extraction
 ) explique l'ensemble des techniques énoncées ainsi que les fonctions python utiles à la mise en place du BOW. Elle est cependant en anglais.
 <br>
-En plus de Scikit-learn évoqué à l'instanta, d'autres librairies Python sont également fréquemment utilisées :
+En plus de Scikit-learn évoqué à l'instant, d'autres librairies Python sont également fréquemment utilisées :
 [Nltk](https://www.nltk.org/) (utilisée par Victor Bigand dans son tutoriel) et [SpaCy](https://spacy.io/).
 <br><br><br>
 
