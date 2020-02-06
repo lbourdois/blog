@@ -30,21 +30,22 @@ Elle consiste principalement à nettoyer les données textuelles à notre dispos
 Bien que son usage est diminué, cette technique possède de nombreux atouts qui font qu’elle peut vous être tout de même utile. En effet, le bag-of-word est :
 * très simple à comprendre
 *	peut être utilisé sur un faible échantillon de données alors que les techniques basées sur les réseaux de neurones ont en besoin d’énormément
-*	ne nécessite pas d’importante capacité de calcul (un CPU suffit alors que les techniques de réseaux de neurones nécessitent des GPU voir des TGU qui coûtent extrêmement cher)
+*	ne nécessite pas de capacités de calcul importantes (un CPU suffit alors que les techniques de réseaux de neurones nécessitent des GPU voir des TGU qui coûtent extrêmement cheres)
 <br><br>
 
 
 Les algorithmes de machine learning ne peuvent pas fonctionner directement avec du texte brut. 
 Le texte doit être converti en chiffres et notamment en vecteur.
 Un bag-of-words (BoW) est une représentation du texte qui décrit la présence de mots dans un document. Cela implique deux choses :
-*	Un vocabulaire de mots connus.
-* Une mesure de la présence des mots connus.
+*	un vocabulaire de mots connus.
+* une mesure de la présence des mots connus.
+<br>
 
 Il s’agit d’un « sac » de mots, car toute information sur l’ordre ou la structure des mots dans le document est rejetée.
 Le modèle se préoccupe seulement de savoir si des mots connus se trouvent dans le document, et non pas où ils se trouvent dans le document.
-Ainsi, ** BoW il élimine toute l’information relative à l’ordre des mots** etmet l’accent sur l’occurrence des mots dans un document. 
+Ainsi, **le BoW élimine toute l’information relative à l’ordre des mots** et met l’accent sur l’occurrence des mots dans un document. 
 L’intuition est que les documents sont similaires s’ils ont un contenu similaire.
-De plus, du seul contenu nous pouvons apprendre quelque chose sur la signification du document.
+De plus, du seul contenu nous pouvons apprendre quelque chose sur la signification du document.<br>
 Le sac de mots peut être aussi simple ou complexe que vous le souhaitez. 
 La complexité vient à la fois de la façon de concevoir le vocabulaire des mots connus (ou tokens) et de la façon d’évaluer la présence des mots connus.
 <br><br><br>
@@ -54,8 +55,9 @@ La complexité vient à la fois de la façon de concevoir le vocabulaire des mot
 # <span style="color: #FF0000"> **Aller plus loin** <span>
 Comme indiqué plus haut, je ne vais pas entrer dans les détails des différentes étapes de la méthode à savoir :
 * créer le vocabulaire de mots connus
-* et établir une mesure de la présence des mots connus.
+* établir une mesure de la présence des mots connus.
 <br>
+  
 Enonçons simplement les mots clés que vous pourrez ensuite chercher par vous même si les sites que je vous propose un peu plus loin n'ont pas répondu à toutes vos interogations.
 <br>
   
@@ -91,7 +93,6 @@ Le bag-of-words model est très simple à comprendre et à mettre en œuvre.
 <br>
 Cette méthode souffre de néanmoins certaines lacunes :
 - le vocabulaire : pour être efficace, cette méthode exige que le vocabulaire soit conçut de manière extrêmement rigoureuse (les fautes d'orthographe par exemple peuvent poser problème)
-- le sens : ne pa sprendre en compte l’ordre des mots ne permet pas de prendre en compte le contexte et par conséquent le sens des mots dans le document (sémantique). 
+- le sens : ne pas tenir compte de l’ordre des mots ne permet pas de prendre en compte le contexte et par conséquent le sens des mots dans le document (sémantique). 
 <br>
 Les méthodes présentées dans les autres articles du blog, permettent de prendre en compte ce problème.
-
