@@ -18,7 +18,7 @@ sidebar:
 # <span style="color: #FF0000"> **Avant-propos** </span>
  
 
-Cet article est une traduction de l’article de Jay Alammar : [The illustrated word2vec](https://jalammar.github.io/illustrated-word2vec/).   Ainsi si dans l’article vous lisez des « Je » ou des « Jay », cela provient d’exemple de l’article original que je n’ai pas pu traduire autrement. 
+Cet article est une traduction de l’article de Jay Alammar : [The illustrated word2vec](https://jalammar.github.io/illustrated-word2vec/). Ainsi si dans l’article vous lisez des « Je » ou des « Jay », cela provient d’exemple de l’article original que je n’ai pas pu traduire autrement. Merci à lui de m'avoir autorisé à effectuer cette traduction.
 <br><br><br>
 
 
@@ -258,6 +258,7 @@ Nous prenons les deux premiers mots pour des features et le troisième mot pour 
 
 
 Nous glissons ensuite notre fenêtre à la position suivante et créons un deuxième échantillon :
+<center>
 <figure class="image">
   <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/lm-sliding-window-3.png">
 </figure>   
