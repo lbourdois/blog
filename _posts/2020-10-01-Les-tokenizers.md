@@ -19,7 +19,7 @@ sidebar:
 
 # <span style="color: #FF0000"> **Avant-propos** </span>
  
-Cet article est une traduction de l’article de Keita Kurita : [A Deep Dive into the Wonderful World of Preprocessing in NLP](https://mlexplained.com/2019/11/06/a-deep-dive-into-the-wonderful-world-of-preprocessing-in-nlp/).<br>
+Cet article est une traduction de l’article de Keita Kurita : [A Deep Dive into the Wonderful World of Preprocessing in NLP](https://mlexplained.com/2019/11/06/a-deep-dive-into-the-wonderful-world-of-preprocessing-in-nlp/).<br> Merci à lui de m'avoir autorisé à effectuer cette traduction.
 <br><br><br>
 
 
