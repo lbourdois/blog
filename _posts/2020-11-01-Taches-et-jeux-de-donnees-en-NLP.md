@@ -43,7 +43,7 @@ Les jeux de données anglophones communs :
 <br><br>
 
 Pour le français, il n'existe pas pour le moment une base de données pour le Question-Answering.<br>
-Le projet [PIAF] (https://piaf.etalab.studio/)(Pour une IA Francophone) porté par [Etalab](https://www.etalab.gouv.fr/) a pour objectif de créer une telle base. Ce projet à vocation open-data est ouvert à tous. Si vous souhaitez contribuer (ne serais-ce qu'annoter 1 ou 2 textes pour voir de vous même la méthodologie appliquée), je vous invite à vous rentre sur le site du projet :)
+Le projet [PIAF](https://piaf.etalab.studio/) (Pour une IA Francophone) porté par [Etalab](https://www.etalab.gouv.fr/) a pour objectif de créer une telle base. Ce projet à vocation open-data est ouvert à tous. Si vous souhaitez contribuer (ne serais-ce qu'annoter 1 ou 2 textes pour voir de vous même la méthodologie appliquée), je vous invite à vous rentre sur le site du projet :)
 <br><br><br>
 
 
@@ -75,7 +75,7 @@ Les jeux de données anglophones communs :
 <br>
 Pour le français, deux options s'offrent à vous :
 - vous pouvez utiliser la partie francophone du jeu de données [XNLI](http://www.nyu.edu/projects/bowman/xnli/),
-- ou bien, utiliser [FLUE](https://github.com/getalp/Flaubert/tree/master/flue)(French Language Understand-ing Evaluation).
+- ou bien, utiliser [FLUE](https://github.com/getalp/Flaubert/tree/master/flue) (French Language Understand-ing Evaluation).
 FLUE est l'équivalent francophone de GLUE (cf. Benchmark multi-tâches de l'article). Il a été crée par les auteurs de [FlauBERT](https://arxiv.org/pdf/1912.05372.pdf). En pratique, la partie NLI de FLUE est la partie francophone du jeu de données XNLI évoqué au point précédent. Utiliser l'un ou l'autre revient donc au même. L'intérêt de FLUE est qu'il regroupe plusieurs tâches.
 <br><br><br>
 
@@ -103,7 +103,7 @@ Les jeux de données anglophones communs :
 -	[IMDb](http://ai.stanford.edu/~amaas/data/sentiment/) : Un grand jeu de données de critiques de films avec des étiquettes binaires de classification des sentiments.
 <br>
 
-Pour le français, [FLUE](https://github.com/getalp/Flaubert/tree/master/flue)(French Language Understand-ing Evaluation) met à disposition le jeu de données CLS-FR. Celui-ci est composé d'avis d'utilisateurs de trois types de produits proposés sur Amazon : livres, musiques et DVD (4000 avis pour chacun des types de produits).
+Pour le français, [FLUE](https://github.com/getalp/Flaubert/tree/master/flue) met à disposition le jeu de données CLS-FR. Celui-ci est composé d'avis d'utilisateurs de trois types de produits proposés sur Amazon : livres, musiques et DVD (4000 avis pour chacun des types de produits).
 <br><br><br>
 
 
@@ -124,7 +124,7 @@ Les jeux de données anglophones communs :
 -	[QQP (Quora Question Pairs) STS Benchmark](https://www.quora.com/q/quoradata/First-Quora-Dataset-Release-Question-Pairs): Semantic Textual Similarity
 <br>
 
-Pour le français, [FLUE](https://github.com/getalp/Flaubert/tree/master/flue)(French Language Understand-ing Evaluation) met à disposition la partie en français de [PAWS-X](https://ai.googleblog.com/2019/10/releasing-paws-and-paws-x-two-new.html) de Google, soit environ 49 000 données d'apprentissage et 2 000 de test.
+Pour le français, [FLUE](https://github.com/getalp/Flaubert/tree/master/flue) met à disposition la partie en français de [PAWS-X](https://ai.googleblog.com/2019/10/releasing-paws-and-paws-x-two-new.html) de Google, soit environ 49 000 données d'apprentissage et 2 000 de test.
 <br><br><br>
 
 
@@ -195,6 +195,7 @@ Les jeux de données anglophones communs :
 Les benchmark anglophones : 
 -	[GLUE multi-task benchmark](https://gluebenchmark.com/) 
 -	[decaNLP benmark](https://decanlp.com/) 
+
 
 
 Les benchmark francophones : 
