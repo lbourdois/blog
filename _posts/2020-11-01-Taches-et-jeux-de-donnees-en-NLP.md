@@ -18,11 +18,11 @@ sidebar:
 
 
 # <span style="color: #FF0000"> **Avant-propos** </span>
-Les publications scientifiques étant exclusivement en anglais, je fais en sorte de laisser les mots clés en anglais et de donner des explications en français (je ne sais même pas si certains mots ont une traduction en français). Le but étant que vous puissiez après lire de vous même n’importe quelle publication ou article de vulgarisation en anglais sur le sujet et les comprendre.
-Le domaine du NLP évoluant actuellement très rapidement il m’est impossible de présenter tous les nouveaux modèles par manque de temps. D’où là encore la nécessité que vous alliez consulter certaines sources anglophones par vous même.
-Un élément qui me semble important pour pouvoir comprendre n’importe quelle publication est de connaître les tâches qui servent à comparer les performances des différents modèles ainsi que les jeux de données test en lien avec ces tâches.
+Les publications scientifiques étant exclusivement en anglais, je fais en sorte de laisser les mots clés en anglais et de donner des explications en français (je ne sais même pas si certains mots ont une traduction en français). Le but étant que vous puissiez après lire de vous même n’importe quelle publication ou article de vulgarisation en anglais sur le sujet et les comprendre.<br>
+Le domaine du NLP évoluant actuellement très rapidement il m’est impossible de présenter tous les nouveaux modèles par manque de temps. D’où là encore la nécessité que vous alliez consulter certaines sources anglophones par vous même.<br>
+Un élément qui me semble important pour pouvoir comprendre n’importe quelle publication est de connaître les tâches qui servent à comparer les performances des différents modèles ainsi que les jeux de données test en lien avec ces tâches.<br>
 La présentation des jeux de données anglophones se base sur l’[article de Lilian Weng](https://www.topbots.com/generalized-language-models-tasks-datasets/) (travaillant chez OpenAI). Merci à elle de m'avoir autorisé à effectuer cette traduction.<br>
-Celle des jeux de données francophones se base sur la [publication de l’équipe ayant développé le modèle CamemBERT](https://arxiv.org/pdf/1911.03894.pdf).
+Celle des jeux de données francophones se base sur la [publication de l’équipe ayant développé le modèle CamemBERT](https://arxiv.org/pdf/1911.03894.pdf) et sur la [publication de l’équipe ayant développé le modèle FlauBERT](https://arxiv.org/abs/1912.05372).
 <br><br><br>
 
 
@@ -40,6 +40,10 @@ Le modèle doit répondre à une série de questions en lien avec un jeu de donn
 Les jeux de données anglophones communs : 
 - [SQuAD](https://rajpurkar.github.io/SQuAD-explorer/) (Stanford Question Answering Dataset): Un jeu de données sur la compréhension de la lecture, composé de questions posées sur un ensemble d’articles de Wikipédia, où la réponse à chaque question est un intervalle de texte.
 - [RACE](http://www.qizhexie.com/data/RACE_leaderboard) (ReAding Comprehension from Examinations): Un jeu de données sur la compréhension de la lecture comprenant plus de 28 000 passages et près de 100 000 questions. Le dataset provient d’examens d’anglais en Chine, qui sont conçus pour les élèves du collège et du lycée.
+<br><br>
+
+Pour le français, il n'existe pas pour le moment une base de données pour le Question-Answering.<br>
+Le projet [PIAF](https://piaf.etalab.studio/)(Pour une IA Francophone) porté par [Etalab](https://www.etalab.gouv.fr/) a pour objectif de créer une telle base. Ce projet à vocation open-data est ouvert à tous. Si vous souhaitez contribuer (ne serais-ce qu'annoter 1 ou 2 textes pour voir de vous même la méthodologie appliquée), je vous invite à vous rentre sur le site du projet :)
 <br><br><br>
 
 
@@ -69,7 +73,10 @@ Les jeux de données anglophones communs :
 -	[SciTail](http://data.allenai.org/scitail/) : Un entailment dataset créé à partir d’examens scientifiques à choix multiples et de phrases sur le Web.
 
 <br>
-Pour le français, vous pouvez utiliser la partie francophone du jeu de données [XNLI](http://www.nyu.edu/projects/bowman/xnli/).
+Pour le français, deux options s'offrent à vous :
+- vous pouvez utiliser la partie francophone du jeu de données [XNLI](http://www.nyu.edu/projects/bowman/xnli/),
+- ou bien, utiliser [FLUE](https://github.com/getalp/Flaubert/tree/master/flue)(French Language Understand-ing Evaluation).
+FLUE est l'équivalent francophone de GLUE (cf. Benchmark multi-tâches de l'article). Il a été crée par les auteurs de [FlauBERT](https://arxiv.org/pdf/1912.05372.pdf). En pratique, la partie NLI de FLUE est la partie francophone du jeu de données XNLI évoqué au point précédent. Utiliser l'un ou l'autre revient donc au même. L'intérêt de FLUE est qu'il regroupe plusieurs tâches.
 <br><br><br>
 
 
@@ -83,7 +90,7 @@ Les jeux de données anglophones communs :
 -	[Reuters Corpus](https://trec.nist.gov/data/reuters/reuters.html) : Une grande collection d’articles de Reuters.
 <br>
 
-Pour le français, il existe le FTB (French Treebank) contenant plus de 12.000 phrases provenant d’articles du journal Le Monde publiés entre 1989 et 1995. Cette base de données est cependant accessible que sur les serveurs de l’Inria.
+Pour le français, il existe le FTB (French Treebank) crée par les équipes de l'Université Paris-Diderot (laboratoire LLF) contenant plus de 21 550 phrases provenant d’articles du journal *Le Monde* publiés entre 1989 et 1995. L'accès à cette base de données est cependant restreinte. Pour y avoir accès, il faut en effectuer la [demande](http://ftb.linguist.univ-paris-diderot.fr/telecharger.php).
 <br><br><br>
 
 
@@ -94,6 +101,9 @@ Le modèle doit classer correctement un texte (positif, négatif, etc…). Un ex
 Les jeux de données anglophones communs : 
 -	[SST](https://nlp.stanford.edu/sentiment/index.html) (Stanford Sentiment Treebank)
 -	[IMDb](http://ai.stanford.edu/~amaas/data/sentiment/) : Un grand jeu de données de critiques de films avec des étiquettes binaires de classification des sentiments.
+<br>
+
+Pour le français, [FLUE](https://github.com/getalp/Flaubert/tree/master/flue)(French Language Understand-ing Evaluation) met à disposition le jeu de données CLS-FR. Celui-ci est composé d'avis d'utilisateurs de trois types de produits proposés sur Amazon : livres, musiques et DVD (4000 avis pour chacun des types de produits).
 <br><br><br>
 
 
@@ -112,7 +122,11 @@ Aussi connu sous le terme « paraphrase detection ».
 Les jeux de données anglophones communs : 
 -	[MRPC (MicRosoft Paraphrase Corpus)](https://www.microsoft.com/en-us/download/details.aspx?id=52398) : contient des paires de phrases extraites de sources d’information sur le Web, avec des annotations indiquant si chaque paire est sémantiquement équivalente.
 -	[QQP (Quora Question Pairs) STS Benchmark](https://www.quora.com/q/quoradata/First-Quora-Dataset-Release-Question-Pairs): Semantic Textual Similarity
+<br>
+
+Pour le français, [FLUE](https://github.com/getalp/Flaubert/tree/master/flue)(French Language Understand-ing Evaluation) met à disposition la partie en français de [PAWS-X](https://ai.googleblog.com/2019/10/releasing-paws-and-paws-x-two-new.html) de Google, soit environ 49 000 données d'apprentissage et 2 000 de test.
 <br><br><br>
+
 
 
 
@@ -133,10 +147,11 @@ Les jeux de données anglophones communs :
 
 
 # <span style="color: #FF0000"> **Part-of-Speech (POS) Tagging** </span>
-Consiste à attribuer à chaque mot sa catégorie grammaticale correspondante. L’analyse des dépendances consiste à prédire l’arbre syntaxique capturant les relations syntaxiques entre les mots.
+Consiste à attribuer à chaque mot sa catégorie grammaticale correspondante. L’analyse des dépendances consiste à prédire l’arbre syntaxique capturant les relations syntaxiques entre les mots.<br>
+
 Pour le français, quatre banques d’arbres sont disponibles gratuitement dans UD v2.2 UD v2.2 (UD pour Universal Dependencies) : 
 -	GSD (données provenant de blogs, d’articles de presse, de critiques et de Wikipedia),
--	Sequoia (contient plus de 3000 phrases provenant du journal régional L’Est Républicain, Wikipédia et des documents de l’agence européenne de la médecine),
+-	[Sequoia](https://deep-sequoia.inria.fr/) de l'Inria (contient plus de 3000 phrases provenant du journal régional L’Est Républicain, Wikipédia et des documents de l’agence européenne de la médecine),
 -	Spoken (corpus converti automatiquement depuis la treebank [Projet Rhapsodie](https://www.projet-rhapsodie.fr/)) ,
 -	ParTUT (conversion de données multilingues émanant de l’Université de Turin).
 <br><br><br>
@@ -177,6 +192,9 @@ Les jeux de données anglophones communs :
 
 
 # <span style="color: #FF0000"> **Benchmark multi-tâches** </span>
+Les benchmark anglophones : 
 -	[GLUE multi-task benchmark](https://gluebenchmark.com/) 
 -	[decaNLP benmark](https://decanlp.com/) 
-
+<br>
+Les benchmark francophones : 
+- [FLUE](https://github.com/getalp/Flaubert/tree/master/flue#4-constituency-parsing)
