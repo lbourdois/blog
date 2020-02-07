@@ -43,7 +43,7 @@ Les jeux de données anglophones communs :
 <br><br>
 
 Pour le français, il n'existe pas pour le moment une base de données pour le Question-Answering.<br>
-Le projet [PIAF](https://piaf.etalab.studio/)(Pour une IA Francophone) porté par [Etalab](https://www.etalab.gouv.fr/) a pour objectif de créer une telle base. Ce projet à vocation open-data est ouvert à tous. Si vous souhaitez contribuer (ne serais-ce qu'annoter 1 ou 2 textes pour voir de vous même la méthodologie appliquée), je vous invite à vous rentre sur le site du projet :)
+Le projet [PIAF] (https://piaf.etalab.studio/)(Pour une IA Francophone) porté par [Etalab](https://www.etalab.gouv.fr/) a pour objectif de créer une telle base. Ce projet à vocation open-data est ouvert à tous. Si vous souhaitez contribuer (ne serais-ce qu'annoter 1 ou 2 textes pour voir de vous même la méthodologie appliquée), je vous invite à vous rentre sur le site du projet :)
 <br><br><br>
 
 
@@ -195,6 +195,7 @@ Les jeux de données anglophones communs :
 Les benchmark anglophones : 
 -	[GLUE multi-task benchmark](https://gluebenchmark.com/) 
 -	[decaNLP benmark](https://decanlp.com/) 
-<br>
+
+
 Les benchmark francophones : 
 - [FLUE](https://github.com/getalp/Flaubert/tree/master/flue#4-constituency-parsing)
