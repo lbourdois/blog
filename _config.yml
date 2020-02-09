@@ -63,7 +63,7 @@ plugins:
 author:
   name   : "Loïck BOURDOIS"
   avatar : "/assets/images/bio-photo.jpg"
-  bio              : " Data Scientist travaillant au centre de recherche Inserm-Université de Bordeaux U1219 « Bordeaux population health ». Plus de détails me concernant sont disponibles sur la page "A propos" "
+  bio              : "Data Scientist travaillant au Centre de recherche *Bordeaux Population Health* de l'INSERM-Université de Bordeaux. Pour plus de détails me concernant voir la page "A propos"."
   location         : "En francophonIA"
   links:
     - label: "Email"
