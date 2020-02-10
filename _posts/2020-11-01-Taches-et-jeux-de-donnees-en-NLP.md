@@ -196,6 +196,10 @@ Les jeux de données anglophones communs :
 -	[English Wikipedia](https://en.wikipedia.org/wiki/Wikipedia:Database_download#English-language_Wikipedia) : ~2500M words
 <br><br><br>
 
+Les jeux de données utilisés par CamemBERT et FlauBERT : 
+- [OSCAR](https://traces1.inria.fr/oscar/) : données de [Common Crawl](https://commoncrawl.org/) récupérer par l'INRIA (utilisé par CamemBERT)
+- voir la [page 8 de la publication de FlauBERT](https://arxiv.org/pdf/1912.05372.pdf) pour connaître les jeux de données qu'ils ont utilisés.
+
 
 
 # <span style="color: #FF0000"> **Benchmark multi-tâches** </span>
