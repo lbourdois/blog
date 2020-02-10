@@ -99,7 +99,7 @@ Pour le français, il existe le FTB (French Treebank) crée par les équipes de 
 Le modèle doit classer correctement un texte (positif, négatif, etc…). Un exemple avec la base SST et le modèle BERT est disponible ici.
 <br>
 Les jeux de données anglophones communs : 
--	[SST](https://nlp.stanford.edu/sentiment/index.html) (Stanford Sentiment Treebank)
+-	[SST](https://nlp.stanford.edu/sentiment/index.html) (Stanford Sentiment Treebank) : contient 215 154 phrases labellisées basées sur 11 855 phrases de critiques de films.
 -	[IMDb](http://ai.stanford.edu/~amaas/data/sentiment/) : Un grand jeu de données de critiques de films avec des étiquettes binaires de classification des sentiments.
 <br>
 
@@ -117,11 +117,11 @@ Modélise la structure prévisible d’un argument d’une phrase. Peut être vu
 
 
 # <span style="color: #FF0000"> **Sentence similarity** </span>
-Aussi connu sous le terme « paraphrase detection ».
+Cette tâche consiste à déterminer dans quelle mesure deux textes sont similaires. Cela peut se faire en attribuant une note de 1 à 5. Les tâches connexes sont la paraphrase ou l'identification des doublons.
 <br>
 Les jeux de données anglophones communs : 
 -	[MRPC (MicRosoft Paraphrase Corpus)](https://www.microsoft.com/en-us/download/details.aspx?id=52398) : contient des paires de phrases extraites de sources d’information sur le Web, avec des annotations indiquant si chaque paire est sémantiquement équivalente.
--	[QQP (Quora Question Pairs) STS Benchmark](https://www.quora.com/q/quoradata/First-Quora-Dataset-Release-Question-Pairs): Semantic Textual Similarity
+-	[QQP (Quora Question Pairs) STS Benchmark](https://www.quora.com/q/quoradata/First-Quora-Dataset-Release-Question-Pairs): consiste en plus de 400 000 paires de questions issues du site Quora.
 <br>
 
 Pour le français, [FLUE](https://github.com/getalp/Flaubert/tree/master/flue) met à disposition la partie en français de [PAWS-X](https://ai.googleblog.com/2019/10/releasing-paws-and-paws-x-two-new.html) de Google, soit environ 49 000 données d'apprentissage et 2 000 de test.
@@ -137,19 +137,16 @@ Les jeux de données anglophones communs :
 <br><br><br>
 
 
-
-# <span style="color: #FF0000"> **Text Chunking** </span>
-Pour diviser un en parties syntaxiquement corrélées.
-Les jeux de données anglophones communs : 
--	[CoNLL-2000](https://www.clips.uantwerpen.be/conll2000/chunking/)
-<br><br><br>
-
-
-
 # <span style="color: #FF0000"> **Part-of-Speech (POS) Tagging** </span>
-Consiste à attribuer à chaque mot sa catégorie grammaticale correspondante. L’analyse des dépendances consiste à prédire l’arbre syntaxique capturant les relations syntaxiques entre les mots.<br>
+Consiste à attribuer à chaque mot sa catégorie grammaticale correspondante. L’analyse des dépendances consiste à prédire l’arbre syntaxique capturant les relations syntaxiques entre les mots.
+<br>
 
-Pour le français, quatre banques d’arbres sont disponibles gratuitement dans UD v2.2 UD v2.2 (UD pour Universal Dependencies) : 
+Les jeux de données anglophones communs : 
+- [Universal Dependencies (UD)](https://universaldependencies.org/) : contient plus de 100 banques d'arbres dans plus de 60 langues
+- [Ritter](https://www.aclweb.org/anthology/D11-1141/) : issues de l'analyse de "social medias" anglais.
+<br>
+
+Pour le français, quatre banques d’arbres sont disponibles gratuitement dans UD v2.2 : 
 -	GSD (données provenant de blogs, d’articles de presse, de critiques et de Wikipedia),
 -	[Sequoia](https://deep-sequoia.inria.fr/) de l'Inria (contient plus de 3000 phrases provenant du journal régional L’Est Républicain, Wikipédia et des documents de l’agence européenne de la médecine),
 -	Spoken (corpus converti automatiquement depuis la treebank [Projet Rhapsodie](https://www.projet-rhapsodie.fr/)) ,
@@ -159,6 +156,8 @@ Pour le français, quatre banques d’arbres sont disponibles gratuitement dans 
 
 
 # <span style="color: #FF0000"> **Machine Translation** </span> 
+Tache qui consiste à traduire une phrase dans une langue donnée dans une autre langue.
+
 Voir le site de [Standard NLP](https://nlp.stanford.edu/projects/nmt/) qui contient différents jeux de données :
 -	WMT 2015 English-Tchèque (Large)
 -	WMT 2014 English-Allemand (Moyen)
@@ -169,6 +168,14 @@ Voir le site de [Standard NLP](https://nlp.stanford.edu/projects/nmt/) qui conti
 
 # <span style="color: #FF0000"> **Coreference Resolution** </span>
 Associe les parties d’un texte qui se réfèrent aux mêmes notions.
+Exemple :
+
+<center>
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Taches-et-BDD/Id%C3%A9fix.png">
+</figure>
+</center>
+
 -	[CoNLL-2012](http://conll.cemantix.org/2012/data.html)
 <br><br><br>
 
