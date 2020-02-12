@@ -44,7 +44,7 @@ Dans un second temps, vous trouverez les articles concernant les sujets utiles �
 * Les architectures issues du Transformer<br>
 Il en existe de nombreuses. Une liste non exhaustive est disponible dans le dernier article de la série consacrée au NLP : lire [l'article en question](https://lbourdois.github.io/blog/nlp/Les-architectures-transformers/)<br>
 Je présente plus en détails les architectures que j’ai eu l’occasion d’utiliser professionnellement :<br>
-    * BERT : l’[article de présentation](https://lbourdois.github.io/blog/nlp/BERT/) et le [tutoriel associé](https://github.com/lbourdois/notebooks_blog/blob/master/Tutoriel%20application%20de%20BERT%20via%20DistillBERT.ipynb)<br>
+    * BERT : l’[article de présentation](https://lbourdois.github.io/blog/nlp/BERT/)<br> 
     * le GPT-2 : l’[article de présentation](https://lbourdois.github.io/blog/nlp/GPT2/)<br>
   
 * Les articles concernant les sujets utiles à connaître en NLP :
