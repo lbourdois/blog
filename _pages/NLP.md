@@ -46,9 +46,9 @@ Il en existe de nombreuses. Une liste non exhaustive est disponible dans le dern
 Je présente plus en détails les architectures que j’ai eu l’occasion d’utiliser professionnellement :<br>
     * BERT : l’[article de présentation](https://lbourdois.github.io/blog/nlp/BERT/)<br> 
     * le GPT-2 : l’[article de présentation](https://lbourdois.github.io/blog/nlp/GPT2/)<br>
-
+<br>
 * Optimisations du Transformer<br>
-L'architecture Transformer est très performante mais possède quelques lacunes (nombres importants de paramètres, calculs pas forcéments les plus efficients, etc...)<br>.
+L'architecture Transformer est très performante mais possède quelques lacunes (nombres importants de paramètres, calculs pas forcéments les plus efficients, etc...).<br>
 Différents travaux cherchent à résoudre ces problèmes. On peut par exemple évoquer les versions distillées de modèles, ALBERT ou encore le Reformer. Ce dernier a fait l'objet d'un [article de présentation](https://lbourdois.github.io/blog/nlp/Reformer/) sur le blog.<br>
 
 * Les articles concernant les sujets utiles à connaître en NLP :
