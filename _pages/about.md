@@ -10,7 +10,8 @@ Je suis diplômé depuis septembre 2019 d’un Master de Modélisation Statistiq
 Je travaille à présent au Centre de Recherche Inserm-Université de Bordeaux U1219 « Bordeaux population health » au sein de l’équipe [IETO](https://www.bordeaux-population-health.center/les-equipes/prevention-et-prise-en-charge-des-traumatismes-ieto/) (Injury Epidemiology Transport Occupation).<br>  
 
 Dans le cadre de mon travail, je suis amené à appliquer les techniques de NLP les plus récentes à des données médicales issues du Centre Hospitalier Universitaire de Bordeaux.<br>
-Pour plus de détails, je vous invite à regarder la présentation suivante que j'ai eu l'opportunité de faire en février 2020 : [https://www.youtube.com/watch?v=5gRNOkQaUyI](https://www.youtube.com/watch?v=5gRNOkQaUyI). Elle ne porte pas sur tous les travaux en lien avec le NLP que nous sommes en train de réaliser à l'INSERM de Bordeaux mais permet de se faire une idée de la façon dont nous utilisons le GPT2 par exemple.<br>
+Pour plus de détails, je vous invite à regarder la présentation suivante que j'ai eu l'opportunité de faire en février 2020 : [https://www.youtube.com/watch?v=5gRNOkQaUyI](https://www.youtube.com/watch?v=5gRNOkQaUyI).<br>
+Elle ne porte pas sur tous les travaux en lien avec le NLP que nous sommes en train de réaliser à l'INSERM de Bordeaux mais permet de se faire une idée de la façon dont nous utilisons le GPT2 par exemple.<br>
 A savoir que c'était une première pour moi avec un micro, je m'excuse donc pour les fois où il n'était pas assez prêt de la bouche ^^".<br>
 
 
