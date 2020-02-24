@@ -22,7 +22,7 @@ Les publications scientifiques étant exclusivement en anglais, je fais en sorte
 Le domaine du NLP évoluant actuellement très rapidement il m’est impossible de présenter tous les nouveaux modèles par manque de temps. D’où là encore la nécessité que vous alliez consulter certaines sources anglophones par vous même.<br>
 Un élément qui me semble important pour pouvoir comprendre n’importe quelle publication est de connaître les tâches qui servent à comparer les performances des différents modèles ainsi que les jeux de données test en lien avec ces tâches.<br>
 La présentation des jeux de données anglophones se base sur l’[article de Lilian Weng](https://www.topbots.com/generalized-language-models-tasks-datasets/) (travaillant chez OpenAI). Merci à elle de m'avoir autorisé à effectuer cette traduction.<br>
-Celle des jeux de données francophones se base sur la [publication de l’équipe ayant développé le modèle CamemBERT](https://arxiv.org/pdf/1911.03894.pdf) et sur la [publication de l’équipe ayant développé le modèle FlauBERT](https://arxiv.org/abs/1912.05372).
+Celle des jeux de données francophones se base sur la [publication de l’équipe ayant développé le modèle CamemBERT](https://arxiv.org/pdf/1911.03894.pdf), sur la [publication de l’équipe ayant développé le modèle FlauBERT](https://arxiv.org/abs/1912.05372) et sur la [publication de l’équipe ayant développé FQuAD](https://arxiv.org/abs/2002.06071).
 <br><br><br>
 
 
@@ -42,8 +42,8 @@ Les jeux de données anglophones communs :
 - [RACE](http://www.qizhexie.com/data/RACE_leaderboard) (ReAding Comprehension from Examinations): Un jeu de données sur la compréhension de la lecture comprenant plus de 28 000 passages et près de 100 000 questions. Le dataset provient d’examens d’anglais en Chine, qui sont conçus pour les élèves du collège et du lycée.
 <br><br>
 
-Pour le français, il n'existe pas pour le moment une base de données pour le Question-Answering.<br>
-Le projet [PIAF](https://piaf.etalab.studio/) (Pour une IA Francophone) porté par [Etalab](https://www.etalab.gouv.fr/) a pour objectif de créer une telle base. Ce projet à vocation open-data est ouvert à tous. Si vous souhaitez contribuer (ne serais-ce qu'annoter 1 ou 2 textes pour voir de vous même la méthodologie appliquée), je vous invite à vous rentre sur le site du projet :)
+Pour le français, vous pouvez utiliser la base de données mise à disposition par l'entreprise Illuin Technology : [FQuAD](https://fquad.illuin.tech/). Elle contient plus de 25.000 questions/réponses basées sur des [articles de qualité de Wikipédia](https://fr.wikipedia.org/wiki/Cat%C3%A9gorie:Article_de_qualit%C3%A9). Pour plus d'informations concernant la répartition des types de questions (qui ? quoi ? où ? quand ?, etc...), la répartion des entités (noms communs, personnes, lieu, etc...) et les résultats des premiers benchmarks basés sur CamemBERT et FlauBERT, je vous invite à lire la [publication de l'équipe d'Illuin Technology](https://arxiv.org/abs/2002.06071).<br>
+A noter qu'il existe également le projet [PIAF](https://piaf.etalab.studio/) (Pour une IA Francophone) porté par [Etalab](https://www.etalab.gouv.fr/) qui a pour objectif de créer lui aussi une base de Question/Réponse. Ce projet à vocation open-data est ouvert à tous. Si vous souhaitez contribuer (ne serais-ce qu'annoter 1 ou 2 textes pour voir de vous même la méthodologie appliquée), je vous invite à vous rentre sur le site du projet :)
 <br><br><br>
 
 
