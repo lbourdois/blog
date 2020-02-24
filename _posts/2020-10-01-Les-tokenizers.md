@@ -4,6 +4,7 @@ categories:
   - NLP
 tags:
   - Les tokenizers Transformer NLP
+  - Tokenizers NLP BERT
 excerpt : "NLP"
 header :
     overlay_image: "https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/NLP_radom_blog.png"
