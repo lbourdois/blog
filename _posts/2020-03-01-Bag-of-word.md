@@ -3,7 +3,7 @@ title: "ILLUSTRATION DU BAG-OF-WORD"
 categories:
   - NLP
 tags:
-  - bag of word en français
+  - bag of word expliqué en français
   - bag of word NLP en français
 excerpt : "NLP"
 header :
