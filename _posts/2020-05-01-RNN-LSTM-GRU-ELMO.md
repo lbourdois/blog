@@ -4,9 +4,9 @@ categories:
   - NLP
 tags:
   - ELMO expliqué en français
-  - RNN
-  - LSTM
-  - GRU
+  - RNN expliqué en français
+  - LSTM expliqué en français
+  - GRU expliqué en français
 excerpt : "NLP"
 header :
     overlay_image: "https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/RNN-LSTM-GRU-ELMO/ELMO_blog.png"
