@@ -4,7 +4,7 @@ categories:
   - NLP
 tags:
   - Modèles séquenciels expliqués en français
-  - Processus d'attention nlp
+  - Processus d'attention NLP
 excerpt : "NLP"
 header :
     overlay_image: "https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/NLP_radom_blog.png"
