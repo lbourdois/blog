@@ -4,6 +4,7 @@ categories:
   - NLP
 tags:
   - word embedding en français
+  - word embedding expliqué en français
 excerpt : "NLP"
 header :
     overlay_image: "https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/NLP_radom_blog.png"
