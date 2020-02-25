@@ -24,7 +24,6 @@ Nénanmoins énormément d'autres architectures issues du Transformer existes. L
 L'objectif de cet article est de faire un résumé succint de quelques unes de ces architectures notamment les principales utilisées en langue anglaise et en langue française.<br>
 
 
-Cet article est également le dernier de la série NLP.
 J'espère qu'après avoir lu les articles sur le [Transformer](https://lbourdois.github.io/blog/nlp/Transformer/), le [GPT2](https://lbourdois.github.io/blog/nlp/GPT2/), [BERT](https://lbourdois.github.io/blog/nlp/BERT/), [les Tokenizers](https://lbourdois.github.io/blog/nlp/Les-tokenizers/) et les [Bases de données utilisées dans les articles scientifiques](https://lbourdois.github.io/blog/nlp/Taches-et-jeux-de-donnees-en-NLP/), le lecteur est capable de comprendre de lui même ces autres architectures.<br>
 
 Enfin, alors que les autres articles de la série NLP sont terminés, celui-ci à vocation à être actualisé au fur et à mesure de l'apparition de nouveaux modèles.
@@ -60,4 +59,4 @@ Tout ceci fait qu’il est actuellement difficile de pouvoir dire quel modèle s
 Pour les modèles actuellement disponibles en français, CamemBERT fait de la reconnaissance d'entités nommées alors que ce n'est pas le cas de FlauBERT. FlauBERT peut traiter le cas du question-answering ce que ne peut pas faire CamemBERT, etc...
 
 Ainsi dans le cadre d’un projet, il est important de connaître la tâche à effectuer pour appliquer le modèle le plus adéquate à votre problème (vous pouvez par exemple consulter le [Github de l’équipe d’Huggingface](https://github.com/huggingface/transformers) qui facilite grandement l’utilisation de nombreuses architectures de Transformers).
-Pensez également à vous tenir régulièrement informés sur les dernières nouveautés (vous pouvez pour ça par exemple consulter le classement [Glue Benchmark](https://gluebenchmark.com/leaderboard) ). Procédez également à des tests pour déterminer le modèle le plus efficace pour votre problème 
+Pensez également à vous tenir régulièrement informés sur les dernières nouveautés (vous pouvez pour ça par exemple consulter le classement [Glue Benchmark](https://gluebenchmark.com/leaderboard) ). Procédez également à des tests pour déterminer le modèle le plus efficace pour votre problème.
