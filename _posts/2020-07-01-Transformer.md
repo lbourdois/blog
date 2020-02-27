@@ -7,6 +7,7 @@ tags:
   - Illustration du Transformer en français NLP
   - Transformer NLP en français
   - Transformers NLP en français
+  - Transformer NLP french
 excerpt : "NLP"
 header :
     overlay_image: "https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Transformer/Transformers_blog.png"
