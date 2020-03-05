@@ -48,7 +48,8 @@ Les jeux de données anglophones communs :
 
 Pour le français, vous pouvez utiliser la base de données mise à disposition par l'entreprise Illuin Technology : [FQuAD](https://fquad.illuin.tech/). Elle contient plus de 25.000 questions/réponses basées sur des [articles de qualité de Wikipédia](https://fr.wikipedia.org/wiki/Cat%C3%A9gorie:Article_de_qualit%C3%A9). Pour plus d'informations concernant la répartition des types de questions (qui ? quoi ? où ? quand ?, etc...), la répartion des entités (noms communs, personnes, lieu, etc...) et les résultats des premiers benchmarks basés sur CamemBERT et FlauBERT, je vous invite à lire la [publication de l'équipe d'Illuin Technology](https://arxiv.org/abs/2002.06071).<br>
 
-A noter qu'il existe également le projet [PIAF](https://piaf.etalab.studio/) (Pour une IA Francophone) porté par [Etalab](https://www.etalab.gouv.fr/) qui a pour objectif de créer lui aussi une base de Question/Réponse. Ce projet à vocation open-data est ouvert à tous. Si vous souhaitez contribuer (ne serais-ce qu'annoter 1 ou 2 textes pour voir de vous même la méthodologie appliquée), je vous invite à vous rentre sur le site du projet :)
+A noter qu'il existe également le projet [PIAF](https://piaf.etalab.studio/) (Pour une IA Francophone) porté par [Etalab](https://www.etalab.gouv.fr/) qui a pour objectif de créer lui aussi une base de Question/Réponse. Ce projet à vocation open-data est ouvert à tous. Si vous souhaitez contribuer (ne serais-ce qu'annoter 1 ou 2 textes pour voir de vous même la méthodologie appliquée), je vous invite à vous rentre sur le site du projet :)<br>
+Les données de PIAF ne sont actuellement pas accessibles librement mais devraient l'être à parti du mois de mai 2020.
 <br><br><br>
 
 
