@@ -6,8 +6,13 @@ tags:
   - Les tokenizers Transformer NLP
   - Tokenizers NLP BERT
   - BPE expliqué en français
+  - BPE french
   - Wordpiece expliqué en français
+  - Wordpiece french
   - Sentencepiece expliqué en français
+  - Sentencepiece french
+  - Tokenizers NLP français
+  - Tokenizers NLP french
 excerpt : "NLP"
 header :
     overlay_image: "https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/NLP_radom_blog.png"
