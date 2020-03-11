@@ -1,0 +1,98 @@
+---
+title: "ILLUSTRATION D'ALBERT"
+categories:
+  - NLP
+tags:
+  - ALBERT NLP
+  - Illustration d'ALBERT NLP en français
+  - ALBERT NLP français
+  - ALBERT NLP expliqué en français
+  - ALBERT french
+  - ALBERT français
+excerpt : "NLP"
+header :
+    overlay_image: "https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/NLP_radom_blog.png"
+toc: true
+toc_sticky: true
+author_profile: false
+sidebar:
+    nav: sidebar-sample
+
+---
+
+
+# <span style="color: #FF0000"> **Avant-propos** </span>
+Cet article est une traduction de l’article de Amit Chaudhary : [Visual Paper Summary: ALBERT (A Lite BERT)](https://amitness.com/2020/02/albert-visual-summary/). 
+Merci à lui de m’avoir autorisé à effectuer cette traduction.
+J’ai ajouté des éléments supplémentaires quand j’estimais que cela été pertinent.
+<br><br><br>
+
+
+# <span style="color: #FF0000"> **Introduction** </span>
+Considérons une phrase donnée ci-dessous. En tant qu'humains, lorsque nous rencontrons le mot "orange", nous pourrions : 
+- associer le mot " orange " à notre représentation mentale du fruit,
+- associer " orange " au fruit plutôt qu'à l'entreprise en fonction du contexte 
+- comprendre la situation globale : "Il mange une orange"
+<br>
+
+Le principe de base des derniers développements en NLP est de donner aux machines la possibilité d'apprendre de telles représentations.<br>
+
+En 2018, Google a publié [BERT](https://www.aclweb.org/anthology/N19-1423.pdf) qui a tenté d'apprendre des représentations en se basant sur quelques idées nouvelles.<br> 
+
+Dans cet article, nous allons succinctement rappeler ces approches pour ensuite nous focaliser sur leurs problèmes mais aussi les solutions apporter par les auteurs d’[ALBERT](https://arxiv.org/pdf/1909.11942.pdf) afin de les résoudre. 
+
+
+
+# <span style="color: #FF0000"> **1. Récapitulatif des points importants de BERT** </span>
+## <span style="color: #FFBF00"> **1.1 Modélisation du langage masqué (MLM)** </span>
+
+## <span style="color: #FFBF00"> **1.2 Next Sentence Prediction** </span>
+
+## <span style="color: #FFBF00"> **1.3 1.3	Architecture du Transformer** </span>
+
+
+# <span style="color: #FF0000"> **2.	Les problèmes de BERT** </span>
+## <span style="color: #FFBF00"> **2.1 Limitation de la mémoire et coût de communication** </span>
+
+## <span style="color: #FFBF00"> **2.2	Dégradation du modèle** </span>
+
+
+# <span style="color: #FF0000"> **3.	De BERT à ALBERT** </span>
+## <span style="color: #FFBF00"> **3.1	Factorized embedding parameterization** </span>
+### <span style="color: #51C353"> **3.1.1	La logique appliquée par les auteurs** </span>
+
+### <span style="color: #51C353"> **3.1.2	Les résultats** </span>
+
+
+
+## <span style="color: #FFBF00"> **3.2	Partage des paramètres entre les couches** </span>
+### <span style="color: #51C353"> **3.2.1	La logique appliquée par les auteurs** </span>
+
+### <span style="color: #51C353"> **3.2.2	Les résultats** </span>
+
+
+## <span style="color: #FFBF00"> **3.3	Sentence-order prediction (SOP)** </span>
+### <span style="color: #51C353"> **3.3.1	La logique appliquée par les auteurs** </span>
+
+### <span style="color: #51C353"> **3.3.2	Les résultats** </span>
+
+
+
+
+# <span style="color: #FF0000"> **4. Autres résultats** </span>
+## <span style="color: #FFBF00"> **4.1 Comparaison basée sur le temps d’entraînement** </span>
+
+## <span style="color: #FFBF00"> **4.2 Ajout de données** </span>
+
+## <span style="color: #FFBF00"> **4.3 L’impact du dropout** </span>
+
+
+# <span style="color: #FF0000"> **Conclusion** </span>
+ALBERT-xxlarge a moins de paramètres que BERT-large et obtient des résultats nettement meilleurs.
+Néanmoins il est plus coûteux en termes de calcul en raison de sa structure plus large.<br>
+Les auteurs indiquent en conclusion de leur publication, qu’ils prévoient de travailler à accélérer l’entraînement et la vitesse d'inférence de leurs modèles avec des méthodes telles que la sparse attention ([Child et al.,2019](https://arxiv.org/pdf/1904.10509.pdf)) et la block attention ([Shen et al., 2018](https://arxiv.org/pdf/1804.00857.pdf)).
+<br>
+
+Pour ma part, je vous invite à aller lire la publication, notamment les benchmarks dans la partie 4.9 (p.9 et 10) qui sont consacrés à GLUE, SQuAD et RACE et que je n’ai pas abordé dans cet article.
+L’appendix de la publication indique est également intéressante puisqu’elle aborde la configuration des hyperparamètres utilisés ainsi que l’impact du nombre de couches sur les résultats.
+
