@@ -45,46 +45,251 @@ Dans cet article, nous allons succinctement rappeler ces approches pour ensuite 
 
 # <span style="color: #FF0000"> **1. Récapitulatif des points importants de BERT** </span>
 ## <span style="color: #FFBF00"> **1.1 Modélisation du langage masqué (MLM)** </span>
+La modélisation du langage consiste essentiellement à prédire un mot en fonction de son contexte pour apprendre la représentation.
+Traditionnellement, il s'agit de prédire le mot suivant dans une phrase donnée, compte tenu des mots.
+<center>
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/ALBERT/Orange.png">
+</figure>
+</center>
+<br>
+BERT utilise quant à lui un modèle de langage masqué, dans lequel nous masquons aléatoirement des mots dans un document et essayons de les prédire en fonction du contexte environnant.
+<center>
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/ALBERT/MLM.png">
+</figure>
+</center>
+<br><br>
 
 ## <span style="color: #FFBF00"> **1.2 Next Sentence Prediction** </span>
+L'idée de la " Next Sentence Prediction " est de détecter si deux phrases sont cohérentes ou non lorsqu'elles sont placées l'une après l'autre.
+<center>
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/ALBERT/NSP.png">
+</figure>
+</center>
+<br>
+Pour faire cela, des phrases consécutives tirées des données d’entraînement sont utilisées comme exemple positif.
+Pour l'exemple négatif, nous prenons une phrase donnée et plaçons à la suite une phrase aléatoire prise dans un autre document. 
+Le modèle BERT est entraîné à cette tâche afin de déterminer si deux phrases peuvent être placées l'une à côté de l'autre.
+<br><br>
 
 ## <span style="color: #FFBF00"> **1.3 1.3	Architecture du Transformer** </span>
-
+Pour résoudre les deux tâches ci-dessus, BERT utilise une pile de couches de blocs encoders du Transformer.
+Des vecteurs de mots sont passés à travers les couches pour capturer la signification et créer un vecteur de taille 768 pour le modèle de base. 
+<center>
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/ALBERT/BERT_architecture.png">
+</figure>
+</center>
+<br>
+Pour plus de détails, je vous invite à lire les articles du blog consacré au [Transformer](https://lbourdois.github.io/blog/nlp/Transformer/) et à [BERT](https://lbourdois.github.io/blog/nlp/BERT/). 
+<br><br><br>
 
 # <span style="color: #FF0000"> **2.	Les problèmes de BERT** </span>
+Lors de sa publication BERT a produit des résultats de pointe sur de nombreuses tâches de NLP. 
+Cependant ce modèle est de très grande taille, ce qui a entraîné quelques problèmes.
+Le modèle ALBERT met en évidence ces problèmes dans deux catégories :
 ## <span style="color: #FFBF00"> **2.1 Limitation de la mémoire et coût de communication** </span>
+Considérons un simple réseau neuronal avec un neurone d'entrée, deux cachés et un de sortie. 
+En tenant compte des poids et des biais de chaque neurone, ce réseau très simple a 7 paramètres à apprendre :
+<center>
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/ALBERT/NN_simple.png">
+</figure>
+</center>
+<br>
+BERT-large a 340 millions de paramètres en raison de ses 24 couches cachées, des têtes d’attentions et des neurones dans le réseau de feed-forward. 
+Si vous vouliez vous appuyer sur le travail effectué sur BERT et y apporter des améliorations, vous auriez besoin de grosses capacités de calcul pour l’entraîner à partir de zéro.
+<center>
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/ALBERT/bert-heavy-on-gpu.png">
+</figure>
+</center>
+<br>
+Ces besoins de calcul concernent principalement les GPU et les TPU, mais ces dispositifs ont une limitation de mémoire. Il y a donc une limite à la taille des modèles.
+<br>
+Pour entraîner, BERT-large, les auteurs ont dû procéder à du parallélisme : les données d’entraînement ont été divisées en deux machines.
+<br>
+Comme le montre la figure ci-dessous, vous pouvez remarquer comment le grand nombre de paramètres à transférer lors de la synchronisation des gradients peut ralentir le processus d’entraînement. Il est également nécessaire de stocker les différentes parties du modèle (paramètres) sur différentes machines.
+<center>
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/ALBERT/bert-communication-overhead.png">
+</figure>
+</center>
+<br>
+
+
 
 ## <span style="color: #FFBF00"> **2.2	Dégradation du modèle** </span>
-
+La tendance récente dans la communauté des chercheurs en NLP est d'utiliser des modèles de plus en plus grands afin d’obtenir de meilleurs performances. Les auteurs d’ALBERT montre que cela peut au contraire dégrader les résultats. 
+<br>
+En effet, dans leur article, ils ont réalisé une expérience intéressante : si des modèles plus grands conduisent à de meilleures performances, pourquoi ne pas doubler les unités de la couche cachée du plus grand modèle BERT disponible (BERT-large) de 1024 unités à 2048 unités ? 
+<br>
+Ils l'appellent "BERT-xlarge". Celui-ci se révèle moins performant que le modèle BERT-large, aussi bien pour les tâches de modélisation linguistique que pour les tests de compréhension de la lecture (RACE). 
+<center>
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/ALBERT/bert-doubled-performance-race.png">
+</figure>
+</center>
+<br><br><br>
 
 # <span style="color: #FF0000"> **3.	De BERT à ALBERT** </span>
 ## <span style="color: #FFBF00"> **3.1	Factorized embedding parameterization** </span>
 ### <span style="color: #51C353"> **3.1.1	La logique appliquée par les auteurs** </span>
+Dans BERT, la taille des embeddings utilisés (word piece embeddings) est liée à la taille des couches cachées des blocs Transformer. Les word piece embeddings ont été entraîné à partir de la représentation one hot d'un vocabulaire de taille 30 000 et sont projetées directement sur l'espace caché de la couche cachée. 
+<br>
+Suppossons que nous avons un vocabulaire de taille 30K, un word-piece embedding de dimension E=768 et une couche cachée de taille H=768. Si nous augmentons les unités cachées dans le bloc, alors nous devons également ajouter une nouvelle dimension à chaque embedding. Ce problème se pose également pour [XLNET](https://arxiv.org/pdf/1906.08237.pdf) et [ROBERTA](https://arxiv.org/pdf/1907.11692.pdf).
+<center>
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/ALBERT/bert-embedding.png">
+</figure>
+</center>
+<br>
+ALBERT résout ce problème en factorisant la matrice des embedding en deux matrices plus petites. Cela permet de séparer la taille des couches cachées de la taille des embedding du vocabulaire et de passer d’une compléxité O(V×H) à une compléxité en O(V×E+E×H). Cette réduction a un intérêt lorsque H >> E.
+<br>
+Illustration : 	nous projetons le vecteur One Hot Encoding dans l'espace de dimension inférieure de taille E=100 et ensuite cet espace d’embedding dans l'espace caché H=768.
+<center>
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/ALBERT/embedding-decompose-albert.png">
+</figure>
+</center>
+<br>
+Ainsi ce qu’il faut retenir de ce point, est que nous pouvons augmenter la taille des couches cachées sans augmenter de manière significative la taille des paramètres des embedding du vocabulaire.
+<br>
 
 ### <span style="color: #51C353"> **3.1.2	Les résultats** </span>
-
+Pour effectuer leur comparaison avec BERT, les auteurs d’ALBERT ont suivis les mêmes configurations : vocabulaire de taille 30K, entraînement sur les textes de BOOKCORPUS et Wikipédia (en anglais), limitation à des séquences de 512 tokens.
+<center>
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/ALBERT/Speedup.png">
+</figure>
+</center>
+<br>
+En analysant le tableau ci-dessus, nous pouvons remarquer une importante diminution du nombre de paramètres à configuration égale (par exemple ALBERT large a 18 fois moins de paramètres que BERT large). Cette diminution s’accompagne d’une accélération du temps de calcul (à TPU identiques).
+<br><br>
 
 
 ## <span style="color: #FFBF00"> **3.2	Partage des paramètres entre les couches** </span>
 ### <span style="color: #51C353"> **3.2.1	La logique appliquée par les auteurs** </span>
+BERT large a 24 couches alors que sa version de base en a 12. Plus nous ajoutons de couches, plus le nombre de paramètres augmente de manière exponentielle : 
+<center>
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/ALBERT/bert-parameters.png">
+</figure>
+</center>
+<br>
+Pour résoudre ce problème, ALBERT utilise le concept de partage des paramètres entre les couches.
+<br>
+Pour illustrer cela, prenons l'exemple du modèle BERT-base à 12 couches. Au lieu d'apprendre des paramètres uniques pour chacune des 12 couches, nous n'apprenons des paramètres que pour le premier bloc, et nous réutilisons le bloc dans les 11 couches suivantes.
+<center>
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/ALBERT/albert-parameter-sharing.png">
+</figure>
+</center>
+<br>
+Nous pouvons procéder à différents partages de paramètres. Par exemple : 
+- partager uniquement les paramètres de la couche feed-forward (shared-FFN dans le tableau ci-après),
+- partager uniquement les paramètres d'attention (shared-attention dans le tableau ci-après)
+- partager les paramètres de l'ensemble du bloc (all-shared dans le tableau ci-après).
+<br>
 
 ### <span style="color: #51C353"> **3.2.2	Les résultats** </span>
+Par rapport aux 110 millions de paramètres de BERT-base, le modèle ALBERT ne compte alors plus que 31 millions de paramètres tout en utilisant le même nombre de couches et 768 unités cachées.
+<center>
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/ALBERT/Orange.png">
+  <figcaption>Pour les colonnes liées à SQuAD, le premier nombre est le F1, le second l’EM</figcaption>
+</figure>
+</center>
+<br>
+Vous pouvez constater que pour tous les cas où les auteurs ont procédé à un partage de paramètres, une taille d’embedding E=128 permet d’obtenir de meilleurs résultats qu’une taille E = 768. 
+Ainsi dans la suite, tous les résultats indiqués correspondent à une taille E = 128.
 
 
 ## <span style="color: #FFBF00"> **3.3	Sentence-order prediction (SOP)** </span>
 ### <span style="color: #51C353"> **3.3.1	La logique appliquée par les auteurs** </span>
+La "Next Sentence Prediction" introduit par BERT a été spécifiquement créée pour améliorer les performances des tâches qui utilisent des paires de phrases comme "l'inférence en langage naturel" (NLI). 
+Des publications comme [ROBERTA](https://arxiv.org/abs/1907.11692) et [XLNET](https://arxiv.org/abs/1906.08237) ont mis en lumière l'inefficacité du NSP et ont constaté que son impact n'était pas fiable. En éliminant la tâche de NSP, la performance de plusieurs tâches s'est améliorée.
+
+ALBERT propose quant à lui une tâche alternative appelée "Sentence Order Prediction". L'idée clé est la suivante : 
+- Prendre deux segments consécutifs du même document comme classe positive 
+- Échanger l'ordre du même segment et utiliser cela comme exemple négatif
+<center>
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/ALBERT/SOP.png">
+</figure>
+</center>
+<br>
+Cela oblige le modèle à apprendre une distinction plus fine des propriétés de cohérence au niveau du discours.<br>
+
+Les auteurs d’ALBERT conjurent que la NSP est inefficace car c’est une tâche non difficile à mettre en œuvre par rapport à la modélisation du langage masqué. Elle mélange à la fois la prédiction du sujet et la prédiction de la cohérence. La partie prédiction du sujet est facile à apprendre car elle chevauche la perte du modèle de langage masqué. Ainsi, la NSP donnera des scores plus élevés même s'il n'a pas appris la prédiction de cohérence.
+<br>
 
 ### <span style="color: #51C353"> **3.3.2	Les résultats** </span>
-
-
+La SOP améliore les performances des tâches de SQUAD 1.1, 2.0, MNLI et RACE :
+<center>
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/ALBERT/SOP.png">
+  <figcaption>None correspond à des modèles comme XLNet- et RoBERTa, NSP à un modèle comme BERT et SOP à ALBERT. Les résultats du tableau correspondent à une configuration ALBERT-base.</figcaption>
+</figure>
+</center>
+<br><br><br>
 
 
 # <span style="color: #FF0000"> **4. Autres résultats** </span>
 ## <span style="color: #FFBF00"> **4.1 Comparaison basée sur le temps d’entraînement** </span>
+Comme un entraînement plus long entraîne généralement de meilleures performances, les auteurs ont effectué une comparaison dans laquelle, au lieu de contrôler le nombre d'étapes d’entraînement, ils ont contrôlé le temps d’entraînement. Le but étant de comparer les performances à temps d’entraînement égaux.
+<center>
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/ALBERT/Comparaison_temporelle.png">
+</figure>
+</center>
+<br>
+On peut alors constater qu’ALBERT obtient de meilleur résultat que BERT et notamment sur la base RACE. 
+<br><br>
 
 ## <span style="color: #FFBF00"> **4.2 Ajout de données** </span>
+Les expériences réalisées jusqu'à présent utilisent les jeux de données Wikipedia et BOOKCORPUS, comme dans BERT. Les auteurs ont testé d’ajouter les données d’entraînement supplémentaires utilisées par XLNet et RoBERTa.
+<br>
+Ils ont obtenu les résultats suivants : 
+<center>
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/ALBERT/données_supplémentaires.png">
+</figure>
+</center>
+<br>
+Nous observons une amélioration des performances à l'exception des repères SQuAD (qui sont basés sur Wikipédia et sont donc affectés négativement par les données d’entraînement hors domaine).
+<br>
+Visuellement, cet ajout de données est observable sur la phase d’entraînement : 
+<center>
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/ALBERT/données_supplémentaires_graphe.png">
+</figure>
+</center>
+<br><br>
 
 ## <span style="color: #FFBF00"> **4.3 L’impact du dropout** </span>
+Les auteurs ont constaté que même après un entraînement de 1 million d'étapes, leurs plus grands modèles ne se sont toujours pas adaptés à leurs données d’entraînement. 
+<br>
+Ils ont alors décidé de supprimer le dropout afin d’augmenter la capacité des modèles. Le graphique ci-dessous montre que la suppression du dropout améliore considérablement la précision du MLM. 
+<center>
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/ALBERT/impact_dropout.png">
+</figure>
+</center>
+<br>
+Cela s’observe également lors des applications aux différentes bases de données : 
+<center>
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/ALBERT/impact_dropout_graphe.png">
+</figure>
+</center>
+<br>
+Il existe des preuves empiriques (Szegedy et al., 2017) et théoriques (Liet al., 2019) montrant qu'une combinaison de batch normalization et de dropout peut avoir des résultats néfastes sur les réseaux de neurones convolutifs.
+<br>
+À la connaissance des auteurs d’ALBERT, il s’agit des premiers à montrer que le dropout peut nuire aux performances des grands modèles basés sur des Transformers. Cependant, la structure du réseau sous-jacent d'ALBERT est un cas particulier de transformer et des expériences supplémentaires sont nécessaires pour voir si ce phénomène apparaît ou non avec d'autres architectures.
+<br><br><br>
 
 
 # <span style="color: #FF0000"> **Conclusion** </span>
