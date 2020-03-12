@@ -36,7 +36,7 @@ Enfin, alors que les autres articles de la série NLP sont terminés, celui-ci �
 | Modèle  | Description | Nb de paramètres  | Taille du vocabulaire  | Tokenizer utilisé  | 
 |:-:|:-:|:-:|:-:|:-:|:-:|
 | [GPT-2](https://openai.com/blog/better-language-models/) | Transformer unidirectionnel développé par OpenAI utilisant uniquement la partie decoder du Transformer original. | 4 versions : 124M, 355M, 774M ou 1.5 Mds  | 50K  | BPE  |
-| [BERT](https://github.com/google-research/bert) |Transformer bidirectionnel développé par Google utilisant uniquement la partie encoder du Transformer original.   | Base : 108M, Large : 334M, XLarge : 1270M  | 30K  | WordPiece   |
+| [BERT](https://github.com/google-research/bert) |Transformer bidirectionnel développé par Google utilisant uniquement la partie encoder du Transformer original.   | Tiny : 4.4M, Mini : 11.3M, Small : 29.1M, Medium : 41.7M, Base : 110M, Large : 334M, XLarge : 1270M  | 30K  | WordPiece   |
 | [RoBERTa](https://github.com/pytorch/fairseq/tree/master/examples/roberta)  | Version optimisée de BERT développée par Facebook.   | Base : 125M, Large : 355M  | 50K | BPE |
 | [CamemBERT](https://camembert-model.fr/)   | Modèle basé sur RoBERTa pré-entraîné sur des textes en français et développé par Facebook, l’INRIA et la Sorbonne | 110M   | 32K  | SentencePiece  |
 | [FlauBERT](https://github.com/getalp/Flaubert)  | Modèle basé sur BERT pré-entraîné sur des textes en français et développé par l'Univ. Grenoble Alpes, le CNRS et l'Univ. Paris Diderot | small-cased : 54M, base-uncased : 137M, base-cased : 138M et large-cased : 373M   | 50K  | FastBPE  |
