@@ -42,14 +42,17 @@ Dans un second temps, vous trouverez les articles concernant les sujets utiles �
 * Le Transformer : l’[article de présentation](https://lbourdois.github.io/blog/nlp/Transformer/)
 
 * Les architectures issues du Transformer<br>
-Il en existe de nombreuses. Une liste non exhaustive est disponible dans le dernier article de la série consacrée au NLP : lire [l'article en question](https://lbourdois.github.io/blog/nlp/Les-architectures-transformers/)<br>
+Il en existe ENORMEMENT. Une liste non exhaustive est disponible dans le dernier article de la série consacrée au NLP : lire [l'article en question](https://lbourdois.github.io/blog/nlp/Les-architectures-transformers/)<br>
 Je présente plus en détails les architectures que j’ai eu l’occasion d’utiliser professionnellement :<br>
     * BERT : l’[article de présentation](https://lbourdois.github.io/blog/nlp/BERT/)<br> 
     * le GPT-2 : l’[article de présentation](https://lbourdois.github.io/blog/nlp/GPT2/)<br>
 <br>
 * Optimisations du Transformer<br>
 L'architecture Transformer est très performante mais possède quelques lacunes (nombres importants de paramètres, calculs pas forcéments les plus efficients, etc...).<br>
-Différents travaux cherchent à résoudre ces problèmes. On peut par exemple évoquer les versions distillées de modèles, ALBERT ou encore le Reformer. Ce dernier a fait l'objet d'un [article de présentation](https://lbourdois.github.io/blog/nlp/Reformer/) sur le blog.<br>
+Différents travaux cherchent à résoudre ces problèmes. On peut par exemple évoquer :
+    * les versions distillées de modèles,<br>
+    * ALBERT : l’[article de présentation](https://lbourdois.github.io/blog/nlp/ALBERT/)<br> 
+    * ou encore le Reformer / l’[article de présentation](https://lbourdois.github.io/blog/nlp/Reformer/)<br> 
 
 * Les articles concernant les sujets utiles à connaître en NLP :
     * Le prétraitement et les tokenizers : l'[article](https://lbourdois.github.io/blog/nlp/Les-tokenizers/)
