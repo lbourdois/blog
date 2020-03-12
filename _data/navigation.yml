@@ -30,5 +30,7 @@ sidebar-sample:
         url: /nlp/Taches-et-jeux-de-donnees-en-NLP/
       - title: "LES AUTRES ARCHITECTURES"
         url: /nlp/Les-architectures-transformers/
+      - title: "ALBERT"
+        url: /nlp/ALBERT/
       - title: "LE REFORMER"
         url: /nlp/Reformer/
