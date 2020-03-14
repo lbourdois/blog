@@ -7,7 +7,7 @@ tags:
   - bag of word NLP en français
 excerpt : "NLP"
 header :
-    overlay_image: "https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/BOW/BOW_blog.png"
+    overlay_image: "https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/BOW/NLP_radom_blog.png"
 toc: true
 toc_sticky: true
 author_profile: false
