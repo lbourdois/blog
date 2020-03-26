@@ -27,7 +27,7 @@ sidebar:
 # <span style="color: #FF0000"> **Avant-propos** </span>
  
 Cet article est en grande partie une traduction de l’article de Jay Alammar : [The illustrated transformer](https://jalammar.github.io/illustrated-transformer/). Merci à lui de m'avoir autorisé à effectuer cette traduction.
-J’ai ajouté des éléments supplémentaires quand j’estimais que cela été pertinent.
+J’ai ajouté des éléments supplémentaires quand j’estimais que cela était pertinent.
 <br><br><br>
 
 
