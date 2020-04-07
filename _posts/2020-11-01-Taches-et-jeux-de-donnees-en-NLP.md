@@ -131,9 +131,9 @@ Les jeux de données anglophones communs :
 <br>
 
 Pour le français, [FLUE](https://github.com/getalp/Flaubert/tree/master/flue) met à disposition la partie en français de [PAWS-X](https://ai.googleblog.com/2019/10/releasing-paws-and-paws-x-two-new.html) de Google, soit environ 49 000 données d'apprentissage et 2 000 de test.
+<br><br>
+En 2020, Theophile Blard a scrapé le site [AlloCiné](http://www.allocine.fr/) afin de créer un nouveau jeu de données pour l'analyse de sentiments. Ce jeu de données contient plus de 200.000 critiques de films. La méthodologie appliquée est disponible [ici](https://github.com/TheophileBlard/french-sentiment-analysis-with-bert/tree/master/allocine_dataset) et le jeu de données [ici](https://github.com/TheophileBlard/french-sentiment-analysis-with-bert/blob/master/allocine_dataset/data.tar.bz2)
 <br><br><br>
-
-
 
 
 # <span style="color: #FF0000"> **Sentence Acceptability** </span>
