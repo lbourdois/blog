@@ -53,9 +53,9 @@ L'architecture Transformer est très performante mais possède quelques lacunes 
 Différents travaux cherchent à résoudre ces problèmes. On peut par exemple évoquer :
     * les versions distillées de modèles,<br>
     * ALBERT : l’[article de présentation](https://lbourdois.github.io/blog/nlp/ALBERT/)<br> 
-    * ou encore le Reformer / l’[article de présentation](https://lbourdois.github.io/blog/nlp/Reformer/)<br> 
+    * ou encore le Reformer : l’[article de présentation](https://lbourdois.github.io/blog/nlp/Reformer/)<br> 
     
 <br> 
-* Les articles concernant les sujets utiles à connaître en NLP :
+* Les articles concernant des sujets utiles à connaître en NLP :
     * Le prétraitement et les tokenizers : l'[article](https://lbourdois.github.io/blog/nlp/Les-tokenizers/)
     * Les tâches et jeux de données test fréquemment utilisés : l'[article](https://lbourdois.github.io/blog/nlp/Taches-et-jeux-de-donnees-en-NLP/)
