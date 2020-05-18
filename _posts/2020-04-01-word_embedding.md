@@ -600,5 +600,5 @@ J’espère pouvoir ajouter un tutoriel sous forme de notebook plus tard si j’
 
 # <span style="color: #FF0000"> **Citation** <span>
 Si vous venez à utiliser des éléments de cet article, veillez s'il vous plait en créditer les auteurs en utilisant par exemple comme suit :<br>
-“Illustration du Word Embedding et du Word2vec par Loïck BOURDOIS (https://lbourdois.github.io/blog/nlp/word_embedding/), d’après Jay ALAMMAR, The Illustrated Word2vec (https://jalammar.github.io/illustrated-word2vec/)”<br>
+“*Illustration du Word Embedding et du Word2vec* par Loïck BOURDOIS (https://lbourdois.github.io/blog/nlp/word_embedding/), d’après Jay ALAMMAR, *The Illustrated Word2vec* (https://jalammar.github.io/illustrated-word2vec/)”<br>
 Merci :)
