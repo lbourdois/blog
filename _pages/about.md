@@ -30,7 +30,7 @@ Je manque néanmoins de temps en ce moment car je travaille sur plusieurs autres
 Avec plaisir, ce blog sert à ça :)<br>
 Cependant, veillez s'il vous plait à me citer et le cas échéant indiquer également l'auteur de l'article original duquel je me suis inspiré.
 Par exemple pour l'article consacré à BERT :<br>
-" *Illustration de BERT* par Loïck BOURDOIS (https://lbourdois.github.io/blog/nlp/BERT/), d'après Jay ALAMMAR, *The Illustrated BERT, ELMo, and co. (How NLP Cracked Transfer Learning)* (https://jalammar.github.io/illustrated-bert/) ".<br>
+"*Illustration de BERT* par Loïck BOURDOIS (https://lbourdois.github.io/blog/nlp/BERT/), d'après Jay ALAMMAR, *The Illustrated BERT, ELMo, and co. (How NLP Cracked Transfer Learning)* (https://jalammar.github.io/illustrated-bert/)".<br>
 Un exemple de citation est présent à la fin de chaque article.<br>
 Ce point est important pour apporter du crédit aux différents auteurs et pour respecter le fait que certains des travaux sur lesquels je me base sont sous [licence Creative Commons](https://creativecommons.org/) (le plus souvent [3](https://creativecommons.org/licenses/by-nc-sa/3.0/fr/) ou [4](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr)). Merci d'avance 🙂
 
