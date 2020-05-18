@@ -566,3 +566,12 @@ Des articles sur divers travaux utilisant les transformers :
 L’architecture du Transformer présentée dans cet article est une rupture technologique dans le domaine du NLP. ENORMEMENT d’autres modèles basé sur ce Transformer « original » ont été dévoilés depuis.<br>
 J'entre plus en détails pour deux d'entre eux que j'ai eu l'occasion d'utiliser professionnelement : [BERT](https://lbourdois.github.io/blog/nlp/BERT/) et le [GPT2](https://lbourdois.github.io/blog/nlp/GPT2/).
 Pour les autres architectures, vous pouvez consulter une liste non exhaustive dans cet [article](https://lbourdois.github.io/blog/nlp/Les-architectures-transformers/) du blog.
+<br><br><br>
+
+
+
+# <span style="color: #FF0000"> **Citation** <span>
+Si vous venez à utiliser des éléments de cet article, veillez s'il vous plait en créditer les auteurs en utilisant par exemple comme suit :<br>
+“*llustration du Transformer* par Loïck BOURDOIS (https://lbourdois.github.io/blog/nlp/Transformer/), d’après Jay ALAMMAR, *The Illustrated Transformer* (https://jalammar.github.io/illustrated-transformer/)”<br>
+Merci :)
+
