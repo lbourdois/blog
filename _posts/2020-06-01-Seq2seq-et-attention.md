@@ -232,5 +232,5 @@ Il donne des exemples d’application tel que la traduction ou encore la génér
 
 # <span style="color: #FF0000"> **Citation** <span>
 Si vous venez à utiliser des éléments de cet article, veillez s'il vous plait en créditer les auteurs en utilisant par exemple comme suit :<br>
-“*Le Seq2seq et le processus d'attention* par Loïck BOURDOIS (https://lbourdois.github.io/blog/nlp/Seq2seq-et-attention/), d’après Jay ALAMMAR, *Visualizing A Neural Machine Translation Model (Mechanics of Seq2seq Models With Attention)* (https://jalammar.github.io/visualizing-neural-machine-translation-mechanics-of-seq2seq-models-with-attention/)”<br>
+“*Les architectures issues du Transformer* par Loïck BOURDOIS (https://lbourdois.github.io/blog/nlp/Les-architectures-transformers/), 2020”<br>
 Merci :)
