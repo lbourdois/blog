@@ -96,3 +96,12 @@ Cette méthode souffre de néanmoins certaines lacunes :
 - le sens : ne pas tenir compte de l’ordre des mots ne permet pas de prendre en compte le contexte et par conséquent le sens des mots dans le document (sémantique). 
 <br>
 Les méthodes présentées dans les autres articles du blog, permettent de prendre en compte ce problème.
+<br><br><br>
+
+
+
+
+# <span style="color: #FF0000"> **Citation** <span>
+Si vous venez à utiliser des éléments de cet article, veillez s'il vous plait me créditer en utilisant par exemple comme suit :<br>
+*Illustration du Bag of word* par Loïck BOURDOIS (https://lbourdois.github.io/blog/nlp/Bag-of-word/), 2019.<br>
+Merci :)
