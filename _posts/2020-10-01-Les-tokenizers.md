@@ -349,3 +349,11 @@ Résumons l’article avec les principaux points évoqués :
 - Les tokenizers en sous-mots apprennent les segmentations qui divisent les mots rares en sous-mots significatifs. Ils sont appris à partir de données et sont généralement efficaces pour traiter les mots rares et les langues riches comme l’allemand.
 - Les tokenizers BPE, wordpiece, et unigram language model ont besoin d'une pré-création. Le Sentencepiece n'en a pas besoin.
 - La construction du vocabulaire comporte de nombreuses subtilités. En particulier, faites attention à ne pas trop vous ajuster à l'ensemble d'entraînement.
+<br><br><br>
+
+
+
+# <span style="color: #FF0000"> **Citation** <span>
+Si vous venez à utiliser des éléments de cet article, veillez s'il vous plait en créditer les auteurs en utilisant par exemple comme suit :<br>
+“*Le prétraitement et les tokenizers en NLP* par Loïck BOURDOIS (https://lbourdois.github.io/blog/nlp/Les-tokenizers/), d’après Keita KURITA, *A Deep Dive into the Wonderful World of Preprocessing in NLP* (https://mlexplained.com/2019/11/06/a-deep-dive-into-the-wonderful-world-of-preprocessing-in-nlp/)”<br>
+Merci :)
