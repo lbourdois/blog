@@ -226,3 +226,11 @@ Ainsi si vous n’avez pas forcément tout compris, nous revenons plus en détai
 
 Si vous préférez les vidéos aux textes, vous pouvez regarder la vidéo de présentation du phénomène d’attention par [César Laurent](https://mila.quebec/personne/cesar-laurent/) (doctorant au MILA sous la co-direction de [Pascal Vincent](https://mila.quebec/personne/pascal-vincent/) et [Yoshua Bengio](https://mila.quebec/personne/bengio-yoshua/)) : [https://www.youtube.com/watch?v=stD_mY2OYj4](https://www.youtube.com/watch?v=stD_mY2OYj4).<br>
 Il donne des exemples d’application tel que la traduction ou encore la génération de légende à partir d’un texte ou d’une vidéo.
+<br><br><br>
+
+
+
+# <span style="color: #FF0000"> **Citation** <span>
+Si vous venez à utiliser des éléments de cet article, veillez s'il vous plait en créditer les auteurs en utilisant par exemple comme suit :<br>
+“*Le Seq2seq et le processus d'attention* par Loïck BOURDOIS (https://lbourdois.github.io/blog/nlp/Seq2seq-et-attention/), d’après Jay ALAMMAR, *Visualizing A Neural Machine Translation Model (Mechanics of Seq2seq Models With Attention)* (https://jalammar.github.io/visualizing-neural-machine-translation-mechanics-of-seq2seq-models-with-attention/)”<br>
+Merci :)
