@@ -160,4 +160,12 @@ En effet, Stephen Merity a proposé en novembre 2019 une nouvelle architecture i
 
 Le SHA-RNN permet d’obtenir de bons résultats avec une optimisation hyper-paramétrique quasi inexistante. 
 Même si cette architecture ne s’impose pas, elle montre que la différence entre les performances de son modèle et les modèles populaires du moment n’est pas aussi claire qu’on aurait pu le supposer.
-Elle pourrait servir de base à de futures modèles.
+Elle pourrait servir de base à de futurs modèles.
+<br><br><br>
+
+
+
+# <span style="color: #FF0000"> **Citation** <span>
+Si vous venez à utiliser des éléments de cet article, veillez s'il vous plait en créditer les auteurs en utilisant par exemple comme suit :<br>
+“*Les RNN, les LSTM, les GRU et ELMO* par Loïck BOURDOIS (https://lbourdois.github.io/blog/nlp/word_embedding/), 2019”<br>
+Merci :)
