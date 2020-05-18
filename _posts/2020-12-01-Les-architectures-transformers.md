@@ -60,3 +60,11 @@ Pour les modèles actuellement disponibles en français, CamemBERT fait de la re
 
 Ainsi dans le cadre d’un projet, il est important de connaître la tâche à effectuer pour appliquer le modèle le plus adéquate à votre problème (vous pouvez par exemple consulter le [Github de l’équipe d’Huggingface](https://github.com/huggingface/transformers) qui facilite grandement l’utilisation de nombreuses architectures de Transformers).
 Pensez également à vous tenir régulièrement informés sur les dernières nouveautés (vous pouvez pour ça par exemple consulter le classement [Glue Benchmark](https://gluebenchmark.com/leaderboard) ). Procédez également à des tests pour déterminer le modèle le plus efficace pour votre problème.
+<br><br><br>
+
+
+
+# <span style="color: #FF0000"> **Citation** <span>
+Si vous venez à utiliser des éléments de cet article, veillez s'il vous plait en créditer les auteurs en utilisant par exemple comme suit :<br>
+“*Les architectures issues du Transformer* par Loïck BOURDOIS (https://lbourdois.github.io/blog/nlp/Les-architectures-transformers/), 2020<br>
+Merci :)
