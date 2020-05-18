@@ -1,5 +1,5 @@
 ---
-title: "TACHES ET JEUX DE DONNÉES TEST FREQUEMMENT UTILISÉS DANS LES PUBLICATIONS DE NLP"
+title: "TACHES ET JEUX DE DONNÉES FREQUEMMENT UTILISÉS DANS LES PUBLICATIONS DE NLP"
 categories:
   - NLP
 tags:
@@ -217,3 +217,11 @@ Les benchmark anglophones :
 
 Les benchmark francophones : 
 - [FLUE](https://github.com/getalp/Flaubert/tree/master/flue#4-constituency-parsing)
+<br><br><br>
+
+
+
+# <span style="color: #FF0000"> **Citation** <span>
+Si vous venez à utiliser des éléments de cet article, veillez s'il vous plait en créditer les auteurs en utilisant par exemple comme suit :<br>
+“*Tâches et jeux de données fréquemment utilisés dans les publications de NLP* par Loïck BOURDOIS (https://lbourdois.github.io/blog/nlp/Taches-et-jeux-de-donnees-en-NLP/), d’après Lilian WENG, *Generalized Language Models : Common Tasks & Datasets* (https://www.topbots.com/generalized-language-models-tasks-datasets/)”<br>
+Merci :)
