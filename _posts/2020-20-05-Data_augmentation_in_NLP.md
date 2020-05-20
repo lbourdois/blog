@@ -43,7 +43,7 @@ Cette approche consiste à substituer des mots présents dans un texte sans pour
 Dans cette technique, nous prenons un mot aléatoire de la phrase et le remplaçons par son synonyme à l'aide d'un thésaurus. Par exemple, nous pourrions utiliser la base de données [WordNet](https://wordnet.princeton.edu/), pour l'anglais afin de rechercher les synonymes et effectuer ensuite le remplacement. Il s'agit d'une base de données gérée manuellement, avec des relations entre les mots. 
 <center>
 <figure class="image">
-  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/ALBERT/Orange.png">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Data_augmentation/WordNet.png">
 </figure>
 </center>
 [Zhang et al.](https://arxiv.org/abs/1509.01626) ont utilisé cette technique dans leur article de 2015 intitulé "Character-level Convolutional Networks for Text Classification". Mueller et al. ont utilisé une stratégie similaire pour générer 10 000 exemples d’entraînement supplémentaires pour leur modèle de similarité des phrases.
@@ -63,7 +63,7 @@ Dans cette approche, nous prenons des [word embeddings pré-entrainés tels que 
 
 <center>
 <figure class="image">
-  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/ALBERT/Orange.png">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Data_augmentation/NN word2vec.png">
 </figure>
 </center>
 
@@ -71,7 +71,7 @@ Par exemple, vous pouvez remplacer le mot par les 3 mots les plus similaires et 
 
 <center>
 <figure class="image">
-  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/ALBERT/Orange.png">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Data_augmentation/word2vec synonyme.png">
 </figure>
 </center>
 
@@ -111,7 +111,7 @@ Cette tâche peut être utilisée pour compléter certains textes. Par exemple, 
 
 <center>
 <figure class="image">
-  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/ALBERT/Orange.png">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Data_augmentation/BERT Mask.png">
 </figure>
 </center>
 
@@ -119,7 +119,7 @@ Ainsi, nous pouvons générer des variations d'un texte en utilisant les prédic
 
 <center>
 <figure class="image">
-  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/ALBERT/Orange.png">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Data_augmentation/BERT Mask synonyme.png">
 </figure>
 </center>
 
@@ -166,11 +166,11 @@ Cette méthode d'augmentation a été proposée par [Xie et al.]( https://arxiv.
 
 <center>
 <figure class="image">
-  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/ALBERT/Orange.png">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Data_augmentation/TF-IDF.png">
 </figure>
 </center>
 
-Les mots qui remplacent le mot original sont choisis en calculant les scores TF-IDF des mots sur l'ensemble du document et en prenant les plus bas. Pour l’implémentation, vous pouvez vous référer au code fournit avec la publication, disponible [ici](https://github.com/google-research/uda/blob/master/text/augmentation/word_level_augment.py ).
+Les mots qui remplacent le mot original sont choisis en calculant les scores TF-IDF des mots sur l'ensemble du document et en prenant les plus bas. Pour l’implémentation, vous pouvez vous référer au code fournit avec la publication, disponible [ici](https://github.com/google-research/uda/blob/master/text/augmentation/word_level_augment.py).
 <br><br><br>
 
 
@@ -183,7 +183,7 @@ Le processus de rétro-traduction est le suivant :
 
 <center>
 <figure class="image">
-  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/ALBERT/Orange.png">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Data_augmentation/Traduction1.png">
 </figure>
 </center>
 
@@ -192,7 +192,7 @@ Vous pouvez également effectuer une rétro-traduction en utilisant différentes
 
 <center>
 <figure class="image">
-  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/ALBERT/Orange.png">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Data_augmentation/Traduction2.png">
 </figure>
 </center>
 
@@ -209,7 +209,7 @@ Dans son article, il donne un exemple de transformation de formes verbales de la
 
 <center>
 <figure class="image">
-  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/ALBERT/Orange.png">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Data_augmentation/Contraction1.png">
 </figure>
 </center>
 
@@ -217,7 +217,7 @@ Comme la transformation ne doit pas changer le sens de la phrase, nous pouvons v
 
 <center>
 <figure class="image">
-  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/ALBERT/Orange.png">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Data_augmentation/Contraction2.png">
 </figure>
 </center>
 
@@ -225,7 +225,7 @@ Pour résoudre ce problème, le document propose de permettre des contractions a
 
 <center>
 <figure class="image">
-  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/ALBERT/Orange.png">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Data_augmentation/Contraction3.png">
 </figure>
 </center>
 
@@ -243,7 +243,7 @@ Dans cette méthode, nous ajoutons des fautes d'orthographe à un mot aléatoire
 
 <center>
 <figure class="image">
-  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/ALBERT/Orange.png">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Data_augmentation/Erreur_orthographe.png">
 </figure>
 </center>
 
@@ -255,7 +255,7 @@ Cette méthode tente de simuler les erreurs courantes qui se produisent lors de 
 
 <center>
 <figure class="image">
-  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/ALBERT/Orange.png">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Data_augmentation/Erreur_QWERTY.png">
 </figure>
 </center>
 
@@ -267,17 +267,18 @@ Cette méthode a été utilisée par [Xie et al.](https://arxiv.org/abs/1703.025
 
 <center>
 <figure class="image">
-  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/ALBERT/Orange.png">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Data_augmentation/Erreur_unigramme.png">
 </figure>
 </center>
 <br><br>
 
 ## <span style="color: #FFBF00"> **4.4 Bruits parasites** </span>
-Cette méthode a été proposée par [Xie et al.](https://arxiv.org/abs/1703.02573) dans leur article. L'idée est de remplacer aléatoirement un mot par un token de remplacement que l’on aura choisi préalablement. Dans l'article les auteurs utilisent "_" comme caractère de remplacement. C’est un moyen d'éviter de trop s'adapter à des contextes spécifiques ainsi qu'un mécanisme de lissage du modèle linguistique. Cette technique a permis d'améliorer la perplexité et les scores BLEU.
+Cette méthode a été proposée par [Xie et al.](https://arxiv.org/abs/1703.02573) dans leur article. L'idée est de remplacer aléatoirement un mot par un token de remplacement que l’on aura choisi préalablement. 
+Dans l'article les auteurs utilisent ' ' comme caractère de remplacement. C’est un moyen d'éviter de trop s'adapter à des contextes spécifiques ainsi qu'un mécanisme de lissage du modèle linguistique. Cette technique a permis d'améliorer la perplexité et les scores BLEU.
  
 <center>
 <figure class="image">
-  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/ALBERT/Orange.png">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Data_augmentation/Erreur_blank.png">
 </figure>
 </center>
 <br><br>
@@ -287,7 +288,7 @@ Il s'agit d'une technique naïve qui consiste à mélanger des phrases présente
  
 <center>
 <figure class="image">
-  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/ALBERT/Orange.png">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Data_augmentation/Shuffle.png">
 </figure>
 </center>
 <br><br>
@@ -298,7 +299,7 @@ Cette technique a été proposée par [Wei et al.](https://arxiv.org/abs/1901.11
  
 <center>
 <figure class="image">
-  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/ALBERT/Orange.png">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Data_augmentation/Random_insertion.png">
 </figure>
 </center>
 <br><br>
@@ -309,7 +310,7 @@ Cette technique a également été proposée par Wei et al. dans leur article "E
  
 <center>
 <figure class="image">
-  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/ALBERT/Orange.png">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Data_augmentation/Swap.png">
 </figure>
 </center>
 <br><br>
@@ -320,7 +321,7 @@ Cette technique a également été proposée par Wei et al. dans leur article "E
  
 <center>
 <figure class="image">
-  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/ALBERT/Orange.png">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Data_augmentation/Deletion.png">
 </figure>
 </center>
 <br><br><br>
@@ -332,13 +333,13 @@ Cette technique a été introduite par [Luque](https://arxiv.org/abs/1909.11241)
 Dans cette méthode, un tweet est divisé en deux moitiés et deux tweet aléatoires ayant le même label que le tweet divisé voient leurs moitiés échangées (cf. image ci-dessous). L'hypothèse est que, même si le résultat sera peu grammatical et peu solide sur le plan sémantique, le nouveau texte préservera quand même le sentiment. 
 <center>
 <figure class="image">
-  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/ALBERT/Orange.png">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Data_augmentation/crossover1.png">
 </figure>
 </center> 
 Les résultats de l’article montrent que cette technique n'a pas eu d'impact sur la précision mais a permis d’améliorer le F1-score, notamment pour les classes minoritaires (Neutral dans l’article).
 <center>
 <figure class="image">
-  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/ALBERT/Orange.png">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Data_augmentation/crossover2.png">
 </figure>
 </center> 
 <br><br><br>
@@ -350,7 +351,7 @@ Cette technique a été utilisée dans le papier de [Coulombe](https://arxiv.org
 Par exemple, une transformation qui ne change pas le sens de la phrase est la transformation de la voix active à la voix passive de la phrase et vice versa.
 <center>
 <figure class="image">
-  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/ALBERT/Orange.png">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Data_augmentation/Active_voice.png">
 </figure>
 </center> 
 <br><br><br>
@@ -360,7 +361,7 @@ Par exemple, une transformation qui ne change pas le sens de la phrase est la tr
 Le MixUp est une technique simple mais efficace d'augmentation d'images introduite par [Zhang et al.](https://arxiv.org/abs/1710.09412) en 2017. L'idée est de combiner deux images aléatoires dans une certaine proportion dans un mini-batch afin de générer des exemples synthétiques pour l'entraînement. Pour les images, cela signifie combiner des pixels d'image de deux classes différentes. Cela agit comme une forme de régularisation pendant l'entraînement.
 <center>
 <figure class="image">
-  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/ALBERT/Orange.png">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Data_augmentation/Mixup1.png">
 </figure>
 </center> 
 
@@ -371,7 +372,7 @@ Le MixUp est une technique simple mais efficace d'augmentation d'images introdui
 Dans cette méthode, deux phrases d'un mini-batch sont prises aléatoirement et dimensionnées à la même longueur. Ensuite, les mots qui les composent sont combinés dans une certaine proportion. Le word embedding qui en résulte est transmis au flux habituel pour la classification du texte. L'entropie croisée est calculée pour les deux labels du texte original dans la proportion donnée.
 <center>
 <figure class="image">
-  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/ALBERT/Orange.png">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Data_augmentation/Mixup2.png">
 </figure>
 </center>
 <br><br>
@@ -380,7 +381,7 @@ Dans cette méthode, deux phrases d'un mini-batch sont prises aléatoirement et 
 Dans cette méthode, on prend deux phrases et on les met à la même longueur. Ensuite, leurs word embedding sont passés dans un encoder LSTM/CNN et nous prenons le dernier état caché comme embedding de la phrase. Ces embedding sont combinés dans une certaine proportion et sont ensuite transmis à la couche de classification finale. La perte d'entropie croisée est calculée sur la base des deux labels des phrases originales dans la proportion donnée. 
 <center>
 <figure class="image">
-  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/ALBERT/Orange.png">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Data_augmentation/Mixup3.png">
 </figure>
 </center>
 <br><br><br>
@@ -391,16 +392,22 @@ Dans cette méthode, on prend deux phrases et on les met à la même longueur. E
 -	Ajouter le label de la classe à chaque texte de vos données d'entraînement
 <center>
 <figure class="image">
-  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/ALBERT/Orange.png">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Data_augmentation/Generative1.png">
 </figure>
 </center>
 -	Fine-tuner un grand modèle de langue préformé (BERT/GPT2/BART) sur ces données de d’entraînement modifiées. Pour le GPT2, la tâche est la génération tandis que pour BERT, l'objectif est la prédiction du jeton masqué.
 <center>
 <figure class="image">
-  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/ALBERT/Orange.png">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Data_augmentation/Generative2.png">
 </figure>
 </center>
 -	En utilisant le modèle de langage fine-tuné, de nouveaux échantillons peuvent être générés en utilisant le label de la classe et quelques mots initiaux comme « prompt ».  
+<center>
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Data_augmentation/Generative3.png">
+</figure>
+</center>
+<br>
 Pour le français, cette méthode est difficilement applicable, c’est pourquoi je ne vous la recommande pas. En effet, il n’existe pas de GPT2 pré-entrainé sur du français avec un vocabulaire en français (c’est ce qu’on essaye de faire à l’INSERM). Le créer nécessite d’importantes ressources de calcul, ainsi que d’importantes masse de données textuelles. Deux points qui sont difficile à réunir. 
 <br><br><br>
 
@@ -410,7 +417,7 @@ J’ajoute une méthode supplémentaire qu’Amit n’a pas cité dans son artic
 Pour la langue anglaise, le jeu de données [ASSET]( https://github.com/facebookresearch/asset) de [Fernando Alva-Manchego, Louis Martin et al.]( https://arxiv.org/pdf/2005.00481.pdf) est disponible depuis mai 2020. Il permet de fine-tuner les modèles de simplification de texte.
  <center>
 <figure class="image">
-  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/ALBERT/Orange.png">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Data_augmentation/ASSET.png">
 </figure>
 </center>
 Pour la langue française, il n’existe pas à ma connaissance un tel jeu de données.
