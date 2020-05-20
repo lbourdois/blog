@@ -290,7 +290,41 @@ Il s'agit d'une technique naïve qui consiste à mélanger des phrases présente
   <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/ALBERT/Orange.png">
 </figure>
 </center>
+<br><br>
+
+
+## <span style="color: #FFBF00"> **4.6 Insertion aléatoire** </span>
+Cette technique a été proposée par [Wei et al.](https://arxiv.org/abs/1901.11196) dans leur article "Easy Data Augmentation". Dans cette technique, nous choisissons d'abord un mot aléatoire dans la phrase qui n'est pas un mot d'arrêt. Ensuite, nous trouvons son synonyme et nous l'insérons dans une position aléatoire de la phrase.
+ 
+<center>
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/ALBERT/Orange.png">
+</figure>
+</center>
+<br><br>
+
+
+## <span style="color: #FFBF00"> **4.7 Echange aléatoire** </span>
+Cette technique a également été proposée par Wei et al. dans leur article "Easy Data Augmentation". L'idée est d'échanger de manière aléatoire deux mots quelconques dans la phrase.
+ 
+<center>
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/ALBERT/Orange.png">
+</figure>
+</center>
+<br><br>
+
+
+## <span style="color: #FFBF00"> **4.8 Suppression aléatoire** </span>
+Cette technique a également été proposée par Wei et al. dans leur article "Easy Data Augmentation". Dans ce cas, nous retirons aléatoirement chaque mot de la phrase avec une probabilité *p*.
+ 
+<center>
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/ALBERT/Orange.png">
+</figure>
+</center>
 <br><br><br>
+
 
 
 # <span style="color: #FF0000"> **5.	Augmentation par Crossover** </span>
