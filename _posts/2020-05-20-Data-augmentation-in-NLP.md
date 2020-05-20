@@ -37,7 +37,7 @@ L’objectif de cet article est de donner un aperçu des approches actuelles uti
 
 # <span style="color: #FF0000"> **1.	La substitution lexicale** </span>
 Cette approche consiste à substituer des mots présents dans un texte sans pour autant changer le sens de la phrase.
-<br><br>
+<br>
 
 ## <span style="color: #FFBF00"> **1.1 Substitution basée sur un thésaurus** </span>
 Dans cette technique, nous prenons un mot aléatoire de la phrase et le remplaçons par son synonyme à l'aide d'un thésaurus. Par exemple, nous pourrions utiliser la base de données [WordNet](https://wordnet.princeton.edu/), pour l'anglais afin de rechercher les synonymes et effectuer ensuite le remplacement. Il s'agit d'une base de données gérée manuellement, avec des relations entre les mots. 
@@ -83,7 +83,6 @@ import gensim.downloader as api
 
 model = api.load('glove-twitter-25')  
 model.most_similar('awesome', topn=5)
-
 ```
 
 Vous aurez alors en sortis les 5 mots les plus similaires ainsi que les similitudes calculées via le cosinus.
@@ -94,13 +93,11 @@ Vous aurez alors en sortis les 5 mots les plus similaires ainsi que les similitu
  ('fun', 0.9331520795822144),
  ('fantastic', 0.9313924312591553),
  ('perfect', 0.9243415594100952)]
-
 ```
-
+<br>
 Pour le français, plusiseurs choix s’offrent à vous :
 -	Les différents words embedding mis à disposition par [Jean-Philippe Fauconnier]( https://fauconnier.github.io/#data) (exemple d’implémentation sur sa page)
 -	Ceux de [FastText](https://fasttext.cc/docs/en/crawl-vectors.html) (cf le tableau en bas de la page)
-
 <br><br>
 
 ## <span style="color: #FFBF00"> **1.3 Substitution basée sur un modèle de langage masqué (Masked Language Model)** </span>
@@ -147,7 +144,6 @@ nlp('This is <mask> cool')
  {'score': 0.034715913236141205,
   'sequence': '<s> This is very cool</s>',
   'token': 182}]
-
 ```
 
 De même pour le français, vous pouvez utiliser le code suivant : 
@@ -232,11 +228,11 @@ Pour résoudre ce problème, le document propose de permettre des contractions a
 Vous pouvez trouver une liste des contractions pour la langue anglaise [ici](https://en.wikipedia.org/wiki/Wikipedia%3aList_of_English_contractions). Pour l'expansion, vous pouvez utiliser la librairie [contractions](https://github.com/kootenpv/contractions) en Python.
 <br>
 Cette technique ne semble pas avoir d’intérêt pour la langue française puisque celle-ci ne contient pas de contraction/expansion comme en anglais.
-
+<br><br><br>
 
 # <span style="color: #FF0000"> **4.	Injection aléatoire de bruit** </span>
 L'idée de ces méthodes est d'injecter du bruit dans le texte afin que le modèle entrainé soit robuste aux perturbations.
-<br><br>
+<br>
 
 ## <span style="color: #FFBF00"> **4.1 Injection de fautes d’orthographe** </span>
 Dans cette méthode, nous ajoutons des fautes d'orthographe à un mot aléatoire de la phrase. Ces fautes d'orthographe peuvent être ajoutées par programmation ou à l'aide d'un lexique des fautes d'orthographe courantes, comme cette [liste]( https://github.com/makcedward/nlpaug/blob/master/model/spelling_en.txt) pour l'anglais.
@@ -270,7 +266,7 @@ Cette méthode a été utilisée par [Xie et al.](https://arxiv.org/abs/1703.025
   <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Data_augmentation/Erreur_unigramme.png">
 </figure>
 </center>
-<br><br>
+<br>
 
 ## <span style="color: #FFBF00"> **4.4 Bruits parasites** </span>
 Cette méthode a été proposée par [Xie et al.](https://arxiv.org/abs/1703.02573) dans leur article. L'idée est de remplacer aléatoirement un mot par un token de remplacement que l’on aura choisi préalablement. 
@@ -281,7 +277,7 @@ Dans l'article les auteurs utilisent ' ' comme caractère de remplacement. C’e
   <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Data_augmentation/Erreur_blank.png">
 </figure>
 </center>
-<br><br>
+<br>
 
 ## <span style="color: #FFBF00"> **4.5 Mélanges de phrases** </span>
 Il s'agit d'une technique naïve qui consiste à mélanger des phrases présentes dans un texte de d’entraînement afin de créer une version augmentée.
@@ -291,7 +287,7 @@ Il s'agit d'une technique naïve qui consiste à mélanger des phrases présente
   <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Data_augmentation/Shuffle.png">
 </figure>
 </center>
-<br><br>
+<br>
 
 
 ## <span style="color: #FFBF00"> **4.6 Insertion aléatoire** </span>
@@ -302,7 +298,7 @@ Cette technique a été proposée par [Wei et al.](https://arxiv.org/abs/1901.11
   <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Data_augmentation/Random_insertion.png">
 </figure>
 </center>
-<br><br>
+<br>
 
 
 ## <span style="color: #FFBF00"> **4.7 Echange aléatoire** </span>
@@ -313,7 +309,7 @@ Cette technique a également été proposée par Wei et al. dans leur article "E
   <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Data_augmentation/Swap.png">
 </figure>
 </center>
-<br><br>
+<br>
 
 
 ## <span style="color: #FFBF00"> **4.8 Suppression aléatoire** </span>
@@ -324,12 +320,12 @@ Cette technique a également été proposée par Wei et al. dans leur article "E
   <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Data_augmentation/Deletion.png">
 </figure>
 </center>
-<br><br><br>
+<br><br>
 
 
 
 # <span style="color: #FF0000"> **5.	Augmentation par Crossover** </span>
-Cette technique a été introduite par [Luque](https://arxiv.org/abs/1909.11241) dans son article sur l'analyse des sentiments pour la TASS 2019. Elle s'inspire de l'opération de [croisement des chromosomes qui se produit en génétique](https://fr.wikipedia.org/wiki/Enjambement_(g%C3%A9n%C3%A9tique).
+Cette technique a été introduite par [Luque](https://arxiv.org/abs/1909.11241) dans son article sur l'analyse des sentiments pour la TASS 2019. Elle s'inspire de l'opération de [croisement des chromosomes qui se produit en génétique](https://fr.wikipedia.org/wiki/Enjambement_(g%C3%A9n%C3%A9tique)).
 Dans cette méthode, un tweet est divisé en deux moitiés et deux tweet aléatoires ayant le même label que le tweet divisé voient leurs moitiés échangées (cf. image ci-dessous). L'hypothèse est que, même si le résultat sera peu grammatical et peu solide sur le plan sémantique, le nouveau texte préservera quand même le sentiment. 
 <center>
 <figure class="image">
@@ -342,7 +338,7 @@ Les résultats de l’article montrent que cette technique n'a pas eu d'impact s
   <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Data_augmentation/crossover2.png">
 </figure>
 </center> 
-<br><br><br>
+<br><br>
 
 
 # <span style="color: #FF0000"> **6.	Manipulation de l’arbre syntaxique** </span>
@@ -354,7 +350,7 @@ Par exemple, une transformation qui ne change pas le sens de la phrase est la tr
   <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Data_augmentation/Active_voice.png">
 </figure>
 </center> 
-<br><br><br>
+<br><br>
 
 
 # <span style="color: #FF0000"> **7.	Le mélange de texte (MixUp)** </span>
@@ -375,7 +371,7 @@ Dans cette méthode, deux phrases d'un mini-batch sont prises aléatoirement et 
   <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Data_augmentation/Mixup2.png">
 </figure>
 </center>
-<br><br>
+<br>
 
 ## <span style="color: #FFBF00"> **7.2	WordMixUp** </span>
 Dans cette méthode, on prend deux phrases et on les met à la même longueur. Ensuite, leurs word embedding sont passés dans un encoder LSTM/CNN et nous prenons le dernier état caché comme embedding de la phrase. Ces embedding sont combinés dans une certaine proportion et sont ensuite transmis à la couche de classification finale. La perte d'entropie croisée est calculée sur la base des deux labels des phrases originales dans la proportion donnée. 
@@ -384,7 +380,7 @@ Dans cette méthode, on prend deux phrases et on les met à la même longueur. E
   <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Data_augmentation/Mixup3.png">
 </figure>
 </center>
-<br><br><br>
+<br><br>
 
 
 # <span style="color: #FF0000"> **8.	Méthodes génératives** </span>
@@ -425,7 +421,7 @@ Pour la langue française, il n’existe pas à ma connaissance un tel jeu de do
 
 
 # <span style="color: #FF0000"> **Implémentation** </span>
-Les librairies Python comme [nlpaug](https://github.com/makcedward/nlpaug) et [textattack]https://github.com/QData/TextAttack) fournissent une API simple afin d’appliquer les méthodes ci-dessus pouvant ainsi être facilement intégrées dans une pipeline.
+Les librairies Python comme [nlpaug](https://github.com/makcedward/nlpaug) et [textattack](https://github.com/QData/TextAttack) fournissent une API simple afin d’appliquer les méthodes ci-dessus pouvant ainsi être facilement intégrées dans une pipeline.
 <br><br><br>
 
 
