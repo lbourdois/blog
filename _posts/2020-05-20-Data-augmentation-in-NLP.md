@@ -266,7 +266,6 @@ Cette méthode a été utilisée par [Xie et al.](https://arxiv.org/abs/1703.025
   <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Data_augmentation/Erreur_unigramme.png">
 </figure>
 </center>
-<br>
 
 ## <span style="color: #FFBF00"> **4.4 Bruits parasites** </span>
 Cette méthode a été proposée par [Xie et al.](https://arxiv.org/abs/1703.02573) dans leur article. L'idée est de remplacer aléatoirement un mot par un token de remplacement que l’on aura choisi préalablement. 
@@ -287,7 +286,6 @@ Il s'agit d'une technique naïve qui consiste à mélanger des phrases présente
   <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Data_augmentation/Shuffle.png">
 </figure>
 </center>
-<br>
 
 
 ## <span style="color: #FFBF00"> **4.6 Insertion aléatoire** </span>
@@ -298,7 +296,6 @@ Cette technique a été proposée par [Wei et al.](https://arxiv.org/abs/1901.11
   <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Data_augmentation/Random_insertion.png">
 </figure>
 </center>
-<br>
 
 
 ## <span style="color: #FFBF00"> **4.7 Echange aléatoire** </span>
@@ -309,7 +306,6 @@ Cette technique a également été proposée par Wei et al. dans leur article "E
   <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Data_augmentation/Swap.png">
 </figure>
 </center>
-<br>
 
 
 ## <span style="color: #FFBF00"> **4.8 Suppression aléatoire** </span>
@@ -371,7 +367,6 @@ Dans cette méthode, deux phrases d'un mini-batch sont prises aléatoirement et 
   <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Data_augmentation/Mixup2.png">
 </figure>
 </center>
-<br>
 
 ## <span style="color: #FFBF00"> **7.2	WordMixUp** </span>
 Dans cette méthode, on prend deux phrases et on les met à la même longueur. Ensuite, leurs word embedding sont passés dans un encoder LSTM/CNN et nous prenons le dernier état caché comme embedding de la phrase. Ces embedding sont combinés dans une certaine proportion et sont ensuite transmis à la couche de classification finale. La perte d'entropie croisée est calculée sur la base des deux labels des phrases originales dans la proportion donnée. 
