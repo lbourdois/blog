@@ -3,9 +3,9 @@ title: "L'AUGMENTATION DE DONNEES EN NLP"
 categories:
   - NLP
 tags:
-  - L'augmentation de données en NLP
+  - Augmentation de données en NLP
   - Data augmentation in NLP French
-  - L'augmentation de données en NLP français
+  - Augmentation de données en NLP français
 excerpt : "NLP"
 header :
     overlay_image: "https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/NLP_radom_blog.png"
