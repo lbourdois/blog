@@ -21,7 +21,7 @@ Je me suis dit qu'elles pourraient servir à d’autres personnes, c’est pourq
 
 
 
-## Quelques questions fréquentes ?
+## Quelques questions fréquentes 
 ##### Les articles de ton blog son majoritairement des vulgarisations de sujets liés au NLP. Prévois-tu de faire des tutoriels afin d'illustrer les articles ?
 C'est effectivement plannifié. Plusieurs codes python sont d'ailleurs déjà prêts mais doivent encore accompagnés d'explications et d'images.
 Je manque néanmoins de temps en ce moment car je travaille sur plusieurs autres projets. J'espère pouvoir terminés ces tutoriels au cours de l'été.
