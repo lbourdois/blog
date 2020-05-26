@@ -425,7 +425,7 @@ Il ressort de la revue de la littérature que nombre de ces méthodes d'augmenta
 <br><br><br>
 
 
-# <span style="color: #FF0000"> **Conclusion** </span>
+# <span style="color: #FF0000"> **Citation** </span>
 Si vous venez à utiliser des éléments de cet article, veillez s'il vous plait en créditer les auteurs en utilisant par exemple comme suit :
 “*L'augmentation de données en NLP* par Loïck BOURDOIS (https://lbourdois.github.io/blog/nlp/ALBERT/), d’après Amit CHAUDHARY, *A Visual Survey of Data Augmentation in NLP* (https://amitness.com/2020/05/data-augmentation-for-nlp/)”
 Merci :)
