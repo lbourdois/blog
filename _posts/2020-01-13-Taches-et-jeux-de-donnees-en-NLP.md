@@ -109,9 +109,10 @@ Les jeux de données anglophones communs :
 -	[IMDb](http://ai.stanford.edu/~amaas/data/sentiment/) : Un grand jeu de données de critiques de films avec des étiquettes binaires de classification des sentiments.
 <br>
 
-Pour le français, [FLUE](https://github.com/getalp/Flaubert/tree/master/flue) met à disposition le jeu de données CLS-FR. Celui-ci est composé d'avis d'utilisateurs de trois types de produits proposés sur Amazon : livres, musiques et DVD (4000 avis pour chacun des types de produits).
+Pour le français, [FLUE](https://github.com/getalp/Flaubert/tree/master/flue) met à disposition le jeu de données CLS-FR. Celui-ci est composé d'avis d'utilisateurs de trois types de produits proposés sur Amazon : livres, musiques et DVD (4000 avis pour chacun des types de produits). Il permet de faire de la classification multi-classes.
+<br><br>
+En 2020, Theophile Blard a scrapé le site [AlloCiné](http://www.allocine.fr/) afin de créer un nouveau jeu de données pour l'analyse de sentiments. Ce jeu de données contient plus de 200.000 critiques de films. Néanmoins il se limite à de la classification binaire. La méthodologie appliquée est disponible [ici](https://github.com/TheophileBlard/french-sentiment-analysis-with-bert/tree/master/allocine_dataset) et le jeu de données [ici](https://github.com/TheophileBlard/french-sentiment-analysis-with-bert/blob/master/allocine_dataset/data.tar.bz2)
 <br><br><br>
-
 
 
 # <span style="color: #FF0000"> **Semantic Role Labeling (SRL)** </span>
@@ -131,9 +132,7 @@ Les jeux de données anglophones communs :
 <br>
 
 Pour le français, [FLUE](https://github.com/getalp/Flaubert/tree/master/flue) met à disposition la partie en français de [PAWS-X](https://ai.googleblog.com/2019/10/releasing-paws-and-paws-x-two-new.html) de Google, soit environ 49 000 données d'apprentissage et 2 000 de test.
-<br><br>
-En 2020, Theophile Blard a scrapé le site [AlloCiné](http://www.allocine.fr/) afin de créer un nouveau jeu de données pour l'analyse de sentiments. Ce jeu de données contient plus de 200.000 critiques de films. La méthodologie appliquée est disponible [ici](https://github.com/TheophileBlard/french-sentiment-analysis-with-bert/tree/master/allocine_dataset) et le jeu de données [ici](https://github.com/TheophileBlard/french-sentiment-analysis-with-bert/blob/master/allocine_dataset/data.tar.bz2)
-<br><br><br>
+
 
 
 # <span style="color: #FF0000"> **Sentence Acceptability** </span>
@@ -203,15 +202,16 @@ Les jeux de données anglophones communs :
 <br><br><br>
 
 Les jeux de données utilisés par CamemBERT et FlauBERT : 
-- [OSCAR](https://traces1.inria.fr/oscar/) : données de [Common Crawl](https://commoncrawl.org/) récupérer par l'INRIA (utilisé par CamemBERT)
+- [OSCAR](https://traces1.inria.fr/oscar/) : données de [Common Crawl](https://commoncrawl.org/) récupérées par l'INRIA (utilisé par CamemBERT)
 - voir la [page 8 de la publication de FlauBERT](https://arxiv.org/pdf/1912.05372.pdf) pour connaître les jeux de données qu'ils ont utilisés.
+<br><br><br>
 
 
 
 # <span style="color: #FF0000"> **Benchmark multi-tâches** </span>
 Les benchmark anglophones : 
 -	[GLUE multi-task benchmark](https://gluebenchmark.com/) 
--	[decaNLP benmark](https://decanlp.com/) 
+-	[decaNLP benchmark](https://decanlp.com/) 
 
 
 
