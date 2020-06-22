@@ -7,7 +7,7 @@ tags:
   - RNN expliqué en français
   - LSTM expliqué en français
   - GRU expliqué en français
-excerpt : "NLP"
+excerpt : "NLP - Illustration des réseaux de neurones récurrents, des Long short-term memory, des Gated Recurrent Unit et de ELMo."
 header :
     overlay_image: "https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/RNN-LSTM-GRU-ELMO/ELMO_blog.png"
 toc: true
