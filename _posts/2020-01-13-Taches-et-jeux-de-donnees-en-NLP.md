@@ -26,7 +26,7 @@ Les publications scientifiques étant exclusivement en anglais, je fais en sorte
 Le domaine du NLP évoluant actuellement très rapidement il m’est impossible de présenter tous les nouveaux modèles par manque de temps. D’où là encore la nécessité que vous alliez consulter certaines sources anglophones par vous même.<br>
 Un élément qui me semble important pour pouvoir comprendre n’importe quelle publication est de connaître les tâches qui servent à comparer les performances des différents modèles ainsi que les jeux de données test en lien avec ces tâches.<br>
 La présentation des jeux de données anglophones se base sur l’[article de Lilian Weng](https://www.topbots.com/generalized-language-models-tasks-datasets/) (travaillant chez OpenAI). Merci à elle de m'avoir autorisé à effectuer cette traduction.<br>
-Celle des jeux de données francophones se base sur la [publication de l’équipe ayant développé le modèle CamemBERT](https://arxiv.org/pdf/1911.03894.pdf), sur la [publication de l’équipe ayant développé le modèle FlauBERT](https://arxiv.org/abs/1912.05372) et sur la [publication de l’équipe ayant développé FQuAD](https://arxiv.org/abs/2002.06071).
+Celle des jeux de données francophones se base sur la [publication de l’équipe ayant développé le modèle CamemBERT](https://arxiv.org/pdf/1911.03894.pdf), sur la [publication de l’équipe ayant développé le modèle FlauBERT](https://arxiv.org/abs/1912.05372), sur la [publication de l’équipe ayant développé FQuAD](https://arxiv.org/abs/2002.06071) et mes propres recherches.
 <br><br><br>
 
 
@@ -177,10 +177,10 @@ Pour le français, quatre banques d’arbres sont disponibles gratuitement dans 
 # <span style="color: #FF0000"> **Machine Translation** </span> 
 Tache qui consiste à traduire une phrase dans une langue donnée dans une autre langue.
 
-Voir le site de [Standard NLP](https://nlp.stanford.edu/projects/nmt/) qui contient différents jeux de données :
--	WMT 2015 English-Tchèque (Large)
--	WMT 2014 English-Allemand (Moyen)
--	IWSLT 2015 English-Vietnamien (Petit)
+Pour l'anglais, le site de [Standard NLP](https://nlp.stanford.edu/projects/nmt/) contient des paires de phrases en Anglais/Tchèque, en Anglais/Allemand et en Anglais/Vietnamien.
+Le site [Manythings.org](http://www.manythings.org/anki/) contient quant à lui plus de 80 paires de langues de la forme Anglais/Seconde_langue. Le couple Anglais/Français contient pour ça part plus de 175 623 paires de phrases.
+Il existe d'autres corpus Anglais/Français. On peut par exemple citer : le [WMT14](http://www.statmt.org/wmt14/translation-task.html) ou encore les données de [Pytorch](https://download.pytorch.org/tutorial/data.zip)
+Des corpus massifs Français/Seconde_langue avec Seconde_langue différent de l'Anglais sont beaucoup plus difficies à trouver.
 <br><br><br>
 
 
