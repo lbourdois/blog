@@ -29,7 +29,7 @@ J’ai ajouté des éléments supplémentaires quand j’estimais que cela étai
 Contrairement à la vision par ordinateur où l'augmentation de données d'images est une pratique courante, l'augmentation de données textuelles est assez rare en NLP.
 Cela s’explique par le fait que cette pratique est moins essentielle qu’en image car en NLP les données sont disponibles en abondance (les modèles de Transformers étant entraînés par exemple sur les millions de pages de Wikipédia). Néanmoins, pour certaines tâches il se peut que vous manquiez de données. 
 Voici un exemple simple que j’ai rencontré professionnellement :<br>
-à l’INSERM nous travaillons sur un outil de classification afin de déterminer la nature des traumatismes des patients passant par le service des urgences du centre hospitalier universitaire de Bordeaux. Empiriquement, on s’est aperçu que pour avoir des résultats fiables, il faut environ 600 exemples d’entraînement par classes. A cela doit s’ajouter les effectifs nécessaires pour l’échantillon test. Un tel nombre ne pose pas de problème par exemple pour les chutes à domicile (le nombre de personnes âgés admis aux urgences pour une chute est monstrueux), les accidents de la route, le sport, etc… Mais pour d’autres classes, il manque (heureusement) des effectifs comme par exemple pour les noyades, les morsures d’animaux, les tentatives de suicides, etc…  Même en ayant plus de 7 ans de données.
+à l’INSERM nous travaillons sur un outil de classification afin de déterminer la nature des traumatismes des patients passant par le service des urgences du centre hospitalier universitaire de Bordeaux. Empiriquement, on s’est aperçu que pour avoir des résultats fiables, il faut environ 600 exemples d’entraînement par classes. A cela doit s’ajouter les effectifs nécessaires pour l’échantillon test. Un tel nombre ne pose pas de problème par exemple pour les chutes à domicile (le nombre de personnes âgés admis aux urgences pour une chute est monstrueux), les accidents de la route, le sport, etc… Mais pour d’autres classes, il manque (heureusement) des effectifs comme par exemple pour les noyades, les morsures d’animaux, les tentatives de suicides, etc…  Même en ayant plus de 7 années d'historique de données.
 Ainsi pour obtenir des résultats probants, il nous faut augmenter artificiellement les effectifs de certaines classes.<br> 
 L’objectif de cet article est de donner un aperçu des approches actuelles utilisées pour augmenter les données textuelles.
 <br><br><br>
@@ -55,6 +55,7 @@ Pour le français, quatre bases sont disponibles. Elles consistent toutes en une
 -	[JAWS](https://www.researchgate.net/publication/268302040_JAWS_Just_Another_WordNet_Subset) datant de 2010 qui est plus large que WOLF
 -	[WoNef](https://wonef.fr/) datant de 2014 qui est peut être vu comme une extension de JAWS
 <br>
+
 Il existe aussi une base de données appelée [PPDB](http://paraphrase.org/#/download) contenant des millions de paraphrases (en anglais et multilingues) que vous pouvez télécharger et utiliser. 
 <br><br>
 
@@ -97,7 +98,7 @@ Vous aurez alors en sortis les 5 mots les plus similaires ainsi que les similitu
 <br>
 Pour le français, plusiseurs choix s’offrent à vous :
 -	Les différents words embedding mis à disposition par [Jean-Philippe Fauconnier]( https://fauconnier.github.io/#data) (exemple d’implémentation sur sa page)
--	Ceux de [FastText](https://fasttext.cc/docs/en/crawl-vectors.html) (cf le tableau en bas de la page)
+-	Ceux de [FastText](https://fasttext.cc/docs/en/crawl-vectors.html) (voir le tableau en bas du lien)
 <br><br>
 
 ## <span style="color: #FFBF00"> **1.3 Substitution basée sur un modèle de langage masqué (Masked Language Model)** </span>
@@ -122,14 +123,12 @@ Ainsi, nous pouvons générer des variations d'un texte en utilisant les prédic
 
 Cette approche est facile à mettre en œuvre avec la librairie open source [Transformers d’Hugging Face](https://github.com/huggingface/transformers). Vous pouvez définir le jeton que vous souhaitez remplacer par <mask> et générer des prédictions.
 
-```
-from transformers import pipeline
+```from transformers import pipeline
 nlp = pipeline('fill-mask')
 nlp('This is <mask> cool')
 ```
 
-```
-[{'score': 0.515411913394928,
+```[{'score': 0.515411913394928,
   'sequence': '<s> This is pretty cool</s>',
   'token': 1256},
  {'score': 0.1166248694062233,
@@ -368,7 +367,7 @@ Dans cette méthode, deux phrases d'un mini-batch sont prises aléatoirement et 
 </figure>
 </center>
 
-## <span style="color: #FFBF00"> **7.2	WordMixUp** </span>
+## <span style="color: #FFBF00"> **7.2	SentMixup** </span>
 Dans cette méthode, on prend deux phrases et on les met à la même longueur. Ensuite, leurs word embedding sont passés dans un encoder LSTM/CNN et nous prenons le dernier état caché comme embedding de la phrase. Ces embedding sont combinés dans une certaine proportion et sont ensuite transmis à la couche de classification finale. La perte d'entropie croisée est calculée sur la base des deux labels des phrases originales dans la proportion donnée. 
 <center>
 <figure class="image">
