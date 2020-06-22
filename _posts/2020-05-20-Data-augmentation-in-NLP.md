@@ -78,17 +78,25 @@ Par exemple, vous pouvez remplacer le mot par les 3 mots les plus similaires et 
 
 Pour l’anglais, il est facile d'utiliser des packages comme Gensim pour accéder à des vecteurs de mots pré-entraînés et obtenir les voisins les plus proches. Par exemple, nous trouvons ici les synonymes du mot "awesome" en utilisant des vecteurs de mots entraînés sur des tweets.
 
-```
-pip install gensim
+```python
+# pip install gensim
 import gensim.downloader as api
 
 model = api.load('glove-twitter-25')  
 model.most_similar('awesome', topn=5)
 ```
+You will get back the 5 most similar words along with the cosine similarities.
+```python
+[('amazing', 0.9687871932983398),
+ ('best', 0.9600659608840942),
+ ('fun', 0.9331520795822144),
+ ('fantastic', 0.9313924312591553),
+ ('perfect', 0.9243415594100952)]
+```  
 
 Vous aurez alors en sortis les 5 mots les plus similaires ainsi que les similitudes calculées via le cosinus.
 
-```
+```python
 [('amazing', 0.9687871932983398),
  ('best', 0.9600659608840942),
  ('fun', 0.9331520795822144),
@@ -123,12 +131,14 @@ Ainsi, nous pouvons générer des variations d'un texte en utilisant les prédic
 
 Cette approche est facile à mettre en œuvre avec la librairie open source [Transformers d’Hugging Face](https://github.com/huggingface/transformers). Vous pouvez définir le jeton que vous souhaitez remplacer par <mask> et générer des prédictions.
 
-```from transformers import pipeline
+```python
+from transformers import pipeline
 nlp = pipeline('fill-mask')
 nlp('This is <mask> cool')
 ```
 
-```[{'score': 0.515411913394928,
+```python
+[{'score': 0.515411913394928,
   'sequence': '<s> This is pretty cool</s>',
   'token': 1256},
  {'score': 0.1166248694062233,
@@ -147,7 +157,7 @@ nlp('This is <mask> cool')
 
 De même pour le français, vous pouvez utiliser le code suivant : 
 
-```
+```python
 camembert_fill_mask = pipeline("fill-mask", model="camembert-base", tokenizer="camembert-base")
 
 results = camembert_fill_mask("Le camembert est <mask> :)")
