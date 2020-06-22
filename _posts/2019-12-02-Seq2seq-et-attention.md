@@ -4,7 +4,9 @@ categories:
   - NLP
 tags:
   - Modèles séquenciels expliqués en français
-  - Processus d'attention NLP
+  - Processus d'attention en NLP
+  - Seq2seq french
+  - Seq2seq français
 excerpt : "NLP - Illustration du principe de séquence vers séquence et du processus d'attention en traitement du langage naturel"
 header :
     overlay_image: "https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/NLP_radom_blog.png"
