@@ -59,3 +59,4 @@ Différents travaux cherchent à résoudre ces problèmes. On peut par exemple �
 * Les articles concernant des sujets utiles à connaître en NLP :
     * Le prétraitement et les tokenizers : l'[article](https://lbourdois.github.io/blog/nlp/Les-tokenizers/)
     * Les tâches et jeux de données test fréquemment utilisés : l'[article](https://lbourdois.github.io/blog/nlp/Taches-et-jeux-de-donnees-en-NLP/)
+    * L'augmentation de données en NLP : l'[article](https://lbourdois.github.io/blog/nlp/Data-augmentation-in-NLP/)
