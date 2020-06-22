@@ -35,7 +35,7 @@ Celle des jeux de données francophones se base sur la [publication de l’équi
 En 2020, l'entreprise Hugging Face a dévoilé sa librairie *[nlp](https://github.com/huggingface/nlp)*.
 <center>
 <figure class="image">
-  <img src="https://raw.githubusercontent.com/huggingface/nlp/master/docs/source/imgs/nlp_logo_name.png", width="250px">
+  <img src="https://raw.githubusercontent.com/huggingface/nlp/master/docs/source/imgs/nlp_logo_name.png" width="250px">
 </figure>
 </center>
 Grâce à celle-ci vous pouvez charger en une ligne de code l'un des 120 jeux de données (français et autres langues) actuellement disponible sur la librairie. Vous trouverez sur cette librairie, la plupart des jeux de données présentés dans les paragraphes qui suivent.
