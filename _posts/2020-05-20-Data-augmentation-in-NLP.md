@@ -6,11 +6,11 @@ tags:
   - Augmentation de données en NLP
   - Data augmentation in NLP French
   - Augmentation de données en NLP français
-excerpt : "NLP"
+excerpt : NLP - Un aperçu des techniques disponibles pour réaliser de l'augmentation de données textuelles en traitement du langage naturel
 header :
     overlay_image: "https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/NLP_radom_blog.png"
-toc: false
-toc_sticky: false
+toc: true
+toc_sticky: true
 author_profile: false
 sidebar:
     nav: sidebar-sample
