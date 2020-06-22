@@ -9,10 +9,11 @@ tags:
 excerpt : "NLP"
 header :
     overlay_image: "https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/NLP_radom_blog.png"
-toc: true
-toc_sticky: true
+toc: false
+toc_sticky: false
 author_profile: false
-
+sidebar:
+    nav: sidebar-sample
 
 ---
 
