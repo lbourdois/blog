@@ -13,7 +13,7 @@ tags:
   - Sentencepiece french
   - Tokenizers NLP français
   - Tokenizers NLP french
-excerpt : "NLP"
+excerpt : "NLP - Illusatration des divers prétraitement réalisables en NLP ainsi que des différents tokenizers fréquemment utilisés"
 header :
     overlay_image: "https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/NLP_radom_blog.png"
 toc: true
