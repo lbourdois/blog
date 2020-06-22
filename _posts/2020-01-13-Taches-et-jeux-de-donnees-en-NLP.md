@@ -9,7 +9,7 @@ tags:
   - CamemBERT NLP
   - FlauBERT NLP
   - FLUE NLP
-excerpt : "NLP"
+excerpt : "NLP - Taches et jeux de données fréquemments utilisés dans les publications de NLP"
 header :
     overlay_image: "https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/NLP_radom_blog.png"
 toc: true
