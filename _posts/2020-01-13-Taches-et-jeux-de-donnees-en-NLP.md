@@ -29,9 +29,19 @@ La présentation des jeux de données anglophones se base sur l’[article de Li
 Celle des jeux de données francophones se base sur la [publication de l’équipe ayant développé le modèle CamemBERT](https://arxiv.org/pdf/1911.03894.pdf), sur la [publication de l’équipe ayant développé le modèle FlauBERT](https://arxiv.org/abs/1912.05372) et sur la [publication de l’équipe ayant développé FQuAD](https://arxiv.org/abs/2002.06071).
 <br><br><br>
 
-# La librairie NLP
-En 2020, l'entreprise Hugging Face a dévoilé sa librairie *[nlp](https://github.com/huggingface/nlp)*. Grâce à celle-ci vous pouvez charger en une ligne de code l'un des 120 jeux de données (français et autres langues) actuellement disponible sur la librairie. Vous trouverez sur cette librairie, la plupart des jeux de données présentés dans les paragraphes qui suivent.
+
+# <span style="color: #FF0000"> **La librairie NLP** </span>
+
+En 2020, l'entreprise Hugging Face a dévoilé sa librairie *[nlp](https://github.com/huggingface/nlp)*.
+<center>
+<figure class="image">
+  <img src="
+https://raw.githubusercontent.com/huggingface/nlp/master/docs/source/imgs/nlp_logo_name.png">
+</figure>
+</center>
+Grâce à celle-ci vous pouvez charger en une ligne de code l'un des 120 jeux de données (français et autres langues) actuellement disponible sur la librairie. Vous trouverez sur cette librairie, la plupart des jeux de données présentés dans les paragraphes qui suivent.
 Pour connaître les jeux de données disponibles, vous pouvez consulter leur [application Streamlit](https://huggingface.co/nlp/viewer/), et pour un tutoriel d'utilisation, vous pouvez consulter le [Collab suivant](https://colab.research.google.com/github/huggingface/nlp/blob/master/notebooks/Overview.ipynb).
+<br><br>
 
 
 # <span style="color: #FF0000"> **Question-Answering (Questions/Réponses)** </span>
