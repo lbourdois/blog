@@ -5,7 +5,7 @@ categories:
 tags:
   - bag of word expliqué en français
   - bag of word NLP en français
-excerpt : "NLP"
+excerpt : "NLP - Illustration de la technique du bag of word"
 header :
     overlay_image: "https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/NLP_radom_blog.png"
 toc: true
