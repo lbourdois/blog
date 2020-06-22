@@ -5,7 +5,9 @@ categories:
 tags:
   - word embedding en français
   - word embedding expliqué en français
-excerpt : "NLP"
+  - word2vec en français
+  - skipgram en français
+excerpt : "NLP - Illustration du word embedding et d'une technique de word embedding : le word2vec de Google"
 header :
     overlay_image: "https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/NLP_radom_blog.png"
 toc: true
