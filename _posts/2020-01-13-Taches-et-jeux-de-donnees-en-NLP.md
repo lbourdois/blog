@@ -29,6 +29,9 @@ La présentation des jeux de données anglophones se base sur l’[article de Li
 Celle des jeux de données francophones se base sur la [publication de l’équipe ayant développé le modèle CamemBERT](https://arxiv.org/pdf/1911.03894.pdf), sur la [publication de l’équipe ayant développé le modèle FlauBERT](https://arxiv.org/abs/1912.05372) et sur la [publication de l’équipe ayant développé FQuAD](https://arxiv.org/abs/2002.06071).
 <br><br><br>
 
+# La librairie NLP
+En 2020, l'entreprise Hugging Face a dévoilé sa librairie *[nlp](https://github.com/huggingface/nlp)*. Grâce à celle-ci vous pouvez charger en une ligne de code l'un des 120 jeux de données (français et autres langues) actuellement disponible sur la librairie. Vous trouverez sur cette librairie, la plupart des jeux de données présentés dans les paragraphes qui suivent.
+Pour connaître les jeux de données disponibles, vous pouvez consulter leur [application Streamlit](https://huggingface.co/nlp/viewer/), et pour un tutoriel d'utilisation, vous pouvez consulter le [Collab suivant](https://colab.research.google.com/github/huggingface/nlp/blob/master/notebooks/Overview.ipynb).
 
 
 # <span style="color: #FF0000"> **Question-Answering (Questions/Réponses)** </span>
@@ -49,7 +52,7 @@ Les jeux de données anglophones communs :
 Pour le français, vous pouvez utiliser la base de données mise à disposition par l'entreprise Illuin Technology : [FQuAD](https://fquad.illuin.tech/). Elle contient plus de 25.000 questions/réponses basées sur des [articles de qualité de Wikipédia](https://fr.wikipedia.org/wiki/Cat%C3%A9gorie:Article_de_qualit%C3%A9). Pour plus d'informations concernant la répartition des types de questions (qui ? quoi ? où ? quand ?, etc...), la répartion des entités (noms communs, personnes, lieu, etc...) et les résultats des premiers benchmarks basés sur CamemBERT et FlauBERT, je vous invite à lire la [publication de l'équipe d'Illuin Technology](https://arxiv.org/abs/2002.06071).<br>
 
 A noter qu'il existe également le projet [PIAF](https://piaf.etalab.studio/) (Pour une IA Francophone) porté par [Etalab](https://www.etalab.gouv.fr/) qui a pour objectif de créer lui aussi une base de Question/Réponse. Ce projet à vocation open-data est ouvert à tous. Si vous souhaitez contribuer (ne serais-ce qu'annoter 1 ou 2 textes pour voir de vous même la méthodologie appliquée), je vous invite à vous rentre sur le site du projet :)<br>
-Les données de PIAF ne sont actuellement pas accessibles librement mais devraient l'être à parti du mois de mai 2020.
+Les données de PIAF sont accessibles librement [ici](https://piaf.etalab.studio/dataset/).
 <br><br><br>
 
 
@@ -96,7 +99,9 @@ Les jeux de données anglophones communs :
 -	[Reuters Corpus](https://trec.nist.gov/data/reuters/reuters.html) : Une grande collection d’articles de Reuters.
 <br>
 
-Pour le français, il existe le FTB (French Treebank) crée par les équipes de l'Université Paris-Diderot (laboratoire LLF) contenant plus de 21 550 phrases provenant d’articles du journal *Le Monde* publiés entre 1989 et 1995. L'accès à cette base de données est cependant restreinte. Pour y avoir accès, il faut en effectuer la [demande](http://ftb.linguist.univ-paris-diderot.fr/telecharger.php).
+Pour le français deux choix s'offrent à vous :
+- le FTB (French Treebank) crée par les équipes de l'Université Paris-Diderot (laboratoire LLF) contenant plus de 21 550 phrases provenant d’articles du journal *Le Monde* publiés entre 1989 et 1995. L'accès à cette base de données est cependant restreinte. Pour y avoir accès, il faut en effectuer la [demande](http://ftb.linguist.univ-paris-diderot.fr/telecharger.php).
+- la partie en français de la base Wikiner disponible [ici](https://github.com/dice-group/FOX/tree/master/input/Wikiner).
 <br><br><br>
 
 
@@ -212,7 +217,6 @@ Les jeux de données utilisés par CamemBERT et FlauBERT :
 Les benchmark anglophones : 
 -	[GLUE multi-task benchmark](https://gluebenchmark.com/) 
 -	[decaNLP benchmark](https://decanlp.com/) 
-
 
 
 Les benchmark francophones : 
