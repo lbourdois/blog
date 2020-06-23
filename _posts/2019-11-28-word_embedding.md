@@ -10,6 +10,7 @@ tags:
 excerpt : "NLP - Illustration du word embedding et d'une technique de word embedding : le word2vec de Google"
 header :
     overlay_image: "https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/NLP_radom_blog.png"
+    teaser: "https://jalammar.github.io/images/word2vec/word2vec.png"
 toc: true
 toc_sticky: true
 author_profile: false
