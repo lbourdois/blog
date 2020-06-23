@@ -203,7 +203,7 @@ Vous pouvez également effectuer une rétro-traduction en utilisant différentes
 
 Cette technique a été utilisée par le gagnant du "Toxic Comment Classification Challenge" sur [Kaggle](https://www.kaggle.com/c/jigsaw-toxic-comment-classification-challenge/discussion/52557). Il l'a utilisée pour l'augmentation des données d'entraînement ainsi que pendant le test où les probabilités prédites pour la phrase anglaise ainsi que la rétro-traduction en trois langues (français, allemand, espagnol) ont été calculées pour obtenir la prédiction finale.
 <br>
-Pour la mise en œuvre de la rétro-traduction, vous pouvez utiliser [TextBlob]( https://textblob.readthedocs.io/en/dev/). Vous pouvez également utiliser Google Sheets et suivre les instructions données par [Amit](https://amitness.com/2020/02/back-translation-in-google-sheets/) pour appliquer Google Translate gratuitement (en anglais).
+Pour la mise en œuvre de la rétro-traduction, vous pouvez utiliser la librairie [TextBlob]( https://textblob.readthedocs.io/en/dev/) et notamment la fonction *Translator*. Vous pouvez également utiliser Google Sheets et suivre les instructions données par [Amit](https://amitness.com/2020/02/back-translation-in-google-sheets/) pour appliquer Google Translate (en anglais). Cette approche est néanmoins manuelle. Pour automatiser la chose, je vous conseille l'API [Googletrans](https://pypi.org/project/googletrans/)
 <br><br><br>
 
 
