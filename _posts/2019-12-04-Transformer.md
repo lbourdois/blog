@@ -11,6 +11,7 @@ tags:
 excerpt : "NLP - Illustration du modèle Transformer de Vaswani et al."
 header :
     overlay_image: "https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Transformer/Transformers_blog.png"
+    teaser : "https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Transformer/transformer_resideual_layer_norm_3.png"
 toc: true
 toc_sticky: true
 author_profile: false
