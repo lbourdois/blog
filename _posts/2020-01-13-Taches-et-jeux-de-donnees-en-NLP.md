@@ -12,6 +12,7 @@ tags:
 excerpt : "NLP - Taches et jeux de données fréquemments utilisés dans les publications de NLP"
 header :
     overlay_image: "https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/NLP_radom_blog.png"
+    tesaer: "https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Taches-et-BDD/Questions-R%C3%A9ponses.png"
 toc: true
 toc_sticky: true
 author_profile: false
