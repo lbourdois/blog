@@ -16,6 +16,7 @@ tags:
 excerpt : "NLP - Illusatration des divers prétraitement réalisables en NLP ainsi que des différents tokenizers fréquemment utilisés"
 header :
     overlay_image: "https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/NLP_radom_blog.png"
+    teaser : "https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Tokenizers/Spacy.png"
 toc: true
 toc_sticky: true
 author_profile: false
