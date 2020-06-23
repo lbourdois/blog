@@ -148,8 +148,10 @@ ELMo propose l’embedding contextualisé en regroupant les états cachés (et l
   <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/RNN-LSTM-GRU-ELMO/elmo-embedding.png">
 </figure>                                                                                                                              
 </center>
-<br><br><br>
+<br><br>
 
+En mai 2020, [Ortiz Suárez et al.](https://www.aclweb.org/anthology/2020.acl-main.156.pdf) ont dévoilé six ELMo différents entraînés respectivement sur du français, du bulgare, du catalan, du danois, du finnois et de l'indonésien. Ces modèles sont disponibles à la [page suivante](https://oscar-corpus.com/) dans la partie "Models".
+<br><br><br>
 
 
 # <span style="color: #FF0000"> **Conclusion** </span>
