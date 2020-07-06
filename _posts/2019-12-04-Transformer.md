@@ -574,7 +574,7 @@ Pour les autres architectures, vous pouvez consulter une liste non exhaustive da
 
 - [The Illustrated Transformer](https://jalammar.github.io/illustrated-transformer/) de Jay Alammar (2018) 
 
-Transformers from scratch](http://www.peterbloem.nl/blog/transformers) de Peter Bloem (2019)  
+- [Transformers from scratch](http://www.peterbloem.nl/blog/transformers) de Peter Bloem (2019)  
 
 - [The Annotated Transformer](http://nlp.seas.harvard.edu/2018/04/03/attention.html) de Rush et al. (2017) 
 
