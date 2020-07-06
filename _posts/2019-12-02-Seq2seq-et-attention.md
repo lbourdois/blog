@@ -232,6 +232,14 @@ Il donne des exemples d’application tel que la traduction ou encore la génér
 <br><br><br>
 
 
+# <span style="color: #FF0000"> **Références** </span> 
+- [Visualizing A Neural Machine Translation Model (Mechanics of Seq2seq Models With Attention)](https://jalammar.github.io/visualizing-neural-machine-translation-mechanics-of-seq2seq-models-with-attention/ ) de Jay Alammar (2018)
+- [Neural Machine Translation by Jointly Learning to Align and Translate]( https://arxiv.org/pdf/1409.0473.pdf) de Bahdanau et al. (2014)
+- [EH2018-11 - Modèle : Réseaux récurrents (Partie 2)](https://www.youtube.com/watch?v=stD_mY2OYj4 ) de César Laurent (2018) 
+- [Effective Approaches to Attention-based Neural Machine Translation](https://arxiv.org/pdf/1508.04025.pdf) de Luong et al. (2015) 
+- [Neural Machine Translation (seq2seq) Tutorial](https://github.com/tensorflow/nmt) de Luong et al. (2017) 
+<br><br><br>
+
 
 # <span style="color: #FF0000"> **Citation** <span>
 Si vous venez à utiliser des éléments de cet article, veillez s'il vous plait en créditer les auteurs en utilisant par exemple comme suit :<br>
