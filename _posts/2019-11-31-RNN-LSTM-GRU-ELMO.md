@@ -170,6 +170,22 @@ Même si cette architecture ne s’impose pas, elle montre que la différence en
 Elle pourrait servir de base à de futurs modèles.
 <br><br><br>
 
+# <span style="color: #FF0000"> **Références** </span> 
+
+- [The Illustrated BERT, ELMo, and co. (How NLP Cracked Transfer Learning)](https://jalammar.github.io/illustrated-bert/) de Jay Alammar (2018)
+- [Comment les Réseaux de neurones récurrents et Long Short-Term Memory fonctionnent](https://medium.com/@CharlesCrouspeyre/comment-les-r%C3%A9seaux-de-neurones-%C3%A0-convolution-fonctionnent-c25041d45921) de Charles Crouspeyre (2017)
+- [EH2018-10 - Modèle : Réseaux récurrents (Partie 1)](https://www.youtube.com/watch?v=dOpgDv88UOo) de César Laurent (2018)
+- [Learned in Translation: Contextualized Word Vectors](https://arxiv.org/abs/1708.00107) de McCann et al. (2017)
+- [Single Headed Attention RNN: Stop Thinking With Your Head](https://arxiv.org/abs/1911.11423) de Stephen Merity (2019)
+- [LSTM, Intelligence artificielle sur des données chronologiques](https://medium.com/smileinnovation/lstm-intelligence-artificielle-9d302c723eda ) de Youcef Messaoud (2018)
+- [Comprendre les LSTM - Réseaux de neurones récurrents](https://www.youtube.com/watch?v=3xgYxrNyE54) de Thibault Neveu (2019)
+- [Comprendre les réseaux de neurones récurrents (RNN)](https://www.youtube.com/watch?v=EL439RMv3Xc) de Thibault Neveu (2019)
+- [A Monolingual Approach to Contextualized Word Embeddingsfor Mid-Resource Languages](https://www.aclweb.org/anthology/2020.acl-main.156.pdf) de Ortiz Suárez et al. (2020)
+- [Deep contextualized word representations](https://arxiv.org/pdf/1802.05365.pdf) de Peters et al. (2018)
+- [Semi-supervised sequence tagging with bidirectional language models](https://arxiv.org/abs/1705.00108) de Peters et al. (2017)
+- [Recurrent Neural Networks (RNN) and Long Short-Term Memory (LSTM)](https://www.youtube.com/watch?v=WCUNPb-5EYI) de Brandon Rohrer (2017)
+- [Understanding LSTM and its diagrams](https://medium.com/mlreview/understanding-lstm-and-its-diagrams-37e2f46f1714) de Shi Yan (2016)
+<br><br><br>
 
 
 # <span style="color: #FF0000"> **Citation** <span>
