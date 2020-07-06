@@ -550,16 +550,16 @@ Lire l’article [Attention Is All You Need](https://arxiv.org/abs/1706.03762) (
 Jouer avec le [Jupyter Notebook de Tensor2Tensor](https://colab.research.google.com/github/tensorflow/tensor2tensor/blob/master/tensor2tensor/notebooks/hello_t2t.ipynb) et plus généralement xxplorer le Github [Tensor2Tensor](https://github.com/tensorflow/tensor2tensor).
 
 Des articles sur divers travaux utilisant les transformers :
-* [Depthwise Separable Convolutions for Neural Machine Translation](https://arxiv.org/abs/1706.03059)
-* [One Model To Learn Them All](https://arxiv.org/abs/1706.05137)
-* [Discrete Autoencoders for Sequence Models](https://arxiv.org/abs/1801.09797)
-* [Generating Wikipedia by Summarizing Long Sequences](https://arxiv.org/abs/1801.10198)
-* [Image Transformer](https://arxiv.org/abs/1802.05751)
-* [Training Tips for the Transformer Model](https://arxiv.org/abs/1804.00247)
-* [Self-Attention with Relative Position Representations](https://arxiv.org/abs/1803.02155)
-* [Fast Decoding in Sequence Models using Discrete Latent Variables](https://arxiv.org/abs/1803.03382)
-* [Adafactor: Adaptive Learning Rates with Sublinear Memory Cost](https://arxiv.org/abs/1804.04235)
-<br><br><br>
+* [Depthwise Separable Convolutions for Neural Machine Translation](https://arxiv.org/abs/1706.03059) de Kaiser et al. (2017) 
+* [One Model To Learn Them All](https://arxiv.org/abs/1706.05137) de Kaiser et al. (2017) 
+* [Discrete Autoencoders for Sequence Models](https://arxiv.org/abs/1801.09797) de Kaiser et al. (2018) 
+* [Generating Wikipedia by Summarizing Long Sequences](https://arxiv.org/abs/1801.10198) de Liu  et al. (2018) 
+* [Image Transformer](https://arxiv.org/abs/1802.05751) de Parmar et al. (2018) 
+* [Training Tips for the Transformer Model](https://arxiv.org/abs/1804.00247) de Popel et al. (2018) 
+* [Self-Attention with Relative Position Representations](https://arxiv.org/abs/1803.02155) de Shaw et al. (2018) 
+* [Fast Decoding in Sequence Models using Discrete Latent Variables](https://arxiv.org/abs/1803.03382) de Kaiser et al. (2018) 
+* [Adafactor: Adaptive Learning Rates with Sublinear Memory Cost](https://arxiv.org/abs/1804.04235)  de Shazeer et al. (2018) 
+<br><br><br> 
 
 
 
@@ -569,6 +569,23 @@ J'entre plus en détails pour deux d'entre eux que j'ai eu l'occasion d'utiliser
 Pour les autres architectures, vous pouvez consulter une liste non exhaustive dans cet [article](https://lbourdois.github.io/blog/nlp/Les-architectures-transformers/) du blog.
 <br><br><br>
 
+
+# <span style="color: #FF0000"> **Références** </span> 
+
+- [The Illustrated Transformer](https://jalammar.github.io/illustrated-transformer/) de Jay Alammar (2018) 
+
+Transformers from scratch](http://www.peterbloem.nl/blog/transformers) de Peter Bloem (2019)  
+
+- [The Annotated Transformer](http://nlp.seas.harvard.edu/2018/04/03/attention.html) de Rush et al. (2017) 
+
+- [Attention Is All You Need](https://arxiv.org/abs/1706.03762) de Vaswani et al. (2017) 
+
+- [ATensor2Tensor for Neural Machine Translation](https://github.com/tensorflow/tensor2tensor) de Vaswani et al. (2018)
+
+- [A Multiscale Visualization of Attention in the Transformer Model](https://github.com/jessevig/bertviz) de Jesse Vig (2019)
+
+- [Deconstructing BERT, Part 2: Visualizing the Inner Workings of Attention](https://towardsdatascience.com/deconstructing-bert-part-2-visualizing-the-inner-workings-of-attention-60a16d86b5c1) de Jesse Vig (2019)
+<br><br><br>
 
 
 # <span style="color: #FF0000"> **Citation** <span>
