@@ -432,8 +432,8 @@ Les librairies Python comme [nlpaug](https://github.com/makcedward/nlpaug) et [t
 
 
 # <span style="color: #FF0000"> **Conclusion** </span>
-Dans la plupart des papiers liés à l'augmentation de données textuelles, les auteurs se limitent à présenter leur méthode, et pas de comparaison est réalisée avec d'autres méthodes existantes. 
-Ce travail de comparaison est réalisé par Columbe dans sa [thèse](https://r-libre.teluq.ca/1894/1/Th%C3%A8se_Coulombe.pdf) (2020). Celle-ci a été rédigée en français (appliqcation à des textes en anglais). Elle décrit bien les méthodes 1 à 7 de cet article, permettant de connaître les atouts et les limites de chacunes d'elles.
+Dans la plupart des papiers liés à l'augmentation de données textuelles, les auteurs se limitent à présenter leur méthode : aucune comparaison n'est réalisée avec d'autres méthodes existantes. 
+Ce travail de comparaison est réalisé par Columbe dans sa [thèse](https://r-libre.teluq.ca/1894/1/Th%C3%A8se_Coulombe.pdf) (2020). Celle-ci a été rédigée en français (application à des textes en anglais). Elle décrit bien les méthodes 1 à 7 de cet article, permettant de connaître les atouts et les limites de chacunes d'elles.
 Ci vous avez du temps et êtes intéressés par ce sujet, je vous invite fortement à la lire (environ 200 pages).
 <br><br><br>
 
