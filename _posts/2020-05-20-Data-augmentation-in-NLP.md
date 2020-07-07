@@ -432,7 +432,37 @@ Les librairies Python comme [nlpaug](https://github.com/makcedward/nlpaug) et [t
 
 
 # <span style="color: #FF0000"> **Conclusion** </span>
-Il ressort de la revue de la littérature que nombre de ces méthodes d'augmentation sont très spécifiques et que leur impact sur les performances n'a été étudié que pour certains cas d'utilisation particuliers. Il serait intéressant de comparer systématiquement ces méthodes et d'analyser leur impact sur les performances pour de nombreuses tâches.
+Dans la plupart des papiers liés à l'augmentation de données textuelles, les auteurs se limitent à présenter leur méthode, et pas de comparaison est réalisée avec d'autres méthodes existantes. 
+Ce travail de comparaison est réalisé par Columbe dans sa [thèse](https://r-libre.teluq.ca/1894/1/Th%C3%A8se_Coulombe.pdf) (2020). Celle-ci a été rédigée en français (appliqcation à des textes en anglais). Elle décrit bien les méthodes 1 à 7 de cet article, permettant de connaître les atouts et les limites de chacunes d'elles.
+Ci vous avez du temps et êtes intéressés par ce sujet, je vous invite fortement à la lire (environ 200 pages).
+<br><br><br>
+
+
+# <span style="color: #FF0000"> **Références** </span>
+
+- [ASSET: A Dataset for Tuning and Evaluation of Sentence SimplificationModels with Multiple Rewriting Transformations](https://arxiv.org/pdf/2005.00481.pdf) de Fernando Alva-Manchego, Louis Martin et al. (2020) 
+- [A Visual Survey of Data Augmentation in NLP](https://amitness.com/2020/05/data-augmentation-for-nlp/)  de Amit Chaudhary (2020) 
+- [Techniques d’amplification des données textuelles pour l’apprentissage profond ](https://r-libre.teluq.ca/1894/1/Th%C3%A8se_Coulombe.pdf) de Claude Coulombe (2020)  
+- [Text Data Augmentation Made Simple By Leveraging NLP Cloud APIs](https://arxiv.org/abs/1812.04718) de Coulombe (2018) 
+- [French Word Embeddings de Fauconnier](https://fauconnier.github.io/#data) (2015) 
+- [The Multilingual Paraphrase Database](https://www.cis.upenn.edu/~ccb/publications/ppdb-multilingual.pdf) de Ganitkevitch et Callison-Burch (2014) 
+- [Augmenting Data with Mixup for Sentence Classification: An Empirical Study](https://arxiv.org/abs/1905.08941) de Guo et al. (2019) 
+- [TinyBERT: Distilling BERT for Natural Language Understanding](https://arxiv.org/abs/1909.10351) de Jiao et al. (2019) 
+- [Data Augmentation using Pre-trained Transformer Models](https://arxiv.org/abs/2003.02245) de Kumar et al. (2020) 
+- [Atalaya at TASS 2019: Data Augmentation and Robust Embeddings for Sentiment Analysis](https://arxiv.org/abs/1909.11241) de Luque (2019) 
+- [WordNet: A Lexical Database for English](https://wordnet.princeton.edu/) de Miller (1995)  
+- [JAWS : Just Another WordNet Subset](https://www.researchgate.net/publication/268302040_JAWS_Just_Another_WordNet_Subset) de Mouton et Chalendar (2010) 
+- [Global Monopole in Palatini f(R) gravity](https://arxiv.org/abs/1812.00471) de Nascimento et al. (2018) 
+- [WoNeF](https://wonef.fr/) de Pradet et Baguenier-Desormeaux (2012) 
+- [Construction d'un wordnet libre du français à partir de ressources multilingues](https://www.researchgate.net/publication/228809373_Construction_d'un_wordnet_libre_du_francais_a_partir_de_ressources_multilingues) de Sagot et Fiser (2008) 
+- [EDA: Easy Data Augmentation Techniques for Boosting Performance on Text Classification Tasks](https://arxiv.org/abs/1901.11196) de Wei et Zou (2019) 
+- [Data Noising as Smoothing in Neural Network Language Models](https://arxiv.org/abs/1703.02573) de Xie et al. (2017) 
+- [Unsupervised Data Augmentation for Consistency Training](https://arxiv.org/abs/1904.12848) de Xie et al. (2019) 
+- [That’s So Annoying!!!: A Lexical and Frame-SemanticEmbedding Based Data Augmentation Approach to AutomaticCategorization of Annoying Behaviors using#petpeeveTweets](https://www.aclweb.org/anthology/D15-1306.pdf) de Yang Wang et Yang (2015) 
+- [mixup: Beyond Empirical Risk Minimization](https://arxiv.org/abs/1710.09412) de Zhang et al (2017)  
+- [Character-level Convolutional Networks for Text Classification](https://arxiv.org/abs/1509.01626) de Zhang et al. (2015) 
+
+
 <br><br><br>
 
 
