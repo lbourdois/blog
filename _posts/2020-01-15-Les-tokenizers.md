@@ -339,6 +339,31 @@ Le stemming et la lemmatization sont des formes extrêmes de normalisation qui n
 <br><br><br>
 
 
+# <span style="color: #FF0000"> **Références** </span>
+
+- [What Is the Longest German Word ?](thoughtco.com/longest-german-word-in-the-world-4061494) de Flippo (2020) 
+
+- [SentencePiece: A simple and language independent subword tokenizerand detokenizer for Neural Text Processing](https://arxiv.org/abs/1808.06226) de Kudo et Richardson (2018) 
+
+- [Subword Regularization: Improving Neural Network Translation Models with Multiple Subword Candidates](https://arxiv.org/abs/1804.10959) de Taku Kudo (2018)
+
+- [A Deep Dive into the Wonderful World of Preprocessing in NLP](https://mlexplained.com/2019/11/06/a-deep-dive-into-the-wonderful-world-of-preprocessing-in-nlp/) de Keita Kurita (2020) 
+
+- [RoBERTa: A Robustly Optimized BERT Pretraining Approach](https://arxiv.org/abs/1907.11692) de Liu et al. (2019) 
+
+- [A Call for Clarity in Reporting BLEU Scores](https://arxiv.org/abs/1804.08771) de Matt Post (2018) 
+
+- [Language Models are Unsupervised Multitask Learners](https://d4mucfpksywv.cloudfront.net/better-language-models/language-models.pdf) de Radford et al. (2019) 
+
+- [Japanese and Korean voice search](https://ieeexplore.ieee.org/document/6289079/authors#authors) de Schuster et Nakajima (2012)
+
+- [When "Zoë" !== "Zoë". Or why you need to normalize Unicode strings](https://withblue.ink/2019/03/11/why-you-need-to-normalize-unicode-strings.html) de Alessandro Segala (2019)
+
+- [CCNet: Extracting High Quality Monolingual Datasets from Web Crawl Data](https://arxiv.org/abs/1911.00359) de Wenzek, Lachaux et al. (2019) 
+
+- [Extreme Language Model Compression with Optimal Subwords and Shared Projections](https://arxiv.org/abs/1909.11687) de Sanqiang Zhao et al. (2019) 
+<br><br><br>
+
 
 # <span style="color: #FF0000"> **Conclusion** </span>
 Résumons l’article avec les principaux points évoqués :
