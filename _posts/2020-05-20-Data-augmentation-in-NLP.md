@@ -422,7 +422,8 @@ Pour la langue anglaise, le jeu de données [ASSET]( https://github.com/facebook
   <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Data_augmentation/ASSET.png">
 </figure>
 </center>
-Pour la langue française, il n’existe pas à ma connaissance un tel jeu de données.
+Pour la langue française, il existe le jeu de données [ALECTOR](https://alectorsite.wordpress.com/corpus/) de [Gala et al.](https://www.researchgate.net/publication/339827111_Alector_A_Parallel_Corpus_of_Simplified_French_Texts_with_Alignments_of_Misreadings_by_Poor_and_Dyslexic_Readers) extraits de sites proposant du matériel pédagogique pour les niveaux CE1, CE2 et CM1 de l’école primaire. Chaque texte original a été adapté (simplifié) au niveau du lexique (vocabulaire), de la morpho-syntaxe (catégories grammaticales, structures de phrase) et du discours (co-référence).  
+Vous pouvez consulter également les travaux de [Martin et al.](https://arxiv.org/pdf/2005.00352.pdf), portant sur un outil permettant une simplification de phrases multilingues.
 <br><br><br>
 
 
@@ -441,6 +442,8 @@ Ci vous avez du temps et êtes intéressés par ce sujet, je vous invite forteme
 # <span style="color: #FF0000"> **Références** </span>
 
 - [ASSET: A Dataset for Tuning and Evaluation of Sentence SimplificationModels with Multiple Rewriting Transformations](https://arxiv.org/pdf/2005.00481.pdf) de Fernando Alva-Manchego, Louis Martin et al. (2020) 
+- [Alector: A Parallel Corpus of Simplified French Texts with Alignments of Misreadings by Poor and Dyslexic Readers] de Gala et al. (2020)
+- [Multilingual Unsupervised Sentence Simplification](https://arxiv.org/abs/2005.00352) de Louis Martin et al. (2020)
 - [A Visual Survey of Data Augmentation in NLP](https://amitness.com/2020/05/data-augmentation-for-nlp/)  de Amit Chaudhary (2020) 
 - [Techniques d’amplification des données textuelles pour l’apprentissage profond ](https://r-libre.teluq.ca/1894/1/Th%C3%A8se_Coulombe.pdf) de Claude Coulombe (2020)  
 - [Text Data Augmentation Made Simple By Leveraging NLP Cloud APIs](https://arxiv.org/abs/1812.04718) de Coulombe (2018) 
