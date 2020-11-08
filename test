@@ -1,0 +1,1394 @@
+1:15:36.500,1:15:49.130 
+to think that cluster fit is a good idea?
+1:15:47.000,1:15:52.430
+[Ishan] I think the main sort of intuition is that when you perform the Jigsaw task, the last layer becomes
+1:15:52.430,1:15:56.180
+very much fine-tuned for that particular Jigsaw task, right? So we saw that
+1:15:56.180,1:16:00.470
+accuracy go down. Now when you take those features and you perform clustering on
+1:16:00.470,1:16:04.700
+it you can think of this as basically, you're reducing the amount of
+
+1:16:04.700,1:16:09.230
+information, right? If I train the second network to directly regress the
+
+1:16:09.230,1:16:13.760
+features of the first network, I would basically get the same exact network. But
+
+1:16:13.760,1:16:17.660
+if I train the second network only to predict what images are grouped together
+
+1:16:17.660,1:16:23.150
+in the first one, I'm actually predicting lesser information. And that thinking is
+
+1:16:23.150,1:16:27.290
+that clustering is some kind of a noise removal technique, so it's
+
+1:16:27.290,1:16:32.180
+really removing all the artifacts that are specific to Jigsaw from that
+
+1:16:32.180,1:16:35.210
+feature space, and so the second network is actually learning something slightly
+
+1:16:35.210,1:16:41.180
+more generic. []Student] All right, thanks. [Ishan] That's the reason for this experiment as
+
+1:16:41.180,1:16:45.200
+well, so in this case we  empirically validate that hypothesis by
+
+1:16:45.200,1:16:49.820
+actually ingesting amount of label noise, so the last layer is going to
+
+1:16:49.820,1:16:53.210
+get more and more moisy and when you do ClusterFit on top of this you
+
+1:16:53.210,1:16:57.020
+actually again see improvement, so that's our validation of this
+
+1:16:57.020,1:17:03.800
+hypothesis. [Student] I had another question, so did you measure the performance of
+
+1:17:03.800,1:17:07.880
+ClusterFit on object detection, like did it perform as well? or it was it just
+
+1:17:07.880,1:17:13.430
+great in classification? [Ishan] So it performs well in detection as well.
+
+1:17:13.430,1:17:19.850
+So there were initial experimental detection where it
+
+1:17:19.850,1:17:25.539
+actually does perform well, we did not really push a lot of the
+
+1:17:25.539,1:17:29.530
+detection aspect of it in this particular paper, we were more
+
+1:17:29.530,1:17:33.579
+interested in the retrieval or like linear classification kind of
+
+1:17:33.579,1:17:39.010
+experiments. [Student] Okay, because I was thinking it feels like making these pseudo labels
+
+1:17:39.010,1:17:44.349
+we were basically making it unable to do classification tasks instead of
+
+1:17:44.349,1:17:48.099
+detection task, maybe we could lose one of some of those features that Jigsaw
+
+1:17:48.099,1:17:55.840
+got. [Ishan] right that is possible, at least the initial experiments that I had run did
+
+1:17:55.840,1:17:59.530
+not seem to suggest this there was improvement in detection, it was minor,
+
+1:17:59.530,1:18:04.119
+but detection improvements overall, like the gap in performance is already so
+
+1:18:04.119,1:18:08.280
+small that the improvements  are generally very small.
+
+1:18:08.280,1:18:18.789
+[Student] Okay, thank you. I have a question about  ClusterFit algorithm, so will the final layer of ClusterFit
+
+1:18:18.789,1:18:24.219
+algorithm not get again covariant to the to the labels that were used for
+
+1:18:24.219,1:18:29.769
+training it on that task? [Ishan] It becomes less covariant. So what we found was if you
+
+1:18:29.769,1:18:32.860
+were to sort of... the paper has this plot, I don't have it at the slide
+
+1:18:32.860,1:18:40.119
+unfortunately. The paper has the plot where, okay, this particular plot where we
+
+1:18:40.119,1:18:43.989
+were looking at conv1 to res5, ClusterFit is much better. So there res5 to res4 gap 
+
+1:18:43.989,1:18:48.010
+for ClusterFit is   much smaller than it is for, say, Jigsaw
+
+1:18:48.010,1:18:55.150
+or RotNet. [Student] But was it better than res4? [Ishan] It was slightly worse. So it was on
+
+1:18:55.150,1:19:00.400
+VOC, on classification, it was better but for other tasks like ImageNet it was
+
+1:19:00.400,1:19:07.510
+slightly worse. So it did not completely fix the problem. [Student] Okay, thank you. [Ishan] which was 
+
+1:19:07.510,1:19:13.570
+sort of the motivation for PIRL. So basically I've not talked about PIRL. So PIRL was
+
+1:19:13.570,1:19:17.679
+sort of born from the hypothesis that you need to be invariant to these
+
+1:19:17.679,1:19:24.579
+pretext tasks. So before I get into the details of PIRL, I will talk really a
+
+1:19:24.579,1:19:29.260
+little bit about general contrastive learning. How many minutes do I have by
+
+1:19:29.260,1:19:38.679
+the way? [Alfredo] 15 minutes more or less. [Ishan] Okay so contrastive learning is basically a 
+
+1:19:38.679,1:19:44.500
+general framework that tries to learn a feature space that can combine
+
+1:19:44.500,1:19:49.300
+together, or sort of put together points that are related, and push apart points
+
+1:19:49.300,1:19:53.830
+that are not related. So in this case imagine the blue boxes are the
+
+1:19:53.830,1:19:56.650
+related points, the greens are the related and the purple are the related
+
+1:19:56.650,1:20:02.199
+points. You will extract features for each of these data points
+
+1:20:02.199,1:20:06.460
+through a shared network which is called a siamese network. You'll get a
+
+1:20:06.460,1:20:12.429
+bunch of image features for each of these data points and then you apply
+
+1:20:12.429,1:20:17.520
+a loss function, which is a contrastive loss function which is going to try to
+
+1:20:17.520,1:20:23.020
+minimize the distance between the blue points, as opposed to,
+
+1:20:23.020,1:20:28.300
+the distance between the blue point and the green point. Or the distance
+
+1:20:28.300,1:20:31.750
+between the blue points should be less than the distance between the
+
+1:20:31.750,1:20:36.280
+blue point and the green point, or the blue point and the purple point. So
+
+1:20:36.280,1:20:40.780
+embeddings from the related samples should be much closer than embeddings
+
+1:20:40.780,1:20:44.980
+from the unrelated samples. So that's sort of the general idea of contrastive
+
+1:20:44.980,1:20:48.520
+learning and, of course, Yann was one of the first people to propose
+
+1:20:48.520,1:20:54.280
+this method and his earlier paper  with Raia Hadsell that was called DrLIM.
+
+1:20:54.280,1:20:57.940
+And so, contrastive learning has now made a resurgence in self-supervise learning,
+
+1:20:57.940,1:21:01.389
+pretty much a lot of the  self-supervised state-of-the-art methods are
+
+1:21:01.389,1:21:07.960
+really based on contrastive learning. And the main question is, How do you define
+
+1:21:07.960,1:21:13.000
+what is related and unrelated? So in the case of supervised learning that's
+
+1:21:13.000,1:21:18.130
+fairly clear: All of the dog images are related images, and any image that is
+
+1:21:18.130,1:21:21.940
+not a dog image is an unrelated image. But it's not so clear
+
+1:21:21.940,1:21:24.580
+how to define this related and unrelatedness
+
+1:21:24.580,1:21:30.489
+in this case of self-supervised learning. The other main difference from
+
+1:21:30.489,1:21:35.860
+something like a pretext task is that contrastive learning really reasons about
+
+1:21:35.860,1:21:42.670
+a lot of data at once. So, going back to my previous slide, 
+
+1:21:42.670,1:21:47.170
+if you look at the loss function, it always involves multiple images, right? 
+
+1:21:47.170,1:21:50.290
+So in the  first row it involves
+
+1:21:50.290,1:21:54.430
+the blue images and the green images. In the second row it involves the
+
+1:21:54.430,1:21:58.930
+blue images and the purple images, whereas if you look at a task like, say,
+
+1:21:58.930,1:22:03.220
+Jigsaw or a task like rotation, you're always reasoning about a single
+
+1:22:03.220,1:22:08.500
+image independently. So that's  another difference with contrastive learning.
+
+1:22:08.500,1:22:11.440
+contrastive learning always reason about for multiple data points
+
+1:22:11.440,1:22:18.130
+at once. So now coming to the question, how do you define related or unrelated
+
+1:22:18.130,1:22:24.100
+images? You can actually use similar techniques to what I was talking about
+
+1:22:24.100,1:22:28.690
+earlier. You can use frames of a video,  you can use the sequential
+
+1:22:28.690,1:22:35.860
+nature of data. So to understand that frames that are nearby in a video
+
+1:22:35.860,1:22:39.910
+are related and frames from a different video, or which are further
+
+1:22:39.910,1:22:44.760
+away in time, are unrelated. And that  has formed the basis of a lot of
+
+1:22:44.760,1:22:49.390
+self-supervised learning methods in this area. So if you know of this popular method
+
+1:22:49.390,1:22:53.350
+called CPC, which is Contrastive Predictive Coding, that really relies on
+
+1:22:53.350,1:22:58.660
+the sequential nature of a signal, and it says that samples that are
+
+1:22:58.660,1:23:03.310
+closed by in time space are related, and samples that are further
+
+1:23:03.310,1:23:09.450
+apart in the time space are unrelated. And it's a fairly large amount of work
+
+1:23:09.450,1:23:14.830
+exploiting this. It can either be in the speech the domain, it can
+
+1:23:14.830,1:23:21.130
+either be in video, it can be in text or it can be in regular images. And
+
+1:23:21.130,1:23:25.720
+recently we've also been working on video and audio, so basically saying
+
+1:23:25.720,1:23:30.490
+that a video and it's corresponding audio are relate examples, and video and
+
+1:23:30.490,1:23:38.560
+audio from a different image video are underrated samples. And some of
+
+1:23:38.560,1:23:44.160
+the early work in  self-supervised learning also used this
+
+1:23:44.160,1:23:48.790
+contrastive learning method and the way they defined related samples was fairly
+
+1:23:48.790,1:23:54.610
+interesting. So you run an object tracker over a video and that
+
+1:23:54.610,1:23:59.170
+gives you a   moving patch, and what you say is that
+
+1:23:59.170,1:24:04.230
+any patch that was tracked by tracker is related to my original patch
+
+1:24:04.230,1:24:09.420
+whereas any patch from a different video is not a related patch. And so,
+
+1:24:09.420,1:24:14.040
+that gives you these bunch of related and unrelated samples. So if you
+
+1:24:14.040,1:24:19.670
+look at, in this case, Figure C where you have this distance notation,
+
+1:24:19.670,1:24:23.610
+what this network tries to learn is that patches that are coming
+
+1:24:23.610,1:24:27.840
+from the same video are related and patches that are coming from 
+
+1:24:27.840,1:24:33.390
+different videos are not related. And so, in some way it automatically learns about
+
+1:24:33.390,1:24:38.370
+different poses of an object. So a cycle viewed from different viewing
+
+1:24:38.370,1:24:44.100
+angles, or like different poses of a dog, and it tries to group them
+
+1:24:44.100,1:24:54.320
+together. So in general, if you just talk about images, a lot of work is done on
+
+1:24:54.320,1:25:00.030
+looking at nearby image patches versus distant patches. So most of the 
+
+1:25:00.030,1:25:04.590
+CPC version one and CPC version two methods are really exploiting
+
+1:25:04.590,1:25:09.420
+this property of images. So what you do is you have image patches that are close
+
+1:25:09.420,1:25:15.360
+by you call them as positives, and image patches that are further apart, like
+
+1:25:15.360,1:25:19.290
+further away in the image are considered as negatives. And then you basically just
+
+1:25:19.290,1:25:23.580
+minimize a contrastive loss using this definition of positives and
+
+1:25:23.580,1:25:31.670
+negatives. The more popular, or performant way of doing this is to
+
+1:25:31.670,1:25:36.720
+look at patches coming from an image and contrast them with patches coming from a
+
+1:25:36.720,1:25:41.790
+different image. So this forms the basis of a lot of popular methods
+
+1:25:41.790,1:25:48.660
+like instance discrimination, MoCo, PIRL SimCLR. The idea is what's
+
+1:25:48.660,1:25:53.880
+shown in the image. To into more detail, what these methods do is they
+
+1:25:53.880,1:25:57.840
+extract two completely random patches from an image, so these patches can be
+
+1:25:57.840,1:26:01.890
+overlapping, they can actually be contained within one another or they can
+
+1:26:01.890,1:26:06.840
+be completely far apart, and it then applies some sort of data augmentation.
+
+1:26:06.840,1:26:12.120
+So in this case, say a color jittering or removing the color, or so on, and then
+
+1:26:12.120,1:26:15.110
+you define these two patches to be your sort of positive
+
+1:26:15.110,1:26:19.760
+examples. You extract another patch from a different image, and this is again a
+
+1:26:19.760,1:26:25.580
+random patch, and that becomes just negative. And a lot of these methods
+
+1:26:25.580,1:26:30.170
+will extract a lot of negative patches and then they will perform
+
+1:26:30.170,1:26:34.850
+contrastive learning. So you are relating to positive samples but you have a sort
+
+1:26:34.850,1:26:39.010
+of negative sample that you are contrasting this against.
+
+1:26:39.840,1:26:46.679
+Now moving to PIRL a little bit, let's try to understand what the
+
+1:26:46.679,1:26:50.579
+main difference of pretext tasks is and how contrastive learning is 
+
+1:26:50.579,1:26:54.840
+very different from pretext tasks. So the one thing that I've already mentioned was
+
+1:26:54.840,1:26:59.820
+pretext tasks always reason about a single image at once. So, the idea is that
+
+1:26:59.820,1:27:03.869
+given an image you apply a transform to that image, so in this case they are
+
+1:27:03.869,1:27:10.800
+Jigsaw transform, and then you  input this transformed image
+
+1:27:10.800,1:27:14.219
+into a ConvNet and you try to predict the property of the transform that you
+
+1:27:14.219,1:27:18.239
+applied. So the permutation that you applied or the rotation that you applied
+
+1:27:18.239,1:27:24.329
+or the kind of color that you removed and so on. So the pretext task always
+
+1:27:24.329,1:27:28.500
+reason about a single image. And the second thing is that the task that
+
+1:27:28.500,1:27:33.989
+you're performing, in this case, really has to capture some property of the
+
+1:27:33.989,1:27:38.099
+transform. So it really needs to capture the exact permutation that you applied,
+
+1:27:38.099,1:27:42.449
+or the kind of rotation that you applied, which means that the last layer
+
+1:27:42.449,1:27:47.010
+representations are actually going to  covary or vary a lot as the
+
+1:27:47.010,1:27:52.199
+transform t changes. And that is by design, because you are really trying to
+
+1:27:52.199,1:27:57.270
+solve that pretext task. But unfortunately what this means is that
+
+1:27:57.270,1:28:02.010
+the last layer representations capture a very low-level property of the signal, so
+
+1:28:02.010,1:28:07.469
+they capture things like rotation or so on. Whereas what is
+
+1:28:07.469,1:28:11.579
+expected of these representations is that they are 
+
+1:28:11.579,1:28:15.119
+embedded to these things, which means you should be able to recognize a cat, no
+
+1:28:15.119,1:28:18.449
+matter whether the cat is upright or that the cat is rotated
+
+1:28:18.449,1:28:21.690
+by 90 degrees. Whereas when you're solving that particular
+
+1:28:21.690,1:28:25.079
+pretext ask you're imposing the exact opposite thing, you're saying that I
+
+1:28:25.079,1:28:28.590
+should be able to recognize whether this picture is upright or whether this
+
+1:28:28.590,1:28:36.659
+picture is basically tilted sideways. So, there are many exceptions in which you
+
+1:28:36.659,1:28:42.030
+really want these low level representations to be covariant, and 
+
+1:28:42.030,1:28:46.199
+a lot of it really has to do on the tasks that you're performing, and quite a
+
+1:28:46.199,1:28:50.519
+few tasks in simply really want to be predictive. So you want to
+
+1:28:50.519,1:28:54.990
+predict what camera transforms you have when you're looking at two views of the same
+
+1:28:54.990,1:28:59.760
+object or so on. But unless you have that kind of a specific application for a lot
+
+1:28:59.760,1:29:03.780
+of semantic tasks you really want to be invariant to the transform that are 
+
+1:29:03.780,1:29:11.940
+used as input. So invariance has been the workhorse for feature
+
+1:29:11.940,1:29:18.540
+learning. So something like SIFT, which is a fairly popular handcrafted feature, the
+
+1:29:18.540,1:29:23.100
+i in SIFT stands for invariant. And supervised networks for example,
+
+1:29:23.100,1:29:27.090
+supervised AlexNets rr supervised AlexNets, they are trained to be invariant
+
+1:29:27.090,1:29:32.400
+to data augmentation. You want this network to classify different crops, or
+
+1:29:32.400,1:29:37.350
+different rotations of this image as a tree, rather than ask it to predict what
+
+1:29:37.350,1:29:43.110
+exactly was the transformation applied to the input. So this is what inspired PIRL.
+
+1:29:43.110,1:29:48.660
+so PIRL stands for Pretext-Invariant Representation Learning, where the idea
+
+1:29:48.660,1:29:52.740
+is that you want the representation to be invariant, or capture as little
+
+1:29:52.740,1:29:59.220
+information as possible of the input transform. So you have the image, you have
+
+1:29:59.220,1:30:03.030
+the transform version of the image, you feed-forward both of these images
+
+1:30:03.030,1:30:06.860
+through a ConvNet, you have get a representation and then you 
+
+1:30:06.860,1:30:12.600
+encourage these representations to be similar. So in terms of the notation I
+
+1:30:12.600,1:30:18.570
+was talking about earlier, you basically say that the image I and any pretext 
+
+1:30:18.570,1:30:23.670
+transformed version of this image I are related samples, and any other image is
+
+1:30:23.670,1:30:29.430
+unrelated sample. So in this way, when you train the network, this
+
+1:30:29.430,1:30:33.690
+representation hopefully contains very little information about this
+
+1:30:33.690,1:30:39.720
+transform t and then you training it using contrastive learning, so the contrastive
+
+1:30:39.720,1:30:44.970
+learning part is to basically you have, say, feature V_I coming from the
+
+1:30:44.970,1:30:50.010
+original image I and you have the feature V_It coming from the transform
+
+1:30:50.010,1:30:54.450
+version and you want both of these representations to be the same. And the
+
+1:30:54.450,1:30:57.750
+paper we looked at two different state-of-the-art
+
+1:30:57.750,1:31:01.320
+pretext transforms, so that is the Jigsaw and the Rotation method that I
+
+1:31:01.320,1:31:04.830
+talked about earlier, and we also explored combinations of these
+
+1:31:04.830,1:31:09.690
+transforms, so apply both Jigsaw amd  Rotation at the same time, so in some way,
+
+1:31:09.690,1:31:13.290
+this is like multi-task learning but they're not really trying to predict
+
+1:31:13.290,1:31:19.970
+both Jigsaw and Rotation, they are trying to be invariant to both Jigsaw and Rotation.
+
+1:31:19.970,1:31:25.830
+The key thing that has made contrastive learning work well in the
+
+1:31:25.830,1:31:30.560
+past, like successful attempts, is really using a large number of negatives.
+
+1:31:30.560,1:31:37.020
+And one of the good papers that introduced this was this instance
+
+1:31:37.020,1:31:42.750
+discrimination paper from 2018 which introduced this concept of a memory bank.
+
+1:31:42.750,1:31:47.520
+And this has powered, I would say, most of the recent methods which are
+
+1:31:47.520,1:31:51.720
+state-of-the-art including MoCo, PIRL, and they all build 
+
+1:31:51.720,1:31:55.950
+on this idea of memory bank. [Alfredo] I asked you to unplug your headphones from
+
+1:31:55.950,1:31:59.220
+the computer because it's very noisy, because it's the microphone is picked
+
+1:31:59.220,1:32:04.760
+from the headphones... [Ishan] Oh, is it better now? [Alfredo] Maybe, I don't know, let's try.
+
+1:32:09.180,1:32:17.040
+[Ishan] So the memory bank is a nice way to get a large number of negatives
+
+1:32:17.040,1:32:22.770
+without really increasing the  compute requirement. So what you do is
+
+1:32:22.770,1:32:28.860
+you store a feature vector per image in memory and then you use that
+
+1:32:28.860,1:32:34.860
+feature vector in your contrastive learning. So okay, let's first talk about
+
+1:32:34.860,1:32:40.650
+how you would do this entire PIRL setup without using a memory bank. So you have
+
+1:32:40.650,1:32:45.560
+an image I, you have an image I t, you feed-forward both of these images, you
+
+1:32:45.560,1:32:52.350
+get a feature vector f of V_I from the original image I, you get a feature g of
+
+1:32:52.350,1:32:58.290
+VI t from the transformed versions, the patches in this case, and what you want
+
+1:32:58.290,1:33:02.700
+is the features f and g to be similar, and you want features from any other
+
+1:33:02.700,1:33:10.740
+image, so an unrelated image, to  be this similar. So in this case, what we
+
+1:33:10.740,1:33:15.870
+now can do is, rather than if we want a lot of negatives, we would really want a
+
+1:33:15.870,1:33:19.350
+lot of these negative images to be feed-forward at the same time which
+
+1:33:19.350,1:33:24.390
+really means that you need a large batch size to be able to do this. And
+
+1:33:24.390,1:33:29.130
+of course a large batch size means, it not not possible to have
+
+1:33:29.130,1:33:33.450
+unlimited amount of GPU memory, so the way to do that is to use
+
+1:33:33.450,1:33:37.530
+something called a memory bank. So what this memory bank does is that it
+
+1:33:37.530,1:33:42.630
+stores a feature vector for each of the images in your dataset and when you're
+
+1:33:42.630,1:33:46.470
+doing contrastive learning, rather than using feature vectors from a
+
+1:33:46.470,1:33:50.580
+different or negative image in your batch, you can
+
+1:33:50.580,1:33:55.500
+just retrieve these features from memory. So you can just retrieve features
+
+1:33:55.500,1:33:59.070
+of any other unrelated image from the memory and you can just substitute that
+
+1:33:59.070,1:34:04.650
+to perform contrastive learning. So in PIRL we divided the objective into two parts,
+
+1:34:04.650,1:34:10.040
+there was a contrastive term to bring the feature vector from the
+
+1:34:10.040,1:34:15.480
+transformed image, so g of V_I, similar to the representation that we have in the
+
+1:34:15.480,1:34:21.180
+memory, so M of I, and similarly we have a second contrastive term that tries to
+
+1:34:21.180,1:34:25.860
+bring the feature f of V_I close to the feature representation that we have in
+
+1:34:25.860,1:34:31.620
+memory. So essentially g is being pulled close to M_I and f is being pulled close
+
+1:34:31.620,1:34:36.360
+to M_I. So by transitivity f and g are being pulled close to one
+
+1:34:36.360,1:34:41.460
+another. And the reason for separating this out was because it stabilized
+
+1:34:41.460,1:34:46.290
+training and we were able to train without doing this the
+
+1:34:46.290,1:34:50.220
+training would not really converge. And so by separating this out into two forms
+
+1:34:50.220,1:34:54.960
+rather than doing direct contrastive learning between f and g, we were able
+
+1:34:54.960,1:35:01.620
+to stabilize training and actually get it working. So the way to evaluate this
+
+1:35:01.620,1:35:07.080
+is by standard  pre-training evaluation setup, so
+
+1:35:07.080,1:35:12.390
+transfer learning, where we can pre-train on images without labels, so the standard
+
+1:35:12.390,1:35:16.100
+way of doing this is to take ImageNet throw away the labels and pretend it is
+
+1:35:16.100,1:35:21.810
+unsupervised, and then evaluate using simple fine-tuning or training
+
+1:35:21.810,1:35:26.190
+a linear classifier. The second thing we did was also a test PIRL and its
+
+1:35:26.190,1:35:31.230
+robustness to image distributions by training it on in-the-wild images. So
+
+1:35:31.230,1:35:34.810
+we just took one million images randomly from Flickr, so this is the 
+
+1:35:34.810,1:35:39.610
+YFCC dataset, and then we basically perform pre-training
+
+1:35:39.610,1:35:43.930
+on these images and then perform transfer learning on different
+
+1:35:43.930,1:35:51.420
+datasets. [Student] I had a question about the PIRL method, about the memory bank, where
+
+1:35:51.420,1:35:57.610
+the m, wouldn't those like feature representation stored in the memory bank
+
+1:35:57.610,1:36:04.720
+be out of date? [Ishan] Yeah, so they do go a little bit out of date but in practice
+
+1:36:04.720,1:36:09.070
+it really does not make that much of a difference. So the 
+
+1:36:09.070,1:36:14.050
+particular way of updating them, so m of I is a moving average of the
+
+1:36:14.050,1:36:19.900
+representation f, and that moving average although it's still, it actually
+
+1:36:19.900,1:36:25.630
+does not matter a lot in practice, you can still continue to use them. [Student] So
+
+1:36:25.630,1:36:31.030
+I recently read the paper PIRL, where you you huge batch size
+
+1:36:31.030,1:36:37.540
+like 8,000 or something, so using  the memory bank approach and getting
+
+1:36:37.540,1:36:43.000
+these 8,000 examples and one loss function, is that possible? [Ishan] Yes, sort
+
+1:36:43.000,1:36:47.980
+of simplier way of doing it really requires a large batch size because you're getting
+
+1:36:47.980,1:36:52.330
+negatives from different images in the same batch, whereas if you use something
+
+1:36:52.330,1:36:55.660
+like the memory bank you really do not need a large batch size. So you can train
+
+1:36:55.660,1:37:00.160
+this with like 32 images in a batch because all the negatives are really
+
+1:37:00.160,1:37:03.790
+coming from the memory bank, which does not really require you to do multiple
+
+1:37:03.790,1:37:10.520
+feed-forwards. [Student] Okay, thank you. [Student] if you are 
+
+1:37:10.520,1:37:14.330
+using memory bank then you can't back propagate to the negative example, so is that not a
+
+1:37:14.330,1:37:20.510
+problem? [Ishan] It does not create that much of a problem
+
+1:37:20.510,1:37:25.010
+really, so that was one thing I was worried about as well, so in the initial
+
+1:37:25.010,1:37:29.150
+versions we did try something which was using a larger batch size
+
+1:37:29.150,1:37:34.159
+but then when we switched to something like the memory bank, it did not really reduce
+
+1:37:34.159,1:37:41.150
+performance, very very little, very minor reduction in performance. [Student] Any
+
+1:37:41.150,1:37:47.480
+intuition on why that's the case? [Ishan] so I think overall contrastive learning is fairly
+
+1:37:47.480,1:37:53.090
+slow to converge, so all methods like the latest version of MoCo and
+
+1:37:53.090,1:37:56.390
+so on, all of them train for very large number of epochs
+
+1:37:56.390,1:38:00.890
+anyway, so the number of backprops that you're getting or the number of memory, or
+
+1:38:00.890,1:38:04.219
+parameter updates that you're doing are very large in general, so the
+
+1:38:04.219,1:38:07.699
+fact that you miss out on one of them, in this particular case, probably does not
+
+1:38:07.699,1:38:16.340
+have that much of an effect. [Student] Thanks. [Alfredo] That's five minutes. [Ishan] Good, almost there.
+
+1:38:16.340,1:38:21.050
+So yeah we evaluated those on a bunch of different tasks, so the first
+
+1:38:21.050,1:38:27.770
+thing was object detection, again sort of standard tasks in vision. And in this
+
+1:38:27.770,1:38:32.210
+case, PIRL was able to outperform ImageNet supervised training on detection for
+
+1:38:32.210,1:38:37.730
+both the VOC07 and VOC07+12 datasets and it outperforms on
+
+1:38:37.730,1:38:42.020
+this most strict evaluation  criterion which is AP all which is now
+
+1:38:42.020,1:38:46.820
+introduced by COCO which was already a positive sign and then it was
+
+1:38:46.820,1:38:51.620
+able to do this. The second thing we looked at was evaluating PIRL
+
+1:38:51.620,1:38:55.730
+on semi-supervised learning and, once again, PIRL was performing fairly well,
+
+1:38:55.730,1:39:01.159
+it was actually better than, say, the pretext task of Jigsaw. So the only
+
+1:39:01.159,1:39:05.150
+difference between the top row and the bottom row is the fact that PIRL is an
+
+1:39:05.150,1:39:09.510
+invariant version whereas Jigsaw is a covariant version.
+
+1:39:09.510,1:39:14.230
+And in terms of linear classification, when PIRL came out, it was basically at
+
+1:39:14.230,1:39:19.060
+par with CPC is latest version and was performing fairly well on a bunch of
+
+1:39:19.060,1:39:22.720
+different parameter settings and a bunch of different architectures. Of
+
+1:39:22.720,1:39:27.190
+course, now you can have like fairly good performance by methods like SimCLR,
+
+1:39:27.190,1:39:31.980
+so that number for SimCLR corresponding would basically be about 69 or 70
+
+1:39:31.980,1:39:37.020
+compared to PIRL 63-ish number. The other thing we looked at was
+
+1:39:39.280,1:39:44.620
+how PIRL generalizes across data distributions, so for this we looked
+
+1:39:44.620,1:39:50.380
+at just Flickr images from the YFCC dataset, and PIRL was able to 
+
+1:39:50.380,1:39:54.310
+outperform methods that were trained using hundred times more data. So the
+
+1:39:54.310,1:39:58.690
+Jigsaw in the second row was trained on
+
+1:39:58.690,1:40:02.530
+100 million images whereas PIRL was trained on
+
+1:40:02.530,1:40:07.390
+1 million images and despite that it's actually able to outperform the
+
+1:40:07.390,1:40:11.890
+Jigsaw method fairly easily. This again shows you the power of
+
+1:40:11.890,1:40:15.310
+breaking invariance into your representation rather than 
+
+1:40:15.310,1:40:21.660
+predicting pretext tasks. And finally, what I started 
+
+1:40:21.660,1:40:25.560
+out with, which is whether this thing is actually semantic. So if you
+
+1:40:25.560,1:40:29.790
+look at different layers of representations, so conv1 to res5, Jigsaw
+
+1:40:29.790,1:40:34.199
+basically shows a drop in performance from res4 to res5, but as for PIRL you
+
+1:40:34.199,1:40:38.340
+see a nicely increasing graph, where res4 and res5 get
+
+1:40:38.340,1:40:45.719
+increasingly more and more semantic. In terms of problem complexity, PIRL was
+
+1:40:45.719,1:40:49.140
+very good at handling that because you're never predicting the number of
+
+1:40:49.140,1:40:52.980
+permutations, you're just using them at input as like sort of data augmentation.
+
+1:40:52.980,1:40:58.710
+So PIRL can scale very well to all the 360,000 possible permutations in
+
+1:40:58.710,1:41:02.340
+the nine patches. Whereas for Jigsaw, because you're predicting that, you're
+
+1:41:02.340,1:41:09.239
+very limited by the size of your output space. And the paper also shows that we
+
+1:41:09.239,1:41:13.380
+can extend PIRL, it is not  limited to Jigsaw, you can do that on
+
+1:41:13.380,1:41:17.010
+rotation, you can have a  combination of Jigsaw and rotation and
+
+1:41:17.010,1:41:24.690
+you can get more and more gains if you start doing this. So 
+
+1:41:24.690,1:41:28.860
+if you look at these methods, starting from pretext tasks to clustering
+
+1:41:28.860,1:41:33.300
+to PIRL, as you go from the left to the right you get more and more
+
+1:41:33.300,1:41:38.580
+invariance and in some way you also see an increase in performance, which 
+
+1:41:38.580,1:41:41.640
+suggests that birnging in more and more  invariance to your methods is actually going
+
+1:41:41.640,1:41:47.580
+to be more helpful in the longer term. There are some shortcomings, 
+
+1:41:47.580,1:41:50.219
+we really do not understand what is the set of data
+
+1:41:50.219,1:41:54.719
+transforms that matter. So Jigsaw works really well, but it's not very clear why
+
+1:41:54.719,1:42:00.390
+this is happening. So some future work, or if you want to spend your spare
+
+1:42:00.390,1:42:04.380
+cycles thinking about something, is really understanding what invariances
+
+1:42:04.380,1:42:08.760
+really matter when you are trying to solve a supervised task, what invariances
+
+1:42:08.760,1:42:13.800
+really matter for something like ImageNet. And that's it.
+
+1:42:13.800,1:42:17.520
+So basically predict more and more information and try to be as invariant
+
+1:42:17.520,1:42:24.690
+as possible. Thank you. [Student] So I had a question, these contrastive networks,
+
+1:42:24.690,1:42:28.530
+they can't use the batch norm layer, right? Because then information would
+
+1:42:28.530,1:42:31.080
+pass from one sample to the other and then
+
+1:42:31.080,1:42:35.910
+network might learn a very trivial way of separating the negatives from the
+
+1:42:35.910,1:42:42.360
+positive? [Ishan] So for PIRL for example, we really did not observe that
+
+1:42:42.360,1:42:45.810
+phenomenon at all so we did not really have to do any special tricks with
+
+1:42:45.810,1:42:52.260
+batch norm, we were able to use batch norm as it is. [Ishan] Okay and it's not necessary for
+
+1:42:52.260,1:42:57.150
+all the contrastive networks to not use batch norm? it's okay to have the
+
+1:42:57.150,1:43:02.760
+batch norm layer? [Ishan] Yeah, I mean for example for SimCLR and so on,
+
+1:43:02.760,1:43:06.510
+they try and move to same batch norm because they want to emulate a large batch
+
+1:43:06.510,1:43:12.000
+size, so you might have to do some tweaks in batch norm, but basically you
+
+1:43:12.000,1:43:15.150
+cannot avoid it really, because if you completely remove batch norm then
+
+1:43:15.150,1:43:20.970
+training these very deep networks is generally very hard anyway. [Student] Okay, do
+
+1:43:20.970,1:43:27.090
+you think that PIRL paper works with the batch norm layers because it uses a memory
+
+1:43:27.090,1:43:32.580
+bank, and all the representations are not taken at the same time? Whereas I think
+
+1:43:32.580,1:43:37.710
+MoCo, they specifically mentioned not to use the batch norm layer or use it
+
+1:43:37.710,1:43:42.450
+spread across multiple GPUs. [Ishan] So that I think is one difference for sure
+
+1:43:42.450,1:43:46.020
+because the negatives that  you are contrasting against and the
+
+1:43:46.020,1:43:50.460
+positive were from different time steps which makes it harder for batch norm to sort
+
+1:43:50.460,1:43:56.520
+of cheat it, but as for the other methods like MoCo and SimCLR, they're very
+
+1:43:56.520,1:44:00.810
+correlated to the particular batch that you're evaluating right now. [Student] Okay, so, is
+
+1:44:00.810,1:44:05.730
+there any suggestion if we are using a  n-pair loss rather than a memory bank, is
+
+1:44:05.730,1:44:09.120
+there any suggestion how to go about this? Whether we should just stick to
+
+1:44:09.120,1:44:14.970
+AlexNet and VGG which don't use a batch norm layer, or is there any way to
+
+1:44:14.970,1:44:23.600
+turn it off? or? [Ishan] Can you describe the setting a little bit more?
+
+1:44:23.600,1:44:30.750
+[Student] So basically what I'm trying to do is train on a frames of videos and I'm
+
+1:44:30.750,1:44:35.910
+using a N-pair setting where I'm trying to contrast between n-samples rather
+
+1:44:35.910,1:44:41.040
+than two or three samples, and what I'm worried about is whether I should be
+
+1:44:41.040,1:44:44.730
+using batch norm or not, and if I am not using batch norm at all then which 
+
+1:44:44.730,1:44:49.910
+pre-trained, sorry, pre-architecture models can I use?
+
+1:44:51.199,1:44:55.590
+[Ishan] That's tricky. So the one problem with video frames is that they are fairly
+
+1:44:55.590,1:45:01.050
+correlated, so in general  the performance of batch norm 
+
+1:45:01.050,1:45:05.520
+degrades and you have fairly correlated samples. So with video that becomes more and
+
+1:45:05.520,1:45:11.250
+more a problem. The unfortunate, the sad
+
+1:45:11.250,1:45:15.330
+news is basically that even if you look at a typical implementation of AlexNet
+
+1:45:15.330,1:45:19.980
+these days, it will include batch norm. It's just because it's much more stable
+
+1:45:19.980,1:45:23.280
+to train with that, you can train with a higher learning rate and you can
+
+1:45:23.280,1:45:26.699
+basically use it for a bunch of different downstream tasks. So I think
+
+1:45:26.699,1:45:31.710
+you may still have to use batch norm. If not, you can give other variants like
+
+1:45:31.710,1:45:38.370
+group norm a try, which basically do not really depend on the batch size. [Student] Ok, it makes
+
+1:45:38.370,1:45:44.600
+sense, thank you. [Yann] Okay thank you so much Ishan,
+
+1:45:44.600,1:45:52.230
+there's a lot of no interesting details. [Alfredo] I think we still have like eight minutes
+
+1:45:52.230,1:45:58.739
+if people are, I think they're still many left in class, any questions? [Student] Yep, I
+
+1:45:58.739,1:46:02.699
+had one question. Which I had also put forward in the lecture when we were
+
+1:46:02.699,1:46:08.760
+discussing PIRL. So this question is about the loss function. Can I ask it
+
+1:46:08.760,1:46:15.449
+right now? [Ishan] Yes, go for it. [Student] When I read the paper there was a probability term that we
+
+1:46:15.449,1:46:20.969
+were computing after computing the V_I m to  V_I t representation for image and
+
+1:46:20.969,1:46:26.670
+the transformed version, and after getting those probabilities then we were
+
+1:46:26.670,1:46:33.030
+using a noise contrastive estimation loss, so I was kind of confused that, wouldn't
+
+1:46:33.030,1:46:37.170
+it had been better if just a negative log of that probability had been
+
+1:46:37.170,1:46:44.550
+minimized? [Ishan] So you can use both really, so the reason to use NCE was basically
+
+1:46:44.550,1:46:50.130
+more to do with how the memory bank paper was set up. So NCE, if
+
+1:46:50.130,1:46:54.030
+you have K negatives you are basically solving k + 1 problems, so 
+
+1:46:54.030,1:46:58.830
+you basically have k + 1 different binary problems that
+
+1:46:58.830,1:47:02.250
+you are solving. So that's one way of doing it, the other
+
+1:47:02.250,1:47:05.970
+way of doing it is basically what is now called info NC, which is really the
+
+1:47:05.970,1:47:10.320
+softmax, so you just apply a softmax and you minimize the negative log-likelyhood
+
+1:47:10.320,1:47:16.290
+for that. [Student] It's because that edge, the probability function looked
+
+1:47:16.290,1:47:25.380
+like softmax. [Ishan] Yes, so at the time when I had tied it out, it actually gave
+
+1:47:25.380,1:47:29.880
+me slightly worse results and so that's basically why I used NCE, and this was
+
+1:47:29.880,1:47:34.320
+just initial experiments. Now when I'm trying it out it actually gives me similar
+
+1:47:34.320,1:47:39.050
+results so I guess in the end it does not make that much of a difference.
+
+1:47:41.150,1:47:46.260
+[Student] This is more related to the course, but we are gonna have a project on 
+
+1:47:46.260,1:47:52.020
+self-supervised learning. Ishan, can you give us information on how to get 
+
+1:47:52.020,1:47:59.790
+the self-supervised learning model working? As in the implementation details, like
+
+1:47:59.790,1:48:05.280
+this has been a lecture on high-level idea, so how   to get it
+
+1:48:05.280,1:48:12.690
+working quickly? [Ishan] So, there are certain class of techniques that are
+
+1:48:12.690,1:48:16.740
+going to be much easier to get working from the get-go, right? So for example, if
+
+1:48:16.740,1:48:20.930
+you were looking at just pretext tasks, then you would basically look at
+
+1:48:20.930,1:48:26.010
+something like rotation because it's a very easy task to implement, you
+
+1:48:26.010,1:48:29.850
+really cannot go wrong with it, I mean, there are very few things to implement.
+
+1:48:29.850,1:48:34.710
+So just the number of moving pieces is a good indicator. The other thing to
+
+1:48:34.710,1:48:41.310
+remain remember is if you're implementing an existing method,
+
+1:48:41.310,1:48:46.050
+then there are going to be lots of tiny details the authors talk about. So for
+
+1:48:46.050,1:48:49.440
+example, the exact learning rate that they used or the way they used batch norm
+
+1:48:49.440,1:48:51.630
+and so on. If there are lots of these things, then
+
+1:48:51.630,1:48:55.710
+it's going to be harder and harder for you to reproduce, more
+
+1:48:55.710,1:49:01.320
+and more things for you to get wrong. The second thing to remember is data
+
+1:49:01.320,1:49:06.390
+augmentations. Data augmentations are really critical, so if you get anything
+
+1:49:06.390,1:49:10.650
+working you would try to sort of add molded augmentations to it.
+
+1:49:10.650,1:49:17.070
+[Student] Do you recommend us trying PIRL or do you think that would be too difficult to
+
+1:49:17.070,1:49:25.980
+do in one month? [Ishan] I'm not sure what the setting is really, so I'm not sure I can comment on that. 
+
+1:49:25.980,1:49:30.780
+[Student] Okay, thanks. One more thing, did you try using momentum contrast on PIRL instead
+
+1:49:30.780,1:49:35.550
+of memory bank? [Ishan] I haven't, so we basically move to the end-to-end
+
+1:49:35.550,1:49:41.520
+version, which is similar to what SimCLR is, so the thing is, I mean you
+
+1:49:41.520,1:49:44.670
+can gather a bunch of negatives from different GPUs, so increase
+
+1:49:44.670,1:49:49.410
+your batch size, that actually generally helps a lot, I would suspect
+
+1:49:49.410,1:49:54.030
+MoCo would helped a lot as well. [Student] I think MoCo would improve performance over
+
+1:49:54.030,1:50:00.720
+SimCLR by replacing end-to-end training with MoCo. [Ishan] But I think numbers
+
+1:50:00.720,1:50:05.820
+are still fairly similar, and there are small differences in evaluation protocol
+
+1:50:05.820,1:50:11.340
+that you would see across these papers, so we're planning
+
+1:50:11.340,1:50:15.210
+to release a more standardized evaluation benchmark. So we did that last
+
+1:50:15.210,1:50:18.810
+year, unfortunately that was in Caffe2, so we're trying to release something
+
+1:50:18.810,1:50:22.950
+PyTorch now and provide a lot of standardized implementations, so like
+
+1:50:22.950,1:50:30.720
+PIRL and a bunch of these, and a standardized evaluation protocol for everything.
+
+1:50:30.720,1:50:36.720
+[Student] I had a question about above  self-supervised learning. What do you think
+
+1:50:36.720,1:50:42.200
+is the state of generative methods? And did you think about combining like
+
+1:50:42.200,1:50:48.210
+contrastive methods with generative methods, SimCLR actually like has a
+
+1:50:48.210,1:50:51.780
+different space, so they have like a linear layer on top of the feature
+
+1:50:51.780,1:50:55.830
+representation where they compute the actual feature the representation where
+
+1:50:55.830,1:51:01.380
+they did the contrastive loss, the NCE stuff, so you think having another
+
+1:51:01.380,1:51:07.830
+head, given that a crop of image, you just try to scale out
+
+1:51:07.830,1:51:13.290
+that crop of image, and you have that information because you crop that image,
+
+1:51:13.290,1:51:21.330
+right? [Ishan] It is definitely a good idea, I
+
+1:51:21.330,1:51:24.449
+think this is the tricky part, it is getting these things to train is
+
+1:51:24.449,1:51:29.280
+just non-trivial. So I haven't really tried any generative
+
+1:51:29.280,1:51:33.539
+approaches. In my experience that's slightly harder to
+
+1:51:33.539,1:51:37.409
+get to work, but I do agree, I think in the
+
+1:51:37.409,1:51:42.820
+longer term they are the sort of the things to focus on.
+
+1:51:42.820,1:51:56.030
+[Student] Thank you. [Alfredo] Last question? No? That's it? I guess... [Student] oh I can actually ask the question,
+
+1:51:56.030,1:52:01.130
+so this is regarding distillation actually, so you were
+
+1:52:01.130,1:52:05.860
+telling me how predicting softer distributions gives gives a richer
+
+1:52:05.860,1:52:11.930
+target, right? So can you elaborate on that? Because it sort of increases the
+
+1:52:11.930,1:52:16.490
+uncertainty of our model, right? We are predicting from one-hot distribution and
+
+1:52:16.490,1:52:19.340
+then making it softer and then we are predicting on that and so more uncertainty,
+
+1:52:19.340,1:52:23.540
+and moreover, why do they call it distillation? Because I feel like
+
+1:52:23.540,1:52:31.220
+you need more parameters to account for this richer target. [Ishan] So 
+
+1:52:31.220,1:52:36.170
+if you train on one-hot labels your models tend to be
+
+1:52:36.170,1:52:40.220
+very overconfident in general. So if you have heard of these tricks called
+
+1:52:40.220,1:52:45.440
+label smoothing, which is now being used by a bunch of methods, label
+
+1:52:45.440,1:52:49.490
+smoothing, you can think of it like the simplest version of
+
+1:52:49.490,1:52:51.740
+distillation. So you have a one-hot vector that you
+
+1:52:51.740,1:52:54.920
+were trying to predict but rather than trying to predict that one-hot vector,
+
+1:52:54.920,1:52:59.150
+what you do is you take some probability mass out of that... So you
+
+1:52:59.150,1:53:03.130
+would predict 1 and a bunch of 0s, so rather than doing that, you predict say
+
+1:53:03.130,1:53:07.490
+0.97 and you add 0.01, 0.01, 0.01, like the remaining three labels,
+
+1:53:07.490,1:53:10.610
+so you just start a uniform distribution to the remainder. So
+
+1:53:10.610,1:53:14.810
+distillation is a more informed way of doing this. So rather than
+
+1:53:14.810,1:53:18.860
+randomly increasing the probability of a random unrelated class,
+
+1:53:18.860,1:53:25.010
+to actually have a network which was  pre-trained which is pretty good to this. In
+
+1:53:25.010,1:53:29.800
+general, softer distributions are very useful for pre-training methods because
+
+1:53:29.800,1:53:33.860
+models tend to be overconfident, pre-training on like softer
+
+1:53:33.860,1:53:37.370
+distribution is actually slightly easier than optimization problems, you converge
+
+1:53:37.370,1:53:42.380
+slightly faster as well, so both of these benefits are present in the solution and
+
+1:53:42.380,1:53:48.710
+also something like label smoothing. [Alfredo] Also because  smooth labels allow you to have like a dog looking cat
+
+1:53:48.710,1:53:52.670
+or a cat looking dog, right? So if you have a very big network that has been
+
+1:53:52.670,1:53:55.270
+trained on very many samples, it will actually
+
+1:53:55.270,1:54:00.040
+have you an idea, a proper idea of what is an unambiguous-perhaps-image,
+
+1:54:00.040,1:54:04.450
+right? And therefore, if you can actually learn that soft idea you're gonna be
+
+1:54:04.450,1:54:12.240
+learning more than if you just give that one-hot label. I think we are out of time,
+
+1:54:12.240,1:54:16.420
+I think we run out of time like half an hour ag,o but this was the
+
+1:54:16.420,1:54:20.230
+question and answers session.
+
+1:54:20.230,1:54:27.700
+If there are no you know really really urgent questions still pending, I will 
+
+1:54:27.700,1:54:35.170
+call it the end of the today's lesson. So thank you for tuning in. I'll see
+
+1:54:35.170,1:54:41.070
+you tomorrow at the practical session, don't forget to come,
+
+1:54:41.070,1:54:47.590
+and it was it. Thank you so much Ishan and I see you around. [Yann] Thank you Ishan,
+
+1:54:47.590,1:54:52.020
+thank you everyone, take care everyone. [Alfredo] Right bye-bye.
+
