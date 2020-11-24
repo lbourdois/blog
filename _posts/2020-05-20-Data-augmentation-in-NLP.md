@@ -434,7 +434,7 @@ Ci vous avez du temps et êtes intéressés par ce sujet, je vous invite forteme
 # <span style="color: #FF0000"> **Références** </span>
 
 - [ASSET: A Dataset for Tuning and Evaluation of Sentence SimplificationModels with Multiple Rewriting Transformations](https://arxiv.org/pdf/2005.00481.pdf) de Fernando Alva-Manchego, Louis Martin et al. (2020) 
-- [Alector: A Parallel Corpus of Simplified French Texts with Alignments of Misreadings by Poor and Dyslexic Readers] de Gala et al. (2020)
+- [Alector: A Parallel Corpus of Simplified French Texts with Alignments of Misreadings by Poor and Dyslexic Readers](https://hal.archives-ouvertes.fr/hal-02503986/document) de Gala et al. (2020)
 - [Multilingual Unsupervised Sentence Simplification](https://arxiv.org/abs/2005.00352) de Louis Martin et al. (2020)
 - [A Visual Survey of Data Augmentation in NLP](https://amitness.com/2020/05/data-augmentation-for-nlp/)  de Amit Chaudhary (2020) 
 - [Techniques d’amplification des données textuelles pour l’apprentissage profond ](https://r-libre.teluq.ca/1894/1/Th%C3%A8se_Coulombe.pdf) de Claude Coulombe (2020)  
