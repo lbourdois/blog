@@ -402,12 +402,18 @@ Dans cette méthode, on prend deux phrases et on les met à la même longueur. E
 </figure>
 </center>
 <br>
-Pour le français, cette méthode est difficilement applicable, c’est pourquoi je ne vous la recommande pas. En effet, il n’existe pas de GPT2 pré-entrainé sur du français avec un vocabulaire en français (c’est ce qu’on essaye de faire à l’INSERM). Le créer nécessite d’importantes ressources de calcul, ainsi que d’importantes masse de données textuelles. Deux points qui sont difficile à réunir. 
+Pour le français, cette méthode est difficilement applicable, c’est pourquoi je ne vous la recommande pas. 
+Le seul GPT2 entraîné avec un vocabulaire en français sur des données en français existant pour le moment est le [BelGPT-2 d'Antoine Louis](https://github.com/antoiloui/belgpt2).
+Quand on génère une phrase avec le modèle, celle-ci est la plupart du temps correcte. Cependant un problème apparait quand on génère plusieurs phrases : celles-ci sont individuellement correctes mais devient incorrectes d'un point de vue de la logique quand elles se succèdent. Le contexte passe du coq à l'âne. 
+Lors de quelques expérimentations, j'ai aussi pû constater que des phrases dans d'autres langues que le français étaient générées (anglais et wolof entre autres). Vous pouvez expérimenter par vous même via l'[API d'HuggingFace](https://huggingface.co/antoiloui/belgpt2).
+Ainsi, je déconseille d'utiliser cette technique en l'état actuel. D'autres sont plus simples, plus rapides à mettre en place car ne nécessite pas de fine-tuning, et donne de meilleurs résultats.
 <br><br><br>
 
 
 # <span style="color: #FF0000"> **9. La simplification de textes** </span>
-J’ajoute une méthode supplémentaire qu’Amit n’a pas cité dans son article : les modèles permettant la simplification de texte. Ils permettent de conserver le sens de la phrase mais avec une syntaxe différente et souvent plus courte.
+J’ajoute une méthode supplémentaire qu’Amit n’a pas cité dans son article : les modèles permettant la simplification de texte. Ils permettent de conserver le sens de la phrase mais avec une syntaxe différente et souvent plus courte. Deux approches sont envisageales. La première où le texte original est paraphrasé. La deuxième consiste à faire un résumé du texte original.
+
+## <span style="color: #FFBF00"> **9.1 Les paraphrases** </span>
 Pour la langue anglaise, le jeu de données [ASSET]( https://github.com/facebookresearch/asset) de [Fernando Alva-Manchego, Louis Martin et al.]( https://arxiv.org/pdf/2005.00481.pdf) est disponible depuis mai 2020. Il permet de fine-tuner les modèles de simplification de texte.
  <center>
 <figure class="image">
@@ -418,6 +424,22 @@ Pour la langue française, il existe le jeu de données [ALECTOR](https://alecto
 Vous pouvez consulter également les travaux de [Martin et al.](https://arxiv.org/pdf/2005.00352.pdf), portant sur un outil permettant une simplification de phrases multilingues.
 <br><br><br>
 
+## <span style="color: #FFBF00"> **9.2	Le résumé** </span>
+Dans cette approche, nous avons le texte original en entrée et un résumé de ce texte en sortie.
+Cette approche est bien développée en anglais avec des jeux de données disponibles pour le fine-tuning ([XSum](https://arxiv.org/pdf/1808.08745.pdf) de Narayan et al., [CNN/DM](https://papers.nips.cc/paper/2015/file/afdec7005cc9f14302cd0474fd0f3c96-Paper.pdf) de Hermann et al.) et des modèles déjà entraînés à cette tâche (le [T5 de Raffel et al.](https://arxiv.org/pdf/1910.10683.pdf), [BART de Lewis et al.](https://arxiv.org/abs/1910.13461), etc.)
+Pour l'implémentation, vous pouvez utiliser le code suivant reposant sur la fonction pipeline de la librairie HuggingFace :
+
+```python
+summarizer = pipeline("summarization")
+summarizer("Sam Shleifer writes the best docstring examples in the whole world.", min_length=5, max_length=20)```
+```
+Ce qui donne :
+```python
+Sam Shleifer writes the best docstring examples in the world
+```
+
+Pour le français, vous pouvez utilisez la partie en français de la base de données multilingues [MLSUM](https://arxiv.org/pdf/2004.14900.pdf) de Scialom et al. pour entraîner votre propre modèle. Pour l'implémentation, vous pouvez utiliser le même code que pour l'anglais, où le seul changement consiste à donner en entrée une phrase en français.
+<br><br><br>
 
 # <span style="color: #FF0000"> **Implémentation** </span>
 Les librairies Python comme [nlpaug](https://github.com/makcedward/nlpaug) et [textattack](https://github.com/QData/TextAttack) fournissent une API simple afin d’appliquer les méthodes ci-dessus pouvant ainsi être facilement intégrées dans une pipeline.
@@ -455,7 +477,14 @@ Ci vous avez du temps et êtes intéressés par ce sujet, je vous invite forteme
 - [Unsupervised Data Augmentation for Consistency Training](https://arxiv.org/abs/1904.12848) de Xie et al. (2019) 
 - [That’s So Annoying!!!: A Lexical and Frame-SemanticEmbedding Based Data Augmentation Approach to AutomaticCategorization of Annoying Behaviors using#petpeeveTweets](https://www.aclweb.org/anthology/D15-1306.pdf) de Yang Wang et Yang (2015) 
 - [mixup: Beyond Empirical Risk Minimization](https://arxiv.org/abs/1710.09412) de Zhang et al (2017)  
-- [Character-level Convolutional Networks for Text Classification](https://arxiv.org/abs/1509.01626) de Zhang et al. (2015) 
+- [Character-level Convolutional Networks for Text Classification](https://arxiv.org/abs/1509.01626) de Zhang et al. (2015)
+- [Don’t Give Me the Details, Just the Summary!Topic-Aware Convolutional Neural Networks for Extreme Summarization](https://arxiv.org/pdf/1808.08745.pdf) de Narayan et al. (2018)
+- [Teaching Machines to Read and Comprehend](https://papers.nips.cc/paper/2015/file/afdec7005cc9f14302cd0474fd0f3c96-Paper.pdf) de Hermann et al. (2015)
+- [BART: Denoising Sequence-to-Sequence Pre-training for Natural Language Generation, Translation, and Comprehension](https://arxiv.org/abs/1910.13461) de Lewis et al. (2019)
+- [Exploring the Limits of Transfer Learning with a UnifiedText-to-Text Transformer](https://arxiv.org/pdf/1910.10683.pdf) de Raffel et al. (2020)
+- [MLSUM: The Multilingual Summarization Corpus](https://arxiv.org/pdf/2004.14900.pdf) de Scialom et al. (2020)
+
+
 
 
 <br><br><br>
