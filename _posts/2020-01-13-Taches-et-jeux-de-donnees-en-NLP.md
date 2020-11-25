@@ -180,8 +180,8 @@ Tache qui consiste à traduire une phrase dans une langue donnée dans une autre
 
 Pour l'anglais, le site de [Standard NLP](https://nlp.stanford.edu/projects/nmt/) contient des paires de phrases en Anglais/Tchèque, en Anglais/Allemand et en Anglais/Vietnamien.
 Le site [Manythings.org](http://www.manythings.org/anki/) contient quant à lui plus de 80 paires de langues de la forme Anglais/Seconde_langue. Le couple Anglais/Français contient pour ça part plus de 175 623 paires de phrases.
-Il existe d'autres corpus Anglais/Français. On peut par exemple citer : le [WMT14](http://www.statmt.org/wmt14/translation-task.html) ou encore les données de [Pytorch](https://download.pytorch.org/tutorial/data.zip)
-Des corpus massifs Français/Seconde_langue avec Seconde_langue différent de l'Anglais sont beaucoup plus difficies à trouver.
+Il existe d'autres corpus Anglais/Français. On peut par exemple citer : le [WMT14](http://www.statmt.org/wmt14/translation-task.html) ou encore les données de [Pytorch](https://download.pytorch.org/tutorial/data.zip).
+Des corpus massifs Français/Seconde_langue avec Seconde_langue différent de l'Anglais sont beaucoup plus difficiles à trouver.
 <br><br><br>
 
 
