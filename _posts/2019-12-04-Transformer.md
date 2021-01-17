@@ -34,7 +34,7 @@ J’ai ajouté des éléments supplémentaires quand j’estimais que cela étai
 
 
 # <span style="color: #FF0000"> **Introduction** </span>
-Dans l’article [Le Seq2seq et le processus d’attention](https://lbourdois.github.io/blog/nlp/Seq2seq-et-attention/) nous nous avons introduit l’attention, une méthode omniprésente dans les modèles modernes d’apprentissage profond. 
+Dans l’article [Le Seq2seq et le processus d’attention](https://lbourdois.github.io/blog/nlp/Seq2seq-et-attention/) nous  avons introduit l’attention, une méthode omniprésente dans les modèles modernes d’apprentissage profond. 
 L’attention est un concept qui a permis d’améliorer les performances des applications de traduction automatique. 
 Dans celui-ci, nous nous intéresserons au Transformer, un modèle qui utilise l’attention pour augmenter la vitesse à laquelle 
 ces modèles peuvent être entraînés. Le Transformer surpasse le modèle de traduction automatique de Google dans des tâches 
@@ -69,8 +69,8 @@ En ouvrant la boite, nous voyons un composant d’encodage, un composant de déc
  </center>
  
 
-Le composant d’encodage est une pile d’encoders (l’article empile six encodeurs les uns sur les autres – il n’y a rien de magique avec le numéro six, on peut certainement expérimenter avec d’autres arrangements).
-Le composant de décodage est une pile de decoders du même nombre.
+Le composant d’encodage est une pile d’encodeurs (l’article empile six encodeurs les uns sur les autres – il n’y a rien de magique avec le numéro six, on peut certainement expérimenter avec d’autres arrangements).
+Le composant de décodage est une pile de décodeurs du même nombre.
 <center>
 <figure class="image">
   <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Transformer/The_transformer_encoder_decoder_stack.png">
@@ -78,7 +78,7 @@ Le composant de décodage est une pile de decoders du même nombre.
  </center>
  
 
-Les encoders sont tous identiques mais ils ne partagent pas leurs poids. Chacun est divisé en deux sous-couches :
+Les encodeurs sont tous identiques mais ils ne partagent pas leurs poids. Chacun est divisé en deux sous-couches :
 <center>
 <figure class="image">
   <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Transformer/Transformer_encoder.png">
@@ -86,13 +86,13 @@ Les encoders sont tous identiques mais ils ne partagent pas leurs poids. Chacun 
  </center>
  
 
-Les entrées de l’encoder passent d’abord par une couche d’auto-attention : une couche qui aide l’encoder à regarder les autres mots dans la phrase d’entrée lorsqu’il code un mot spécifique.
+Les entrées de l’encodeur passent d’abord par une couche d’auto-attention : une couche qui aide l’encoder à regarder les autres mots dans la phrase d’entrée lorsqu’il code un mot spécifique.
 Nous examinerons de plus près la question de l’auto-attention plus loin dans l'article.
 
 Les sorties de la couche d’auto-attention sont transmises à un réseau feed-forward.
-Le même réseau feed-forward est appliqué indépendamment à chaque encoder.
+Le même réseau feed-forward est appliqué indépendamment à chaque encodeur.
 
-Le decoder possède ces deux couches, mais entre elles se trouve une couche d’attention qui aide le decoder à se concentrer sur les parties pertinentes de la phrase d’entrée (comme dans les modèles seq2seq).
+Le décodeur possède ces deux couches, mais entre elles se trouve une couche d’attention qui aide le décodeur à se concentrer sur les parties pertinentes de la phrase d’entrée (comme dans les modèles seq2seq).
 <center>
 <figure class="image">
   <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Transformer/Transformer_decoder.png">
@@ -116,11 +116,11 @@ Comme c’est le cas dans les applications NLP en général, nous commençons pa
 </center>
 
 
-L’embedding n’a lieu que dans l’encoder inférieur. Le point commun à tous les encoders est qu’ils reçoivent une liste de vecteurs de la taille 512. Dans l’encoder du bas cela serait le word embeddings, mais dans les autres encoders, ce serait la sortie de l’encoder qui serait juste en dessous.
+L’embedding n’a lieu que dans l’encoder inférieur. Le point commun à tous les encodeurs est qu’ils reçoivent une liste de vecteurs de la taille 512. Dans l’encoder du bas cela serait le word embeddings, mais dans les autres encodeurs, ce serait la sortie de l’encodeur qui serait juste en dessous.
 
 La taille de la liste est un hyperparamètre que nous pouvons définir. Il s’agirait essentiellement de la longueur de la phrase la plus longue dans notre ensemble de données d’entraînement.
 
-Après avoir intégré les mots dans notre séquence d’entrée, chacun d’entre eux traverse chacune des deux couches de l’encoder.
+Après avoir enchassé les mots dans notre séquence d’entrée, chacun d’entre eux traverse chacune des deux couches de l’encodeur.
 <center>
 <figure class="image">
   <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Transformer/encoder_with_tensors.png">
@@ -128,7 +128,7 @@ Après avoir intégré les mots dans notre séquence d’entrée, chacun d’ent
 </center>
 
 
-Nous commençons à voir une propriété clé du Transformer : dans chacune des positions, le mot circule à travers son propre chemin dans l’encoder. Il y a des dépendances entre ces chemins dans la couche d’auto-attention.
+Nous commençons à voir une propriété clé du Transformer : dans chacune des positions, le mot circule à travers son propre chemin dans l’encodeur. Il y a des dépendances entre ces chemins dans la couche d’auto-attention.
 
 La couche feed-forward n’a pas ces dépendances et donc les différents chemins peuvent être exécutés en parallèle lors de cette couche.
 
@@ -138,12 +138,12 @@ Ensuite, nous allons commuter l’exemple sur une phrase plus courte et regarder
 
 
 # <span style="color: #FF0000"> **3. L'encodage** </span>
-Comme nous l’avons déjà mentionné, un encoder reçoit une liste de vecteurs en entrée. Il traite cette liste en passant ces vecteurs dans une couche d’auto-attention, puis dans un réseau feed-forward, et enfin envoie la sortie vers le haut au codeur suivant.
+Comme nous l’avons déjà mentionné, un encodeur reçoit une liste de vecteurs en entrée. Il traite cette liste en passant ces vecteurs dans une couche d’auto-attention, puis dans un réseau feed-forward, et enfin envoie la sortie vers le haut au codeur suivant.
 <center>
 <figure class="image">
   <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Transformer/encoder_with_tensors_2.png">
   <figcaption>
-  Le mot à chaque position passe par un processus d’auto-attention. Ensuite, chacun d’eux passe par un réseau feed-forward (le même réseau réseau feed-forward pour chaque vecteur mais chacun le traverse séparément).
+  Le mot à chaque position passe par un processus d’auto-attention. Ensuite, chacun d’eux passe par un réseau feed-forward (le même réseau  feed-forward pour chaque vecteur mais chacun le traverse séparément).
   </figcaption>
 </figure>
 </center>
@@ -181,7 +181,7 @@ Vous pouvez jouer avec la visualisation interactive en consultant le [notebook T
 # <span style="color: #FF0000"> **5. L'auto-attention en détail** </span>
 Voyons d’abord comment calculer l’auto-attention à l’aide de vecteurs, puis comment elle est réellement mise en œuvre à l’aide de matrices.
 
-La première étape du calcul de l’auto-attention consiste à créer trois vecteurs à partir de chacun des vecteurs d’entrée $$x_{i}$$  de l’encoder (dans ce cas, l’embedding de chaque mot).
+La première étape du calcul de l’auto-attention consiste à créer trois vecteurs à partir de chacun des vecteurs d’entrée $$x_{i}$$  de l’encodeur (dans ce cas, l’embedding de chaque mot).
 
 Chaque vecteur d’entrée $$x_{i}$$ est utilisé de trois manières différentes dans l’opération d’auto-attention :
 *  Il est comparé à tous les autres vecteurs pour établir les pondérations pour sa propre production $$y_{i}$$. Cela forme le vecteur de requête (Query en anglais et dans les figures suivantes).
@@ -220,11 +220,11 @@ Le deuxième score serait le produit scalaire de $$q_{1}$$ et $$k_{2}$$.
 
 Les troisièmes et quatrièmes étapes consistent à diviser les scores par la racine carrée de la dimension des vecteurs clés utilisés (ici on divise donc par 8) . Cela permet d’obtenir des gradients plus stables.
 
-En effet, la fonction softmax que nous appliquons ensuite peut être sensible à de très grandes valeurs d’entrée. Ceux-ci tuent le gradient et ralentissent l’apprentissage, ou l’arrêtent complètement. Puisque la valeur moyenne du produit scalaire augmente avec la dimension de l’embedding, il est utile de redimensionner un peu le produit scalaire pour empêcher les entrées de la fonction softmax de devenir trop grandes.
+En effet, la fonction softmax que nous appliquons ensuite peut être sensible à de très grandes valeurs d’entrée. Cela tue le gradient et ralentit l’apprentissage, ou l’arrête complètement. Puisque la valeur moyenne du produit scalaire augmente avec la dimension de l’embedding, il est utile de redimensionner un peu le produit scalaire pour empêcher les entrées de la fonction softmax de devenir trop grandes.
 
 Il pourrait y avoir d’autres valeurs possibles que la racine carrée de la dimension, mais c’est la valeur par défaut.
 
-L’ application de la fonction Softmax permet de normaliser les scores pour qu’ils soient tous positifs et somment à 1.
+L’application de la fonction Softmax permet de normaliser les scores pour qu’ils soient tous positifs et somment à 1.
 <center>
 <figure class="image">
   <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Transformer/self-attention_softmax.png">
@@ -273,7 +273,7 @@ Voilà qui conclut le calcul de l’auto-attention. Les vecteurs zi résultants 
 
 
 # <span style="color: #FF0000"> **6. Les matrices de calcul de l'auto-attention** </span>
-a première étape consiste à calculer les matrices Requête, Clé et Valeur. Pour ce faire, nous concaténons nos embeddings dans une matrice X et nous la multiplions par les matrices de poids que nous avons entraînés ($$W^{Q}$$, $$W^{K}$$, $$W^{V}$$).
+La première étape consiste à calculer les matrices Requête, Clé et Valeur. Pour ce faire, nous concaténons nos embeddings dans une matrice X et nous la multiplions par les matrices de poids que nous avons entraînés ($$W^{Q}$$, $$W^{K}$$, $$W^{V}$$).
 <center>
 <figure class="image">
   <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Transformer/self-attention-matrix-calculation.png">
@@ -298,11 +298,11 @@ Enfin, puisqu’il s’agit de matrices, nous pouvons condenser les étapes 2 à
 # <span style="color: #FF0000"> **7. La bête à plusieurs têtes** </span>
 Au lieu d’exécuter une seule fonction d’attention les auteurs de l’article ont trouvé avantageux de projeter linéairement les requêtes, les clés et les valeurs h fois avec différentes projections linéaires apprises sur les dimensions $$d_{k}$$, $$d_{k}$$ et $$d_{v}$$, respectivement.
 
-Ce mécanisme est appelé « attention à têtes multiples ». 
+Ce mécanisme est appelé « attention multi-têtes ». 
 Cela améliore les performances de la couche d’attention de deux façons :
 * Il élargit la capacité du modèle à se concentrer sur différentes positions. 
 Prenons l’exemple suivant : « Marie a donné des roses à Susane » (exemple provenant du blog de [Peter Bloem](http://www.peterbloem.nl/blog/transformers), en anglais). Nous voyons que le mot « donné » a des relations différentes aux différentes parties de la phrase. « Marie » exprime qui fait le don, « roses » exprime ce qui est donné, et « Susane » exprime qui est le destinataire. En une seule opération d’auto-attention, toutes ces informations ne font que s’additionner. Si c’était Suzanne qui avait donné les roses plutôt que Marie, le vecteur de sortie $$z_{donné}$$ serait le même, même si le sens a changé. 
-* Il donne à la couche d’attention de multiples « sous-espaces de représentation ». Comme nous le verrons plus loin, avec l’attention à plusieurs têtes, nous n’avons pas seulement un, mais plusieurs ensembles de matrices de poids Query/Key/Value (le Transformer utilise huit têtes d’attention, donc nous obtenons huit ensembles pour chaque encoder/decoder).  Chacun de ces ensembles est initialisé au hasard. Ensuite, après l’entraînement, chaque ensemble est utilisé pour projeter les embedding d’entrée (ou les vecteurs des encoder/decoder inférieurs) dans un sous-espace de représentation différent.
+* Il donne à la couche d’attention de multiples « sous-espaces de représentation ». Comme nous le verrons plus loin, avec l’attention à plusieurs têtes, nous n’avons pas seulement un, mais plusieurs ensembles de matrices de poids Query/Key/Value (le Transformer utilise huit têtes d’attention, donc nous obtenons huit ensembles pour chaque encodeur/décodeur).  Chacun de ces ensembles est initialisé au hasard. Ensuite, après l’entraînement, chaque ensemble est utilisé pour projeter les embedding d’entrée (ou les vecteurs des encodeurs/décodeurs inférieurs) dans un sous-espace de représentation différent.
 <center>
 <figure class="image">
   <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Transformer/transformer_attention_heads_qkv.png">
@@ -365,7 +365,7 @@ Un outil de visualisation dynamique des têtes d’attention très intéressant 
 
 
 # <span style="color: #FF0000"> **8. Le codage positionnel** </span>
-ne chose qui manque dans le modèle tel que nous l’avons décrit jusqu’à présent, est une façon de rendre compte de l’ordre des mots dans la séquence d’entrée.
+Une chose qui manque dans le modèle tel que nous l’avons décrit jusqu’à présent, est une façon de rendre compte de l’ordre des mots dans la séquence d’entrée.
 
 Pour y remédier, le Transformer ajoute un vecteur à chaque embedding d’entrée. Ces vecteurs suivent un modèle spécifique que le modèle apprend ce qui l’aide à déterminer la position de chaque mot (ou la distance entre les différents mots dans la séquence). L’intuition ici est que l’ajout de ces valeurs à l’embedding fournit des distances significatives entre les vecteurs d’embedding une fois qu’ils sont projetés dans les vecteurs Q/K/V (puis pendant l’application du produit scalaire).
 <center>
@@ -398,7 +398,7 @@ Ce n’est pas la seule méthode possible pour le codage positionnel. Il offre c
 
 
 
-# <span style="color: #FF0000"> **9. Les résidus** </span>
+# <span style="color: #FF0000"> **9. Les connexions résiduelles** </span>
 Un détail de l’architecture de l’encoder que nous devons mentionner avant de continuer est que chaque sous-couche (auto-attention, feed-forward) dans chaque codeur a une connexion résiduelle autour de lui (Add sur le graphique ci-dessous) et est suivie d’une étape de normalisation.
 
 Si nous devons visualiser les vecteurs et l’opération de normalisation associée à l’auto-attention, cela ressemblerait à ceci :
@@ -411,9 +411,9 @@ Si nous devons visualiser les vecteurs et l’opération de normalisation associ
 </figure>
 </center>
 
-Cela vaut également pour les sous-couches du decoder.
+Cela vaut également pour les sous-couches du décodeur.
 
-Par exemple un Transformer de 2 encoders et decoders empilés ressemblerait à ceci :
+Par exemple un Transformer de 2 encodeurs et décodeurs empilés ressemblerait à ceci :
 <center>
 <figure class="image">
 <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Transformer/transformer_resideual_layer_norm_3.png">
@@ -423,10 +423,10 @@ Par exemple un Transformer de 2 encoders et decoders empilés ressemblerait à c
 
 
 
-# <span style="color: #FF0000"> **10. Le decoder** </span>
-aintenant que nous avons couvert la plupart des concepts du côté des encoders, nous savons aussi comment fonctionnent les composants des decoders. Mais jetons un coup d’œil à la façon dont ils travaillent ensemble.
+# <span style="color: #FF0000"> **10. Le decodeur** </span>
+Maintenant que nous avons couvert la plupart des concepts du côté des encodeurs, nous savons aussi comment fonctionnent les composants des décodeurs. Mais jetons un coup d’œil à la façon dont ils travaillent ensemble.
 
-L’encoder commence par traiter la séquence d’entrée. La sortie de l’encoder supérieur est ensuite transformée en un ensemble de vecteurs d’attention K et V. Ceux-ci doivent être utilisés par chaque decoder dans sa couche « attention codeur-décodeur » qui permet au decoder de se concentrer sur les endroits appropriés dans la séquence d’entrée :
+L’encoder commence par traiter la séquence d’entrée. La sortie de l’encoder supérieur est ensuite transformée en un ensemble de vecteurs d’attention K et V. Ceux-ci doivent être utilisés par chaque décodeur dans sa couche « attention encodeur-décodeur » qui permet au decodeur de se concentrer sur les endroits appropriés dans la séquence d’entrée :
 <center>
 <figure class="image">
   <img src="https://jalammar.github.io/images/t/transformer_decoding_1.gif">
@@ -436,7 +436,7 @@ L’encoder commence par traiter la séquence d’entrée. La sortie de l’enco
 </figure>
 </center>
 
-Les étapes suivantes répètent le processus jusqu’à ce qu’un symbole spécial indique au decoder que le Transformer a complété entièrement la sortie. La sortie de chaque étape (mot ici) est envoyée au decoder le plus bas pour le traitement du mot suivant. Et tout comme nous l’avons fait avec les entrées encoder, nous « embeddons » et ajoutons un codage positionnel à ces entrées decoder pour indiquer la position de chaque mot.
+Les étapes suivantes répètent le processus jusqu’à ce qu’un symbole spécial indique au décodeur que le Transformer a complété entièrement la sortie. La sortie de chaque étape (mot ici) est envoyée au décodeur le plus bas pour le traitement du mot suivant. Et tout comme nous l’avons fait avec les entrées encodeur, nous « embeddons » et ajoutons un codage positionnel à ces entrées décodeur pour indiquer la position de chaque mot.
 <center>
 <figure class="image">
   <img src="https://jalammar.github.io/images/t/transformer_decoding_2.gif">
@@ -447,19 +447,19 @@ Les étapes suivantes répètent le processus jusqu’à ce qu’un symbole spé
 </center>
 
 
-Les couches d’auto-attention du decoder fonctionnent d’une manière légèrement différente de celle de l’encoder.
+Les couches d’auto-attention du décodeur fonctionnent d’une manière légèrement différente de celle de l’encodeur.
 
-Dans le décoder, la couche d’auto-attention ne peut s’occuper que des positions antérieures dans la séquence de sortie. Ceci est fait en masquant les positions futures (en les réglant sur -inf) avant l’étape softmax du calcul de l’auto-attention. Ce processus est détaillé dans la fiche 5.
+Dans le décodeur, la couche d’auto-attention ne peut s’occuper que des positions antérieures dans la séquence de sortie. Ceci est fait en masquant les positions futures (en les réglant sur -inf) avant l’étape softmax du calcul de l’auto-attention.
 
-La couche « Encoder-Decoder Attention » fonctionne comme une auto-attention à plusieurs têtes, sauf qu’elle crée sa matrice de requêtes à partir de la couche inférieure, et prend la matrice des clés et des valeurs à la sortie de la pile de codeurs.
+La couche « Attention encodeur-décodeur » fonctionne comme une auto-attention à plusieurs têtes, sauf qu’elle crée sa matrice de requêtes à partir de la couche inférieure, et prend la matrice des clés et des valeurs à la sortie de la pile encodeur.
 <br><br><br>
 
 
 
 # <span style="color: #FF0000"> **11. Les couches finales : linéaire et sofmax** </span>
-La pile de decoders délivre un vecteur de float. Comment le transfomer en mots ? C’est le travail de la couche Linéaire qui est suivie d’une couche Softmax.
+La pile de decodeurs délivre un vecteur de float. Comment le transformer en mots ? C’est le travail de la couche Linéaire qui est suivie d’une couche Softmax.
 
-La couche linéaire est un simple réseau neuronal entièrement connecté qui projette le vecteur produit par la pile de decoders dans un vecteur beaucoup (beaucoup) plus grand appelé vecteur logits.
+La couche linéaire est un simple réseau neuronal entièrement connecté qui projette le vecteur produit par la pile de decodeurs dans un vecteur beaucoup (beaucoup) plus grand appelé vecteur logits.
 
 Supposons que notre modèle connaisse 10 000 mots anglais uniques (le « vocabulaire de sortie » de notre modèle) qu’il a appris de son ensemble de données d’entraînement. Cela rendrait le vecteur logit large de 10 000 cellules, chaque cellule correspondant au score d’un mot unique. C’est ainsi que nous interprétons la sortie du modèle suivie de la couche linéaire.
 
@@ -535,9 +535,9 @@ Après avoir entraîné le modèle pendant suffisamment de temps sur un ensemble
 </figure>
 </center>
 
-Comme le modèle produit les sorties une à la fois, nous pouvons supposer que le modèle choisit le mot ayant la probabilité la plus élevée à partir de cette distribution de probabilité et jette le reste. C’est une façon faire (appellé greedy decoding).
+Comme le modèle produit les sorties une à la fois, nous pouvons supposer que le modèle choisit le mot ayant la probabilité la plus élevée à partir de cette distribution de probabilité et jette le reste. C’est une façon de faire appellée *greedy decoding*.
 
-Une autre façon de le faire serait de s’accrocher, par exemple, aux deux premiers mots (disons,  « I  » et  « a  » par exemple), puis, à l’étape suivante, d’exécuter le modèle deux fois : une fois en supposant que la première position de sortie était le mot  « I » , et une autre fois en supposant que la première position de sortie était  « me ». La version la moins erronée étant retenue, en considérant les positions #1 et #2. Nous répétons ceci pour les positions #2 et #3, etc… Cette méthode est appelée « beam search ».
+Une autre façon de  faire serait de s’accrocher, par exemple, aux deux premiers mots (disons,  « I  » et  « a  » par exemple), puis, à l’étape suivante, d’exécuter le modèle deux fois : une fois en supposant que la première position de sortie était le mot  « I » , et une autre fois en supposant que la première position de sortie était  « a ». La version la moins erronée étant retenue, en considérant les positions #1 et #2. Nous répétons ceci pour les positions #2 et #3, etc… Cette méthode est appelée « beam search ».
 
 Dans notre exemple, beam_size était deux (parce que nous avons comparé les résultats après avoir calculé les beams (faisceaux) pour les positions #1 et #2), et top_beams est aussi deux (puisque nous avons gardé deux mots). Ce sont deux hyperparamètres que vous pouvez expérimenter.
 <br><br><br>
@@ -547,7 +547,7 @@ Dans notre exemple, beam_size était deux (parce que nous avons comparé les ré
 # <span style="color: #FF0000"> **14. Pour aller plus loin** </span>
 Lire l’article [Attention Is All You Need](https://arxiv.org/abs/1706.03762) (article original où est détaillé plus techniquement les paramètres utilisé pour les couches de normalisation, dropout, etc…), le Transformer blog ([Transformer: A Novel Neural Network Architecture for Language Understanding](https://ai.googleblog.com/2017/08/transformer-novel-neural-network.html)), et le [Tensor2Tensor announcement](https://ai.googleblog.com/2017/06/accelerating-deep-learning-research.html).
 
-Jouer avec le [Jupyter Notebook de Tensor2Tensor](https://colab.research.google.com/github/tensorflow/tensor2tensor/blob/master/tensor2tensor/notebooks/hello_t2t.ipynb) et plus généralement xxplorer le Github [Tensor2Tensor](https://github.com/tensorflow/tensor2tensor).
+Jouer avec le [Jupyter Notebook de Tensor2Tensor](https://colab.research.google.com/github/tensorflow/tensor2tensor/blob/master/tensor2tensor/notebooks/hello_t2t.ipynb) et plus généralement explorer le Github [Tensor2Tensor](https://github.com/tensorflow/tensor2tensor).
 
 Des articles sur divers travaux utilisant les transformers :
 * [Depthwise Separable Convolutions for Neural Machine Translation](https://arxiv.org/abs/1706.03059) de Kaiser et al. (2017) 
@@ -564,8 +564,8 @@ Des articles sur divers travaux utilisant les transformers :
 
 
 # <span style="color: #FF0000"> **Conclusion** </span>
-L’architecture du Transformer présentée dans cet article est une rupture technologique dans le domaine du NLP. ENORMEMENT d’autres modèles basé sur ce Transformer « original » ont été dévoilés depuis.<br>
-J'entre plus en détails pour deux d'entre eux que j'ai eu l'occasion d'utiliser professionnelement : [BERT](https://lbourdois.github.io/blog/nlp/BERT/) et le [GPT2](https://lbourdois.github.io/blog/nlp/GPT2/).
+L’architecture du Transformer présentée dans cet article est une rupture technologique dans le domaine du NLP. ENORMEMENT d’autres modèles basés sur ce Transformer « original » ont été dévoilés depuis.<br>
+J'entre plus en détails pour deux d'entre eux que j'ai eu l'occasion d'utiliser professionnellement  : [BERT](https://lbourdois.github.io/blog/nlp/BERT/) et le [GPT2](https://lbourdois.github.io/blog/nlp/GPT2/).
 Pour les autres architectures, vous pouvez consulter une liste non exhaustive dans cet [article](https://lbourdois.github.io/blog/nlp/Les-architectures-transformers/) du blog.
 <br><br><br>
 
