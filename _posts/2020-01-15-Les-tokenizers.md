@@ -73,7 +73,7 @@ Je suppose que certains lecteurs n'ont jamais entendu parler de la normalisation
 
 Vient maintenant la question importante : quels types de normalisation devrions-nous réellement appliquer ? Bien sûr, il n'y a pas de réponse claire à cette question, mais voici quelques lignes directrices et facteurs à prendre en considération :
 - Quelle quantité d'informations cruciales la normalisation supprime-t-elle ? Par exemple, dans les médias sociaux, dire "HELLO" et "Hello" peut avoir des nuances différentes. En même temps, traiter différemment "Hello world" et "hello world" peut ne pas avoir beaucoup de sens. Parfois, la majuscule peut indiquer une information grammaticale importante, comme le fait qu'un mot est un nom propre (p. ex., "New York"). 
-- De combien de données disposez-vous ? Si vous avez des quantités massives de données, vous aurez probablement besoin de moins de normalisation puisque le modèle pourrait simplement apprendre que "Hello" et "hello" sont le même mot sous-jacent à partir de leurs distrubutions. Mais pour la plupart des applications de NLP, vous n'avez pas un si grand corpus de données, donc vous pourriez une plus grande normalisation.
+- De combien de données disposez-vous ? Si vous avez des quantités massives de données, vous aurez probablement besoin de moins de normalisation puisque le modèle pourrait simplement apprendre que "Hello" et "hello" sont le même mot sous-jacent à partir de leurs distributions. Mais pour la plupart des applications de NLP, vous n'avez pas un si grand corpus de données, donc vous pourriez une plus grande normalisation.
 - Une grande taille de vocabulaire est-elle préjudiciable à votre application ? Moins de normalisation tend à conduire à un vocabulaire plus important, bien que cela dépende du type de tokenisation que vous utilisez. Si vous entraînez un modèle génératif, la couche softmax de sortie peut être un goulot d'étranglement majeur, et une taille de vocabulaire plus importante peut ralentir l'entraînement de manière significative. Cela peut aussi causer des problèmes de mémoire, qui peuvent nécessiter des tailles de lot plus petites, ralentissant encore plus la l’entraînement.
 <br><br><br>
 
@@ -255,7 +255,7 @@ L'ajout de sous-mots avec un marqueur spécial n'a de sens qu'avec un modèle de
 Maintenant, vous vous demandez peut-être pourquoi Sentencepiece peut se permettre de traiter l'entrée comme un seul flux de caractères alors que nous avons établi plus tôt que trouver le symbole bigramme le plus fréquent est une opération d'un coût prohibitif en BPE. La raison est que Sentencepiece utilise un algorithme basé sur une file d'attente prioritaire, réduisant le temps d'exécution asymétrique de O(N²) à O(NlogN).
 <br>
 Notez également que Sentencepiece permet en fait l'utilisation de la prétokenisation (dans ce cas, il devient essentiellement le même que le BPE/l’unigram language model).  
-Un point où il faut être vigileant est que Sentencepiece applique une certaine normalisation unicode en interne (il utilise la normalisation unicode NFKC par défaut). Ceci peut être personnalisé, donc si vous avez besoin de règles de normalisation personnalisées qui sont en contradiction avec la normalisation NFKC, alors vous devriez regarder cette fonctionnalité.
+Un point où il faut être vigilant est que Sentencepiece applique une certaine normalisation unicode en interne (il utilise la normalisation unicode NFKC par défaut). Ceci peut être personnalisé, donc si vous avez besoin de règles de normalisation personnalisées qui sont en contradiction avec la normalisation NFKC, alors vous devriez regarder cette fonctionnalité.
 <br><br>
 
 
@@ -280,14 +280,14 @@ L'utilisation de l'encodage d'Open AI qui s’effectue au niveau de l'octet peut
 
 ## <span style="color: #FFBF00"> **3.2 Gestion du vocabulaire** </span>
 Un décalage entre le vocabulaire utilisé pour coder l'ensemble d’entraînement et celui de l'ensemble de test est une erreur étonnamment courante. Cela peut se produire particulièrement facilement lorsque vous reconstruisez périodiquement le vocabulaire, ce qui peut être inévitable dans des domaines comme les médias sociaux où la distribution de la langue peut changer rapidement.
-S'assurer que chaque modèle est explicitement lié à un ensemble de vocabulaire est une façon d'éviter ce problème. Un autre moyen est d'assurer la rétrocompatibilité entre les différents vocabulaires de sorte que les mots qui sont dans les deux vocabulaires soient toujours associés au même identifiant. Cependant, empêcher le vocabulaire d'exploser en taille et de manipuler des tokens inconnus devient un problème dans cette approche. Une autre solution (qui est utile dans d'autres contextes également) est d'utiliser des vocabulaires ouverts, décris dansle prochain paragraphe.
+S'assurer que chaque modèle est explicitement lié à un ensemble de vocabulaire est une façon d'éviter ce problème. Un autre moyen est d'assurer la rétrocompatibilité entre les différents vocabulaires de sorte que les mots qui sont dans les deux vocabulaires soient toujours associés au même identifiant. Cependant, empêcher le vocabulaire d'exploser en taille et de manipuler des tokens inconnus devient un problème dans cette approche. Une autre solution (qui est utile dans d'autres contextes également) est d'utiliser des vocabulaires ouverts, décris dans le prochain paragraphe.
 <br><br>
 
 
 ## <span style="color: #FFBF00"> **3.3 Vocabulaires ouverts** </span>
 Les vocabulaires ouverts sont essentiellement des paramètres où vous ne pré-construisez pas un vocabulaire et où vous associez plutôt des tokens à des ids à la volée.	
 
-C'est particulièrement utile dans les situations où vous devez gérer des flux de texte continus et où l’actualsiation du vocabulaire est coûteuse et sujette à erreur.
+C'est particulièrement utile dans les situations où vous devez gérer des flux de texte continus et où l’actualisation  du vocabulaire est coûteuse et sujette à erreur.
 Les vocabulaires ouverts utilisent l'astuce du hachage, une méthode intelligente de numérisation qui fait correspondre les tokens aux ids en fonction de leurs valeurs de hachage. Par exemple, avec un id maximum de 100 000, vous pouvez utiliser une simple fonction de hachage (comme le hachage md5) pour transformer toute séquence de caractères unicode (ou d'octets) en un entier compris entre 0 et 100 000. Ce serait l'id du token. Puisque le vocabulaire est déterminé uniquement par la fonction de hachage, il n'a jamais besoin d'être reconstruit.
 <center>
 <figure class="image">
@@ -318,7 +318,6 @@ Cet [article](https://arxiv.org/pdf/1909.11687.pdf) propose une approche intére
 
 # <span style="color: #FF0000"> **4. Divers** </span>
 Terminons par quelques points non classables dans les parties précédentes. 
-des mots à faible fréquence dans l'ensemble d’entraînement, une hypothèse qui n'est pas toujours vraie. 
 <br><br>
 
 
@@ -328,16 +327,28 @@ Cet [article](https://arxiv.org/pdf/1911.00359.pdf) de G.Wenzek, M-A. Lachaux et
 <br><br>
 
 
-## <span style="color: #FFBF00"> **4.2 Preprocessing as Data Augmentation** </span>
+## <span style="color: #FFBF00"> **4.2 Preprocessing comme augmentation de données** </span>
 Le fait que les décisions de prétraitement sont quelque peu arbitraires et peuvent causer du bruit peut en fait être utilisé à notre avantage. Par exemple, un modèle qui est entrainé sur des données d'entrée entièrement en minuscules et un modèle qui est entrainé avec du surajustements peuvent être assemblés efficacement. Keita Kurita (l’auteur de l’article dont fait l’objet cette traduction) a utilisé cette technique pour se classer dans le top [1  % d'une compétition Kaggle](http://mlexplained.com/2019/04/01/tricks-and-lessons-learned-from-getting-into-the-top-1-of-a-kaggle-competition/). Dans certains concours Kaggle de NLP, l'assemblage de plusieurs modèles en utilisant différentes étapes de prétraitement a été la clé de la victoire. 
 L'idée d'utiliser le prétraitement comme augmentation des données est explorée dans cet [article](https://arxiv.org/abs/1804.10959) de Taku Kudo où l'auteur utilise un modèle de langage unigramme pour échantillonner des tokenisations légèrement différentes du même texte. 
 <br><br>
 
 
-## <span style="color: #FFBF00"> **4.3 Stemming and Lemmatization** </span>
+## <span style="color: #FFBF00"> **4.3 Stemming et Lemmatization** </span>
 Le stemming et la lemmatization sont des formes extrêmes de normalisation qui ne sont généralement pas rentables en NLP moderne. La plupart des problèmes que le stemming et la lemmatisation adressent peuvent être résolus en utilisant des sous-mots symboliques, il n'y a donc tout simplement aucune raison d'utiliser ces étapes de prétraitement.
 <br><br><br>
 
+
+# <span style="color: #FF0000"> **Conclusion** </span>
+Résumons l’article avec les principaux points évoqués :
+- Utilisez l'unicode. Cela permet de gérer à peut prêt toutes les langues. 	
+- Si vous utilisez un Transformer, assurez-vous que votre prétraitement correspond à celui utilisé par le modèle.
+- Inspectez toujours manuellement vos entrées prétraitées. Vous serez surpris du nombre de bugs que vous pouvez attraper.
+- La normalisation est la première étape du prétraitement, et une considération majeure à cette étape est la quantité de données que vous avez. Plus vous avez de données, moins vous avez besoin de normalisation.
+- Les tokenizers à base de règles sont un bon point de départ pour de nombreuses langues, mais peuvent être difficiles à mettre à l'échelle.
+- Les tokenizers en sous-mots apprennent les segmentations qui divisent les mots rares en sous-mots significatifs. Ils sont appris à partir de données et sont généralement efficaces pour traiter les mots rares et les langues riches comme l’allemand.
+- Les tokenizers BPE, wordpiece, et unigram language model ont besoin d'une pré-création. Le Sentencepiece n'en a pas besoin.
+- La construction du vocabulaire comporte de nombreuses subtilités. En particulier, faites attention à ne pas trop vous ajuster à l'ensemble d'entraînement.
+<br><br><br>
 
 # <span style="color: #FF0000"> **Références** </span>
 
@@ -362,19 +373,6 @@ Le stemming et la lemmatization sont des formes extrêmes de normalisation qui n
 - [CCNet: Extracting High Quality Monolingual Datasets from Web Crawl Data](https://arxiv.org/abs/1911.00359) de Wenzek, Lachaux et al. (2019) 
 
 - [Extreme Language Model Compression with Optimal Subwords and Shared Projections](https://arxiv.org/abs/1909.11687) de Sanqiang Zhao et al. (2019) 
-<br><br><br>
-
-
-# <span style="color: #FF0000"> **Conclusion** </span>
-Résumons l’article avec les principaux points évoqués :
-- Utilisez l'unicode. Cela permet de gérer à peut prêt toutes les langues. 	
-- Si vous utilisez un Transformer, assurez-vous que votre prétraitement correspond à celui utilisé par le modèle.
-- Inspectez toujours manuellement vos entrées prétraitées. Vous serez surpris du nombre de bugs que vous pouvez attraper.
-- La normalisation est la première étape du prétraitement, et une considération majeure à cette étape est la quantité de données que vous avez. Plus vous avez de données, moins vous avez besoin de normalisation.
-- Les tokenizers à base de règles sont un bon point de départ pour de nombreuses langues, mais peuvent être difficiles à mettre à l'échelle.
-- Les tokenizers en sous-mots apprennent les segmentations qui divisent les mots rares en sous-mots significatifs. Ils sont appris à partir de données et sont généralement efficaces pour traiter les mots rares et les langues riches comme l’allemand.
-- Les tokenizers BPE, wordpiece, et unigram language model ont besoin d'une pré-création. Le Sentencepiece n'en a pas besoin.
-- La construction du vocabulaire comporte de nombreuses subtilités. En particulier, faites attention à ne pas trop vous ajuster à l'ensemble d'entraînement.
 <br><br><br>
 
 
