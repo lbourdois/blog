@@ -6,8 +6,8 @@ title: "A propos"
 
 ## Qui suis-je ?
 Loïck BOURDOIS<br>  
-Je suis diplômé d’un Master de Modélisation Statistique obtenu à l’Université de Bordeaux.  
-Je travaille actuellement au Centre de Recherche Inserm-Université de Bordeaux U1219 « Bordeaux population health » au sein de l’équipe [IETO](https://www.bordeaux-population-health.center/les-equipes/prevention-et-prise-en-charge-des-traumatismes-ieto/) (Injury Epidemiology Transport Occupation).<br>  
+Je suis diplômé d’un master de Modélisation Statistique obtenu à l’Université de Bordeaux.
+Après avoir travaillé un peu plus d'un an au Centre de Recherche Inserm-Université de Bordeaux U1219 « Bordeaux population health » au sein de l’équipe [IETO](https://www.bordeaux-population-health.center/les-equipes/prevention-et-prise-en-charge-des-traumatismes-ieto/) (Injury Epidemiology Transport Occupation), je travaille actuellement au [CATIE](https://www.catie.fr/).<br>  
 
 <!-- 
 Dans le cadre de mon travail, je suis amené à appliquer les techniques de NLP les plus récentes à des données médicales issues du Centre Hospitalier Universitaire de Bordeaux.<br>
@@ -16,7 +16,7 @@ Elle ne porte pas sur tous les travaux en lien avec le NLP que nous sommes en tr
 -->
 
 ## Pourquoi ce blog ?
-Lorsque j'ai commencé à travailler sur les avancées récentes en NLP, je n’ai pas été formé à toutes ces nouveautés (i.e le Transformer et tous les modèles qui en découlent). En faisant des recherches sur internet pour me former, j’ai pu constater qu’il n’existait que très peu d’explications en français de ces nouvelles méthodes. Beaucoup d’articles Medium ou des GitHub tenus par des francophones mais rien écrit en français, exclusivement de l’anglais.<br>
+Lorsque j'ai commencé à travailler en 2019 sur les avancées récentes en NLP de l'époque (i.e le Transformer et tous les modèles qui en découlent), je n’étais pas formé à toutes ces nouveautés. En faisant des recherches sur internet pour me former, j’ai pu constater qu’il n’existait que très peu d’explications en français de ces nouvelles méthodes. Beaucoup d’articles Medium ou des GitHub tenus par des francophones mais rien écrit en français, exclusivement de l’anglais.<br>
 J’ai réalisé des fiches d’explication de ces modèles en français pour qu’elles soient compréhensibles par mes collègues de travail.
 Je me suis dit qu'elles pourraient servir à d’autres personnes, c’est pourquoi j’ai crée ce blog. En espérant que cela cela soit utile aux francophones 🙂<br><br>
 
@@ -25,7 +25,7 @@ Je me suis dit qu'elles pourraient servir à d’autres personnes, c’est pourq
 ## Quelques questions fréquentes 
 ##### Les articles de ton blog son majoritairement des vulgarisations de sujets liés au NLP. Prévois-tu de faire des tutoriels afin d'illustrer les articles ?
 C'est effectivement plannifié. Plusieurs codes python sont d'ailleurs déjà prêts mais doivent encore accompagnés d'explications et d'images.
-Je manque néanmoins de temps en ce moment car je travaille sur plusieurs autres projets. J'espère pouvoir terminer ces tutoriels au cours de l'été.
+Je manque néanmoins de temps en ce moment car je travaille sur plusieurs autres projets. Je ne sais donc pas quand cela arrivera sur le blog.
 
 ##### Puis-je utiliser le contenu de ton blog ?
 Avec plaisir, ce blog sert à ça :)<br>
