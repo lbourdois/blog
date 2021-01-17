@@ -17,20 +17,20 @@ sidebar:
 
 # <span style="color: #FF0000"> **Avant-propos** </span>
  Cet article est le premier de la série consacrée au NLP sur le blog.<br>
- Il est court car cette technique est maintenant ancienne et la litérarrure à son sujet est assez abondante en français.
+ Il est court car cette technique est maintenant ancienne et la littérature à son sujet est assez abondante en français.
  Je ne vois donc pas l'intérêt d'effectuer un doublon.<br>
- Je vais me limiter à énoncer très succintement le principe de la méthode et vous renvoyer vers d'autres sites internet pour plus de détails en ce qui concerne le codage par exemple.
+ Je vais me limiter à énoncer très succinctement le principe de la méthode et vous renvoyer vers d'autres sites internet pour plus de détails en ce qui concerne le codage par exemple.
 <br><br><br>
 
 
 # <span style="color: #FF0000"> **Rapide descriptif de la méthode** </span>
-Le bag-of-word (sac de mots en français) est la technique qui était majoritairement utilisée avant l’apparition des modèles basés sur les réseaux de neurones tel que les RNN (eux mêmes moins utilisés aujourd’hui au profit des Transformers).
+Le bag-of-word (sac de mots en français) est la technique qui était majoritairement utilisée avant l’apparition des modèles basés sur les réseaux de neurones tel que les RNN (eux-mêmes moins utilisés aujourd’hui au profit des Transformers).
 Elle consiste principalement à nettoyer les données textuelles à notre disposition d’une certaine manière, afin de pouvoir ensuite les fournir en entrée de modèles de machine learning 
-(qu'ils soient classiques sous entendus non basés sur des réseaux de neurones ou de deep learning).<br>
-Bien que son usage est diminué, cette technique possède de nombreux atouts qui font qu’elle peut vous être tout de même utile. En effet, le bag-of-word est :
+(qu'ils soient classiques sous-entendus non basés sur des réseaux de neurones ou de deep learning).<br>
+Bien que son usage ait diminué, cette technique possède de nombreux atouts qui font qu’elle peut vous être tout de même utile. En effet, le bag-of-word est :
 * très simple à comprendre
 *	peut être utilisé sur un faible échantillon de données alors que les techniques basées sur les réseaux de neurones ont en besoin d’énormément
-*	ne nécessite pas de capacités de calcul importantes (un CPU suffit alors que les techniques de réseaux de neurones nécessitent des GPU voir des TGU qui coûtent extrêmement cheres)
+*	ne nécessite pas de capacités de calcul importantes (un CPU suffit alors que les techniques de réseaux de neurones nécessitent des GPU voir des TGU qui coûtent extrêmement chers)
 <br><br>
 
 
@@ -58,7 +58,7 @@ Comme indiqué plus haut, je ne vais pas entrer dans les détails des différent
 * établir une mesure de la présence des mots connus.
 <br>
   
-Enonçons simplement les mots clés que vous pourrez ensuite chercher par vous même si les sites que je vous propose un peu plus loin n'ont pas répondu à toutes vos interogations.
+Enonçons simplement les mots clés que vous pourrez ensuite chercher par vous même si les sites que je vous propose un peu plus loin n'ont pas répondu à toutes vos interrogations.
 <br>
   
 Le premier point lié au vocabulaire repose sur des étapes de : 
@@ -70,7 +70,7 @@ Le premier point lié au vocabulaire repose sur des étapes de :
 
 Le second point consacrée à la mesure peut être calculé de plusieurs manières différentes :
 *	Le comptage (compter le nombre de fois que chaque mot apparaît dans un document).
-* Les fréquences (calculer la fréquence à laquelle chaque mot apparaît dans un document parmi tous les mots du document; la métrique la plus connue étant [TFIDF](https://fr.wikipedia.org/wiki/TF-IDF))
+* Les fréquences (calculer la fréquence à laquelle chaque mot apparaît dans un document parmi tous les mots du document. La métrique la plus connue étant [TFIDF](https://fr.wikipedia.org/wiki/TF-IDF))
 *	Le hachage.
 <br><br>
 
@@ -92,7 +92,7 @@ En plus de Scikit-learn évoqué à l'instant, d'autres librairies Python sont �
 Le bag-of-words model est très simple à comprendre et à mettre en œuvre.
 <br>
 Cette méthode souffre de néanmoins certaines lacunes :
-- le vocabulaire : pour être efficace, cette méthode exige que le vocabulaire soit conçut de manière extrêmement rigoureuse (les fautes d'orthographe par exemple peuvent poser problème)
+- le vocabulaire : pour être efficace, cette méthode exige que le vocabulaire soit conçu de manière extrêmement rigoureuse (les fautes d'orthographe par exemple peuvent poser problème)
 - le sens : ne pas tenir compte de l’ordre des mots ne permet pas de prendre en compte le contexte et par conséquent le sens des mots dans le document (sémantique). 
 <br>
 Les méthodes présentées dans les autres articles du blog, permettent de prendre en compte ce problème.
