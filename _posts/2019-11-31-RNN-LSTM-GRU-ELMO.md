@@ -25,7 +25,7 @@ sidebar:
 
 # <span style="color: #FF0000"> **Avant-propos** </span>
  
-Les techniques évoquées dans cet article apparaissent maintenant comme anciennes par rapport aux diverses architectures basées sur le Transformer qui sont très populaires depuis environ deux ans.
+Les techniques évoquées dans cet article apparaissent maintenant comme anciennes par rapport aux diverses architectures basées sur le Transformer qui sont très populaires depuis fin 2017/ début 2018.
 Ainsi beaucoup de documentation est déjà disponible en français à leur sujet.
 
 Je ne compte donc pas faire un article extrêmement détaillé qui ferait doublon par rapport à ce qui existe a déjà été fait. 
@@ -35,7 +35,7 @@ Je me contente d’énoncer les grandes idées et vous renvoie vers d’autres a
 
 
 # <span style="color: #FF0000"> **Les RNN, les LSTM et les GRU** </span>
-Les **RNN** (**recurrent neural network** ou réseaux de neurones récurrents en français) sont des réseaux de neurones qui ont jusqu’à encore environ deux ans, été majoritairement utilisé dans le cadre de problème de NLP.
+Les **RNN** (**recurrent neural network** ou réseaux de neurones récurrents en français) sont des réseaux de neurones qui ont jusqu’à encore  2017/2018, été majoritairement utilisé dans le cadre de problème de NLP.
 <center>
 <figure class="image">
   <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/RNN-LSTM-GRU-ELMO/RNN.png">
@@ -55,7 +55,7 @@ Il se trouve ainsi dans l’incapacité d’apprendre à long terme.
 
 
 
-Les **LSTM** (**Long short-term memory**) proposent une solution à ce problème en prenant en compte un vecteur mémoire via un système de portes (gates) et d’états.
+Les [**LSTM** (**Long short-term memory**)](https://www.researchgate.net/publication/13853244_Long_Short-term_Memory) de Hochreiter et Schmidhuber proposent une solution à ce problème en prenant en compte un vecteur mémoire via un système de portes (gates) et d’états.
 Les portes sont au nombre de 3 et les états au nombre de 2 :
 - Forget Gate (capacité à oublier de l’information, quand celle-ci est inutile)
 - Input Gate (capacité à prendre en compte de nouvelles informations utiles)
@@ -74,7 +74,7 @@ Les portes sont au nombre de 3 et les états au nombre de 2 :
 
 
 
-Une variante des LSTM sont les **GRU** (**Gated Recurrent Unit**). 
+Une variante des LSTM sont les [**GRU** (**Gated Recurrent Unit**)](https://arxiv.org/pdf/1406.1078v3.pdf) développées par Cho et al. 
 Cette structure est plus simple que les LSTM au sens où moins de paramètres entrent en jeu.
 Le nombre de portes passe à 2 et celui d’état à 1 :
 - Reset gate (porte de reset)
@@ -157,21 +157,27 @@ En mai 2020, [Ortiz Suárez et al.](https://www.aclweb.org/anthology/2020.acl-ma
 
 # <span style="color: #FF0000"> **Conclusion** </span>
 
-Si vous préférez regarder des vidéos plutôt que de lire, je vous conseil très fortement de regarder celle effectué par [César Laurent](https://mila.quebec/personne/cesar-laurent/).
+Si vous préférez regarder des vidéos plutôt que de lire, je vous conseille très fortement de regarder celle effectué par [César Laurent](https://mila.quebec/personne/cesar-laurent/).
 Il résume en un peu plus d’une heure tout ce qu’il faut savoir sur le sujet. 
 César Laurent étant doctorant au MILA sous la co-direction de [Pascal Vincent](https://mila.quebec/personne/pascal-vincent/) et [Yoshua Bengio](https://mila.quebec/personne/bengio-yoshua/) : [https://www.youtube.com/watch?v=dOpgDv88UOo](https://www.youtube.com/watch?v=dOpgDv88UOo) 
 <br><br>
 
-Enfin, même si ces techniques ne sont plus à la mode dans la communauté NLP depuis environ deux ans du fait de l’apparition des différentes architectures liées au Transformer, il ne faut pas les enterrer.
-En effet, Stephen Merity a proposé en novembre 2019 une nouvelle architecture intitulée SHA-RNN pour Single Headed Attention RNN (la [publication](https://arxiv.org/abs/1911.11423), le [GitHub](https://github.com/Smerity/sha-rnn) du code).
+Enfin, même si ces techniques ne sont plus à la mode dans la communauté NLP depuis 2017/2018 du fait de l’apparition des différentes architectures liées au Transformer, il ne faut pas les enterrer.
+En effet, la recherche avance très vite. Par exemple en 2020, Katharopoulos et al. ont montré dans leur papier [Transformers are RNNs:Fast Autoregressive Transformers with Linear Attention](https://arxiv.org/pdf/2006.16236.pdf) que les Transformers pouvaient être considérés comme des RNNs.
 
+<!--
+Stephen Merity a proposé en novembre 2019 une nouvelle architecture intitulée SHA-RNN pour Single Headed Attention RNN (la [publication](https://arxiv.org/abs/1911.11423), le [GitHub](https://github.com/Smerity/sha-rnn) du code).
 Le SHA-RNN permet d’obtenir de bons résultats avec une optimisation hyper-paramétrique quasi inexistante. 
 Même si cette architecture ne s’impose pas, elle montre que la différence entre les performances de son modèle et les modèles populaires du moment n’est pas aussi claire qu’on aurait pu le supposer.
 Elle pourrait servir de base à de futurs modèles.
+-->
 <br><br><br>
 
-# <span style="color: #FF0000"> **Références** </span> 
 
+# <span style="color: #FF0000"> **Références** </span> 
+- [Long Short-term Memory](https://www.researchgate.net/publication/13853244_Long_Short-term_Memory) de Hochreiter et Schmidhuber (1997)
+- [Learning Phrase Representations using RNN Encoder–Decoderfor Statistical Machine Translation](https://arxiv.org/pdf/1406.1078v3.pdf) de Cho et al. (2014)
+- [Transformers are RNNs:Fast Autoregressive Transformers with Linear Attention](https://arxiv.org/pdf/2006.16236.pdf) de Katharopoulos et al. (2020)
 - [The Illustrated BERT, ELMo, and co. (How NLP Cracked Transfer Learning)](https://jalammar.github.io/illustrated-bert/) de Jay Alammar (2018)
 - [Comment les Réseaux de neurones récurrents et Long Short-Term Memory fonctionnent](https://medium.com/@CharlesCrouspeyre/comment-les-r%C3%A9seaux-de-neurones-%C3%A0-convolution-fonctionnent-c25041d45921) de Charles Crouspeyre (2017)
 - [EH2018-10 - Modèle : Réseaux récurrents (Partie 1)](https://www.youtube.com/watch?v=dOpgDv88UOo) de César Laurent (2018)
