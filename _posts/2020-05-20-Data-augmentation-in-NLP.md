@@ -28,7 +28,7 @@ J’ai ajouté des éléments supplémentaires quand j’estimais que cela étai
 # <span style="color: #FF0000"> **Introduction** </span>
 
 Contrairement à la vision par ordinateur où l'augmentation de données d'images est une pratique courante, l'augmentation de données textuelles est assez rare en NLP.
-Cela s’explique par le fait que cette pratique est moins essentielle qu’en image car en NLP les données sont disponibles en abondance (les modèles de Transformers étant entraînés par exemple sur les millions de pages de Wikipédia). Néanmoins, pour certaines tâches il se peut que vous manquiez de données. 
+Cela s’explique par le fait que cette pratique est moins essentielle qu’en image car en NLP les données sont disponibles en abondance (les modèles de Transformers étant entraînés par exemple sur les millions de pages de Wikipédia, Common Crawl, etc.). Néanmoins, pour certaines tâches il se peut que vous manquiez de données. 
 Voici un exemple simple que j’ai rencontré professionnellement :<br>
 à l’INSERM nous travaillons sur un outil de classification afin de déterminer la nature des traumatismes des patients passant par le service des urgences du centre hospitalier universitaire de Bordeaux. Empiriquement, on s’est aperçu que pour avoir des résultats fiables, il faut environ 600 exemples d’entraînement par classes. A cela doit s’ajouter les effectifs nécessaires pour l’échantillon test. Un tel nombre ne pose pas de problème par exemple pour les chutes à domicile (le nombre de personnes âgées admises aux urgences pour une chute est monstrueux), les accidents de la route, le sport, etc… Mais pour d’autres classes, il manque (heureusement) des effectifs comme par exemple pour les noyades, les morsures d’animaux, les tentatives de suicides, etc…  Même en ayant plus de 7 années d'historique de données.
 Ainsi pour obtenir des résultats probants, il nous faut augmenter artificiellement les effectifs de certaines classes.<br> 
@@ -97,7 +97,7 @@ Vous aurez alors en sortie les 5 mots les plus similaires ainsi que les similitu
  ('perfect', 0.9243415594100952)]
 ```
 <br>
-Pour le français, plusiseurs choix s’offrent à vous :
+Pour le français, plusieurs choix s’offrent à vous :
 -	Les différents words embedding mis à disposition par [Jean-Philippe Fauconnier]( https://fauconnier.github.io/#data) (exemple d’implémentation sur sa page)
 -	Ceux de [FastText](https://fasttext.cc/docs/en/crawl-vectors.html) (voir le tableau en bas du lien)
 <br><br>
@@ -196,7 +196,7 @@ Vous pouvez également effectuer une rétro-traduction en utilisant différentes
 
 Cette technique a été utilisée par le gagnant du "Toxic Comment Classification Challenge" sur [Kaggle](https://www.kaggle.com/c/jigsaw-toxic-comment-classification-challenge/discussion/52557). Il l'a utilisée pour l'augmentation des données d'entraînement ainsi que pendant le test où les probabilités prédites pour la phrase anglaise ainsi que la rétro-traduction en trois langues (français, allemand, espagnol) ont été calculées pour obtenir la prédiction finale.
 <br>
-Pour la mise en œuvre de la rétro-traduction, vous pouvez utiliser la librairie [TextBlob]( https://textblob.readthedocs.io/en/dev/) et notamment la fonction *Translator*. Vous pouvez également utiliser Google Sheets et suivre les instructions données par [Amit](https://amitness.com/2020/02/back-translation-in-google-sheets/) pour appliquer Google Translate (en anglais). Cette approche est néanmoins manuelle. Pour automatiser la chose, utilisez l'API [Googletrans](https://pypi.org/project/googletrans/). Attention cependant si vous avez des données sensibles, utilisez des outils à base de Google Translate siginifient que Google les lira et potentiellement les stockera !<br>
+Pour la mise en œuvre de la rétro-traduction, vous pouvez utiliser la librairie [TextBlob]( https://textblob.readthedocs.io/en/dev/) et notamment la fonction *Translator*. Vous pouvez également utiliser Google Sheets et suivre les instructions données par [Amit](https://amitness.com/2020/02/back-translation-in-google-sheets/) pour appliquer Google Translate (en anglais). Cette approche est néanmoins manuelle. Pour automatiser la chose, utilisez l'API [Googletrans](https://pypi.org/project/googletrans/). Attention cependant si vous avez des données sensibles, utilisez des outils à base de Google Translate siginifie que Google les lira et potentiellement les stockera.<br>
 Une alternative consiste alors à utiliser un modèle de NLP entraîné à réaliser de la traduction. Vous pouvez par exemple utilisez ceux disponibles sur la libraire Hugging Face. Ils sont trouvables en utilisant le filtre "translation" : [https://huggingface.co/models?filter=translation](https://huggingface.co/models?filter=translation).
 <br><br><br>
 
@@ -405,13 +405,13 @@ Dans cette méthode, on prend deux phrases et on les met à la même longueur. E
 Pour le français, cette méthode est difficilement applicable, c’est pourquoi je ne vous la recommande pas. 
 Le seul GPT2 entraîné avec un vocabulaire en français sur des données en français existant pour le moment est le [BelGPT-2 d'Antoine Louis](https://github.com/antoiloui/belgpt2).
 Quand on génère une phrase avec le modèle, celle-ci est la plupart du temps correcte. Cependant un problème apparait quand on génère plusieurs phrases : celles-ci sont individuellement correctes mais devient incorrectes d'un point de vue de la logique quand elles se succèdent. Le contexte passe du coq à l'âne. 
-Lors de quelques expérimentations, j'ai aussi pû constater que des phrases dans d'autres langues que le français étaient générées (anglais et wolof entre autres). Vous pouvez expérimenter par vous même via l'[API d'HuggingFace](https://huggingface.co/antoiloui/belgpt2).
+Lors de quelques expérimentations, j'ai aussi pu constater que des phrases dans d'autres langues que le français étaient générées (anglais et wolof entre autres). Vous pouvez expérimenter par vous-même via l'[API d'HuggingFace](https://huggingface.co/antoiloui/belgpt2).
 Ainsi, je déconseille d'utiliser cette technique en l'état actuel. D'autres sont plus simples, plus rapides à mettre en place car ne nécessite pas de fine-tuning, et donne de meilleurs résultats.
 <br><br><br>
 
 
 # <span style="color: #FF0000"> **9. La simplification de textes** </span>
-J’ajoute une méthode supplémentaire qu’Amit n’a pas cité dans son article : les modèles permettant la simplification de texte. Ils permettent de conserver le sens de la phrase mais avec une syntaxe différente et souvent plus courte. Deux approches sont envisageales. La première où le texte original est paraphrasé. La deuxième consiste à faire un résumé du texte original.
+J’ajoute une méthode supplémentaire qu’Amit n’a pas cité dans son article : les modèles permettant la simplification de texte. Ils permettent de conserver le sens de la phrase mais avec une syntaxe différente et souvent plus courte. Deux approches sont envisageables. La première où le texte original est paraphrasé. La deuxième consiste à faire un résumé du texte original.
 
 ## <span style="color: #FFBF00"> **9.1 Les paraphrases** </span>
 Pour la langue anglaise, le jeu de données [ASSET]( https://github.com/facebookresearch/asset) de [Fernando Alva-Manchego, Louis Martin et al.]( https://arxiv.org/pdf/2005.00481.pdf) est disponible depuis mai 2020. Il permet de fine-tuner les modèles de simplification de texte.
@@ -427,7 +427,7 @@ Vous pouvez consulter également les travaux de [Martin et al.](https://arxiv.or
 ## <span style="color: #FFBF00"> **9.2	Le résumé** </span>
 Dans cette approche, nous avons le texte original en entrée et un résumé de ce texte en sortie.
 Cette approche est bien développée en anglais avec des jeux de données disponibles pour le fine-tuning ([XSum](https://arxiv.org/pdf/1808.08745.pdf) de Narayan et al., [CNN/DM](https://papers.nips.cc/paper/2015/file/afdec7005cc9f14302cd0474fd0f3c96-Paper.pdf) de Hermann et al.) et des modèles déjà entraînés à cette tâche (le [T5 de Raffel et al.](https://arxiv.org/pdf/1910.10683.pdf), [BART de Lewis et al.](https://arxiv.org/abs/1910.13461), etc.)
-Pour l'implémentation, vous pouvez utiliser le code suivant reposant sur la fonction pipeline de la librairie HuggingFace :
+Pour l'implémentation, vous pouvez utiliser le code suivant reposant sur la fonction pipeline de la librairie Hugging Face :
 
 ```python
 summarizer = pipeline("summarization")
@@ -438,7 +438,7 @@ Ce qui donne :
 Sam Shleifer writes the best docstring examples in the world
 ```
 
-Pour le français, vous pouvez utilisez la partie en français de la base de données multilingues [MLSUM](https://arxiv.org/pdf/2004.14900.pdf) de Scialom et al. pour entraîner votre propre modèle. Pour l'implémentation, vous pouvez utiliser le même code que pour l'anglais, où le seul changement consiste à donner en entrée une phrase en français.
+Pour le français, vous pouvez utiliser la partie en français de la base de données multilingues [MLSUM](https://arxiv.org/pdf/2004.14900.pdf) de Scialom et al. pour entraîner votre propre modèle. Pour l'implémentation, vous pouvez utiliser le même code que pour l'anglais, où le seul changement consiste à donner en entrée une phrase en français.
 <br><br><br>
 
 # <span style="color: #FF0000"> **Implémentation** </span>
@@ -448,8 +448,8 @@ Les librairies Python comme [nlpaug](https://github.com/makcedward/nlpaug) et [t
 
 # <span style="color: #FF0000"> **Conclusion** </span>
 Dans la plupart des papiers liés à l'augmentation de données textuelles, les auteurs se limitent à présenter leur méthode : aucune comparaison n'est réalisée avec d'autres méthodes existantes. 
-Ce travail de comparaison est réalisé par Columbe dans sa [thèse](https://r-libre.teluq.ca/1894/1/Th%C3%A8se_Coulombe.pdf) (2020). Celle-ci a été rédigée en français (application à des textes en anglais). Elle décrit bien les méthodes 1 à 7 de cet article, permettant de connaître les atouts et les limites de chacunes d'elles.
-Ci vous avez du temps et êtes intéressés par ce sujet, je vous invite fortement à la lire (environ 200 pages).
+Ce travail de comparaison est réalisé par Columbe dans sa [thèse](https://r-libre.teluq.ca/1894/1/Th%C3%A8se_Coulombe.pdf) (2020). Celle-ci a été rédigée en français (application à des textes en anglais). Elle décrit bien les méthodes 1 à 7 de cet article, permettant de connaître les atouts et les limites de chacune d'elles.
+Si vous avez du temps et êtes intéressés par ce sujet, je vous invite fortement à la lire (environ 200 pages).
 <br><br><br>
 
 
