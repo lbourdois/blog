@@ -20,8 +20,7 @@ Voici une liste non exhaustive d'exemples d’applications :
 - la classification de texte 
 - la génération de texte
 - la synthèse de document
-- la génération de réponses à des questions complèxes (chatbox)
-- la reconnaissance vocale
+- la génération de réponses à des questions (chatbox)
 <br><br>
 
 
@@ -49,7 +48,7 @@ Je présente plus en détails les architectures que j’ai eu l’occasion d’u
     
 <br>
 * Optimisations du Transformer<br>
-L'architecture Transformer est très performante mais possède quelques lacunes (nombres importants de paramètres, calculs pas forcéments les plus efficients, etc...).<br>
+L'architecture Transformer est très performante mais possède quelques lacunes (nombres importants de paramètres, calculs pas forcément les plus efficients, etc...).<br>
 Différents travaux cherchent à résoudre ces problèmes. On peut par exemple évoquer :
     * les versions distillées de modèles,<br>
     * ALBERT : l’[article de présentation](https://lbourdois.github.io/blog/nlp/ALBERT/)<br> 
