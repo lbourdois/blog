@@ -160,7 +160,7 @@ Quelques points à signaler :
 # <span style="color: #FF0000"> **3. Analogies** </span>
 
 Les exemples célèbres qui montrent une incroyable propriété d’embedding est le concept d’analogies. Nous pouvons ajouter et soustraire des insertions de mots et arriver à des résultats intéressants.  
-L’exemple le plus célèbre est la formule : « king » – « man » + »woman » :
+L’exemple le plus célèbre est la formule : « king » – « man » + « woman » :
 <center>
 <figure class="image">
   <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/king-man%2Bwoman-gensim.png">
@@ -419,7 +419,7 @@ Ce vecteur d’erreur peut maintenant être utilisé pour mettre à jour le mod�
 </figure>   
 </center>
 
-Voilà qui conclut la première étape d’entraînement. Nous procédons de la même façon avec le prochain échantillon de notre ensemble de données, puis le suivant, jusqu’à ce que nous ayons couvert tous les échantillons de l’ensemble de données. Cela conclut une « epoch » d’entraînement. Nous recommençons pendant un certain nombre d’époques, et nous obtenons alors notre modèle entraîné. Nous pouvons en extraire la matrice d’embedding et l’utiliser pour toute autre application.
+Voilà qui conclut la première étape d’entraînement. Nous procédons de la même façon avec le prochain échantillon de notre ensemble de données, puis le suivant, jusqu’à ce que nous ayons couvert tous les échantillons de l’ensemble de données. Cela conclut une époque d’entraînement. Nous recommençons pendant un certain nombre d’époques, et nous obtenons alors notre modèle entraîné. Nous pouvons en extraire la matrice d’embedding et l’utiliser pour toute autre application.
 
 Bien que cela élargisse notre compréhension du processus, ce n’est pas encore la façon dont word2vec est réellement formé. Il nous manque quelques idées clés.
 <br><br><br>
