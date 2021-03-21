@@ -414,7 +414,7 @@ Ainsi, je déconseille d'utiliser cette technique en l'état actuel. D'autres so
 J’ajoute une méthode supplémentaire qu’Amit n’a pas cité dans son article : les modèles permettant la simplification de texte. Ils permettent de conserver le sens de la phrase mais avec une syntaxe différente et souvent plus courte. Deux approches sont envisageables. La première où le texte original est paraphrasé. La deuxième consiste à faire un résumé du texte original.
 
 ## <span style="color: #FFBF00"> **9.1 Les paraphrases** </span>
-Pour la langue anglaise, le jeu de données [ASSET]( https://github.com/facebookresearch/asset) de [Fernando Alva-Manchego, Louis Martin et al.]( https://arxiv.org/pdf/2005.00481.pdf) est disponible depuis mai 2020. Il permet de fine-tuner les modèles de simplification de texte.
+Pour la langue anglaise, le jeu de données [ASSET]( https://github.com/facebookresearch/asset) de [Fernando Alva-Manchego, Louis Martin et al.](https://arxiv.org/abs/2005.00352) est disponible depuis mai 2020. Il permet de fine-tuner les modèles de simplification de texte.
  <center>
 <figure class="image">
   <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Data_augmentation/ASSET.png">
@@ -430,15 +430,20 @@ Cette approche est bien développée en anglais avec des jeux de données dispon
 Pour l'implémentation, vous pouvez utiliser le code suivant reposant sur la fonction pipeline de la librairie Hugging Face :
 
 ```python
-summarizer = pipeline("summarization")
-summarizer("Sam Shleifer writes the best docstring examples in the whole world.", min_length=5, max_length=20)```
+summarizer = pipeline("summarization") # utilise BART par défaut
+summarizer("Sam Shleifer writes the best docstring examples in the whole world.", min_length=5, max_length=20)
 ```
 Ce qui donne :
 ```python
 Sam Shleifer writes the best docstring examples in the world
 ```
 
-Pour le français, vous pouvez utiliser la partie en français de la base de données multilingues [MLSUM](https://arxiv.org/pdf/2004.14900.pdf) de Scialom et al. pour entraîner votre propre modèle. Pour l'implémentation, vous pouvez utiliser le même code que pour l'anglais, où le seul changement consiste à donner en entrée une phrase en français.
+Pour le français, vous pouvez utiliser la partie en français de la base de données multilingues [MLSUM](https://arxiv.org/pdf/2004.14900.pdf) de Scialom et al. pour entraîner votre propre modèle ou bien la base [OrangeSum](https://arxiv.org/abs/2010.12321) de Eddine et al. qui a été introduite avec leur modèle BARThez. Pour l'implémentation, vous pouvez utiliser le même code que pour l'anglais en changeant seulement le modèle et en donnant en entrée une phrase en français : 
+
+```python
+summarizer = pipeline("summarization", model="moussaKam/barthez-orangesum-abstract", tokenizer="moussaKam/barthez",)
+```
+moussaKam/barthez-orangesum-abstract
 <br><br><br>
 
 # <span style="color: #FF0000"> **Implémentation** </span>
@@ -461,7 +466,7 @@ Si vous avez du temps et êtes intéressés par ce sujet, je vous invite forteme
 - [A Visual Survey of Data Augmentation in NLP](https://amitness.com/2020/05/data-augmentation-for-nlp/)  de Amit Chaudhary (2020) 
 - [Techniques d’amplification des données textuelles pour l’apprentissage profond ](https://r-libre.teluq.ca/1894/1/Th%C3%A8se_Coulombe.pdf) de Claude Coulombe (2020)  
 - [Text Data Augmentation Made Simple By Leveraging NLP Cloud APIs](https://arxiv.org/abs/1812.04718) de Coulombe (2018) 
-- [French Word Embeddings de Fauconnier](https://fauconnier.github.io/#data) (2015) 
+- [French Word Embeddings](https://fauconnier.github.io/#data) de Fauconnier (2015) 
 - [The Multilingual Paraphrase Database](https://www.cis.upenn.edu/~ccb/publications/ppdb-multilingual.pdf) de Ganitkevitch et Callison-Burch (2014) 
 - [Augmenting Data with Mixup for Sentence Classification: An Empirical Study](https://arxiv.org/abs/1905.08941) de Guo et al. (2019) 
 - [TinyBERT: Distilling BERT for Natural Language Understanding](https://arxiv.org/abs/1909.10351) de Jiao et al. (2019) 
@@ -478,11 +483,12 @@ Si vous avez du temps et êtes intéressés par ce sujet, je vous invite forteme
 - [That’s So Annoying!!!: A Lexical and Frame-SemanticEmbedding Based Data Augmentation Approach to AutomaticCategorization of Annoying Behaviors using#petpeeveTweets](https://www.aclweb.org/anthology/D15-1306.pdf) de Yang Wang et Yang (2015) 
 - [mixup: Beyond Empirical Risk Minimization](https://arxiv.org/abs/1710.09412) de Zhang et al (2017)  
 - [Character-level Convolutional Networks for Text Classification](https://arxiv.org/abs/1509.01626) de Zhang et al. (2015)
-- [Don’t Give Me the Details, Just the Summary!Topic-Aware Convolutional Neural Networks for Extreme Summarization](https://arxiv.org/pdf/1808.08745.pdf) de Narayan et al. (2018)
+- [Don’t Give Me the Details, Just the Summary!Topic-Aware Convolutional Neural Networks for Extreme Summarization](https://arxiv.org/abs/1808.08745.pdf) de Narayan et al. (2018)
 - [Teaching Machines to Read and Comprehend](https://papers.nips.cc/paper/2015/file/afdec7005cc9f14302cd0474fd0f3c96-Paper.pdf) de Hermann et al. (2015)
 - [BART: Denoising Sequence-to-Sequence Pre-training for Natural Language Generation, Translation, and Comprehension](https://arxiv.org/abs/1910.13461) de Lewis et al. (2019)
 - [Exploring the Limits of Transfer Learning with a UnifiedText-to-Text Transformer](https://arxiv.org/pdf/1910.10683.pdf) de Raffel et al. (2020)
-- [MLSUM: The Multilingual Summarization Corpus](https://arxiv.org/pdf/2004.14900.pdf) de Scialom et al. (2020)
+- [MLSUM: The Multilingual Summarization Corpus](https://arxiv.org/abs/2004.14900.pdf) de Scialom et al. (2020)
+- [BARThez: a Skilled Pretrained French Sequence-to-Sequence Model](https://arxiv.org/abs/2010.12321) de Eddine et al. (2020)
 
 
 
