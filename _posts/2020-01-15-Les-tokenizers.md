@@ -13,7 +13,7 @@ tags:
   - Sentencepiece french
   - Tokenizers NLP français
   - Tokenizers NLP french
-excerpt : "NLP - Illusatration des divers prétraitement réalisables en NLP ainsi que des différents tokenizers fréquemment utilisés"
+excerpt : "NLP - Illustration des divers prétraitement réalisables en NLP ainsi que des différents tokenizers fréquemment utilisés"
 header :
     overlay_image: "https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/NLP_radom_blog.png"
     teaser : "https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Tokenizers/Spacy.png"
