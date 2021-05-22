@@ -29,8 +29,8 @@ J’ai ajouté des éléments supplémentaires quand j’estimais que cela étai
 
 Contrairement à la vision par ordinateur où l'augmentation de données d'images est une pratique courante, l'augmentation de données textuelles est assez rare en NLP.
 Cela s’explique par le fait que cette pratique est moins essentielle qu’en image car en NLP les données sont disponibles en abondance (les modèles de Transformers étant entraînés par exemple sur les millions de pages de Wikipédia, Common Crawl, etc.). Néanmoins, pour certaines tâches il se peut que vous manquiez de données. 
-Voici un exemple simple que j’ai rencontré professionnellement :<br>
-à l’INSERM nous travaillons sur un outil de classification afin de déterminer la nature des traumatismes des patients passant par le service des urgences du centre hospitalier universitaire de Bordeaux. Empiriquement, on s’est aperçu que pour avoir des résultats fiables, il faut environ 600 exemples d’entraînement par classes. A cela doit s’ajouter les effectifs nécessaires pour l’échantillon test. Un tel nombre ne pose pas de problème par exemple pour les chutes à domicile (le nombre de personnes âgées admises aux urgences pour une chute est monstrueux), les accidents de la route, le sport, etc… Mais pour d’autres classes, il manque (heureusement) des effectifs comme par exemple pour les noyades, les morsures d’animaux, les tentatives de suicides, etc…  Même en ayant plus de 7 années d'historique de données.
+Un exemple simple que j’ai rencontré professionnellement lorsque je travaillais à l'INSERM :<br>
+dans le cadre de la conception d'un outil de classification afin de déterminer la nature des traumatismes des patients passant par le service des urgences du centre hospitalier universitaire de Bordeaux nous nous sommes aperçus que pour avoir des résultats fiables, il faut environ 500 exemples d’entraînement par classes. A cela doit s’ajouter les effectifs nécessaires pour l’échantillon test. Un tel nombre ne pose pas de problème par exemple pour les chutes à domicile (le nombre de personnes âgées admises aux urgences pour une chute est monstrueux), les accidents de la route, le sport, etc… Mais pour d’autres classes, il manque (heureusement) des effectifs comme par exemple pour les noyades, les morsures d’animaux, les tentatives de suicides, etc…  Même en ayant plus de 7 années d'historique de données.
 Ainsi pour obtenir des résultats probants, il nous faut augmenter artificiellement les effectifs de certaines classes.<br> 
 L’objectif de cet article est de donner un aperçu des approches actuelles utilisées pour augmenter les données textuelles.
 <br><br><br>
@@ -349,6 +349,8 @@ Par exemple, une transformation qui ne change pas le sens de la phrase est la tr
   <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Data_augmentation/Active_voice.png">
 </figure>
 </center> 
+  
+Dans la même logique on peut passer de singulier au pluriel une phrase et inversement, ou bien encore du masculin au féminin et inversement. 
 <br><br>
 
 
@@ -403,9 +405,9 @@ Dans cette méthode, on prend deux phrases et on les met à la même longueur. E
 </center>
 <br>
 Pour le français, cette méthode est difficilement applicable, c’est pourquoi je ne vous la recommande pas. 
-Le seul GPT2 entraîné avec un vocabulaire en français sur des données en français existant pour le moment est le [BelGPT-2 d'Antoine Louis](https://github.com/antoiloui/belgpt2).
-Quand on génère une phrase avec le modèle, celle-ci est la plupart du temps correcte. Cependant un problème apparait quand on génère plusieurs phrases : celles-ci sont individuellement correctes mais devient incorrectes d'un point de vue de la logique quand elles se succèdent. Le contexte passe du coq à l'âne. 
-Lors de quelques expérimentations, j'ai aussi pu constater que des phrases dans d'autres langues que le français étaient générées (anglais et wolof entre autres). Vous pouvez expérimenter par vous-même via l'[API d'HuggingFace](https://huggingface.co/antoiloui/belgpt2).
+En français, il existe deux GPT2 entraînés avec un vocabulaire en français sur des données en français existant pour le moment  : le [BelGPT-2 d'Antoine Louis](https://github.com/antoiloui/belgpt2) et [PAGnol](https://lair.lighton.ai/pagnol/) de Launay et al..
+Pour le BelGPT2, quand on génère une phrase avec le modèle, celle-ci est la plupart du temps correcte. Cependant un problème apparait quand on génère plusieurs phrases : celles-ci sont individuellement correctes mais le tout devient incorrect d'un point de vue de la logique quand elles se succèdent. Le contexte passe du coq à l'âne. 
+Lors de quelques expérimentations, j'ai aussi pu constater que des phrases dans d'autres langues que le français étaient générées (anglais et wolof entre autres). Vous pouvez expérimenter par vous-même via l'[API d'HuggingFace](https://huggingface.co/antoiloui/belgpt2). Je n'ai pas eu l'occasion de faire d'expérimentations avec PAGnol. Vous pouvez le tester par vous-même via le [démonstrateur en ligne](https://pagnol.lighton.ai/) proposé par les auteurs du modèl.  
 Ainsi, je déconseille d'utiliser cette technique en l'état actuel. D'autres sont plus simples, plus rapides à mettre en place car ne nécessite pas de fine-tuning, et donne de meilleurs résultats.
 <br><br><br>
 
@@ -442,8 +444,9 @@ Pour le français, vous pouvez utiliser la partie en français de la base de don
 
 ```python
 summarizer = pipeline("summarization", model="moussaKam/barthez-orangesum-abstract", tokenizer="moussaKam/barthez",)
+summarizer("Votre texte")  
 ```
-moussaKam/barthez-orangesum-abstract
+
 <br><br><br>
 
 # <span style="color: #FF0000"> **Implémentation** </span>
