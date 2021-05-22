@@ -1,8 +1,6 @@
 ---
 title: "Le NLP : Natural Language Processing"
-layout: single
 permalink: /nlp/
-
 ---
 
 
@@ -41,7 +39,7 @@ Dans un second temps, vous trouverez les articles concernant les sujets utiles �
 * Le Transformer : l’[article de présentation](https://lbourdois.github.io/blog/nlp/Transformer/)
 
 * Les architectures issues du Transformer<br>
-Il en existe ENORMEMENT. Une liste non exhaustive est disponible dans le dernier article de la série consacrée au NLP : lire [l'article en question](https://lbourdois.github.io/blog/nlp/Les-architectures-transformers/)<br>
+Il en existe ENORMEMENT (plus de 10 000 modèles dans l'API d'Hugging Face en novembre 2021). Une liste non exhaustive est disponible dans le dernier article de la série consacrée au NLP : lire [l'article en question](https://lbourdois.github.io/blog/nlp/Les-architectures-transformers/)<br>
 Je présente plus en détails les architectures que j’ai eu l’occasion d’utiliser professionnellement :<br>
     * BERT : l’[article de présentation](https://lbourdois.github.io/blog/nlp/BERT/)<br> 
     * le GPT-2 : l’[article de présentation](https://lbourdois.github.io/blog/nlp/GPT2/)<br>
@@ -55,7 +53,7 @@ Différents travaux cherchent à résoudre ces problèmes. On peut par exemple �
     * ou encore le Reformer : l’[article de présentation](https://lbourdois.github.io/blog/nlp/Reformer/)<br> 
     
 <br> 
-* Les articles concernant des sujets utiles à connaître en NLP :
+* Enfin des articles concernant des sujets utiles à connaître en NLP :
     * Le prétraitement et les tokenizers : l'[article](https://lbourdois.github.io/blog/nlp/Les-tokenizers/)
     * Les tâches et jeux de données test fréquemment utilisés : l'[article](https://lbourdois.github.io/blog/nlp/Taches-et-jeux-de-donnees-en-NLP/)
     * L'augmentation de données en NLP : l'[article](https://lbourdois.github.io/blog/nlp/Data-augmentation-in-NLP/)
