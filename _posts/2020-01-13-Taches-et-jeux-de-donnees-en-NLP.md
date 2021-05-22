@@ -57,7 +57,7 @@ Le modèle doit répondre à une série de questions en lien avec un jeu de donn
  
 Les jeux de données anglophones communs : 
 - [SQuAD](https://rajpurkar.github.io/SQuAD-explorer/) (Stanford Question Answering Dataset) de [Rajpurkar et al.](https://arxiv.org/abs/1606.05250) pour la version 1 et [Rajpurkar et al.](https://arxiv.org/abs/1806.03822) pour la version 2. Il s'agit d'un jeu de données sur la compréhension de la lecture, composé de questions posées sur un ensemble d’articles de Wikipédia, où la réponse à chaque question est un intervalle de texte.
-- [RACE](http://www.qizhexie.com/data/RACE_leaderboard) (ReAding Comprehension from Examinations)de [Lai, Xie et al.](https://arxiv.org/pdf/1704.04683.pdf). Il s'agit d'un jeu de données sur la compréhension de la lecture comprenant plus de 28 000 passages et près de 100 000 questions. Le dataset provient d’examens d’anglais en Chine, qui sont conçus pour les élèves du collège et du lycée.
+- [RACE](http://www.qizhexie.com/data/RACE_leaderboard) (ReAding Comprehension from Examinations) de [Lai, Xie et al.](https://arxiv.org/pdf/1704.04683.pdf). Il s'agit d'un jeu de données sur la compréhension de la lecture comprenant plus de 28 000 passages et près de 100 000 questions. Le dataset provient d’examens d’anglais en Chine, qui sont conçus pour les élèves du collège et du lycée.
 <br><br>
 
 Pour le français :
@@ -143,7 +143,7 @@ Pour le français :
 - [FLUE](https://github.com/getalp/Flaubert/tree/master/flue) met à disposition le jeu de données CLS-FR. Celui-ci est composé d'avis d'utilisateurs de trois types de produits proposés sur Amazon : livres, musiques et DVD (4000 avis pour chacun des types de produits). Il permet de faire de la classification multi-classes.
 - dans la même logique que le point précédent, le corpus [The Multilingual Amazon Reviews Corpus](https://registry.opendata.aws/amazon-reviews-ml/) de [Keung et al.](https://arxiv.org/abs/2010.02573) propose des avis de client issue d’Amazon. Cependant ce corpus multilingue propose beaucoup plus d’avis pour le français (environ 200 000) et sur des données plus récentes que celles de FLUE.
 - Google propose une base multilingue binaire intégrant du français (il faut dire si une phrase est négative ou positive) : [Senti_lex](https://sites.google.com/site/datascienceslab/projects/multilingualsentiment) 
-- [WiLI_2018](https://zenodo.org/record/841984) de [Martin Thoma al.](https://arxiv.org/pdf/1801.07779.pdf) propose 1000 phrases à classer pour les 235 langues proposées.
+- [WiLI_2018](https://zenodo.org/record/841984) de [Martin Thoma](https://arxiv.org/pdf/1801.07779.pdf) propose 1000 phrases à classer pour les 235 langues proposées.
 - [Aspect-Based Sentiment Analysis in French](http://www.lrec-conf.org/proceedings/lrec2016/summaries/61.html) de [Apidianaki et al.]() contient 457 avis de restaurants (2365 phrases) et 162 de musées (655 phrases).
 - Un jeu de données binaire scrapé sur [AlloCiné](https://github.com/TheophileBlard/french-sentiment-analysis-with-bert/blob/master/allocine_dataset/data.tar.bz2) par [Blard](https://github.com/TheophileBlard/french-sentiment-analysis-with-bert) propose  plus de 200.000 critiques de films à classer en « positive » ou « négative ».
 <br><br><br>
@@ -226,8 +226,8 @@ En anglais :
 En français :
 - [Orange_sum]() de [ et al.]() introduite avec leur modèle BARThez, consistant en des résumés d’articles du site orange news.
 - la partie en français de la base de données multilingues [MLSUM]() de [ et al.]().
-• Wiki_lingua propose une base multilingue contenant une partie en français consistant à faire des résumés d’articles de WikiHow.
-• Cette [base](https://webhose.io/free-datasets/french-news-articles/) des résumés d'articles de journaux français 
+- Wiki_lingua propose une base multilingue contenant une partie en français consistant à faire des résumés d’articles de WikiHow.
+- Cette [base](https://webhose.io/free-datasets/french-news-articles/) des résumés d'articles de journaux français 
 <br><br><br>
 
 # <span style="color: #FF0000"> **Machine Translation (Traduction automatique)** </span> 
@@ -297,24 +297,30 @@ Les jeux de données utilisés par CamemBERT et FlauBERT :
 Les benchmark anglophones : 
 -	[GLUE multi-task benchmark](https://gluebenchmark.com/) 
 -	[decaNLP benchmark](https://decanlp.com/) 
-
-
+<br><br>
 Les benchmark francophones : 
 - [FLUE](https://github.com/getalp/Flaubert/tree/master/flue#4-constituency-parsing)
 - [XGLUE](https://microsoft.github.io/XGLUE/) version multilingue de GLUE ayant une partie en français
 <br><br><br>
 
+
+
 # <span style="color: #FF0000"> **Références** <span>
  - [SQuAD: 100,000+ Questions for Machine Comprehension of Text](https://arxiv.org/abs/1606.05250) de Rajpurkar et al. (2016)
  - [Know What You Don't Know: Unanswerable Questions for SQuAD](https://arxiv.org/abs/1606.05250) de Rajpurkar et al. (2018)
-
-  
-[RACE](http://www.qizhexie.com/data/RACE_leaderboard) de [Lai, Xie et al.](https://arxiv.org/pdf/1704.04683.pdf) 
-[Mkqa] de [Longpre et al](https://arxiv.org/abs/2007.15207)  
+- [RACE: Large-scale ReAding Comprehension Dataset From Examinations](https://arxiv.org/abs/1704.04683)
+  de Lai, Xie et al. (2017)
+- [FQuAD: French Question Answering Dataset](https://arxiv.org/pdf/2002.06071.pdf) de Hoffschmidt et al. (2020)   
+- [Project PIAF: Building a Native French Question-Answering Dataset](https://www.aclweb.org/anthology/2020.lrec-1.673/) de Keraron et al. (2020)
+- [MKQA: Multilingual Knowledge Questions & Answers](https://arxiv.org/abs/2007.15207) de Longpre et al. (2020)
+- [EXAMS: A Multi-subject High School Examinations Dataset for Cross-lingual and Multilingual Question Answering](https://arxiv.org/abs/2011.03080) de Hardalov et al. (2020) 
+- [A Corpus and Evaluation Framework for Deeper Understanding of Commonsense Stories](https://arxiv.org/abs/1604.01696) de Mostafazadeh et al. (2016) 
+- [SWAG: A Large-Scale Adversarial Dataset for Grounded Commonsense Inference](https://arxiv.org/abs/1808.05326) de  Zellers et al. (2018) 
+- [ConceptNet 5.5: An Open Multilingual Graph of General Knowledge](https://arxiv.org/abs/1612.03975) de  Speers et al. (2016) 
 <br><br><br>
   
   
 # <span style="color: #FF0000"> **Citation** <span>
 Si vous venez à utiliser des éléments de cet article, veillez s'il vous plait en créditer les auteurs en utilisant par exemple comme suit :<br>
-“*Tâches et jeux de données fréquemment utilisés dans les publications de NLP* par Loïck BOURDOIS (https://lbourdois.github.io/blog/nlp/Taches-et-jeux-de-donnees-en-NLP/), d’après Lilian WENG, *Generalized Language Models : Common Tasks & Datasets* (https://www.topbots.com/generalized-language-models-tasks-datasets/)”<br>
+“*Tâches et jeux de données fréquemment utilisés dans les publications de NLP* par Loïck BOURDOIS (https://lbourdois.github.io/blog/nlp/Taches-et-jeux-de-donnees-en-NLP/) (2020)”<br>
 Merci :)
