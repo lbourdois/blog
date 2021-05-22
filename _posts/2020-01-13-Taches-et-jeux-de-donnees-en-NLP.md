@@ -33,13 +33,13 @@ Celle des jeux de données francophones se base sur la [publication de l’équi
 
 # <span style="color: #FF0000"> **La librairie Dataset** </span>
 
-En 2020, l'entreprise Hugging Face a dévoilé sa librairie *[Dataset]*(https://github.com/huggingface/datasets) (anciennement *nlp*).
+En 2020, l'entreprise Hugging Face a dévoilé sa librairie [*Dataset*](https://github.com/huggingface/datasets) (anciennement *nlp*).
 <center>
 <figure class="image">
   <img src="https://huggingface.co/landing/assets/transformers-docs/huggingface_logo.svg" width="100px">
 </figure>
 </center>
-Grâce à celle-ci vous pouvez charger en une ligne de code l'un des 900 jeux de données (français et autres langues) actuellement disponible sur la librairie (chiffre datant de mai 2020). Vous trouverez sur cette librairie, la plupart des jeux de données présentés dans les paragraphes qui suivent.
+Grâce à celle-ci vous pouvez charger en une ligne de code l'un des 900 jeux de données (français et autres langues) actuellement disponible sur la librairie (chiffre datant de mai 2021). Vous trouverez sur cette librairie, la plupart des jeux de données présentés dans les paragraphes qui suivent.
 Pour connaître les jeux de données disponibles, vous pouvez consulter leur [application Streamlit](https://huggingface.co/nlp/viewer/), et pour un tutoriel d'utilisation, vous pouvez consulter le [Collab suivant](https://colab.research.google.com/github/huggingface/nlp/blob/master/notebooks/Overview.ipynb).
 <br><br>
 
@@ -57,13 +57,12 @@ Le modèle doit répondre à une série de questions en lien avec un jeu de donn
  
 Les jeux de données anglophones communs : 
 - [SQuAD](https://rajpurkar.github.io/SQuAD-explorer/) (Stanford Question Answering Dataset) de [Rajpurkar et al.](https://arxiv.org/abs/1606.05250) pour la version 1 et [Rajpurkar et al.](https://arxiv.org/abs/1806.03822) pour la version 2. Il s'agit d'un jeu de données sur la compréhension de la lecture, composé de questions posées sur un ensemble d’articles de Wikipédia, où la réponse à chaque question est un intervalle de texte.
-- [RACE](http://www.qizhexie.com/data/RACE_leaderboard) de [Lai, Xie et al.](https://arxiv.org/pdf/1704.04683.pdf) (ReAding Comprehension from Examinations): Un jeu de données sur la compréhension de la lecture comprenant plus de 28 000 passages et près de 100 000 questions. Le dataset provient d’examens d’anglais en Chine, qui sont conçus pour les élèves du collège et du lycée.
+- [RACE](http://www.qizhexie.com/data/RACE_leaderboard) (ReAding Comprehension from Examinations)de [Lai, Xie et al.](https://arxiv.org/pdf/1704.04683.pdf). Il s'agit d'un jeu de données sur la compréhension de la lecture comprenant plus de 28 000 passages et près de 100 000 questions. Le dataset provient d’examens d’anglais en Chine, qui sont conçus pour les élèves du collège et du lycée.
 <br><br>
 
 Pour le français :
-- [FQuAD](https://fquad.illuin.tech/) de l’entreprise Illuin Technology qui se base sur la méthodologie de SQUAD 1.0.  Elle contient plus de 25.000 questions/réponses basées sur des [articles de qualité de Wikipédia](https://fr.wikipedia.org/wiki/Cat%C3%A9gorie:Article_de_qualit%C3%A9). Pour plus d'informations concernant la répartition des types de questions (qui ? quoi ? où ? quand ?, etc...), la répartion des entités (noms communs, personnes, lieu, etc...) et les résultats des premiers benchmarks basés sur CamemBERT et FlauBERT, je vous invite à lire la [publication de l'équipe d'Illuin Technology](https://arxiv.org/abs/2002.06071).<br>
-- le projet [PIAF](https://piaf.etalab.studio/) (Pour une IA Francophone) porté par [Etalab](https://www.etalab.gouv.fr/) a pour objectif de créer lui aussi une base de Questions/Réponses. Ce projet à vocation open-data est ouvert à tous. Si vous souhaitez contribuer (ne serais-ce qu'annoter 1 ou 2 textes pour voir de vous même la méthodologie appliquée), je vous invite à vous rentre sur le site du projet :)<br>
-Les données de PIAF sont accessibles librement [ici](https://piaf.etalab.studio/dataset/).
+- [FQuAD](https://fquad.illuin.tech/) de l’entreprise Illuin Technology (plus particulièrement [Hoffschmidt et al.](https://arxiv.org/pdf/2002.06071.pdf)) qui se base sur la méthodologie de SQUAD 1.0.  Elle contient plus de 25.000 questions/réponses basées sur des [articles de qualité de Wikipédia](https://fr.wikipedia.org/wiki/Cat%C3%A9gorie:Article_de_qualit%C3%A9). Pour plus d'informations concernant la répartition des types de questions (qui ? quoi ? où ? quand ?, etc...), la répartion des entités (noms communs, personnes, lieu, etc...) et les résultats des premiers benchmarks basés sur CamemBERT et FlauBERT, je vous invite à lire la [publication de l'équipe d'Illuin Technology](https://arxiv.org/abs/2002.06071).<br>
+- le projet [PIAF](https://piaf.etalab.studio/) (Pour une IA Francophone) porté par [Etalab](https://www.etalab.gouv.fr/) et plus particulièrement [Keraron et al.](https://www.aclweb.org/anthology/2020.lrec-1.673/). Les données de PIAF sont accessibles librement [ici](https://www.data.gouv.fr/fr/datasets/piaf-le-dataset-francophone-de-questions-reponses/).
 
 Les jeux de données en français se basent sur la méthodologie de SQUAD 1.0. Ainsi la base de données a été conçue de telle sorte qu’à chaque question posée, la réponse est trouvable dans le texte. SQUAD 2.0 introduit des questions dont la réponse ne se trouve pas dans le texte. Cela permet au modèle d’apprendre également la possibilité : « la réponse n’est pas dans le texte » ou bien « je ne sais pas » au lieu de vouloir coute que coute répondre quelque chose.  
 
@@ -71,9 +70,9 @@ Les jeux de données en français se basent sur la méthodologie de SQUAD 1.0. A
 <br><br>
 
 
-Jeu de données de questions/anwsering où la réponse peut être à choix multiples :  
-- Base à cheval entre les questions/réponses et le raisonnement : [disaster_response_messages](https://huggingface.co/datasets/disaster_response_messages) Dans cette base multilingue ayant une partie en français, un texte est fourni avec des questions associées. Les réponses à ces questions étant exclusivement « oui » ou « non ».
--La base [Exams](https://github.com/mhardalov/exams-qa) de [Hardalov et al.](https://arxiv.org/abs/2011.03080) est une base multilingue ayant une partie en français, un texte est fourni avec des questions associées. Cinq réponses sont proposées à ces questions. Les textes étant des QCM pour des lycéens.
+Jeu de données de questions/anwsering où la réponse peut être à choix multiples :
+- Base à cheval entre les questions/réponses et le raisonnement : [disaster_response_messages](https://huggingface.co/datasets/disaster_response_messages). Dans cette base multilingue ayant une partie en français, un texte est fourni avec des questions associées. Les réponses à ces questions étant exclusivement « oui » ou « non ».
+- La base [Exams](https://github.com/mhardalov/exams-qa) de [Hardalov et al.](https://arxiv.org/abs/2011.03080) est une base multilingue ayant une partie en français, un texte est fourni avec des questions associées. Cinq réponses sont proposées à ces questions. Les textes étant des QCM pour des lycéens.
 <br><br><br>
 
 
@@ -86,9 +85,9 @@ Parmi un choix de propositions (souvent entre 2 et 4), le modèle doit choisir l
 
 <br>
 Les jeux de données anglophones communs : 
-- [Story Cloze Test](https://www.cs.rochester.edu/nlp/rocstories/) : Sert à évaluer le raisonnement au niveau de la compréhension et la génération des histoires. Le test exige qu’à partir de deux options, un système choisisse la fin correcte à des histoires développées sur plusieurs phrases.
-- [SWAG](https://rowanzellers.com/swag/) (Situations With Adversarial Generations): choix multiples ; contient 113 000 exemples de paires de phrases qui évaluent les inférences fondées sur le bon sens.
-- <br><br>
+- [Story Cloze Test](https://www.cs.rochester.edu/nlp/rocstories/) de [Mostafazadeh et al.](https://arxiv.org/abs/1604.01696) : sert à évaluer le raisonnement au niveau de la compréhension et la génération des histoires. Le test exige qu’à partir de deux options, un système choisisse la fin correcte à des histoires développées sur plusieurs phrases.
+- [SWAG](https://rowanzellers.com/swag/) (Situations With Adversarial Generations) de [Zellers et al.](https://arxiv.org/abs/1808.05326) : choix multiples ; contient 113 000 exemples de paires de phrases qui évaluent les inférences fondées sur le bon sens.
+<br><br>
 
 Pour le français :
 - Possibilité d’utiliser la partie en français de la base multilingues [Conceptnet5](https://github.com/commonsense/conceptnet5/wiki) de [Speers et al.](https://arxiv.org/abs/1612.03975) (fait peu commun, la base en français est plus grande que l’anglaise).
@@ -229,22 +228,22 @@ En français :
 - la partie en français de la base de données multilingues [MLSUM]() de [ et al.]().
 • Wiki_lingua propose une base multilingue contenant une partie en français consistant à faire des résumés d’articles de WikiHow.
 • Cette [base](https://webhose.io/free-datasets/french-news-articles/) des résumés d'articles de journaux français 
-
+<br><br><br>
 
 # <span style="color: #FF0000"> **Machine Translation (Traduction automatique)** </span> 
 Tâche qui consiste à traduire une phrase dans une langue donnée dans une autre langue.<br>
 
 Le site [Manythings](http://www.manythings.org/anki/) contient plus de 80 paires de langues de la forme anglais/seconde_langue. Le couple Anglais/Français contient pour plus de 175 623 paires de phrases.  
 Il existe d’autres corpus Anglais/Français. On peut par exemple citer :  le [WMT14](http://www.statmt.org/wmt14/translation-task.html), le WMT20, les données de [Pytorch](https://download.pytorch.org/tutorial/data.zip) ou encore celles de [ParaPat](https://figshare.com/articles/dataset/ParaPat_The_Multi-Million_Sentences_Parallel_Corpus_of_Patents_Abstracts/12627632) de [Soares et al.](https://www.aclweb.org/anthology/2020.lrec-1.465/)
-<br>
-Pour des corpus français/Seconde_langue avec Seconde_langue différente de l’Anglais, il y a énormément (+ de 50) de jeux de données européens disponibles à l’adresse suivante : http://opus.nlpl.eu/index.php. On accède aux différents jeux de données en cliquant sur les liens tout en haut de la page.
+<br><br>
+Pour des corpus français/Seconde_langue avec Seconde_langue différente de l’Anglais, il y a énormément (+ de 50) de jeux de données européens disponibles à l’adresse suivante : [http://opus.nlpl.eu/index.php](http://opus.nlpl.eu/index.php). On accède aux différents jeux de données en cliquant sur les liens tout en haut de la page.
 Quelques exemples de textes trouvables :  
-• Ecb textes traduits en plusieurs langues de rapports de la banque centrale européenne
-• Emea textes traduits en plusieurs langues de rapports de l’agence européenne du médicament
-• Euronews textes traduits en plusieurs langues de la chaine d’information euronews
-• Europa_eac_tm textes traduits en plusieurs langues de l’agence européenne pour la culture et l’éducation
+- Ecb textes traduits en plusieurs langues de rapports de la banque centrale européenne
+- Emea textes traduits en plusieurs langues de rapports de l’agence européenne du médicament
+- Euronews textes traduits en plusieurs langues de la chaine d’information euronews
+- Europa_eac_tm textes traduits en plusieurs langues de l’agence européenne pour la culture et l’éducation
 Et pleins d’autres choses comme des traductions de livres, de la constitution, de la déclaration des droits de l’homme, des sous-titres de TED, etc…
-<br>
+<br><br>
 Microsoft propose également un jeu de données de textes techniques pouvant être utilisée pour développer des versions localisées d'applications qui s'intègrent aux produits Microsoft. Elle peut également être utilisée pour intégrer la terminologie Microsoft dans d'autres collections terminologiques ou servir de glossaire informatique de base pour le développement linguistique dans les quelque 100 langues disponibles : [Ms_terms]()
 <br><br><br>
 
