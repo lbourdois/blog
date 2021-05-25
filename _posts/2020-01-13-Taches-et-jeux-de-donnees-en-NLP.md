@@ -99,19 +99,18 @@ Pour le français :
 Peut être également rencontré dans la littérature sous le nom de Text Entailment. Il s’agit d’un exercice pour discerner en logique si une phrase peut être déduite d’une autre. 
 <br>
 Les jeux de données anglophones communs : 
-- [RTE](https://aclweb.org/aclwiki/Textual_Entailment_Resource_Pool) (Recognizing Textual Entailment) : Un ensemble de jeux de données initiés par des défis de Text Entailment.
-- [SNLI](https://nlp.stanford.edu/projects/snli/) (Stanford Natural Language Inference) : Une collection de 570 000 de phrases en anglais écrites par l’homme à la main. Elles sont étiquetées à la main pour une classification équilibrée des labels entailment, contradiction, et neutral.
--	[MNLI](https://www.nyu.edu/projects/bowman/multinli/) (Multi-Genre NLI) : Semblable à SNLI, mais avec une plus grande variété de styles de texte et de sujets, recueillis à partir de transcriptions de discours, de fictions populaires et de rapports gouvernementaux.
--	[QNLI](https://gluebenchmark.com/tasks) (Question NLI) : Convertion de SQuAD en une tâche de classification binaire des paires de la forme (question, phrase).
--	[SciTail](http://data.allenai.org/scitail/) : Un entailment dataset créé à partir d’examens scientifiques à choix multiples et de phrases sur le Web.
+- [RTE](https://aclweb.org/aclwiki/Textual_Entailment_Resource_Pool) (Recognizing Textual Entailment)  : un ensemble de jeux de données initiés par des défis de Text Entailment.
+- [SNLI](https://nlp.stanford.edu/projects/snli/) (Stanford Natural Language Inference) de [Young et al.](https://transacl.org/ojs/index.php/tacl/article/view/229) : une collection de 570 000 de phrases en anglais écrites par l’homme à la main. Elles sont étiquetées à la main pour une classification équilibrée des labels entailment, contradiction, et neutral.
+-	[MNLI](https://cims.nyu.edu/~sbowman/multinli/) (Multi-Genre NLI) de [Williams et al.](http://aclweb.org/anthology/N18-1101) : semblable à SNLI, mais avec une plus grande variété de styles de texte et de sujets, recueillis à partir de transcriptions de discours, de fictions populaires et de rapports gouvernementaux.
+-	[QNLI](https://gluebenchmark.com/tasks) (Question NLI) : convertion de SQuAD en une tâche de classification binaire des paires de la forme (question, phrase).
+-	[SciTail](http://data.allenai.org/scitail/) de [Khot et al](https://www.semanticscholar.org/paper/SciTaiL%3A-A-Textual-Entailment-Dataset-from-Science-Khot-Sabharwal/cf8c493079702ec420ab4fc9c0fabb56b2a16c84) : un jeu de données créé à partir d’examens scientifiques à choix multiples et de phrases sur le Web.
 <br><br>
 
 Pour le français :
-- vous pouvez utiliser la partie francophone du jeu de données [XNLI](http://www.nyu.edu/projects/bowman/xnli/),
+- vous pouvez utiliser la partie francophone du jeu de données [XNLI](http://www.nyu.edu/projects/bowman/xnli/) (même auteurs que SNLI),
 - ou bien, utiliser [FLUE](https://github.com/getalp/Flaubert/tree/master/flue) (French Language Understand-ing Evaluation).
-FLUE est l'équivalent francophone de GLUE (cf. Benchmark multi-tâches de l'article). Il a été crée par les auteurs de [FlauBERT](https://arxiv.org/pdf/1912.05372.pdf). En pratique, la partie NLI de FLUE est la partie francophone du jeu de données XNLI évoqué au point précédent. Utiliser l'un ou l'autre revient donc au même. L'intérêt de FLUE est qu'il regroupe plusieurs tâches.
+FLUE est l'équivalent francophone de GLUE (cf. Benchmark multi-tâches de l'article). Il a été crée par Le et al. les auteurs de [FlauBERT](https://arxiv.org/pdf/1912.05372.pdf). En pratique, la partie NLI de FLUE est la partie francophone du jeu de données XNLI évoqué au point précédent. Utiliser l'un ou l'autre revient donc au même. L'intérêt de FLUE est qu'il regroupe plusieurs tâches.
 <br><br><br>
-
 
 
 # <span style="color: #FF0000"> **Named Entity Recognition (NER) (Reconnaissance d'entités nommées)** </span>
@@ -119,24 +118,23 @@ Etiquette les séquences de mots d’un texte qui sont des noms de choses (perso
 <br>
 Les jeux de données anglophones communs : 
 -	[CoNLL 2003 NER task](https://www.clips.uantwerpen.be/conll2003/) : consiste en un flux d’informations émanant de Reuters, se concentrant sur quatre types d’entités nommées : les personnes, les lieux, les organisations et les noms d’entités diverses.
--	[OntoNotes 5.0](https://catalog.ldc.upenn.edu/LDC2013T19) : Ce corpus contient des texte en anglais, arabe et chinois, avec quatre types d’entités différents (personne, lieux, organisation, noms d’entités diverses).
--	[Reuters Corpus](https://trec.nist.gov/data/reuters/reuters.html) : Une grande collection d’articles de Reuters.
+-	[OntoNotes 5.0](https://catalog.ldc.upenn.edu/LDC2013T19) de Weischedel et al. : ce corpus contient des texte en anglais, arabe et chinois, avec quatre types d’entités différents (personne, lieux, organisation, noms d’entités diverses).
+-	[Reuters Corpus](https://trec.nist.gov/data/reuters/reuters.html) de [Lewis et al.](https://www.jmlr.org/papers/volume5/lewis04a/lewis04a.pdf) : une grande collection d’articles de Reuters.
 <br><br>
 
 Pour le français :
-- le FTB (French Treebank) crée par les équipes de l'Université Paris-Diderot (laboratoire LLF) contenant plus de 21 550 phrases provenant d’articles du journal *Le Monde* publiés entre 1989 et 1995. L'accès à cette base de données est cependant restreinte. Pour y avoir accès, il faut en effectuer la [demande](http://ftb.linguist.univ-paris-diderot.fr/telecharger.php).
-- la partie en français de la base Wikiner disponible [ici](https://github.com/dice-group/FOX/tree/master/input/Wikiner).
+- le FTB (French Treebank) crée par les équipes de l'Université Paris-Diderot (laboratoire LLF et notamment [Abeillé et al](http://www.lrec-conf.org/proceedings/lrec2000/pdf/230.pdf)) contenant plus de 21 550 phrases provenant d’articles du journal *Le Monde* publiés entre 1989 et 1995. L'accès à cette base de données est cependant restreinte. Pour y avoir accès, il faut en effectuer la [demande](http://ftb.linguist.univ-paris-diderot.fr/telecharger.php).
+- la partie en français de la base Wikiner disponible [ici](https://github.com/dice-group/FOX/tree/master/input/Wikiner) de [Nothman et al.](http://dx.doi.org/10.1016/j.artint.2012.03.006).
 - [Wikiann](https://github.com/afshinrahimi/mmner) de [Rahimi et al.](https://arxiv.org/abs/1902.00193) basé sur [Pan, Xiaoman, et al.](https://www.aclweb.org/anthology/P19-1015/) qui permet de faire du transfert de NER entre plusieurs langues.
 <br><br><br>
-
 
 
 # <span style="color: #FF0000"> **Sentiment Analysis (Analyse de sentiments)** </span>
 Le modèle doit classer correctement un texte (positif, négatif, etc…). 
 <br>
 Les jeux de données anglophones communs : 
--	[SST](https://nlp.stanford.edu/sentiment/index.html) (Stanford Sentiment Treebank) : contient 215 154 phrases labellisées basées sur 11 855 phrases de critiques de films.
--	[IMDb](http://ai.stanford.edu/~amaas/data/sentiment/) : Un grand jeu de données de critiques de films avec des étiquettes binaires de classification des sentiments.
+-	[SST](https://nlp.stanford.edu/sentiment/index.html) (Stanford Sentiment Treebank) de [Socher et al.](https://nlp.stanford.edu/~socherr/EMNLP2013_RNTN.pdf) : contient 215 154 phrases labellisées basées sur 11 855 phrases de critiques de films.
+-	[IMDb](http://ai.stanford.edu/~amaas/data/sentiment/) de [Maas et al.](http://ai.stanford.edu/~amaas/papers/wvSent_acl2011.pdf) : un grand jeu de données de critiques de films avec des étiquettes binaires de classification des sentiments.
 <br>
 
 Pour le français :
@@ -144,7 +142,7 @@ Pour le français :
 - dans la même logique que le point précédent, le corpus [The Multilingual Amazon Reviews Corpus](https://registry.opendata.aws/amazon-reviews-ml/) de [Keung et al.](https://arxiv.org/abs/2010.02573) propose des avis de client issue d’Amazon. Cependant ce corpus multilingue propose beaucoup plus d’avis pour le français (environ 200 000) et sur des données plus récentes que celles de FLUE.
 - Google propose une base multilingue binaire intégrant du français (il faut dire si une phrase est négative ou positive) : [Senti_lex](https://sites.google.com/site/datascienceslab/projects/multilingualsentiment) 
 - [WiLI_2018](https://zenodo.org/record/841984) de [Martin Thoma](https://arxiv.org/pdf/1801.07779.pdf) propose 1000 phrases à classer pour les 235 langues proposées.
-- [Aspect-Based Sentiment Analysis in French](http://www.lrec-conf.org/proceedings/lrec2016/summaries/61.html) de [Apidianaki et al.]() contient 457 avis de restaurants (2365 phrases) et 162 de musées (655 phrases).
+- [Aspect-Based Sentiment Analysis in French](http://www.lrec-conf.org/proceedings/lrec2016/summaries/61.html) de Apidianaki et al. contient 457 avis de restaurants (2365 phrases) et 162 de musées (655 phrases).
 - Un jeu de données binaire scrapé sur [AlloCiné](https://github.com/TheophileBlard/french-sentiment-analysis-with-bert/blob/master/allocine_dataset/data.tar.bz2) par [Blard](https://github.com/TheophileBlard/french-sentiment-analysis-with-bert) propose  plus de 200.000 critiques de films à classer en « positive » ou « négative ».
 <br><br><br>
 
@@ -153,7 +151,7 @@ Pour le français :
 Modélise la structure prévisible d’un argument d’une phrase. Peut être vu comme une réponse à la question « Qui a fait quoi à qui ».
 <br
 En anglais :
--	[CoNLL-2004 & CoNLL-2005](www.lsi.upc.edu/~srlconll/)
+-	[CoNLL-2004 & CoNLL-2005](https://www.cs.upc.edu/~srlconll/)
 
 En français :  
 Pas d’équivalent en français à l’heure actuelle à ma connaissance.
@@ -166,11 +164,11 @@ Cette tâche consiste à déterminer dans quelle mesure deux textes sont similai
 <br>
 En anglais :
 -	[MRPC (MicRosoft Paraphrase Corpus)](https://www.microsoft.com/en-us/download/details.aspx?id=52398) : contient des paires de phrases extraites de sources d’information sur le Web, avec des annotations indiquant si chaque paire est sémantiquement équivalente.
--	[QQP (Quora Question Pairs) STS Benchmark](https://www.quora.com/q/quoradata/First-Quora-Dataset-Release-Question-Pairs): consiste en plus de 400 000 paires de questions issues du site Quora.
+-	[QQP (Quora Question Pairs) STS Benchmark](https://www.quora.com/q/quoradata/First-Quora-Dataset-Release-Question-Pairs) de [Iyer et al.](https://quoradata.quora.com/First-Quora-Dataset-Release-Question-Pairs) : consiste en plus de 400 000 paires de questions issues du site Quora.
 <br>
 
 Pour le français :
-- [FLUE](https://github.com/getalp/Flaubert/tree/master/flue) met à disposition la partie en français de [PAWS-X](https://ai.googleblog.com/2019/10/releasing-paws-and-paws-x-two-new.html) de Google, soit environ 49 000 données d'apprentissage et 2 000 de test.
+- [FLUE](https://github.com/getalp/Flaubert/tree/master/flue) met à disposition la partie en français de [PAWS-X](https://ai.googleblog.com/2019/10/releasing-paws-and-paws-x-two-new.html) de [Zhang et al.](https://arxiv.org/pdf/1904.01130.pdf), soit environ 49 000 données d'apprentissage et 2 000 de test.
 - [TaPaCo](https://zenodo.org/record/3707949#.X9Dh0cYza3I) de [Scherrer](https://www.aclweb.org/anthology/2020.lrec-1.848.pdf) est une base de paraphrases portant sur 73 langues incluant une partie en français.
 - La base de données [REFreSD](https://github.com/Elbria/xling-SemDiv/tree/master/REFreSD) de [Briakou et Carpuat](https://www.aclweb.org/anthology/2020.emnlp-main.121/) est de la sentence similarity mais entre deux langues : l’anglais et le français. Une phrase est donnée en anglais puis une autre en français. Le modèle doit dire si la phrase en français est liée à l’anglais ou pas.
 <br><br><br>
@@ -180,7 +178,7 @@ Pour le français :
 Annotation des phrases pour qu’elles soient grammaticalement acceptables. Les jeux de données anglophones communs :<br>
 
 En anglais :
--	[CoLA](https://nyu-mll.github.io/CoLA/) (Corpus of Linguistic Acceptability) : classification binaire de phrases.
+-	[CoLA](https://nyu-mll.github.io/CoLA/) (Corpus of Linguistic Acceptability) de [Warstadt et al.](https://arxiv.org/abs/1805.12471) : classification binaire de phrases.
 
 En français :
 Pas d’équivalent en français à l’heure actuelle à ma connaissance
@@ -191,17 +189,19 @@ Pas d’équivalent en français à l’heure actuelle à ma connaissance
 Consiste à attribuer à chaque mot sa catégorie grammaticale correspondante. L’analyse des dépendances consiste à prédire l’arbre syntaxique capturant les relations syntaxiques entre les mots.
 <br>
 En anglais :
-- [Universal Dependencies (UD)](https://universaldependencies.org/) : contient plus de 100 banques d'arbres dans plus de 60 langues
-- [Ritter](https://www.aclweb.org/anthology/D11-1141/) : issues de l'analyse de "social medias" anglais.
+- [Universal Dependencies (UD)](https://universaldependencies.org/) ([les contributeurs](https://universaldependencies.org/contributors.html)) : contient plus de 100 banques d'arbres dans plus de 60 langues
+- [Ritter et al.](https://www.aclweb.org/anthology/D11-1141/) : issues de l'analyse de "social medias" anglais.
 <br>
 
 En français :<br>
-Quatre banques d’arbres sont disponibles gratuitement dans UD v2.2 : 
--	GSD (données provenant de blogs, d’articles de presse, de critiques et de Wikipedia),
--	[Sequoia](https://deep-sequoia.inria.fr/) de l'Inria (contient plus de 3000 phrases provenant du journal régional L’Est Républicain, Wikipédia et des documents de l’agence européenne de la médecine),
--	Spoken (corpus converti automatiquement depuis la treebank [Projet Rhapsodie](https://www.projet-rhapsodie.fr/)) ,
--	ParTUT (conversion de données multilingues émanant de l’Université de Turin).
+Huit banques d’arbres sont disponibles gratuitement dans [UD v2.2](https://universaldependencies.org/) : 
+-	[GSD](https://universaldependencies.org/treebanks/fr_gsd/index.html) (données provenant de blogs, d’articles de presse, de critiques et de Wikipedia) de De Marneffe et al.,
+-	[Sequoia](https://universaldependencies.org/treebanks/fr_sequoia/index.html) de [Candito et al.](https://hal.inria.fr/hal-00969191v2/document) (contient plus de 3000 phrases provenant du journal régional L’Est Républicain, Wikipédia et des documents de l’agence européenne de la médecine),
+-	[Spoken](https://universaldependencies.org/treebanks/fr_spoken/index.html) de [Lacheret et al.](https://hal.sorbonne-universite.fr/hal-00968959/document),
+-	[ParTUT](https://universaldependencies.org/treebanks/fr_partut/) (conversion de données multilingues émanant de l’Université de Turin) de [Bosco et Sanguinetti](http://www.di.unito.it/~tutreeb/publications.html).
 <br><br><br>
+
+
 
 # <span style="color: #FF0000"> **La simplification de textes** </span>
 Les modèles de simplification de texte permettent de conserver le sens de la phrase mais avec une syntaxe différente et souvent plus courte. Deux approches sont envisageables. La première où le texte original est paraphrasé. La deuxième consiste à faire un résumé du texte original.
@@ -215,20 +215,22 @@ En français :
 - [MUSS](https://github.com/facebookresearch/muss) de [Martin et al.](https://arxiv.org/abs/2005.00352) porte sur un outil permettant une simplification de phrases multilingues.
 <br><br>
 
+
 ## <span style="color: #FFBF00"> **Simplification par résumé** </span>
 
 Dans cette approche, nous avons le texte original en entrée et un résumé de ce texte en sortie.<br>
 
 En anglais :
-- [XSum]() de [ et al.]()
-- [CNN/DM]() de [ et al.]()
+- [XSum](https://github.com/EdinburghNLP/XSum) de [Narayan et al.](https://arxiv.org/abs/1808.08745)
+- [CNN/DM](https://github.com/deepmind/rc-data/) de [Hermann  et al.](https://papers.nips.cc/paper/2015/file/afdec7005cc9f14302cd0474fd0f3c96-Paper.pdf)
 
 En français :
-- [Orange_sum]() de [ et al.]() introduite avec leur modèle BARThez, consistant en des résumés d’articles du site orange news.
-- la partie en français de la base de données multilingues [MLSUM]() de [ et al.]().
-- Wiki_lingua propose une base multilingue contenant une partie en français consistant à faire des résumés d’articles de WikiHow.
+- [Orange_sum](https://github.com/Tixierae/OrangeSum) de [Eddine et al.](https://arxiv.org/abs/2010.12321) introduite avec leur modèle BARThez, consistant en des résumés d’articles du site orange news.
+- la partie en français de la base de données multilingues [MLSUM](https://github.com/recitalAI/MLSUM) de [Scialom et al.](https://arxiv.org/pdf/2004.14900.pdf).
+- [WikiLingua](https://github.com/esdurmus/Wikilingua) de [Ladhak et al.](https://arxiv.org/abs/2010.03093) propose une base multilingue contenant une partie en français consistant à faire des résumés d’articles de WikiHow.
 - Cette [base](https://webhose.io/free-datasets/french-news-articles/) des résumés d'articles de journaux français 
 <br><br><br>
+
 
 # <span style="color: #FF0000"> **Machine Translation (Traduction automatique)** </span> 
 Tâche qui consiste à traduire une phrase dans une langue donnée dans une autre langue.<br>
@@ -279,7 +281,7 @@ Pas d’équivalent en français à l’heure actuelle à ma connaissance.
 
 
 
-# <span style="color: #FF0000"> **Jeux de données pour le pré-entraînement non supervisé** </span>
+# <span style="color: #FF0000"> **Jeux de données pour l'entraînement** </span>
 Les jeux de données anglophones communs : 
 -	[Books corpus](https://googlebooks.byu.edu) : Le corpus contient « plus de 7 000 livres non publiés de genres variés, dont l’Aventure, la Fantaisie et la Romance ».
 -	[1B Word Language Model Benchmark](http://www.statmt.org/lm-benchmark/)
@@ -317,6 +319,46 @@ Les benchmark francophones :
 - [A Corpus and Evaluation Framework for Deeper Understanding of Commonsense Stories](https://arxiv.org/abs/1604.01696) de Mostafazadeh et al. (2016) 
 - [SWAG: A Large-Scale Adversarial Dataset for Grounded Commonsense Inference](https://arxiv.org/abs/1808.05326) de  Zellers et al. (2018) 
 - [ConceptNet 5.5: An Open Multilingual Graph of General Knowledge](https://arxiv.org/abs/1612.03975) de  Speers et al. (2016) 
+
+- [Khot et al](https://www.semanticscholar.org/paper/SciTaiL%3A-A-Textual-Entailment-Dataset-from-Science-Khot-Sabharwal/cf8c493079702ec420ab4fc9c0fabb56b2a16c84)
+- [Williams et al.](http://aclweb.org/anthology/N18-1101)
+- [Young et al.](https://transacl.org/ojs/index.php/tacl/article/view/229)
+- [Le et al.](https://arxiv.org/pdf/1912.05372.pdf)
+  
+- [Lewis et al.](https://www.jmlr.org/papers/volume5/lewis04a/lewis04a.pdf)
+- [Weischedel et al](https://catalog.ldc.upenn.edu/LDC2013T19)
+- [Abeillé et al](http://www.lrec-conf.org/proceedings/lrec2000/pdf/230.pdf)
+- [Nothman et al.](http://dx.doi.org/10.1016/j.artint.2012.03.006).
+- [Rahimi et al.](https://arxiv.org/abs/1902.00193)
+- [Pan, Xiaoman, et al.](https://www.aclweb.org/anthology/P19-1015/) 
+  
+- [Socher et al.](https://nlp.stanford.edu/~socherr/EMNLP2013_RNTN.pdf)
+- [Maas et al.](http://ai.stanford.edu/~amaas/papers/wvSent_acl2011.pdf)
+- [Keung et al.](https://arxiv.org/abs/2010.02573)
+- [Apidianaki et al.](http://www.lrec-conf.org/proceedings/lrec2016/summaries/61.html)
+- [Martin Thoma](https://arxiv.org/pdf/1801.07779.pdf) 
+- [Blard](https://github.com/TheophileBlard/french-sentiment-analysis-with-bert)
+
+- [Iyer et al.](https://quoradata.quora.com/First-Quora-Dataset-Release-Question-Pairs)
+- [Zhang et al.](https://arxiv.org/pdf/1904.01130.pdf)
+- [Scherrer](https://www.aclweb.org/anthology/2020.lrec-1.848.pdf)
+- [Briakou et Carpuat](https://www.aclweb.org/anthology/2020.emnlp-main.121/)
+
+- [Warstadt et al.](https://arxiv.org/abs/1805.12471)
+
+- [Lacheret et al.](https://hal.sorbonne-universite.fr/hal-00968959/document)
+- [Ritter et al.](https://www.aclweb.org/anthology/D11-1141/)
+- [Candito et al.](https://github.com/UniversalDependencies/UD_French-Sequoia/blob/master/README.md)
+- [Bosco et Sanguinetti](http://www.di.unito.it/~tutreeb/publications.html)
+- [Hermann  et al.](https://papers.nips.cc/paper/2015/file/afdec7005cc9f14302cd0474fd0f3c96-Paper.pdf)
+- [Alva-Manchego, Martin et al.](https://www.aclweb.org/anthology/2020.acl-main.424/) 
+- [Gala et al.](https://hal.archives-ouvertes.fr/hal-02503986/document)
+- [Martin et al.](https://arxiv.org/abs/2005.00352)
+- [Narayan et al.](https://arxiv.org/abs/1808.08745)
+- [Eddine et al.](https://arxiv.org/abs/2010.12321)
+- [Scialom et al.](https://arxiv.org/pdf/2004.14900.pdf)
+- [Ladhak et al.](https://arxiv.org/abs/2010.03093)
+  
 <br><br><br>
   
   
