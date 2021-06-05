@@ -240,13 +240,12 @@ Il existe d’autres corpus Anglais/Français. On peut par exemple citer :  le [
 <br><br>
 Pour des corpus français/Seconde_langue avec Seconde_langue différente de l’Anglais, il y a énormément (+ de 50) de jeux de données européens disponibles à l’adresse suivante : [http://opus.nlpl.eu/index.php](http://opus.nlpl.eu/index.php). On accède aux différents jeux de données en cliquant sur les liens tout en haut de la page.
 Quelques exemples de textes trouvables :  
-- Ecb textes traduits en plusieurs langues de rapports de la banque centrale européenne
-- Emea textes traduits en plusieurs langues de rapports de l’agence européenne du médicament
-- Euronews textes traduits en plusieurs langues de la chaine d’information euronews
-- Europa_eac_tm textes traduits en plusieurs langues de l’agence européenne pour la culture et l’éducation
+- Ecb : textes traduits en plusieurs langues de rapports de la banque centrale européenne
+- Emea : textes traduits en plusieurs langues de rapports de l’agence européenne du médicament
+- Euronews : textes traduits en plusieurs langues de la chaine d’information Euronews
 Et pleins d’autres choses comme des traductions de livres, de la constitution, de la déclaration des droits de l’homme, des sous-titres de TED, etc…
 <br><br>
-Microsoft propose également un jeu de données de textes techniques pouvant être utilisée pour développer des versions localisées d'applications qui s'intègrent aux produits Microsoft. Elle peut également être utilisée pour intégrer la terminologie Microsoft dans d'autres collections terminologiques ou servir de glossaire informatique de base pour le développement linguistique dans les quelque 100 langues disponibles : [Ms_terms]()
+Microsoft propose également un jeu de données de textes techniques pouvant être utilisée pour développer des versions localisées d'applications qui s'intègrent aux produits Microsoft. Elle peut également être utilisée pour intégrer la terminologie Microsoft dans d'autres collections terminologiques ou servir de glossaire informatique de base pour le développement linguistique dans les quelque [100 langues disponibles](https://www.microsoft.com/en-us/language/terminology).
 <br><br><br>
 
 
@@ -265,15 +264,15 @@ En anglais :
 -	[CoNLL-2012](http://conll.cemantix.org/2012/data.html)
 
 En français :
-- La partie francophone de la base multilingues [PARSEME](https://gitlab.com/parseme/sharedtask-data/-/tree/master/1.2) 	
+- La partie francophone par [Candito el al.](https://gitlab.com/parseme/sharedtask-data/-/tree/master/1.2/FR) de la base multilingues [PARSEME](https://gitlab.com/parseme/sharedtask-data/-/tree/master/1.2).
 <br><br><br>
 
 
 
 # <span style="color: #FF0000"> **Long-range Dependency** </span>
 Les jeux de données anglophones communs :
--	[LAMBADA](https://wiki.cimec.unitn.it/tiki-index.php?page=CLIC) (LAnguage Modeling Broadened to Account for Discourse Aspects) : Une collection de passages narratifs extraits de BookCorpus (voir section suivante). La tâche est de prédire le dernier mot (ce qui nécessite au moins 50 tokens de contexte pour qu’un humain puisse prédire avec succès).
--	[Children’s Book Test](https://research.fb.com/downloads/babi/) : est construit à partir de livres qui sont librement disponibles dans le [Projet Gutenberg](https://www.gutenberg.org). La tâche consiste à prédire le mot manquant parmi 10 candidats.<br>
+-	[LAMBADA](https://wiki.cimec.unitn.it/tiki-index.php?page=CLIC) (LAnguage Modeling Broadened to Account for Discourse Aspects) de [Paperno et al.](https://www.aclweb.org/anthology/P16-1144/). C'est une collection de passages narratifs extraits de BookCorpus (voir section suivante). La tâche est de prédire le dernier mot (ce qui nécessite au moins 50 tokens de contexte pour qu’un humain puisse prédire avec succès).
+-	[Children’s Book Test](https://research.fb.com/downloads/babi/) de [Wetson et al.](https://arxiv.org/abs/1502.05698) est construit à partir de livres qui sont librement disponibles dans le [Projet Gutenberg](https://www.gutenberg.org). La tâche consiste à prédire le mot manquant parmi 10 candidats.<br>
 
 En français :
 Pas d’équivalent en français à l’heure actuelle à ma connaissance.
@@ -289,20 +288,21 @@ Les jeux de données anglophones communs :
 <br><br><br>
 
 Les jeux de données utilisés par CamemBERT et FlauBERT : 
-- [OSCAR](https://traces1.inria.fr/oscar/) : données de [Common Crawl](https://commoncrawl.org/) récupérées par l'INRIA (utilisé par CamemBERT)
-- voir la [page 8 de la publication de FlauBERT](https://arxiv.org/pdf/1912.05372.pdf) pour connaître les jeux de données qu'ils ont utilisés.
+- [OSCAR](https://traces1.inria.fr/oscar/) d'[Ortiz Suárez et al.](https://www.aclweb.org/anthology/2020.acl-main.156/)
+- [Common Crawl](https://commoncrawl.org/)
+- la [page 8 de la publication de FlauBERT](https://arxiv.org/pdf/1912.05372.pdf) pour connaître les jeux de données qu'ils ont utilisés.
 <br><br><br>
 
 
 
 # <span style="color: #FF0000"> **Benchmark multi-tâches** </span>
 Les benchmark anglophones : 
--	[GLUE multi-task benchmark](https://gluebenchmark.com/) 
--	[decaNLP benchmark](https://decanlp.com/) 
+-	[GLUE multi-task benchmark](https://gluebenchmark.com/)  de [Wang et al.](https://openreview.net/pdf?id=rJ4km2R5t7)
+-	[decaNLP benchmark](https://decanlp.com/) de [Mcann et al.](https://arxiv.org/abs/1806.08730)
 <br><br>
 Les benchmark francophones : 
 - [FLUE](https://github.com/getalp/Flaubert/tree/master/flue#4-constituency-parsing)
-- [XGLUE](https://microsoft.github.io/XGLUE/) version multilingue de GLUE ayant une partie en français
+- [XGLUE](https://microsoft.github.io/XGLUE/) version multilingue de GLUE ayant une partie en français de [Liang et al.](https://arxiv.org/abs/2004.01401)
 <br><br><br>
 
 
@@ -358,6 +358,15 @@ Les benchmark francophones :
 - [Eddine et al.](https://arxiv.org/abs/2010.12321)
 - [Scialom et al.](https://arxiv.org/pdf/2004.14900.pdf)
 - [Ladhak et al.](https://arxiv.org/abs/2010.03093)
+  
+- [Paperno et al.](https://www.aclweb.org/anthology/P16-1144/)
+- [Wetson et al.](https://arxiv.org/abs/1502.05698)
+  
+- [Ortiz Suárez et al.](https://www.aclweb.org/anthology/2020.acl-main.156/) 
+  
+- [Wang et al.](https://openreview.net/pdf?id=rJ4km2R5t7)
+- [Mcann et al.](https://arxiv.org/abs/1806.08730)
+- [Liang et al.](https://arxiv.org/abs/2004.01401)
   
 <br><br><br>
   
