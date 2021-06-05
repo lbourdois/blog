@@ -323,7 +323,7 @@ Les benchmark francophones :
 - [A Broad-Coverage Challenge Corpus for Sentence Understanding through Inference](http://aclweb.org/anthology/N18-1101) de Williams et al. (2018) 
 - [From image descriptions to visual denotations: New similarity metrics for semantic inference over event descriptions](https://transacl.org/ojs/index.php/tacl/article/view/229) de Young et al. (2014)
 - [FlauBERT: Unsupervised Language Model Pre-training for French](https://arxiv.org/pdf/1912.05372.pdf) de Le et al. (2019)
-- [RCV1:A NewBenchmarkCollectionforTextCategorizationResearch](https://www.jmlr.org/papers/volume5/lewis04a/lewis04a.pdf) de Lewis et al. (2004)
+- [RCV1:A New Benchmark Collection for Text Categorization Research](https://www.jmlr.org/papers/volume5/lewis04a/lewis04a.pdf) de Lewis et al. (2004)
 - [OntoNotes Release 5.0](https://catalog.ldc.upenn.edu/LDC2013T19) de Weischedel et al. (2013)
 - [Building a treebank for French](http://www.lrec-conf.org/proceedings/lrec2000/pdf/230.pdf) de Abeillé et al. (2000)
 - [Learning multilingual named entity recognition from Wikipedia](http://dx.doi.org/10.1016/j.artint.2012.03.006) de Nothman et al. (2013)
