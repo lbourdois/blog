@@ -19,7 +19,7 @@ minimal_mistakes_skin    : "default" # "air", "aqua", "contrast", "dark", "dirt"
 locale                   : "fr"
 title: Loïck BOURDOIS
 email:
-description: "Blog de Loïck BOURDOIS :  Vulgarisation du NLP pour les francophones. NLP expliqué en français, Transformer NLP expliqué en français, BERT expliqué en français, GPT2 expliqué en français"
+description: "Blog de Loïck BOURDOIS"
 url : https://lbourdois.github.io
 google_site_verification: "ouC89r8DsM44-CzfK9zKiulBYb7coucYBADYgNFnJpQ"
 twitter_username: username
@@ -62,7 +62,7 @@ plugins:
 
 author:
   name   : "Loïck BOURDOIS"
-  avatar : "/assets/images/bio-photo.jpg"
+  avatar : "/assets/images/pp_Loïck_Bourdois.png"
   bio              : "Plus de détails me concernant dans la page *A propos*."
   location         : "En francophonIA"
   links:
