@@ -23,7 +23,7 @@ Ce projet étant arrivé à son terme, il est à présent temps de le présenter
 Je tiens à remercier [Alfredo Canziani](https://twitter.com/alfcnz) et [Yann Le Cun](https://twitter.com/ylecun) pour leurs retours durant ce projet ainsi que pour leurs confiances :) 
 <br><br>
 
-# <span style="color: #FF0000"> **Cours sur l'apprentissage profond (édition 2020) de Yann Le Cun et Alfredo Canziani** </span>
+# <span style="color: #FF0000"> **Contenu du cours** </span>
 D’août 2020 à août 2021, j’ai traduit le cours d’**Introduction à l’apprentissage profond de Yann Le Cun et Alfredo Canziani** dispensé à l’[Université de New York](https://cds.nyu.edu/deep-learning/).
 Ce travail a nécessité environ 600h de travail afin de pouvoir proposer une traduction en français :
 -	des [28 vidéos](https://www.youtube.com/watch?v=0bMe_vCZo30&list=PLLHTzKZzVU9eaEyErdV26ikyolxOsz6mq) de cours (cours magistraux et travaux dirigés) 
