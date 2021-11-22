@@ -18,9 +18,9 @@ author_profile: false
 
 
 # <span style="color: #FF0000"> **Avant-propos** </span>
-Je n’ai publié aucun nouvel article sur le blog pendant une année car travaillais sur un projet particulièrement long et chronophage. 
+Je n’ai publié aucun nouvel article sur le blog pendant une année car je travaillais sur un projet particulièrement long et chronophage. 
 Ce projet étant arrivé à son terme, il est à présent temps de le présenter.
-Je tiens à remercier [Alfredo Canziani](https://twitter.com/alfcnz) et [Yann Le Cun](https://twitter.com/ylecun) pour leurs retours durant ce projet ainsi que pour leurs confiances :) 
+Je tiens à remercier [Alfredo Canziani](https://twitter.com/alfcnz) et [Yann Le Cun](https://twitter.com/ylecun) pour leurs retours durant ce projet ainsi que pour leur confiance :) 
 <br><br>
 
 # <span style="color: #FF0000"> **Contenu du cours** </span>
