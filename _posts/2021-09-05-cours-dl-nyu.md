@@ -26,8 +26,8 @@ Je tiens à remercier [Alfredo Canziani](https://twitter.com/alfcnz) et [Yann Le
 # <span style="color: #FF0000"> **Contenu du cours** </span>
 D’août 2020 à août 2021, j’ai traduit le cours d’**Introduction à l’apprentissage profond de Yann Le Cun et Alfredo Canziani** dispensé à l’[Université de New York](https://cds.nyu.edu/deep-learning/).
 Ce travail a nécessité environ 600h de travail afin de pouvoir proposer une traduction en français :
--	des [28 vidéos](https://www.youtube.com/watch?v=0bMe_vCZo30&list=PLLHTzKZzVU9eaEyErdV26ikyolxOsz6mq) de cours (cours magistraux et travaux dirigés) 
--	les 59 pages du [site web](https://atcold.github.io/pytorch-Deep-Learning/fr/) associé aux vidéos résumant les vidéos à travers les notes prises par les étudiants pendant le cours
+-	des [28 vidéos](https://www.youtube.com/watch?v=0bMe_vCZo30&list=PLLHTzKZzVU9eaEyErdV26ikyolxOsz6mq) de cours (cours magistraux et travaux dirigés) d'une durée totale d'environ 40h 
+-	les 59 pages du [site web](https://atcold.github.io/pytorch-Deep-Learning/fr/) résumant les vidéos à travers les notes prises par les étudiants pendant le cours
 -	les [16 notebooks](https://github.com/lbourdois/pytorch-Deep-Learning-Notebooks-in-French) utilisés lors des travaux dirigés
 
 <center>
@@ -48,7 +48,7 @@ Le programme de cette édition 2020 du cours porte sur :
 - les auto-encodeurs et leurs dérivées (DAEs, VAEs)
 - l'apprentissage autosupervisé appliqué à la vision par ordinateur
 - les transformers
-- les réseaux de neurones pour graphes (GNNs)
+- les réseaux de neurones pour graphes (GNNs)  
 et pleins d'autres choses !
 <br><br>
 
