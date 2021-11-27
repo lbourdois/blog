@@ -70,7 +70,7 @@ Le premier point lié au vocabulaire repose sur des étapes de :
 
 Le second point consacrée à la mesure peut être calculé de plusieurs manières différentes :
 *	Le comptage (compter le nombre de fois que chaque mot apparaît dans un document),
-* Les fréquences (calculer la fréquence à laquelle chaque mot apparaît dans un document parmi tous les mots du document. La métrique la plus connue étant [TF-IDF](https://fr.wikipedia.org/wiki/TF-IDF,
+* Les fréquences (calculer la fréquence à laquelle chaque mot apparaît dans un document parmi tous les mots du document. La métrique la plus connue étant [TF-IDF](https://fr.wikipedia.org/wiki/TF-IDF),
 *	Le hachage.
 <br><br>
 
