@@ -24,7 +24,7 @@ sidebar:
 
 
 # <span style="color: #FF0000"> **Rapide descriptif de la méthode** </span>
-Le *bag-of-words* (sac de mots en français) est la technique qui était majoritairement utilisée avant l’apparition des modèles basés sur les réseaux de neurones tel que les RNNs (eux-mêmes moins utilisés aujourd’hui au profit des transformers).
+Le *bag-of-words* (sac de mots en français) est la technique qui était majoritairement utilisée avant l’apparition des modèles basés sur les réseaux de neurones tel que les RNNs (eux-mêmes moins utilisés aujourd’hui au profit des *transformers*).
 Elle consiste principalement à nettoyer les données textuelles à notre disposition d’une certaine manière afin de pouvoir ensuite les fournir en entrée de modèles d'apprentissage automatique 
 (qu'ils soient classiques sous-entendus non basés sur des réseaux de neurones ou de d'apprentissage profond).<br>
 Bien que son usage ait diminué, cette technique possède de nombreux atouts qui font qu’elle peut vous être tout de même utile. En effet, le *bag-of-words* est :
