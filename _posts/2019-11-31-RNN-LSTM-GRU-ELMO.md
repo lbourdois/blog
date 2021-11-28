@@ -25,7 +25,7 @@ sidebar:
 
 # <span style="color: #FF0000"> **Avant-propos** </span>
  
-Les techniques évoquées dans cet article apparaissent maintenant comme anciennes par rapport aux diverses architectures basées sur le transformer qui sont très populaires depuis fin 2017/ début 2018.
+Les techniques évoquées dans cet article apparaissent maintenant comme anciennes par rapport aux diverses architectures basées sur le *transformer* qui sont très populaires depuis fin 2017/ début 2018.
 Ainsi beaucoup de documentation est déjà disponible en français à leur sujet.
 
 Je ne compte donc pas faire un article extrêmement détaillé qui ferait doublon par rapport à ce qui existe a déjà été fait. 
@@ -163,8 +163,8 @@ Il résume en un peu plus d’une heure tout ce qu’il faut savoir sur le sujet
 César Laurent étant doctorant au MILA sous la co-direction de [Pascal Vincent](https://mila.quebec/personne/pascal-vincent/) et [Yoshua Bengio](https://mila.quebec/personne/bengio-yoshua/) : [https://www.youtube.com/watch?v=dOpgDv88UOo](https://www.youtube.com/watch?v=dOpgDv88UOo) 
 <br><br>
 
-Enfin, même si ces techniques ne sont plus à la mode dans la communauté NLP depuis 2017/2018 du fait de l’apparition des différentes architectures liées au transformer, il ne faut pas les enterrer.
-En effet, la recherche avance très vite. Par exemple en 2020, Katharopoulos et al. ont montré dans leur papier [Transformers are RNNs : Fast Autoregressive Transformers with Linear Attention](https://arxiv.org/pdf/2006.16236.pdf) que les transformers pouvaient être considérés comme des RNNs.
+Enfin, même si ces techniques ne sont plus à la mode dans la communauté NLP depuis 2017/2018 du fait de l’apparition des différentes architectures liées au *transformer*, il ne faut pas les enterrer.
+En effet, la recherche avance très vite. Par exemple en 2020, Katharopoulos et al. ont montré dans leur papier [Transformers are RNNs : Fast Autoregressive Transformers with Linear Attention](https://arxiv.org/pdf/2006.16236.pdf) que les *transformers* pouvaient être considérés comme des RNNs.
 
 <!--
 Stephen Merity a proposé en novembre 2019 une nouvelle architecture intitulée SHA-RNN pour Single Headed Attention RNN (la [publication](https://arxiv.org/abs/1911.11423), le [GitHub](https://github.com/Smerity/sha-rnn) du code).
