@@ -62,16 +62,16 @@ Enonçons simplement les mots clés que vous pourrez ensuite chercher par vous m
 <br>
   
 Le premier point lié au vocabulaire repose sur des étapes de : 
-* Normalisation du texte
-* *Tokenization*
-* Suppression des *stopwords*
-* *Lemmatization* (ou *Stemming*)
+* normalisation du texte
+* *tokenization*
+* suppression des *stopwords*
+* *lemmatization* (ou *stemming*)
 <br>
 
 Le second point consacrée à la mesure peut être calculé de plusieurs manières différentes :
-*	Le comptage (compter le nombre de fois que chaque mot apparaît dans un document),
-* Les fréquences (calculer la fréquence à laquelle chaque mot apparaît dans un document parmi tous les mots du document. La métrique la plus connue étant [TF-IDF](https://fr.wikipedia.org/wiki/TF-IDF),
-*	Le hachage.
+*	le comptage (compter le nombre de fois que chaque mot apparaît dans un document),
+* les fréquences (calculer la fréquence à laquelle chaque mot apparaît dans un document parmi tous les mots du document. La métrique la plus connue étant [TF-IDF](https://fr.wikipedia.org/wiki/TF-IDF),
+*	le hachage.
 <br><br>
 
 
