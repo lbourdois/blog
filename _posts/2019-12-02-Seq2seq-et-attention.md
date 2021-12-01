@@ -89,7 +89,7 @@ L’encodeur et le décodeur ont tendance à être tous deux des réseaux de neu
 
 Vous pouvez définir la taille du vecteur de *context* lorsque vous configurez votre modèle.
 C’est essentiellement le nombre d’unités cachées dans l’encodeur RNN.
-Ces visualisations montrent un vecteur de taille $4$, mais dans les applications du monde réel le vecteur de contexte serait de taille $256$, $512$, ou $1024$.
+Ces visualisations montrent un vecteur de taille 4, mais dans les applications du monde réel le vecteur de contexte serait de taille 256, 512, ou 1024.
 <br><br><br>
 
 
