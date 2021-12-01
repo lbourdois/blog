@@ -29,7 +29,7 @@ Les techniques évoquées dans cet article apparaissent maintenant comme ancienn
 Ainsi beaucoup de documentation est déjà disponible en français à leur sujet.
 
 Je ne compte donc pas faire un article extrêmement détaillé qui ferait doublon par rapport à ce qui existe a déjà été fait. 
-Je me contente d’énoncer les grandes idées et vous renvoie vers d’autres articles / vidéos pour plus de détails (formules mathématiques, exemples d’applications, etc…).
+Je me contente d’énoncer les grandes idées et vous renvoie vers d’autres articles / vidéos pour plus de détails (formules mathématiques, exemples d’applications, etc.).
 <br><br><br>
 
 
