@@ -187,9 +187,9 @@ Regardons maintenant comment fonctionne le processus de l’attention et regroup
 2) Le RNN traite ces entrées, produisant une sortie et un nouveau vecteur d’état caché (\(h_{4}\)). La sortie est supprimée.<br>
 3) L’étape d’attention : nous utilisons les états cachés de l’encoder et le vecteur (\(h_{4}\)) pour calculer un vecteur de contexte (\(C_{4}\)) pour cette étape.<br>
 4) Nous concaténons \(h_{4}\) et \(C_{4}\) en un seul vecteur.<br>
-5) Nous faisons passer ce vecteur par un réseau neuronal *feedforward* (un réseau entraîné conjointement avec le modèle).<br>
-6) La sortie du réseau *feed-forward* indique le mot de sortie de ce pas de temps (= la traduction du mot en entrée).<br>
-7) On répète les étapes précédentes pour chaque mots. L’état caché fournit en entrée n’étant plus l’initial mais celui de la couche précédente (\(h_{4}\) dans notre exemple) et l’enchâssement n’est plus celui du *token* <END> mais celui obtenu pour la traduction du premier mot (sortie de l’étape 6).<br> 
+5) Nous faisons passer ce vecteur par un réseau neuronal feed-forward (un réseau entraîné conjointement avec le modèle).<br>
+6) La sortie du réseau feed-forward indique le mot de sortie de ce pas de temps (= la traduction du mot en entrée).<br>
+7) On répète les étapes précédentes pour chaque mots. L’état caché fournit en entrée n’étant plus l’initial mais celui de la couche précédente (\(h_{4}\) dans notre exemple) et l’enchâssement n’est plus celui du token <END> mais celui obtenu pour la traduction du premier mot (sortie de l’étape 6).<br> 
 <video width="100%" height="auto" loop autoplay controls>
   <source src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Seq2seq-attention/attention_tensor_dance.mp4" type="video/mp4">
 </video>
@@ -208,7 +208,7 @@ Un exemple de ce mécanisme est donné dans l’article de [Bahdanau et al., 201
 <figure class="image">
   <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Seq2seq-attention/attention_sentence.png">
   <figcaption>
-Nous pouvons voir comment le modèle a porté son attention pour la sortie de « *European Economic Area* ». En français, l’ordre de ces mots est inversé (« zone économique européenne ») par rapport à l’anglais.
+Nous pouvons voir comment le modèle a porté son attention pour la sortie de « European Economic Area ». En français, l’ordre de ces mots est inversé (« zone économique européenne ») par rapport à l’anglais.
 Tous les autres mots de la phrase sont dans le même ordre.
 </figcaption>
 </figure>
@@ -220,7 +220,6 @@ Un tutoriel sur l’implémentation en Python (TensorFlow) d’un tel modèle es
 
 
 # <span style="color: #FF0000"> **Conclusion** </span>
-
 
 Cet article est une introduction au mécanisme d’attention. 
 Il se veut assez général car il existe en réalité plusieurs variantes de ce mécanisme. 
