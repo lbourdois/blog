@@ -62,7 +62,7 @@ Les architectures sont régulièrement améliorées (augmentation du nombre de p
 De nouvelles architectures font également leur apparition chaque mois (à un moment c'était pratiquement chaque semaine).
 
 Dans le cadre d’un projet, il est important de connaître la tâche à effectuer pour appliquer le modèle le plus adéquate à votre problème (vous pouvez par exemple consulter le [Github de l’équipe d’Hugging Face](https://github.com/huggingface/transformers) qui facilite grandement l’utilisation de nombreuses architectures de *transformers*).
-Pensez également à vous tenir régulièrement informés sur les dernières nouveautés (vous pouvez pour ça par exemple consulter le classement [Glue Benchmark](https://gluebenchmark.com/leaderboard) ). Procédez également à des tests pour déterminer le modèle le plus efficace pour votre problème.
+Pensez également à vous tenir régulièrement informés sur les dernières nouveautés (vous pouvez pour ça par exemple consulter le classement [Glue Benchmark](https://gluebenchmark.com/leaderboard)). Procédez également à des tests pour déterminer le modèle le plus efficace pour votre problème.
 <br><br><br>
 
 
