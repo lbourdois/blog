@@ -23,8 +23,8 @@ sidebar:
 
 
 # <span style="color: #FF0000"> **Avant-propos** </span>
-Les publications scientifiques étant exclusivement en anglais, je fais en sorte de laisser les mots clés en anglais et de donner des explications en français (je ne sais même pas si certains mots ont une traduction en français). Le but étant que vous puissiez après lire de vous même n’importe quelle publication ou article de vulgarisation en anglais sur le sujet et les comprendre.<br>
-Le domaine du NLP évoluant actuellement très rapidement il m’est impossible de présenter tous les nouveaux modèles par manque de temps. D’où là encore la nécessité que vous alliez consulter certaines sources anglophones par vous même.<br>
+Les publications scientifiques étant exclusivement en anglais, je fais en sorte de laisser les mots clés en anglais et de donner des explications en français (je ne sais même pas si certains mots ont une traduction en français). Le but étant que vous puissiez après lire de vous-même n’importe quelle publication ou article de vulgarisation en anglais sur le sujet et les comprendre.<br>
+Le domaine du NLP évoluant actuellement très rapidement il m’est impossible de présenter tous les nouveaux modèles par manque de temps. D’où là encore la nécessité que vous alliez consulter certaines sources anglophones par vous-même.<br>
 Un élément qui me semble important pour pouvoir comprendre n’importe quelle publication est de connaître les tâches qui servent à comparer les performances des différents modèles ainsi que les jeux de données test en lien avec ces tâches.<br>
 La présentation des jeux de données anglophones se base sur l’[article de Lilian Weng](https://www.topbots.com/generalized-language-models-tasks-datasets/) (travaillant chez OpenAI). Merci à elle de m'avoir autorisé à effectuer cette traduction.<br>
 Celle des jeux de données francophones se base sur la [publication de l’équipe ayant développé le modèle CamemBERT](https://arxiv.org/pdf/1911.03894.pdf), sur la [publication de l’équipe ayant développé le modèle FlauBERT](https://arxiv.org/abs/1912.05372), sur la [publication de l’équipe ayant développé FQuAD](https://arxiv.org/abs/2002.06071) et mes propres recherches.
@@ -56,21 +56,21 @@ Le modèle doit répondre à une série de questions en lien avec un jeu de donn
  
  
 Les jeux de données anglophones communs : 
-- [SQuAD](https://rajpurkar.github.io/SQuAD-explorer/) (Stanford Question Answering Dataset) de [Rajpurkar et al.](https://arxiv.org/abs/1606.05250) pour la version 1 et [Rajpurkar et al.](https://arxiv.org/abs/1806.03822) pour la version 2. Il s'agit d'un jeu de données sur la compréhension de la lecture, composé de questions posées sur un ensemble d’articles de Wikipédia, où la réponse à chaque question est un intervalle de texte.
-- [RACE](http://www.qizhexie.com/data/RACE_leaderboard) (ReAding Comprehension from Examinations) de [Lai, Xie et al.](https://arxiv.org/pdf/1704.04683.pdf). Il s'agit d'un jeu de données sur la compréhension de la lecture comprenant plus de 28 000 passages et près de 100 000 questions. Le dataset provient d’examens d’anglais en Chine, qui sont conçus pour les élèves du collège et du lycée.
+- [SQuAD](https://rajpurkar.github.io/SQuAD-explorer/) (*Stanford Question Answering Dataset*) de [Rajpurkar et al.](https://arxiv.org/abs/1606.05250) pour la version 1 et [Rajpurkar et al.](https://arxiv.org/abs/1806.03822) pour la version 2. Il s'agit d'un jeu de données sur la compréhension de la lecture, composé de questions posées sur un ensemble d’articles de Wikipédia, où la réponse à chaque question est un intervalle de texte.
+- [RACE](http://www.qizhexie.com/data/RACE_leaderboard) (*ReAding Comprehension from Examinations*) de [Lai, Xie et al.](https://arxiv.org/pdf/1704.04683.pdf). Il s'agit d'un jeu de données sur la compréhension de la lecture comprenant plus de 28 000 passages et près de 100 000 questions. Le dataset provient d’examens d’anglais en Chine, qui sont conçus pour les élèves du collège et du lycée.
 <br><br>
 
 Pour le français :
 - [FQuAD](https://fquad.illuin.tech/) de l’entreprise Illuin Technology (plus particulièrement [Hoffschmidt et al.](https://arxiv.org/pdf/2002.06071.pdf)) qui se base sur la méthodologie de SQUAD 1.0.  Elle contient plus de 25.000 questions/réponses basées sur des [articles de qualité de Wikipédia](https://fr.wikipedia.org/wiki/Cat%C3%A9gorie:Article_de_qualit%C3%A9). Pour plus d'informations concernant la répartition des types de questions (qui ? quoi ? où ? quand ?, etc...), la répartion des entités (noms communs, personnes, lieu, etc...) et les résultats des premiers benchmarks basés sur CamemBERT et FlauBERT, je vous invite à lire la [publication de l'équipe d'Illuin Technology](https://arxiv.org/abs/2002.06071).<br>
 - le projet [PIAF](https://piaf.etalab.studio/) (Pour une IA Francophone) porté par [Etalab](https://www.etalab.gouv.fr/) et plus particulièrement [Keraron et al.](https://www.aclweb.org/anthology/2020.lrec-1.673/). Les données de PIAF sont accessibles librement [ici](https://www.data.gouv.fr/fr/datasets/piaf-le-dataset-francophone-de-questions-reponses/).
 
-Les jeux de données en français se basent sur la méthodologie de SQUAD 1.0. Ainsi la base de données a été conçue de telle sorte qu’à chaque question posée, la réponse est trouvable dans le texte. SQUAD 2.0 introduit des questions dont la réponse ne se trouve pas dans le texte. Cela permet au modèle d’apprendre également la possibilité : « la réponse n’est pas dans le texte » ou bien « je ne sais pas » au lieu de vouloir coute que coute répondre quelque chose.  
+A l'exception de [FQUADv2](https://arxiv.org/abs/2109.13209v1) de Heinrich et al, les jeux de données en français se basent sur la méthodologie de SQUAD 1.0. Ainsi la base de données a été conçue de telle sorte qu’à chaque question posée, la réponse est trouvable dans le texte. SQUAD 2.0 introduit des questions dont la réponse ne se trouve pas dans le texte. Cela permet au modèle d’apprendre également la possibilité : « la réponse n’est pas dans le texte » ou bien « je ne sais pas » au lieu de vouloir coute que coute répondre quelque chose.  
 
 - [Mkqa](https://github.com/apple/ml-mkqa/) est un jeu de données multilingues avec une partie en français. Il est proposé par [Longpre et al](https://arxiv.org/abs/2007.15207).
 <br><br>
 
 
-Jeu de données de questions/anwsering où la réponse peut être à choix multiples :
+Jeu de données de *questions/anwsering* où la réponse peut être à choix multiples :
 - Base à cheval entre les questions/réponses et le raisonnement : [disaster_response_messages](https://huggingface.co/datasets/disaster_response_messages). Dans cette base multilingue ayant une partie en français, un texte est fourni avec des questions associées. Les réponses à ces questions étant exclusivement « oui » ou « non ».
 - La base [Exams](https://github.com/mhardalov/exams-qa) de [Hardalov et al.](https://arxiv.org/abs/2011.03080) est une base multilingue ayant une partie en français, un texte est fourni avec des questions associées. Cinq réponses sont proposées à ces questions. Les textes étant des QCM pour des lycéens.
 <br><br><br>
@@ -86,7 +86,7 @@ Parmi un choix de propositions (souvent entre 2 et 4), le modèle doit choisir l
 <br>
 Les jeux de données anglophones communs : 
 - [Story Cloze Test](https://www.cs.rochester.edu/nlp/rocstories/) de [Mostafazadeh et al.](https://arxiv.org/abs/1604.01696) : sert à évaluer le raisonnement au niveau de la compréhension et la génération des histoires. Le test exige qu’à partir de deux options, un système choisisse la fin correcte à des histoires développées sur plusieurs phrases.
-- [SWAG](https://rowanzellers.com/swag/) (Situations With Adversarial Generations) de [Zellers et al.](https://arxiv.org/abs/1808.05326) : choix multiples ; contient 113 000 exemples de paires de phrases qui évaluent les inférences fondées sur le bon sens.
+- [SWAG](https://rowanzellers.com/swag/) (*Situations With Adversarial Generations*) de [Zellers et al.](https://arxiv.org/abs/1808.05326) : choix multiples ; contient 113 000 exemples de paires de phrases qui évaluent les inférences fondées sur le bon sens.
 <br><br>
 
 Pour le français :
@@ -96,19 +96,19 @@ Pour le français :
 
 
 # <span style="color: #FF0000"> **Natural Language Inference (NLI)** </span>
-Peut être également rencontré dans la littérature sous le nom de Text Entailment. Il s’agit d’un exercice pour discerner en logique si une phrase peut être déduite d’une autre. 
+Peut être également rencontré dans la littérature sous le nom de *Text Entailment*. Il s’agit d’un exercice pour discerner en logique si une phrase peut être déduite d’une autre. 
 <br>
 Les jeux de données anglophones communs : 
-- [RTE](https://aclweb.org/aclwiki/Textual_Entailment_Resource_Pool) (Recognizing Textual Entailment)  : un ensemble de jeux de données initiés par des défis de Text Entailment.
-- [SNLI](https://nlp.stanford.edu/projects/snli/) (Stanford Natural Language Inference) de [Young et al.](https://transacl.org/ojs/index.php/tacl/article/view/229) : une collection de 570 000 de phrases en anglais écrites par l’homme à la main. Elles sont étiquetées à la main pour une classification équilibrée des labels entailment, contradiction, et neutral.
--	[MNLI](https://cims.nyu.edu/~sbowman/multinli/) (Multi-Genre NLI) de [Williams et al.](http://aclweb.org/anthology/N18-1101) : semblable à SNLI, mais avec une plus grande variété de styles de texte et de sujets, recueillis à partir de transcriptions de discours, de fictions populaires et de rapports gouvernementaux.
--	[QNLI](https://gluebenchmark.com/tasks) (Question NLI) : convertion de SQuAD en une tâche de classification binaire des paires de la forme (question, phrase).
+- [RTE](https://aclweb.org/aclwiki/Textual_Entailment_Resource_Pool) (*Recognizing Textual Entailment*)  : un ensemble de jeux de données initiés par des défis de *Text Entailment*.
+- [SNLI](https://nlp.stanford.edu/projects/snli/) (*Stanford Natural Language Inference*) de [Young et al.](https://transacl.org/ojs/index.php/tacl/article/view/229) : une collection de 570 000 de phrases en anglais écrites par l’homme à la main. Elles sont étiquetées à la main pour une classification équilibrée des labels entailment, contradiction, et neutral.
+-	[MNLI](https://cims.nyu.edu/~sbowman/multinli/) (*Multi-Genre NLI*) de [Williams et al.](http://aclweb.org/anthology/N18-1101) : semblable à SNLI, mais avec une plus grande variété de styles de texte et de sujets, recueillis à partir de transcriptions de discours, de fictions populaires et de rapports gouvernementaux.
+-	[QNLI](https://gluebenchmark.com/tasks) (*Question NLI*) : convertion de SQuAD en une tâche de classification binaire des paires de la forme (question, phrase).
 -	[SciTail](http://data.allenai.org/scitail/) de [Khot et al](https://www.semanticscholar.org/paper/SciTaiL%3A-A-Textual-Entailment-Dataset-from-Science-Khot-Sabharwal/cf8c493079702ec420ab4fc9c0fabb56b2a16c84) : un jeu de données créé à partir d’examens scientifiques à choix multiples et de phrases sur le Web.
 <br><br>
 
 Pour le français :
 - vous pouvez utiliser la partie francophone du jeu de données [XNLI](http://www.nyu.edu/projects/bowman/xnli/) (même auteurs que SNLI),
-- ou bien, utiliser [FLUE](https://github.com/getalp/Flaubert/tree/master/flue) (French Language Understand-ing Evaluation).
+- ou bien, utiliser [FLUE](https://github.com/getalp/Flaubert/tree/master/flue) (*French Language Understand-ing Evaluation*).
 FLUE est l'équivalent francophone de GLUE (cf. Benchmark multi-tâches de l'article). Il a été crée par Le et al. les auteurs de [FlauBERT](https://arxiv.org/pdf/1912.05372.pdf). En pratique, la partie NLI de FLUE est la partie francophone du jeu de données XNLI évoqué au point précédent. Utiliser l'un ou l'autre revient donc au même. L'intérêt de FLUE est qu'il regroupe plusieurs tâches.
 <br><br><br>
 
@@ -118,12 +118,12 @@ Etiquette les séquences de mots d’un texte qui sont des noms de choses (perso
 <br>
 Les jeux de données anglophones communs : 
 -	[CoNLL 2003 NER task](https://www.clips.uantwerpen.be/conll2003/) : consiste en un flux d’informations émanant de Reuters, se concentrant sur quatre types d’entités nommées : les personnes, les lieux, les organisations et les noms d’entités diverses.
--	[OntoNotes 5.0](https://catalog.ldc.upenn.edu/LDC2013T19) de Weischedel et al. : ce corpus contient des texte en anglais, arabe et chinois, avec quatre types d’entités différents (personne, lieux, organisation, noms d’entités diverses).
+-	[OntoNotes 5.0](https://catalog.ldc.upenn.edu/LDC2013T19) de Weischedel et al. : ce corpus contient des textes en anglais, arabe et chinois, avec quatre types d’entités différents (personne, lieux, organisation, noms d’entités diverses).
 -	[Reuters Corpus](https://trec.nist.gov/data/reuters/reuters.html) de [Lewis et al.](https://www.jmlr.org/papers/volume5/lewis04a/lewis04a.pdf) : une grande collection d’articles de Reuters.
 <br><br>
 
 Pour le français :
-- le FTB (French Treebank) crée par les équipes de l'Université Paris-Diderot (laboratoire LLF et notamment [Abeillé et al](http://www.lrec-conf.org/proceedings/lrec2000/pdf/230.pdf)) contenant plus de 21 550 phrases provenant d’articles du journal *Le Monde* publiés entre 1989 et 1995. L'accès à cette base de données est cependant restreinte. Pour y avoir accès, il faut en effectuer la [demande](http://ftb.linguist.univ-paris-diderot.fr/telecharger.php).
+- le FTB (*French Treebank*) crée par les équipes de l'Université Paris-Diderot (laboratoire LLF et notamment [Abeillé et al](http://www.lrec-conf.org/proceedings/lrec2000/pdf/230.pdf)) contenant plus de 21 550 phrases provenant d’articles du journal *Le Monde* publiés entre 1989 et 1995. L'accès à cette base de données est cependant restreint. Pour y avoir accès, il faut en effectuer la [demande](http://ftb.linguist.univ-paris-diderot.fr/telecharger.php).
 - la partie en français de la base Wikiner disponible [ici](https://github.com/dice-group/FOX/tree/master/input/Wikiner) de [Nothman et al.](http://dx.doi.org/10.1016/j.artint.2012.03.006).
 - [Wikiann](https://github.com/afshinrahimi/mmner) de [Rahimi et al.](https://arxiv.org/abs/1902.00193) basé sur [Pan, Xiaoman, et al.](https://www.aclweb.org/anthology/P19-1015/) qui permet de faire du transfert de NER entre plusieurs langues.
 <br><br><br>
@@ -133,7 +133,7 @@ Pour le français :
 Le modèle doit classer correctement un texte (positif, négatif, etc…). 
 <br>
 Les jeux de données anglophones communs : 
--	[SST](https://nlp.stanford.edu/sentiment/index.html) (Stanford Sentiment Treebank) de [Socher et al.](https://nlp.stanford.edu/~socherr/EMNLP2013_RNTN.pdf) : contient 215 154 phrases labellisées basées sur 11 855 phrases de critiques de films.
+-	[SST](https://nlp.stanford.edu/sentiment/index.html) (*Stanford Sentiment Treebank*) de [Socher et al.](https://nlp.stanford.edu/~socherr/EMNLP2013_RNTN.pdf) : contient 215 154 phrases labellisées basées sur 11 855 phrases de critiques de films.
 -	[IMDb](http://ai.stanford.edu/~amaas/data/sentiment/) de [Maas et al.](http://ai.stanford.edu/~amaas/papers/wvSent_acl2011.pdf) : un grand jeu de données de critiques de films avec des étiquettes binaires de classification des sentiments.
 <br>
 
@@ -149,7 +149,7 @@ Pour le français :
 
 # <span style="color: #FF0000"> **Semantic Role Labeling (SRL)** </span>
 Modélise la structure prévisible d’un argument d’une phrase. Peut être vu comme une réponse à la question « Qui a fait quoi à qui ».
-<br
+<br>
 En anglais :
 -	[CoNLL-2004 & CoNLL-2005](https://www.cs.upc.edu/~srlconll/)
 
@@ -163,14 +163,14 @@ Pas d’équivalent en français à l’heure actuelle à ma connaissance.
 Cette tâche consiste à déterminer dans quelle mesure deux textes sont similaires. Cela peut se faire en attribuant une note de 1 à 5. Les tâches connexes sont la paraphrase ou l’identification des doublons. 
 <br>
 En anglais :
--	[MRPC (MicRosoft Paraphrase Corpus)](https://www.microsoft.com/en-us/download/details.aspx?id=52398) : contient des paires de phrases extraites de sources d’information sur le Web, avec des annotations indiquant si chaque paire est sémantiquement équivalente.
--	[QQP (Quora Question Pairs) STS Benchmark](https://www.quora.com/q/quoradata/First-Quora-Dataset-Release-Question-Pairs) de [Iyer et al.](https://quoradata.quora.com/First-Quora-Dataset-Release-Question-Pairs) : consiste en plus de 400 000 paires de questions issues du site Quora.
+-	[MRPC (*MicRosoft Paraphrase Corpus*)](https://www.microsoft.com/en-us/download/details.aspx?id=52398) : contient des paires de phrases extraites de sources d’information sur le Web, avec des annotations indiquant si chaque paire est sémantiquement équivalente.
+-	[QQP (*Quora Question Pairs*) STS Benchmark](https://www.quora.com/q/quoradata/First-Quora-Dataset-Release-Question-Pairs) de [Iyer et al.](https://quoradata.quora.com/First-Quora-Dataset-Release-Question-Pairs) : consiste en plus de 400 000 paires de questions issues du site Quora.
 <br>
 
 Pour le français :
 - [FLUE](https://github.com/getalp/Flaubert/tree/master/flue) met à disposition la partie en français de [PAWS-X](https://ai.googleblog.com/2019/10/releasing-paws-and-paws-x-two-new.html) de [Zhang et al.](https://arxiv.org/pdf/1904.01130.pdf), soit environ 49 000 données d'apprentissage et 2 000 de test.
 - [TaPaCo](https://zenodo.org/record/3707949#.X9Dh0cYza3I) de [Scherrer](https://www.aclweb.org/anthology/2020.lrec-1.848.pdf) est une base de paraphrases portant sur 73 langues incluant une partie en français.
-- La base de données [REFreSD](https://github.com/Elbria/xling-SemDiv/tree/master/REFreSD) de [Briakou et Carpuat](https://www.aclweb.org/anthology/2020.emnlp-main.121/) est de la sentence similarity mais entre deux langues : l’anglais et le français. Une phrase est donnée en anglais puis une autre en français. Le modèle doit dire si la phrase en français est liée à l’anglais ou pas.
+- La base de données [REFreSD](https://github.com/Elbria/xling-SemDiv/tree/master/REFreSD) de [Briakou et Carpuat](https://www.aclweb.org/anthology/2020.emnlp-main.121/) est de la *sentence similarity* mais entre deux langues : l’anglais et le français. Une phrase est donnée en anglais puis une autre en français. Le modèle doit dire si la phrase en français est liée à l’anglais ou pas.
 <br><br><br>
 
 
@@ -178,7 +178,7 @@ Pour le français :
 Annotation des phrases pour qu’elles soient grammaticalement acceptables. Les jeux de données anglophones communs :<br>
 
 En anglais :
--	[CoLA](https://nyu-mll.github.io/CoLA/) (Corpus of Linguistic Acceptability) de [Warstadt et al.](https://arxiv.org/abs/1805.12471) : classification binaire de phrases.
+-	[CoLA](https://nyu-mll.github.io/CoLA/) (*Corpus of Linguistic Acceptability*) de [Warstadt et al.](https://arxiv.org/abs/1805.12471) : classification binaire de phrases.
 
 En français :
 Pas d’équivalent en français à l’heure actuelle à ma connaissance
@@ -190,7 +190,7 @@ Consiste à attribuer à chaque mot sa catégorie grammaticale correspondante. L
 <br>
 En anglais :
 - [Universal Dependencies (UD)](https://universaldependencies.org/) ([les contributeurs](https://universaldependencies.org/contributors.html)) : contient plus de 100 banques d'arbres dans plus de 60 langues
-- [Ritter et al.](https://www.aclweb.org/anthology/D11-1141/) : issues de l'analyse de "social medias" anglais.
+- [Ritter et al.](https://www.aclweb.org/anthology/D11-1141/) : issues de l'analyse de *social medias* anglais.
 <br>
 
 En français :<br>
@@ -208,7 +208,7 @@ Les modèles de simplification de texte permettent de conserver le sens de la ph
 
 ## <span style="color: #FFBF00"> **Simplification par paraphrase** </span>
 En anglais :
-- [Asset](https://github.com/facebookresearch/asset) de [Alva-Manchego, Martin et al.](https://www.aclweb.org/anthology/2020.acl-main.424/) permet de fine-tuner les modèles de simplification de texte.
+- [Asset](https://github.com/facebookresearch/asset) de [Alva-Manchego, Martin et al.](https://www.aclweb.org/anthology/2020.acl-main.424/) permet de *finetuner* les modèles de simplification de texte.
 
 En français :
 - Le jeu de données [ALECTOR](https://alectorsite.wordpress.com/corpus/) de [Gala et al.](https://hal.archives-ouvertes.fr/hal-02503986/document) contient des extraits de sites proposant du matériel pédagogique pour les niveaux CE1, CE2 et CM1 de l’école primaire. Chaque texte original a été adapté (simplifié) au niveau du lexique (vocabulaire), de la morpho-syntaxe (catégories grammaticales, structures de phrase) et du discours (co-référence).	
@@ -243,7 +243,7 @@ Quelques exemples de textes trouvables :
 - Ecb : textes traduits en plusieurs langues de rapports de la banque centrale européenne
 - Emea : textes traduits en plusieurs langues de rapports de l’agence européenne du médicament
 - Euronews : textes traduits en plusieurs langues de la chaine d’information Euronews
-Et pleins d’autres choses comme des traductions de livres, de la constitution, de la déclaration des droits de l’homme, des sous-titres de TED, etc…
+Et pleins d’autres choses comme des traductions de livres, de la constitution, de la déclaration des droits de l’homme, des sous-titres de TED, etc.
 <br><br>
 Microsoft propose également un jeu de données de textes techniques pouvant être utilisée pour développer des versions localisées d'applications qui s'intègrent aux produits Microsoft. Elle peut également être utilisée pour intégrer la terminologie Microsoft dans d'autres collections terminologiques ou servir de glossaire informatique de base pour le développement linguistique dans les quelque [100 langues disponibles](https://www.microsoft.com/en-us/language/terminology).
 <br><br><br>
@@ -271,7 +271,7 @@ En français :
 
 # <span style="color: #FF0000"> **Long-range Dependency** </span>
 Les jeux de données anglophones communs :
--	[LAMBADA](https://wiki.cimec.unitn.it/tiki-index.php?page=CLIC) (LAnguage Modeling Broadened to Account for Discourse Aspects) de [Paperno et al.](https://www.aclweb.org/anthology/P16-1144/). C'est une collection de passages narratifs extraits de BookCorpus (voir section suivante). La tâche est de prédire le dernier mot (ce qui nécessite au moins 50 tokens de contexte pour qu’un humain puisse prédire avec succès).
+-	[LAMBADA](https://wiki.cimec.unitn.it/tiki-index.php?page=CLIC) (*LAnguage Modeling Broadened to Account for Discourse Aspects*) de [Paperno et al.](https://www.aclweb.org/anthology/P16-1144/). C'est une collection de passages narratifs extraits de BookCorpus (voir section suivante). La tâche est de prédire le dernier mot (ce qui nécessite au moins 50 tokens de contexte pour qu’un humain puisse prédire avec succès).
 -	[Children’s Book Test](https://research.fb.com/downloads/babi/) de [Wetson et al.](https://arxiv.org/abs/1502.05698) est construit à partir de livres qui sont librement disponibles dans le [Projet Gutenberg](https://www.gutenberg.org). La tâche consiste à prédire le mot manquant parmi 10 candidats.<br>
 
 En français :
@@ -296,11 +296,11 @@ Les jeux de données utilisés par CamemBERT et FlauBERT :
 
 
 # <span style="color: #FF0000"> **Benchmark multi-tâches** </span>
-Les benchmark anglophones : 
+Les *benchmarks* anglophones : 
 -	[GLUE multi-task benchmark](https://gluebenchmark.com/)  de [Wang et al.](https://openreview.net/pdf?id=rJ4km2R5t7)
 -	[decaNLP benchmark](https://decanlp.com/) de [Mcann et al.](https://arxiv.org/abs/1806.08730)
 <br><br>
-Les benchmark francophones : 
+Les *benchmarks* francophones : 
 - [FLUE](https://github.com/getalp/Flaubert/tree/master/flue#4-constituency-parsing)
 - [XGLUE](https://microsoft.github.io/XGLUE/) version multilingue de GLUE ayant une partie en français de [Liang et al.](https://arxiv.org/abs/2004.01401)
 <br><br><br>
@@ -314,6 +314,7 @@ Les benchmark francophones :
   de Lai, Xie et al. (2017)
 - [FQuAD: French Question Answering Dataset](https://arxiv.org/pdf/2002.06071.pdf) de Hoffschmidt et al. (2020)   
 - [Project PIAF: Building a Native French Question-Answering Dataset](https://www.aclweb.org/anthology/2020.lrec-1.673/) de Keraron et al. (2020)
+- [FQuAD2.0: French Question Answering and knowing that you know nothing](https://arxiv.org/abs/2109.13209v1) de Heinrich et al. (2021)
 - [MKQA: Multilingual Knowledge Questions & Answers](https://arxiv.org/abs/2007.15207) de Longpre et al. (2020)
 - [EXAMS: A Multi-subject High School Examinations Dataset for Cross-lingual and Multilingual Question Answering](https://arxiv.org/abs/2011.03080) de Hardalov et al. (2020) 
 - [A Corpus and Evaluation Framework for Deeper Understanding of Commonsense Stories](https://arxiv.org/abs/1604.01696) de Mostafazadeh et al. (2016) 
