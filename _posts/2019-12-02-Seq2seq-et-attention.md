@@ -89,7 +89,7 @@ L’encodeur et le décodeur ont tendance à être tous deux des réseaux de neu
 
 Vous pouvez définir la taille du vecteur de *context* lorsque vous configurez votre modèle.
 C’est essentiellement le nombre d’unités cachées dans l’encodeur RNN.
-Ces visualisations montrent un vecteur de taille 4, mais dans les applications du monde réel le vecteur de contexte serait de taille 256, 512, ou 1024.
+Ces visualisations montrent un vecteur de taille $4$, mais dans les applications du monde réel le vecteur de contexte serait de taille $256$, $512$, ou $1024$.
 <br><br><br>
 
 
@@ -170,12 +170,11 @@ Un modèle d’attention diffère d’un modèle de sequence à sequence classiq
 <video width="100%" height="auto" loop autoplay controls>
   <source src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Seq2seq-attention/seq2seq_7.mp4" type="video/mp4">
 </video>
-*    Deuxièmement, un décodeur d’attention fait une étape supplémentaire avant de produire sa sortie. Afin de se concentrer sur les parties de l’entrée qui sont pertinentes, le décodeur fait ce qui suit :
-
-  *    Il regarde l’ensemble des états cachés de l’encodeur qu’il a reçu (chaque état caché de l’encodeur  est le plus souvent associé à un certain mot dans la phrase d’entrée).
-  *    Il donne un score à chaque état caché (on passe l’étape de comment le *scoring* se fait pour le moment)
-  *    Il multiplie chaque état caché par son score attribué via softmax (amplifiant ainsi les états cachés avec des scores élevés, et noyant les états cachés avec des scores faibles) 
-  *    
+* Deuxièmement, un décodeur d’attention fait une étape supplémentaire avant de produire sa sortie. Afin de se concentrer sur les parties de l’entrée qui sont pertinentes, le décodeur fait ce qui suit :
+  *  Il regarde l’ensemble des états cachés de l’encodeur qu’il a reçu (chaque état caché de l’encodeur  est le plus souvent associé à un certain mot dans la phrase d’entrée).
+  *  Il donne un score à chaque état caché (on passe l’étape de comment le *scoring* se fait pour le moment)
+  *  Il multiplie chaque état caché par son score attribué via softmax (amplifiant ainsi les états cachés avec des scores élevés, et noyant les états cachés avec des scores faibles) 
+   
 <video width="100%" height="auto" loop autoplay controls>
   <source src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Seq2seq-attention/attention_process.mp4" type="video/mp4">
 </video>
@@ -184,13 +183,12 @@ Le « scorage » se fait à chaque pas de temps (nouveau mot) du côté du déco
 
 <br>
 Regardons maintenant comment fonctionne le processus de l’attention et regroupons le tout dans la visualisation qui suit :
-
 1) Le décodeur d’attention prend en entrée l’enchâssement du *token* <END> ainsi qu’un état caché initial (\(h_{init}\)).<br>
 2) Le RNN traite ces entrées, produisant une sortie et un nouveau vecteur d’état caché (\(h_{4}\)). La sortie est supprimée.<br>
 3) L’étape d’attention : nous utilisons les états cachés de l’encoder et le vecteur (\(h_{4}\)) pour calculer un vecteur de contexte (\(C_{4}\)) pour cette étape.<br>
 4) Nous concaténons \(h_{4}\) et \(C_{4}\) en un seul vecteur.<br>
 5) Nous faisons passer ce vecteur par un réseau neuronal *feedforward* (un réseau entraîné conjointement avec le modèle).<br>
-6) La sortie du réseau *feedforward* indique le mot de sortie de ce pas de temps (= la traduction du mot en entrée).<br>
+6) La sortie du réseau *feed-forward* indique le mot de sortie de ce pas de temps (= la traduction du mot en entrée).<br>
 7) On répète les étapes précédentes pour chaque mots. L’état caché fournit en entrée n’étant plus l’initial mais celui de la couche précédente (\(h_{4}\) dans notre exemple) et l’enchâssement n’est plus celui du *token* <END> mais celui obtenu pour la traduction du premier mot (sortie de l’étape 6).<br> 
 <video width="100%" height="auto" loop autoplay controls>
   <source src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Seq2seq-attention/attention_tensor_dance.mp4" type="video/mp4">
