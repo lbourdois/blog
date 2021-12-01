@@ -30,16 +30,17 @@ Cet article est une traduction de l’article de Jay Alammar : [The illustrated 
 
 # <span style="color: #FF0000"> **1. Exemple d’introduction** </span>
 
-Sur une échelle de 0 à 100, dans quelle mesure êtes-vous introverti/extraverti (où 0 est le plus introverti et 100 le plus extraverti) ? Avez-vous déjà passé un test de personnalité comme le test des cinq grands traits de personnalité ? Si vous ne l’avez pas fait, ce sont des tests qui vous posent une liste de questions, puis vous notent sur un certain nombre d’axes, l’introversion/extraversion étant l’un d’eux.
+Sur une échelle de $0$ à $100$, dans quelle mesure êtes-vous introverti/extraverti (où $0$ est le plus introverti et $100$ le plus extraverti) ? Avez-vous déjà passé un test de personnalité comme le test des cinq grands traits de personnalité ? Si vous ne l’avez pas fait, ce sont des tests qui vous posent une liste de questions, puis vous notent sur un certain nombre d’axes, l’introversion/extraversion étant l’un d’eux.
 
 <center>
 <figure class="image">
   <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/big-five-personality-traits-score.png">
   <figcaption>Exemple de résultat d’un test des cinq grands traits de personnalité. Il aurait une capacité prédictive de réussite scolaire, personnelle, et professionnelle. Pour effectuer ce test : https://projects.fivethirtyeight.com/personality-quiz/.</figcaption>
-</figure>                                                                                                 </center>
+</figure>                                                                                                 
+</center>
 
 
-Imaginez avoir obtenu 38/100 comme score d’introversion/extraversion. Nous pouvons tracer cela de cette façon :
+Imaginez avoir obtenu $38/100$ comme score d’introversion/extraversion. Nous pouvons tracer cela de cette façon :
 <center>
 <figure class="image">
   <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/introversion-extraversion-100.png">
@@ -47,7 +48,7 @@ Imaginez avoir obtenu 38/100 comme score d’introversion/extraversion. Nous pou
 </center>
 
 
-On se ramène à une échelle comprise entre -1 à 1 :
+On se ramène à une échelle comprise entre $-1$ à $1$ :
 <center>
 <figure class="image">
   <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/introversion-extraversion-1.png">                                                                                                                                      </figure>   
@@ -77,13 +78,14 @@ Lorsqu’il s’agit de vecteurs, un moyen courant de calculer un score de simil
 <figure class="image">
 <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/cosine-similarity.png">
 <figcaption>Person #1 me ressemble le plus.  Les vecteurs pointant dans la même direction (la longueur joue également un rôle) ont un score de similitude cosinus plus élevé.</figcaption>
-</figure>                                                                                                 </center>
+</figure>
+</center>
 
  
 Encore une fois, deux dimensions ne suffisent pas pour saisir suffisamment d’information sur les différences entre les gens. Des décennies de recherche en psychologie ont mené à cinq traits principaux (et beaucoup de sous-traits). Utilisons donc les cinq dimensions dans notre comparaison :
 <center>
 <figure class="image">
-<img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/big-five-vectors.png">                                                                                       </figure>   
+<img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/big-five-vectors.png">                                                               </figure>   
 </center>
 
 
@@ -114,13 +116,13 @@ Voici un word embeddings  pour le mot « *king* » (via GloVe qui est entraîné
 </center>
 
 
-C’est une liste de 50 numéros. Nous ne pouvons pas dire grand-chose en regardant les valeurs. Mais nous pouvons la comparer à d’autres enchâssements de mots. Mettons tous ces chiffres sur une ligne :
+C’est une liste de $50$ numéros. Nous ne pouvons pas dire grand-chose en regardant les valeurs. Mais nous pouvons la comparer à d’autres enchâssements de mots. Mettons tous ces chiffres sur une ligne :
 <center>
 <figure class="image">
 <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/king-white-embedding.png">                                                                                     </figure>   
 </center>
 
-Colorons ensuite les cellules en fonction de leurs valeurs (rouge si elles sont proches de 2, blanc si elles sont proches de 0, bleu si elles sont proches de -2) :
+Colorons ensuite les cellules en fonction de leurs valeurs (rouge si elles sont proches de $2$, blanc si elles sont proches de $0$, bleu si elles sont proches de $-2$) :
 <center>
 <figure class="image">
 <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/king-colored-embedding.png">                                                                                   </figure>   
@@ -443,7 +445,7 @@ Une façon de faire est de diviser notre cible en deux étapes :
 
 Nous nous concentrerons sur l’étape 1.
 
-Pour générer des enchâssements de haute qualité, nous pouvons passer d’un modèle de prédiction d’un mot voisin à un modèle qui prend le mot d’entrée et le mot de sortie, et sort un score indiquant s’ils sont voisins ou non (0 pour « non voisin », 1 pour « voisin »).
+Pour générer des enchâssements de haute qualité, nous pouvons passer d’un modèle de prédiction d’un mot voisin à un modèle qui prend le mot d’entrée et le mot de sortie, et sort un score indiquant s’ils sont voisins ou non ($0$ pour « non voisin », $1$ pour « voisin »).
 <center>
 <figure class="image">
   <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/predict-neighboring-word.png">
@@ -452,7 +454,7 @@ Pour générer des enchâssements de haute qualité, nous pouvons passer d’un 
 
 Ce simple changement transforme le modèle dont nous avons besoin. Nous passons d’un réseau neuronal à un modèle de régression logistique qui est ainsi beaucoup plus simple et beaucoup plus rapide à calculer.
 
-Ce changement nécessite de changer la structure de notre ensemble de données : le label est maintenant une nouvelle colonne avec les valeurs 0 ou 1. Ils seront tous à 1 puisque tous les mots que nous avons ajoutés sont voisins.
+Ce changement nécessite de changer la structure de notre ensemble de données : le label est maintenant une nouvelle colonne avec les valeurs $0$ ou $1$. Ils seront tous à $1$ puisque tous les mots que nous avons ajoutés sont voisins.
 <center>
 <figure class="image">
   <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/word2vec-training-dataset.png">
@@ -460,7 +462,7 @@ Ce changement nécessite de changer la structure de notre ensemble de données :
 </center>
 
 
-Le temps d’exécution est considérablement réduit, pouvant maintenant traiter des millions d’exemples en quelques minutes. Mais il y a une faille à combler. Si tous nos exemples sont positifs (cible : 1), nous nous ouvrons à la possibilité d’un modèle qui renvoie toujours 1 (atteignant 100% de précision mais n’apprenant rien et générant des enchâssements « déchets »).
+Le temps d’exécution est considérablement réduit, pouvant maintenant traiter des millions d’exemples en quelques minutes. Mais il y a une faille à combler. Si tous nos exemples sont positifs (cible : $1$), nous nous ouvrons à la possibilité d’un modèle qui renvoie toujours $1$ (atteignant $100$% de précision mais n’apprenant rien et générant des enchâssements « déchets »).
 
 Pour y remédier, nous devons introduire des échantillons négatifs dans notre jeu de données, c’est à dire des échantillons de mots qui ne sont pas voisins. Notre modèle doit retourner 0 pour ces échantillons. C’est un défi que le modèle doit relever avec acharnement mais toujours à une vitesse fulgurante.
 <center>
@@ -484,7 +486,7 @@ Cette idée s’inspire de la [Noise-Contrastive Estimation](http://proceedings.
 
 
 # <span style="color: #FF0000"> **10. Skipgram with Negative Sampling (SGNS)** </span> 
-Nous avons maintenant couvert deux des idées centrales de Word2vec. Associées, elles s’appellent *Skipgram with Negative Sampling *.
+Nous avons maintenant couvert deux des idées centrales de Word2vec. Associées, elles s’appellent *Skipgram with Negative Sampling*.
 <center>
 <figure class="image">
   <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/skipgram-with-negative-sampling.png">
@@ -497,9 +499,9 @@ Nous avons maintenant couvert deux des idées centrales de Word2vec. Associées,
 # <span style="color: #FF0000"> **11. Processus d'entraînement de Word2vec** </span> 
 Maintenant que nous avons établi les deux idées centrales du SGNS, nous pouvons examiner de plus près le processus d’entraînement de Word2vec.  
 
-Avant le début du processus d’entraînement, nous prétraitons le texte sur lequel nous entraînons le modèle. Dans cette étape, nous déterminons la taille de notre vocabulaire (nous l’appellerons vocab_size, disons 10 000) et quels mots lui appartiennent.
+Avant le début du processus d’entraînement, nous prétraitons le texte sur lequel nous entraînons le modèle. Dans cette étape, nous déterminons la taille de notre vocabulaire (nous l’appellerons vocab_size, disons $10 000$) et quels mots lui appartiennent.
 
-Au début de la phase d’entraînement, nous créons deux matrices : une matrice d'enchâssements et une matrice ce contexte. Ces deux matrices ont un enchâssement pour chaque mot de notre vocabulaire (vocab_size est donc une de leurs dimensions). La seconde dimension est la longueur que nous voulons que chaque vecteur d’enchâssements soit (une valeur généralement utilisée de embedding_size est 300, mais nous avons regardé un exemple de 50 plus tôt dans ce post avec le mot « *king* »).
+Au début de la phase d’entraînement, nous créons deux matrices : une matrice d'enchâssements et une matrice ce contexte. Ces deux matrices ont un enchâssement pour chaque mot de notre vocabulaire (vocab_size est donc une de leurs dimensions). La seconde dimension est la longueur que nous voulons que chaque vecteur d’enchâssements soit (une valeur généralement utilisée de embedding_size est $300$, mais nous avons regardé un exemple de $50$ plus tôt dans ce post avec le mot « *king* »).
 <center>
 <figure class="image">
   <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/word2vec-embedding-context-matrix.png">
@@ -531,7 +533,7 @@ Ensuite, nous effectuons le produit scalaire de l’enchâssement d’entrée av
 </center>
 
 
-Nous devons maintenant trouver un moyen de transformer ces scores en quelque chose qui ressemble à des probabilités. Nous avons besoin qu’ils soient tous positifs et qu’ils aient des valeurs entre 0 et 1. Pour cela, nous utilisons la fonction [sigmoïde](https://fr.wikipedia.org/wiki/Sigmo%C3%AFde_(math%C3%A9matiques)).
+Nous devons maintenant trouver un moyen de transformer ces scores en quelque chose qui ressemble à des probabilités. Nous avons besoin qu’ils soient tous positifs et qu’ils aient des valeurs entre $0$ et $1$. Pour cela, nous utilisons la fonction [sigmoïde](https://fr.wikipedia.org/wiki/Sigmo%C3%AFde_(math%C3%A9matiques)).
 <center>
 <figure class="image">
   <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/word_embeddings/word2vec-training-dot-product-sigmoid.png">
@@ -580,9 +582,9 @@ La taille de la fenêtre et le nombre d’échantillons négatifs sont deux hype
 
 La taille de la fenêtre la plus adaptée varie en fonction de la tâche à effectuer.    
 
-Une heuristique est que des fenêtres de petite taille (2 à 15) conduisent à des enchâssements avec des scores de similarité élevés entre deux enchâssements. Cela signifie que les mots sont interchangeables (remarquez que les antonymes sont souvent interchangeables si l’on considère seulement les mots environnants. Par exemple, bon et mauvais apparaissent souvent dans des contextes similaires).
+Une heuristique est que des fenêtres de petite taille ($2$ à $15$) conduisent à des enchâssements avec des scores de similarité élevés entre deux enchâssements. Cela signifie que les mots sont interchangeables (remarquez que les antonymes sont souvent interchangeables si l’on considère seulement les mots environnants. Par exemple, bon et mauvais apparaissent souvent dans des contextes similaires).
 
-Des fenêtres de plus grande taille (15 à 50 ou même plus) mènent à des enchâssements où la similarité donne une indication sur la parenté des mots. Dans la pratique, vous devrez souvent fournir des annotations qui guident le processus d’enchâssements menant à une similarité utile pour votre tâche. La taille par défaut de la fenêtre de la librairie Gensim est 5 (deux mots avant et deux mots après le mot entré, en plus du mot entré lui-même).
+Des fenêtres de plus grande taille ($15$ à $50$ ou même plus) mènent à des enchâssements où la similarité donne une indication sur la parenté des mots. Dans la pratique, vous devrez souvent fournir des annotations qui guident le processus d’enchâssements menant à une similarité utile pour votre tâche. La taille par défaut de la fenêtre de la librairie Gensim est 5 (deux mots avant et deux mots après le mot entré, en plus du mot entré lui-même).
 
 <center>
 <figure class="image">
@@ -590,7 +592,7 @@ Des fenêtres de plus grande taille (15 à 50 ou même plus) mènent à des ench
 </figure>   
 </center>
 
-Le nombre d’échantillons négatifs est un autre facteur du processus d’entraînement. L’article original prescrit 5 à 20 comme étant un bon nombre d’échantillons négatifs. Il indique également que 2 à 5 semble être suffisant quand vous avez un jeu de données assez grand. La valeur par défaut de Gensim est de 5 échantillons négatifs.
+Le nombre d’échantillons négatifs est un autre facteur du processus d’entraînement. L’article original prescrit $5$ à $20$ comme étant un bon nombre d’échantillons négatifs. Il indique également que $2$ à $5$ semble être suffisant quand vous avez un jeu de données assez grand. La valeur par défaut de Gensim est de $5$ échantillons négatifs.
  <br><br><br>
 
 
