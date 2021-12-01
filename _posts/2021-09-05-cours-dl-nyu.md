@@ -47,7 +47,7 @@ Le programme de cette édition 2020 du cours porte sur :
 - les méthodes contrastives et génératives (GANs)
 - les auto-encodeurs et leurs dérivées (DAEs, VAEs)
 - l'apprentissage autosupervisé appliqué à la vision par ordinateur
-- les transformers
+- les *transformers*
 - les réseaux de neurones pour graphes (GNNs)  
 et pleins d'autres choses !
 <br><br>
