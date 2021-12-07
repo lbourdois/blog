@@ -35,10 +35,10 @@ Cet article est une traduction de l’article de Keita Kurita : [A Deep Dive int
 
 
 # <span style="color: #FF0000"> **Introduction** </span>
-Le prétraitement est peut-être l'un des éléments les plus sous-évalués et les plus négligés du NLP actuel.
-En effet, si par exemple vous utilisez des Tranformers pré-entrainés, le travail a déjà été effectué pour nous. Les publications scientifiques n’entrent d’ailleurs que très rarement dans le détail au moment d’aborder cette étape et se focalisent davantage sur le modèle développé et les résultats obtenus avec.
-Malgré qu'il puisse paraître trivial, le prétraitement est subtil et extrêmement important pour obtenir de bonnes performances et prévenir les bugs (cf cette [publication](https://arxiv.org/pdf/1804.08771.pdf) de Matt Post).
-Dans cet article, nous nous focaliserons donc sur le prétrainement en passent en revue les principales techniques de tokénizations comme le Byte-pair encoding (BPE), le wordpiece et le sentencepiece, ainsi que les choses auxquelles il faut faire attention.
+Le prétraitement est peut-être l'un des éléments les plus sous-évalués et les plus négligés en traitement du langage naturel actuellement.
+En effet, si par exemple vous utilisez des *tranformers* pré-entrainés, le travail a déjà été effectué pour nous. Les publications scientifiques n’entrent d’ailleurs que très rarement dans le détail au moment d’aborder cette étape et se focalisent davantage sur le modèle développé et les résultats obtenus avec.
+Malgré qu'il puisse paraître trivial, le prétraitement est subtil et extrêmement important pour obtenir de bonnes performances et prévenir les bugs (cf. cette [publication](https://arxiv.org/pdf/1804.08771.pdf) de Matt Post).
+Dans cet article, nous nous focaliserons donc sur le prétraitement en passent en revue les principales techniques de *tokenization* comme le *byte-pair encoding* (BPE), le *wordpiece* et le *sentencepiece*, ainsi que les choses auxquelles il faut faire attention.
 <br><br><br>
 
 
@@ -46,98 +46,106 @@ Dans cet article, nous nous focaliserons donc sur le prétrainement en passent e
 # <span style="color: #FF0000"> **Vue d’ensemble** </span>
 Les modèles d’apprentissage machine nécessitent des entrées sous la forme de nombre pour pouvoir fonctionner. Le prétraitement est essentiellement le processus qui consiste à prendre un morceau de texte brut et à le convertir en nombres. Par conséquent, pour la plupart des applications, le prétraitement peut être divisé en trois étapes :
 - Étape 1 : Normalisation (nettoyage)<br>
-C'est là que nous nettoyons les données à l'avance pour éliminer les entrées non désirées et pour convertir certains caractères/séquences en formes canoniques.
-- Etape 2 : Segmentation (Tokenisation)<br>
-C'est là que nous divisons le flux continu de caractères en entités. C'est probablement l'étape la plus complexe du processus et sera un point majeur de l’article.
+C'est là que nous nettoyons les données pour éliminer les entrées non désirées et pour convertir certains caractères/séquences en formes canoniques.
+- Etape 2 : Segmentation (*tokenization*)<br>
+C'est là que nous divisons le flux continu de caractères en entités. C'est probablement l'étape la plus complexe du processus et est un point majeur de l’article.
 - Étape 3 : Numérisation<br>
-C'est là que nous convertissons les entités textuelles en nombres/id pour pouvoir les fournir à  notre modèle. Bien que simple, cette étape peut introduire quelques problèmes désagréables dont nous parlerons plus tard.
+C'est là que nous convertissons les entités textuelles en nombres/id pour pouvoir les donner à notre modèle. Bien que simple, cette étape peut introduire quelques problèmes désagréables dont nous parlerons plus tard.
 
 
-Notez que ces étapes ne sont pas toujours clairement divisées. Par exemple, certains tokenizers contiennent des étapes de normalisation et la segmentation est souvent étroitement couplée à la numérisation. Néanmoins, penser à ces étapes séparément rend les choses beaucoup plus faciles à comprendre et à expliquer, c'est pourquoi je m'en tiendrai à cette division légèrement arbitraire pour ce billet.
+Notez que ces étapes ne sont pas toujours clairement divisées. Par exemple, certains *tokenizers* contiennent des étapes de normalisation et la segmentation est souvent étroitement couplée à la numérisation. Néanmoins, penser à ces étapes séparément rend les choses beaucoup plus faciles à comprendre et à expliquer, c'est pourquoi je m'en tiendrai à cette division légèrement arbitraire pour la suite.
 <br><br><br>
 
 
 
 # <span style="color: #FF0000"> **1. Étape 1 : Normalisation (nettoyage)** </span>
-Dans le contexte du prétraitement en NLP, la normalisation se réfère au processus de nettoyage de l'entrée et de mise en correspondance des caractères/mots avec une forme canonique.
+Dans le contexte du prétraitement en traitement du langage naturel, la normalisation se réfère au processus de nettoyage de l'entrée et de mise en correspondance des caractères/mots avec une forme canonique.
 
-Un exemple très simple de normalisation est de mettre tous les caractères en minuscule. Cela permet d'éviter que des mots comme "Hello" et "hello" soient traités différemment. La similarité entre ces mots est claire pour un humain, mais lorsqu'ils sont simplement mis en correspondance avec un seul entier, le modèle en aval n'a aucun moyen de comprendre qu'il s'agit du même mot sous-jacent. La normalisation permet d'éviter cette divergence.
+Un exemple très simple de normalisation est de mettre tous les caractères en minuscule. Cela permet d'éviter que des mots comme « Bonjour » et « bonjour » soient traités différemment. La similarité entre ces mots est claire pour un humain, mais lorsqu'ils sont simplement mis en correspondance avec un seul entier, le modèle en aval n'a aucun moyen de comprendre qu'il s'agit du même mot sous-jacent. La normalisation permet d'éviter cette divergence.
 
 Voici quelques autres étapes de normalisation que vous pourriez vouloir utiliser : 
-- Gérer les caractères répétitifs (par exemple "cooooool" -> "cool")
-- Manipulation des homoglyphes (par exemple "$tupide" -> "stupide")
-- Transformation des entrées spéciales telles que les URL, les adresses e-mail et les balises HTML à une forme canonique (par exemple "https://lbourdois.github.io/blog/nlp/Les-tokenizers/" -> "[URL]")
+- Gérer les caractères répétitifs (par exemple « cooooool » → « cool »)
+- Manipulation des homoglyphes (par exemple « $tupide » → « stupide »)
+- Transformation des entrées spéciales telles que les URL, les adresses e-mail et les balises HTML à une forme canonique (par exemple « https://lbourdois.github.io/blog/nlp/Les-tokenizers/ » → « [URL] »)
 - Normalisation unicode
-Je suppose que certains lecteurs n'ont jamais entendu parler de la normalisation unicode avant, donc je vais donner un rapide aperçu. En unicode, certains caractères qui sont effectivement les mêmes peuvent être représentés de plusieurs façons. Par exemple, le caractère ë peut être représenté comme un seul caractère unicode "ë" ou deux caractères unicode : le caractère "e" et un accent. La normalisation Unicode fait correspondre ces deux caractères à une forme unique et canonique. Pour plus de détails vous pouvez lire ce [post](https://withblue.ink/2019/03/11/why-you-need-to-normalize-unicode-strings.html) (en anglais).
+Certains lecteurs n'ont peut-être jamais entendu parler de la normalisation unicode avant, faisons donc en un rapide aperçu. En unicode, certains caractères qui sont effectivement les mêmes peuvent être représentés de plusieurs façons. Par exemple, le caractère « ë » peut être représenté comme un seul caractère unicode (« ë » ou deux caractères unicode (le caractère « e » et un accent). La normalisation unicode fait correspondre ces deux caractères à une forme unique et canonique. Pour plus de détails vous pouvez lire ce [post](https://withblue.ink/2019/03/11/why-you-need-to-normalize-unicode-strings.html) (en anglais).
 
 
 Vient maintenant la question importante : quels types de normalisation devrions-nous réellement appliquer ? Bien sûr, il n'y a pas de réponse claire à cette question, mais voici quelques lignes directrices et facteurs à prendre en considération :
-- Quelle quantité d'informations cruciales la normalisation supprime-t-elle ? Par exemple, dans les médias sociaux, dire "HELLO" et "Hello" peut avoir des nuances différentes. En même temps, traiter différemment "Hello world" et "hello world" peut ne pas avoir beaucoup de sens. Parfois, la majuscule peut indiquer une information grammaticale importante, comme le fait qu'un mot est un nom propre (p. ex., "New York"). 
-- De combien de données disposez-vous ? Si vous avez des quantités massives de données, vous aurez probablement besoin de moins de normalisation puisque le modèle pourrait simplement apprendre que "Hello" et "hello" sont le même mot sous-jacent à partir de leurs distributions. Mais pour la plupart des applications de NLP, vous n'avez pas un si grand corpus de données, donc vous pourriez une plus grande normalisation.
-- Une grande taille de vocabulaire est-elle préjudiciable à votre application ? Moins de normalisation tend à conduire à un vocabulaire plus important, bien que cela dépende du type de tokenisation que vous utilisez. Si vous entraînez un modèle génératif, la couche softmax de sortie peut être un goulot d'étranglement majeur, et une taille de vocabulaire plus importante peut ralentir l'entraînement de manière significative. Cela peut aussi causer des problèmes de mémoire, qui peuvent nécessiter des tailles de lot plus petites, ralentissant encore plus la l’entraînement.
+- Quelle quantité d'informations cruciales la normalisation supprime-t-elle ? Par exemple, dans les médias sociaux, dire « HELLO » et  « Hello » peut avoir des nuances différentes. En même temps, traiter différemment « Hello world » et « hello world » peut ne pas avoir beaucoup de sens. La majuscule peut indiquer une information grammaticale importante, comme le fait qu'un mot est un nom propre (par exemple, « New York »). 
+- De combien de données disposez-vous ? Si vous avez beaucoup de données, vous aurez probablement besoin de moins de normalisation puisque le modèle pourrait simplement apprendre que « Hello » et « hello » sont le même mot sous-jacent à partir de leurs distributions. Si vous n'avez pas beaucoup de données alors  pourriez vouloir une plus grande normalisation.
+- Une grande taille de vocabulaire est-elle préjudiciable à votre application ? Moins de normalisation tend à conduire à un vocabulaire plus important, bien que cela dépende du type de tokenisation que vous utilisez. Si vous entraînez un modèle génératif, la couche de softmax de sortie peut être un goulot d'étranglement majeur. Une taille de vocabulaire plus importante peut ralentir l'entraînement de manière significative. Cela peut aussi causer des problèmes de mémoire, pouvant nécessiter des tailles de batch plus petites, ralentissant encore plus l’entraînement.
 <br><br><br>
 
 
 
-# <span style="color: #FF0000"> **2. Étape 2 : Segmentation (Tokenisation)** </span>
-La segmentation/tokénisation est probablement la partie la plus complexe de la pipeline de prétraitement. Nous allons donc en discuter en profondeur. Nous allons d'abord passer en revue quelques algorithmes naïfs de tokenisation, puis discuter des tokenizers à base de règles, et enfin passer en revue des tokenizers de sous-mots (subword) plus modernes qui sont appris sur des données.  
+# <span style="color: #FF0000"> **2. Étape 2 : Segmentation (*tokenization*)** </span>
+La segmentation/tokénisation est probablement la partie la plus complexe du pipeline de prétraitement. Nous allons donc en discuter en profondeur. Nous allons d'abord passer en revue quelques algorithmes naïfs de tokenisation, puis discuter des *tokenizers* à base de règles, et enfin passer en revue des *tokenizers* de sous-mots plus modernes qui sont appris sur des données.  
 
 
-## <span style="color: #FFBF00"> **2.1 Tokeniser sur les espaces / la ponctuation)** </span>
+## <span style="color: #FFBF00"> **2.1 Tokeniser sur les espaces / la ponctuation** </span>
 La forme la plus naïve de tokenisation (qui est utilisée étonnamment souvent puisque certaines applications utilisent simplement la fonction string.split en Python) est le fractionnement sur les espaces. Prenons la phrase suivante comme exemple :
 <br>
+```
 “I saw a girl with a telescope.”
+```
 <br>
-Cela serait divisé en : 
-<br>
-“I”, “saw”, “a”, “girl”, “with”, “a”, “telescope.”
+Elle est divisée en : 
 <br>
 
-Remarquez que le point est annexé au dernier mot. Nous ne voulons probablement pas cela, puisque le mot " télescope " a la même signification qu’il soit avec un point ou non. 	  Cette approche est donc fortement déconseillée ! 
+```  
+“I”, “saw”, “a”, “girl”, “with”, “a”, “telescope.”
+```
+<br>
+
+Remarquez que le point est annexé au dernier mot. Nous ne voulons probablement pas cela, puisque le mot « télescope » a la même signification qu’il soit avec un point ou non. Cette approche est donc fortement déconseillée ! 
 
 Une approche légèrement meilleure et qui fonctionne dans bien des cas consiste à utiliser des jetons basés sur la ponctuation comme :<br>  
+```  
 “I”, “saw”, “a”, “girl”, “with”, “a”, “telescope”, “.”
+```  
 <br>
 
-Cependant, cette approche présente encore de nombreux problèmes. Que faites-vous, par exemple, avec une ellipse ? Voulez-vous qu'elle soit divisée en trois points (".", ".", ".") ou préférez-vous qu'elle soit un seul jeton ? Pour les émoticônes comme " :)" et des abréviations comme "U.S.A." ? Il est clair que le simple fait d'utiliser des signes de ponctuation et des espaces blancs est insuffisant si nous voulons obtenir la meilleure performance, ce qui nous motive à poursuivre des méthodes de tokenisation plus complexes, basées sur des règles.
+Cependant, cette approche présente encore de nombreux problèmes. Que faites-vous, par exemple, avec les  points de suspension ? Voulez-vous une division en trois points (```".", ".", "."```) ou préférez-vous un seul jeton ? Et pour les émoticônes comme ```:)``` et des abréviations comme ```U.S.A.``` ? Il est clair que le simple fait d'utiliser des signes de ponctuation et des espaces blancs est insuffisant si nous voulons obtenir la meilleure performance, ce qui nous motive à poursuivre des méthodes de tokenisation plus complexes, basées sur des règles.
 <br><br>
 
 
 ## <span style="color: #FFBF00"> **2.2 Tokenization basée sur des règles** </span>
-Les tokenizers à base de règles nous permettent de tokeniser plus intelligemment au cas par cas. Ici, je vais couvrir deux principaux tokenizers basés sur des règles : le tokenizer Spacy et le tokenizer Moses.
+Les *tokenizers* à base de règles nous permettent de tokeniser plus intelligemment au cas par cas. Ici, couvrons deux principaux tokenizers basés sur des règles : le tokenizer *Spacy* et le tokenizer *Moses*.
 
 
 ### <span style="color: #51C353"> **2.2.1  Spacy** </span>
-Le tokenizer Spacy est un tokenizer moderne qui est largement utilisé pour une bonne raison : il est rapide, fournit des valeurs par défaut raisonnables et est facilement personnalisable. 
+Le *tokenizer Spacy* est un *tokenizer* moderne qui est largement utilisé pour une bonne raison : il est rapide, fournit des valeurs par défaut raisonnables et est facilement personnalisable. 
 
-Spacy permet à l'utilisateur de spécifier des tokens spéciaux qui ne seront pas segmentés, ou qui seront segmentés de certaines manières spécifiques. Par exemple, si vous voulez garder les ellipses comme un seul token, vous pouvez le spécifier comme une règle, et la règle aura la priorité sur les autres opérations de division. Pour en savoir plus sur le fonctionnement de la segmentation Spacy, Spacy se divise en espaces et examine ensuite chaque sous-chaîne individuelle. Il recherche d'abord les tokens spéciaux, et quand ces tokens ne sont pas présents, il divise certains préfixes (comme la ponctuation), puis les suffixes et les infixes.
+*Spacy* permet à l'utilisateur de spécifier des *tokens* spéciaux qui ne seront pas segmentés ou qui seront segmentés de certaines manières spécifiques. Par exemple, si vous voulez garder les points de suspension comme un seul *token*, vous pouvez le spécifier comme une règle et celle-ci aura la priorité sur les autres opérations de division. Pour en savoir plus sur le fonctionnement du *tokenizer Spacy*, *Spacy* divise en espaces et examine ensuite chaque sous-chaîne individuelle. Il recherche d'abord les *tokens* spéciaux et quand ils ne sont pas présents, il divise certains préfixes (comme la ponctuation), puis les suffixes et les infixes.
 <center>
 <figure class="image">
   <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Tokenizers/Spacy.png">
-  <figcaption>Exemple de fonctionnent le tokenizer Spacy</figcaption>
+  <figcaption>Exemple de fonctionnent du <i>tokenizer Spacy</i></figcaption>
 </figure>
 </center>
 
 
-Toutes ces étapes sont personnalisables, ce qui signifie que vous pouvez adapter les règles de tokenisation à vos demandes. Vous pouvez consulter la [documentation officielle](https://spacy.io/usage/linguistic-features#how-tokenizer-works)  pour obtenir les informations les plus récentes et les plus approfondies.
+Toutes ces étapes sont personnalisables, ce qui signifie que vous pouvez adapter les règles de tokenisation à vos envies. Vous pouvez consulter la [documentation officielle](https://spacy.io/usage/linguistic-features#how-tokenizer-works) pour obtenir les informations les plus récentes et les plus approfondies.
 <br><br>
 
 
 ### <span style="color: #51C353"> **2.2.2 Moses** </span>
-Le tokenizer Moses est un tokenizer classique qui est beaucoup plus ancien que Spacy et qui est largement utilisé en traduction automatique. Comparé à Spacy, il est moins personnalisable. Je n'entrerai pas dans les détails concernant les spécificités du tokenizer Moses, principalement parce qu'il s'agit d'une collection de logiques complexes de normalisation et de segmentation (vous pouvez jeter un oeil à une implémentation python [ici](https://github.com/alvations/sacremoses/blob/master/sacremoses/tokenize.py)).
+Le *tokenizer Moses* est un *tokenizer* classique qui est beaucoup plus ancien que *Spacy* et qui est largement utilisé en traduction automatique. Comparé à Spacy il est moins personnalisable. Je n'entrerai pas dans les détails concernant les spécificités du tokenizer Moses, principalement parce qu'il s'agit d'une collection de logiques complexes de normalisation et de segmentation (vous pouvez jeter un oeil à une implémentation Python [ici](https://github.com/alvations/sacremoses/blob/master/sacremoses/tokenize.py)).
 
-Le tokenizer de Moses remplace en interne certains tokens spéciaux (par exemple des ellipses) par des tokens personnalisés, et est un bon exemple de la façon dont la normalisation et la tokenisation ne sont pas toujours proprement divisées.
+Le *tokenizer Moses* remplace en interne certains tokens spéciaux (par exemple des points de suspension) par des *tokens* personnalisés et est un bon exemple de la façon dont la normalisation et la tokenisation ne sont pas toujours proprement divisées.
 
-Moses fonctionne assez bien sur une langue simple, mais si vous manipulez du texte comme du texte de média social, il peut causer des problèmes avec certaines entrées comme les émoticônes. 
+*Moses* fonctionne assez bien sur une langue simple, mais si vous manipulez du texte comme du texte de médias sociaux, cela peut causer des problèmes avec certaines entrées comme les émoticônes. 
 <br><br>
 
 
-### <span style="color: #51C353"> **2.2.3 Limitations des tokenizers basés sur des règles** </span>
-Il y a quelques problèmes avec les tokenizers à base de règles. Le premier est leur capacité relativement limitée à gérer efficacement les mots rares. Par exemple, le mot " structurally " est relativement rare, mais le mot " structural " est commun, ce qui nous permet de déduire le sens de "structurellement" à partir d'un mot plus fréquent. Bien sûr, nous pourrions spécifier chaque mot rare comme une règle spéciale, mais cela devient clairement beaucoup trop complexe très rapidement. Cette incapacité à segmenter les mots en composantes significatives peut être particulièrement problématique pour des langues comme l'allemand, où les mots sont souvent composés en mettant ensemble de nombreuses parties indépendantes (on parle alors de langues "morphologiquement riches". Cet [article](https://www.thoughtco.com/longest-german-word-in-the-world-4061494)  en anglais montre l’exemple de mot allemand faisant plus de 63 lettres). 
-Un autre problème majeur est que toutes les langues ne divisent pas les mots via des espaces blancs. Le chinois et le japonais en sont d'excellents exemples. Ces langues exigent donc des règles beaucoup plus sophistiquées, ce qui signifie plus de complexité et - potentiellement - d'erreurs.
-Il existe une classe d'algorithmes qui tentent de résoudre ces problèmes, communément appelés méthodes de subword tokenization, que nous allons aborder dans la suite de ce document.
+### <span style="color: #51C353"> **2.2.3 Limitations des *tokenizers* basés sur des règles** </span>
+Il y a quelques problèmes avec les *tokenizers* à base de règles. Le premier est leur capacité relativement limitée à gérer efficacement les mots rares. Par exemple, le mot « structurally » est relativement rare, mais le mot « structural » est commun, ce qui nous permet de déduire le sens de «  structurellement » à partir d'un mot plus fréquent. Bien sûr, nous pourrions spécifier chaque mot rare comme une règle spéciale, mais cela devient clairement beaucoup trop complexe très rapidement. Cette incapacité à segmenter les mots en composantes significatives peut être particulièrement problématique pour des langues comme l'allemand où les mots sont souvent composés en mettant ensemble de nombreuses parties indépendantes (on parle alors de langues morphologiquement riches. Cet [article](https://www.thoughtco.com/longest-german-word-in-the-world-4061494) en anglais montre l’exemple d'un mot allemand faisant plus de 63 lettres). 
+Un autre problème majeur est que toutes les langues ne divisent pas les mots via des espaces blancs. Le chinois et le japonais en sont d'excellents exemples. Ces langues exigent donc des règles beaucoup plus sophistiquées ce qui signifie plus de complexité et potentiellement d'erreurs.
+Il existe une classe d'algorithmes qui tentent de résoudre ces problèmes, communément appelés méthodes de *tokenization en subword*, que nous allons aborder dans la suite.
 <br><br>
 
+Reprendre ici
 
 ## <span style="color: #FFBF00"> **2.3 3.	Subword Tokenization (Tokénisation en sous-mots)** </span>
 Tous les algorithmes de tokenisation en sous-mots partagent l'idée fondamentale que les mots les plus fréquents devraient recevoir des identificateurs uniques, alors que les mots moins fréquents devraient être décomposés en unités en sous-mots qui conservent le mieux leur signification. Par exemple, nous pouvons vouloir retenir le mot " wonderfully" comme un seul mot puisqu'il apparaît souvent dans notre ensemble de données et que nous pouvons nous attendre à ce que le modèle en apprenne la signification. D'autre part, nous pouvons vouloir diviser " structurally" en " structural" et " ly " puisque " structurellement " est peu courant et que nous voulons aider le modèle en lui donnant de l'information sur sa composition.	
@@ -268,50 +276,50 @@ Un autre facteur à prendre en compte est que l'apprentissage d'un tokenizer est
 
 
 # <span style="color: #FF0000"> **3. Étape 3 : Numérisation** </span>
-Une fois que nous avons les données tokénisées, la construction du vocabulaire semble relativement simple. En particulier pour les méthodes comme BPE et sentencepiece, le vocabulaire est construit automatiquement. Donc, fin de l'histoire, n'est-ce pas ? Eh bien, pas tout à fait. Il y a encore pas mal de questions auxquelles nous devons réfléchir.
+Une fois que nous avons les données tokénisées, la construction du vocabulaire semble relativement simple. En particulier pour les méthodes comme *BPE* et *sentencepiece*, le vocabulaire est construit automatiquement. Donc, fin de l'histoire, n'est-ce pas ? Eh bien, pas tout à fait. Il y a encore pas mal de questions auxquelles nous devons réfléchir.
 <br><br>
 
 
 ## <span style="color: #FFBF00"> **3.1 Manipulation des entrées inconnues** </span>
-Dans l'ensemble de test ou dans les données futures, nous pouvons rencontrer des caractères que nous n’avons pas rencontrés dans l’ensemble d’entraînement. Comme la plupart des frameworks de NLP modernes gèrent  ces caractères inconnus en coulisses, cela peut conduire à des bugs insidieux dans votre code. Il est alors conseillé de vérifier périodiquement quels types de mots sont traités comme inconnus.
-L'utilisation de l'encodage d'Open AI qui s’effectue au niveau de l'octet peut légèrement résoudre ce problème, mais même avec l'encodage au niveau de l'octet, vous rencontrerez des caractères qui n'ont jamais été trouvés dans le jeu d’entraînement. Cela signifie que l'embedding de ces caractères sera la même que lorsqu'ils ont été initialisés et donc probablement très différente de la distribution des embeddings entrainés. Le simple fait que vous ayez un identifiant pour les caractères non vus ne signifie pas que votre modèle peut ou a appris à les manipuler, vous devez donc faire attention à ne pas vous laisser bercer par un faux sentiment de sécurité.
+Dans l'ensemble de test ou dans les données futures, nous pouvons rencontrer des caractères que nous n’avons pas rencontrés dans l’ensemble d’entraînement. Comme la plupart des *frameworks* de NLP modernes gèrent  ces caractères inconnus en coulisses, cela peut conduire à des bugs insidieux dans votre code. Il est alors conseillé de vérifier périodiquement quels types de mots sont traités comme inconnus.
+L'utilisation de l'encodage d'Open AI qui s’effectue au niveau de l'octet peut légèrement résoudre ce problème, mais même avec l'encodage au niveau de l'octet, vous rencontrerez des caractères qui n'ont jamais été trouvés dans le jeu d’entraînement. Cela signifie que l'enchâssement de ces caractères sera le même que lorsqu'ils ont été initialisés et donc probablement très différent de la distribution des enchâssements entrainés. Le simple fait que vous ayez un identifiant pour les caractères non vus ne signifie pas que votre modèle peut ou a appris à les manipuler, vous devez donc faire attention à ne pas vous laisser bercer par un faux sentiment de sécurité.
 <br><br>
 
 
 ## <span style="color: #FFBF00"> **3.2 Gestion du vocabulaire** </span>
-Un décalage entre le vocabulaire utilisé pour coder l'ensemble d’entraînement et celui de l'ensemble de test est une erreur étonnamment courante. Cela peut se produire particulièrement facilement lorsque vous reconstruisez périodiquement le vocabulaire, ce qui peut être inévitable dans des domaines comme les médias sociaux où la distribution de la langue peut changer rapidement.
-S'assurer que chaque modèle est explicitement lié à un ensemble de vocabulaire est une façon d'éviter ce problème. Un autre moyen est d'assurer la rétrocompatibilité entre les différents vocabulaires de sorte que les mots qui sont dans les deux vocabulaires soient toujours associés au même identifiant. Cependant, empêcher le vocabulaire d'exploser en taille et de manipuler des tokens inconnus devient un problème dans cette approche. Une autre solution (qui est utile dans d'autres contextes également) est d'utiliser des vocabulaires ouverts, décris dans le prochain paragraphe.
+Un décalage entre le vocabulaire utilisé pour coder le jeu d’entraînement et celui du jeu de test est une erreur étonnamment courante. Cela peut se produire particulièrement facilement lorsque vous reconstruisez périodiquement le vocabulaire, ce qui peut être inévitable dans des domaines comme les médias sociaux où la distribution de la langue peut changer rapidement.
+S'assurer que chaque modèle est explicitement lié à un ensemble de vocabulaire est une façon d'éviter ce problème. Un autre moyen est d'assurer la rétrocompatibilité entre les différents vocabulaires de sorte que les mots qui sont dans les deux vocabulaires soient toujours associés au même identifiant. Cependant, empêcher le vocabulaire d'exploser en taille et de manipuler des *tokens* inconnus devient un problème dans cette approche. Une autre solution (qui est utile dans d'autres contextes également) est d'utiliser des vocabulaires ouverts, décris dans le prochain paragraphe.
 <br><br>
 
 
 ## <span style="color: #FFBF00"> **3.3 Vocabulaires ouverts** </span>
-Les vocabulaires ouverts sont essentiellement des paramètres où vous ne pré-construisez pas un vocabulaire et où vous associez plutôt des tokens à des ids à la volée.	
+Les vocabulaires ouverts sont essentiellement des paramètres où vous ne préconstruisez pas un vocabulaire mais où vous associez plutôt des *tokens* à des ids à la volée.	
 
 C'est particulièrement utile dans les situations où vous devez gérer des flux de texte continus et où l’actualisation  du vocabulaire est coûteuse et sujette à erreur.
-Les vocabulaires ouverts utilisent l'astuce du hachage, une méthode intelligente de numérisation qui fait correspondre les tokens aux ids en fonction de leurs valeurs de hachage. Par exemple, avec un id maximum de 100 000, vous pouvez utiliser une simple fonction de hachage (comme le hachage md5) pour transformer toute séquence de caractères unicode (ou d'octets) en un entier compris entre 0 et 100 000. Ce serait l'id du token. Puisque le vocabulaire est déterminé uniquement par la fonction de hachage, il n'a jamais besoin d'être reconstruit.
+Les vocabulaires ouverts utilisent l'astuce du hachage, une méthode intelligente de numérisation qui fait correspondre les *tokens* aux ids en fonction de leurs valeurs de hachage. Par exemple, avec un id maximum de 100 000, vous pouvez utiliser une simple fonction de hachage (comme le hachage md5) pour transformer toute séquence de caractères unicode (ou d'octets) en un entier compris entre 0 et 100 000. Ce serait l'id du *token*. Puisque le vocabulaire est déterminé uniquement par la fonction de hachage, il n'a jamais besoin d'être reconstruit.
 <center>
 <figure class="image">
   <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Tokenizers/hachage.png">
 </figure>
 </center>
   
-Cette approche simple a le problème évident des collisions de hachage ; un seul identifiant pourrait correspondre à plusieurs tokens ayant des significations très différentes. La probabilité de cela (étant donné une taille de vocabulaire suffisamment importante) est cependant extrêmement faible, d'autant plus que la plupart des mots sont très peu fréquents (les fréquences des mots obéissent typiquement à la [loi de Zipf](https://fr.wikipedia.org/wiki/Loi_de_Zipf)  qui stipule que la fréquence d'un mot est à peu près inversement proportionnelle à son classement en termes de fréquence). Par conséquent, pour certaines applications, quelques collisions de hachage pourraient être un petit prix à payer pour la simplicité d'un vocabulaire ouvert.
+Cette approche simple a le problème évident des collisions de hachage : un seul identifiant pourrait correspondre à plusieurs tokens ayant des significations très différentes. La probabilité que cela arrive (étant donné une taille de vocabulaire suffisamment importante) est cependant extrêmement faible, d'autant plus que la plupart des mots sont très peu fréquents (les fréquences des mots obéissent typiquement à la [loi de Zipf](https://fr.wikipedia.org/wiki/Loi_de_Zipf)  qui stipule que la fréquence d'un mot est à peu près inversement proportionnelle à son classement en termes de fréquence). Par conséquent, pour certaines applications, quelques collisions de hachage pourraient être un petit prix à payer pour la simplicité d'un vocabulaire ouvert.
 <br><br>
 
 
-## <span style="color: #FFBF00"> **3.4 Surajustement du vocabulaire à l'ensemble d'entraînement** </span>
-Une illustration du surajustement du vocabulaire est la suivante. Si l'on imagine la création d'un vocabulaire utilisant tous les mots de l'ensemble d'entraînement sans en limiter la taille. Dans ce cas, tous les mots que le modèle verra pendant l'entraînement auront un identifiant unique associé à celui-ci. Cela signifie que le modèle ne rencontrera jamais un mot "inconnu" et n'apprendra donc jamais à le manipuler. Par conséquent, lorsque nous lui ferons passer l'ensemble de tests (qui contiendra très probablement des mots inconnus auparavant), il aura probablement de mauvaises performances sur les exemples avec des mots nouveaux. Comparons cela avec l'entraînement du vocabulaire sur un ensemble de validation. Dans ce cas, le modèle devrait apprendre à traiter les mots de l'ensemble d’entraînement qui ne sont pas dans le vocabulaire, peut-être en déduisant leur signification ou en les ignorant.
+## <span style="color: #FFBF00"> **3.4 Surentraînement du vocabulaire au jeu d'entraînement** </span>
+Une illustration du surentraînement du vocabulaire est la suivante. Imaginons la création d'un vocabulaire utilisant tous les mots du jeu d'entraînement sans en limiter la taille. Dans ce cas, tous les mots que le modèle verra pendant l'entraînement auront un identifiant unique associé à celui-ci. Cela signifie que le modèle ne rencontrera jamais un mot inconnu et n'apprendra donc jamais à le manipuler. Par conséquent, lorsque nous lui donnerons le jeu de test (qui contiendra très probablement des mots inconnus auparavant), il aura probablement de mauvaises performances sur les exemples avec des mots nouveaux. Comparons cela avec l'entraînement du vocabulaire sur un ensemble de validation. Dans ce cas, le modèle devrait apprendre à traiter les mots de l'ensemble d’entraînement qui ne sont pas dans le vocabulaire, peut-être en déduisant leur signification ou en les ignorant.
 
-Cela peut aussi se produire dans le cas d'algorithmes comme le BPE, même s'il n'y a pas de tokens inconnus : le tokens/vocabulaire sera ajusté sur les fréquences de l'ensemble d’entraînement, donc tous les tokens que le modèle voit pendant l’entraînement ont une fréquence "artificiellement élevée". Cela peut faire que des mots qui ne sont pas courants en général (par exemple " sufficiently ") ne soient pas tokenisés, ce qui empêche le modèle d'apprendre à utiliser efficacement les sous-mots.
+Cela peut aussi se produire dans le cas d'algorithmes comme le *BPE*, même s'il n'y a pas de *tokens* inconnus : le vocabulaire sera ajusté sur les fréquences du jeu d’entraînement, donc tous les *tokens* que le modèle voit pendant l’entraînement ont une fréquence artificiellement élevée. Cela peut faire que des mots qui ne sont pas courants en général ne soient pas tokenisés, ce qui empêche le modèle d'apprendre à utiliser efficacement les sous-mots.
 
-Une solution potentielle à cela est d’entraîner un tokenizer en sous-mots sur un énorme corpus non labélisé afin qu'il puisse extraire des sous-mots pertinents pour la langue dans son ensemble et non pour un ensemble de données particulier. C'est probablement la meilleure approche si vous avez suffisamment de données non étiquetées. 
-Lorsque vous n'avez pas assez de données non étiquetées, il y a quelques approches que vous pourriez prendre. L'une d'elles consiste à utiliser l'ensemble d’entraînement pour entraîner votre token et votre vocabulaire et à espérer que tout ira bien. Une autre est d'utiliser un échantillon de l'ensemble d’entraînement pour entraîner le token et le vocabulaire de sorte que le modèle rencontre des tokens inconnus avec une certaine probabilité. Vous pouvez également définir un seuil pour le vocabulaire afin que les mots ne reçoivent un identifiant unique que s'ils dépassent une certaine fréquence. Notez que cela suppose que la distribution des nouveaux mots dans l'ensemble de test reflétera la distribution des mots à faible fréquence dans l'ensemble d’entraînement, une hypothèse qui n'est pas toujours vraie. 
+Une solution potentielle à cela est d’entraîner un *tokenizer* en sous-mots sur un énorme corpus non labélisé afin qu'il puisse extraire des sous-mots pertinents pour la langue dans son ensemble et non pour un jeu de données particulier. C'est probablement la meilleure approche si vous avez suffisamment de données non étiquetées. 
+Lorsque vous n'avez pas assez de données non étiquetées, il y a quelques approches que vous pouvez effectuer. L'une d'elles consiste à utiliser le jeu d’entraînement pour entraîner votre *token* et votre vocabulaire et à espérer que tout ira bien. Une autre est d'utiliser un échantillon du jeu d’entraînement pour entraîner le *token* et le vocabulaire de sorte que le modèle rencontre des *tokens* inconnus avec une certaine probabilité. Vous pouvez également définir un seuil pour le vocabulaire afin que les mots ne reçoivent un identifiant unique que s'ils dépassent une certaine fréquence. Notez que cela suppose que la distribution des nouveaux mots dans le jeu de test reflétera la distribution des mots à faible fréquence dans le jeu d’entraînement, une hypothèse qui n'est pas toujours vraie. 
 <br><br>
 
 
 ## <span style="color: #FFBF00"> **3.5 Changement des vocabulaires préfabriqués** </span>
-Malgré toute la discussion ci-dessus sur la façon de gérer et de construire des vocabulaires, dans certains cas, nous n'avons même pas notre mot à dire sur le vocabulaire. Par exemple, si nous utilisons BERT, nous sommes la plupart du temps coincés avec le vocabulaire que les auteurs nous ont donné. Cela peut être un problème, par exemple, si nous voulons réduire la taille du vocabulaire pour tronquer la matrice d'embedding afin que le modèle tienne sur un téléphone. 
-Cet [article](https://arxiv.org/pdf/1909.11687.pdf) propose une approche intéressante pour résoudre ce problème. Il utilise une approche élève-enseignant (student-teacher) pour distiller un modèle enseignant, et entraine un modèle élève avec un vocabulaire réduit en alimentant modèle enseignant avec un mélange d'entrées tokénisées par le modèle élève et le modèle enseignant. Cette idée de mélanger les vocabulaires des élèves et du professeur est intéressante et semble être une idée qui mérite d'être explorée en dehors de la simple compression du modèle. 
+Malgré toute la discussion ci-dessus sur la façon de gérer et de construire des vocabulaires, dans certains cas, nous n'avons même pas notre mot à dire sur le vocabulaire. Par exemple, si nous utilisons BERT, nous sommes la plupart du temps coincés avec le vocabulaire que les auteurs nous ont donné. Cela peut être un problème, par exemple, si nous voulons réduire la taille du vocabulaire pour tronquer la matrice d'enchâssement afin que le modèle tienne sur un téléphone. 
+Cet [article](https://arxiv.org/pdf/1909.11687.pdf) propose une approche intéressante pour résoudre ce problème. Il utilise une approche élève-enseignant (*student-teacher*) pour distiller un modèle enseignant, et entraine un modèle élève avec un vocabulaire réduit en donnant au modèle enseignant un mélange d'entrées tokénisées par le modèle élève et le modèle enseignant. Cette idée de mélanger les vocabulaires de l'élève et de l'enseignant est intéressante et semble être une idée qui mérite d'être explorée en dehors de la simple compression du modèle. 
 <br><br><br>
 
 
@@ -322,32 +330,32 @@ Terminons par quelques points non classables dans les parties précédentes.
 
 
 ## <span style="color: #FFBF00"> **4.1 Filtrage des données de faible qualité** </span>
-Jusqu'à présent, nous avons discuté de la façon de traiter les données une fois que vous avez déjà un ensemble de données en place. Parfois, cependant, vous devez effectuer un filtrage supplémentaire avant/pendant la construction de l'ensemble de données. Par exemple, si vous voulez entraîner un modèle de langage basé sur un grand corpus, vous pouvez utiliser les données de Twitter. Cependant, les données de Twitter peuvent être très bruitées, contenant du charabia, du contenu dupliqué, d'autres langues et d'autres données de mauvaise qualité/non pertinentes que vous voulez exclure.  				                 
+Jusqu'à présent, nous avons discuté de la façon de traiter les données quand vous avez déjà un jeu de données en place. Cependant, parfois, vous devez effectuer un filtrage supplémentaire avant/pendant la construction du jeu de données. Par exemple, si vous voulez entraîner un modèle de langage basé sur un grand corpus, vous pouvez utiliser les données de Twitter. Cependant, les données de Twitter peuvent être très bruitées, contenant du charabia, du contenu dupliqué, d'autres langues et d'autres données de mauvaise qualité/non pertinentes que vous voulez exclure.  				                 
 Cet [article](https://arxiv.org/pdf/1911.00359.pdf) de G.Wenzek, M-A. Lachaux et al., traite de diverses préoccupations et méthodes concernant la construction de corpus monolingues de haute qualité pour diverses langues à l'aide de données Common Crawl. Leurs principales étapes de prétraitement comprennent la déduplication des documents à l'aide du hachage, la détection de la langue et le filtrage du contenu en fonction de leur score de perplexité sur un modèle linguistique.
 <br><br>
 
 
-## <span style="color: #FFBF00"> **4.2 Preprocessing comme augmentation de données** </span>
-Le fait que les décisions de prétraitement sont quelque peu arbitraires et peuvent causer du bruit peut en fait être utilisé à notre avantage. Par exemple, un modèle qui est entrainé sur des données d'entrée entièrement en minuscules et un modèle qui est entrainé avec du surajustements peuvent être assemblés efficacement. Keita Kurita (l’auteur de l’article dont fait l’objet cette traduction) a utilisé cette technique pour se classer dans le top [1  % d'une compétition Kaggle](http://mlexplained.com/2019/04/01/tricks-and-lessons-learned-from-getting-into-the-top-1-of-a-kaggle-competition/). Dans certains concours Kaggle de NLP, l'assemblage de plusieurs modèles en utilisant différentes étapes de prétraitement a été la clé de la victoire. 
+## <span style="color: #FFBF00"> **4.2 *Preprocessing* comme augmentation de données** </span>
+Le fait que les décisions de prétraitement sont quelque peu arbitraires et peuvent causer du bruit peut en fait être utilisé à notre avantage. Par exemple, un modèle qui est entrainé sur des données d'entrée entièrement en minuscules et un modèle qui est entrainé avec du surajustements peuvent être assemblés efficacement. Keita Kurita (l’auteur de l’article dont fait l’objet cette traduction) a utilisé cette technique pour se classer dans le top [1% d'une compétition Kaggle](http://mlexplained.com/2019/04/01/tricks-and-lessons-learned-from-getting-into-the-top-1-of-a-kaggle-competition/). Dans certains concours Kaggle de NLP, l'assemblage de plusieurs modèles en utilisant différentes étapes de prétraitement a été la clé de la victoire. 
 L'idée d'utiliser le prétraitement comme augmentation des données est explorée dans cet [article](https://arxiv.org/abs/1804.10959) de Taku Kudo où l'auteur utilise un modèle de langage unigramme pour échantillonner des tokenisations légèrement différentes du même texte. 
 <br><br>
 
 
-## <span style="color: #FFBF00"> **4.3 Stemming et Lemmatization** </span>
-Le stemming et la lemmatization sont des formes extrêmes de normalisation qui ne sont généralement pas rentables en NLP moderne. La plupart des problèmes que le stemming et la lemmatisation adressent peuvent être résolus en utilisant des sous-mots symboliques, il n'y a donc tout simplement aucune raison d'utiliser ces étapes de prétraitement.
+## <span style="color: #FFBF00"> **4.3 *Stemming* et *Lemmatization*** </span>
+Le *stemming* et la *lemmatization* sont des formes extrêmes de normalisation qui ne sont généralement pas rentables en traitement du langage moderne (depuis l'apparition des *transformers*). La plupart des problèmes que le *stemming* et la *lemmatization* adressent peuvent être résolus en utilisant des sous-mots symboliques, il n'y a donc tout simplement aucune raison d'utiliser ces étapes de prétraitement.
 <br><br><br>
 
 
 # <span style="color: #FF0000"> **Conclusion** </span>
 Résumons l’article avec les principaux points évoqués :
 - Utilisez l'unicode. Cela permet de gérer à peut prêt toutes les langues. 	
-- Si vous utilisez un Transformer, assurez-vous que votre prétraitement correspond à celui utilisé par le modèle.
+- Si vous utilisez un *transformer*, assurez-vous que votre prétraitement correspond à celui utilisé par le modèle.
 - Inspectez toujours manuellement vos entrées prétraitées. Vous serez surpris du nombre de bugs que vous pouvez attraper.
 - La normalisation est la première étape du prétraitement, et une considération majeure à cette étape est la quantité de données que vous avez. Plus vous avez de données, moins vous avez besoin de normalisation.
-- Les tokenizers à base de règles sont un bon point de départ pour de nombreuses langues, mais peuvent être difficiles à mettre à l'échelle.
-- Les tokenizers en sous-mots apprennent les segmentations qui divisent les mots rares en sous-mots significatifs. Ils sont appris à partir de données et sont généralement efficaces pour traiter les mots rares et les langues riches comme l’allemand.
-- Les tokenizers BPE, wordpiece, et unigram language model ont besoin d'une pré-création. Le Sentencepiece n'en a pas besoin.
-- La construction du vocabulaire comporte de nombreuses subtilités. En particulier, faites attention à ne pas trop vous ajuster à l'ensemble d'entraînement.
+- Les *tokenizers* à base de règles sont un bon point de départ pour de nombreuses langues mais peuvent être difficiles à mettre à l'échelle.
+- Les *tokenizers* en sous-mots apprennent les segmentations qui divisent les mots rares en sous-mots significatifs. Ils sont appris à partir de données et sont généralement efficaces pour traiter les mots rares et les langues riches comme l’allemand.
+- Les *tokenizers BPE*, *wordpiece*, et *unigram language model* ont besoin d'une précréation. *Sentencepiece* n'en a pas besoin.
+- La construction du vocabulaire comporte de nombreuses subtilités. En particulier, faites attention au surentraînement avec les données d'entraînement.
 <br><br><br>
 
 # <span style="color: #FF0000"> **Références** </span>
