@@ -145,45 +145,44 @@ Un autre problème majeur est que toutes les langues ne divisent pas les mots vi
 Il existe une classe d'algorithmes qui tentent de résoudre ces problèmes, communément appelés méthodes de *tokenization en subword*, que nous allons aborder dans la suite.
 <br><br>
 
-Reprendre ici
 
-## <span style="color: #FFBF00"> **2.3 3.	Subword Tokenization (Tokénisation en sous-mots)** </span>
-Tous les algorithmes de tokenisation en sous-mots partagent l'idée fondamentale que les mots les plus fréquents devraient recevoir des identificateurs uniques, alors que les mots moins fréquents devraient être décomposés en unités en sous-mots qui conservent le mieux leur signification. Par exemple, nous pouvons vouloir retenir le mot " wonderfully" comme un seul mot puisqu'il apparaît souvent dans notre ensemble de données et que nous pouvons nous attendre à ce que le modèle en apprenne la signification. D'autre part, nous pouvons vouloir diviser " structurally" en " structural" et " ly " puisque " structurellement " est peu courant et que nous voulons aider le modèle en lui donnant de l'information sur sa composition.	
-Nous allons passer en revue 4 algorithmes majeurs de tokenisation en sous-mots : le byte-pair encoding (BPE), le wordpiece, l’ unigram language model, et le  sentencepiece.
+## <span style="color: #FFBF00"> **2.3 3.	Tokénisation en sous-mots (subword Tokenization)** </span>
+Tous les algorithmes de tokenisation en sous-mots partagent l'idée fondamentale que les mots les plus fréquents devraient recevoir des identificateurs uniques, alors que les mots moins fréquents devraient être décomposés en sous-mots qui conservent le mieux leur signification. Par exemple, nous pouvons vouloir retenir le mot « wonderfully" comme un seul mot puisqu'il apparaît souvent dans notre jeu de données et que nous pouvons nous attendre à ce que le modèle en apprenne la signification. D'autre part, nous pouvons vouloir diviser « structurally » en « structural » et « ly » puisque « structurally » est peu courant et que nous voulons aider le modèle en lui donnant de l'information sur sa composition.	
+Nous allons passer en revue quatre algorithmes majeurs de tokenisation en sous-mots : le *byte-pair encoding* (BPE), le *wordpiece*, l’*unigram language model*, et le *sentencepiece*.
 <br><br>
 
 
-### <span style="color: #51C353"> **2.3.1 Byte-Pair Encoding (BPE)** </span>
-Le Byte-pair encoding (BPE) pour sous-mots a été proposée dans cette [publication](https://arxiv.org/pdf/1508.07909.pdf) par Sennrich, Haddow et Birch. L'idée de base (qui est un algorithme de compression) existe néanmoins depuis 1994. Ce n'est pas une coïncidence si le BPE tire ses racines du domaine de la théorie de l'information et de la compression. L'idée de représenter des mots fréquents avec moins de symboles, et des mots moins fréquents avec plus de symboles est exactement l'idée derrière de nombreux schémas d'encodage tels que l'encodage de Huffman. BPE applique simplement les mêmes principes et techniques de façon intelligente à la tokenization.
+### <span style="color: #51C353"> **2.3.1 Le *Byte-Pair Encoding* (BPE)** </span>
+Le *Byte-pair encoding* (BPE) pour sous-mots a été proposée dans cette [publication](https://arxiv.org/pdf/1508.07909.pdf) par Sennrich, Haddow et Birch. L'idée de base (qui est un algorithme de compression) existe néanmoins depuis 1994. Ce n'est pas une coïncidence si le BPE tire ses racines du domaine de la théorie de l'information et de la compression. L'idée de représenter des mots fréquents avec moins de symboles, et des mots moins fréquents avec plus de symboles est exactement l'idée derrière de nombreux schémas d'encodage tels que l'encodage de Huffman. Le BPE applique simplement les mêmes principes et techniques de façon intelligente à la tokenization.
 BPE est un algorithme de tokenisation ascendante de sous-mots qui apprend un vocabulaire de sous-mots d'une certaine taille (la taille du vocabulaire étant un hyperparamètre). L'idée de base est la suivante :
 1. Commencez par diviser tous les mots en caractères unicode. Chaque caractère unicode correspond à un symbole dans le vocabulaire final. Nous commencerons avec ce vocabulaire minimal et l'élargirons progressivement.
 
-2. Pendant que nous avons encore de la place dans le vocabulaire, faites ce qui suit : 
+2. Tant qu'il reste de la place dans le vocabulaire, faites ce qui suit : 
     1. Trouvez le symbole bigramme le plus fréquent (paire de symboles)
-    2. Fusionnez ces symboles pour créer un nouveau symbole et ajoutez-le au vocabulaire. Ceci augmente la taille du vocabulaire de un.
+    2. Fusionnez ces symboles pour créer un nouveau symbole et ajoutez-le au vocabulaire. Ceci augmente la taille du vocabulaire de 1.
 <br>
 
-Pour illustrer cela, prenons un exemple. Supposons que nous ayons les mots " bed ", " ted ", " sad ", " beds " et " mad " à partir desquels nous voulons construire un vocabulaire BPE de taille 10. Nous commençons avec le vocabulaire minimal et les mots segmentés en caractères individuels.
+Pour illustrer cela, prenons un exemple. Supposons que nous ayons les mots « bed », « ted », « sad », « beds » et « mad » à partir desquels nous voulons construire un vocabulaire BPE de taille 10. Nous commençons avec le vocabulaire minimal et les mots segmentés en caractères individuels.
 <center>
 <figure class="image">
   <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Tokenizers/bpe1.png">
 </figure>
 </center>
-Le symbole bigramme le plus fréquent est "ed" qui apparaît 3 fois. Nous les fusionnons donc et ajoutons un nouveau symbole au vocabulaire.
+Le symbole bigramme le plus fréquent est « ed » qui apparaît 3 fois. Nous les fusionnons donc et ajoutons un nouveau symbole au vocabulaire.
 
 <center>
 <figure class="image">
   <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Tokenizers/bpe2.png">
 </figure>
 </center>
-Le symbole suivant le plus fréquent (à égalité avec 2 apparitions) est "ad". Nous les fusionnons et ajoutons le nouveau symbole au vocabulaire une fois de plus. Cela porte la taille du vocabulaire à 9.
+Le symbole suivant le plus fréquent (à égalité avec 2 apparitions) est « ad ». Nous les fusionnons et ajoutons le nouveau symbole au vocabulaire une fois de plus. Cela porte la taille du vocabulaire à 9.
 
 <center>
 <figure class="image">
   <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Tokenizers/bpe3.png">
 </figure>
 </center>
-Enfin, nous fusionnons "b" et "ed" car cette paire de symboles apparaît également deux fois, ce qui porte la taille du vocabulaire à 10 et met fin à notre construction de vocabulaire. La segmentation qui en résulte est ce que nous utiliserons pour la tokenisation en utilisant notre modèle BPE appris.
+Enfin, nous fusionnons « b » et « ed » car cette paire de symboles apparaît également deux fois, ce qui porte la taille du vocabulaire à 10 et met fin à notre construction de vocabulaire. La segmentation qui en résulte est ce que nous utiliserons pour la tokenisation en utilisant notre modèle BPE appris.
 
 <center>
 <figure class="image">
@@ -191,86 +190,94 @@ Enfin, nous fusionnons "b" et "ed" car cette paire de symboles apparaît égalem
 </figure>
 </center>
 
-Bien sûr, nous voulons faire la distinction entre "ed" comme un seul mot et le suffixe "ed", donc en réalité nous représenterions le suffixe comme "##ed". (Si ce symbole "##" préfixé vous semble familier, c'est parce que de nombreux modèles modernes pré-entrainés utilisent la tokenisation de sous-mots ; en d'autres termes, si vous voyez vos entrées tokénisées de cette façon, il est probable qu'il y ait une tokenisation de sous-mots qui se déroule quelque part dans les coulisses).
+Bien sûr, nous voulons faire la distinction entre « ed » comme un seul mot et le suffixe « ed », donc en réalité nous représenterions le suffixe comme « ##ed ». (Si ce symbole « ## » préfixé vous semble familier, c'est parce que de nombreux modèles modernes pré-entrainés utilisent la tokenisation de sous-mots ; en d'autres termes, si vous voyez vos entrées tokénisées de cette façon, il est probable qu'il y ait une tokenisation en sous-mots qui se déroule quelque part dans les coulisses).
 
-L'exemple ci-dessus utilise des mots individuels, ce qui soulève la question suivante : que se passe-t-il lorsque nous utilisons des phrases entières ? Une des caractéristiques délicates du BPE est qu'il commence par tokeniser l'entrée, et ne fusionne que les bigrammes de symboles dans un seul token. C'est pour l'efficacité du calcul, puisque trouver le bigramme le plus fréquent est une opération coûteuse (s'il y a N symboles, c'est une opération O(N²) faite naïvement).
-Une autre question que vous pourriez vous poser est de savoir ce qui se passe si nous rencontrons un caractère unicode inédit dans le vocabulaire. Il existe plusieurs solutions à ce problème. L'une d'entre elles consiste simplement à associer des caractères invisibles à un Token "INCONNU". Une autre est d'allouer un id à chaque caractère unicode possible même si nous ne le rencontrons pas dans le texte (ce n'est clairement pas réaliste, et c'est plus pour le plaisir de l'argumentation).
+L'exemple ci-dessus utilise des mots individuels, ce qui soulève la question suivante : que se passe-t-il lorsque nous utilisons des phrases entières ? Une des caractéristiques délicates du BPE est qu'il commence par tokeniser l'entrée et ne fusionne que les bigrammes de symboles dans un seul *token*. C'est pour l'efficacité du calcul, puisque trouver le bigramme le plus fréquent est une opération coûteuse (s'il y a N symboles, c'est une opération O(N²)).
+Une autre question que vous pourriez vous poser est de savoir ce qui se passe si nous rencontrons un caractère unicode inédit dans le vocabulaire. Il existe plusieurs solutions à ce problème. L'une d'entre elles consiste simplement à associer des caractères invisibles à un token « unk » (pour inconnu). Une autre est d'allouer un id à chaque caractère unicode possible même si nous ne le rencontrons pas dans le texte (ce n'est clairement pas réaliste et c'est plus pour le plaisir de l'argumentation).
 
-Une approche intelligente proposée par l'équipe d'Open AI dans son [article sur le GPT-2](https://d4mucfpksywv.cloudfront.net/better-language-models/language_models_are_unsupervised_multitask_learners.pdf) est de traiter l'entrée comme une séquence d'octets au lieu de caractères unicode, et d'attribuer un identifiant à chaque octet possible. Puisque les caractères unicode sont représentés par un nombre variable d'octets, même si nous rencontrons un tout nouveau caractère, nous pouvons le décomposer en ses octets constitutifs dans le pire des cas, empêchant ainsi l'apparition de tokens inconnus.
+Une approche intelligente proposée par l'équipe d'Open AI dans son [article sur le GPT-2](https://d4mucfpksywv.cloudfront.net/better-language-models/language_models_are_unsupervised_multitask_learners.pdf) est de traiter l'entrée comme une séquence d'octets au lieu de caractères unicode et d'attribuer un identifiant à chaque octet possible. Puisque les caractères unicode sont représentés par un nombre variable d'octets, même si nous rencontrons un tout nouveau caractère, nous pouvons le décomposer en ses octets constitutifs dans le pire des cas, empêchant ainsi l'apparition de *tokens* inconnus.
 <br><br>
 
 
-### <span style="color: #51C353"> **2.3.2 Wordpiece** </span>
-Peut-être le plus célèbre en raison de son utilisation dans BERT, Wordpiece est un autre algorithme de tokenisation en sous-mots largement utilisé. L'algorithme (décrit dans la [publication](https://static.googleusercontent.com/media/research.google.com/ja//pubs/archive/37842.pdf) de Schuster et Kaisuke) est en fait pratiquement identique à BPE. La seule différence est qu'au lieu de fusionner le bigramme de symbole le plus fréquent, le modèle fusionne le bigramme qui, une fois fusionné, augmenterait la probabilité d'un modèle de langage unigramme entrainé sur les données d’entraînement.
+### <span style="color: #51C353"> **2.3.2 *Wordpiece*** </span>
+Peut-être le plus célèbre en raison de son utilisation dans BERT, *wordpiece* est un autre algorithme de tokenisation en sous-mots largement utilisé. L'algorithme (décrit dans la [publication](https://static.googleusercontent.com/media/research.google.com/ja//pubs/archive/37842.pdf) de Schuster et Kaisuke) est en fait pratiquement identique à BPE. La seule différence est qu'au lieu de fusionner le bigramme de symbole le plus fréquent, le modèle fusionne le bigramme qui, une fois fusionné, augmenterait la probabilité d'un modèle de langage unigramme entrainé sur les données d’entraînement.
 <br>
 
-Attention. Ici et jusqu’à la fin du paragraphe, je traduis ce que l’auteur de l’article original à compris de cette méthode. En effet, il précise qu’il n’a pas trouvé de code source d’une implémentation de cette méthode et n’a donc pas pû la décortiquer en entier. Il explique donc ce qu’il a compris mais précise qu’il n’exclut pas de s’être tromper en abscence de code pour confirmer ou infirmer ses explications.
+Attention. Ici et jusqu’à la fin de cette section 2.3.2, je traduis ce que l’auteur de l’article original à compris de cette méthode. En effet, il précise qu’il n’a pas trouvé de code source d’une implémentation de cette méthode et n’a donc pas pu la décortiquer en entier. Il explique donc ce qu’il a compris mais précise qu’il n’exclut pas de s’être tromper en absence de code pour confirmer ou infirmer ses explications.
 
 Si son raisonnement est correct, cela signifie qu'en plus de la fréquence du bigramme, la fréquence des symboles originaux qui constituent le bigramme est également prise en compte. Le logarithme de la probabilité d'une phrase dans un modèle de langage unigramme (en supposant l'indépendance entre les mots d'une phrase) est simplement la somme des logarithmes des fréquences des symboles qui la composent. Cela signifie que la fusion de deux symboles augmentera le logarithme de la probabilité totale du symbole fusionné et la diminuera le logarithme de la probabilité  des deux symboles originaux.
 En supposant que nous fusionnons les symboles x et y, l'augmentation du logarithme de la probabilité est : 
 
 $$ \log p(x,y) - \log p(x) - \log p(y) = \log \displaystyle \frac{\log p(x) }{\log p(x) \log p(y) }  $$ 
  
-De nouveau, si le raisonnement est correct, ceci est donc équivalent à l'information mutuelle entre deux symboles, donc wordpiece peut être considéré comme une variante de BPE qui fusionne sur la base de l'information mutuelle au lieu de la fréquence.<br>
-[RoBERTa](https://arxiv.org/pdf/1907.11692.pdf) est une version « optimisée » de BERT. Dans leur publication, les auteurs utilisent BPE au lieu du Wordpiece de BERT, et ont trouvé que cette décision ne faisait pas une grande différence.
+De nouveau, si le raisonnement est correct, ceci est donc équivalent à l'information mutuelle entre deux symboles, donc *wordpiece* peut être considéré comme une variante de BPE qui fusionne sur la base de l'information mutuelle au lieu de la fréquence.<br>
+[RoBERTa](https://arxiv.org/pdf/1907.11692.pdf) est une version « optimisée » de BERT. Dans leur publication, les auteurs utilisent BPE au lieu du *wordpiece* de BERT et ont trouvé que cette décision ne faisait pas une grande différence.
 <br><br>
 
 
-### <span style="color: #51C353"> **2.3.3 Unigram Language Model** </span>
-L'algorithme de tokenization de l’unigram language model a été proposé à l'origine dans cet [article](https://arxiv.org/pdf/1804.10959.pdf) par Taku Kudo. Bien qu'il utilise des principes similaires aux méthodes décrites précédemment, il est en fait formé très différemment dans la pratique.
+### <span style="color: #51C353"> **2.3.3 *Unigram Language Model*** </span>
+L'algorithme de tokenization de l’*unigram language model* a été proposé à l'origine dans cet [article](https://arxiv.org/pdf/1804.10959.pdf) par Taku Kudo. Bien qu'il utilise des principes similaires aux méthodes décrites précédemment, il est en fait entraîné très différemment dans la pratique.
 
-L'idée de base de ce tokenizer est d'entraîner un modèle de langage en unigramme, en supposant que tous les mots se produisent indépendamment les uns des autres. Il utilise ensuite ce modèle pour trouver la segmentation la plus probable de chaque mot. L'avantage de cette méthode est qu'elle utilise un modèle probabiliste, ce qui signifie qu'en plus de trouver la segmentation la plus probable, vous pouvez échantillonner des segmentations à partir d'une distribution de probabilités. Ceci est utilisé dans une méthode d'augmentation des données abordée plus loin dans la partie 3 de l’article.
+L'idée de base de ce *tokenizer* est d'entraîner un modèle de langage en unigramme, en supposant que tous les mots se produisent indépendamment les uns des autres. Il utilise ensuite ce modèle pour trouver la segmentation la plus probable de chaque mot. L'avantage de cette méthode est qu'elle utilise un modèle probabiliste, ce qui signifie qu'en plus de trouver la segmentation la plus probable, vous pouvez échantillonner des segmentations à partir d'une distribution de probabilités. Ceci est utilisé dans une méthode d'augmentation des données abordée plus loin dans la partie 3 de l’article.
 
-La différence entre cette méthode et le wordpiece est que le wordpiece maximise la probabilité d'un modèle linguistique unigramme en fusionnant les symboles. Cela est possible parce que wordpiece ne fait pas directement référence au modèle de langue, ce qui rend la segmentation indépendante de celui-ci.
+La différence entre cette méthode et le *wordpiece* est que le *wordpiece* maximise la probabilité d'un modèle linguistique unigramme en fusionnant les symboles. Cela est possible car *wordpiece* ne fait pas directement référence au modèle de langue, ce qui rend la segmentation indépendante de celui-ci.
 
-Dans le tokenizer de l’unigram language model, la segmentation dépend du modèle de langue. Cela crée une dépendance cyclique : pour entraîner un modèle de langue, nous devons compter la fréquence de tous les mots d'un vocabulaire, ce qui nécessite de savoir comment segmenter le texte dans le corpus d'entraînement en premier lieu. Mais pour savoir comment segmenter le texte dans le corpus d'entraînement, nous avons besoin du modèle de langue !
+Dans le *tokenizer* de l’*unigram language model*, la segmentation dépend du modèle de langue. Cela crée une dépendance cyclique : pour entraîner un modèle de langue, nous devons compter la fréquence de tous les mots d'un vocabulaire, ce qui nécessite de savoir comment segmenter le texte dans le corpus d'entraînement en premier lieu. Mais pour savoir comment segmenter le texte dans le corpus d'entraînement, nous avons besoin du modèle de langue !
 Pour gérer cette dépendance cyclique, le modèle de langue unigramme est entraîné selon le processus suivant : 
 1. Initialiser un grand vocabulaire provisoire. Ce vocabulaire pourrait être construit en utilisant un simple tokenizer à base de règles.
 2. Entraîner le modèle de langage unigramme en utilisant l'[algorithme EM](https://fr.wikipedia.org/wiki/Algorithme_esp%C3%A9rance-maximisation). 
 3. Réduire la taille du vocabulaire en supprimant les symboles qui contribuent le moins à la probabilité globale du modèle de langage sur l'ensemble d'apprentissage.
 4. Répétez les étapes 2 à 4 jusqu'à ce que la taille du vocabulaire soit suffisamment réduite.
-L’unigram language model prend également soin de conserver les caractères individuels pour minimiser la probabilité de tokens hors du vocabulaire.
+L’*unigram language model* prend également soin de conserver les caractères individuels pour minimiser la probabilité de *tokens* hors du vocabulaire.
 <br><br>
 
 
 ### <span style="color: #51C353"> **2.3.4 Sentencepiece** </span>
-Toutes les méthodes que nous avons étudiées jusqu'à présent nécessitent une forme de prétokenisation. Vous remarquerez que cela ne résout pas l'un des problèmes que nous avons exposés au début : toutes les langues ne peuvent pas être facilement "tokenizées", en particulier celles qui ne sont pas séparées par des espaces. C'est un problème particulièrement épineux pour les applications multilingues, car cela signifie que vous devez potentiellement utiliser un token séparé pour chaque langue que vous traitez.
+Toutes les méthodes que nous avons étudiées jusqu'à présent nécessitent une forme de prétokenisation. Vous remarquerez que cela ne résout pas l'un des problèmes que nous avons exposés au début : toutes les langues ne peuvent pas être facilement tokenizées, en particulier celles qui ne sont pas séparées par des espaces. C'est un problème particulièrement épineux pour les applications multilingues, car cela signifie que vous devez potentiellement utiliser un *token* séparé pour chaque langue que vous traitez.
 
-Un autre problème subtil créé par la prétokenisation est qu'elle rend la détokenisation impossible dans certains cas. Par exemple, si un tokenizer se divise sur les espaces et la ponctuation, il va tokeniser les phrases 
+Un autre problème créé par la prétokenisation est qu'elle rend la détokenisation impossible dans certains cas. Par exemple, si un *tokenizer* se divise sur les espaces et la ponctuation, il va tokeniser les phrases :
 <br>
-“I like natural language processing”
+``` 
+I like natural language processing
+``` 
 <br>
 et
 <br>
-“I &nbsp;&nbsp;&nbsp; like &nbsp;&nbsp;&nbsp; natural &nbsp;&nbsp;&nbsp; language &nbsp;&nbsp;&nbsp; processing”
+``` 
+I &nbsp;&nbsp;&nbsp; like &nbsp;&nbsp;&nbsp; natural &nbsp;&nbsp;&nbsp; language &nbsp;&nbsp;&nbsp; processing
+``` 
 <br>
 de la même manière, ce qui signifie que nous ne pouvons pas récupérer la forme de la phrase originale.
 <br>
 
-[Sentencepiece](https://arxiv.org/pdf/1808.06226.pdf)  résout les deux problèmes en traitant l'entrée comme un flux brut de caractères unicode. Il utilise ensuite soit le codage BPE, soit le codage de l’unigram language model au niveau des caractères pour construire le vocabulaire approprié. Cela signifie que les espaces sont inclus dans la tokenisation. Par exemple, a l’unigram language model, " I like natural language processing " peut être tokénissé comme
+[*Sentencepiece*](https://arxiv.org/pdf/1808.06226.pdf) résout les deux problèmes en traitant l'entrée comme un flux brut de caractères unicode. Il utilise ensuite soit le codage BPE, soit le codage de l’*unigram language model* au niveau des caractères pour construire le vocabulaire approprié. Cela signifie que les espaces sont inclus dans la tokenisation. Par exemple, avec l’*unigram language model*, ```I like natural language processing``` peut être tokénissé comme
 <br>
+```
 “I”, “_like”, “_natural”, “_lang”, “uage”, “_process”, “ing”
+```
 <br>
 où le caractère espace est remplacé par le trait de soulignement (" _ ") pour plus de clarté.
 <br>
-Notez la distinction avec BPE, où la séquence ci-dessus avec les mêmes sous-mots pourrait être tokénisée par
+Notez la distinction avec BPE, où la séquence ci-dessus avec les mêmes sous-mots est tokénisée par
 <br>
+```
 “I”, “like”, “natural”, “lang”, “##uage”, “process”, “##ing”
+```
 <br>
 
 où les sous-mots sont précédés d'un marqueur spécial. 
-L'ajout de sous-mots avec un marqueur spécial n'a de sens qu'avec un modèle de prétokenisation, puisque le Sentencepiece ne connaît pas les limites des mots.
-Maintenant, vous vous demandez peut-être pourquoi Sentencepiece peut se permettre de traiter l'entrée comme un seul flux de caractères alors que nous avons établi plus tôt que trouver le symbole bigramme le plus fréquent est une opération d'un coût prohibitif en BPE. La raison est que Sentencepiece utilise un algorithme basé sur une file d'attente prioritaire, réduisant le temps d'exécution asymétrique de O(N²) à O(NlogN).
+L'ajout de sous-mots avec un marqueur spécial n'a de sens qu'avec un modèle de prétokenisation, puisque *sentencepiece* ne connaît pas les limites des mots.
+Maintenant, vous vous demandez peut-être pourquoi *sentencepiece* peut se permettre de traiter l'entrée comme un seul flux de caractères alors que nous avons établi plus tôt que trouver le symbole bigramme le plus fréquent est une opération d'un coût prohibitif avec BPE. La raison est que *sentencepiece* utilise un algorithme basé sur une file d'attente prioritaire, réduisant le temps d'exécution asymétrique de O(N²) à O(NlogN).
 <br>
-Notez également que Sentencepiece permet en fait l'utilisation de la prétokenisation (dans ce cas, il devient essentiellement le même que le BPE/l’unigram language model).  
-Un point où il faut être vigilant est que Sentencepiece applique une certaine normalisation unicode en interne (il utilise la normalisation unicode NFKC par défaut). Ceci peut être personnalisé, donc si vous avez besoin de règles de normalisation personnalisées qui sont en contradiction avec la normalisation NFKC, alors vous devriez regarder cette fonctionnalité.
+Notez également que *sentencepiece* permet en fait l'utilisation de la prétokenisation (dans ce cas, il devient essentiellement le même que le BPE/l’*unigram language model*).  
+Un point où il faut être vigilant est que *sentencepiece* applique une certaine normalisation unicode en interne (il utilise la normalisation unicode NFKC par défaut). Ceci peut être personnalisé, donc si vous avez besoin de règles de normalisation personnalisées qui sont en contradiction avec la normalisation NFKC, alors vous devriez regarder cette fonctionnalité.
 <br><br>
 
 
 ### <span style="color: #51C353"> **2.3.5 Limitations des Subword Tokenizers** </span>
-Comme les tokenizers de sous-mots sont appris à partir de données, la qualité et la quantité des données sont cruciales pour obtenir de bonnes performances. Lorsque vous n'avez pas beaucoup de données, il peut être préférable d'utiliser un tokenizer basé sur des règles, tout comme les systèmes basés sur des règles peuvent être meilleurs que les systèmes basés sur l'apprentissage machine lorsque les données sont rares.<br>
-Un autre problème avec certains tokenizers de sous-mots qui fonctionnent sur des flux de caractères/octets est qu'ils peuvent allouer de l'espace de vocabulaire à de multiples variations d'un même mot (par exemple "chien", "chien !", "chien ?"). Pour éviter cela, les auteurs du GPT-2 proposent d'empêcher la fusion entre différents types de caractères (par exemple les caractères et la ponctuation) à l’exception des espaces.<br>
-Un autre facteur à prendre en compte est que l'apprentissage d'un tokenizer est beaucoup plus coûteux que le tokenization réel et peut être assez intensif en mémoire et coûteux en calcul, puisqu'ils doivent garder les données en mémoire pour un comptage et une génération de statistiques rapides. Par conséquent, même si vous avez des téraoctets de données pour apprendre un modèle de phrase, il peut ne pas être possible de tout utiliser par calcul.
+Comme les *tokenizers* de sous-mots sont appris à partir de données, la qualité et la quantité des données sont cruciales pour obtenir de bonnes performances. Lorsque vous n'avez pas beaucoup de données, il peut être préférable d'utiliser un *tokenizer* basé sur des règles, tout comme les systèmes basés sur des règles peuvent être meilleurs que les systèmes basés sur l'apprentissage machine lorsque les données sont rares.<br>
+Un autre problème avec certains *tokenizers* en sous-mots qui fonctionnent sur des flux de caractères/octets est qu'ils peuvent allouer de l'espace de vocabulaire à de multiples variations d'un même mot (par exemple « chien », « chien ! », « chien ? »). Pour éviter cela, les auteurs du GPT-2 proposent d'empêcher la fusion entre différents types de caractères (par exemple les caractères et la ponctuation) à l’exception des espaces.<br>
+Un autre facteur à prendre en compte est que l'apprentissage d'un *tokenizer* est beaucoup plus coûteux que la tokenization réelle et peut être assez intensif en mémoire et coûteux en calcul puisqu'il doit garder les données en mémoire pour un comptage et une génération rapide de statistiques. Par conséquent, même si vous avez des téraoctets de données pour apprendre un modèle de phrase, cela peut ne pas être possible de tout utiliser.
 <br><br><br>
 
 
