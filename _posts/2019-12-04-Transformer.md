@@ -400,7 +400,7 @@ $$
 \end{cases} 
 $$  
 
-avec i la position du token et $\delta$ la dimension.  
+avec i la position du token et delta la dimension.  
 
 Vous pouvez voir le code de génération des encodages positionnels dans [get_timing_signal_1d()](https://github.com/tensorflow/tensor2tensor/blob/23bd23b9830059fbc349381b70d9429b5c40a139/tensor2tensor/layers/common_attention.py).
 
