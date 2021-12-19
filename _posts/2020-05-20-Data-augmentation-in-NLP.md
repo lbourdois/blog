@@ -27,10 +27,10 @@ J’ai ajouté des éléments supplémentaires quand j’estimais que cela étai
 
 # <span style="color: #FF0000"> **Introduction** </span>
 
-Contrairement à la vision par ordinateur où l'augmentation de données d'images est une pratique courante, l'augmentation de données textuelles est assez rare en NLP.
-Cela s’explique par le fait que cette pratique est moins essentielle qu’en image car en NLP les données sont disponibles en abondance (les modèles de Transformers étant entraînés par exemple sur les millions de pages de Wikipédia, Common Crawl, etc.). Néanmoins, pour certaines tâches il se peut que vous manquiez de données. 
-Un exemple simple que j’ai rencontré professionnellement lorsque je travaillais à l'INSERM :<br>
-dans le cadre de la conception d'un outil de classification afin de déterminer la nature des traumatismes des patients passant par le service des urgences du centre hospitalier universitaire de Bordeaux nous nous sommes aperçus que pour avoir des résultats fiables, il faut environ 500 exemples d’entraînement par classes. A cela doit s’ajouter les effectifs nécessaires pour l’échantillon test. Un tel nombre ne pose pas de problème par exemple pour les chutes à domicile (le nombre de personnes âgées admises aux urgences pour une chute est monstrueux), les accidents de la route, le sport, etc… Mais pour d’autres classes, il manque (heureusement) des effectifs comme par exemple pour les noyades, les morsures d’animaux, les tentatives de suicides, etc…  Même en ayant plus de 7 années d'historique de données.
+Contrairement à la vision par ordinateur où l'augmentation de données d'images est une pratique courante, l'augmentation de données textuelles est moins répendue en traitement du langage naturel (NLP).
+Cela s’explique par le fait que cette pratique est moins essentielle qu’en image car en NLP les données sont disponibles en abondance (les modèles de *transformers* étant entraînés par exemple sur les millions de pages de Wikipédia, Common Crawl, etc.). Néanmoins, pour certaines tâches il se peut que vous manquiez de données. 
+Voici uUn exemple simple que j’ai rencontré professionnellement lorsque je travaillais à l'INSERM :<br>
+dans le cadre de la conception d'un outil de classification afin de déterminer la nature des traumatismes des patients passant par le service des urgences du centre hospitalier universitaire de Bordeaux nous nous sommes aperçus que pour avoir des résultats fiables, il faut environ 500 exemples d’entraînement par classes. A cela doit s’ajouter les effectifs nécessaires pour l’échantillon test. Un tel nombre ne pose pas de problème par exemple pour les chutes à domicile (le nombre de personnes âgées admises aux urgences pour une chute est monstrueux), les accidents de la route, le sport, etc. Mais pour d’autres classes, il manque (heureusement) des effectifs comme par exemple pour les noyades, les morsures d’animaux, les tentatives de suicides, etc.  Même en ayant plus de 7 années d'historique de données.
 Ainsi pour obtenir des résultats probants, il nous faut augmenter artificiellement les effectifs de certaines classes.<br> 
 L’objectif de cet article est de donner un aperçu des approches actuelles utilisées pour augmenter les données textuelles.
 <br><br><br>
@@ -41,13 +41,13 @@ Cette approche consiste à substituer des mots présents dans un texte sans pour
 <br>
 
 ## <span style="color: #FFBF00"> **1.1 Substitution basée sur un thésaurus** </span>
-Dans cette technique, nous prenons un mot aléatoire de la phrase et le remplaçons par son synonyme à l'aide d'un thésaurus. Par exemple, nous pourrions utiliser la base de données [WordNet](https://wordnet.princeton.edu/), pour l'anglais afin de rechercher les synonymes et effectuer ensuite le remplacement. Il s'agit d'une base de données gérée manuellement, avec des relations entre les mots. 
+Dans cette technique, nous prenons un mot aléatoire de la phrase et le remplaçons par son synonyme à l'aide d'un thésaurus. Par exemple, nous pouvons utiliser la base de données [WordNet](https://wordnet.princeton.edu/) pour l'anglais afin de rechercher les synonymes et effectuer ensuite le remplacement. Il s'agit d'une base de données gérée manuellement avec des relations entre les mots. 
 <center>
 <figure class="image">
   <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Data_augmentation/WordNet.png">
 </figure>
 </center>
-[Zhang et al.](https://arxiv.org/abs/1509.01626) ont utilisé cette technique dans leur article de 2015 intitulé "Character-level Convolutional Networks for Text Classification". Mueller et al. ont utilisé une stratégie similaire pour générer 10 000 exemples d’entraînement supplémentaires pour leur modèle de similarité des phrases.
+[Zhang et al.](https://arxiv.org/abs/1509.01626) ont utilisé cette technique dans leur article de 2015 intitulé *Character-level Convolutional Networks for Text Classification*. Mueller et al. ont utilisé une stratégie similaire pour générer 10 000 exemples d’entraînement supplémentaires pour leur modèle de similarité des phrases.
 <br><br>
 
 Pour le français, quatre bases sont disponibles. Elles consistent toutes en une traduction de WordNet :
@@ -60,8 +60,8 @@ Pour le français, quatre bases sont disponibles. Elles consistent toutes en une
 Il existe aussi une base de données appelée [PPDB](http://paraphrase.org/#/download) contenant des millions de paraphrases (en anglais et multilingues) que vous pouvez télécharger et utiliser. 
 <br><br>
 
-## <span style="color: #FFBF00"> **1.2 Substitution basée sur du word embedding** </span>
-Dans cette approche, nous prenons des [word embeddings pré-entrainés tels que Word2Vec](https://lbourdois.github.io/blog/nlp/word_embedding/), GloVe, FastText, Sent2Vec, et nous utilisons les mots les plus proches de celui que l’on souhaite remplacer dans l'espace des embedding. [Jiao et al.](https://arxiv.org/abs/1909.10351) ont utilisé cette technique avec GloVe dans leur article "TinyBert" pour améliorer la généralisation de leur modèle linguistique. [Wang et al.](https://www.aclweb.org/anthology/D15-1306.pdf) l'ont utilisée pour augmenter les tweets nécessaires à l'entraînement de leur modèle.
+## <span style="color: #FFBF00"> **1.2 Substitution basée sur du *word embedding*** </span>
+Dans cette approche, nous prenons des [enchâssements de mots pré-entrainés tels que Word2Vec](https://lbourdois.github.io/blog/nlp/word_embedding/), GloVe, FastText, Sent2Vec, et nous utilisons les mots les plus proches de celui que l’on souhaite remplacer dans l'espace des enchâssements. [Jiao et al.](https://arxiv.org/abs/1909.10351) ont utilisé cette technique avec GloVe dans leur article *TinyBert* pour améliorer la généralisation de leur modèle linguistique. [Wang et al.](https://www.aclweb.org/anthology/D15-1306.pdf) l'ont utilisée pour augmenter les tweets nécessaires à l'entraînement de leur modèle.
 
 <center>
 <figure class="image">
@@ -98,15 +98,15 @@ Vous aurez alors en sortie les 5 mots les plus similaires ainsi que les similitu
 ```
 <br>
 Pour le français, plusieurs choix s’offrent à vous :
--	Les différents words embedding mis à disposition par [Jean-Philippe Fauconnier]( https://fauconnier.github.io/#data) (exemple d’implémentation sur sa page)
+-	Les différents enchâssements de mots mis à disposition par [Jean-Philippe Fauconnier]( https://fauconnier.github.io/#data) (exemple d’implémentation sur sa page)
 -	Ceux de [FastText](https://fasttext.cc/docs/en/crawl-vectors.html) (voir le tableau en bas du lien)
 <br><br>
 
-## <span style="color: #FFBF00"> **1.3 Substitution basée sur un modèle de langage masqué (Masked Language Model)** </span>
+## <span style="color: #FFBF00"> **1.3 Substitution basée sur un modèle de langage masqué** </span>
 
-Des modèles de Transformers tels que BERT (voir partie 2.2 de l’[article du blog]( https://lbourdois.github.io/blog/nlp/BERT/#-21-architecture-du-mod%C3%A8le-)), ROBERTA et ALBERT (voir partie 1.1 de l’[article du blog](https://lbourdois.github.io/blog/nlp/ALBERT/) ont été entraînés sur une grande quantité de texte en utilisant une tâche prétexte "Modélisation du langage masqué" où le modèle doit prédire des mots masqués en fonction du contexte.
+Des modèles de *transformers* tels que BERT (voir partie 2.2 de l’[article du blog]( https://lbourdois.github.io/blog/nlp/BERT/#-21-architecture-du-mod%C3%A8le-)), ROBERTA et ALBERT (voir partie 1.1 de l’[article du blog](https://lbourdois.github.io/blog/nlp/ALBERT/) ont été entraînés sur une grande quantité de texte en utilisant la tâche de prétexte de modélisation du langage masqué où le modèle doit prédire des mots masqués en fonction du contexte.
 <br>
-Cette tâche peut être utilisée pour compléter certains textes. Par exemple, nous pourrions utiliser un modèle BERT pré-entraîné, masquer certaines parties du texte et demander au modèle BERT de prédire le token masqué.
+Cette tâche peut être utilisée pour compléter certains textes. Par exemple, nous pourrions utiliser un modèle BERT pré-entraîné, masquer certaines parties du texte et demander au modèle BERT de prédire le *token* masqué.
 
 <center>
 <figure class="image">
@@ -122,7 +122,7 @@ Ainsi, nous pouvons générer des variations d'un texte en utilisant les prédic
 </figure>
 </center>
 
-Cette approche est facile à mettre en œuvre avec la librairie open source [Transformers d’Hugging Face](https://github.com/huggingface/transformers). Vous pouvez définir le jeton que vous souhaitez remplacer par <mask> et générer des prédictions.
+Cette approche est facile à mettre en œuvre avec la librairie open source [Transformers d’Hugging Face](https://github.com/huggingface/transformers). Vous pouvez définir le jeton que vous souhaitez remplacer par `<mask>` et générer des prédictions.
 
 ```python
 from transformers import pipeline
@@ -158,9 +158,9 @@ results = camembert_fill_mask("Le camembert est <mask> :)")
 A noter cependant que pour cette méthode le fait de décider quelle partie du texte est à masquer n'est pas triviale. Vous devrez utiliser l'heuristique pour décider du masque, sinon le texte généré pourrait ne pas conserver le sens de la phrase originale.
 <br><br>
 
-## <span style="color: #FFBF00"> **1.4 Substitution basée sur le TF-IDF** </span>
+## <span style="color: #FFBF00"> **1.4 Substitution basée sur un TF-IDF** </span>
 
-Cette méthode d'augmentation a été proposée par [Xie et al.]( https://arxiv.org/abs/1904.12848) dans le document intitulé Unsupervised Data Augmentation. L'idée de base est que les mots qui ont un score TF-IDF faible ne sont pas informatifs et peuvent donc être remplacés sans affecter le label d’une phrase.
+Cette méthode d'augmentation a été proposée par [Xie et al.]( https://arxiv.org/abs/1904.12848) dans le document intitulé *Unsupervised Data Augmentation*. L'idée de base est que les mots qui ont un score TF-IDF faible ne sont pas informatifs et peuvent donc être remplacés sans affecter le label d’une phrase.
 
 <center>
 <figure class="image">
@@ -172,7 +172,7 @@ Les mots qui remplacent le mot original sont choisis en calculant les scores TF-
 <br><br><br>
 
 
-# <span style="color: #FF0000"> **2. La rétro-traduction** </span>
+# <span style="color: #FF0000"> **2. La rétrotraduction** </span>
 Dans cette approche, nous utilisons la traduction automatique pour paraphraser un texte tout en en retravaillant le sens. [Xie et al.](https://arxiv.org/abs/1904.12848) ont utilisé cette méthode pour augmenter leur corpus de texte non labellisé et ont entraîné un modèle semi-supervisé sur un jeu de données [IMDB](https://fr.wikipedia.org/wiki/Internet_Movie_Database) avec seulement 20 exemples étiquetés. Leur modèle a surpassé le précédent modèle de pointe entraîné sur 25 000 exemples étiquetés.
 Le processus de rétro-traduction est le suivant :
 -	Prendre une phrase (par exemple en anglais) et la traduire dans une autre langue, par exemple français
@@ -186,7 +186,7 @@ Le processus de rétro-traduction est le suivant :
 </center>
 
 
-Vous pouvez également effectuer une rétro-traduction en utilisant différentes langues à la fois pour générer plus de variations. Comme illustré ci-dessous, nous traduisons une phrase anglaise vers une langue cible et inversement vers l'anglais pour trois langues cibles : français, mandarin et italien.
+Vous pouvez également effectuer une rétrotraduction en utilisant différentes langues à la fois pour générer plus de variations. Comme illustré ci-dessous, nous traduisons une phrase anglaise vers une langue cible et inversement vers l'anglais pour trois langues cibles : français, mandarin et italien.
 
 <center>
 <figure class="image">
@@ -194,15 +194,15 @@ Vous pouvez également effectuer une rétro-traduction en utilisant différentes
 </figure>
 </center>
 
-Cette technique a été utilisée par le gagnant du "Toxic Comment Classification Challenge" sur [Kaggle](https://www.kaggle.com/c/jigsaw-toxic-comment-classification-challenge/discussion/52557). Il l'a utilisée pour l'augmentation des données d'entraînement ainsi que pendant le test où les probabilités prédites pour la phrase anglaise ainsi que la rétro-traduction en trois langues (français, allemand, espagnol) ont été calculées pour obtenir la prédiction finale.
+Cette technique a été utilisée par le gagnant du « *Toxic Comment Classification Challenge* » sur [Kaggle](https://www.kaggle.com/c/jigsaw-toxic-comment-classification-challenge/discussion/52557). Il l'a utilisée pour l'augmentation des données d'entraînement ainsi que pendant le test où les probabilités prédites pour la phrase anglaise ainsi que la rétrotraduction en trois langues (français, allemand, espagnol) ont été calculées pour obtenir la prédiction finale.
 <br>
-Pour la mise en œuvre de la rétro-traduction, vous pouvez utiliser la librairie [TextBlob]( https://textblob.readthedocs.io/en/dev/) et notamment la fonction *Translator*. Vous pouvez également utiliser Google Sheets et suivre les instructions données par [Amit](https://amitness.com/2020/02/back-translation-in-google-sheets/) pour appliquer Google Translate (en anglais). Cette approche est néanmoins manuelle. Pour automatiser la chose, utilisez l'API [Googletrans](https://pypi.org/project/googletrans/). Attention cependant si vous avez des données sensibles, utilisez des outils à base de Google Translate siginifie que Google les lira et potentiellement les stockera.<br>
-Une alternative consiste alors à utiliser un modèle de NLP entraîné à réaliser de la traduction. Vous pouvez par exemple utilisez ceux disponibles sur la libraire Hugging Face. Ils sont trouvables en utilisant le filtre "translation" : [https://huggingface.co/models?filter=translation](https://huggingface.co/models?filter=translation).
+Pour la mise en œuvre de la rétrotraduction, vous pouvez utiliser la librairie [TextBlob]( https://textblob.readthedocs.io/en/dev/) et notamment la fonction *Translator*. Vous pouvez également utiliser Google Sheets et suivre les instructions données par [Amit](https://amitness.com/2020/02/back-translation-in-google-sheets/) pour appliquer Google Translate (en anglais). Cette approche est néanmoins manuelle. Pour automatiser la chose, utilisez l'API [Googletrans](https://pypi.org/project/googletrans/). Attention cependant si vous avez des données sensibles, utilisez des outils à base de Google Translate siginifie que Google les lira.<br>
+Une alternative consiste alors à utiliser un modèle de NLP entraîné à réaliser de la traduction. Vous pouvez par exemple utilisez ceux disponibles sur la libraire Hugging Face. Ils sont trouvables en utilisant le filtre «*translation*» : [https://huggingface.co/models?filter=translation](https://huggingface.co/models?filter=translation).
 <br><br><br>
 
 
 # <span style="color: #FF0000"> **3.	Transformation de la surface du texte** </span>
-Il s'agit de transformations introduites par Claude Coulombe dans sa [publication](https://arxiv.org/abs/1812.0471) : Text Data Augmentation Made Simple By Leveraging NLP Cloud APIs.
+Il s'agit de transformations introduites par Claude Coulombe dans sa [publication](https://arxiv.org/abs/1812.0471) : *Text Data Augmentation Made Simple By Leveraging NLP Cloud APIs*.
 <br>
 Dans son article, il donne un exemple de transformation de formes verbales de la contraction à l'expansion et vice versa. Nous pouvons générer des textes augmentés en appliquant cette transformation.
 
@@ -271,8 +271,8 @@ Cette méthode a été utilisée par [Xie et al.](https://arxiv.org/abs/1703.025
 </center>
 
 ## <span style="color: #FFBF00"> **4.4 Bruits parasites** </span>
-Cette méthode a été proposée par [Xie et al.](https://arxiv.org/abs/1703.02573) dans leur article. L'idée est de remplacer aléatoirement un mot par un token de remplacement que l’on aura choisi préalablement. 
-Dans l'article les auteurs utilisent ' ' comme caractère de remplacement. C’est un moyen d'éviter de trop s'adapter à des contextes spécifiques ainsi qu'un mécanisme de lissage du modèle linguistique. Cette technique a permis d'améliorer la perplexité et les scores BLEU.
+Cette méthode a été proposée par [Xie et al.](https://arxiv.org/abs/1703.02573) dans leur article. L'idée est de remplacer aléatoirement un mot par un *token* que l’on aura choisi préalablement. 
+Dans l'article les auteurs utilisent «   » comme caractère de remplacement. C’est un moyen d'éviter de trop s'adapter à des contextes spécifiques ainsi qu'un mécanisme de lissage du modèle linguistique. Cette technique a permis d'améliorer la perplexité et les scores BLEU.
  
 <center>
 <figure class="image">
@@ -292,7 +292,7 @@ Il s'agit d'une technique naïve qui consiste à mélanger des phrases présente
 
 
 ## <span style="color: #FFBF00"> **4.6 Insertion aléatoire** </span>
-Cette technique a été proposée par [Wei et al.](https://arxiv.org/abs/1901.11196) dans leur article "Easy Data Augmentation". Dans cette technique, nous choisissons d'abord un mot aléatoire dans la phrase qui n'est pas un mot d'arrêt. Ensuite, nous trouvons son synonyme et nous l'insérons dans une position aléatoire de la phrase.
+Cette technique a été proposée par [Wei et al.](https://arxiv.org/abs/1901.11196) dans leur article *Easy Data Augmentation*. Dans cette technique, nous choisissons d'abord un mot aléatoire dans la phrase qui n'est pas un mot d'arrêt. Ensuite, nous trouvons son synonyme et nous l'insérons dans une position aléatoire de la phrase.
  
 <center>
 <figure class="image">
@@ -302,7 +302,7 @@ Cette technique a été proposée par [Wei et al.](https://arxiv.org/abs/1901.11
 
 
 ## <span style="color: #FFBF00"> **4.7 Echange aléatoire** </span>
-Cette technique a également été proposée par Wei et al. dans leur article "Easy Data Augmentation". L'idée est d'échanger de manière aléatoire deux mots quelconques dans la phrase.
+Cette technique a également été proposée par Wei et al. dans leur article *Easy Data Augmentation*. L'idée est d'échanger de manière aléatoire deux mots quelconques dans la phrase.
  
 <center>
 <figure class="image">
@@ -312,7 +312,7 @@ Cette technique a également été proposée par Wei et al. dans leur article "E
 
 
 ## <span style="color: #FFBF00"> **4.8 Suppression aléatoire** </span>
-Cette technique a également été proposée par Wei et al. dans leur article "Easy Data Augmentation". Dans ce cas, nous retirons aléatoirement chaque mot de la phrase avec une probabilité *p*.
+Cette technique a également été proposée par Wei et al. dans leur article *Easy Data Augmentation*. Dans ce cas, nous retirons aléatoirement chaque mot de la phrase avec une probabilité *p*.
  
 <center>
 <figure class="image">
@@ -322,8 +322,7 @@ Cette technique a également été proposée par Wei et al. dans leur article "E
 <br><br>
 
 
-
-# <span style="color: #FF0000"> **5.	Augmentation par Crossover** </span>
+# <span style="color: #FF0000"> **5. Augmentation par Crossover** </span>
 Cette technique a été introduite par [Luque](https://arxiv.org/abs/1909.11241) dans son article sur l'analyse des sentiments pour la TASS 2019. Elle s'inspire de l'opération de [croisement des chromosomes qui se produit en génétique](https://fr.wikipedia.org/wiki/Enjambement_(g%C3%A9n%C3%A9tique)).
 Dans cette méthode, un tweet est divisé en deux moitiés et deux tweet aléatoires ayant le même label que le tweet divisé voient leurs moitiés échangées (cf. image ci-dessous). L'hypothèse est que, même si le résultat sera peu grammatical et peu solide sur le plan sémantique, le nouveau texte préservera quand même le sentiment. 
 <center>
@@ -366,7 +365,7 @@ Le MixUp est une technique simple mais efficace d'augmentation d'images introdui
 <br><br>
 
 ## <span style="color: #FFBF00"> **7.1 WordMixUp** </span>
-Dans cette méthode, deux phrases d'un mini-batch sont prises aléatoirement et dimensionnées à la même longueur. Ensuite, les mots qui les composent sont combinés dans une certaine proportion. Le word embedding qui en résulte est transmis au flux habituel pour la classification du texte. L'entropie croisée est calculée pour les deux labels du texte original dans la proportion donnée.
+Dans cette méthode, deux phrases d'un mini-batch sont prises aléatoirement et dimensionnées à la même longueur. Ensuite, les mots qui les composent sont combinés dans une certaine proportion. L'enchâssement de mots qui en résulte est transmis au flux habituel pour la classification du texte. L'entropie croisée est calculée pour les deux labels du texte original dans la proportion donnée.
 <center>
 <figure class="image">
   <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Data_augmentation/Mixup2.png">
@@ -374,7 +373,7 @@ Dans cette méthode, deux phrases d'un mini-batch sont prises aléatoirement et 
 </center>
 
 ## <span style="color: #FFBF00"> **7.2	SentMixup** </span>
-Dans cette méthode, on prend deux phrases et on les met à la même longueur. Ensuite, leurs word embedding sont passés dans un encoder LSTM/CNN et nous prenons le dernier état caché comme embedding de la phrase. Ces embedding sont combinés dans une certaine proportion et sont ensuite transmis à la couche de classification finale. La perte d'entropie croisée est calculée sur la base des deux labels des phrases originales dans la proportion donnée. 
+Dans cette méthode, on prend deux phrases et on les met à la même longueur. Ensuite, leurs enchâssements de mots sont passés dans un encoder LSTM/ConvNet et nous prenons le dernier état caché comme enchâssement de la phrase. Ces enchâssements sont combinés dans une certaine proportion et sont ensuite transmis à la couche de classification finale. La perte d'entropie croisée est calculée sur la base des deux labels des phrases originales dans la proportion donnée. 
 <center>
 <figure class="image">
   <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Data_augmentation/Mixup3.png">
@@ -384,20 +383,20 @@ Dans cette méthode, on prend deux phrases et on les met à la même longueur. E
 
 
 # <span style="color: #FF0000"> **8.	Méthodes génératives** </span>
-[Kumar et al](https://arxiv.org/abs/2003.02245) proposent dans leur article d’utiliser des transformers pré-entrainés afin d’augmenter les données d'entraînement. La formulation du problème est la suivante :
+[Kumar et al](https://arxiv.org/abs/2003.02245) proposent dans leur article d’utiliser des *transformers* pré-entrainés afin d’augmenter les données d'entraînement. La formulation du problème est la suivante :
 -	Ajouter le label de la classe à chaque texte de vos données d'entraînement
 <center>
 <figure class="image">
   <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Data_augmentation/Generative1.png">
 </figure>
 </center>
--	Fine-tuner un grand modèle de langue préformé (BERT/GPT2/BART) sur ces données de d’entraînement modifiées. Pour le GPT2, la tâche est la génération tandis que pour BERT, l'objectif est la prédiction du jeton masqué.
+-	*Finetuner* un grand modèle de langue pré-entraîné (BERT/GPT2/BART) sur ces données d’entraînement modifiées. Pour le GPT2, la tâche est la génération tandis que pour BERT, l'objectif est la prédiction du jeton masqué.
 <center>
 <figure class="image">
   <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Data_augmentation/Generative2.png">
 </figure>
 </center>
--	En utilisant le modèle de langage fine-tuné, de nouveaux échantillons peuvent être générés en utilisant le label de la classe et quelques mots initiaux comme « prompt ».  
+-	En utilisant le modèle de langage *finetuné*, de nouveaux échantillons peuvent être générés en utilisant le label de la classe et quelques mots initiaux comme « prompt ».  
 <center>
 <figure class="image">
   <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Data_augmentation/Generative3.png">
@@ -407,8 +406,8 @@ Dans cette méthode, on prend deux phrases et on les met à la même longueur. E
 Pour le français, cette méthode est difficilement applicable, c’est pourquoi je ne vous la recommande pas. 
 En français, il existe deux GPT2 entraînés avec un vocabulaire en français sur des données en français existant pour le moment  : le [BelGPT-2 d'Antoine Louis](https://github.com/antoiloui/belgpt2) et [PAGnol](https://lair.lighton.ai/pagnol/) de Launay et al..
 Pour le BelGPT2, quand on génère une phrase avec le modèle, celle-ci est la plupart du temps correcte. Cependant un problème apparait quand on génère plusieurs phrases : celles-ci sont individuellement correctes mais le tout devient incorrect d'un point de vue de la logique quand elles se succèdent. Le contexte passe du coq à l'âne. 
-Lors de quelques expérimentations, j'ai aussi pu constater que des phrases dans d'autres langues que le français étaient générées (anglais et wolof entre autres). Vous pouvez expérimenter par vous-même via l'[API d'HuggingFace](https://huggingface.co/antoiloui/belgpt2). Je n'ai pas eu l'occasion de faire d'expérimentations avec PAGnol. Vous pouvez le tester par vous-même via le [démonstrateur en ligne](https://pagnol.lighton.ai/) proposé par les auteurs du modèl.  
-Ainsi, je déconseille d'utiliser cette technique en l'état actuel. D'autres sont plus simples, plus rapides à mettre en place car ne nécessite pas de fine-tuning, et donne de meilleurs résultats.
+Lors de quelques expérimentations, j'ai aussi pu constater que des phrases dans d'autres langues que le français étaient générées (anglais et wolof entre autres). Vous pouvez expérimenter par vous-même via l'[API d'HuggingFace](https://huggingface.co/antoiloui/belgpt2). Je n'ai pas eu l'occasion de faire d'expérimentations avec PAGnol. Vous pouvez le tester par vous-même via le [démonstrateur en ligne](https://pagnol.lighton.ai/) proposé par les auteurs du modèle.  
+Ainsi, je déconseille d'utiliser cette technique en l'état actuel. D'autres sont plus simples, plus rapides à mettre en place car ne nécessite pas de *finetuning*, sont moins lourdes (PAGnol faisant 1,5 milliard de paramètres par exemple), et donne de meilleurs résultats.
 <br><br><br>
 
 
@@ -416,19 +415,20 @@ Ainsi, je déconseille d'utiliser cette technique en l'état actuel. D'autres so
 J’ajoute une méthode supplémentaire qu’Amit n’a pas cité dans son article : les modèles permettant la simplification de texte. Ils permettent de conserver le sens de la phrase mais avec une syntaxe différente et souvent plus courte. Deux approches sont envisageables. La première où le texte original est paraphrasé. La deuxième consiste à faire un résumé du texte original.
 
 ## <span style="color: #FFBF00"> **9.1 Les paraphrases** </span>
-Pour la langue anglaise, le jeu de données [ASSET]( https://github.com/facebookresearch/asset) de [Fernando Alva-Manchego, Louis Martin et al.](https://arxiv.org/abs/2005.00352) est disponible depuis mai 2020. Il permet de fine-tuner les modèles de simplification de texte.
+Pour la langue anglaise, le jeu de données [ASSET]( https://github.com/facebookresearch/asset) de [Fernando Alva-Manchego, Louis Martin et al.](https://arxiv.org/abs/2005.00352) est disponible depuis mai 2020. Il permet de *finetuner* les modèles de simplification de texte.
  <center>
 <figure class="image">
   <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Data_augmentation/ASSET.png">
 </figure>
 </center>
 Pour la langue française, il existe le jeu de données [ALECTOR](https://alectorsite.wordpress.com/corpus/) de [Gala et al.](https://www.researchgate.net/publication/339827111_Alector_A_Parallel_Corpus_of_Simplified_French_Texts_with_Alignments_of_Misreadings_by_Poor_and_Dyslexic_Readers) extraits de sites proposant du matériel pédagogique pour les niveaux CE1, CE2 et CM1 de l’école primaire. Chaque texte original a été adapté (simplifié) au niveau du lexique (vocabulaire), de la morpho-syntaxe (catégories grammaticales, structures de phrase) et du discours (co-référence).  
+Ou bien encore les données en français du jeu de données PPDB déjà cité dans la partie 1.1 de cet article.
 Vous pouvez consulter également les travaux de [Martin et al.](https://arxiv.org/pdf/2005.00352.pdf), portant sur un outil permettant une simplification de phrases multilingues.
 <br><br><br>
 
 ## <span style="color: #FFBF00"> **9.2	Le résumé** </span>
 Dans cette approche, nous avons le texte original en entrée et un résumé de ce texte en sortie.
-Cette approche est bien développée en anglais avec des jeux de données disponibles pour le fine-tuning ([XSum](https://arxiv.org/pdf/1808.08745.pdf) de Narayan et al., [CNN/DM](https://papers.nips.cc/paper/2015/file/afdec7005cc9f14302cd0474fd0f3c96-Paper.pdf) de Hermann et al.) et des modèles déjà entraînés à cette tâche (le [T5 de Raffel et al.](https://arxiv.org/pdf/1910.10683.pdf), [BART de Lewis et al.](https://arxiv.org/abs/1910.13461), etc.)
+Cette approche est bien développée en anglais avec des jeux de données disponibles pour le *finetuning* ([XSum](https://arxiv.org/pdf/1808.08745.pdf) de Narayan et al., [CNN/DM](https://papers.nips.cc/paper/2015/file/afdec7005cc9f14302cd0474fd0f3c96-Paper.pdf) de Hermann et al.) et des modèles déjà entraînés à cette tâche (le [T5 de Raffel et al.](https://arxiv.org/pdf/1910.10683.pdf), [BART de Lewis et al.](https://arxiv.org/abs/1910.13461), etc.)
 Pour l'implémentation, vous pouvez utiliser le code suivant reposant sur la fonction pipeline de la librairie Hugging Face :
 
 ```python
@@ -446,11 +446,11 @@ Pour le français, vous pouvez utiliser la partie en français de la base de don
 summarizer = pipeline("summarization", model="moussaKam/barthez-orangesum-abstract", tokenizer="moussaKam/barthez",)
 summarizer("Votre texte")  
 ```
-
 <br><br><br>
 
+
 # <span style="color: #FF0000"> **Implémentation** </span>
-Les librairies Python comme [nlpaug](https://github.com/makcedward/nlpaug) et [textattack](https://github.com/QData/TextAttack) fournissent une API simple afin d’appliquer les méthodes ci-dessus pouvant ainsi être facilement intégrées dans une pipeline.
+Les librairies Python comme [nlpaug](https://github.com/makcedward/nlpaug) et [textattack](https://github.com/QData/TextAttack) fournissent une API simple afin d’appliquer les méthodes ci-dessus pouvant ainsi être facilement intégrées dans un pipeline.
 <br><br><br>
 
 
