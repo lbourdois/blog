@@ -1,5 +1,6 @@
 ---
 permalink: /about/
+classes: wide
 title: "A propos"
 ---
 
