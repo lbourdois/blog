@@ -32,7 +32,7 @@ sidebar-sample:
         url: /nlp/ALBERT/
       - title: "LE REFORMER"
         url: /nlp/Reformer/
-  - title: "LE PRETRAITEMENT ET LES TOKENIZERS EN NLP"
+  - title: "PRÉTRAITEMENT ET TOKENIZERS"
     url: /nlp/Les-tokenizers/
   - title: "TACHES ET DATASETS UTILISÉS DANS LES PUBLICATIONS DE NLP"
     url: /nlp/Taches-et-jeux-de-donnees-en-NLP/
