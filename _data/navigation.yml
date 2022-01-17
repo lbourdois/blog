@@ -16,7 +16,7 @@ sidebar-sample:
     url: /nlp/word_embedding/
   - title: RNNs, LSTMs, GRUs ET ELMO
     url: /nlp/RNN-LSTM-GRU-ELMO/
-  - title: LE SEQ2SEQ ET LE PROCESSUS D'ATTENTION
+  - title: SEQ2SEQ ET L'ATTENTION
     url: /nlp/Seq2seq-et-attention/
   - title: LE TRANSFORMER
     url: /nlp/Transformer/
