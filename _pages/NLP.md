@@ -1,6 +1,7 @@
 ---
 title: "Le NLP : Natural Language Processing"
 permalink: /nlp/
+classes: wide
 ---
 
 
