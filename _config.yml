@@ -24,7 +24,6 @@ url : https://lbourdois.github.io
 google_site_verification: "ouC89r8DsM44-CzfK9zKiulBYb7coucYBADYgNFnJpQ"
 twitter_username: username
 github_username: lbourdois
-minimal_mistakes_skin: default
 search: true
 
 # Build settings
@@ -77,7 +76,7 @@ author:
       # url: "https://github.com/lbourdois"
     - label: "LinkedIn"
       icon: "fab  fa-linkedin"      
-      - "https://www.linkedin.com/in/lo%C3%AFck-bourdois-111488171/"
+      url: "https://www.linkedin.com/in/lo%C3%AFck-bourdois-111488171/"
       
       
 # Site Footer
@@ -92,6 +91,9 @@ footer:
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
       # url: "https://github.com/lbourdois"
+    - label: "LinkedIn"
+      icon: "fab  fa-linkedin"      
+      url: "https://www.linkedin.com/in/lo%C3%AFck-bourdois-111488171/"
 
 
 
