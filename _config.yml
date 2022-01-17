@@ -28,7 +28,7 @@ search: true
 
 # Build settings
 markdown: kramdown
-remote_theme: mmistakes/minimal-mistakes
+# remote_theme: mmistakes/minimal-mistakes
 # Outputting
 permalink: /:categories/:title/
 paginate: 5 # amount of posts to show
@@ -74,7 +74,7 @@ author:
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
       # url: "https://github.com/lbourdois"
-    - label: "LinkedIn"
+    - label: " LinkedIn"
       icon: "fab  fa-linkedin"      
       url: "https://www.linkedin.com/in/lo%C3%AFck-bourdois-111488171/"
       
@@ -94,8 +94,6 @@ footer:
     - label: "LinkedIn"
       icon: "fab  fa-linkedin"      
       url: "https://www.linkedin.com/in/lo%C3%AFck-bourdois-111488171/"
-
-
 
 
 
