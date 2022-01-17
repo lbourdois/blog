@@ -14,6 +14,7 @@ header :
     overlay_image: "https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/NLP_radom_blog.png"
     teaser: "https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Data_augmentation/WordNet.png"
 author_profile: false
+classes: wide
 ---
 
 
