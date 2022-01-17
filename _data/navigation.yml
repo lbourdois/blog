@@ -33,9 +33,9 @@ sidebar-sample:
       - title: "LE REFORMER"
         url: /nlp/Reformer/
   - title: "LE PRETRAITEMENT ET LES TOKENIZERS EN NLP"
-        url: /nlp/Les-tokenizers/
+    url: /nlp/Les-tokenizers/
   - title: "TACHES ET JEUX DE DONNÉES TEST FREQUEMMENT UTILISÉS DANS LES PUBLICATIONS DE NLP"
-        url: /nlp/Taches-et-jeux-de-donnees-en-NLP/
+    url: /nlp/Taches-et-jeux-de-donnees-en-NLP/
   - title: "L'AUGMENTATION DE DONNÉES EN NLP"
-        url: /nlp/Data-augmentation-in-NLP/
+    url: /nlp/Data-augmentation-in-NLP/
 
