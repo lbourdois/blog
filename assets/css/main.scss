@@ -4,14 +4,14 @@
 
 @charset "utf-8";
 
-@import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'neon' }}"; // skin
+@import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'dark' }}"; // skin
 @import "minimal-mistakes"; // main partials
 
 
 $doc-font-size: 14 !default;
 
 $serif              : 'Roboto', sans-serif;
-$sans-serif-narrow  : 'Oswald', sans-serif;
+$sans-serif-narrow  : 'Roboto', sans-serif;
 
 $global-font-family : $serif;
 $header-font-family : $sans-serif-narrow;
