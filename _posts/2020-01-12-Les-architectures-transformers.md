@@ -14,12 +14,10 @@ tags:
 excerpt : "NLP - Aperçu des architectures basées sur le Transformer de Vaswani et al."
 header :
     overlay_image: "https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/NLP_radom_blog.png"
-toc: true
-toc_sticky: true
 author_profile: false
 sidebar:
     nav: sidebar-sample
-    
+classes: wide
 ---
 
 # <span style="color: #FF0000"> **Avant-propos** </span>
