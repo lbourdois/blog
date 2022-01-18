@@ -11,12 +11,10 @@ excerpt : "NLP - Illustration du principe de séquence vers séquence et du proc
 header :
     overlay_image: "https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/NLP_radom_blog.png"
     teaser : "https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Seq2seq-attention/seq2seq_1.mp4"
-toc: true
-toc_sticky: true
 author_profile: false
 sidebar:
     nav: sidebar-sample
-
+classes: wide
 ---
 
 <script type="text/javascript" async
