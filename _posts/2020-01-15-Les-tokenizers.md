@@ -17,13 +17,12 @@ excerpt : "NLP - Illustration des divers prétraitement réalisables en NLP ains
 header :
     overlay_image: "https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/NLP_radom_blog.png"
     teaser : "https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Tokenizers/Spacy.png"
-toc: true
-toc_sticky: true
 author_profile: false
 sidebar:
     nav: sidebar-sample
-
+classes: wide
 ---
+
 <script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"> </script> 
 
 
