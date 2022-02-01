@@ -12,7 +12,7 @@ tags:
 excerpt : Projet - Cours sur l'apprentissage profond (édition 2020) de Yann Le Cun et Alfredo Canziani
 header :
     overlay_image: "https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/NLP_radom_blog.png"
-    teaser: "https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Data_augmentation/WordNet.png"
+    teaser: "https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/DLSP20/NYU%20Deep%20Learning.png"
 author_profile: false
 classes: wide
 ---
