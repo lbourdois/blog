@@ -38,3 +38,57 @@ sidebar-sample:
     url: /nlp/Taches-et-jeux-de-donnees-en-NLP/
   - title: "L'AUGMENTATION DE DONNÉES EN NLP"
     url: /nlp/Data-augmentation-in-NLP/
+
+sidebar-ssl-images:
+  - title: TACHES DE PRETEXTE EN VISION
+    url: /ssl-images/pretext-in-vision/
+  - title: AUTOSUPERVISE EN VISION
+    url: /ssl-images/SSL-in-vision/
+  - title: APPROCHES CONTRASTIVES
+    children:
+      - title: "MoCO"
+        url: /ssl-images/MOCO/
+      - title: "PIRL"
+        url: /ssl-images/PIRL/
+      - title: "SimCLR"
+        url: /ssl-images/SIMCLR/
+  - title: APPROCHES CLUSTERING
+    children:
+      - title: "DeepCluster "
+        url: /ssl-images/DeepCluster/
+      - title: "SeLA"
+        url: /ssl-images/SeLA/
+      - title: "SwaV"
+        url: /ssl-images/SwaV/
+  - title: APPROCHES DISTILLATION
+    children:
+      - title: "BYOL"
+        url: /ssl-images/BYOL/
+      - title: "SIMSIAM"
+        url: /ssl-images/SIMSIAM/
+  - title: APPROCHES REDUCTION DES REDONDANCES
+    children:
+      - title: "BARLOW TWINS"
+        url: /ssl-images/BARLOW-TWINS/
+      - title: "VICReg"
+        url: /ssl-images/VICREG/
+
+
+sidebar-ssl-nlp:
+  - title: TACHES DE PRETEXTE EN TEXTE
+    url: /ssl-images/pretext-in-text/
+  - title: AUTOSUPERVISE EN TEXTE
+    url: /ssl-images/SSL-in-text/
+
+
+
+sidebar-ssl-audio:
+  - title: TACHES DE PRETEXTE EN AUDIO
+    url: /ssl-images/pretext-in-audio/
+  - title: AUTOSUPERVISE EN AUDIO
+    url: /ssl-images/SSL-in-audio/
+    children:
+      - title: "WAV2VEC"
+        url: /ssl-images/WAV2VEC/
+  - title: "TACHES ET DATASETS UTILISÉS DANS LES PUBLICATIONS D'AUDIO"
+    url: /nlp/Taches-et-jeux-de-donnees-en-audio/
