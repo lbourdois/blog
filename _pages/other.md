@@ -1,6 +1,6 @@
 ---
 permalink: /other/
-title: "Autres"
+title: "Autre"
 classes: wide
 ---
 
