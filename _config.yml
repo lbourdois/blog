@@ -23,7 +23,7 @@ email:
 description: "Blog de Loïck BOURDOIS"
 url : https://lbourdois.github.io
 google_site_verification: "ouC89r8DsM44-CzfK9zKiulBYb7coucYBADYgNFnJpQ"
-twitter_username: username
+twitter_username: BdsLoick
 github_username: lbourdois
 search: true
 
@@ -68,7 +68,7 @@ author:
   links:
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
-      # url: mailto:your.name@email.com
+      url: mailto:loick.bourdois@outlook.com
     - label: "Twitter"
       icon: "fab fa-fw fa-twitter-square"
       url: "https://twitter.com/BdsLoick"
@@ -85,7 +85,7 @@ footer:
   links:
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
-      # url: mailto:your.name@email.com
+      url: mailto:loick.bourdois@outlook.com
     - label: "Twitter"
       icon: "fab fa-fw fa-twitter-square"
       url: "https://twitter.com/BdsLoick"
