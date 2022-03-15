@@ -43,4 +43,4 @@ Ce point est important pour apporter du crédit aux différents auteurs et pour 
 
  
 ## Prendre contact 📧
-N'hésitez pas à vous connecter avec moi sur [Twitter](https://twitter.com/BdsLoick) ou [LinkedIn](https://www.linkedin.com/in/lo%C3%AFck-bourdois-111488171/), ou encore à m'envoyer un [courriel](loick.bourdois@outlook.com).
+N'hésitez pas à vous connecter avec moi sur [Twitter](https://twitter.com/BdsLoick) ou [LinkedIn](https://www.linkedin.com/in/lo%C3%AFck-bourdois-111488171/), ou encore à me joindre par [courriel](loick.bourdois@outlook.com).
