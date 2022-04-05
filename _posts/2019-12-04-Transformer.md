@@ -465,14 +465,14 @@ La couche « Attention encodeur-décodeur » fonctionne comme une auto-attention
 
 
 
-# <span style="color: #FF0000"> **11. Les couches finales : linéaire et sofmax** </span>
-La pile de décodeurs délivre un vecteur de *float*. Comment le *transformer* en mots ? C’est le travail de la couche linéaire qui est suivie d’une couche softmax.
+# <span style="color: #FF0000"> **11. Les couches finales : linéaire et softmax** </span>
+La pile de décodeurs délivre un vecteur de *float*. Comment le transformer en mots ? C’est le travail de la couche linéaire qui est suivie d’une couche softmax.
 
 La couche linéaire est un simple réseau neuronal entièrement connecté qui projette le vecteur produit par la pile de décodeurs dans un vecteur beaucoup (beaucoup) plus grand appelé vecteur de logits.
 
 Supposons que notre modèle connaisse 10 000 mots anglais uniques (le « vocabulaire de sortie » de notre modèle) qu’il a appris de son jeu de données d’entraînement. Cela rend le vecteur de logits large de 10 000 cellules, chaque cellule correspondant au score d’un mot unique. C’est ainsi que nous interprétons la sortie du modèle suivie de la couche linéaire.
 
-La couche softmax transforme ensuite ces scores en probabilités (tous positifs dont la somme vaut 1). La cellule ayant la probabilité la plus élevée est choisie et le mot qui lui est associé est produit comme sortie pour ce pas de temps.
+La couche softmax transforme ensuite ces scores en probabilités (tous positifs et dont la somme vaut 1). La cellule ayant la probabilité la plus élevée est choisie et le mot qui lui est associé est produit comme sortie pour ce pas de temps.
 <center>
 <figure class="image">
 <img src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/Transformer/transformer_decoder_output_softmax.png">
