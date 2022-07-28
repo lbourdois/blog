@@ -19,8 +19,8 @@ Elle ne porte pas sur tous les travaux en lien avec le NLP que nous sommes en tr
 -->
 
 ## Pourquoi ce blog ? 💻
-Lorsque pour mon travail j'ai commencé à m'interessé en 2019 aux avancées récentes en traitement du langage naturel de l'époque (i.e. le *transformer* et tous les modèles qui en découlent), je n’avais pas suivi de cours sur ces nouveautés. En faisant des recherches sur internet pour me former, j’ai pu constater qu’il n’existait que très peu d’explications en français de ces nouvelles méthodes. Beaucoup d’articles Medium ou des GitHub tenus par des francophones mais rien de disponible en français, exclusivement de l’anglais.<br>
-J’ai réalisé des fiches d’explication de ces modèles en français pour qu’elles soient compréhensibles par mes collègues de travail. Je me suis dit qu'elles pourraient servir à d’autres personnes, c’est pourquoi j’ai créé ce blog.  
+Lorsqu'en 2019, pour mon travail, j'ai commencé à m'interesser aux avancées récentes en traitement du langage naturel de l'époque (i.e. le *transformer* et tous les modèles qui en découlent), je n’avais pas suivi de cours sur ces nouveautés. En faisant des recherches sur internet pour me former, j’ai pu constater qu’il n’existait que très peu d’explications en français de ces nouvelles méthodes. Beaucoup d’articles Medium ou des GitHub tenus par des francophones mais rien de disponible en français, exclusivement de l’anglais.<br>
+J’ai réalisé des fiches explicatives de ces modèles en français pour qu’elles soient compréhensibles par mes collègues de travail. Je me suis dit qu'elles pourraient servir à d’autres personnes, c’est pourquoi j’ai créé ce blog.  
 Depuis j'ai élargi les sujets abordés sur le blog à d'autres thématiques que celle du traitement du langage naturel.
 En espérant que les différents articles trouvables sur le blog soient utiles aux francophones 🙂<br><br>
 
