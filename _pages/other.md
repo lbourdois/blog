@@ -9,3 +9,4 @@ Sur cette page vous pouvez trouver des articles de blog abordant des sujets auxq
 ## Traductions
 En plus des traductions présentes sur le blog, j'ai pu traduire des contenus sur d'autres sites, comme :
 - le cours d'[Introduction à l’apprentissage profond (édition 2020) de Yann Le Cun et Alfredo Canziani dispensé à l’Université de New York](https://lbourdois.github.io/blog/projets/cours-dl-nyu/)
+- le cours d'[Introduction à l’apprentissage profond (édition 2021) de Yann Le Cun et Alfredo Canziani dispensé à l’Université de New York](https://lbourdois.github.io/blog/projets/cours-dl-21-nyu/)
