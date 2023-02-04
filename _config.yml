@@ -72,13 +72,15 @@ author:
     - label: "Twitter"
       icon: "fab fa-fw fa-twitter-square"
       url: "https://twitter.com/BdsLoick"
-    - label: "GitHub"
-      icon: "fab fa-fw fa-github"
-      # url: "https://github.com/lbourdois"
     - label: "LinkedIn"
       icon: "fab fa-fw fa-linkedin"      
       url: "https://www.linkedin.com/in/lo%C3%AFck-bourdois-111488171/"
-      
+    - label: "GitHub"
+      icon: "fab fa-fw fa-github"
+      # url: "https://github.com/lbourdois"
+    - label: "Hugging Face"
+      icon: "fab fa-solid fa-face-smiling-hands"     
+      url: "https://huggingface.co/lbourdois"
       
 # Site Footer
 footer:
