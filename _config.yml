@@ -79,7 +79,7 @@ author:
       icon: "fab fa-fw fa-github"
       # url: "https://github.com/lbourdois"
     - label: "Hugging Face"
-      icon: "🤗" # fab fa-fw fa-face-smiling-hands"  # no free icon
+      # icon: fab fa-fw fa-face-smiling-hands"  # no free icon
       url: "https://huggingface.co/lbourdois"
       
 # Site Footer
