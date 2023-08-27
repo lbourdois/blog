@@ -1,6 +1,4 @@
 main:
-  - title: "Cours NYU"
-    url: https://lbourdois.github.io/cours-dl-nyu/
   - title: "NLP"
     url: /nlp/
   - title: "Posts"
@@ -9,7 +7,8 @@ main:
     url: /other/
   - title: "A propos"
     url: /about/    
-
+  - title: "Cours NYU"
+    url: https://lbourdois.github.io/cours-dl-nyu/
 
 sidebar-sample:
   - title: LE BAG-OF-WORDS
