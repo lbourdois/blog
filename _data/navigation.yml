@@ -1,4 +1,6 @@
 main:
+  - title: "Cours NYU"
+    url: https://lbourdois.github.io/cours-dl-nyu/
   - title: "NLP"
     url: /nlp/
   - title: "Posts"
