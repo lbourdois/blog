@@ -69,9 +69,6 @@ author:
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
       url: mailto:loick.bourdois@outlook.com
-    - label: "Twitter"
-      icon: "fab fa-fw fa-twitter-square"
-      url: "https://twitter.com/BdsLoick"
     - label: "LinkedIn"
       icon: "fab fa-fw fa-linkedin"      
       url: "https://www.linkedin.com/in/lo%C3%AFck-bourdois-111488171/"
@@ -88,16 +85,15 @@ footer:
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
       url: mailto:loick.bourdois@outlook.com
-    - label: "Twitter"
-      icon: "fab fa-fw fa-twitter-square"
-      url: "https://twitter.com/BdsLoick"
-    - label: "GitHub"
-      icon: "fab fa-fw fa-github"
-      # url: "https://github.com/lbourdois"
     - label: "Linkedin"
       icon: "fab fa-fw fa-linkedin"    
       url: "https://www.linkedin.com/in/lo%C3%AFck-bourdois-111488171/"
-
+    - label: "GitHub"
+      icon: "fab fa-fw fa-github"
+      # url: "https://github.com/lbourdois"
+    - label: " Hugging Face"
+      # icon: fab fa-fw fa-face-smiling-hands"  # no free icon
+      url: "https://huggingface.co/lbourdois"
 
 
 defaults:
