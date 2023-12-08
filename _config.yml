@@ -17,7 +17,8 @@ minimal_mistakes_skin    : "dark" # "air", "aqua", "contrast", "defaut", "dirt",
 
 
 # Site Settings
-locale                   : "fr"
+# locale                   : "fr"
+## Replaced by site.lang
 title: Loïck BOURDOIS
 email:
 description: "Blog de Loïck BOURDOIS"
@@ -60,6 +61,15 @@ plugins:
   - jemoji
   - jekyll-include-cache
 
+languages: ["fr", "en"]
+
+# exclude_from_localizations: ["assets", "_sass"]
+
+# _pages/toto.md is in french (default locale) --- >  _i18n/en/_pages/toto.md  is in english
+# default_locale_in_subfolder: false
+
+## WARNING: author content uses the locale -> please look at it
+
 author:
   name   : "Loïck BOURDOIS"
   avatar : "/assets/images/pp_Loïck_Bourdois.png"
@@ -74,7 +84,7 @@ author:
       url: "https://www.linkedin.com/in/lo%C3%AFck-bourdois-111488171/"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
-      # url: "https://github.com/lbourdois"
+      url: "https://github.com/lbourdois"
     - label: " Hugging Face"
       # icon: fab fa-fw fa-face-smiling-hands"  # no free icon
       url: "https://huggingface.co/lbourdois"
@@ -98,6 +108,8 @@ footer:
 
 defaults:
   # _posts
+
+## Cette partie n'est sûrement plus utilisée, car les pages sont déclarées explicitement maintenant.
   - scope:
       path: ""
       type: posts
