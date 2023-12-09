@@ -12,7 +12,7 @@ author_profile: false
 classes: wide
 ---
 
-## Avant-propos
+# <span style="color: #FF0000"> **Avant-propos** </span>
 
 7 octobre 2021, alors que je me demandais si [AK](https://hf.co/akhaliq) était un bot ou un humain, je vis passer l'un de ses [tweets](https://twitter.com/_akhaliq/status/1445931206030282756).
 Un lien vers une publication sur [open-review.net](https://openreview.net/forum?id=uYLFoz1vlAC) accompagné de l'image suivante :
@@ -27,13 +27,13 @@ Je prévois trois articles pour commencer. Celui-ci définissant ce que sont que
 Le but étant donc de commencer avec une vue d'ensemble des évolutions. J'espère dans un second temps, si le temps me le permet, d'entrer dans les détails des architectures de certains SSM spécifique avec des animations ✨.
 
 
-## Qu’est-ce qu’un SSM ?
+# <span style="color: #FF0000"> **Qu’est-ce qu’un SSM ?** </span>
 
 Les *States Spaces Models* ou représentation d'état en français, sont utilisés traditionnellement en théorie du contrôle afin de modéliser un système dynamique via des variables d'état.  
 Wikipedia indiquant qu'ils sont également utilisés en automatique, il n'est pas exclu qu'ils soient utilisés dans d'autres domaines et/ou sous la forme d'un autre nom.  
 Dans le cadre de l'apprentissage profond, lorsque l'on parle de SSM, on se réfère en réalité qu'à un sous-ensemble des représentations existantes, à savoir les systèmes linéaires invariants (ou stationnaires).  
 
-### Définition de la formule générique 
+## <span style="color: #FFBF00"> **Définition de la formule générique** </span>
 
 Utilisons l'image ci-dessus afin de définir un SSM :
 | ![image/png](https://cdn-uploads.huggingface.co/production/uploads/613b0a62a14099d5afed7830/G7icfkYoxIqHZcJGHM7UD.png) |
@@ -75,7 +75,8 @@ Spécifions aussi que $\mathbf{D}u = 0$ dans les SSM en apprentissage profond ca
 
 Le système que nous avons ici est continu. Il n'est pas possible de le donner tel quel à un ordinateur. Nous devons pour cela le discrétiser.
 
-## Discrétisation
+## <span style="color: #FFBF00"> **Discrétisation** </span>
+
 La discrétisation est l’un, voire le point le plus important dans les SSM. Toute la beauté de cette architecture est dans cette étape puis qu’elle permet d’aboutir à deux vues différentes d’un modèle en temps continu : la vue récurrente et la vue convolutive.  
 Si vous devez retenir quelque chose de cet article, c’est ce point-ci.
 
@@ -88,7 +89,8 @@ En effet, la première vue permet d’avoir un mécanisme efficace lors de l’i
 Nous verrons aussi dans les prochains articles qu’il existe plusieurs discrétisations possibles. C’est d’ailleurs l’une des différences principales entre les différentes architectures de SSM existantes.  
 Pour ce premier article, je vous propose d’appliquer la discrétisation appliquée dans le S4 pour illustrer ce point des deux vues possibles pour un SSM. Faisons donc (un peu) de mathématiques.
 
-### Vue récurrente d’un SSM 
+## <span style="color: #FFBF00"> **Vue récursive d’un SSM** </span>
+
 Pour discrétiser le cas continu, utilisons la méthode des trapèzes.  
 Posons $x’(t) = f(t,x)$. On a alors :  $x_{n+1} = x_n + \frac{1}{2}\Delta(f(t_n,y_n) + f(t_{n+1},y_{n+1}))$ avec $\Delta = t_{n+1} - t_n$.  
 Si $x'_n = \mathbf{A}x_n + \mathbf{B} u_n$ (première ligne de l’équation d’un SSM), correspond à $f$, alors :  
@@ -130,7 +132,8 @@ Vous pouvez observer ici que $\mathbf{\bar{A}}$ est nécessaire pour initialiser
 Son choix est très important puisqu’un mauvais $\mathbf{\bar{A}}$ (techniquement $\mathbf{A}$ car $\mathbf{\bar{A}}$ est juste une réécriture de la matrice) peut aboutir à un SSM donnant de très mauvais résultats.    
 Dans le cadre de cet article, nous donnerons plus bas la formule de la matrice $\mathbf{A}$ utilisée dans le S4.  
 
-### Vue convolutive d’un SSM 
+## <span style="color: #FFBF00"> **Vue convolutive d’un SSM** </span>
+
 La récurrence que nous venons d’écrire peut s’écrire sous la forme d’une convolution. Pour cela, il suffit d’itérer la formule 
 
 $$
@@ -155,9 +158,9 @@ On peut observer le noyau de convolution $\mathbf{\bar{K}} _k = (\mathbf{\bar{C}
 Comme pour les matrices, nous nous appliquons une barre sur le $\mathbf{\bar{K}}$  pour spécifier qu’il s’agit du noyau de convolution obtenu pour la discrétisation. Il est généralement appelé noyau de convolution SSM dans la littérature et sa taille est équivalente à l’entièreté de la séquence d’entrée.  
 Ce noyau de convolution est calculé par FFT mais nous détaillerons cela dans les prochains articles (vous aimez la flash attention des transformers, vous adorerez la flash convolution que nous verrons dans le troisième article de blog).
 
+## <span style="color: #FFBF00"> **Apprentissage des matrices A, B et C** </span>
 
-### Apprentissage des matrices A, B et C
-Dans le noyau de convolution développé à l’instant, $\mathbf{\bar{C}}$ et $\mathbf{\bar{B}}$, sont des scalaires apprenables via un réseau de neurones.   
+Dans le noyau de convolution développé à l’instant, $\mathbf{\bar{C}}$ et $\mathbf{\bar{B}}$, sont des scalaires apprenables.   
 Concernant $\mathbf{\bar{A}}$, dans notre noyau de convolution, elle s’exprime comme une puissance de $k$ au temps $k$.   
 Cela peut être très long à calculer c’est pourquoi, on cherche à avoir $\mathbf{\bar{A}}$ fixe, et assez facilement, il apparait que la meilleure option est de la rendre diagonale.  
 La façon d’avoir une matrice diagonale n’est pas évidente au premier abord.   
@@ -176,10 +179,10 @@ A TERMINER
     \end{cases}
  $$
  
-## Quelques résultats
+# <span style="color: #FF0000"> **Quelques Resultats** <span>
 AJOUTER UNE SECTION SUR LES RESULTATS POUR ILLUSTRER QUE CA SERT POUR TOUT.
 
-## Conclusion
+# <span style="color: #FF0000"> **Conclusion** <span>
 Les SSM sont des modèles possédant trois vues. Une vision continue, et lorsque nous la discrétisons sur le temps, une vue récurrente ainsi que convolutive.  
 La vue convolutive sert à entraîner efficacement le modèle, et la vue récurrente permet de réaliser une inférence potentiellement infinie (pas de limite de taille de contexte ou encore de positionnal encoding comparés aux transformers).  
 Ce type de modèle est très versatile puisqu’il est applicable pour les tâches de texte, de vision, d’audio, de séries temporelles ou encore de graphes !  
