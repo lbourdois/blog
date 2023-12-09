@@ -44,6 +44,7 @@ Utilisons l'image ci-dessus afin de définir un SSM :
 | ![image/png](https://cdn-uploads.huggingface.co/production/uploads/613b0a62a14099d5afed7830/G7icfkYoxIqHZcJGHM7UD.png) |
 |:--:|
 | *Vue d'un SSM continu et invariant dans le temps, image tirée de [https://en.wikipedia.org/wiki/State-space_representation](https://en.wikipedia.org/wiki/State-space_representation)* |
+
 <br>
 
 On peut observer qu'un SSM repose sur trois variables dépendant du temps $$t$$ :
@@ -89,6 +90,7 @@ Si vous devez retenir quelque chose de cet article, c’est ce point-ci.
 | ![image](https://github.com/lbourdois/blog/assets/58078086/cb2dca34-9a3e-481a-8773-2360a1ceaa1c) |
 |:--:|
 | *Image provenant de l’article [Combining Recurrent, Convolutional, and Continuous-time Models with Linear State-Space Layers](https://arxiv.org/pdf/2110.13985.pdf), prédécesseur du S4*|
+
 <br>
 
 En effet, la première vue permet d’avoir un mécanisme efficace lors de l’inférence. La seconde permet un entraînement rapide car parallélisable.
