@@ -107,7 +107,7 @@ $$
 \begin{align}
 x_{n+1} & = x_n + \frac{\Delta}{2} (\mathbf{A}x_n + \mathbf{B} u_n + \mathbf{A}x_{n+1} + \mathbf{B} u_{n+1}) \\
 \Longleftrightarrow  x_{n+1} - \frac{\Delta}{2}\mathbf{A}x_{n+1} & = x_n + \frac{\Delta}{2}\mathbf{A}x_{n} + \frac{\Delta}{2}\mathbf{B}(u_{n+1} + u_n) \\
-\Longleftrightarrow  (\mathbf{I}  - \frac{\Delta}{2} \mathbf{A}) x_{n+1} & = (\mathbf{I}  + \frac{\Delta}{2} \mathbf{A}) x_{n} + \Delta \mathbf{B} u_{n+1} (*)\\
+(*) \Longleftrightarrow  (\mathbf{I}  - \frac{\Delta}{2} \mathbf{A}) x_{n+1} & = (\mathbf{I}  + \frac{\Delta}{2} \mathbf{A}) x_{n} + \Delta \mathbf{B} u_{n+1}\\
 \Longleftrightarrow  x_{n+1} & = (\mathbf{I}  - \frac{\Delta}{2} \mathbf{A})^{-1} (\mathbf{I}  + \frac{\Delta}{2} \mathbf{A}) x_n + (\mathbf{I}  - \frac{\Delta}{2} \mathbf{A})^{-1} \Delta \mathbf{B} u_{n+1}
 \end{align}
 $$
