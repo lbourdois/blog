@@ -46,9 +46,9 @@ Utilisons l'image ci-dessus afin de définir un SSM :
 | *Vue d'un SSM continu et invariant dans le temps, image tirée de [https://en.wikipedia.org/wiki/State-space_representation](https://en.wikipedia.org/wiki/State-space_representation)* |
 
 On peut observer qu'un SSM repose sur trois variables dépendant du temps t :
-- $x(t) \in \mathbb {R}^{n}$ représente les n variables d'état,
-- $u(t) \in \mathbb {R}^{m}$ représente les m entrées d'état,
-- $y(t) \in \mathbb {R}^{p}$ représente les p sorties,
+- $$x(t) \in \mathbb {R}^{n}$$ représente les n variables d'état,
+- $$u(t) \in \mathbb {R}^{m}$$ représente les m entrées d'état,
+- $$y(t) \in \mathbb {R}^{p}$$ représente les p sorties,
 
 On peut aussi observer qu'il est composé de quatre matrices pouvant être apprises : $\mathbf A, \mathbf B, \mathbf C$ et $\mathbf D$.
 - $\mathbf A \in \mathbb {R}^{m \times n}$ est la matrice d'état (contrôlant l'état lattent x),
