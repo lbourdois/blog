@@ -45,16 +45,16 @@ Utilisons l'image ci-dessus afin de définir un SSM :
 |:--:|
 | *Vue d'un SSM continu et invariant dans le temps, image tirée de [https://en.wikipedia.org/wiki/State-space_representation](https://en.wikipedia.org/wiki/State-space_representation)* |
 
-On peut observer qu'un SSM repose sur trois variables dépendant du temps t :
+On peut observer qu'un SSM repose sur trois variables dépendant du temps $$t$$ :
 - $$x(t) \in \mathbb {R}^{n}$$ représente les n variables d'état,
 - $$u(t) \in \mathbb {R}^{m}$$ représente les m entrées d'état,
 - $$y(t) \in \mathbb {R}^{p}$$ représente les p sorties,
 
-On peut aussi observer qu'il est composé de quatre matrices pouvant être apprises : $\mathbf A, \mathbf B, \mathbf C$ et $\mathbf D$.
-- $\mathbf A \in \mathbb {R}^{m \times n}$ est la matrice d'état (contrôlant l'état lattent x),
-- $\mathbf B \in \mathbb {R}^{n \times m}$ est la matrice de contrôle,
-- $\mathbf C \in \mathbb {R}^{p \times n}$ est la matrice de sortie,
-- $\mathbf D \in \mathbb {R}^{p \times m}$ est la matrice de commande,
+On peut aussi observer qu'il est composé de quatre matrices pouvant être apprises : $$\mathbf A, \mathbf B, \mathbf C$$ et $$\mathbf D$$.
+- $$\mathbf A \in \mathbb {R}^{m \times n}$$ est la matrice d'état (contrôlant l'état lattent $$x$$),
+- $$\mathbf B \in \mathbb {R}^{n \times m}$$ est la matrice de contrôle,
+- $$\mathbf C \in \mathbb {R}^{p \times n}$$ est la matrice de sortie,
+- $$\mathbf D \in \mathbb {R}^{p \times m}$$ est la matrice de commande,
 
 Nous modélisons le signal de sortie à l'aide de l'équation suivante :
 
@@ -65,7 +65,7 @@ $$
   \end{aligned}
 $$
 
-Note : j'utilise ici la notation x' pour désigner la dérivée de x. Il n'est pas exclu que vous rencontriez à la place la notation ẋ dans la littérature. J'ai pour ma part simplement privilégié la notation ne nécessitant pas de LaTex ;)
+Note : j'utilise ici la notation $$x'$$ pour désigner la dérivée de $$x$$. Il n'est pas exclu que vous rencontriez à la place la notation $$ẋ$$ dans la littérature. J'ai pour ma part simplement privilégié la notation ne nécessitant pas de LaTex.
 
 Pour alléger les notations, l'équation précédente est généralement écrite sous la forme suivante, puisqu'il est implicite que les variables dépendent du temps :
 
@@ -76,7 +76,7 @@ $$
   \end{aligned}
 $$
 
-Spécifions aussi que $\mathbf{D}u = 0$ dans les SSM en apprentissage profond car vue comme une skip connexion.  
+Spécifions aussi que $$\mathbf{D}u = 0$$ dans les SSM en apprentissage profond car vue comme une skip connexion.  
 
 Le système que nous avons ici est continu. Il n'est pas possible de le donner tel quel à un ordinateur. Nous devons pour cela le discrétiser.
 
@@ -97,14 +97,14 @@ Pour ce premier article, je vous propose d’appliquer la discrétisation appliq
 ## <span style="color: #FFBF00"> **Vue récursive d’un SSM** </span>
 
 Pour discrétiser le cas continu, utilisons la méthode des trapèzes.  
-Posons $x’(t) = f(t,x)$. On a alors :  $x_{n+1} = x_n + \frac{1}{2}\Delta(f(t_n,y_n) + f(t_{n+1},y_{n+1}))$ avec $\Delta = t_{n+1} - t_n$.  
-Si $x'_n = \mathbf{A}x_n + \mathbf{B} u_n$ (première ligne de l’équation d’un SSM), correspond à $f$, alors :  
+Posons $$x’(t) = f(t,x)$$. On a alors :  $$x_{n+1} = x_n + \frac{1}{2}\Delta(f(t_n,y_n) + f(t_{n+1},y_{n+1}))$$ avec $$\Delta = t_{n+1} - t_n$$.  
+Si $$x'_n = \mathbf{A}x_n + \mathbf{B} u_n$$ (première ligne de l’équation d’un SSM), correspond à $$f$$, alors :  
 
 $$
 \begin{align}
 x_{n+1} & = x_n + \frac{\Delta}{2} (\mathbf{A}x_n + \mathbf{B} u_n + \mathbf{A}x_{n+1} + \mathbf{B} u_{n+1}) \\
 \Longleftrightarrow  x_{n+1} - \frac{\Delta}{2}\mathbf{A}x_{n+1} & = x_n + \frac{\Delta}{2}\mathbf{A}x_{n} + \frac{\Delta}{2}\mathbf{B}(u_{n+1} + u_n) \\
-& \text{On pose $u_{n+1} = u_n$ car le vecteur de contrôle est supposé constant sur un petit $\Delta$} :\\
+\text{On pose $u_{n+1} = u_n$ car le vecteur de contrôle est supposé constant sur un petit $\Delta$} :\\
 \Longleftrightarrow  (\mathbf{I}  - \frac{\Delta}{2} \mathbf{A}) x_{n+1} & = (\mathbf{I}  + \frac{\Delta}{2} \mathbf{A}) x_{n} + \Delta \mathbf{B} u_{n+1} \\
 \Longleftrightarrow  x_{n+1} & = (\mathbf{I}  - \frac{\Delta}{2} \mathbf{A})^{-1} (\mathbf{I}  + \frac{\Delta}{2} \mathbf{A}) x_n + (\mathbf{I}  - \frac{\Delta}{2} \mathbf{A})^{-1} \Delta \mathbf{B} u_{n+1}
 \end{align}
@@ -133,9 +133,9 @@ $$
 La notation des matrices avec une barre a été introduite dans le S4 pour désigner les matrices dans le cas discret. Elle semble depuis être devenue une convention dans le domaine des SSM appliqués à l’apprentissage profond.  
 Dans la version précédente, nous venons d’écrire une version enroulée d’un réseau de neurones récurrents. La version déroulée de la récurrence étant la suivante :  
 [IMAGE]  
-Vous pouvez observer ici que $\mathbf{\bar{A}}$ est nécessaire pour initialiser le réseau.   
-Son choix est très important puisqu’un mauvais $\mathbf{\bar{A}}$ (techniquement $\mathbf{A}$ car $\mathbf{\bar{A}}$ est juste une réécriture de la matrice) peut aboutir à un SSM donnant de très mauvais résultats.    
-Dans le cadre de cet article, nous donnerons plus bas la formule de la matrice $\mathbf{A}$ utilisée dans le S4.  
+Vous pouvez observer ici que $$\mathbf{\bar{A}}$$ est nécessaire pour initialiser le réseau.   
+Son choix est très important puisqu’un mauvais $$\mathbf{\bar{A}}$$ (techniquement $$\mathbf{A}$$ car $$\mathbf{\bar{A}}$$ est juste une réécriture de la matrice) peut aboutir à un SSM donnant de très mauvais résultats.    
+Dans le cadre de cet article, nous donnerons plus bas la formule de la matrice $$\mathbf{A}$$ utilisée dans le S4.  
 
 ## <span style="color: #FFBF00"> **Vue convolutive d’un SSM** </span>
 
@@ -149,28 +149,28 @@ $$
 $$
 
 Commençons par la première ligne du système :  
-Etape 0 : $x_0 = \mathbf{\bar{B}}  u_0$  
-Etape 1 : $x_1 = \mathbf{\bar{A}}x_{0} + \mathbf{\bar{B}}u_1  = \mathbf{\bar{A}} \mathbf{\bar{B}}  u_0 + \mathbf{\bar{B}}u_1$  
-Etape 2 : $x_2 = \mathbf{\bar{A}}x_{1} + \mathbf{\bar{B}}u_2  = \mathbf{\bar{A}} (\mathbf{\bar{A}} \mathbf{\bar{B}}  u_0) + \mathbf{\bar{B}}u_2 = \mathbf{\bar{A}}^{2} \mathbf{\bar{B}}  u_0 + \mathbf{\bar{A}} \mathbf{\bar{B}}  u_1 + \mathbf{\bar{B}}u_2$  
-D’où $x_k$ peut s’écrire sous la forme d’une fonction $f$ paramétrée par $u_0, u_1, … u_k$.  
+Etape 0 : $$x_0 = \mathbf{\bar{B}}  u_0$$  
+Etape 1 : $$x_1 = \mathbf{\bar{A}}x_{0} + \mathbf{\bar{B}}u_1  = \mathbf{\bar{A}} \mathbf{\bar{B}}  u_0 + \mathbf{\bar{B}}u_1$$  
+Etape 2 : $$x_2 = \mathbf{\bar{A}}x_{1} + \mathbf{\bar{B}}u_2  = \mathbf{\bar{A}} (\mathbf{\bar{A}} \mathbf{\bar{B}}  u_0) + \mathbf{\bar{B}}u_2 = \mathbf{\bar{A}}^{2} \mathbf{\bar{B}}  u_0 + \mathbf{\bar{A}} \mathbf{\bar{B}}  u_1 + \mathbf{\bar{B}}u_2$$  
+D’où $$x_k$$ peut s’écrire sous la forme d’une fonction $f$ paramétrée par $$u_0, u_1, … u_k$$.  
 
 Passons ensuite à la seconde ligne du système où il est à présent possible d’injecter les valeurs x_k calculées à l’instant :  
-Etape 0 : $y_0 = \mathbf{\bar{C}} x_0  = \mathbf{\bar{C}}  \mathbf{\bar{B}}  u_0$  
-Etape 1 : $y_1 = \mathbf{\bar{C}} x_1  =  \mathbf{\bar{C}} ( \mathbf{\bar{A}} \mathbf{\bar{B}}  u_0 + \mathbf{\bar{B}}u_1) =  \mathbf{\bar{C}} \mathbf{\bar{A}} \mathbf{\bar{B}}  u_0 + \mathbf{\bar{C}} \mathbf{\bar{B}}u_1$  
-Etape 2 : $y_2 = \mathbf{\bar{C}} x_2 =  \mathbf{\bar{C}}(\mathbf{\bar{A}}^{2} \mathbf{\bar{B}}  u_0 + \mathbf{\bar{A}} \mathbf{\bar{B}}  u_1 + \mathbf{\bar{B}}u_2 ) = \mathbf{\bar{C}}\mathbf{\bar{A}}^{2} \mathbf{\bar{B}}  u_0 + \mathbf{\bar{C}}\mathbf{\bar{A}} \mathbf{\bar{B}}  u_1 + \mathbf{\bar{C}}\mathbf{\bar{B}}u_2$  
-On peut observer le noyau de convolution $\mathbf{\bar{K}} _k = (\mathbf{\bar{C}}  \mathbf{\bar{B}}, \mathbf{\bar{C}} \mathbf{\bar{A}}  \mathbf{\bar{B}}, …, \mathbf{\bar{C}}  \mathbf{\bar{A}}^{k} \mathbf{\bar{B}})$ applicable aux $u_k$, d’où $K \ast u$.  
+Etape 0 : $$y_0 = \mathbf{\bar{C}} x_0  = \mathbf{\bar{C}}  \mathbf{\bar{B}}  u_0$$  
+Etape 1 : $$y_1 = \mathbf{\bar{C}} x_1  =  \mathbf{\bar{C}} ( \mathbf{\bar{A}} \mathbf{\bar{B}}  u_0 + \mathbf{\bar{B}}u_1) =  \mathbf{\bar{C}} \mathbf{\bar{A}} \mathbf{\bar{B}}  u_0 + \mathbf{\bar{C}} \mathbf{\bar{B}}u_1$$  
+Etape 2 : $$y_2 = \mathbf{\bar{C}} x_2 =  \mathbf{\bar{C}}(\mathbf{\bar{A}}^{2} \mathbf{\bar{B}}  u_0 + \mathbf{\bar{A}} \mathbf{\bar{B}}  u_1 + \mathbf{\bar{B}}u_2 ) = \mathbf{\bar{C}}\mathbf{\bar{A}}^{2} \mathbf{\bar{B}}  u_0 + \mathbf{\bar{C}}\mathbf{\bar{A}} \mathbf{\bar{B}}  u_1 + \mathbf{\bar{C}}\mathbf{\bar{B}}u_2$  
+On peut observer le noyau de convolution $\mathbf{\bar{K}} _k = (\mathbf{\bar{C}}  \mathbf{\bar{B}}, \mathbf{\bar{C}} \mathbf{\bar{A}}  \mathbf{\bar{B}}, …, \mathbf{\bar{C}}  \mathbf{\bar{A}}^{k} \mathbf{\bar{B}})$$ applicable aux $u_k$, d’où $$K \ast u$$.  
 
-Comme pour les matrices, nous nous appliquons une barre sur le $\mathbf{\bar{K}}$  pour spécifier qu’il s’agit du noyau de convolution obtenu pour la discrétisation. Il est généralement appelé noyau de convolution SSM dans la littérature et sa taille est équivalente à l’entièreté de la séquence d’entrée.  
+Comme pour les matrices, nous nous appliquons une barre sur le $$\mathbf{\bar{K}}$$  pour spécifier qu’il s’agit du noyau de convolution obtenu pour la discrétisation. Il est généralement appelé noyau de convolution SSM dans la littérature et sa taille est équivalente à l’entièreté de la séquence d’entrée.  
 Ce noyau de convolution est calculé par FFT mais nous détaillerons cela dans les prochains articles (vous aimez la flash attention des transformers, vous adorerez la flash convolution que nous verrons dans le troisième article de blog).
 
 ## <span style="color: #FFBF00"> **Apprentissage des matrices A, B et C** </span>
 
-Dans le noyau de convolution développé à l’instant, $\mathbf{\bar{C}}$ et $\mathbf{\bar{B}}$, sont des scalaires apprenables.   
-Concernant $\mathbf{\bar{A}}$, dans notre noyau de convolution, elle s’exprime comme une puissance de $k$ au temps $k$.   
-Cela peut être très long à calculer c’est pourquoi, on cherche à avoir $\mathbf{\bar{A}}$ fixe, et assez facilement, il apparait que la meilleure option est de la rendre diagonale.  
+Dans le noyau de convolution développé à l’instant, $$\mathbf{\bar{C}}$$ et $$\mathbf{\bar{B}}$$, sont des scalaires apprenables.   
+Concernant $$\mathbf{\bar{A}}$$, dans notre noyau de convolution, elle s’exprime comme une puissance de $$k$$ au temps $$k$$.   
+Cela peut être très long à calculer c’est pourquoi, on cherche à avoir $$\mathbf{\bar{A}}$$ fixe, et assez facilement, il apparait que la meilleure option est de la rendre diagonale.  
 La façon d’avoir une matrice diagonale n’est pas évidente au premier abord.   
-Ainsi, en plus du choix de la discrétisation citée ci-dessus, la manière de définir (et initier) $\mathbf{\bar{A}}$ est l’un des points qui différencient les différentes architectures de SSM développées dans la littérature que nous développerons dans le prochain article de blog.  
-Pour les personnes intéressées, vous voir ci-dessous quelle est la matrice $\mathbf{\bar{A}}$ utilisée dans le papier du S4.   
+Ainsi, en plus du choix de la discrétisation citée ci-dessus, la manière de définir (et initier) $$\mathbf{\bar{A}}$$ est l’un des points qui différencient les différentes architectures de SSM développées dans la littérature que nous développerons dans le prochain article de blog.  
+Pour les personnes intéressées, vous voir ci-dessous quelle est la matrice $$\mathbf{\bar{A}}$$ utilisée dans le papier du S4.   
 A noter qu’il s’agit de mathématiques pas forcément triviales et que si vous ne les comprenez pas, ce n’est pas forcément important car il ne s’agit plus d’une matrice utilisée (nous en utilisons des beaucoup plus simples).   
 Donc si vous aimez les maths, vous pouvez continuer à lire cette section, sinon vous pouvez passer directement à la suivante consacrée aux résultats obtenables avec les SSM. 
 
