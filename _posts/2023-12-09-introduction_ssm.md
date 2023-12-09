@@ -46,15 +46,15 @@ Utilisons l'image ci-dessus afin de définir un SSM :
 | *Vue d'un SSM continu et invariant dans le temps, image tirée de [https://en.wikipedia.org/wiki/State-space_representation](https://en.wikipedia.org/wiki/State-space_representation)* |
 
 On peut observer qu'un SSM repose sur trois variables dépendant du temps t :
-- $x(t) \in \mathbb {R} ^{n}$ représente les n variables d'état,
-- $u(t) \in \mathbb {R} ^{m}$ représente les m entrées d'état,
-- $y(t) \in \mathbb {R} ^{p}$ représente les p sorties,
+- $x(t) \in \mathbb {R}^{n}$ représente les n variables d'état,
+- $u(t) \in \mathbb {R}^{m}$ représente les m entrées d'état,
+- $y(t) \in \mathbb {R}^{p}$ représente les p sorties,
 
 On peut aussi observer qu'il est composé de quatre matrices pouvant être apprises : $\mathbf A, \mathbf B, \mathbf C$ et $\mathbf D$.
-- $\mathbf A \in \mathbb {R} ^{m \times n}$ est la matrice d'état (contrôlant l'état lattent x),
-- $\mathbf B \in \mathbb {R} ^{n \times m}$ est la matrice de contrôle,
-- $\mathbf C \in \mathbb {R} ^{p \times n}$ est la matrice de sortie,
-- $\mathbf D \in \mathbb {R} ^{p \times m}$ est la matrice de commande,
+- $\mathbf A \in \mathbb {R}^{m \times n}$ est la matrice d'état (contrôlant l'état lattent x),
+- $\mathbf B \in \mathbb {R}^{n \times m}$ est la matrice de contrôle,
+- $\mathbf C \in \mathbb {R}^{p \times n}$ est la matrice de sortie,
+- $\mathbf D \in \mathbb {R}^{p \times m}$ est la matrice de commande,
 
 Nous modélisons le signal de sortie à l'aide de l'équation suivante :
 
@@ -193,7 +193,8 @@ La vue convolutive sert à entraîner efficacement le modèle, et la vue récurr
 Ce type de modèle est très versatile puisqu’il est applicable pour les tâches de texte, de vision, d’audio, de séries temporelles ou encore de graphes !  
 Nous verrons dans les prochains articles que les principales différences entre les diverses architectures de SSM existantes viennent principalement de la façon de discrétiser l’équation de base des SSM ou encore de définir la matrice A. 
 
-## Remerciements
+# <span style="color: #FF0000"> **Remerciements** </span> 
+
 Je tiens à remercier Boris ALBAR, Pierre BEDU et Nicolas PREVOT d’avoir acceptés de monter un groupe de travail sur le sujet des SSM.
 
-## Références
+# <span style="color: #FF0000"> **Références** </span> 
