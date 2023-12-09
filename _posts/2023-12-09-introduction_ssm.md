@@ -12,6 +12,10 @@ author_profile: false
 classes: wide
 ---
 
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
 # <span style="color: #FF0000"> **Avant-propos** </span>
 
 7 octobre 2021, alors que je me demandais si [AK](https://hf.co/akhaliq) était un bot ou un humain, je vis passer l'un de ses [tweets](https://twitter.com/_akhaliq/status/1445931206030282756).
@@ -36,9 +40,10 @@ Dans le cadre de l'apprentissage profond, lorsque l'on parle de SSM, on se réf�
 ## <span style="color: #FFBF00"> **Définition de la formule générique** </span>
 
 Utilisons l'image ci-dessus afin de définir un SSM :
+
 | ![image/png](https://cdn-uploads.huggingface.co/production/uploads/613b0a62a14099d5afed7830/G7icfkYoxIqHZcJGHM7UD.png) |
 |:--:|
-| *Vue d'un SSM continu et invariant dans le temps, image tirée de [https://en.wikipedia.org/wiki/State-space_representation](https://en.wikipedia.org/wiki/State-space_representation)*|
+| *Vue d'un SSM continu et invariant dans le temps, image tirée de [https://en.wikipedia.org/wiki/State-space_representation](https://en.wikipedia.org/wiki/State-space_representation)* |
 
 On peut observer qu'un SSM repose sur trois variables dépendant du temps t :
 - $x(t) \in \mathbb {R} ^{n}$ représente les n variables d'état,
