@@ -109,6 +109,7 @@ x_{n+1} & = x_n + \frac{\Delta}{2} (\mathbf{A}x_n + \mathbf{B} u_n + \mathbf{A}x
 \Longleftrightarrow  x_{n+1} & = (\mathbf{I}  - \frac{\Delta}{2} \mathbf{A})^{-1} (\mathbf{I}  + \frac{\Delta}{2} \mathbf{A}) x_n + (\mathbf{I}  - \frac{\Delta}{2} \mathbf{A})^{-1} \Delta \mathbf{B} u_{n+1}
 \end{align}
 $$
+
 (*) On pose $$u_{n+1} = u_n$$ car le vecteur de contrôle est supposé constant sur un petit $$\Delta$$.
 
 Nous venons d’obtenir notre SSM discret !  
