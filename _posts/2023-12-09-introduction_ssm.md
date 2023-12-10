@@ -195,25 +195,25 @@ La matrice $$HiPPO$$ a été introduite par les auteurs du S4 dans un précéden
 Sa formule est la suivante :  
 
 $$
-    \mathbf{A} &=
-    \begin{bmatrix}
-      1 \\
-      -1 & 2 \\
-      1 & -3 & 3 \\
-      -1 & 3 & -5 & 4 \\
-      1 & -3 & 5 & -7 & 5 \\
-      -1 & 3 & -5 & 7 & -9 & 6 \\
-      1 & -3 & 5 & -7 & 9 & -11 & 7 \\
-      -1 & 3 & -5 & 7 & -9 & 11 & -13 & 8 \\
-      \vdots & & & & & & & & \ddots \\
-    \end{bmatrix}
-    \\
-    \mathbf{A}_{nk} &=
-    \begin{cases}%
-      (-1)^{n-k} (2k+1) & n > k \\
-      k+1 & n=k \\
-      0 & n<k
-    \end{cases}
+\mathbf{A} =
+\begin{bmatrix}
+  1 \\
+  -1 & 2 \\
+  1 & -3 & 3 \\
+  -1 & 3 & -5 & 4 \\
+  1 & -3 & 5 & -7 & 5 \\
+  -1 & 3 & -5 & 7 & -9 & 6 \\
+  1 & -3 & 5 & -7 & 9 & -11 & 7 \\
+  -1 & 3 & -5 & 7 & -9 & 11 & -13 & 8 \\
+  \vdots & & & & & & & & \ddots \\
+\end{bmatrix}
+\\
+\mathbf{A}_{nk} =
+\begin{cases}%
+  (-1)^{n-k} (2k+1) & n > k \\
+  k+1 & n=k \\
+  0 & n<k
+\end{cases}
 $$
 
 Cette matrice n'est pas normale mais elle peut être décomposée sous la forme d'une matrice normale plus une matrice de rang inférieur (résumé dans le papier par NPLR pour *Normal Plus Low Rank*). Les auteurs prouvent dans leur papier que ce type de matrice peut être calculer efficacement via trois techniques : fonction génératrice tronquée, noyaux de Cauchy et identité de Woodbury.   
