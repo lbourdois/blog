@@ -150,7 +150,7 @@ Passons ensuite à la seconde ligne du système où il est à présent possible 
 Etape 0 : $$y_0 = \mathbf{\bar{C}} x_0  = \mathbf{\bar{C}}  \mathbf{\bar{B}}  u_0$$  
 Etape 1 : $$y_1 = \mathbf{\bar{C}} x_1  =  \mathbf{\bar{C}} ( \mathbf{\bar{A}} \mathbf{\bar{B}}  u_0 + \mathbf{\bar{B}}u_1) =  \mathbf{\bar{C}} \mathbf{\bar{A}} \mathbf{\bar{B}}  u_0 + \mathbf{\bar{C}} \mathbf{\bar{B}}u_1$$  
 Etape 2 : $$y_2 = \mathbf{\bar{C}} x_2 =  \mathbf{\bar{C}}(\mathbf{\bar{A}}^{2} \mathbf{\bar{B}}  u_0 + \mathbf{\bar{A}} \mathbf{\bar{B}}  u_1 + \mathbf{\bar{B}}u_2 ) = \mathbf{\bar{C}}\mathbf{\bar{A}}^{2} \mathbf{\bar{B}}  u_0 + \mathbf{\bar{C}}\mathbf{\bar{A}} \mathbf{\bar{B}}  u_1 + \mathbf{\bar{C}}\mathbf{\bar{B}}u_2$$  
-On peut observer le noyau de convolution $\mathbf{\bar{K}} _k = (\mathbf{\bar{C}}  \mathbf{\bar{B}}, \mathbf{\bar{C}} \mathbf{\bar{A}}  \mathbf{\bar{B}}, …, \mathbf{\bar{C}}  \mathbf{\bar{A}}^{k} \mathbf{\bar{B}})$$ applicable aux $$u_k$$, d’où $$K \ast u$$.  
+On peut observer le noyau de convolution $$\mathbf{\bar{K}} _k = (\mathbf{\bar{C}}  \mathbf{\bar{B}}, \mathbf{\bar{C}} \mathbf{\bar{A}}  \mathbf{\bar{B}}, …, \mathbf{\bar{C}}  \mathbf{\bar{A}}^{k} \mathbf{\bar{B}})$$ applicable aux $$u_k$$, d’où $$K \ast u$$.  
 
 Comme pour les matrices, nous nous appliquons une barre sur le $$\mathbf{\bar{K}}$$  pour spécifier qu’il s’agit du noyau de convolution obtenu pour la discrétisation. Il est généralement appelé noyau de convolution SSM dans la littérature et sa taille est équivalente à l’entièreté de la séquence d’entrée.  
 Ce noyau de convolution est calculé par FFT mais nous détaillerons cela dans les prochains articles (vous aimez la flash attention des transformers, vous adorerez la flash convolution que nous verrons dans le troisième article de blog).
@@ -176,7 +176,7 @@ A TERMINER
     \end{cases}
  $$
  
-# <span style="color: #FF0000"> **Quelques Resultats** <span>
+# <span style="color: #FF0000"> **Quelques résultats** <span>
 AJOUTER UNE SECTION SUR LES RESULTATS POUR ILLUSTRER QUE CA SERT POUR TOUT.
 
 # <span style="color: #FF0000"> **Conclusion** <span>
@@ -186,7 +186,6 @@ Ce type de modèle est très versatile puisqu’il est applicable pour les tâch
 Nous verrons dans les prochains articles que les principales différences entre les diverses architectures de SSM existantes viennent principalement de la façon de discrétiser l’équation de base des SSM ou encore de définir la matrice A. 
 
 # <span style="color: #FF0000"> **Remerciements** </span> 
-
 Je tiens à remercier Boris ALBAR, Pierre BEDU et Nicolas PREVOT d’avoir acceptés de monter un groupe de travail sur le sujet des SSM.
 
 # <span style="color: #FF0000"> **Références** </span> 
