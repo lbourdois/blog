@@ -171,7 +171,7 @@ Dans le noyau de convolution développé à l’instant, $$\mathbf{\bar{C}}$$ et
 Concernant $$\mathbf{\bar{A}}$$, nous avons vue que dans notre noyau de convolution, elle s’exprime comme une puissance de $$k$$ au temps $$k$$. Cela peut être très long à calculer c’est pourquoi, on cherche à avoir $$\mathbf{\bar{A}}$$ fixe. Pour cela, la meilleure option est de l'avoir diagonale. C'est à dire avoir :
 
 $$
-A =  \begin{bmatrix} 
+\mathbf{A} =  \begin{bmatrix} 
 \lambda_{1} & 0 & \cdots & 0 \\ 
 0 & \lambda_{2} & \cdots & 0 \\ 
 \vdots & \vdots & \ddots & \vdots \\
@@ -180,7 +180,7 @@ A =  \begin{bmatrix}
 
 \Rightarrow
 
-A^k =  \begin{bmatrix} 
+\mathbf{A^k} =  \begin{bmatrix} 
 \lambda_{1}^k & 0 & \cdots & 0 \\ 
 0 & \lambda_{2}^k & \cdots & 0 \\ 
 \vdots & \vdots & \ddots & \vdots \\
@@ -208,6 +208,7 @@ $$
   \vdots & & & & & & & & \ddots \\
 \end{bmatrix}
 \\
+\Rightarrow
 \mathbf{A}_{nk} =
 \begin{cases}%
   (-1)^{n-k} (2k+1) & n > k \\
