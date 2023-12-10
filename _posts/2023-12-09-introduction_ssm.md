@@ -189,14 +189,14 @@ A^k =  \begin{bmatrix}
 $$
 
 Par le [théorème spectral](https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_spectral) de l'algèbre linéaire, il s'agit exactement de la classe des [matrices normales](https://fr.wikipedia.org/wiki/Matrice_normale).    
-En plus du choix de la discrétisation citée ci-dessus, la manière de définir et initier $$\mathbf{\bar{A}}$$ est l’un des points qui différencient les différentes architectures de SSM développées dans la littérature que nous développerons dans le prochain article de blog. En effet, empiriquement, il apparait qu'un SSM initialisé avec une matrice A aléatoire donne de mauvais résultats alors que si l'initialisation est effectué à partir de la matrice $$HiPPO$$ (pour *High-Order Polynomial Projection Operator*), les résultats sont très bons (MNIST de 60% à 98%).    
+En plus du choix de la discrétisation citée ci-dessus, la manière de définir et initier $$\mathbf{\bar{A}}$$ est l’un des points qui différencient les différentes architectures de SSM développées dans la littérature que nous développerons dans le prochain article de blog. En effet, empiriquement, il apparait qu'un SSM initialisé avec une matrice A aléatoire donne de mauvais résultats alors que si l'initialisation est effectué à partir de la matrice $$HiPPO$$ (pour *High-Order Polynomial Projection Operator*), les résultats sont très bons (passage de de 60% à 98%sur le benchmark MNIST sequential).    
 
-La matrice $$HiPPO$$a été introduite par les auteurs du S4 dans un précédent papier [LINK]. Elle est repris dans LSSL [LINK] mais aussi dans l'Appendix du S4.
+La matrice $$HiPPO$$ a été introduite par les auteurs du S4 dans un précédent papier [LINK]. Elle est repris dans LSSL [LINK] mais aussi dans l'Appendix du S4.
 Sa formule est la suivante :  
 
 $$
     \bm{A} &=
-    \begin{bmatrix}
+    \mathbf{bmatrix}
       1 \\
       -1 & 2 \\
       1 & -3 & 3 \\
@@ -217,6 +217,7 @@ $$
 $$
 
 Cette matrice n'est pas normale mais elle peut être décomposée sous la forme d'une matrice normale plus une matrice de rang inférieur (résumé dans le papier par NPLR pour *Normal Plus Low Rank*). Les auteurs prouvent dans leur papier que ce type de matrice peut être calculer efficacement via trois techniques : fonction génératrice tronquée, noyaux de Cauchy et identité de Woodbury.   
+
 <!--
 Elle permet, in fine, de réécrire la vue réccurente sous la forme suivante :
 
@@ -228,11 +229,11 @@ $$
 \end{aligned}
 $$
 
-avec $$ A_0 = frac{2}{\Lambda}\mathbf{I} + (\mathbf{\Lambda} - \mathbf{P} \mathbf{Q}^*)$$ et $$A_1 = (\frac{2}{\Delta}-\mathbf{\Lambda})^{-1} - (\frac{2}{\Delta}-\mathbf{\Lambda})^{-1} \mathbf{p} (\mathbf{I} + \mathbf{q}^* (\frac{2}{\Delta}-\mathbf{\Lambda} )^{-1} \mathbf{p})^{-1} \mathbf{q}^*( \frac{2}{\Delta}-\mathbf{\Lambda})^{-1}$$ où $$\Delta$$ est une matrice diagonale, $$p$$ et $q$$ des vecteurs $$\in ℂ^N\times1$$  
+avec $$ A_0 = frac{2}{\Lambda}\mathbf{I} + (\mathbf{\Lambda} - \mathbf{P} \mathbf{Q}^*)$$ et $$A_1 = (\frac{2}{\Delta}-\mathbf{\Lambda})^{-1} - (\frac{2}{\Delta}-\mathbf{\Lambda})^{-1} \mathbf{p} (\mathbf{I} + \mathbf{q}^* (\frac{2}{\Delta}-\mathbf{\Lambda} )^{-1} \mathbf{p})^{-1} \mathbf{q}^*( \frac{2}{\Delta}-\mathbf{\Lambda})^{-1}$$ où $$\Lambda$$ est une matrice diagonale, $$p$$ et $$q$$ des vecteurs $$\in ℂ^N\times1$$  
 -->
 
 La preuve pour montrer qu'une matrice NPLR peut être calculée efficacement comme une matrice diagonale est basée sur des mathématiques pas forcément triviales mais très élégentes quand on prend le temps de la refaire. Le point principale est qu'elle s'étend sur plus de 8 pages dans l'appendix du papier. La reprendre entièrement rendrait cet article de blog trop long alors qu'il se veut être une introduction aux SSM. Je ne vais donc pas rentrer dans les détails de cette matrice.  
-A noter que S4 a bénéficié de plusieurs versions où le but des auteurs a été justement de simplifier la matrice A, en passant d'une matrice HiPPO NPLR (S4 V1 dans la literrature) à une matrice diagonale (S4 V2 ou S4 simplified dans la literature). Ainsi, si vous comprenez pas les mathématiques sous-jacentes à la matrice HiPPO, ce n’est pas forcément important car ellee n'est plus du tout utilisée en pratique, au profit de (beaucoup) plus simples. 
+A noter que S4 a bénéficié de plusieurs versions où le but des auteurs a été justement de simplifier la matrice A, en passant d'une matrice HiPPO NPLR (S4 V1 dans la literrature) à une matrice diagonale (S4 V2 ou *S4 simplified* dans la literature). Ainsi, si vous comprenez pas les mathématiques sous-jacentes à la matrice HiPPO, ce n’est pas forcément important car ellee n'est plus du tout utilisée en pratique, au profit de (beaucoup) plus simples. 
 
 
 # <span style="color: #FF0000"> **Quelques résultats** <span>
