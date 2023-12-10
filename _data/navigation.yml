@@ -3,10 +3,10 @@ main:
     url: /ssm/
   - title: "NLP"
     url: /nlp/
-  - title: "Posts"
-    url: /posts/
   - title: "Autre"
     url: /other/
+  - title: "Posts"
+    url: /posts/
   - title: "A propos"
     url: /about/    
   - title: "Cours NYU"
