@@ -100,9 +100,9 @@ Faisons donc un peu de mathématiques.
 
 # <span style="color: #FF0000"> **Vue récursive d’un SSM** </span>
 
-Pour discrétiser le cas continu, utilisons la méthode des trapèzes où le principe est d'assimiler la région sous la courbe représentative d'une fonction $$f$$ définie sur un segment $$[a , b]$$ à un trapèze et d'en calculer l'aire $$T$$ : $$T=(b-a){\frac  {f(a)+f(b)}{2}}$$.  
+Pour discrétiser le cas continu, utilisons la méthode des trapèzes où le principe est d'assimiler la région sous la courbe représentative d'une fonction $$f$$ définie sur un segment $$[t_n , t_{n+1}]$$ à un trapèze et d'en calculer l'aire $$T$$ : $$T=(t_{n+1} - t_n){\frac  {f(t_n)+f(t_{n+1})}{2}}$$.  
 
-Posons $$x’(t) = f(t,x)$$. On a alors :  $$x_{n+1} = x_n + \frac{1}{2}\Delta(f(t_n,y_n) + f(t_{n+1},y_{n+1}))$$ avec $$\Delta = t_{n+1} - t_n$$.  
+On a alors :  $$x_{n+1} - x_n = \frac{1}{2}\Delta(f(t_n) + f(t_{n+1}))$$ avec $$\Delta = t_{n+1} - t_n$$.  
 Si $$x'_n = \mathbf{A}x_n + \mathbf{B} u_n$$ (première ligne de l’équation d’un SSM), correspond à $$f$$, alors :  
 
 $$
@@ -195,7 +195,7 @@ $$
 Par le [théorème spectral](https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_spectral) de l'algèbre linéaire, il s'agit exactement de la classe des [matrices normales](https://fr.wikipedia.org/wiki/Matrice_normale).    
 En plus du choix de la discrétisation citée ci-dessus, la manière de définir et initier $$\mathbf{\bar{A}}$$ est l’un des points qui différencient les différentes architectures de SSM développées dans la littérature que nous développerons dans le prochain article de blog. En effet, empiriquement, il apparait qu'un SSM initialisé avec une matrice A aléatoire donne de mauvais résultats alors que si l'initialisation est effectué à partir de la matrice $$HiPPO$$ (pour *High-Order Polynomial Projection Operator*), les résultats sont très bons (passage de de 60% à 98%sur le benchmark MNIST sequential).    
 
-La matrice $$HiPPO$$ a été introduite par les auteurs du S4 dans un précédent [papier](https://arxiv.org/abs/2008.07669) (2020). Elle est repris dans le [papier LSSL](https://arxiv.org/abs/2110.13985)(2021), aussi par les auteurs du S4, ainsi que dans l'Appendix du S4.
+La matrice $$HiPPO$$ a été introduite par les auteurs du S4 dans un précédent [papier](https://arxiv.org/abs/2008.07669) (2020). Elle est repris dans le [papier LSSL](https://arxiv.org/abs/2110.13985) (2021), aussi par les auteurs du S4, ainsi que dans l'Appendix du S4.
 Sa formule est la suivante :  
 
 $$
@@ -257,19 +257,19 @@ Nous verrons dans les prochains articles que les principales différences entre 
 # <span style="color: #FF0000"> **Pour aller plus loin** <span>
 Concernant le S4, vous pouvez consulter les ressources suivantes (toutes en anglais) :
 * Vidéos : 
--	[Efficiently Modeling Long Sequences with Structured State Spaces - Albert Gu | Stanford MLSys #46](https://www.youtube.com/watch?v=EvQ3ncuriCM) par Albert Gu
--	[MedAI #41: Efficiently Modeling Long Sequences with Structured State Spaces](https://www.youtube.com/watch?v=luCBXCErkCs) par Albert Gu (un peu plus longue car montre plus d’exemples)
--	[JAX Talk: Generating Extremely Long Sequences with S4](https://www.youtube.com/watch?v=GqwhkbrWDOI) par Sasha Rush + les [slides](https://srush.github.io/annotated-s4/slides.html#22 ) utilisées dans la vidéo 
+  -	[Efficiently Modeling Long Sequences with Structured State Spaces - Albert Gu - Stanford MLSys #46](https://www.youtube.com/watch?v=EvQ3ncuriCM) par Albert Gu
+  -	[MedAI #41: Efficiently Modeling Long Sequences with Structured State Spaces](https://www.youtube.com/watch?v=luCBXCErkCs) par Albert Gu (un peu plus longue car montre plus d’exemples)
+  -	[JAX Talk: Generating Extremely Long Sequences with S4](https://www.youtube.com/watch?v=GqwhkbrWDOI) par Sasha Rush + les [slides](https://srush.github.io/annotated-s4/slides.html#22 ) utilisées dans la vidéo 
 * Codes :
-- [The Annotated S4 ](https://srush.github.io/annotated-s4/ ) (en jax) par Sasha Rush et Sidd Karamcheti
-- [Le GitHub de l'implémentation officielle du S4](https://github.com/state-spaces/s4) (en pytorch)
+  - [The Annotated S4 ](https://srush.github.io/annotated-s4/ ) (en jax) par Sasha Rush et Sidd Karamcheti
+  - [Le GitHub de l'implémentation officielle du S4](https://github.com/state-spaces/s4) (en pytorch)
 *	Articles de blog :
--	Les articles sur le S4 issus du blog Hazy Research qui est le groupe de recherche de Stanford où Albert Gu a fait son doctorat : [partie 1](https://hazyresearch.stanford.edu/blog/2022-01-14-s4-1), [partie 2](https://hazyresearch.stanford.edu/blog/2022-01-14-s4-2), [partie 3](https://hazyresearch.stanford.edu/blog/2022-01-14-s4-3).
-<br>
+  -	Les articles sur le S4 issus du blog Hazy Research qui est le groupe de recherche de Stanford où Albert Gu a fait son doctorat : [partie 1](https://hazyresearch.stanford.edu/blog/2022-01-14-s4-1), [partie 2](https://hazyresearch.stanford.edu/blog/2022-01-14-s4-2), [partie 3](https://hazyresearch.stanford.edu/blog/2022-01-14-s4-3).
+
 Concernant la matrice HiPPO, vous pouvez consulter les ressources suivantes (toutes en anglais) :
 -	L'[article du blog Hazy Research](https://hazyresearch.stanford.edu/blog/2020-12-05-hippo) consacré au sujet
--	Le papier [*How to Train Your HiPPO: State Space Models with Generalized Orthogonal Basis Projections*]https://arxiv.org/abs/2206.12037) d'Albert Gu et al. (2022)
-<br>
+ -	Le papier [*How to Train Your HiPPO: State Space Models with Generalized Orthogonal Basis Projections*](https://arxiv.org/abs/2206.12037) d'Albert Gu et al. (2022)
+
 Concernant les SSM, vous pouvez regarder le cours (en français) sur les [systèmes dynamiques](https://www.youtube.com/watch?v=sDD13PI89hA&list=PLImFpdng6y55wxYZgt7hxbocWkeMWHtCN) d'Ion Hazyuk, Maitre de Conferences à l'INSA Toulouse (la partie les [modèles en espace d'état](https://www.youtube.com/watch?v=XGhDvhHKjiY&list=PLImFpdng6y55wxYZgt7hxbocWkeMWHtCN&index=45) débutent à partie de la section 5.2)
 <br><br><br>
 
