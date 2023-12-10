@@ -9,6 +9,8 @@ header :
     overlay_image: "https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/NLP_radom_blog.png"
     teaser: "https://github.com/lbourdois/blog/assets/58078086/cb2dca34-9a3e-481a-8773-2360a1ceaa1c"
 author_profile: false
+sidebar:
+    nav: sidebar-ssm
 classes: wide
 ---
 
