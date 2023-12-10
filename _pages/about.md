@@ -7,9 +7,11 @@ title: "A propos"
 
 ## Qui suis-je ? 👤
 Loïck BOURDOIS.<br>  
-Vous trouverez davantage d'informations me concernant (mon CV ou encore un portofolio des projets que j'ai pu réaliser à titre personnel ou professionnel) sur mon [site personnel](https://lbourdois.github.io/).<br>
+Data scientist et [Hugging Face Fellow 🤗](https://huggingface.co/hugging-fellows).  
 
 <!-- 
+Vous trouverez davantage d'informations me concernant (mon CV ou encore un portofolio des projets que j'ai pu réaliser à titre personnel ou professionnel) sur mon [site personnel](https://lbourdois.github.io/).<br>
+
 Je suis diplômé d’un master de Modélisation Statistique et Stochastique obtenu à l’Université de Bordeaux.
 Après avoir travaillé un peu plus d'un an au Centre de Recherche Inserm-Université de Bordeaux U1219 « *Bordeaux population health* » au sein de l’équipe [IETO](https://www.bordeaux-population-health.center/les-equipes/prevention-et-prise-en-charge-des-traumatismes-ieto/) (*Injury Epidemiology Transport Occupation*), je travaille actuellement au [CATIE](https://www.catie.fr/).<br>  
 
@@ -21,9 +23,9 @@ Elle ne porte pas sur tous les travaux en lien avec le NLP que nous sommes en tr
 ## Pourquoi ce blog ? 💻
 Lorsqu'en 2019, pour mon travail, j'ai commencé à m'interesser aux avancées récentes en traitement du langage naturel de l'époque (i.e. le *transformer* et tous les modèles qui en découlent), je n’avais pas suivi de cours sur ces nouveautés. En faisant des recherches sur internet pour me former, j’ai pu constater qu’il n’existait que très peu d’explications en français de ces nouvelles méthodes. Beaucoup d’articles Medium ou des GitHub tenus par des francophones mais rien de disponible en français, exclusivement de l’anglais.<br>
 J’ai réalisé des fiches explicatives de ces modèles en français pour qu’elles soient compréhensibles par mes collègues de travail. Je me suis dit qu'elles pourraient servir à d’autres personnes, c’est pourquoi j’ai créé ce blog.  
-Depuis j'ai élargi les sujets abordés sur le blog à d'autres thématiques que celle du traitement du langage naturel.
+Depuis j'ai élargi les sujets abordés sur le blog à d'autres thématiques que celle du traitement du langage naturel.  
+Après avoir réalisé beaucoup de traductions sur d'autres plateformes (voir la catégorie [Autre](https://lbourdois.github.io/blog/other/)), je reprends mon blog pour écrire sur les SSM.  
 En espérant que les différents articles trouvables sur le blog soient utiles aux francophones 🙂<br><br>
-
 
 
 ## Quelques questions fréquentes 👨‍🏫
