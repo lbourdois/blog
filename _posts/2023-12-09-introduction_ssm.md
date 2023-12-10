@@ -195,8 +195,8 @@ La matrice $$HiPPO$$ a été introduite par les auteurs du S4 dans un précéden
 Sa formule est la suivante :  
 
 $$
-    \bm{A} &=
-    \mathbf{bmatrix}
+    \mathbf{A} &=
+    \begin{bmatrix}
       1 \\
       -1 & 2 \\
       1 & -3 & 3 \\
