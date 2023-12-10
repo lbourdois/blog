@@ -163,38 +163,76 @@ Etape 2 : $$y_2 = \mathbf{\bar{C}} x_2 =  \mathbf{\bar{C}}(\mathbf{\bar{A}}^{2} 
 On peut observer le noyau de convolution $$\mathbf{\bar{K}} _k = (\mathbf{\bar{C}}  \mathbf{\bar{B}}, \mathbf{\bar{C}} \mathbf{\bar{A}}  \mathbf{\bar{B}}, …, \mathbf{\bar{C}}  \mathbf{\bar{A}}^{k} \mathbf{\bar{B}})$$ applicable aux $$u_k$$, d’où $$K \ast u$$.  
 
 Comme pour les matrices, nous appliquons une barre sur le $$\mathbf{\bar{K}}$$  pour spécifier qu’il s’agit du noyau de convolution obtenu après discrétisation. Il est généralement appelé noyau de convolution SSM dans la littérature et sa taille est équivalente à l’entièreté de la séquence d’entrée.  
-Ce noyau de convolution est calculé par FFT mais nous détaillerons cela dans les prochains articles (vous aimez la Flash Attention des *transformers* ? Vous adorerez la Flash FFT Convolution que nous verrons dans le troisième article de blog).
+Ce noyau de convolution est calculé par Transformation de Fourier rapide (FFT) mais nous détaillerons cela dans les prochains articles (vous aimez la Flash Attention des *transformers* ? Vous adorerez la Flash FFT Convolution que nous verrons dans le troisième article de blog).
 
 ## <span style="color: #FFBF00"> **Apprentissage des matrices A, B et C** </span>
 
 Dans le noyau de convolution développé à l’instant, $$\mathbf{\bar{C}}$$ et $$\mathbf{\bar{B}}$$, sont des scalaires apprenables.   
-Concernant $$\mathbf{\bar{A}}$$, nous avons vue que dans notre noyau de convolution, elle s’exprime comme une puissance de $$k$$ au temps $$k$$.   
-Cela peut être très long à calculer c’est pourquoi, on cherche à avoir $$\mathbf{\bar{A}}$$ fixe, et assez facilement, il apparait que la meilleure option est de la rendre diagonale.  
-[DEMANDER SI C'EST BIEN EVIDENT POUR TOUT LE MONDE, SINON AJOUTER UNE FORMULE]
-La façon d’avoir une matrice diagonale n’est pas évidente au premier abord.   
-Ainsi, en plus du choix de la discrétisation citée ci-dessus, la manière de définir (et initier) $$\mathbf{\bar{A}}$$ est l’un des points qui différencient les différentes architectures de SSM développées dans la littérature que nous développerons dans le prochain article de blog.  
-Nous décrivons ci-dessous la matrice $$\mathbf{\bar{A}}$$ utilisée dans le S4 (V1), appellée la matric $$HIPPO$$.   
-Il s’agit de mathématiques pas forcément triviales. Si vous ne les comprenez pas, ce n’est pas forcément important car cette matrice n'est plus du tout utilisée en pratique, au profit de (beaucoup) plus simples.   
-Donc si vous aimez les maths, vous pouvez continuer à lire cette section, sinon vous pouvez passer directement à la suivante consacrée aux résultats du S4 illustrant tout le potentiel des SSM. 
+Concernant $$\mathbf{\bar{A}}$$, nous avons vue que dans notre noyau de convolution, elle s’exprime comme une puissance de $$k$$ au temps $$k$$. Cela peut être très long à calculer c’est pourquoi, on cherche à avoir $$\mathbf{\bar{A}}$$ fixe. Pour cela, la meilleure option est de la rendre diagonale. C'est à dire avoir :
 
-A TERMINER  
- $$
-     \mathbf{A_{nk}} = -
-    \begin{cases}
-        (2n + 1)^{1/2} (2k + 1)^{1/2} & \text{if $n > k$,} \\
-        n + 1                         & \text{if $n = k$,} \\
-        0                             & \text{if $n < k$.} \\
+$$
+A =  \begin{bmatrix} 
+\lambda_{1} & 0 & \cdots & 0 \\ 
+0 & \lambda_{2} & \cdots & 0 \\ 
+\vdots & \vdots & \ddots & \vdots \\
+0 & 0 & \cdots & \lambda_{n} 
+\end{bmatrix} 
+
+\Rightarrow
+
+A^k =  \begin{bmatrix} 
+\lambda_{1}^k & 0 & \cdots & 0 \\ 
+0 & \lambda_{2}^k & \cdots & 0 \\ 
+\vdots & \vdots & \ddots & \vdots \\
+0 & 0 & \cdots & \lambda_{n}^k 
+\end{bmatrix} 
+$$
+
+La façon d’avoir une matrice diagonale dans un SSM n’est pas évidente au premier abord.  
+Ainsi, en plus du choix de la discrétisation citée ci-dessus, la manière de définir et initier $$\mathbf{\bar{A}}$$ est l’un des points qui différencient les différentes architectures de SSM développées dans la littérature que nous développerons dans le prochain article de blog. En effet, empiriquement, il apparait qu'un SSM initialisé avec une matrice A aléatoire donne de mauvais résultats alors que si l'initialisation est effectué à partir de la matrice $$HiPPO$$ (pour *High-Order Polynomial Projection Operator*), les résultats sont très bons (MNIST de 60% à 98%).    
+
+La matrice $$HiPPO$$a été introduite par les auteurs du S4 dans un précédent papier [LINK]. Elle est repris dans LSSL [LINK] mais aussi dans l'Appendix du S4.
+Sa formule est la suivante :  
+$$
+    \bm{A} &=
+    \begin{bmatrix}
+      1 \\
+      -1 & 2 \\
+      1 & -3 & 3 \\
+      -1 & 3 & -5 & 4 \\
+      1 & -3 & 5 & -7 & 5 \\
+      -1 & 3 & -5 & 7 & -9 & 6 \\
+      1 & -3 & 5 & -7 & 9 & -11 & 7 \\
+      -1 & 3 & -5 & 7 & -9 & 11 & -13 & 8 \\
+      \vdots & & & & & & & & \ddots \\
+    \end{bmatrix}
+    \\
+    \mathbf{A}_{nk} &=
+    \begin{cases}%
+      (-1)^{n-k} (2k+1) & n > k \\
+      k+1 & n=k \\
+      0 & n<k
     \end{cases}
- $$
- 
+$$
+
+Les auteurs prouvent dans leur papier que cette matrice qui est *Normal Plus Low Rank* (NPLR), est équivalente à une matrice diagonale. Et ainsi que la vue réccurente peut se réécrire sous la forme suivante :
+et la vue convolutive sous la forme suivante :  
+
+La preuve est basée sur des mathématiques pas forcément triviales (fonction génératrice, noyaux de Cauchy, identité de Woodbury, etc.) mais très élégentes quand on prend le temps de la refaire. Le point principale est qu'elle s'étend sur plus de 8 pages dans la V1 du S4 (pages 14 à 22 dans l'appendix). La reprendre entièrement rendrait cet article de blog trop long alors qu'il se veut être une introduction aux SSM. Je ne vais donc pas rentrer dans les détails de cette matrice.  
+Si je vous invite  à lire la V1 du S4, c'est qu'il faut différencier les différentes versions du S4. En effet, on verra dans l'article suivant, que le S4 a bénéficié de plusieurs versions où le but des auteurs a été justement de simplifier la matrice A, en passant d'une matrice HiPPO NPLR à une matrice diagonale. 
+Ainsi, si vous comprenez pas les mathématiques sous-jacentes à la matrice HiPPO, ce n’est pas forcément important car ellee n'est plus du tout utilisée en pratique, au profit de (beaucoup) plus simples. 
+
+
 # <span style="color: #FF0000"> **Quelques résultats** <span>
-AJOUTER UNE SECTION SUR LES RESULTATS POUR ILLUSTRER QUE CA SERT POUR TOUT.
+AJOUTER UNE SECTION SUR LES RESULTATS POUR ILLUSTRER QUE CA SERT POUR TOUT + COMPLEXITE
 
 # <span style="color: #FF0000"> **Conclusion** <span>
-Les SSM sont des modèles possédant trois vues. Une vision continue, et lorsque nous la discrétisons sur le temps, une vue récurrente ainsi que convolutive.  
+Les SSM sont des modèles possédant trois vues. Une vision continue, et lorsque nous la discrétisons, une vue récurrente ainsi que convolutive.  
 La vue convolutive sert à entraîner efficacement le modèle, et la vue récurrente permet de réaliser une inférence potentiellement infinie (pas de limite de taille de contexte ou encore de positionnal encoding comparés aux transformers).  
 Ce type de modèle est très versatile puisqu’il est applicable pour les tâches de texte, de vision, d’audio, de séries temporelles ou encore de graphes !  
 Nous verrons dans les prochains articles que les principales différences entre les diverses architectures de SSM existantes viennent principalement de la façon de discrétiser l’équation de base des SSM ou encore de définir la matrice A. 
+
+# <span style="color: #FF0000"> **Pour aller plus loin** <span>
 
 # <span style="color: #FF0000"> **Remerciements** </span> 
 Je tiens à remercier Boris ALBAR, Pierre BEDU et Nicolas PREVOT d’avoir acceptés de monter un groupe de travail sur le sujet des SSM et de m'avoir ainsi accompagné dans la découverte de ce type de modèle.
