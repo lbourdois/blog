@@ -168,7 +168,7 @@ Ce noyau de convolution est calculé par Transformation de Fourier rapide (FFT) 
 ## <span style="color: #FFBF00"> **Apprentissage des matrices A, B et C** </span>
 
 Dans le noyau de convolution développé à l’instant, $$\mathbf{\bar{C}}$$ et $$\mathbf{\bar{B}}$$, sont des scalaires apprenables.   
-Concernant $$\mathbf{\bar{A}}$$, nous avons vue que dans notre noyau de convolution, elle s’exprime comme une puissance de $$k$$ au temps $$k$$. Cela peut être très long à calculer c’est pourquoi, on cherche à avoir $$\mathbf{\bar{A}}$$ fixe. Pour cela, la meilleure option est de la rendre diagonale. C'est à dire avoir :
+Concernant $$\mathbf{\bar{A}}$$, nous avons vue que dans notre noyau de convolution, elle s’exprime comme une puissance de $$k$$ au temps $$k$$. Cela peut être très long à calculer c’est pourquoi, on cherche à avoir $$\mathbf{\bar{A}}$$ fixe. Pour cela, la meilleure option est de l'avoir diagonale. C'est à dire avoir :
 
 $$
 A =  \begin{bmatrix} 
@@ -188,11 +188,12 @@ A^k =  \begin{bmatrix}
 \end{bmatrix} 
 $$
 
-La façon d’avoir une matrice diagonale dans un SSM n’est pas évidente au premier abord.  
-Ainsi, en plus du choix de la discrétisation citée ci-dessus, la manière de définir et initier $$\mathbf{\bar{A}}$$ est l’un des points qui différencient les différentes architectures de SSM développées dans la littérature que nous développerons dans le prochain article de blog. En effet, empiriquement, il apparait qu'un SSM initialisé avec une matrice A aléatoire donne de mauvais résultats alors que si l'initialisation est effectué à partir de la matrice $$HiPPO$$ (pour *High-Order Polynomial Projection Operator*), les résultats sont très bons (MNIST de 60% à 98%).    
+Par le [théorème spectral](https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_spectral) de l'algèbre linéaire, il s'agit exactement de la classe des [matrices normales](https://fr.wikipedia.org/wiki/Matrice_normale).    
+En plus du choix de la discrétisation citée ci-dessus, la manière de définir et initier $$\mathbf{\bar{A}}$$ est l’un des points qui différencient les différentes architectures de SSM développées dans la littérature que nous développerons dans le prochain article de blog. En effet, empiriquement, il apparait qu'un SSM initialisé avec une matrice A aléatoire donne de mauvais résultats alors que si l'initialisation est effectué à partir de la matrice $$HiPPO$$ (pour *High-Order Polynomial Projection Operator*), les résultats sont très bons (MNIST de 60% à 98%).    
 
 La matrice $$HiPPO$$a été introduite par les auteurs du S4 dans un précédent papier [LINK]. Elle est repris dans LSSL [LINK] mais aussi dans l'Appendix du S4.
 Sa formule est la suivante :  
+
 $$
     \bm{A} &=
     \begin{bmatrix}
@@ -215,16 +216,28 @@ $$
     \end{cases}
 $$
 
-Les auteurs prouvent dans leur papier que cette matrice qui est *Normal Plus Low Rank* (NPLR), est équivalente à une matrice diagonale. Et ainsi que la vue réccurente peut se réécrire sous la forme suivante :
-et la vue convolutive sous la forme suivante :  
+Cette matrice n'est pas normale mais elle peut être décomposée sous la forme d'une matrice normale plus une matrice de rang inférieur (résumé dans le papier par NPLR pour *Normal Plus Low Rank*). Les auteurs prouvent dans leur papier que ce type de matrice peut être calculer efficacement via trois techniques : fonction génératrice tronquée, noyaux de Cauchy et identité de Woodbury.   
+<!--
+Elle permet, in fine, de réécrire la vue réccurente sous la forme suivante :
 
-La preuve est basée sur des mathématiques pas forcément triviales (fonction génératrice, noyaux de Cauchy, identité de Woodbury, etc.) mais très élégentes quand on prend le temps de la refaire. Le point principale est qu'elle s'étend sur plus de 8 pages dans la V1 du S4 (pages 14 à 22 dans l'appendix). La reprendre entièrement rendrait cet article de blog trop long alors qu'il se veut être une introduction aux SSM. Je ne vais donc pas rentrer dans les détails de cette matrice.  
-Si je vous invite  à lire la V1 du S4, c'est qu'il faut différencier les différentes versions du S4. En effet, on verra dans l'article suivant, que le S4 a bénéficié de plusieurs versions où le but des auteurs a été justement de simplifier la matrice A, en passant d'une matrice HiPPO NPLR à une matrice diagonale. 
-Ainsi, si vous comprenez pas les mathématiques sous-jacentes à la matrice HiPPO, ce n’est pas forcément important car ellee n'est plus du tout utilisée en pratique, au profit de (beaucoup) plus simples. 
+$$
+\begin{aligned}
+  x_{k} &= \mathbf{\overline{A}} x_{k-1} + \mathbf{\overline{B}} u_k \\
+  &= \mathbf{A_1} \mathbf{A_0} x_{k-1} + 2 \mathbf{A_1} \mathbf{B} u_k \\
+  y_k &= \mathbf{C} x_k
+\end{aligned}
+$$
+
+avec $$ A_0 = frac{2}{\Lambda}\mathbf{I} + (\mathbf{\Lambda} - \mathbf{P} \mathbf{Q}^*)$$ et $$A_1 = (\frac{2}{\Delta}-\mathbf{\Lambda})^{-1} - (\frac{2}{\Delta}-\mathbf{\Lambda})^{-1} \mathbf{p} (\mathbf{I} + \mathbf{q}^* (\frac{2}{\Delta}-\mathbf{\Lambda} )^{-1} \mathbf{p})^{-1} \mathbf{q}^*( \frac{2}{\Delta}-\mathbf{\Lambda})^{-1}$$ où $$\Delta$$ est une matrice diagonale, $$p$$ et $q$$ des vecteurs $$\in ℂ^N\times1$$  
+-->
+
+La preuve pour montrer qu'une matrice NPLR peut être calculée efficacement comme une matrice diagonale est basée sur des mathématiques pas forcément triviales mais très élégentes quand on prend le temps de la refaire. Le point principale est qu'elle s'étend sur plus de 8 pages dans l'appendix du papier. La reprendre entièrement rendrait cet article de blog trop long alors qu'il se veut être une introduction aux SSM. Je ne vais donc pas rentrer dans les détails de cette matrice.  
+A noter que S4 a bénéficié de plusieurs versions où le but des auteurs a été justement de simplifier la matrice A, en passant d'une matrice HiPPO NPLR (S4 V1 dans la literrature) à une matrice diagonale (S4 V2 ou S4 simplified dans la literature). Ainsi, si vous comprenez pas les mathématiques sous-jacentes à la matrice HiPPO, ce n’est pas forcément important car ellee n'est plus du tout utilisée en pratique, au profit de (beaucoup) plus simples. 
 
 
 # <span style="color: #FF0000"> **Quelques résultats** <span>
 AJOUTER UNE SECTION SUR LES RESULTATS POUR ILLUSTRER QUE CA SERT POUR TOUT + COMPLEXITE
+
 
 # <span style="color: #FF0000"> **Conclusion** <span>
 Les SSM sont des modèles possédant trois vues. Une vision continue, et lorsque nous la discrétisons, une vue récurrente ainsi que convolutive.  
