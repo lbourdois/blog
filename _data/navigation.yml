@@ -1,4 +1,6 @@
 main:
+  - title: "SSM"
+    url: /ssm/
   - title: "NLP"
     url: /nlp/
   - title: "Posts"
