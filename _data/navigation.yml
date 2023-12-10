@@ -12,6 +12,10 @@ main:
   - title: "Cours NYU"
     url: https://lbourdois.github.io/cours-dl-nyu/
 
+sidebar-ssm:
+  - title: INTRODUCTION AUX SSM ET AU S4
+    url: /ssm/introduction_ssm/
+    
 sidebar-sample:
   - title: LE BAG-OF-WORDS
     url: /nlp/Bag-of-word/
