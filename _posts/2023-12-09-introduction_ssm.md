@@ -19,15 +19,16 @@ classes: wide
 </script>
 
 # <span style="color: #FF0000"> **Introduction** </span>
-TODO
-
-# <span style="color: #FF0000"> **Qu’est-ce qu’un SSM ?** </span>
-
-Les *States Spaces Models* ou représentation d'état en français, sont utilisés traditionnellement en théorie du contrôle afin de modéliser un système dynamique via des variables d'état.  
+Les *States Spaces Models* ou modèle en espace d'état en français, sont utilisés traditionnellement en théorie du contrôle afin de modéliser un système dynamique via des variables d'état.  
 [Wikipedia](https://fr.wikipedia.org/wiki/Repr%C3%A9sentation_d%27%C3%A9tat) indiquant qu'ils sont également présents en automatique, il n'est pas exclu qu'ils soient utilisés dans d'autres domaines et/ou sous la forme d'un autre nom.  
-Dans le cadre de l'apprentissage profond, lorsque l'on parle de SSM, on se réfère en réalité qu'à un sous-ensemble des représentations existantes, à savoir les systèmes linéaires invariants (ou stationnaires).  
 
-## <span style="color: #FFBF00"> **Définition d'un SSM en apprentissage profond** </span>
+Dans le cadre de l'apprentissage profond, lorsque l'on parle de SSM, on se réfère en réalité qu'à un sous-ensemble des représentations existantes, à savoir les systèmes linéaires invariants (ou stationnaires).  
+Ces modèles ont montré des performances impressionnantes dès octobre 2021 avec l'article [*Efficiently Modeling Long Sequences with Structured State Spaces*](https://arxiv.org/abs/2111.00396) d'Albert Gu et al., au point de se posionner comme une alternative aux *transformers* qui sont principalement utilisés depuis 2017.  
+Dans cet article, nous allons définir les bases d'un SSM en apprentissage profond en nous appuyant sur le S4. Un peu comme le papier *Attention is all you need* pour les *transformers*, le papier du S4 est le fondement d'un type d'architecture de réseau de neuronnes nouveau qui se doit d'être connu mais n'est pas utilisé en pratique car a été amélioré depuis au profit d'autres SSM plus performants ou plus faciles à implémenter. Nous verrons ces différentes évolutions qui ont ramifiées du S4 dans un prochain article de blog.  
+Plongeons nous donc les bases de ce type de modèle.
+<br><br><br>
+
+# <span style="color: #FF0000"> **Définition d'un SSM en apprentissage profond** </span>
 
 Utilisons l'image ci-dessous afin de définir un SSM :
 
@@ -78,15 +79,16 @@ $$
 $$
 
 Le système que nous avons ici est continu. Il n'est pas possible de le donner tel quel à un ordinateur. Nous devons pour cela le discrétiser.
+<br><br><br>
 
-## <span style="color: #FFBF00"> **Discrétisation** </span>
+# <span style="color: #FF0000"> **Discrétisation** </span>
 
 La discrétisation est l’un, voire le point le plus important dans les SSM. Toute la beauté de cette architecture réside dans cette étape puis qu’elle permet d’aboutir à deux vues différentes d’un modèle en temps continu : la **vue récursive** et la **vue convolutive**.  
 Si vous devez retenir une seule chose de cet article, c’est ce point-ci.
 
 | ![image](https://github.com/lbourdois/blog/assets/58078086/cb2dca34-9a3e-481a-8773-2360a1ceaa1c) |
 |:--:|
-| *Image provenant de l’article [Combining Recurrent, Convolutional, and Continuous-time Models with Linear State-Space Layers](https://arxiv.org/pdf/2110.13985.pdf), prédécesseur du S4*|
+| *Image provenant du papier [Combining Recurrent, Convolutional, and Continuous-time Models with Linear State-Space Layers](https://arxiv.org/pdf/2110.13985.pdf) d'Albert GU et al., sorti à une semaine d'intervalle du S4*|
 
 <br>
 
@@ -94,8 +96,9 @@ En effet, la première vue permet d’avoir un mécanisme efficace lors de l’i
 Nous verrons aussi dans les prochains articles qu’il existe plusieurs discrétisations possibles. C’est d’ailleurs l’une des différences principales entre les différentes architectures de SSM existantes.  
 Pour ce premier article, nous appliquons la discrétisation "originale" appliquée dans le S4 afin d'illustrer ces deux vues possibles pour un SSM.  
 Faisons donc un peu de mathématiques.
+<br><br><br>
 
-## <span style="color: #FFBF00"> **Vue récursive d’un SSM** </span>
+# <span style="color: #FF0000"> **Vue récursive d’un SSM** </span>
 
 Pour discrétiser le cas continu, utilisons la méthode des trapèzes où le principe est d'assimiler la région sous la courbe représentative d'une fonction $$f$$ définie sur un segment $$[a , b]$$ à un trapèze et d'en calculer l'aire $$T$$ : $$T=(b-a){\frac  {f(a)+f(b)}{2}}$$.  
 
@@ -134,14 +137,12 @@ $$
 $$
 
 La notation des matrices avec une barre a été introduite dans le S4 pour désigner les matrices dans le cas discret. Elle semble depuis être devenue une convention dans le domaine des SSM appliqués à l’apprentissage profond.  
-Dans le système précédent, nous avons d’écrire une version enroulée d’un réseau de neurones récurrents. La version déroulée de la récurrence étant la suivante :  
-[IMAGE]  
-
 Vous pouvez observer ici que $$\mathbf{\bar{A}}$$ est nécessaire pour initialiser le réseau.   
 Son choix est très important puisqu’un mauvais $$\mathbf{\bar{A}}$$ (techniquement $$\mathbf{A}$$ car $$\mathbf{\bar{A}}$$ est juste une réécriture de la matrice) peut aboutir à un SSM donnant de très mauvais résultats.    
 Dans le cadre de cet article, nous donnerons plus bas la formule de la matrice $$\mathbf{A}$$ utilisée dans le S4. Nous verrons dans les articles suivants quels choix de $$\mathbf{\bar{A}}$$ sont possbiles.  
+<br><br><br>
 
-## <span style="color: #FFBF00"> **Vue convolutive d’un SSM** </span>
+# <span style="color: #FF0000"> **Vue convolutive d’un SSM** </span>
 
 La récurrence que nous venons d’écrire peut s’écrire sous la forme d’une convolution. Pour cela, il suffit d’itérer les équations du système 
 
@@ -166,8 +167,9 @@ On peut observer le noyau de convolution $$\mathbf{\bar{K}} _k = (\mathbf{\bar{C
 
 Comme pour les matrices, nous appliquons une barre sur le $$\mathbf{\bar{K}}$$  pour spécifier qu’il s’agit du noyau de convolution obtenu après discrétisation. Il est généralement appelé noyau de convolution SSM dans la littérature et sa taille est équivalente à l’entièreté de la séquence d’entrée.  
 Ce noyau de convolution est calculé par Transformation de Fourier rapide (FFT) mais nous détaillerons cela dans les prochains articles (vous aimez la Flash Attention des *transformers* ? Vous adorerez la Flash FFT Convolution que nous verrons dans le troisième article de blog).
+<br><br><br>
 
-## <span style="color: #FFBF00"> **Apprentissage des matrices A, B et C** </span>
+# <span style="color: #FF0000"> **Apprentissage des matrices** </span>
 
 Dans le noyau de convolution développé à l’instant, $$\mathbf{\bar{C}}$$ et $$\mathbf{\bar{B}}$$, sont des scalaires apprenables.   
 Concernant $$\mathbf{\bar{A}}$$, nous avons vue que dans notre noyau de convolution, elle s’exprime comme une puissance de $$k$$ au temps $$k$$. Cela peut être très long à calculer c’est pourquoi, on cherche à avoir $$\mathbf{\bar{A}}$$ fixe. Pour cela, la meilleure option est de l'avoir diagonale. C'est à dire avoir :
@@ -193,7 +195,7 @@ $$
 Par le [théorème spectral](https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_spectral) de l'algèbre linéaire, il s'agit exactement de la classe des [matrices normales](https://fr.wikipedia.org/wiki/Matrice_normale).    
 En plus du choix de la discrétisation citée ci-dessus, la manière de définir et initier $$\mathbf{\bar{A}}$$ est l’un des points qui différencient les différentes architectures de SSM développées dans la littérature que nous développerons dans le prochain article de blog. En effet, empiriquement, il apparait qu'un SSM initialisé avec une matrice A aléatoire donne de mauvais résultats alors que si l'initialisation est effectué à partir de la matrice $$HiPPO$$ (pour *High-Order Polynomial Projection Operator*), les résultats sont très bons (passage de de 60% à 98%sur le benchmark MNIST sequential).    
 
-La matrice $$HiPPO$$ a été introduite par les auteurs du S4 dans un précédent papier [LINK]. Elle est repris dans LSSL [LINK] mais aussi dans l'Appendix du S4.
+La matrice $$HiPPO$$ a été introduite par les auteurs du S4 dans un précédent [papier](https://arxiv.org/abs/2008.07669) (2020). Elle est repris dans le [papier LSSL](https://arxiv.org/abs/2110.13985)(2021), aussi par les auteurs du S4, ainsi que dans l'Appendix du S4.
 Sa formule est la suivante :  
 
 $$
@@ -238,20 +240,44 @@ avec $$ A_0 = frac{2}{\Lambda}\mathbf{I} + (\mathbf{\Lambda} - \mathbf{P} \mathb
 La preuve pour montrer qu'une matrice NPLR peut être calculée efficacement comme une matrice diagonale est basée sur des mathématiques pas forcément triviales mais très élégentes quand on prend le temps de la refaire. Le point principale est qu'elle s'étend sur plus de 8 pages dans l'appendix du papier. La reprendre entièrement rendrait cet article de blog trop long alors qu'il se veut être une introduction aux SSM. Je ne vais donc pas rentrer dans les détails de cette matrice.  
 A noter que S4 a bénéficié de plusieurs versions où le but des auteurs a été justement de simplifier la matrice A, en passant d'une matrice HiPPO NPLR (S4 V1 dans la literrature) à une matrice diagonale (S4 V2 ou *S4 simplified* dans la literature). Ainsi, si vous comprenez pas les mathématiques sous-jacentes à la matrice HiPPO, ce n’est pas forcément important car ellee n'est plus du tout utilisée en pratique, au profit de (beaucoup) plus simples. 
 
+AJOUTER UN § sur l'importance de l’HiPPO matrix dans le S4 : https://twitter.com/_albertgu/status/1501282567219081220 
+<br><br><br>
 
-# <span style="color: #FF0000"> **Quelques résultats** <span>
+# <span style="color: #FF0000"> **Résultats des expérimentations** </span>
 AJOUTER UNE SECTION SUR LES RESULTATS POUR ILLUSTRER QUE CA SERT POUR TOUT + COMPLEXITE
-
+<br><br><br>
 
 # <span style="color: #FF0000"> **Conclusion** <span>
 Les SSM sont des modèles possédant trois vues. Une vision continue, et lorsque nous la discrétisons, une vue récurrente ainsi que convolutive.  
 La vue convolutive sert à entraîner efficacement le modèle, et la vue récurrente permet de réaliser une inférence potentiellement infinie (pas de limite de taille de contexte ou encore de positionnal encoding comparés aux transformers).  
 Ce type de modèle est très versatile puisqu’il est applicable pour les tâches de texte, de vision, d’audio, de séries temporelles ou encore de graphes !  
 Nous verrons dans les prochains articles que les principales différences entre les diverses architectures de SSM existantes viennent principalement de la façon de discrétiser l’équation de base des SSM ou encore de définir la matrice A. 
+<br><br><br>
 
 # <span style="color: #FF0000"> **Pour aller plus loin** <span>
+Concernant le S4, vous pouvez consulter les ressources suivantes (toutes en anglais) :
+* Vidéos : 
+-	[Efficiently Modeling Long Sequences with Structured State Spaces - Albert Gu | Stanford MLSys #46](https://www.youtube.com/watch?v=EvQ3ncuriCM) par Albert Gu
+-	[MedAI #41: Efficiently Modeling Long Sequences with Structured State Spaces](https://www.youtube.com/watch?v=luCBXCErkCs) par Albert Gu (un peu plus longue car montre plus d’exemples)
+-	[JAX Talk: Generating Extremely Long Sequences with S4](https://www.youtube.com/watch?v=GqwhkbrWDOI) par Sasha Rush + les [slides](https://srush.github.io/annotated-s4/slides.html#22 ) utilisées dans la vidéo 
+* Codes :
+- [The Annotated S4 ](https://srush.github.io/annotated-s4/ ) (en jax) par Sasha Rush et Sidd Karamcheti
+- [Le GitHub de l'implémentation officielle du S4](https://github.com/state-spaces/s4) (en pytorch)
+*	Articles de blog :
+-	Les articles sur le S4 issus du blog Hazy Research qui est le groupe de recherche de Stanford où Albert Gu a fait son doctorat : [partie 1](https://hazyresearch.stanford.edu/blog/2022-01-14-s4-1), [partie 2](https://hazyresearch.stanford.edu/blog/2022-01-14-s4-2), [partie 3](https://hazyresearch.stanford.edu/blog/2022-01-14-s4-3).
+<br>
+Concernant la matrice HiPPO, vous pouvez consulter les ressources suivantes (toutes en anglais) :
+-	L'[article du blog Hazy Research](https://hazyresearch.stanford.edu/blog/2020-12-05-hippo) consacré au sujet
+-	Le papier [*How to Train Your HiPPO: State Space Models with Generalized Orthogonal Basis Projections*]https://arxiv.org/abs/2206.12037) d'Albert Gu et al. (2022)
+<br>
+Concernant les SSM, vous pouvez regarder le cours (en français) sur les [systèmes dynamiques](https://www.youtube.com/watch?v=sDD13PI89hA&list=PLImFpdng6y55wxYZgt7hxbocWkeMWHtCN) d'Ion Hazyuk, Maitre de Conferences à l'INSA Toulouse (la partie les [modèles en espace d'état](https://www.youtube.com/watch?v=XGhDvhHKjiY&list=PLImFpdng6y55wxYZgt7hxbocWkeMWHtCN&index=45) débutent à partie de la section 5.2)
+<br><br><br>
 
 # <span style="color: #FF0000"> **Remerciements** </span> 
 Je tiens à remercier Boris ALBAR, Pierre BEDU et Nicolas PREVOT d’avoir acceptés de monter un groupe de travail sur le sujet des SSM et de m'avoir ainsi accompagné dans la découverte de ce type de modèle.
+<br><br><br>
 
 # <span style="color: #FF0000"> **Références** </span> 
+- [HiPPO: Recurrent Memory with Optimal Polynomial Projections](https://arxiv.org/abs/2008.07669) d'Albert GU, Tri DAO, Stefano ERMON, Atri RUDRA, Christopher RÉ (2020)
+- [Combining Recurrent, Convolutional, and Continuous-time Models with Linear State-Space Layers](https://arxiv.org/abs/2110.13985) d'Albert GU, Isys JOHNSON, Karan GOEL, Khaled SAAB, Tri DAO, Atri RUDRA, Christopher RÉ (2021)
+- [Efficiently Modeling Long Sequences with Structured State Spaces](https://arxiv.org/abs/2111.00396) d'Albert GU, Karan GOEL, et Christopher RÉ (2021)
