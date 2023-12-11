@@ -331,7 +331,7 @@ Il faudra plus de 2 ans pour qu'AMOS et al. montre dans leur papier [*Never Trai
 
 A noter néanmoins un point noir sur le texte pour le S4 : il obtient une perplexité plus élevée à celle d'un *transformer* (standard, des versions plus optimisées ayant une perplexité encore plus faible) sur [WikiText-103](https://arxiv.org/abs/1609.07843v1) de MERITY et al. (2016).  
 
-|![image](https://github.com/lbourdois/blog/assets/58078086/324af159-b124-45aa-add3-05189510e645)|
+|![image](https://github.com/lbourdois/blog/assets/58078086/b2339a9a-415a-453a-8341-96ce2bd1a61d)|
 |:--:|
 | *Image provenant de l'appendix du S4*|
 
