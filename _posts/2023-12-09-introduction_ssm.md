@@ -18,14 +18,18 @@ classes: wide
   src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
 </script>
 
+# <span style="color: #FF0000"> **Avant-Propos** </span> 
+Je tiens à remercier Boris ALBAR, Pierre BEDU et Nicolas PREVOT d’avoir acceptés de monter un groupe de travail sur le sujet des SSM et de m'avoir ainsi accompagné dans la découverte de ce type de modèle.
+<br><br><br>
+
 # <span style="color: #FF0000"> **Introduction** </span>
 Les *States Spaces Models* ou modèle en espace d'état en français, sont utilisés traditionnellement en théorie du contrôle afin de modéliser un système dynamique via des variables d'état.  
 [Wikipedia](https://fr.wikipedia.org/wiki/Repr%C3%A9sentation_d%27%C3%A9tat) indiquant qu'ils sont également présents en automatique, il n'est pas exclu qu'ils soient utilisés dans d'autres domaines et/ou sous la forme d'un autre nom.  
 
 Dans le cadre de l'apprentissage profond, lorsque l'on parle de SSM, on se réfère en réalité qu'à un sous-ensemble des représentations existantes, à savoir les systèmes linéaires invariants (ou stationnaires).  
 Ces modèles ont montré des performances impressionnantes dès octobre 2021 avec l'article [*Efficiently Modeling Long Sequences with Structured State Spaces*](https://arxiv.org/abs/2111.00396) d'Albert Gu et al., au point de se posionner comme une alternative aux *transformers* qui sont principalement utilisés depuis 2017.  
-Dans cet article, nous allons définir les bases d'un SSM en apprentissage profond en nous appuyant sur le S4. Un peu comme le papier *Attention is all you need* pour les *transformers*, le papier du S4 est le fondement d'un type d'architecture de réseau de neuronnes nouveau qui se doit d'être connu mais n'est pas utilisé en pratique car a été amélioré depuis au profit d'autres SSM plus performants ou plus faciles à implémenter. Nous verrons ces différentes évolutions qui ont ramifiées du S4 dans un prochain article de blog.  
-Plongeons nous donc les bases de ce type de modèle.
+Dans cet article, nous allons définir les bases d'un SSM en apprentissage profond en nous appuyant sur le S4. Un peu comme le papier *Attention is all you need* pour les *transformers*, le papier du S4 est le fondement d'un type d'architecture de réseau de neuronnes nouveau qui se doit d'être connu mais n'est pas utilisé en pratique car a été amélioré depuis au profit d'autres SSM plus performants ou plus faciles à implémenter. Sorti une semaine plus tôt que le S4, le [LSSL](https://arxiv.org/abs/2110.13985) est également une source importante d'informations sur le sujet. Nous verrons ces différentes évolutions qui ont ramifiées du S4 dans un prochain article de blog.  
+Plongeons nous donc les bases des SSM.
 <br><br><br>
 
 # <span style="color: #FF0000"> **Définition d'un SSM en apprentissage profond** </span>
@@ -83,24 +87,23 @@ Le système que nous avons ici est continu. Il n'est pas possible de le donner t
 
 # <span style="color: #FF0000"> **Discrétisation** </span>
 
-La discrétisation est l’un, voire le point le plus important dans les SSM. Toute la beauté de cette architecture réside dans cette étape puis qu’elle permet d’aboutir à deux vues différentes d’un modèle en temps continu : la **vue récursive** et la **vue convolutive**.  
+La discrétisation est l’un, voire le point le plus important dans les SSM. Toute la beauté de cette architecture réside dans cette étape puis qu’elle permet de passer de la vue continue du SSM à ses deux autres vues différentes : la **vue récursive** et la **vue convolutive**.  
 Si vous devez retenir une seule chose de cet article, c’est ce point-ci.
 
-| ![image](https://github.com/lbourdois/blog/assets/58078086/cb2dca34-9a3e-481a-8773-2360a1ceaa1c) |
+| ![image](https://github.com/lbourdois/blog/assets/58078086/12bbe1cf-3911-4bad-9a3b-3f427bc6bc82)|
 |:--:|
-| *Image provenant du papier [Combining Recurrent, Convolutional, and Continuous-time Models with Linear State-Space Layers](https://arxiv.org/pdf/2110.13985.pdf) d'Albert GU et al., sorti à une semaine d'intervalle du S4*|
+| *Image provenant de l'article de blog [Structured State Spaces: Combining Continuous-Time, Recurrent, and Convolutional Models](https://hazyresearch.stanford.edu/blog/2022-01-14-s4-3) d'Albert GU et al. (2022)|
 
 <br>
 
-En effet, la première vue permet d’avoir un mécanisme efficace lors de l’inférence. La seconde permet quant à elle un entraînement rapide car parallélisable.  
-Nous verrons aussi dans les prochains articles qu’il existe plusieurs discrétisations possibles. C’est d’ailleurs l’une des différences principales entre les différentes architectures de SSM existantes.  
+Nous verrons dans les prochains articles qu’il existe plusieurs discrétisations possibles, formant l’une des différences principales entre les différentes architectures de SSM existantes.  
 Pour ce premier article, nous appliquons la discrétisation "originale" appliquée dans le S4 afin d'illustrer ces deux vues possibles pour un SSM.  
 Faisons donc un peu de mathématiques.
 <br><br><br>
 
 # <span style="color: #FF0000"> **Vue récursive d’un SSM** </span>
 
-Pour discrétiser le cas continu, utilisons la méthode des trapèzes où le principe est d'assimiler la région sous la courbe représentative d'une fonction $$f$$ définie sur un segment $$[t_n , t_{n+1}]$$ à un trapèze et d'en calculer l'aire $$T$$ : $$T=(t_{n+1} - t_n){\frac  {f(t_n)+f(t_{n+1})}{2}}$$.  
+Pour discrétiser le cas continu, utilisons la [méthode des trapèzes](https://fr.wikipedia.org/wiki/Transformation_bilin%C3%A9aire#Approximation_trap%C3%A9zo%C3%AFdale) où le principe est d'assimiler la région sous la courbe représentative d'une fonction $$f$$ définie sur un segment $$[t_n , t_{n+1}]$$ à un trapèze et d'en calculer l'aire $$T$$ : $$T=(t_{n+1} - t_n){\frac  {f(t_n)+f(t_{n+1})}{2}}$$.  
 
 On a alors :  $$x_{n+1} - x_n = \frac{1}{2}\Delta(f(t_n) + f(t_{n+1}))$$ avec $$\Delta = t_{n+1} - t_n$$.  
 Si $$x'_n = \mathbf{A}x_n + \mathbf{B} u_n$$ (première ligne de l’équation d’un SSM), correspond à $$f$$, alors :  
@@ -137,9 +140,6 @@ $$
 $$
 
 La notation des matrices avec une barre a été introduite dans le S4 pour désigner les matrices dans le cas discret. Elle semble depuis être devenue une convention dans le domaine des SSM appliqués à l’apprentissage profond.  
-Vous pouvez observer ici que $$\mathbf{\bar{A}}$$ est nécessaire pour initialiser le réseau.   
-Son choix est très important puisqu’un mauvais $$\mathbf{\bar{A}}$$ (techniquement $$\mathbf{A}$$ car $$\mathbf{\bar{A}}$$ est juste une réécriture de la matrice) peut aboutir à un SSM donnant de très mauvais résultats.    
-Dans le cadre de cet article, nous donnerons plus bas la formule de la matrice $$\mathbf{A}$$ utilisée dans le S4. Nous verrons dans les articles suivants quels choix de $$\mathbf{\bar{A}}$$ sont possbiles.  
 <br><br><br>
 
 # <span style="color: #FF0000"> **Vue convolutive d’un SSM** </span>
@@ -169,9 +169,40 @@ Comme pour les matrices, nous appliquons une barre sur le $$\mathbf{\bar{K}}$$  
 Ce noyau de convolution est calculé par Transformation de Fourier rapide (FFT) mais nous détaillerons cela dans les prochains articles (vous aimez la Flash Attention des *transformers* ? Vous adorerez la Flash FFT Convolution que nous verrons dans le troisième article de blog).
 <br><br><br>
 
+
+# <span style="color: #FF0000"> **Avantages et limites de chacune des trois vues** </span>
+
+| ![image](https://github.com/lbourdois/blog/assets/58078086/cb2dca34-9a3e-481a-8773-2360a1ceaa1c) |
+|:--:|
+| *Image provenant du papier [Combining Recurrent, Convolutional, and Continuous-time Models with Linear State-Space Layers](https://arxiv.org/pdf/2110.13985.pdf) d'Albert GU et al., sorti à une semaine d'intervalle du S4*|
+
+Les vues différentes du SSM ont chacun des avantages et des inconvénients. Ainsi, en fonction de l'étape du processus à laquelle nous nous trouvons (entraînement ou inférence) ou du type de données à notre disposition, il est alors possible de passer d'une vue à une autre afin de retomber sur un cadre favorable permettant de tirer le meilleur parti du modèle. Détaillons ces avantages et inconvénients.
+
+* Pour la vue continue, les avantages et inconvénients sont les suivantes :
+✓ Gère automatiquement les données continues (signaux audio, séries temporelles, par exemple) étant un énorme avantage pratique pour traiter des données à échantillonnage irrégulier ou décalé dans le temps.  
+Par exemple, pour la tâche de classification de la parole, les auteurs du S4, ont pû l'entraîner sur des données de 16 000 Hz et le testé sur des données de 8 000 Hz. Pour ce faire, il suffit de doubler la valeur de $$_Delta$$ au moment du test !  
+✓ Analyse mathématiquement réalisable, par exemple en calculant des trajectoires exactes ou en construisant des systèmes de mémorisation (HiPPO).  
+✗ Extrêmement lent à la fois pour la formation et l'inférence.  
+
+* Pour la vue récursive, il s'agit ici des avantages et inconvénients bien connus des réseaux de neurones récurrents (voir l'[article](https://lbourdois.github.io/blog/nlp/RNN-LSTM-GRU-ELMO/) qui leur est consacré sur le blog) à savoir :  
+✓ Un biais inductif naturel pour les données séquentielles, et en principe un contexte non borné.  
+✓ Une inférence efficace (mises à jour d'état en temps constant).  
+✗ Un apprentissage lent (manque de parallélisme).  
+✗ Une disparition ou explosion du gradient lors de l'entraînement de séquence trop longues.  
+
+* Pour la vue convolutive, il s'agit ici des avantages et inconvénients bien connus des réseaux de neurones convolutifs (nous sommes ici dans le cadre de leuur version unidimensionnelle), à savoir :
+✓ Caractéristiques locales et interprétables.  
+✓ Entraînement efficace (parallélisable).  
+✗ Lenteur dans les contextes en ligne ou autorégressifs (doit recalculer l'ensemble de l'entrée pour chaque nouveau point de données).  
+✗ Taille de contexte fixe.    
+
+Ainsi, en résumé, nous priviligierons la vue convolutive pour l'entraînement car permet un entraînement rapide via la parallélisationn, la vue récursive pour une inférence efficace, et la vue continue pour traiter des données continues.  
+<br><br><br>
+
+
 # <span style="color: #FF0000"> **Apprentissage des matrices** </span>
 
-Dans le noyau de convolution développé à l’instant, $$\mathbf{\bar{C}}$$ et $$\mathbf{\bar{B}}$$, sont des scalaires apprenables.   
+Dans le noyau de convolution développé plus haut, $$\mathbf{\bar{C}}$$ et $$\mathbf{\bar{B}}$$, sont des scalaires apprenables.   
 Concernant $$\mathbf{\bar{A}}$$, nous avons vue que dans notre noyau de convolution, elle s’exprime comme une puissance de $$k$$ au temps $$k$$. Cela peut être très long à calculer c’est pourquoi, on cherche à avoir $$\mathbf{\bar{A}}$$ fixe. Pour cela, la meilleure option est de l'avoir diagonale. C'est à dire avoir :
 
 $$
@@ -273,10 +304,6 @@ Concernant la matrice HiPPO, vous pouvez consulter les ressources suivantes (tou
 Concernant les SSM, vous pouvez regarder
 - le cours (en français) sur les [systèmes dynamiques](https://www.youtube.com/watch?v=sDD13PI89hA&list=PLImFpdng6y55wxYZgt7hxbocWkeMWHtCN) d'Ion Hazyuk, Maitre de Conferences à l'INSA Toulouse (la partie les [modèles en espace d'état](https://www.youtube.com/watch?v=XGhDvhHKjiY&list=PLImFpdng6y55wxYZgt7hxbocWkeMWHtCN&index=45) débutent à partie de la section 5.2)
 - la [thèse de doctorat](https://searchworks.stanford.edu/view/14784021) (en anglais) d'Albert Gu
-<br><br><br>
-
-# <span style="color: #FF0000"> **Remerciements** </span> 
-Je tiens à remercier Boris ALBAR, Pierre BEDU et Nicolas PREVOT d’avoir acceptés de monter un groupe de travail sur le sujet des SSM et de m'avoir ainsi accompagné dans la découverte de ce type de modèle.
 <br><br><br>
 
 # <span style="color: #FF0000"> **Références** </span> 
