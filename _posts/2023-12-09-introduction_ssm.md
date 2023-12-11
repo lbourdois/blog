@@ -296,7 +296,7 @@ Troisièmement, un ConvNet entraîné sur du 16K Hz donne de très mauvais résu
 
 Continuons avec une tâche de séries temporelles (introduduite dans une révision du S4).
 
-|![image](https://github.com/lbourdois/blog/assets/58078086/92b4b1aa-d3ab-4efb-a1a0-2fab1afdafa8)
+|![image](https://github.com/lbourdois/blog/assets/58078086/92b4b1aa-d3ab-4efb-a1a0-2fab1afdafa8)|
 |:--:|
 | *Image provenant de l'appendix du S4*|
 
@@ -308,7 +308,7 @@ Les auteurs du papier reprenne la méthodologie du modèle [Informer](https://ar
 
 Poursuivons avec une tâche de vision et le benchmark [*sCIFAR-10* ](https://www.cs.toronto.edu/~kriz/learning-features-2009-TR.pdf) de KRIZHESKY (2009).
 
-|![image](https://github.com/lbourdois/blog/assets/58078086/0334101e-fc91-426a-a845-5b08448ad08c)
+|![image](https://github.com/lbourdois/blog/assets/58078086/0334101e-fc91-426a-a845-5b08448ad08c)|
 |:--:|
 | *Image provenant de l'appendix du S4*|
 
@@ -320,7 +320,7 @@ Le S4 établit le SoTA sur sCIFAR-10 avec seulement 100 000 paramètres (les aut
 
 Conluons avec une tâche textuelle et le benchmark [*Long Range Arena* (LRA)](https://arxiv.org/abs/2011.04006) de TAY et al. (2020).
 
-|![image](https://github.com/lbourdois/blog/assets/58078086/a9eab9ac-6753-4242-8788-c0f28616ccb0)
+|![image](https://github.com/lbourdois/blog/assets/58078086/a9eab9ac-6753-4242-8788-c0f28616ccb0)|
 |:--:|
 | *Image provenant de l'appendix du S4*|
 
@@ -331,7 +331,7 @@ Il faudra plus de 2 ans pour qu'AMOS et al. montre dans leur papier [*Never Trai
 
 A noter néanmoins un point noir sur le texte pour le S4 : il obtient une perplexité plus élevée à celle d'un *transformer* (standard, des versions plus optimisées ayant une perplexité encore plus faible) sur [WikiText-103](https://arxiv.org/abs/1609.07843v1) de MERITY et al. (2016).  
 
-|![image](https://github.com/lbourdois/blog/assets/58078086/324af159-b124-45aa-add3-05189510e645)
+|![image](https://github.com/lbourdois/blog/assets/58078086/324af159-b124-45aa-add3-05189510e645)|
 |:--:|
 | *Image provenant de l'appendix du S4*|
 <br>
