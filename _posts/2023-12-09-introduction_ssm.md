@@ -331,11 +331,9 @@ Il faudra plus de 2 ans pour qu'AMOS et al. montre dans leur papier [*Never Trai
 
 A noter néanmoins un point noir sur le texte pour le S4 : il obtient une perplexité plus élevée à celle d'un *transformer* (standard, des versions plus optimisées ayant une perplexité encore plus faible) sur [WikiText-103](https://arxiv.org/abs/1609.07843v1) de MERITY et al. (2016).  
 
-<center>
-|![image](https://github.com/lbourdois/blog/assets/58078086/324af159-b124-45aa-add3-05189510e645)
+|![image](https://github.com/lbourdois/blog/assets/58078086/324af159-b124-45aa-add3-05189510e645){: style="display: block; margin-left: auto; margin-right: auto;"}
 |:--:|
 | *Image provenant de l'appendix du S4*|
-</center>
 <br>
 
 Cela s'explique probablement par la nature non continue du texte (il n'a pas été échantillonné à partir d'un processus physique sous-jacent comme la parole ou les séries temporelles). Nous verrons dans l'article consacré aux évolutions des SSM en 2023 que ce point a fait l'objet de beaucoup de travaux et que les SSM ont aujourd'hui réussi à combler cet écart.
