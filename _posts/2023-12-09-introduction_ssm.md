@@ -19,7 +19,7 @@ classes: wide
 </script>
 
 # <span style="color: #FF0000"> **Avant-Propos** </span> 
-Je tiens à remercier Boris ALBAR, Pierre BEDU et Nicolas PREVOT d’avoir acceptés de monter un groupe de travail sur le sujet des SSM et de m'avoir ainsi accompagné dans la découverte de ce type de modèle.
+Je tiens à remercier Boris ALBAR, Pierre BEDU et Nicolas PREVOT d’avoir acceptés de monter un groupe de travail sur le sujet des SSM et de m'avoir ainsi accompagné dans la découverte de ce type de modèle. Un remerciement supplémentaire au premier pour avoir pris le temps de relire cet article de blog.
 <br><br><br>
 
 # <span style="color: #FF0000"> **Introduction** </span>
@@ -27,7 +27,7 @@ Les ***States Spaces Models*** ou modèle en espace d'état en français, sont u
 [Wikipedia](https://fr.wikipedia.org/wiki/Repr%C3%A9sentation_d%27%C3%A9tat) indiquant qu'ils sont également présents en automatique, il n'est pas exclu qu'ils soient utilisés dans d'autres domaines et/ou sous la forme d'un autre nom.  
 
 Dans le cadre de l'apprentissage profond, lorsque l'on parle de SSM, on se réfère en réalité qu'à un sous-ensemble des représentations existantes, à savoir les systèmes linéaires invariants (ou stationnaires).  
-Ces modèles ont montré des performances impressionnantes dès octobre 2021 avec l'article [*Efficiently Modeling Long Sequences with Structured State Spaces*](https://arxiv.org/abs/2111.00396) d'Albert Gu et al., au point de se posionner comme une alternative aux *transformers* qui sont principalement utilisés depuis 2017.  
+Ces modèles ont montré des performances impressionnantes dès octobre 2021 avec l'article [*Efficiently Modeling Long Sequences with Structured State Spaces*](https://arxiv.org/abs/2111.00396) d'Albert GU et al., au point de se posionner comme une alternative aux *transformers* qui sont principalement utilisés depuis 2017.  
 Dans cet article, nous allons définir les bases d'un SSM en apprentissage profond en nous appuyant sur le S4. Un peu comme le papier *Attention is all you need* pour les *transformers*, le papier du S4 est le fondement d'un type d'architecture de réseau de neuronnes nouveau qui se doit d'être connu mais n'est pas utilisé en pratique car a été amélioré depuis au profit d'autres SSM plus performants ou plus faciles à implémenter. Sorti une semaine plus tôt que le S4, le [LSSL](https://arxiv.org/abs/2110.13985), par les mêmes auteurs, est également une source importante d'informations sur le sujet. Nous verrons ces différentes évolutions qui ont ramifiées du S4 dans un prochain article de blog.  
 Plongeons nous donc les bases des SSM.
 <br><br><br>
@@ -182,7 +182,6 @@ Les vues différentes du SSM ont chacun des avantages et des inconvénients, dé
 
 Pour la vue continue, les avantages et inconvénients sont les suivantes :  
 ✓ Gère automatiquement les données continues (signaux audio, séries temporelles, par exemple) étant un énorme avantage pratique pour traiter des données à échantillonnage irrégulier ou décalé dans le temps.  
-Par exemple, pour la tâche de classification de la parole, les auteurs du S4, ont pû l'entraîner sur des données de 16 000 Hz et le tester sur des données de 8 000 Hz. en doublant simplement la valeur de $$\Delta$$ au moment de la phase de test test.  
 ✓ Analyse mathématiquement réalisable, par exemple en calculant des trajectoires exactes ou en construisant des systèmes de mémorisation (HiPPO).  
 ✗ Extrêmement lent à la fois pour la formation et l'inférence.  
 
@@ -192,7 +191,7 @@ Pour la vue récursive, il s'agit ici des avantages et inconvénients bien connu
 ✗ Un apprentissage lent (manque de parallélisme).  
 ✗ Une disparition ou explosion du gradient lors de l'entraînement de séquence trop longues.  
 
-Pour la vue convolutive, il s'agit ici des avantages et inconvénients bien connus des réseaux de neurones convolutifs (nous sommes ici dans le cadre de leuur version unidimensionnelle), à savoir :
+Pour la vue convolutive, il s'agit ici des avantages et inconvénients bien connus des réseaux de neurones convolutifs (nous sommes ici dans le cadre de leuur version unidimensionnelle), à savoir :  
 ✓ Caractéristiques locales et interprétables.  
 ✓ Entraînement efficace (parallélisable).  
 ✗ Lenteur dans les contextes en ligne ou autorégressifs (doit recalculer l'ensemble de l'entrée pour chaque nouveau point de données).  
@@ -285,16 +284,18 @@ Commençons avec une tâche d'audio et le benchmark *Speech Commands*.
 
 |![image](https://github.com/lbourdois/blog/assets/58078086/1a902a38-a499-47ef-b015-0644cf2cebc4)|
 |:--:|
-| *Image provenant du papier [*On the Parameterization and Initialization of Diagonal State Space Models*](https://arxiv.org/abs/2206.11893) d'Albert GU et al. (2022), aussi coonu sous le nom de S4D parru après le S4 mais qui reprend sous une forme plus propre les résultats du S4 pour ce benchmark (les réusltats du S4D ayant été supprimé de l'image pour ne pas spoiler le prochain article ;)*|
+| *Image provenant du papier [On the Parameterization and Initialization of Diagonal State Space Models](https://arxiv.org/abs/2206.11893) d'Albert GU et al. (2022), aussi connu sous le nom de S4D parru après le S4 mais qui reprend sous une forme plus propre les résultats du S4 pour ce benchmark (les réusltats du S4D ayant été supprimé de l'image pour ne pas spoiler le prochain article ;)*|
 
 <br>
 
 On peut observer plusieurs choses sur ce tableau.  
 Premièrement qu'à nombre de paramètres plus ou moins équivalent, le S4 fait beaucoup mieux (au moins + 13%) que les autres modèles, ici de type ConvNet.  
 Deuxièmement, pour obtenir des performances équivalentes, un ConvNet nécessite 85 plus de paramètres.  
-Troisièmement, un ConvNet entraîné sur du 16K Hz donne de très mauvais résultats quand il est ensuite appliqué sur des données 8K Hz. A contrario, le S4 conserve 95% de sa performance sur ce ré-échantillonage. Cela s'explique par la vue continue du SSM.
+Troisièmement, un ConvNet entraîné sur du 16K Hz donne de très mauvais résultats quand il est ensuite appliqué sur des données 8K Hz. A contrario, le S4 conserve 95% de sa performance sur ce ré-échantillonage. Cela s'explique par la vue continue du SSM où il a suffit de diviser par deux la valeur de $$\Delta$$ au moment de la phase de test.  
 
-Continuons avec une tâche de séries temporelles (introduduite dans une révision du S4) et le benchmark *Speech Commands*.
+<br>
+
+Continuons avec une tâche de séries temporelles (introduduite dans une révision du S4).
 
 |![image](https://github.com/lbourdois/blog/assets/58078086/92b4b1aa-d3ab-4efb-a1a0-2fab1afdafa8)
 |:--:|
@@ -302,11 +303,11 @@ Continuons avec une tâche de séries temporelles (introduduite dans une révisi
 
 <br>
 
-Les auteurs du papier reprenne la méthodologie du modèle [Informer](https://arxiv.org/abs/2012.07436) ZHOU et al. (2020) et montre que leur modèle surpasse ce *transformer* sur 40 des 50 configurations. Les résultats du tableau sont montrés dans un cadre univarié mais la même chose est observale pour un cadre multivarié (table 14 dans l'appendix).
+Les auteurs du papier reprenne la méthodologie du modèle [Informer](https://arxiv.org/abs/2012.07436) de ZHOU et al. (2020) et montre que leur modèle surpasse ce *transformer* sur 40 des 50 configurations. Les résultats du tableau sont montrés dans un cadre univarié mais la même chose est observale pour un cadre multivarié (table 14 dans l'appendix).
 
+<br>
 
 Poursuivons avec une tâche de vision et le benchmark *sCIFAR*.
-
 
 |![image](https://github.com/lbourdois/blog/assets/58078086/0334101e-fc91-426a-a845-5b08448ad08c)
 |:--:|
@@ -316,6 +317,7 @@ Poursuivons avec une tâche de vision et le benchmark *sCIFAR*.
 
 Le S4 établit le SoTA sur sCIFAR-10 avec seulement 100 000 paramètres (les auteurs ne précisant pas le nombre des autres méthodes).
 
+<br>
 
 Conluons avec une tâche textuelle et le benchmark *Long Range Arena* (LRA).
 
@@ -326,7 +328,7 @@ Conluons avec une tâche textuelle et le benchmark *Long Range Arena* (LRA).
 <br>
 
 Le LRA est composé de 6 tâches dont le Path-X d'une longueur de 16K tokens où le S4 est le premier modèle à la réussir démontrant ses performances sur des tâches de très longues séquences.  
-Il faudra plus de 2 ans pour qu'AMOS et al. montre dans leur papier [*Never Train from Scratch: Fair Comparison of Long-Sequence Models Requires Data-Driven Priors*](https://arxiv.org/abs/2310.02980.) (2023) que les *transformers* (non hybridés avec un SSM) peuvent aussi résoudre cette tâche.    
+Il faudra plus de 2 ans pour qu'AMOS et al. montre dans leur papier [*Never Train from Scratch: Fair Comparison of Long-Sequence Models Requires Data-Driven Priors*](https://arxiv.org/abs/2310.02980.) (2023) que les *transformers* (non hybridés avec un SSM) peuvent aussi résoudre cette tâche. Ils n'arrivent cependant pas à passer le PathX-256 d'une longueur de 65K tokens contrairement aux SSM.      
 
 A noter néanmoins un point noir sur le texte pour le S4 : il obtient une perplexité plus élevée à celle d'un *transformer* (standard, des versions plus optimisées ayant une perplexité encore plus faible).  
 
@@ -334,13 +336,16 @@ A noter néanmoins un point noir sur le texte pour le S4 : il obtient une perple
 |:--:|
 | *Image provenant de l'appendix du S4*|
 
+<br>
+
 Cela s'explique probablement par la nature non continue du texte (il n'a pas été échantillonné à partir d'un processus physique sous-jacent comme la parole ou les séries temporelles). Nous verrons dans l'article consacré aux évolutions des SSM en 2023 que ce point a fait l'objet de beaucoup de travaux et que les SSM ont aujourd'hui réussi à combler cet écart.
 <br><br><br>
 
 # <span style="color: #FF0000"> **Conclusion** <span>
 Les SSM sont des modèles possédant trois vues. Une vision continue, et lorsque nous la discrétisons, une vue récurrente ainsi que convolutive.  
-La vue convolutive sert à entraîner efficacement le modèle, et la vue récurrente permet de réaliser une inférence potentiellement infinie (pas de limite de taille de contexte ou encore de positionnal encoding comparés aux transformers).  
-Ce type de modèle est très versatile puisqu’il est applicable pour les tâches de texte, de vision, d’audio, de séries temporelles ou encore de graphes !  
+Tout l'enjeu de ce type d'architecture consiste à savoir quand utiliser une vue plutôt qu'une autre en fonction de où nous en sommes dans le processus (entraînement ou inférence) et du type de données traitées.  
+Ce type de modèle est très versatile puisqu’il est applicable pour les tâches de texte, de vision, d’audio, de séries temporelles (ou encore aux graphes) !  
+Un de ses atouts étant d'être capable de gérer de très longue séquence pour généralement un nombre de paramètres inférieurs aux autres modèles (ConvNet ou *transformers*) tout en étant très rapide.  
 Nous verrons dans les prochains articles que les principales différences entre les diverses architectures de SSM existantes viennent principalement de la façon de discrétiser l’équation de base des SSM ou encore de définir la matrice A. 
 <br><br><br>
 
@@ -362,13 +367,13 @@ Concernant la matrice HiPPO, vous pouvez consulter les ressources suivantes (tou
 -	L'[article du blog Hazy Research](https://hazyresearch.stanford.edu/blog/2020-12-05-hippo) consacré au sujet
 -	Le papier [*How to Train Your HiPPO: State Space Models with Generalized Orthogonal Basis Projections*](https://arxiv.org/abs/2206.12037) d'Albert Gu et al. (2022)  
 
-Concernant les SSM, vous pouvez regarder
+Concernant les SSM, vous pouvez regarder :
 - le cours (en français) sur les [systèmes dynamiques](https://www.youtube.com/watch?v=sDD13PI89hA&list=PLImFpdng6y55wxYZgt7hxbocWkeMWHtCN) d'Ion Hazyuk, Maitre de Conferences à l'INSA Toulouse (la partie les [modèles en espace d'état](https://www.youtube.com/watch?v=XGhDvhHKjiY&list=PLImFpdng6y55wxYZgt7hxbocWkeMWHtCN&index=45) débutent à partie de la section 5.2)
 - la [thèse de doctorat](https://searchworks.stanford.edu/view/14784021) (en anglais) d'Albert GU
 <br><br><br>
 
 # <span style="color: #FF0000"> **Références** </span> 
-- [Informer: Beyond Efficient Transformer for Long Sequence Time-Series Forecasting](https://arxiv.org/abs/2012.07436) d'Haoyi ZHOU, Shanghang ZHANG, Jieqi peng, Shuai ZHANG, Jianxin LI, Hui XIONG, Wancai ZHANG et al. (2020)
+- [Informer: Beyond Efficient Transformer for Long Sequence Time-Series Forecasting](https://arxiv.org/abs/2012.07436) d'Haoyi ZHOU, Shanghang ZHANG, Jieqi peng, Shuai ZHANG, Jianxin LI, Hui XIONG, Wancai ZHANG (2020)
 - [HiPPO: Recurrent Memory with Optimal Polynomial Projections](https://arxiv.org/abs/2008.07669) d'Albert GU, Tri DAO, Stefano ERMON, Atri RUDRA, Christopher RÉ (2020)
 - [Combining Recurrent, Convolutional, and Continuous-time Models with Linear State-Space Layers](https://arxiv.org/abs/2110.13985) d'Albert GU, Isys JOHNSON, Karan GOEL, Khaled SAAB, Tri DAO, Atri RUDRA, Christopher RÉ (2021)
 - [Efficiently Modeling Long Sequences with Structured State Spaces](https://arxiv.org/abs/2111.00396) d'Albert GU, Karan GOEL, et Christopher RÉ (2021)
