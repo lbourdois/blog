@@ -28,8 +28,7 @@ Les ***States Spaces Models*** ou modèle en espace d'état en français, sont u
 
 Dans le cadre de l'apprentissage profond, lorsque l'on parle de SSM, on se réfère en réalité qu'à un sous-ensemble des représentations existantes, à savoir les systèmes linéaires invariants (ou stationnaires).  
 Ces modèles ont montré des performances impressionnantes dès octobre 2021 avec l'article [*Efficiently Modeling Long Sequences with Structured State Spaces*](https://arxiv.org/abs/2111.00396) d'Albert GU et al., au point de se posionner comme une alternative aux *transformers* qui sont principalement utilisés depuis 2017.  
-Dans cet article, nous allons définir les bases d'un SSM en apprentissage profond en nous appuyant sur le S4. Un peu comme le papier *Attention is all you need* pour les *transformers*, le papier du S4 est le fondement d'un type d'architecture de réseau de neuronnes nouveau qui se doit d'être connu mais n'est pas utilisé en pratique car a été amélioré depuis au profit d'autres SSM plus performants ou plus faciles à implémenter. Sorti une semaine plus tôt que le S4, le [LSSL](https://arxiv.org/abs/2110.13985), par les mêmes auteurs, est également une source importante d'informations sur le sujet. Nous verrons ces différentes évolutions qui ont ramifiées du S4 dans un prochain article de blog.  
-Plongeons nous donc les bases des SSM.
+Dans cet article, nous allons définir les bases d'un SSM en apprentissage profond en nous appuyant sur le S4. Un peu comme le papier *Attention is all you need* pour les *transformers*, le papier du S4 est le fondement d'un type d'architecture de réseau de neuronnes nouveau qui se doit d'être connu mais n'est pas utilisé en pratique car a été amélioré depuis au profit d'autres SSM plus performants ou plus faciles à implémenter. Sorti une semaine plus tôt que le S4, le [LSSL](https://arxiv.org/abs/2110.13985), par les mêmes auteurs, est également une source importante d'informations sur le sujet. Nous verrons ces différentes évolutions qui ont ramifiées du S4 dans un prochain article de blog. Plongeons nous donc les bases des SSM.
 <br><br><br>
 
 # <span style="color: #FF0000"> **Définition d'un SSM en apprentissage profond** </span>
@@ -166,7 +165,7 @@ Etape 2 : $$y_2 = \mathbf{\bar{C}} x_2 =  \mathbf{\bar{C}}(\mathbf{\bar{A}}^{2} 
 On peut observer le noyau de convolution $$\mathbf{\bar{K}} _k = (\mathbf{\bar{C}}  \mathbf{\bar{B}}, \mathbf{\bar{C}} \mathbf{\bar{A}}  \mathbf{\bar{B}}, …, \mathbf{\bar{C}}  \mathbf{\bar{A}}^{k} \mathbf{\bar{B}})$$ applicable aux $$u_k$$, d’où $$K \ast u$$.  
 
 Comme pour les matrices, nous appliquons une barre sur le $$\mathbf{\bar{K}}$$  pour spécifier qu’il s’agit du noyau de convolution obtenu après discrétisation. Il est généralement appelé noyau de convolution SSM dans la littérature et sa taille est équivalente à l’entièreté de la séquence d’entrée.  
-Ce noyau de convolution est calculé par Transformation de Fourier rapide (FFT) mais nous détaillerons cela dans les prochains articles (vous aimez la Flash Attention des *transformers* ? Vous adorerez la Flash FFT Convolution que nous verrons dans le troisième article de blog).
+Ce noyau de convolution est calculé par [Transformation de Fourier rapide](https://fr.wikipedia.org/wiki/Transformation_de_Fourier_rapide) (FFT) mais nous détaillerons cela dans les prochains articles (vous aimez la Flash Attention des *transformers* ? Vous adorerez la Flash FFT Convolution que nous verrons dans le troisième article de blog).
 <br><br><br>
 
 
@@ -180,7 +179,7 @@ Ce noyau de convolution est calculé par Transformation de Fourier rapide (FFT) 
 
 Les vues différentes du SSM ont chacun des avantages et des inconvénients, détaillons les.
 
-Pour la vue continue, les avantages et inconvénients sont les suivantes :  
+Pour la vue continue, les avantages et inconvénients sont les suivants :  
 ✓ Gère automatiquement les données continues (signaux audio, séries temporelles, par exemple) étant un énorme avantage pratique pour traiter des données à échantillonnage irrégulier ou décalé dans le temps.  
 ✓ Analyse mathématiquement réalisable, par exemple en calculant des trajectoires exactes ou en construisant des systèmes de mémorisation (HiPPO).  
 ✗ Extrêmement lent à la fois pour la formation et l'inférence.  
@@ -191,7 +190,7 @@ Pour la vue récursive, il s'agit ici des avantages et inconvénients bien connu
 ✗ Un apprentissage lent (manque de parallélisme).  
 ✗ Une disparition ou explosion du gradient lors de l'entraînement de séquence trop longues.  
 
-Pour la vue convolutive, il s'agit ici des avantages et inconvénients bien connus des réseaux de neurones convolutifs (nous sommes ici dans le cadre de leuur version unidimensionnelle), à savoir :  
+Pour la vue convolutive, il s'agit ici des avantages et inconvénients bien connus des réseaux de neurones convolutifs (nous sommes ici dans le cadre de leur version unidimensionnelle), à savoir :  
 ✓ Caractéristiques locales et interprétables.  
 ✓ Entraînement efficace (parallélisable).  
 ✗ Lenteur dans les contextes en ligne ou autorégressifs (doit recalculer l'ensemble de l'entrée pour chaque nouveau point de données).  
@@ -227,7 +226,7 @@ $$
 $$
 
 Par le [théorème spectral](https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_spectral) de l'algèbre linéaire, il s'agit exactement de la classe des [matrices normales](https://fr.wikipedia.org/wiki/Matrice_normale).    
-En plus du choix de la discrétisation citée ci-dessus, la manière de définir et initier $$\mathbf{\bar{A}}$$ est l’un des points qui différencient les différentes architectures de SSM développées dans la littérature que nous développerons dans le prochain article de blog. En effet, empiriquement, il apparait qu'un SSM initialisé avec une matrice A aléatoire donne de mauvais résultats alors que si l'initialisation est effectué à partir de la matrice $$HiPPO$$ (pour *High-Order Polynomial Projection Operator*), les résultats sont très bons (passage de de 60% à 98% sur le benchmark MNIST sequential).    
+En plus du choix de la discrétisation citée ci-dessus, la manière de définir et initier $$\mathbf{\bar{A}}$$ est l’un des points qui différencient les différentes architectures de SSM développées dans la littérature que nous développerons dans le prochain article de blog. En effet, empiriquement, il apparait qu'un SSM initialisé avec une matrice $$A$$ aléatoire donne de mauvais résultats alors que si l'initialisation est effectué à partir de la matrice $$HiPPO$$ (pour *High-Order Polynomial Projection Operator*), les résultats sont très bons (passage de de 60% à 98% sur le benchmark MNIST sequential).    
 
 La matrice $$HiPPO$$ a été introduite par les auteurs du S4 dans un précédent [papier](https://arxiv.org/abs/2008.07669) (2020). Elle est repris dans le [papier LSSL](https://arxiv.org/abs/2110.13985) (2021), aussi par les auteurs du S4, ainsi que dans l'appendix du S4.
 Sa formule est la suivante :  
@@ -255,7 +254,7 @@ $$
 \end{cases}
 $$
 
-Cette matrice n'est pas normale mais elle peut être décomposée sous la forme d'une matrice normale plus une matrice de rang inférieur (résumé dans le papier par NPLR pour *Normal Plus Low Rank*). Les auteurs prouvent dans leur papier que ce type de matrice peut être calculer efficacement via trois techniques : fonction génératrice tronquée, noyaux de Cauchy et identité de Woodbury.   
+Cette matrice n'est pas normale mais elle peut être décomposée sous la forme d'une matrice normale plus une matrice de rang inférieur (résumé dans le papier par NPLR pour *Normal Plus Low Rank*). Les auteurs prouvent dans leur papier que ce type de matrice peut être calculer efficacement via trois techniques (voir l'algorithme 1 dans le papier) : [série génératrice tronquée](https://fr.wikipedia.org/wiki/S%C3%A9rie_g%C3%A9n%C3%A9ratrice), [noyaux de Cauchy](https://en.wikipedia.org/wiki/Cauchy_matrix) et [identité de Woodbury](https://en.wikipedia.org/wiki/Woodbury_matrix_identity).   
 
 <!--
 Elle permet, in fine, de réécrire la vue réccurente sous la forme suivante :
@@ -271,16 +270,16 @@ $$
 avec $$ A_0 = frac{2}{\Lambda}\mathbf{I} + (\mathbf{\Lambda} - \mathbf{P} \mathbf{Q}^*)$$ et $$A_1 = (\frac{2}{\Delta}-\mathbf{\Lambda})^{-1} - (\frac{2}{\Delta}-\mathbf{\Lambda})^{-1} \mathbf{p} (\mathbf{I} + \mathbf{q}^* (\frac{2}{\Delta}-\mathbf{\Lambda} )^{-1} \mathbf{p})^{-1} \mathbf{q}^*( \frac{2}{\Delta}-\mathbf{\Lambda})^{-1}$$ où $$\Lambda$$ est une matrice diagonale, $$p$$ et $$q$$ des vecteurs $$\in ℂ^N\times1$$  
 -->
 
-La preuve pour montrer qu'une matrice NPLR peut être calculée efficacement comme une matrice diagonale est basée sur des mathématiques pas forcément triviales mais très élégentes quand on prend le temps de la refaire. Le point principale est qu'elle s'étend sur plus de 8 pages dans l'appendix du papier. La reprendre entièrement rendrait cet article de blog trop long alors qu'il se veut être une introduction aux SSM. Je ne vais donc pas rentrer dans les détails de cette matrice.  
-Les auteurs du S4 ont par la suite apporté des modifications à la matrice HiPPO (sur la manière de l'initier) dans leur papier [*How to Train Your HiPPO*](https://arxiv.org/abs/2206.12037v2). Le modèle résultant de ce papier-là est généralement appelé « S4 V2 » ou « S4 updated » dans la literrature à opposer au « S4 original » ou « S4 V1 ».
-Nous verrons dans le prochain article, que d'autres auteur (notamment [Ankit GUPTA](https://sites.google.com/view/ag1988/home)) ont proposé d'utiliser une matrice diagonale au lieu d'une matrice NPRL, approche qui est à présent privilégiée car plus simple à implémenter. Ainsi, si vous comprenez pas les mathématiques sous-jacentes à la matrice HiPPO, ce n’est pas forcément important car elle n'est plus utilisée en pratique.
+La preuve pour montrer qu'une matrice NPLR peut être calculée efficacement comme une matrice diagonale est basée sur des mathématiques pas forcément triviales mais très élégentes quand on prend le temps de la refaire. Le point principal est qu'elle s'étend sur plus de 8 pages dans l'appendix du papier. La reprendre entièrement rendrait cet article de blog trop long alors qu'il se veut être une introduction aux SSM. Je ne vais donc pas rentrer dans les détails de cette matrice.  
+Les auteurs du S4 ont par la suite apporté des modifications à la matrice $$HiPPO$$ (sur la manière de l'initier) dans leur papier [*How to Train Your HiPPO*](https://arxiv.org/abs/2206.12037v2). Le modèle résultant de ce papier-là est généralement appelé « S4 V2 » ou « S4 updated » dans la literrature à opposer au « S4 original » ou « S4 V1 ».  
+Nous verrons dans le prochain article, que d'autres auteurs (notamment [Ankit GUPTA](https://sites.google.com/view/ag1988/home)) ont proposé d'utiliser une matrice diagonale au lieu d'une matrice NPRL, approche qui est à présent privilégiée car plus simple à implémenter. Ainsi, si vous comprenez pas les mathématiques sous-jacentes à la matrice $$HiPPO$$, ce n’est pas forcément important car elle n'est plus utilisée en pratique.
 <br><br><br>
 
 # <span style="color: #FF0000"> **Résultats des expérimentations** </span>
 
 Terminons cet article de blog en analysant une sélection des résultats du S4 sur diverses tâches et benchmarks afin de nous rendre compte du potentiel des SSM.
 
-Commençons avec une tâche d'audio et le benchmark *Speech Commands*.
+Commençons avec une tâche d'audio et le benchmark [*Speech Commands*](https://arxiv.org/abs/1804.03209v1) de WARDEN (2018).
 
 |![image](https://github.com/lbourdois/blog/assets/58078086/1a902a38-a499-47ef-b015-0644cf2cebc4)|
 |:--:|
@@ -307,7 +306,7 @@ Les auteurs du papier reprenne la méthodologie du modèle [Informer](https://ar
 
 <br>
 
-Poursuivons avec une tâche de vision et le benchmark *sCIFAR*.
+Poursuivons avec une tâche de vision et le benchmark [*sCIFAR-10* ](https://www.cs.toronto.edu/~kriz/learning-features-2009-TR.pdf) de KRIZHESKY (2009).
 
 |![image](https://github.com/lbourdois/blog/assets/58078086/0334101e-fc91-426a-a845-5b08448ad08c)
 |:--:|
@@ -319,7 +318,7 @@ Le S4 établit le SoTA sur sCIFAR-10 avec seulement 100 000 paramètres (les aut
 
 <br>
 
-Conluons avec une tâche textuelle et le benchmark *Long Range Arena* (LRA).
+Conluons avec une tâche textuelle et le benchmark [*Long Range Arena* (LRA)](https://arxiv.org/abs/2011.04006) de TAY et al. (2020).
 
 |![image](https://github.com/lbourdois/blog/assets/58078086/a9eab9ac-6753-4242-8788-c0f28616ccb0)
 |:--:|
@@ -330,7 +329,7 @@ Conluons avec une tâche textuelle et le benchmark *Long Range Arena* (LRA).
 Le LRA est composé de 6 tâches dont le Path-X d'une longueur de 16K tokens où le S4 est le premier modèle à la réussir démontrant ses performances sur des tâches de très longues séquences.  
 Il faudra plus de 2 ans pour qu'AMOS et al. montre dans leur papier [*Never Train from Scratch: Fair Comparison of Long-Sequence Models Requires Data-Driven Priors*](https://arxiv.org/abs/2310.02980.) (2023) que les *transformers* (non hybridés avec un SSM) peuvent aussi résoudre cette tâche. Ils n'arrivent cependant pas à passer le PathX-256 d'une longueur de 65K tokens contrairement aux SSM.      
 
-A noter néanmoins un point noir sur le texte pour le S4 : il obtient une perplexité plus élevée à celle d'un *transformer* (standard, des versions plus optimisées ayant une perplexité encore plus faible).  
+A noter néanmoins un point noir sur le texte pour le S4 : il obtient une perplexité plus élevée à celle d'un *transformer* (standard, des versions plus optimisées ayant une perplexité encore plus faible) sur [WikiText-103](https://arxiv.org/abs/1609.07843v1) de MERITY et al. (2016).  
 
 |![image](https://github.com/lbourdois/blog/assets/58078086/324af159-b124-45aa-add3-05189510e645)
 |:--:|
@@ -344,9 +343,9 @@ Cela s'explique probablement par la nature non continue du texte (il n'a pas ét
 # <span style="color: #FF0000"> **Conclusion** <span>
 Les SSM sont des modèles possédant trois vues. Une vision continue, et lorsque nous la discrétisons, une vue récurrente ainsi que convolutive.  
 Tout l'enjeu de ce type d'architecture consiste à savoir quand utiliser une vue plutôt qu'une autre en fonction de où nous en sommes dans le processus (entraînement ou inférence) et du type de données traitées.  
-Ce type de modèle est très versatile puisqu’il est applicable pour les tâches de texte, de vision, d’audio, de séries temporelles (ou encore aux graphes) !  
+Ce type de modèle est très versatile puisqu’il est applicable pour les tâches de texte, de vision, d’audio, de séries temporelles (ou encore aux graphes).    
 Un de ses atouts étant d'être capable de gérer de très longue séquence pour généralement un nombre de paramètres inférieurs aux autres modèles (ConvNet ou *transformers*) tout en étant très rapide.  
-Nous verrons dans les prochains articles que les principales différences entre les diverses architectures de SSM existantes viennent principalement de la façon de discrétiser l’équation de base des SSM ou encore de définir la matrice A. 
+Nous verrons dans les prochains articles que les principales différences entre les diverses architectures de SSM existantes viennent principalement de la façon de discrétiser l’équation de base des SSM ou encore de définir la matrice $$A$$. 
 <br><br><br>
 
 # <span style="color: #FF0000"> **Pour aller plus loin** <span>
@@ -363,7 +362,7 @@ Concernant le S4, vous pouvez consulter les ressources suivantes (toutes en angl
 * Papier :
   - Le prédécesseur du S4 est le [Legendre Memory Units: Continuous-Time Representation in Recurrent Neural Networks](https://proceedings.neurips.cc/paper/2019/file/952285b9b7e7a1be5aa7849f32ffff05-Paper.pdf) (LMU) de Voelker et al. (2019)
     
-Concernant la matrice HiPPO, vous pouvez consulter les ressources suivantes (toutes en anglais) :
+Concernant la matrice $$HiPPO$$, vous pouvez consulter les ressources suivantes (toutes en anglais) :
 -	L'[article du blog Hazy Research](https://hazyresearch.stanford.edu/blog/2020-12-05-hippo) consacré au sujet
 -	Le papier [*How to Train Your HiPPO: State Space Models with Generalized Orthogonal Basis Projections*](https://arxiv.org/abs/2206.12037) d'Albert Gu et al. (2022)  
 
@@ -373,6 +372,10 @@ Concernant les SSM, vous pouvez regarder :
 <br><br><br>
 
 # <span style="color: #FF0000"> **Références** </span> 
+- [Learning Multiple Layers of Features from Tiny Images](https://www.cs.toronto.edu/~kriz/learning-features-2009-TR.pdf) d'Alex KRIZHESKY (2009)
+- [Pointer Sentinel Mixture Models](https://arxiv.org/abs/1609.07843v1) de Stephen MERITY, Caiming XIONG, James BRADBURY, Richard SOCHER (2016)
+- [Speech Commands: A Dataset for Limited-Vocabulary Speech Recognition](https://arxiv.org/abs/1804.03209v1) de Pete WARDEN (2018)
+- [Long Range Arena: A Benchmark for Efficient Transformers](https://arxiv.org/abs/2011.04006) de Yi TAY, Mostafa DEHGHANI, Samira ABNAR, Yikang SHEN, Dara BAHRI, Philip PHAM, Jinfeng RAO, Liu YANG, Sebastian RUDER, Donald METZLER (2020)
 - [Informer: Beyond Efficient Transformer for Long Sequence Time-Series Forecasting](https://arxiv.org/abs/2012.07436) d'Haoyi ZHOU, Shanghang ZHANG, Jieqi peng, Shuai ZHANG, Jianxin LI, Hui XIONG, Wancai ZHANG (2020)
 - [HiPPO: Recurrent Memory with Optimal Polynomial Projections](https://arxiv.org/abs/2008.07669) d'Albert GU, Tri DAO, Stefano ERMON, Atri RUDRA, Christopher RÉ (2020)
 - [Combining Recurrent, Convolutional, and Continuous-time Models with Linear State-Space Layers](https://arxiv.org/abs/2110.13985) d'Albert GU, Isys JOHNSON, Karan GOEL, Khaled SAAB, Tri DAO, Atri RUDRA, Christopher RÉ (2021)
