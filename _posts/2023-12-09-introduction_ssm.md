@@ -331,10 +331,11 @@ Il faudra plus de 2 ans pour qu'AMOS et al. montre dans leur papier [*Never Trai
 
 A noter néanmoins un point noir sur le texte pour le S4 : il obtient une perplexité plus élevée à celle d'un *transformer* (standard, des versions plus optimisées ayant une perplexité encore plus faible) sur [WikiText-103](https://arxiv.org/abs/1609.07843v1) de MERITY et al. (2016).  
 
+<center>
 |![image](https://github.com/lbourdois/blog/assets/58078086/324af159-b124-45aa-add3-05189510e645)
 |:--:|
 | *Image provenant de l'appendix du S4*|
-
+</center>
 <br>
 
 Cela s'explique probablement par la nature non continue du texte (il n'a pas été échantillonné à partir d'un processus physique sous-jacent comme la parole ou les séries temporelles). Nous verrons dans l'article consacré aux évolutions des SSM en 2023 que ce point a fait l'objet de beaucoup de travaux et que les SSM ont aujourd'hui réussi à combler cet écart.
@@ -345,7 +346,7 @@ Les SSM sont des modèles possédant trois vues. Une vision continue, et lorsque
 Tout l'enjeu de ce type d'architecture consiste à savoir quand utiliser une vue plutôt qu'une autre en fonction de où nous en sommes dans le processus (entraînement ou inférence) et du type de données traitées.  
 Ce type de modèle est très versatile puisqu’il est applicable pour les tâches de texte, de vision, d’audio, de séries temporelles (ou encore aux graphes).    
 Un de ses atouts étant d'être capable de gérer de très longue séquence pour généralement un nombre de paramètres inférieurs aux autres modèles (ConvNet ou *transformers*) tout en étant très rapide.  
-Nous verrons dans les prochains articles que les principales différences entre les diverses architectures de SSM existantes viennent principalement de la façon de discrétiser l’équation de base des SSM ou encore de définir la matrice $$A$$. 
+Nous verrons dans les prochains articles que les principales différences entre les diverses architectures de SSM existantes viennent principalement de la façon de discrétiser l’équation de base des SSM ou encore de définir la matrice $$\mathbf A$$. 
 <br><br><br>
 
 # <span style="color: #FF0000"> **Pour aller plus loin** <span>
