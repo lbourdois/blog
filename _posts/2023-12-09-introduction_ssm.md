@@ -174,7 +174,7 @@ Ce noyau de convolution est calculé par Transformation de Fourier rapide (FFT) 
 
 | ![image](https://github.com/lbourdois/blog/assets/58078086/cb2dca34-9a3e-481a-8773-2360a1ceaa1c) |
 |:--:|
-| *Image provenant du papier [Combining Recurrent, Convolutional, and Continuous-time Models with Linear State-Space Layers](https://arxiv.org/pdf/2110.13985.pdf) d'Albert GU et al., sorti à une semaine d'intervalle du S4*|
+| *Image provenant du papier [Combining Recurrent, Convolutional, and Continuous-time Models with Linear State-Space Layers](https://arxiv.org/abs/2110.13985) d'Albert GU et al., sorti à une semaine d'intervalle du S4*|
 
 <br>
 
@@ -186,13 +186,13 @@ Par exemple, pour la tâche de classification de la parole, les auteurs du S4, o
 ✓ Analyse mathématiquement réalisable, par exemple en calculant des trajectoires exactes ou en construisant des systèmes de mémorisation (HiPPO).  
 ✗ Extrêmement lent à la fois pour la formation et l'inférence.  
 
-* Pour la vue récursive, il s'agit ici des avantages et inconvénients bien connus des réseaux de neurones récurrents (voir l'[article](https://lbourdois.github.io/blog/nlp/RNN-LSTM-GRU-ELMO/) qui leur est consacré sur le blog) à savoir :  
+Pour la vue récursive, il s'agit ici des avantages et inconvénients bien connus des réseaux de neurones récurrents (voir l'[article](https://lbourdois.github.io/blog/nlp/RNN-LSTM-GRU-ELMO/) qui leur est consacré sur le blog) à savoir :  
 ✓ Un biais inductif naturel pour les données séquentielles, et en principe un contexte non borné.  
 ✓ Une inférence efficace (mises à jour d'état en temps constant).  
 ✗ Un apprentissage lent (manque de parallélisme).  
 ✗ Une disparition ou explosion du gradient lors de l'entraînement de séquence trop longues.  
 
-* Pour la vue convolutive, il s'agit ici des avantages et inconvénients bien connus des réseaux de neurones convolutifs (nous sommes ici dans le cadre de leuur version unidimensionnelle), à savoir :
+Pour la vue convolutive, il s'agit ici des avantages et inconvénients bien connus des réseaux de neurones convolutifs (nous sommes ici dans le cadre de leuur version unidimensionnelle), à savoir :
 ✓ Caractéristiques locales et interprétables.  
 ✓ Entraînement efficace (parallélisable).  
 ✗ Lenteur dans les contextes en ligne ou autorégressifs (doit recalculer l'ensemble de l'entrée pour chaque nouveau point de données).  
@@ -230,7 +230,7 @@ $$
 Par le [théorème spectral](https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_spectral) de l'algèbre linéaire, il s'agit exactement de la classe des [matrices normales](https://fr.wikipedia.org/wiki/Matrice_normale).    
 En plus du choix de la discrétisation citée ci-dessus, la manière de définir et initier $$\mathbf{\bar{A}}$$ est l’un des points qui différencient les différentes architectures de SSM développées dans la littérature que nous développerons dans le prochain article de blog. En effet, empiriquement, il apparait qu'un SSM initialisé avec une matrice A aléatoire donne de mauvais résultats alors que si l'initialisation est effectué à partir de la matrice $$HiPPO$$ (pour *High-Order Polynomial Projection Operator*), les résultats sont très bons (passage de de 60% à 98% sur le benchmark MNIST sequential).    
 
-La matrice $$HiPPO$$ a été introduite par les auteurs du S4 dans un précédent [papier](https://arxiv.org/abs/2008.07669) (2020). Elle est repris dans le [papier LSSL](https://arxiv.org/abs/2110.13985) (2021), aussi par les auteurs du S4, ainsi que dans l'Appendix du S4.
+La matrice $$HiPPO$$ a été introduite par les auteurs du S4 dans un précédent [papier](https://arxiv.org/abs/2008.07669) (2020). Elle est repris dans le [papier LSSL](https://arxiv.org/abs/2110.13985) (2021), aussi par les auteurs du S4, ainsi que dans l'appendix du S4.
 Sa formule est la suivante :  
 
 $$
@@ -273,11 +273,68 @@ avec $$ A_0 = frac{2}{\Lambda}\mathbf{I} + (\mathbf{\Lambda} - \mathbf{P} \mathb
 -->
 
 La preuve pour montrer qu'une matrice NPLR peut être calculée efficacement comme une matrice diagonale est basée sur des mathématiques pas forcément triviales mais très élégentes quand on prend le temps de la refaire. Le point principale est qu'elle s'étend sur plus de 8 pages dans l'appendix du papier. La reprendre entièrement rendrait cet article de blog trop long alors qu'il se veut être une introduction aux SSM. Je ne vais donc pas rentrer dans les détails de cette matrice.  
-A noter que S4 a bénéficié de plusieurs versions où le but des auteurs a été justement de simplifier la matrice A, en passant d'une matrice HiPPO NPLR (S4 V1 dans la literrature) à une matrice diagonale (S4 V2 ou *S4 simplified* dans la literature). Ainsi, si vous comprenez pas les mathématiques sous-jacentes à la matrice HiPPO, ce n’est pas forcément important car ellee n'est plus du tout utilisée en pratique, au profit de (beaucoup) plus simples. 
+Les auteurs du S4 ont par la suite apporté des modifications à la matrice HiPPO (sur la manière de l'initier) dans leur papier [*How to Train Your HiPPO*](https://arxiv.org/abs/2206.12037v2). Le modèle résultant de ce papier-là est généralement appelé « S4 V2 » ou « S4 updated » dans la literrature à opposer au « S4 original » ou « S4 V1 ».
+Nous verrons dans le prochain article, que d'autres auteur (notamment [Ankit GUPTA](https://sites.google.com/view/ag1988/home)) ont proposé d'utiliser une matrice diagonale au lieu d'une matrice NPRL, approche qui est à présent privilégiée car plus simple à implémenter. Ainsi, si vous comprenez pas les mathématiques sous-jacentes à la matrice HiPPO, ce n’est pas forcément important car elle n'est plus utilisée en pratique.
 <br><br><br>
 
 # <span style="color: #FF0000"> **Résultats des expérimentations** </span>
-AJOUTER UNE SECTION SUR LES RESULTATS POUR ILLUSTRER QUE CA SERT POUR TOUT + COMPLEXITE
+
+Terminons cet article de blog en analysant une sélection des résultats du S4 sur diverses tâches et benchmarks afin de nous rendre compte du potentiel des SSM.
+
+Commençons avec une tâche d'audio et le benchmark *Speech Commands*.
+
+|![image](https://github.com/lbourdois/blog/assets/58078086/1a902a38-a499-47ef-b015-0644cf2cebc4)|
+|:--:|
+| *Image provenant du papier [*On the Parameterization and Initialization of Diagonal State Space Models*](https://arxiv.org/abs/2206.11893) d'Albert GU et al. (2022), aussi coonu sous le nom de S4D parru après le S4 mais qui reprend sous une forme plus propre les résultats du S4 pour ce benchmark (les réusltats du S4D ayant été supprimé de l'image pour ne pas spoiler le prochain article ;)*|
+
+<br>
+
+On peut observer plusieurs choses sur ce tableau.  
+Premièrement qu'à nombre de paramètres plus ou moins équivalent, le S4 fait beaucoup mieux (au moins + 13%) que les autres modèles, ici de type ConvNet.  
+Deuxièmement, pour obtenir des performances équivalentes, un ConvNet nécessite 85 plus de paramètres.  
+Troisièmement, un ConvNet entraîné sur du 16K Hz donne de très mauvais résultats quand il est ensuite appliqué sur des données 8K Hz. A contrario, le S4 conserve 95% de sa performance sur ce ré-échantillonage. Cela s'explique par la vue continue du SSM.
+
+Continuons avec une tâche de séries temporelles (introduduite dans une révision du S4) et le benchmark *Speech Commands*.
+
+|![image](https://github.com/lbourdois/blog/assets/58078086/92b4b1aa-d3ab-4efb-a1a0-2fab1afdafa8)
+|:--:|
+| *Image provenant de l'appendix du S4*|
+
+<br>
+
+Les auteurs du papier reprenne la méthodologie du modèle [Informer](https://arxiv.org/abs/2012.07436) ZHOU et al. (2020) et montre que leur modèle surpasse ce *transformer* sur 40 des 50 configurations. Les résultats du tableau sont montrés dans un cadre univarié mais la même chose est observale pour un cadre multivarié (table 14 dans l'appendix).
+
+
+Poursuivons avec une tâche de vision et le benchmark *sCIFAR*.
+
+
+|![image](https://github.com/lbourdois/blog/assets/58078086/0334101e-fc91-426a-a845-5b08448ad08c)
+|:--:|
+| *Image provenant de l'appendix du S4*|
+
+<br>
+
+Le S4 établit le SoTA sur sCIFAR-10 avec seulement 100 000 paramètres (les auteurs ne précisant pas le nombre des autres méthodes).
+
+
+Conluons avec une tâche textuelle et le benchmark *Long Range Arena* (LRA).
+
+|![image](https://github.com/lbourdois/blog/assets/58078086/a9eab9ac-6753-4242-8788-c0f28616ccb0)
+|:--:|
+| *Image provenant de l'appendix du S4*|
+
+<br>
+
+Le LRA est composé de 6 tâches dont le Path-X d'une longueur de 16K tokens où le S4 est le premier modèle à la réussir démontrant ses performances sur des tâches de très longues séquences.  
+Il faudra plus de 2 ans pour qu'AMOS et al. montre dans leur papier [*Never Train from Scratch: Fair Comparison of Long-Sequence Models Requires Data-Driven Priors*](https://arxiv.org/abs/2310.02980.) (2023) que les *transformers* (non hybridés avec un SSM) peuvent aussi résoudre cette tâche.    
+
+A noter néanmoins un point noir sur le texte pour le S4 : il obtient une perplexité plus élevée à celle d'un *transformer* (standard, des versions plus optimisées ayant une perplexité encore plus faible).  
+
+|![image](https://github.com/lbourdois/blog/assets/58078086/324af159-b124-45aa-add3-05189510e645)
+|:--:|
+| *Image provenant de l'appendix du S4*|
+
+Cela s'explique probablement par la nature non continue du texte (il n'a pas été échantillonné à partir d'un processus physique sous-jacent comme la parole ou les séries temporelles). Nous verrons dans l'article consacré aux évolutions des SSM en 2023 que ce point a fait l'objet de beaucoup de travaux et que les SSM ont aujourd'hui réussi à combler cet écart.
 <br><br><br>
 
 # <span style="color: #FF0000"> **Conclusion** <span>
@@ -307,10 +364,13 @@ Concernant la matrice HiPPO, vous pouvez consulter les ressources suivantes (tou
 
 Concernant les SSM, vous pouvez regarder
 - le cours (en français) sur les [systèmes dynamiques](https://www.youtube.com/watch?v=sDD13PI89hA&list=PLImFpdng6y55wxYZgt7hxbocWkeMWHtCN) d'Ion Hazyuk, Maitre de Conferences à l'INSA Toulouse (la partie les [modèles en espace d'état](https://www.youtube.com/watch?v=XGhDvhHKjiY&list=PLImFpdng6y55wxYZgt7hxbocWkeMWHtCN&index=45) débutent à partie de la section 5.2)
-- la [thèse de doctorat](https://searchworks.stanford.edu/view/14784021) (en anglais) d'Albert Gu
+- la [thèse de doctorat](https://searchworks.stanford.edu/view/14784021) (en anglais) d'Albert GU
 <br><br><br>
 
 # <span style="color: #FF0000"> **Références** </span> 
+- [Informer: Beyond Efficient Transformer for Long Sequence Time-Series Forecasting](https://arxiv.org/abs/2012.07436) d'Haoyi ZHOU, Shanghang ZHANG, Jieqi peng, Shuai ZHANG, Jianxin LI, Hui XIONG, Wancai ZHANG et al. (2020)
 - [HiPPO: Recurrent Memory with Optimal Polynomial Projections](https://arxiv.org/abs/2008.07669) d'Albert GU, Tri DAO, Stefano ERMON, Atri RUDRA, Christopher RÉ (2020)
 - [Combining Recurrent, Convolutional, and Continuous-time Models with Linear State-Space Layers](https://arxiv.org/abs/2110.13985) d'Albert GU, Isys JOHNSON, Karan GOEL, Khaled SAAB, Tri DAO, Atri RUDRA, Christopher RÉ (2021)
 - [Efficiently Modeling Long Sequences with Structured State Spaces](https://arxiv.org/abs/2111.00396) d'Albert GU, Karan GOEL, et Christopher RÉ (2021)
+- [On the Parameterization and Initialization of Diagonal State Space Models](https://arxiv.org/abs/2206.11893) d'Albert GU,  Ankit GUPTA, Karan GOEL, Christopher RÉ (2022)
+- [Never Train from Scratch: Fair Comparison of Long-Sequence Models Requires Data-Driven Priors](https://arxiv.org/abs/2310.02980) d'Ido AMOS, Jonathan BERANT, Ankit GUPTA (2023)
