@@ -41,15 +41,15 @@ Utilisons l'image ci-dessous afin de définir un SSM :
 <br>
 
 On peut observer qu'un SSM repose sur trois variables dépendant du temps $$t$$ :
-- $$x(t) \in \mathbb {R}^{n}$$ représente les $$n$$ variables d'état,
-- $$u(t) \in \mathbb {R}^{m}$$ représente les $$m$$ entrées d'état,
-- $$y(t) \in \mathbb {R}^{p}$$ représente les $$p$$ sorties,
+- $$x(t) \in \mathbb {C}^{n}$$ représente les $$n$$ variables d'état,
+- $$u(t) \in \mathbb {C}^{m}$$ représente les $$m$$ entrées d'état,
+- $$y(t) \in \mathbb {C}^{p}$$ représente les $$p$$ sorties,
 
 On peut aussi observer qu'il est composé de quatre matrices pouvant être apprises : $$\mathbf A, \mathbf B, \mathbf C$$ et $$\mathbf D$$.
-- $$\mathbf A \in \mathbb {R}^{m \times n}$$ est la matrice d'état (contrôlant l'état lattent $$x$$),
-- $$\mathbf B \in \mathbb {R}^{n \times m}$$ est la matrice de contrôle,
-- $$\mathbf C \in \mathbb {R}^{p \times n}$$ est la matrice de sortie,
-- $$\mathbf D \in \mathbb {R}^{p \times m}$$ est la matrice de commande,
+- $$\mathbf A \in \mathbb {C}^{m \times n}$$ est la matrice d'état (contrôlant l'état lattent $$x$$),
+- $$\mathbf B \in \mathbb {C}^{n \times m}$$ est la matrice de contrôle,
+- $$\mathbf C \in \mathbb {C}^{p \times n}$$ est la matrice de sortie,
+- $$\mathbf D \in \mathbb {C}^{p \times m}$$ est la matrice de commande,
 
 Il est possible de ramener l'image ci-dessus au système d'équations suivant :
 
@@ -269,7 +269,7 @@ $$
 avec $$ A_0 = frac{2}{\Lambda}\mathbf{I} + (\mathbf{\Lambda} - \mathbf{P} \mathbf{Q}^*)$$ et $$A_1 = (\frac{2}{\Delta}-\mathbf{\Lambda})^{-1} - (\frac{2}{\Delta}-\mathbf{\Lambda})^{-1} \mathbf{p} (\mathbf{I} + \mathbf{q}^* (\frac{2}{\Delta}-\mathbf{\Lambda} )^{-1} \mathbf{p})^{-1} \mathbf{q}^*( \frac{2}{\Delta}-\mathbf{\Lambda})^{-1}$$ où $$\Lambda$$ est une matrice diagonale, $$p$$ et $$q$$ des vecteurs $$\in ℂ^N\times1$$  
 -->
 
-La preuve pour montrer qu'une matrice NPLR peut être calculée efficacement comme une matrice diagonale est basée sur des mathématiques pas forcément triviales mais très élégentes quand on prend le temps de la refaire. Le point principal est qu'elle s'étend sur plus de 8 pages dans l'appendix du papier. La reprendre entièrement rendrait cet article de blog trop long alors qu'il se veut être une introduction aux SSM. Je ne vais donc pas rentrer dans les détails de cette matrice.  
+La preuve pour montrer qu'une matrice NPLR peut être calculée efficacement comme une matrice diagonale est basée sur des mathématiques pas forcément triviales mais très élégentes quand on prend le temps de la refaire. Le point principal est qu'elle s'étend sur plus de 8 pages dans l'appendix (voir la partie B et C) du papier. La reprendre entièrement rendrait cet article de blog trop long alors qu'il se veut être une introduction aux SSM. Je ne vais donc pas rentrer dans les détails de cette matrice.  
 Les auteurs du S4 ont par la suite apporté des modifications à la matrice $$HiPPO$$ (sur la manière de l'initier) dans leur papier [*How to Train Your HiPPO*](https://arxiv.org/abs/2206.12037v2). Le modèle résultant de ce papier-là est généralement appelé « S4 V2 » ou « S4 updated » dans la literrature à opposer au « S4 original » ou « S4 V1 ».  
 Nous verrons dans le prochain article, que d'autres auteurs (notamment [Ankit GUPTA](https://sites.google.com/view/ag1988/home)) ont proposé d'utiliser une matrice diagonale au lieu d'une matrice NPRL, approche qui est à présent privilégiée car plus simple à implémenter. Ainsi, si vous comprenez pas les mathématiques sous-jacentes à la matrice $$HiPPO$$, ce n’est pas forcément important car elle n'est plus utilisée en pratique.
 <br><br><br>
