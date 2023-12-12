@@ -115,7 +115,7 @@ x_{n+1} & = x_n + \frac{\Delta}{2} (\mathbf{A}x_n + \mathbf{B} u_n + \mathbf{A}x
 \end{align}
 $$
 
-(*) On pose $$u_{n+1} \overset{\Delta}{\simeq} u_n$$ car le vecteur de contrôle est supposé constant sur un petit $$\Delta$$.
+(*) $$u_{n+1} \overset{\Delta}{\simeq} u_n$$ car le vecteur de contrôle est supposé constant sur un petit $$\Delta$$.
 
 Nous venons d’obtenir notre SSM discretisé !  
 Pour que cela soit complètement explicite, posons :
