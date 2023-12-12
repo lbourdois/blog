@@ -24,7 +24,6 @@ Je tiens à remercier Boris ALBAR, Pierre BEDU et Nicolas PREVOT d’avoir accep
 
 # <span style="color: #FF0000"> **Introduction** </span>
 Les ***States Spaces Models*** ou modèle en espace d'état en français, sont utilisés traditionnellement en théorie du contrôle afin de modéliser un système dynamique via des variables d'état.  
-[Wikipedia](https://fr.wikipedia.org/wiki/Repr%C3%A9sentation_d%27%C3%A9tat) indiquant qu'ils sont également présents en automatique, il n'est pas exclu qu'ils soient utilisés dans d'autres domaines et/ou sous la forme d'un autre nom.  
 
 Dans le cadre de l'apprentissage profond, lorsque l'on parle de SSM, on se réfère en réalité qu'à un sous-ensemble des représentations existantes, à savoir les systèmes linéaires invariants (ou stationnaires).  
 Ces modèles ont montré des performances impressionnantes dès octobre 2021 avec l'article [*Efficiently Modeling Long Sequences with Structured State Spaces*](https://arxiv.org/abs/2111.00396) d'Albert GU et al., au point de se posionner comme une alternative aux *transformers* qui sont principalement utilisés depuis 2017.  
@@ -116,7 +115,7 @@ x_{n+1} & = x_n + \frac{\Delta}{2} (\mathbf{A}x_n + \mathbf{B} u_n + \mathbf{A}x
 \end{align}
 $$
 
-(*) On pose $$u_{n+1} = u_n$$ car le vecteur de contrôle est supposé constant sur un petit $$\Delta$$.
+(*) On pose $$u_{n+1} \overset{\Delta}{\simeq} u_n$$ car le vecteur de contrôle est supposé constant sur un petit $$\Delta$$.
 
 Nous venons d’obtenir notre SSM discretisé !  
 Pour que cela soit complètement explicite, posons :
