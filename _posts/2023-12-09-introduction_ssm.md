@@ -381,8 +381,8 @@ Concernant les SSM, vous pouvez regarder :
 # <span style="color: #FF0000"> **Références** </span> 
 - [Learning Multiple Layers of Features from Tiny Images](https://www.cs.toronto.edu/~kriz/learning-features-2009-TR.pdf) d'Alex KRIZHESKY (2009)
 - [Pointer Sentinel Mixture Models](https://arxiv.org/abs/1609.07843v1) de Stephen MERITY, Caiming XIONG, James BRADBURY, Richard SOCHER (2016)
-- [Speech Commands: A Dataset for Limited-Vocabulary Speech Recognition](https://arxiv.org/abs/1804.03209v1) de Ashish VASWANI, Noam SHAZEER, Niki PARMAR, Jakob USZKOREIT, Llion JONES, Aidan N. GOMEZ, Lukasz KAISER, Illia POLOSUKHIN (2018)
-- [*Attention is all you need*](https://arxiv.org/abs/1706.03762) de VASWANI et al. (2017)
+- [*Attention is all you need*](https://arxiv.org/abs/1706.03762) de Ashish VASWANI, Noam SHAZEER, Niki PARMAR, Jakob USZKOREIT, Llion JONES, Aidan N. GOMEZ, Lukasz KAISER, Illia POLOSUKHIN (2017)
+- [Speech Commands: A Dataset for Limited-Vocabulary Speech Recognition](https://arxiv.org/abs/1804.03209v1) de Pete WARDEN (2018)
 - [Long Range Arena: A Benchmark for Efficient Transformers](https://arxiv.org/abs/2011.04006) de Yi TAY, Mostafa DEHGHANI, Samira ABNAR, Yikang SHEN, Dara BAHRI, Philip PHAM, Jinfeng RAO, Liu YANG, Sebastian RUDER, Donald METZLER (2020)
 - [Informer: Beyond Efficient Transformer for Long Sequence Time-Series Forecasting](https://arxiv.org/abs/2012.07436) d'Haoyi ZHOU, Shanghang ZHANG, Jieqi peng, Shuai ZHANG, Jianxin LI, Hui XIONG, Wancai ZHANG (2020)
 - [HiPPO: Recurrent Memory with Optimal Polynomial Projections](https://arxiv.org/abs/2008.07669) d'Albert GU, Tri DAO, Stefano ERMON, Atri RUDRA, Christopher RÉ (2020)
