@@ -26,7 +26,7 @@ Je tiens à remercier chaleureusement Boris ALBAR, Pierre BEDU et Nicolas PREVOT
 Les ***States Spaces Models*** (ou Modèles en Espace d'Etat en français) sont utilisés traditionnellement en théorie du contrôle afin de modéliser un système dynamique via des variables d'état.  
 
 Dans le cadre de l'apprentissage profond, lorsque l'on parle de SSM, on ne se réfère en réalité qu'à un sous-ensemble des représentations existantes, à savoir les systèmes linéaires invariants (ou stationnaires).  
-Ces modèles ont montré des performances impressionnantes dès octobre 2021 avec l'article [*Efficiently Modeling Long Sequences with Structured State Spaces*](https://arxiv.org/abs/2111.00396) d'Albert GU et al., au point de se positionner comme une alternative aux *transformers*.  
+Ces modèles ont montré des performances impressionnantes dès octobre 2021 avec l'article « [*Efficiently Modeling Long Sequences with Structured State Spaces*](https://arxiv.org/abs/2111.00396) » d'Albert GU et al., au point de se positionner comme une alternative aux *transformers*.  
 Dans cet article, nous allons définir les bases d'un SSM en apprentissage profond en nous appuyant sur le S4. A l'image du papier [*Attention is all you need*](https://arxiv.org/abs/1706.03762) de VASWANI et al. (2017) pour les *transformers*, le S4 est le fondement d'un nouveau type d'architecture de réseau de neurones qui se doit d'être connu, mais ce n'est pas un modèle qui est utilisé tel quel en pratique (d'autres SSM plus performants ou plus faciles à implémenter étant maintenant disponibles). Sorti une semaine plus tôt que le S4, le [LSSL](https://arxiv.org/abs/2110.13985), par les mêmes auteurs, est également une source importante d'informations sur le sujet. Nous verrons les différentes évolutions qui découlent du S4 dans un prochain article de blog. Plongeons nous auparavant dans les bases des SSM.
 <br><br><br>
 
@@ -90,7 +90,7 @@ S’il n’y a qu’une chose à retenir de cet article, c’est bien celle-ci.
 
 | ![image](https://github.com/lbourdois/blog/assets/58078086/12bbe1cf-3911-4bad-9a3b-3f427bc6bc82)|
 |:--:|
-| Figure 2 : *Image provenant de l'article de blog [Structured State Spaces: Combining Continuous-Time, Recurrent, and Convolutional Models](https://hazyresearch.stanford.edu/blog/2022-01-14-s4-3) d'Albert GU et al. (2022)*|
+| Figure 2 : *Image provenant de l'article de blog « [Structured State Spaces: Combining Continuous-Time, Recurrent, and Convolutional Models](https://hazyresearch.stanford.edu/blog/2022-01-14-s4-3) » d'Albert GU et al. (2022)*|
 
 <br>
 
@@ -177,18 +177,18 @@ Ce noyau de convolution est calculé par [Transformation de Fourier Rapide](http
 
 Les vues différentes du SSM ont chacunes des avantages et des inconvénients, détaillons-les.
 
-Pour la <u>**vue continue**</u>, les avantages et inconvénients sont les suivants :  
+Pour la <u><b>vue continue</b></u>, les avantages et inconvénients sont les suivants :  
 ✓ Gère automatiquement les données continues (signaux audio, séries temporelles, par exemple). Cela représente énorme avantage pratique pour traiter des données à échantillonnage irrégulier ou décalé dans le temps.  
 ✓ Analyse mathématiquement réalisable, par exemple en calculant des trajectoires exactes ou en construisant des systèmes de mémorisation (HiPPO).  
 ✗ Extrêmement lent à la fois pour la formation et l'inférence.  
 
-Pour la <u>**vue récursive**</u>, il s'agit ici des avantages et inconvénients bien connus des réseaux de neurones récurrents (voir l'[article](https://lbourdois.github.io/blog/nlp/RNN-LSTM-GRU-ELMO/) qui leur est consacré sur le blog) à savoir :  
+Pour la <u><b>vue récursive</b></u>, il s'agit ici des avantages et inconvénients bien connus des réseaux de neurones récurrents (voir l'[article](https://lbourdois.github.io/blog/nlp/RNN-LSTM-GRU-ELMO/) qui leur est consacré sur le blog) à savoir :  
 ✓ Un biais inductif naturel pour les données séquentielles, et en principe un contexte non borné.  
 ✓ Une inférence efficace (mises à jour d'état en temps constant).  
 ✗ Un apprentissage lent (manque de parallélisme).  
 ✗ Une disparition ou explosion du gradient lors de l'entraînement de séquence trop longues.  
 
-Pour la <u>**vue convolutive**</u>, il s'agit ici des avantages et inconvénients bien connus des réseaux de neurones convolutifs (nous sommes ici dans le cadre de leur version unidimensionnelle), à savoir :  
+Pour la <u><b>vue convolutive</b></u>, il s'agit ici des avantages et inconvénients bien connus des réseaux de neurones convolutifs (nous sommes ici dans le cadre de leur version unidimensionnelle), à savoir :  
 ✓ Caractéristiques locales et interprétables.  
 ✓ Entraînement efficace (parallélisable).  
 ✗ Lenteur dans les contextes en ligne ou autorégressifs (doit recalculer l'ensemble de l'entrée pour chaque nouveau point de données).  
@@ -334,7 +334,7 @@ Concluons avec une tâche textuelle et le benchmark [*Long Range Arena* (LRA)](h
 <br>
 
 Le LRA est composé de 6 tâches dont Path-X d'une longueur de 16K tokens pour laquelle le S4 est le premier modèle à la réussir démontrant ses performances sur des tâches de très longues séquences.  
-Il faudra plus de 2 ans pour qu'AMOS et al. montre dans leur papier [*Never Train from Scratch: Fair Comparison of Long-Sequence Models Requires Data-Driven Priors*](https://arxiv.org/abs/2310.02980.) (2023) que les *transformers* (non hybridés avec un SSM) peuvent aussi résoudre cette tâche. Ils n'arrivent cependant pas à passer le PathX-256 d'une longueur de 65K tokens contrairement aux SSM.      
+Il faudra plus de 2 ans pour qu'AMOS et al. montre dans leur papier « [*Never Train from Scratch: Fair Comparison of Long-Sequence Models Requires Data-Driven Priors*](https://arxiv.org/abs/2310.02980.) » (2023) que les *transformers* (non hybridés avec un SSM) peuvent aussi résoudre cette tâche. Ils n'arrivent cependant pas à passer le PathX-256 d'une longueur de 65K tokens contrairement aux SSM.      
 
 A noter néanmoins un point négatif concernant le texte pour le S4 : il obtient une perplexité plus élevée par rapport à celle d'un *transformer* (standard, des versions plus optimisées ayant une perplexité encore plus faible) sur [WikiText-103](https://arxiv.org/abs/1609.07843v1) de MERITY et al. (2016).  
 
