@@ -358,23 +358,23 @@ Nous verrons dans les prochains articles que les principales différences entre 
 # <span style="color: #FF0000"> **Pour aller plus loin** <span>
 Concernant le S4, vous pouvez consulter les ressources suivantes (toutes en anglais) :
 * Vidéos : 
-  -	[Efficiently Modeling Long Sequences with Structured State Spaces - Albert Gu - Stanford MLSys #46](https://www.youtube.com/watch?v=EvQ3ncuriCM) par Albert Gu
-  -	[MedAI #41: Efficiently Modeling Long Sequences with Structured State Spaces](https://www.youtube.com/watch?v=luCBXCErkCs) par Albert Gu (un peu plus longue car montre plus d’exemples traités)
-  -	[JAX Talk: Generating Extremely Long Sequences with S4](https://www.youtube.com/watch?v=GqwhkbrWDOI) par Sasha Rush + les [slides](https://srush.github.io/annotated-s4/slides.html#22 ) utilisées dans la vidéo  
+  -	[Efficiently Modeling Long Sequences with Structured State Spaces - Albert Gu - Stanford MLSys #46](https://www.youtube.com/watch?v=EvQ3ncuriCM) par Albert GU
+  -	[MedAI #41: Efficiently Modeling Long Sequences with Structured State Spaces](https://www.youtube.com/watch?v=luCBXCErkCs) par Albert GU (un peu plus longue car montre plus d’exemples traités)
+  -	[JAX Talk: Generating Extremely Long Sequences with S4](https://www.youtube.com/watch?v=GqwhkbrWDOI) par Sasha RUSH + les [slides](https://srush.github.io/annotated-s4/slides.html#22 ) utilisées dans la vidéo  
 * Codes :
-  - [The Annotated S4 ](https://srush.github.io/annotated-s4/ ) (en Jax) par Sasha Rush et Sidd Karamcheti
+  - [The Annotated S4 ](https://srush.github.io/annotated-s4/ ) (en Jax) par Sasha RUSH et Sidd KARAMCHETI
   - [Le GitHub de l'implémentation officielle du S4](https://github.com/state-spaces/s4) (en PyTorch)  
 * Articles de blog :
-   - Les articles sur le S4 issus du blog Hazy Research qui est le groupe de recherche de Stanford où Albert Gu a fait son doctorat ; [partie 1](https://hazyresearch.stanford.edu/blog/2022-01-14-s4-1), [partie 2](https://hazyresearch.stanford.edu/blog/2022-01-14-s4-2) et [partie 3](https://hazyresearch.stanford.edu/blog/2022-01-14-s4-3).  
+   - Les articles sur le S4 issus du blog Hazy Research qui est le groupe de recherche de Stanford où Albert GU a fait son doctorat ; [partie 1](https://hazyresearch.stanford.edu/blog/2022-01-14-s4-1), [partie 2](https://hazyresearch.stanford.edu/blog/2022-01-14-s4-2) et [partie 3](https://hazyresearch.stanford.edu/blog/2022-01-14-s4-3).  
 * Papier :
-  - Le prédécesseur du S4 est le [Legendre Memory Units: Continuous-Time Representation in Recurrent Neural Networks](https://proceedings.neurips.cc/paper/2019/file/952285b9b7e7a1be5aa7849f32ffff05-Paper.pdf) (LMU) de Voelker et al. (2019)
+  - Le prédécesseur du S4 est le [Legendre Memory Units: Continuous-Time Representation in Recurrent Neural Networks](https://proceedings.neurips.cc/paper/2019/file/952285b9b7e7a1be5aa7849f32ffff05-Paper.pdf) (LMU) de VOELKER et al. (2019)
     
 Concernant la matrice $$HiPPO$$, vous pouvez consulter les ressources suivantes (toutes en anglais) :
 -	L'[article du blog Hazy Research](https://hazyresearch.stanford.edu/blog/2020-12-05-hippo) consacré au sujet
--	Le papier [*How to Train Your HiPPO: State Space Models with Generalized Orthogonal Basis Projections*](https://arxiv.org/abs/2206.12037) d'Albert Gu et al. (2022)  
+-	Le papier [*How to Train Your HiPPO: State Space Models with Generalized Orthogonal Basis Projections*](https://arxiv.org/abs/2206.12037) d'Albert GU et al. (2022)  
 
 Concernant les SSM, vous pouvez regarder :
-- le cours (en français) sur les [systèmes dynamiques](https://www.youtube.com/watch?v=sDD13PI89hA&list=PLImFpdng6y55wxYZgt7hxbocWkeMWHtCN) d'Ion Hazyuk, Maitre de Conferences à l'INSA de Toulouse (la partie les [modèles en espace d'état](https://www.youtube.com/watch?v=XGhDvhHKjiY&list=PLImFpdng6y55wxYZgt7hxbocWkeMWHtCN&index=45) débutent à partie de la section 5.2)
+- le cours (en français) sur les [systèmes dynamiques](https://www.youtube.com/watch?v=sDD13PI89hA&list=PLImFpdng6y55wxYZgt7hxbocWkeMWHtCN) d'Ion HAZYUK, Maitre de Conferences à l'INSA de Toulouse (la partie les [modèles en espace d'état](https://www.youtube.com/watch?v=XGhDvhHKjiY&list=PLImFpdng6y55wxYZgt7hxbocWkeMWHtCN&index=45) débutent à partie de la section 5.2)
 - la [thèse de doctorat](https://searchworks.stanford.edu/view/14784021) (en anglais) d'Albert GU
 <br><br><br>
 
