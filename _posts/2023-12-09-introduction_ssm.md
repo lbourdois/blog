@@ -153,7 +153,7 @@ $$
 Commençons par la première ligne du système :  
 Etape 0 : $$x_0 = \mathbf{\bar{B}}  u_0$$  
 Etape 1 : $$x_1 = \mathbf{\bar{A}}x_{0} + \mathbf{\bar{B}}u_1  = \mathbf{\bar{A}} \mathbf{\bar{B}}  u_0 + \mathbf{\bar{B}}u_1$$  
-Etape 2 : $$x_2 = \mathbf{\bar{A}}x_{1} + \mathbf{\bar{B}}u_2  = \mathbf{\bar{A}} (\mathbf{\bar{A}} \mathbf{\bar{B}}  u_0) + \mathbf{\bar{B}}u_2 = \mathbf{\bar{A}}^{2} \mathbf{\bar{B}}  u_0 + \mathbf{\bar{A}} \mathbf{\bar{B}}  u_1 + \mathbf{\bar{B}}u_2$$  
+Etape 2 : $$x_2 = \mathbf{\bar{A}}x_{1} + \mathbf{\bar{B}}u_2  = \mathbf{\bar{A}} (\mathbf{\bar{A}} \mathbf{\bar{B}}  u_0 + \mathbf{\bar{B}}u_1) + \mathbf{\bar{B}}u_2 = \mathbf{\bar{A}}^{2} \mathbf{\bar{B}}  u_0 + \mathbf{\bar{A}} \mathbf{\bar{B}}  u_1 + \mathbf{\bar{B}}u_2$$  
 Nous avons $$x_k$$ qui peut s’écrire sous la forme d’une fonction $$f$$ paramétrée par $$u_0, u_1, … u_k$$.  
 
 Passons ensuite à la seconde ligne du système où il est à présent possible d’injecter les valeurs $$x_k$$ calculées à l’instant :  
