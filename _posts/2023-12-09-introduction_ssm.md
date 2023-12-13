@@ -296,7 +296,7 @@ Commençons avec une tâche d'audio et le benchmark [*Speech Commands*](https://
 
 On peut observer plusieurs choses sur ce tableau.  
 Premièrement qu'à nombre de paramètres plus ou moins équivalent, le S4 fait beaucoup mieux (au moins + 13%) que les autres modèles, ici de type ConvNet.  
-Deuxièmement, pour obtenir des performances équivalentes, un ConvNet nécessite 85 plus de paramètres.  
+Deuxièmement, pour obtenir des performances équivalentes, un ConvNet nécessite 85 fois plus de paramètres.  
 Troisièmement, un ConvNet entraîné sur du 16K Hz donne de très mauvais résultats quand il est ensuite appliqué sur des données 8K Hz. A contrario, le S4 conserve 95% de sa performance sur ce ré-échantillonage. Cela s'explique par la vue continue du SSM où il a suffit de diviser par deux la valeur de $$\Delta$$ au moment de la phase de test.  
 
 <br>
