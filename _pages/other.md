@@ -29,14 +29,11 @@ En 2023, j'ai traduit le cours sur les modèles de diffusion de Hugging Face.
 Le contenu est structuré en 4 chapitres portant sur 17 pages web 🌐 et 8 notebooks Jupyter 📓 (en PyTorch).  
 Vous pouvez retrouver toutes ces ressources sur le GitHub de [Hugging Face](https://github.com/huggingface/diffusion-models-class/tree/main/units/fr) (le contenu n'ayant pas encore été propagé sur le site officiel).
 
+<br><br>
+
 # Jeux de données et modèles
 
 ## Question Answering
 
-<iframe
-	src="https://huggingface.co/collections/CATIE-AQ/french-qa-pack-650821750f44c341cdb8ec91"
-	frameborder="0"
-	width="850"
-	height="450"
-></iframe>
+## NER
 
