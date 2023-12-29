@@ -54,19 +54,19 @@ Ce sont ainsi plus de **24 500 heures** d’audio qui sont disponibles pour l�
 | :-: | :-: | :-: | :-: | :-: |
 |**Common Voice**|1 113 H|[Cliquer-ici](https://commonvoice.mozilla.org/en/datasets) |Chiffres indiqués pour la version 16, 981H sur les 1 113 ont été validées|CC-0 |
 |**Corpus d'Etude pour le Français Contemporain (CEFC)**|450 H| [Cliquer-ici](https://repository.ortolang.fr/api/content/cefc-orfeo/10/documentation/site-orfeo/index.html) ou [Cliquer-ici](https://www.ortolang.fr/market/corpora/cefc-orfeo) |Possibilité de trier ce que l’on souhaite (tv, radio, téléphone, face à face, etc.)|CC-BY 4.0|
-|**ESLO**| 300 H pour ESLO1 & 400 H pour ESLO2 | [Cliquer-ici](https://ct3.ortolang.fr/data/eslo/) ou Cliquer-ici](https://www.ortolang.fr/market/corpora/eslo/v1) | ESLO1 contient des entretiens (formels ou informels de type conversation dans une rue) enregistrés entre 1968 et 1974. Les données ne sont pas forcément de bonnes qualités (grésillements).   ESLO2 reprend le même principe que ESLO1 mais porte sur des entretiens datant de 2008 à 2020. Les données sont de bonnes qualités.|CC-BY 4.0|
+|**ESLO**| 300 H pour ESLO1 400 H pour ESLO2 | [Cliquer-ici](https://ct3.ortolang.fr/data/eslo/) ou [Cliquer-ici](https://www.ortolang.fr/market/corpora/eslo/v1) | ESLO1 contient des entretiens (formels ou informels de type conversation dans une rue) enregistrés entre 1968 et 1974. Les données ne sont pas forcément de bonnes qualités (grésillements).   ESLO2 reprend le même principe que ESLO1 mais porte sur des entretiens datant de 2008 à 2020. Les données sont de bonnes qualités.|CC-BY 4.0|
 |**Conférences Pierre Mendès France**|300 H|[Cliquer-ici](https://www.data.gouv.fr/fr/datasets/transcriptionsxml-audiomp3-mefr-ccpmf-2012-2020-zip/)|Audios au format MP3 et transcriptions au format XML des conférences du centre de conférences Pierre Mendès France du MEFR (2012-2020).|Open Licence version 2.0|
 |**VoxpopuliV2**|211 H |[Cliquer-ici](https://github.com/facebookresearch/voxpopuli)|Enregistrements annotés récoltés au Parlement Européen entre 2009 et 2020.|[CC0](https://creativecommons.org/share-your-work/public-domain/cc0/) |
 |**Traitement de Corpus Oraux en Français (TCOF)**|146 H|[Cliquer-ici](https://www.ortolang.fr/market/corpora/tcof)| Corpus oraux collectés dans les années 80-90 entre 5 et 45 minutes. |CC-BY 2.0|
 |**SynPaFlex**|87 H|[Cliquer-ici](https://www.ortolang.fr/market/corpora/synpaflex-corpus) |Annotation de 87h de corpus de livres-audios. |CC-BY 2.0|
-|**MPF**|78 H|[Cliquer-ici](https://www.ortolang.fr/market/corpora/mpf)| Ce corpus vise à documenter des évolutions en cours dans le français, l’émergence d’un vernaculaire urbain contemporain, ainsi que les effets sur le français du contact avec les langues de l’immigration.</p><p>Nécessite un compte (gratuit) sur Ortholang pour télécharger le corpus.|CC-BY 4.0|
+|**MPF**|78 H|[Cliquer-ici](https://www.ortolang.fr/market/corpora/mpf)| Ce corpus vise à documenter des évolutions en cours dans le français, l’émergence d’un vernaculaire urbain contemporain, ainsi que les effets sur le français du contact avec les langues de l’immigration.  Nécessite un compte (gratuit) sur Ortholang pour télécharger le corpus.|CC-BY 4.0|
 |<h1>**CLAPI**</h1>|46 H|[Cliquer-ici](https://www.ortolang.fr/market/corpora/clapi)|La base comprend des corpus oraux composés d'enregistrements audio et vidéo de situations naturelles d'interactions, principalement entre natifs dans des situations sociales très variées : professionnelles, privées, commerciales, institutionnelles, médicales.|CC-BY 4.0|
 |**African Accented French**|22 H| [Cliquer-ici](http://www.openslr.org/57/) |Interviews réalisées par l’armée américaine|Apache 2.0|
 |**SIWIS** |~ 10 H|[Cliquer-ici](https://datashare.ed.ac.uk/handle/10283/2353) ||CC-BY 4.0|
 
 <br>
 
-Ce sont ainsi environ **2900 heures** d’audio qui sont disponibles pour l’apprentissage supervisé.
+Ce sont ainsi environ **2 900 heures** d’audio qui sont disponibles pour l’apprentissage supervisé.
 <br><br><br>
 
 ### <span style="color: #51C353"> **Corpus à accès limités (demandes auprès d’Université / Labo à effectuer)** </span>
@@ -79,6 +79,7 @@ Ce sont ainsi environ **2900 heures** d’audio qui sont disponibles pour l’ap
 |**Decoda-RATP**|74H|[Cliquer-ici](http://www.lrec-conf.org/proceedings/lrec2012/pdf/684_Paper.pdf) |Appels téléphoniques à la RATP enregistrés et annotés (transcription, NER, etc.)|?|
 |**NCCFr**|35H|[Cliquer-ici](https://mirjamernestus.nl/Ernestus/NCCFr/index.php) |Conversations entre amis annotées par des professionnels|?| 
 
+<br>
 
 ### <span style="color: #51C353"> **Données payantes** </span>
 
@@ -97,12 +98,17 @@ Ce sont ainsi environ **2900 heures** d’audio qui sont disponibles pour l’ap
 Ce sont ainsi environ **400 heures** d’audio qui sont disponibles pour l’apprentissage supervisé et 1300 heures qui sont disponibles pour l’apprentissage autosupervisé en achetant ces corpus.
 
 
+<br> <br>
+
+
 ## <span style="color: #FFBF00"> ***Automatic Emotion Recognition* (AER)** </span>
 
 ### <span style="color: #51C353"> **Données en libre accès** </span>
 Il ne semble pas y avoir de données en accès libre concernant cette tâche.
 
 ### <span style="color: #51C353"> **Corpus à accès limités (demandes auprès d’Université / Labo à effectuer)** </span>
+
+<br>
 
 |**Nom du jeu de données**|**Heures**|**Lien pour y accéder**|**Qualité / Source**|**Licence**|
 | :- | :- | :- | :- | :- |
@@ -111,10 +117,13 @@ Il ne semble pas y avoir de données en accès libre concernant cette tâche.
 |**RECOLA**|9,5H|[Cliquer-ici](https://diuf.unifr.ch/main/diva/recola/download.html) | | ? |
 |**mGEMEP**|0,9H|[Cliquer-ici](https://www.unige.ch/cisa/gemep) |Données provenant d'acteurs|? |
 
+<br><br>
 
 ## <span style="color: #FFBF00"> ***Automatic Speech Translation* (AST)** </span>
 
 ### <span style="color: #51C353"> **Données en libre accès** </span>
+
+<br>
 
 |**Nom du jeu de données**|**Heures**|**Lien pour y accéder**|**Qualité / Source**|**Licence**|
 | :- | :- | :- | :- | :- |
