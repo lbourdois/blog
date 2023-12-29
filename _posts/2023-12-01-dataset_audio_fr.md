@@ -12,17 +12,21 @@ author_profile: false
 classes: wide
 ---
 
-WIP (Il s'agit ci-dessous d'une bibliographie que j'ai effectué en 2022, elle doit être actualisée pour intégrer les jeux de données apparus depuis).  
+WIP  
+(Il s'agit ci-dessous d'une bibliographie que j'ai effectué en 2022, elle doit être actualisée pour intégrer les jeux de données apparus depuis).  
 Voir notamment : https://huggingface.co/datasets?task_categories=task_categories:automatic-speech-recognition&language=language:fr&sort=trending
+<br><br><br>
 
 # <span style="color: #FF0000"> **Avant-propos** </span>
 Ci-dessous, vous trouverez plusieurs listes de jeux de données afin de pouvoir entraîner vos modèles d'audio.
 Seuls ceux ayant un nombre d’heures conséquents sont listés (volume disponible supérieur à la dizaine d’heures). 
 De même, uniquement les données possédant une licence permettant une réutilisation sont indiqués. 
 A noter que tous les jeux de données n’étant pas forcément du même format audio et textuel, un nettoyage devra être effectué afin d’uniformiser les formats.
-
+<br><br><br>
 
 # <span style="color: #FF0000"> **Apprentissage autosupervisé** </span>
+
+<br>
 
 |**Nom du jeu de données**|**Heures**|**Lien pour y accéder**|**Informations**|**Licence**|
 | :-: | :-: | :-: | :-: | :-: |
@@ -33,8 +37,10 @@ A noter que tous les jeux de données n’étant pas forcément du même format 
 |**CFPP2000**|150 H|[Cliquer-ici](https://www.ortolang.fr/market/corpora/cfpp2000)|Ensemble d'interviews sur les quartiers de Paris et de la proche banlieue. |CC-BY 3.0|
 |**Voxlingua107**|67 H|[Cliquer-ici](http://bark.phon.ioc.ee/voxlingua107/)|Audios issues de YouTube|CC-BY 4.0|
 
-Ce sont ainsi plus de **24 500 heures** d’audio qui sont disponibles pour l’apprentissage autosupervisé.
+<br>
 
+Ce sont ainsi plus de **24 500 heures** d’audio qui sont disponibles pour l’apprentissage autosupervisé.
+<br><br><br>
 
 # <span style="color: #FF0000"> ***Finetuning*** </span>
 
@@ -42,24 +48,30 @@ Ce sont ainsi plus de **24 500 heures** d’audio qui sont disponibles pour l�
 
 ### <span style="color: #51C353"> **Données en libre accès** </span>
 
+<br>
+
 |**Nom du jeu de données**|**Heures**|**Lien pour y accéder**|**Informations**|**Licence**|
 | :-: | :-: | :-: | :-: | :-: |
 |**Common Voice**|834 H|[Cliquer-ici](https://commonvoice.mozilla.org/en/datasets) |747H sur les 834 ont été validées|CC-0 |
-|**Corpus d'Etude pour le Français Contemporain (CEFC)**|450 H|<p>[Cliquer-ici](https://repository.ortolang.fr/api/content/cefc-orfeo/10/documentation/site-orfeo/index.html)</p><p>ou </p><p>[Cliquer-ici](https://www.ortolang.fr/market/corpora/cefc-orfeo)</p>|Possibilité de trier ce que l’on souhaite (tv, radio, téléphone, face à face, etc.)|CC-BY 4.0|
-|**ESLO**|<p>300 H pour ESLO1</p><p>400 H pour ESLO2</p>|<p>[Cliquer-ici](https://ct3.ortolang.fr/data/eslo/)</p><p>ou </p><p>[Cliquer-ici](https://www.ortolang.fr/market/corpora/eslo/v1) </p>|<p>ESLO1 contient des entretiens (formels ou informels de type conversation dans une rue) enregistrés entre 1968 et 1974. Les données ne sont pas forcément de bonnes qualités (grésillements). </p><p>ESLO2 reprend le même principe que ESLO1 mais porte sur des entretiens datant de 2008 à 2020. Les données sont de bonnes qualités.</p>|CC-BY 4.0|
+|**Corpus d'Etude pour le Français Contemporain (CEFC)**|450 H| [Cliquer-ici](https://repository.ortolang.fr/api/content/cefc-orfeo/10/documentation/site-orfeo/index.html) ou [Cliquer-ici](https://www.ortolang.fr/market/corpora/cefc-orfeo) |Possibilité de trier ce que l’on souhaite (tv, radio, téléphone, face à face, etc.)|CC-BY 4.0|
+|**ESLO**| 300 H pour ESLO1 & 400 H pour ESLO2 | [Cliquer-ici](https://ct3.ortolang.fr/data/eslo/) ou Cliquer-ici](https://www.ortolang.fr/market/corpora/eslo/v1) | ESLO1 contient des entretiens (formels ou informels de type conversation dans une rue) enregistrés entre 1968 et 1974. Les données ne sont pas forcément de bonnes qualités (grésillements).   ESLO2 reprend le même principe que ESLO1 mais porte sur des entretiens datant de 2008 à 2020. Les données sont de bonnes qualités.|CC-BY 4.0|
 |**Conférences Pierre Mendès France**|300 H|[Cliquer-ici](https://www.data.gouv.fr/fr/datasets/transcriptionsxml-audiomp3-mefr-ccpmf-2012-2020-zip/)|Audios au format MP3 et transcriptions au format XML des conférences du centre de conférences Pierre Mendès France du MEFR (2012-2020).|Open Licence version 2.0|
 |**VoxpopuliV2**|211 H |[Cliquer-ici](https://github.com/facebookresearch/voxpopuli)|Enregistrements annotés récoltés au Parlement Européen entre 2009 et 2020.|[CC0](https://creativecommons.org/share-your-work/public-domain/cc0/) |
-|**Traitement de Corpus Oraux en Français (TCOF)**|146 H|[Cliquer-ici](https://www.ortolang.fr/market/corpora/tcof)|<p>Corpus oraux collectés dans les années 80-90 entre 5 et 45 minutes.</p><p></p>|CC-BY 2.0|
+|**Traitement de Corpus Oraux en Français (TCOF)**|146 H|[Cliquer-ici](https://www.ortolang.fr/market/corpora/tcof)| Corpus oraux collectés dans les années 80-90 entre 5 et 45 minutes. |CC-BY 2.0|
 |**SynPaFlex**|87 H|[Cliquer-ici](https://www.ortolang.fr/market/corpora/synpaflex-corpus) |Annotation de 87h de corpus de livres-audios. |CC-BY 2.0|
-|**MPF**|78 H|[Cliquer-ici](https://www.ortolang.fr/market/corpora/mpf)|<p>Ce corpus vise à documenter des évolutions en cours dans le français, l’émergence d’un vernaculaire urbain contemporain, ainsi que les effets sur le français du contact avec les langues de l’immigration.</p><p>Nécessite un compte (gratuit) sur Ortholang pour télécharger le corpus.</p>|CC-BY 4.0|
+|**MPF**|78 H|[Cliquer-ici](https://www.ortolang.fr/market/corpora/mpf)| Ce corpus vise à documenter des évolutions en cours dans le français, l’émergence d’un vernaculaire urbain contemporain, ainsi que les effets sur le français du contact avec les langues de l’immigration.</p><p>Nécessite un compte (gratuit) sur Ortholang pour télécharger le corpus.|CC-BY 4.0|
 |<h1>**CLAPI**</h1>|46 H|[Cliquer-ici](https://www.ortolang.fr/market/corpora/clapi)|La base comprend des corpus oraux composés d'enregistrements audio et vidéo de situations naturelles d'interactions, principalement entre natifs dans des situations sociales très variées : professionnelles, privées, commerciales, institutionnelles, médicales.|CC-BY 4.0|
-|**African Accented French**|22 H|<p>[Cliquer-ici](http://www.openslr.org/57/)</p><p></p>|Interviews réalisées par l’armée américaine|Apache 2.0|
+|**African Accented French**|22 H| [Cliquer-ici](http://www.openslr.org/57/) |Interviews réalisées par l’armée américaine|Apache 2.0|
 |**SIWIS** |~ 10 H|[Cliquer-ici](https://datashare.ed.ac.uk/handle/10283/2353) ||CC-BY 4.0|
 
-Ce sont ainsi environ **2900 heures** d’audio qui sont disponibles pour l’apprentissage supervisé.
+<br>
 
+Ce sont ainsi environ **2900 heures** d’audio qui sont disponibles pour l’apprentissage supervisé.
+<br><br><br>
 
 ### <span style="color: #51C353"> **Corpus à accès limités (demandes auprès d’Université / Labo à effectuer)** </span>
+
+<br>
 
 |**Nom du jeu de données**|**Heures**|**Lien pour y accéder**|**Qualité / Source**|**Licence**|
 | :- | :- | :- | :- | :- |
@@ -70,6 +82,8 @@ Ce sont ainsi environ **2900 heures** d’audio qui sont disponibles pour l’ap
 
 ### <span style="color: #51C353"> **Données payantes** </span>
 
+<br>
+
 |**Nom du jeu de données**|**Heures**|**Lien pour y accéder**|**Informations**|**Licence**|
 | :-: | :-: | :-: | :-: | :-: |
 |**ESTER**|100 H annotées + 1700 H non annotées|[Cliquer-ici](https://catalogue.elra.info/en-us/repository/browse/ELRA-S0241/) |Corpus d’enregistrements d’émissions radiophoniques.|3 types de licences (avec usage commercial ou non). Cf.  le lien pour plus d’informations. |
@@ -77,6 +91,8 @@ Ce sont ainsi environ **2900 heures** d’audio qui sont disponibles pour l’ap
 |**EPAC**|~100 H|[Cliquer-ici](https://catalogue.elra.info/en-us/repository/browse/ELRA-S0305/)|100H de transcriptions manuelles réalisées à partir des 1 700 heures d'enregistrements non transcrits du jeu de données ESTER. |2 types de licences (avec usage commercial ou non). Cf.  le lien pour plus d’informations.|
 |**MEDIA**|70 H|[Cliquer-ici](https://catalogue.elra.info/en-us/repository/browse/ELRA-S0272/)|1 258 dialogues transcrits pour 250 locuteurs adultes sur le domaine du tourisme et de la réservation d’hôtel.|2 types de licences (avec usage commercial ou non). Cf.  le lien pour plus d’informations.|
 |**ETAPE**|30 H|[Cliquer-ici](https://catalogue.elra.info/en-us/repository/browse/ELRA-E0046/)|Environ 30H de radio et TV françaises incluant de la parole non planifiée et une proportion raisonnable de données multi-locuteurs. Des données transcrites soigneusement en incluant l’annotation des entités nommées.|3 types de licences (avec usage commercial ou non). Cf.  le lien pour plus d’informations.|
+
+<br>
 
 Ce sont ainsi environ **400 heures** d’audio qui sont disponibles pour l’apprentissage supervisé et 1300 heures qui sont disponibles pour l’apprentissage autosupervisé en achetant ces corpus.
 
@@ -86,7 +102,7 @@ Ce sont ainsi environ **400 heures** d’audio qui sont disponibles pour l’app
 ### <span style="color: #51C353"> **Données en libre accès** </span>
 Il ne semble pas y avoir de données en accès libre concernant cette tâche.
 
-### <span style="color: #51C353"> *Corpus à accès limités (demandes auprès d’Université / Labo à effectuer)** </span>
+### <span style="color: #51C353"> **Corpus à accès limités (demandes auprès d’Université / Labo à effectuer)** </span>
 
 |**Nom du jeu de données**|**Heures**|**Lien pour y accéder**|**Qualité / Source**|**Licence**|
 | :- | :- | :- | :- | :- |
