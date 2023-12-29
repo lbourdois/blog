@@ -52,7 +52,7 @@ Ce sont ainsi plus de **24 500 heures** d’audio qui sont disponibles pour l�
 
 |**Nom du jeu de données**|**Heures**|**Lien pour y accéder**|**Informations**|**Licence**|
 | :-: | :-: | :-: | :-: | :-: |
-|**Common Voice**|834 H|[Cliquer-ici](https://commonvoice.mozilla.org/en/datasets) |747H sur les 834 ont été validées|CC-0 |
+|**Common Voice**|1 113 H|[Cliquer-ici](https://commonvoice.mozilla.org/en/datasets) |Chiffres indiqués pour la version 16, 981H sur les 1 113 ont été validées|CC-0 |
 |**Corpus d'Etude pour le Français Contemporain (CEFC)**|450 H| [Cliquer-ici](https://repository.ortolang.fr/api/content/cefc-orfeo/10/documentation/site-orfeo/index.html) ou [Cliquer-ici](https://www.ortolang.fr/market/corpora/cefc-orfeo) |Possibilité de trier ce que l’on souhaite (tv, radio, téléphone, face à face, etc.)|CC-BY 4.0|
 |**ESLO**| 300 H pour ESLO1 & 400 H pour ESLO2 | [Cliquer-ici](https://ct3.ortolang.fr/data/eslo/) ou Cliquer-ici](https://www.ortolang.fr/market/corpora/eslo/v1) | ESLO1 contient des entretiens (formels ou informels de type conversation dans une rue) enregistrés entre 1968 et 1974. Les données ne sont pas forcément de bonnes qualités (grésillements).   ESLO2 reprend le même principe que ESLO1 mais porte sur des entretiens datant de 2008 à 2020. Les données sont de bonnes qualités.|CC-BY 4.0|
 |**Conférences Pierre Mendès France**|300 H|[Cliquer-ici](https://www.data.gouv.fr/fr/datasets/transcriptionsxml-audiomp3-mefr-ccpmf-2012-2020-zip/)|Audios au format MP3 et transcriptions au format XML des conférences du centre de conférences Pierre Mendès France du MEFR (2012-2020).|Open Licence version 2.0|
