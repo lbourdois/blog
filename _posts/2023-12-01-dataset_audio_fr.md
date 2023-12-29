@@ -20,7 +20,7 @@ Voir notamment : https://huggingface.co/datasets?task_categories=task_categories
 # <span style="color: #FF0000"> **Avant-propos** </span>
 Ci-dessous, vous trouverez plusieurs listes de jeux de données afin de pouvoir entraîner vos modèles d'audio.
 Seuls ceux ayant un nombre d’heures conséquents sont listés (volume disponible supérieur à la dizaine d’heures). 
-De même, uniquement les données possédant une licence permettant une réutilisation sont indiqués. 
+De même, uniquement les données possédant une licence permettant une réutilisation sont indiquées. 
 A noter que tous les jeux de données n’étant pas forcément du même format audio et textuel, un nettoyage devra être effectué afin d’uniformiser les formats.
 <br><br><br>
 
