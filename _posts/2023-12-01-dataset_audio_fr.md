@@ -1,7 +1,7 @@
 ---
 title: "JEUX DE DONNÉES AUDIO POUR LE FRANÇAIS"
 categories:
-  - projets
+  - Audio
 tags:
   - Dataset audio french
   - Dataset audio français
@@ -66,7 +66,7 @@ Ce sont ainsi au moins de **24 000 heures** d’audio qui sont disponibles pour 
 
 <br>
 
-Ce sont ainsi environ **2 900 heures** d’audio qui sont disponibles librement pour l’apprentissage supervisé de la tâche d’ASR.
+Ce sont ainsi environ **3 300 heures** d’audio qui sont disponibles librement pour l’apprentissage supervisé de la tâche d’ASR.
 <br><br><br>
 
 
@@ -79,6 +79,8 @@ Ce sont ainsi environ **2 900 heures** d’audio qui sont disponibles librement 
 |**INA**|1200H sont disponibles et 3000H sont indiqués comme "à venir"|[Cliquer-ici](https://dataset.ina.fr/) |Données de l'INA disponibles dans différents sous jeux de données. Pour pouvoir avoir accès aux données il faut remplir un formulaire (cf. le lien). Il est précisé que "seuls sont autorisés à s’inscrire les laboratoires de recherche, les PME innovantes ainsi que toutes autres personnes morales disposant d’un service ou d’une activité de recherche scientifique."| Licence non précisée mais les CGU sont assez restrictives concernant leur utilisation à des fins non universitaires.|
 |**Decoda-RATP**|74H|[Cliquer-ici](http://www.lrec-conf.org/proceedings/lrec2012/pdf/684_Paper.pdf) |Appels téléphoniques à la RATP enregistrés et annotés (transcription, NER, etc.)| Non précisé, il faut contacter les auteurs |
 |**NCCFr**|35H|[Cliquer-ici](https://mirjamernestus.nl/Ernestus/NCCFr/index.php) |Conversations entre amis annotées par des professionnels| Non précisé, il faut contacter les auteurs | 
+
+<br>
 
 Ce sont ainsi environ **1 300 heures** d’audio qui sont disponibles sous condition d’accès aux données pour l’apprentissage supervisé de la tâche d’ASR.
 
