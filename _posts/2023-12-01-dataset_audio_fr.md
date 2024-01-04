@@ -30,11 +30,11 @@ A noter que tous les jeux de données n’étant pas forcément du même format 
 |**Nom du jeu de données**|**Heures**|**Lien pour y accéder**|**Informations**|**Licence**|
 | :-: | :-: | :-: | :-: | :-: |
 |**VoxpopuliV2**|22 800 H |[Cliquer-ici](https://github.com/facebookresearch/voxpopuli)|Enregistrements récoltés au Parlement Européen entre 2009 et 2020.|CC0|
-|**Librivox**|1 096 (ou 2 158 H ? => A vérifier)|[Cliquer-ici](https://librivox.org/search?primary_key=2&search_category=language&search_page=1&search_form=get_results)  |996 livres de grands auteurs français tombés dans le domaine public. Note : le jeu de données [M-AILABS French-v0.9](https://www.caito.de/2019/01/03/the-m-ailabs-speech-dataset/) est basé en partie sur Librivox. De même pour [Multilingual LibriSpeech]( https://arxiv.org/abs/2012.03411). |Domaine public|
+|**Librivox**|2 158 H |[Cliquer-ici](https://librivox.org/search?primary_key=2&search_category=language&search_page=1&search_form=get_results)  |996 livres de grands auteurs français tombés dans le domaine public. Librivox étant un projet en constante évolution, le nombre d'heures disponibles augmentent donc au cours du temps. Le nombre d'heures renseigné ici correspond à un décompte effectué au 26 septembre 2023. Note : le jeu de données [M-AILABS French-v0.9](https://www.caito.de/2019/01/03/the-m-ailabs-speech-dataset/) est basé en partie sur Librivox. De même pour [Multilingual LibriSpeech]( https://arxiv.org/abs/2012.03411) (seulement 1 300 H de Librivox dans ce jeu de données). |Domaine public|
 
 <br>
 
-Ce sont ainsi au moins de **24 000 heures** d’audio qui sont disponibles pour l’apprentissage autosupervisé.
+Ce sont ainsi environ **25 000 heures** d’audio qui sont disponibles pour l’apprentissage autosupervisé.
 <br><br><br>
 
 # <span style="color: #FF0000"> ***Finetuning*** </span>
