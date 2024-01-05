@@ -27,12 +27,12 @@ Depuis j'ai élargi les sujets abordés sur le blog à d'autres thématiques que
 Après avoir réalisé beaucoup de traductions sur d'autres plateformes (voir la catégorie [Autre](https://lbourdois.github.io/blog/other/)), je reprends mon blog pour écrire sur les SSM.  
 En espérant que les différents articles trouvables sur le blog soient utiles aux francophones 🙂<br><br>
 
-
+<!--
 ## Quelques questions fréquentes 👨‍🏫
-<!-- ##### Les articles de ton blog sont majoritairement des vulgarisations de sujets liés au NLP. Prévois-tu de faire des tutoriels afin d'illustrer les articles ?
+##### Les articles de ton blog sont majoritairement des vulgarisations de sujets liés au NLP. Prévois-tu de faire des tutoriels afin d'illustrer les articles ?
 C'est effectivement planifié. Plusieurs codes Python sont d'ailleurs déjà prêts mais doivent encore accompagnés d'explications et d'images.
 Je manque néanmoins de temps en ce moment car je travaille sur plusieurs autres projets. Je ne sais donc pas quand cela arrivera sur le blog.
- -->
+
  
 ##### Puis-je utiliser le contenu de ton blog ?
 Avec plaisir, ce blog sert à ça :)<br>
@@ -42,7 +42,7 @@ Par exemple pour l'article consacré à BERT :
 
 Un exemple de citation est présent à la fin de chaque article.<br>
 Ce point est important pour apporter du crédit aux différents auteurs et pour respecter le fait que certains des travaux sur lesquels je me base sont sous [licence Creative Commons](https://creativecommons.org/) (le plus souvent [3](https://creativecommons.org/licenses/by-nc-sa/3.0/fr/) ou [4](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr)). Merci d'avance 🙂
-
+ -->
  
 ## Prendre contact 📧
 N'hésitez pas à vous connecter avec moi sur [LinkedIn](https://www.linkedin.com/in/lo%C3%AFck-bourdois-111488171/) ou par [courriel](loick.bourdois@outlook.com).
