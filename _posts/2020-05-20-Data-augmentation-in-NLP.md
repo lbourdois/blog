@@ -490,15 +490,13 @@ Si vous avez du temps et êtes intéressés par ce sujet, je vous invite forteme
 - [Exploring the Limits of Transfer Learning with a UnifiedText-to-Text Transformer](https://arxiv.org/pdf/1910.10683.pdf) de Raffel et al. (2020)
 - [MLSUM: The Multilingual Summarization Corpus](https://arxiv.org/abs/2004.14900.pdf) de Scialom et al. (2020)
 - [BARThez: a Skilled Pretrained French Sequence-to-Sequence Model](https://arxiv.org/abs/2010.12321) de Eddine et al. (2020)
-
-
-
-
 <br><br><br>
 
 
 # <span style="color: #FF0000"> **Citation** </span>
-Si vous venez à utiliser des éléments de cet article, veillez s'il vous plait en créditer les auteurs en utilisant par exemple comme suit :
-“*L'augmentation de données en NLP* par Loïck BOURDOIS (https://lbourdois.github.io/blog/nlp/ALBERT/), d’après Amit CHAUDHARY, *A Visual Survey of Data Augmentation in NLP* (https://amitness.com/2020/05/data-augmentation-for-nlp/)”
-Merci :)
-
+> @inproceedings{nlp_data_augmentation_blog_post,  
+  author    = {Loïck BOURDOIS},  
+  title     = {L'augmentation de données en NLP},  
+  year      = {2020},  
+  url = {https://lbourdois.github.io/blog/nlp/Data-augmentation-in-NLP/}  
+}
