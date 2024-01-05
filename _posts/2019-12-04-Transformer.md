@@ -597,6 +597,9 @@ Pour les autres architectures, vous pouvez consulter une liste non exhaustive da
 
 
 # <span style="color: #FF0000"> **Citation** <span>
-Si vous venez à utiliser des éléments de cet article, veillez s'il vous plait en créditer les auteurs en utilisant par exemple comme suit :<br>
-“*Illustration du Transformer* par Loïck BOURDOIS (https://lbourdois.github.io/blog/nlp/Transformer/), d’après Jay ALAMMAR, *The Illustrated Transformer* (https://jalammar.github.io/illustrated-transformer/)”<br>
-Merci :)
+> @inproceedings{transformer_blog_post,  
+  author    = {Loïck BOURDOIS},  
+  title     = {Illustration du Transformer},  
+  year      = {2019},  
+  url = {https://lbourdois.github.io/blog/nlp/Transformer/}  
+}
