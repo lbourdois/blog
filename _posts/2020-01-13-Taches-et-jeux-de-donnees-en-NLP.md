@@ -361,6 +361,9 @@ Les *benchmarks* francophones :
   
   
 # <span style="color: #FF0000"> **Citation** <span>
-Si vous venez à utiliser des éléments de cet article, veillez s'il vous plait en créditer les auteurs en utilisant par exemple comme suit :<br>
-“*Tâches et jeux de données fréquemment utilisés dans les publications de NLP* par Loïck BOURDOIS (https://lbourdois.github.io/blog/nlp/Taches-et-jeux-de-donnees-en-NLP/) (2020)”<br>
-Merci :)
+> @inproceedings{tasks_and_datasets_nlp_blog_post,  
+  author    = {Loïck BOURDOIS},  
+  title     = {Tâches et jeux de données fréquemment utilisés dans les publications de NLP},  
+  year      = {2020},  
+  url = {https://lbourdois.github.io/blog/nlp/Taches-et-jeux-de-donnees-en-NLP/}  
+}
