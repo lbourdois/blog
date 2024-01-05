@@ -195,6 +195,9 @@ Elle pourrait servir de base à de futurs modèles.
 
 
 # <span style="color: #FF0000"> **Citation** <span>
-Si vous venez à utiliser des éléments de cet article, veillez s'il vous plait en créditer les auteurs en utilisant par exemple comme suit :<br>
-“*Les RNN, les LSTM, les GRU et ELMO* par Loïck BOURDOIS (https://lbourdois.github.io/blog/nlp/RNN-LSTM-GRU-ELMO/), 2019”<br>
-Merci :)
+> @inproceedings{rnn_blog_post,  
+  author    = {Loïck BOURDOIS},  
+  title     = {Les RNN, les LSTM, les GRU et ELMO},  
+  year      = {2019},  
+  url = {https://lbourdois.github.io/blog/nlp/RNN-LSTM-GRU-ELMO/}  
+}
