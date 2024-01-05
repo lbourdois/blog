@@ -390,3 +390,13 @@ Concernant les SSM, vous pouvez regarder :
 - [Efficiently Modeling Long Sequences with Structured State Spaces](https://arxiv.org/abs/2111.00396) d'Albert GU, Karan GOEL, et Christopher RÉ (2021)
 - [On the Parameterization and Initialization of Diagonal State Space Models](https://arxiv.org/abs/2206.11893) d'Albert GU,  Ankit GUPTA, Karan GOEL, Christopher RÉ (2022)
 - [Never Train from Scratch: Fair Comparison of Long-Sequence Models Requires Data-Driven Priors](https://arxiv.org/abs/2310.02980) d'Ido AMOS, Jonathan BERANT, Ankit GUPTA (2023)
+<br><br><br>
+
+
+# <span style="color: #FF0000"> **Citation** <span>
+> @inproceedings{ssm_introduction_blog_post,  
+  author    = {Loïck BOURDOIS},  
+  title     = {Introduction aux State Space Models (SSM) et au S4},  
+  year      = {2023},  
+  url = {https://lbourdois.github.io/blog/ssm/introduction_ssm}  
+}
