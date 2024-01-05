@@ -101,6 +101,9 @@ Les méthodes présentées dans les autres articles du blog, permettent de prend
 
 
 # <span style="color: #FF0000"> **Citation** <span>
-Si vous venez à utiliser des éléments de cet article, veillez s'il vous plait me créditer en utilisant par exemple comme suit :<br>
-*Illustration du Bag of words* par Loïck BOURDOIS (https://lbourdois.github.io/blog/nlp/Bag-of-word/), 2019.<br>
-Merci :)
+> @inproceedings{bag_og_words_blog_post,  
+  author    = {Loïck BOURDOIS},  
+  title     = {Illustration du Bag of words},  
+  year      = {2019},  
+  url = {https://lbourdois.github.io/blog/nlp/Bag-of-word/}  
+}
