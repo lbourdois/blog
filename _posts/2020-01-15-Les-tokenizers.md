@@ -392,6 +392,9 @@ Résumons l’article avec les principaux points évoqués :
 
 
 # <span style="color: #FF0000"> **Citation** <span>
-Si vous venez à utiliser des éléments de cet article, veillez s'il vous plait en créditer les auteurs en utilisant par exemple comme suit :<br>
-“*Le prétraitement et les tokenizers en NLP* par Loïck BOURDOIS (https://lbourdois.github.io/blog/nlp/Les-tokenizers/), d’après Keita KURITA, *A Deep Dive into the Wonderful World of Preprocessing in NLP* (https://mlexplained.com/2019/11/06/a-deep-dive-into-the-wonderful-world-of-preprocessing-in-nlp/)”<br>
-Merci :)
+> @inproceedings{tokenizers_blog_post,  
+  author    = {Loïck BOURDOIS},  
+  title     = {Le prétraitement et les tokenizers en NLP},  
+  year      = {2020},  
+  url = {https://lbourdois.github.io/blog/nlp/Les-tokenizers/}  
+}
