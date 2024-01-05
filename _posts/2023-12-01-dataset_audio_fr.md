@@ -200,5 +200,5 @@ Ce sont ainsi environ **1000 heures** d’audio qui sont disponibles afin d’en
   author    = {Loïck BOURDOIS},  
   title     = {Jeux de données audio pour le français},  
   year      = {2023},  
-  url = {https://lbourdois.github.io/blog/projets/dataset_audio_fr}  
+  url = {https://lbourdois.github.io/blog/audio/dataset_audio_fr}  
 }
