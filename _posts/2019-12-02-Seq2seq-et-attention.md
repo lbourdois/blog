@@ -238,6 +238,9 @@ Il donne des exemples d’application tel que la traduction ou encore la génér
 
 
 # <span style="color: #FF0000"> **Citation** <span>
-Si vous venez à utiliser des éléments de cet article, veillez s'il vous plait en créditer les auteurs en utilisant par exemple comme suit :<br>
-“*Les architectures issues du Transformer* par Loïck BOURDOIS (https://lbourdois.github.io/blog/nlp/Les-architectures-transformers/), 2020”<br>
-Merci :)
+> @inproceedings{seq_to_seq_blog_post,  
+  author    = {Loïck BOURDOIS},  
+  title     = {Les architectures issues du Transformer},  
+  year      = {2019},  
+  url = {https://lbourdois.github.io/blog/nlp/Seq2seq-et-attention/}  
+}
