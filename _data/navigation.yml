@@ -16,9 +16,9 @@ sidebar-ssm:
   - title: INTRODUCTION AUX SSM ET AU S4
     url: /ssm/introduction_ssm/
   - title: LES SSM EN 2022
-    url: /ssm/ssm_en_2022.md
+    url: /ssm/ssm_en_2022
   - title: LES SSM EN 2023
-    url: /ssm/ssm_en_2023.md
+    url: /ssm/ssm_en_2023
     
 sidebar-sample:
   - title: LE BAG-OF-WORDS
