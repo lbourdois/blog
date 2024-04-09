@@ -15,7 +15,7 @@ Néanmoins ce lundi 4 décembre 2023, l'annonce de Mamba par [Albert Gu](https:/
 Une bonne occasion pour moi d'écrire quelques mots sur les développements des SSM au cours de ces deux années.  
 Je prévois d'écrire trois articles d'abord où le but est d'illustrer les bases des SSM avec le S4 (le "Attention is all you need" du domaine) avant d'effectuer une revue de littérature de l'évolution des SSM depuis ce premier papier :
 - [Introduction aux SSM et au S4](https://lbourdois.github.io/blog/ssm/introduction_ssm/)
-- [Evolutions des SSM en 2022](https://lbourdois.github.io/blog/ssm/ssm_en_2022/)
-- [Evolutions des SSM en 2023](https://lbourdois.github.io/blog/ssm/ssm_en_2023/)
+- [Historique des SSM en 2022](https://lbourdois.github.io/blog/ssm/ssm_en_2022/)
+- [Historique des SSM en 2023](https://lbourdois.github.io/blog/ssm/ssm_en_2023/)
   
 J'espère également dans un second temps entrer dans les détails des architectures de certains SSM spécifiques avec des animations ✨
