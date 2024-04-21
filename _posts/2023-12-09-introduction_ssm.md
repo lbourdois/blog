@@ -3,7 +3,8 @@ title: "INTRODUCTION AUX STATE SPACE MODELS (SSM) ET AU S4"
 categories:
   - SSM
 tags:
-  - Introduction aux SSM 
+  - Introduction aux SSM
+  - S4
 excerpt : SSM - Bases des SSM en apprentissage profond via le modèle S4
 header :
     overlay_image: "https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/NLP_radom_blog.png"
@@ -17,6 +18,11 @@ classes: wide
 <script type="text/javascript" async
   src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
 </script>
+
+An English version is available on [Hugging Face](https://huggingface.co/blog/lbourdois/get-on-the-ssm-train).  
+
+<br>
+
 
 # <span style="color: #FF0000"> **Avant-Propos** </span> 
 Je tiens à remercier chaleureusement Boris ALBAR, Pierre BEDU et Nicolas PREVOT d’avoir accepté de monter un groupe de travail sur le sujet des SSM et de m'avoir ainsi accompagné dans la découverte de ce type de modèle. Un remerciement supplémentaire au premier pour avoir pris le temps de relire cet article de blog.
