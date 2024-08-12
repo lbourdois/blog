@@ -52,7 +52,7 @@ On peut observer qu'un SSM repose sur trois variables dépendant du temps $$t$$ 
 - $$y(t) \in \mathbb {C}^{p}$$ représente les $$p$$ sorties,
 
 On peut aussi observer qu'il est composé de quatre matrices pouvant être apprises : $$\mathbf A, \mathbf B, \mathbf C$$ et $$\mathbf D$$.
-- $$\mathbf A \in \mathbb {C}^{m \times n}$$ est la matrice d'état (contrôlant l'état lattent $$x$$),
+- $$\mathbf A \in \mathbb {C}^{n \times n}$$ est la matrice d'état (contrôlant l'état lattent $$x$$),
 - $$\mathbf B \in \mathbb {C}^{n \times m}$$ est la matrice de contrôle,
 - $$\mathbf C \in \mathbb {C}^{p \times n}$$ est la matrice de sortie,
 - $$\mathbf D \in \mathbb {C}^{p \times m}$$ est la matrice de commande,
