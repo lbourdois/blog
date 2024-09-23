@@ -19,7 +19,7 @@ classes: wide
   src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
 </script>
 
-An English version is available on [Hugging Face](https://huggingface.co/blog/lbourdois/get-on-the-ssm-train).
+<center>An English version is available on <a href="https://huggingface.co/blog/lbourdois/get-on-the-ssm-train">Hugging Face</a>.</center>
 
 <br>
 
