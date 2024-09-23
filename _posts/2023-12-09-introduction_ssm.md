@@ -31,9 +31,11 @@ Je tiens à remercier chaleureusement Boris ALBAR, Pierre BEDU et Nicolas PREVOT
 # <span style="color: #FF0000"> **Introduction** </span>
 Les ***States Spaces Models*** (ou Modèles en Espace d'Etat en français) sont utilisés traditionnellement en théorie du contrôle afin de modéliser un système dynamique via des variables d'état.  
 
-Dans le cadre de l'apprentissage profond, lorsque l'on parle de SSM, on ne se réfère en réalité qu'à un sous-ensemble des représentations existantes, à savoir les systèmes linéaires invariants (ou stationnaires).  
-Ces modèles ont montré des performances impressionnantes dès octobre 2021 avec l'article « [*Efficiently Modeling Long Sequences with Structured State Spaces*](https://arxiv.org/abs/2111.00396) » d'Albert GU et al., au point de se positionner comme une alternative aux *transformers*.  
-Dans cet article, nous allons définir les bases d'un SSM en apprentissage profond en nous appuyant sur le S4. A l'image du papier « [*Attention is all you need*](https://arxiv.org/abs/1706.03762) » d'Ashish VASWANI et al. (2017) pour les *transformers*, le S4 est le fondement d'un nouveau type d'architecture de réseau de neurones qui se doit d'être connu, mais ce n'est pas un modèle qui est utilisé tel quel en pratique (d'autres SSM plus performants ou plus faciles à implémenter étant maintenant disponibles). Sorti une semaine plus tôt que le S4, le [LSSL](https://arxiv.org/abs/2110.13985), par les mêmes auteurs, est également une source importante d'informations sur le sujet. Nous verrons les différentes évolutions qui découlent du S4 dans un prochain article de blog. Plongeons nous auparavant dans les bases des SSM.
+Aaron R. VOELKER et Chris ELIASMITH se sont penchés sur la question de savoir comment le cerveau représente efficacement les informations temporelles. Ils ont découvert en 2018 dans « [Improving Spiking Dynamical Networks: Accurate Delays, Higher-Order Synapses, and Time Cells](https://compneuro.uwaterloo.ca/files/publications/voelker.2018.pdf) »  qu’un SSM est un excellent modèle pour décrire les « [cellules temporelles](https://en.wikipedia.org/wiki/Howard_Eichenbaum#Research_on_time_cells)  » présentes dans le cerveau (hippocampe et cortex notamment).  
+Des neurosciences, ils ont appliqué leur travail au domaine de l’apprentissage profond et ont ainsi été (à notre connaissance) les premiers à utiliser des SSM en apprentissage profond. Pour plus de détails sur ces travaux, nous invitons le lecteur à se référer à la section « Histoire des SSM » disponible en fin de cet article de blog.
+
+Dans cet article, nous allons définir les bases d’un SSM en apprentissage profond. Pour cela nous allons nous appuyer notamment sur le S4 introduit dans « [*Efficiently Modeling Long Sequences with Structured State Spaces*](https://arxiv.org/abs/2111.00396) » d'Albert GU et al. (2021).
+Celui-ci n’est pas un modèle qui est utilisé tel quel en pratique (d’autres SSM plus performants ou plus faciles à implémenter étant maintenant disponibles). Nous l’utilisons ici à une vocation pédagogique. Sorti une semaine plus tôt que le S4, le [LSSL](https://arxiv.org/abs/2110.13985), par les mêmes auteurs, est également une source importante d’informations sur le sujet. Nous verrons les différentes évolutions qui découlent du S4 dans un prochain [article de blog](https://lbourdois.github.io/blog/ssm/ssm_en_2022/). Plongeons-nous auparavant dans les bases des SSM. 
 <br><br><br>
 
 # <span style="color: #FF0000"> **Définition d'un SSM en apprentissage profond** </span>
@@ -340,7 +342,7 @@ Concluons avec une tâche textuelle et le benchmark [*Long Range Arena* (LRA)](h
 <br>
 
 Le LRA est composé de 6 tâches dont Path-X d'une longueur de 16K tokens pour laquelle le S4 est le premier modèle à la réussir démontrant ses performances sur des tâches de très longues séquences.  
-Il faudra plus de 2 ans pour qu'AMOS et al. montre dans leur papier « [*Never Train from Scratch: Fair Comparison of Long-Sequence Models Requires Data-Driven Priors*](https://arxiv.org/abs/2310.02980.) » (2023) que les *transformers* (non hybridés avec un SSM) peuvent aussi résoudre cette tâche. Ils n'arrivent cependant pas à passer le PathX-256 d'une longueur de 65K tokens contrairement aux SSM.      
+Il faudra plus de 2 ans pour qu'AMOS et al. montre dans leur papier « [*Never Train from Scratch: Fair Comparison of Long-Sequence Models Requires Data-Driven Priors*](https://arxiv.org/abs/2310.02980.) » (2023) que les *transformers* (introduits par [Ashish VASWANI et al.]((https://arxiv.org/abs/1706.03762)) (2017))  (non hybridés avec un SSM) peuvent aussi résoudre cette tâche. Ils n'arrivent cependant pas à passer le PathX-256 d'une longueur de 65K tokens contrairement aux SSM.      
 
 A noter néanmoins un point négatif concernant le texte pour le S4 : il obtient une perplexité plus élevée par rapport à celle d'un *transformer* (standard, des versions plus optimisées ayant une perplexité encore plus faible) sur [WikiText-103](https://arxiv.org/abs/1609.07843v1) de MERITY et al. (2016).  
 
@@ -362,6 +364,18 @@ Nous verrons dans les prochains articles que les principales différences entre 
 <br><br><br>
 
 # <span style="color: #FF0000"> **Pour aller plus loin** <span>
+
+## <span style="color: #FFBF00"> **Histoire des SSM** </span>
+Publié deux ans avant le S4, en décembre 2019, le [LMU](https://proceedings.neurips.cc/paper_files/paper/2019/file/952285b9b7e7a1be5aa7849f32ffff05-Paper.pdf) de VOELKER, KAJIĆ et ELIASMITH peut être considéré comme l'ancêtre du S4. Dans cet article, les auteurs initient la vue récurrente en proposant une alternative à la [LSTM](https://www.bioinf.jku.at/publications/older/2604.pdf) de HOCHREITER et SCHMIDHUBER, qui souffre d'un problème de disparition du gradient lorsque le nombre d'étapes traitées devient trop élevé (limité entre 100 et 5000 selon les variantes). Dans ce papier, ils montrent que leur modèle est capable de traiter plus de 100 000 pas (VOELKER est même allé jusqu'à plus de 1 000 000 000 de pas dans la section 6.1 de sa [thèse](https://compneuro.uwaterloo.ca/publications/voelker2019.html)). Pour ce faire, ils utilisent l'EDO x′(t) = Ax(t) + Bu(t) (dans l'article, x est noté m), qu'ils discrétisent via la [méthode d'Euler](https://fr.wikipedia.org/wiki/M%C3%A9thode_d%27Euler). Les matrices A et B sont obtenues par l’[approximant de Padé](https://fr.wikipedia.org/wiki/Approximant_de_Pad%C3%A9), qui a fortement inspiré le cadre HiPPO. La propriété clé de ce système dynamique est que x représente des fenêtres glissantes de u via des [polynômes de Legendre](https://fr.wikipedia.org/wiki/Polyn%C3%B4me_de_Legendre)  jusqu'au degré d - 1. Nous invitons le lecteur à consulter la section 2 de l'article pour plus de détails.  
+Comme indiqué dans l'introduction, ce papier est une application à l’apprentissage profond d'un [modèle](https://compneuro.uwaterloo.ca/files/publications/voelker.2018.pdf) davantage orienté neuroscience publié en 2018 par les mêmes auteurs.  
+Concluons en mentionnant une suite du LMU datant de février 2021 par CHILKURI et ELIASMITH. Dans cet [article](https://arxiv.org/abs/2102.11417), ils montrent comment calculer efficacement leur modèle. Pour ce faire, ils parallélisent l'apprentissage en réécrivant leur EDO de manière non séquentielle (voir la page 3 de l'article en particulier), ce qui permet d'utiliser des outils classiques de théorie du contrôle (voir l'équation 22 de l'article et [ÅSTRÖM et MURRAY](https://www.cds.caltech.edu/~murray/books/AM08/pdf/am08-complete_28Sep12.pdf) pour plus de détails) et de faire apparaitre la vue convolutive. Ils obtiennent de meilleurs résultats que [DistillBERT](https://arxiv.org/abs/1910.01108) par SANH et al. (2019) avec moitié moins de paramètres et en effectuant une modélisation au niveau des caractères sur le jeu de données text8. Notons également que les auteurs discrétisent leur SSM via ZOH (Zero Order Hold ; bloqueur d'ordre zéro en français), sur lequel nous reviendrons plus en détail dans le prochain [article de blog](https://lbourdois.github.io/blog/ssm/ssm_en_2022/).
+
+## <span style="color: #FFBF00"> **Ressources sur les SSM** </span>
+Concernant les SSM, vous pouvez regarder :
+- le cours (en français) sur les [systèmes dynamiques](https://www.youtube.com/watch?v=sDD13PI89hA&list=PLImFpdng6y55wxYZgt7hxbocWkeMWHtCN) d'Ion HAZYUK, Maitre de Conferences à l'INSA de Toulouse (la partie les [modèles en espace d'état](https://www.youtube.com/watch?v=XGhDvhHKjiY&list=PLImFpdng6y55wxYZgt7hxbocWkeMWHtCN&index=45) débutent à partie de la section 5.2)
+- la [thèse de doctorat](https://searchworks.stanford.edu/view/14784021) (en anglais) d'Albert GU
+  
+## <span style="color: #FFBF00"> **Ressources sur le S4** </span>
 Concernant le S4, vous pouvez consulter les ressources suivantes (toutes en anglais) :
 * Vidéos : 
   -	[Efficiently Modeling Long Sequences with Structured State Spaces - Albert Gu - Stanford MLSys #46](https://www.youtube.com/watch?v=EvQ3ncuriCM) par Albert GU
@@ -372,29 +386,34 @@ Concernant le S4, vous pouvez consulter les ressources suivantes (toutes en angl
   - [Le GitHub de l'implémentation officielle du S4](https://github.com/state-spaces/s4) (en PyTorch)  
 * Articles de blog :
    - Les articles sur le S4 issus du blog Hazy Research qui est le groupe de recherche de Stanford où Albert GU a fait son doctorat ; [partie 1](https://hazyresearch.stanford.edu/blog/2022-01-14-s4-1), [partie 2](https://hazyresearch.stanford.edu/blog/2022-01-14-s4-2) et [partie 3](https://hazyresearch.stanford.edu/blog/2022-01-14-s4-3).  
-* Papier :
-  - Le prédécesseur du S4 est le [Legendre Memory Units: Continuous-Time Representation in Recurrent Neural Networks](https://proceedings.neurips.cc/paper/2019/file/952285b9b7e7a1be5aa7849f32ffff05-Paper.pdf) (LMU) de VOELKER et al. (2019)
-    
+   
+## <span style="color: #FFBF00"> **Ressources sur HiPPO** </span>
 Concernant la matrice $$HiPPO$$, vous pouvez consulter les ressources suivantes (toutes en anglais) :
 -	L'[article du blog Hazy Research](https://hazyresearch.stanford.edu/blog/2020-12-05-hippo) consacré au sujet
 -	Le papier [*How to Train Your HiPPO: State Space Models with Generalized Orthogonal Basis Projections*](https://arxiv.org/abs/2206.12037) d'Albert GU et al. (2022)  
-
-Concernant les SSM, vous pouvez regarder :
-- le cours (en français) sur les [systèmes dynamiques](https://www.youtube.com/watch?v=sDD13PI89hA&list=PLImFpdng6y55wxYZgt7hxbocWkeMWHtCN) d'Ion HAZYUK, Maitre de Conferences à l'INSA de Toulouse (la partie les [modèles en espace d'état](https://www.youtube.com/watch?v=XGhDvhHKjiY&list=PLImFpdng6y55wxYZgt7hxbocWkeMWHtCN&index=45) débutent à partie de la section 5.2)
-- la [thèse de doctorat](https://searchworks.stanford.edu/view/14784021) (en anglais) d'Albert GU
 <br><br><br>
 
+
 # <span style="color: #FF0000"> **Références** </span> 
+- [Long short-term memory](https://www.bioinf.jku.at/publications/older/2604.pdf) de Sepp HOCHREITER, Jürgen SCHMIDHUBER (1997)
+- [Feedback Systems](https://www.cds.caltech.edu/~murray/books/AM08/pdf/am08-complete_28Sep12.pdf) de Karl Johan ÅSTRÖM, Richard M. MURRAY (2012 version)
 - [Learning Multiple Layers of Features from Tiny Images](https://www.cs.toronto.edu/~kriz/learning-features-2009-TR.pdf) d'Alex KRIZHESKY (2009)
 - [Pointer Sentinel Mixture Models](https://arxiv.org/abs/1609.07843v1) de Stephen MERITY, Caiming XIONG, James BRADBURY, Richard SOCHER (2016)
-- [*Attention is all you need*](https://arxiv.org/abs/1706.03762) de Ashish VASWANI, Noam SHAZEER, Niki PARMAR, Jakob USZKOREIT, Llion JONES, Aidan N. GOMEZ, Lukasz KAISER, Illia POLOSUKHIN (2017)
+- [*Attention is all you need*](https://arxiv.org/abs/1706.03762) d'Ashish VASWANI, Noam SHAZEER, Niki PARMAR, Jakob USZKOREIT, Llion JONES, Aidan N. GOMEZ, Lukasz KAISER, Illia POLOSUKHIN (2017)
 - [Speech Commands: A Dataset for Limited-Vocabulary Speech Recognition](https://arxiv.org/abs/1804.03209v1) de Pete WARDEN (2018)
+- [Improving Spiking Dynamical Networks: Accurate Delays, Higher-Order Synapses, and Time Cells](https://compneuro.uwaterloo.ca/files/publications/voelker.2018.pdf) d'Aaron R. VOELKER, Chris ELIASMITH (2018)
+- [Legendre Memory Units: Continuous-Time Representation in Recurrent Neural Networks](https://proceedings.neurips.cc/paper_files/paper/2019/file/952285b9b7e7a1be5aa7849f32ffff05-Paper.pdf) d'Aaron R. VOELKER, Ivana KAJIĆ, Chris ELIASMITH (2019)
+- [Dynamical Systems in Spiking Neuromorphic Hardware](https://compneuro.uwaterloo.ca/publications/voelker2019.html) d'Aaron R. VOELKER (2019)
+- [DistilBERT, a distilled version of BERT: smaller, faster, cheaper and lighter](https://arxiv.org/abs/1910.01108) de Victor SANH, Lysandre DEBUT, Julien CHAUMOND, Thomas WOLF (2019)
 - [Long Range Arena: A Benchmark for Efficient Transformers](https://arxiv.org/abs/2011.04006) de Yi TAY, Mostafa DEHGHANI, Samira ABNAR, Yikang SHEN, Dara BAHRI, Philip PHAM, Jinfeng RAO, Liu YANG, Sebastian RUDER, Donald METZLER (2020)
-- [Informer: Beyond Efficient Transformer for Long Sequence Time-Series Forecasting](https://arxiv.org/abs/2012.07436) d'Haoyi ZHOU, Shanghang ZHANG, Jieqi peng, Shuai ZHANG, Jianxin LI, Hui XIONG, Wancai ZHANG (2020)
+- [Informer: Beyond Efficient Transformer for Long Sequence Time-Series Forecasting](https://arxiv.org/abs/2012.07436) de Haoyi ZHOU, Shanghang ZHANG, Jieqi peng, Shuai ZHANG, Jianxin LI, Hui XIONG, Wancai ZHANG (2020)
 - [HiPPO: Recurrent Memory with Optimal Polynomial Projections](https://arxiv.org/abs/2008.07669) d'Albert GU, Tri DAO, Stefano ERMON, Atri RUDRA, Christopher RÉ (2020)
+- [Parallelizing Legendre Memory Unit Training](https://arxiv.org/abs/2102.11417) de Narsimha CHILKURI, Chris ELIASMITH (2021)
 - [Combining Recurrent, Convolutional, and Continuous-time Models with Linear State-Space Layers](https://arxiv.org/abs/2110.13985) d'Albert GU, Isys JOHNSON, Karan GOEL, Khaled SAAB, Tri DAO, Atri RUDRA, Christopher RÉ (2021)
-- [Efficiently Modeling Long Sequences with Structured State Spaces](https://arxiv.org/abs/2111.00396) d'Albert GU, Karan GOEL, et Christopher RÉ (2021)
+- [Efficiently Modeling Long Sequences with Structured State Spaces](https://arxiv.org/abs/2111.00396) d'Albert GU, Karan GOEL, Christopher RÉ (2021)
+- [How to Train Your HiPPO: State Space Models with Generalized Orthogonal Basis Projections](https://arxiv.org/abs/2206.12037) d'Albert GU,  Isys JOHNSON, Aman TIMALSINA, Atri RUDRA, Christopher RÉ (2022)
 - [On the Parameterization and Initialization of Diagonal State Space Models](https://arxiv.org/abs/2206.11893) d'Albert GU,  Ankit GUPTA, Karan GOEL, Christopher RÉ (2022)
+- [Modeling sequences with structured state spaces](https://searchworks.stanford.edu/view/14784021) d'Albert GU (2023)
 - [Never Train from Scratch: Fair Comparison of Long-Sequence Models Requires Data-Driven Priors](https://arxiv.org/abs/2310.02980) d'Ido AMOS, Jonathan BERANT, Ankit GUPTA (2023)
 <br><br><br>
 
