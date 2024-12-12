@@ -37,7 +37,7 @@ Vous pouvez retrouver toutes ces ressources sur le GitHub de [Hugging Face](http
 Le FAT5 est une implémentation du T5 en PyTorch avec un objectif UL2 optimisé pour GPGPU développé avec [Boris ALBAR](https://b-albar.github.io/portfolio/).  
 Elle utilise des noyaux CUDA et Triton personnalisés ainsi que des optimisations spécifiques pour augmenter le débit et réduire l'utilisation de la mémoire pour l'entraînement et l'inférence d'un facteur 4 par rapport à l'implémentation originale disponible dans Hugging Face.  
 Nous l'avons appliquée en pré-entraînant un modèle en français de 147M paramètres en utilisant uniquement une A100. Nous estimons ainsi pouvoir ramener le prix de pré-entraînement d'un tel modèle à seulement 2200€ (estimation faite sur une instance OVH).   
-Le code de pré-entrainement est disponible sur [GitHub](https://github.com/catie-aq/flashT5) sous licence Apache-2.0 et les poids du modèle entraîné sur le compte [Hugging Face du CATIE(https://huggingface.co/CATIE-AQ). Un article de blog détaillant notre méthodologie est disponible [ici](https://huggingface.co/spaces/CATIE-AQ/FAT5-rapport).
+Le code de pré-entrainement est disponible sur [GitHub](https://github.com/catie-aq/flashT5) sous licence Apache-2.0 et les poids du modèle entraîné sur le compte [Hugging Face du CATIE](https://huggingface.co/CATIE-AQ). Un article de blog détaillant notre méthodologie est disponible [ici](https://huggingface.co/spaces/CATIE-AQ/FAT5-rapport).
 
 ## NER
 A compléter.
