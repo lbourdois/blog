@@ -34,13 +34,18 @@ Vous pouvez retrouver toutes ces ressources sur le GitHub de [Hugging Face](http
 # Modèles et jeux de données
 
 ## FAT5
-Le FAT5 est une implémentation du T5 en PyTorch avec un objectif UL2 optimisé pour GPGPU développé avec [Boris ALBAR](https://b-albar.github.io/portfolio/).  
-Elle utilise des noyaux CUDA et Triton personnalisés ainsi que des optimisations spécifiques pour augmenter le débit et réduire l'utilisation de la mémoire pour l'entraînement et l'inférence d'un facteur 4 par rapport à l'implémentation originale disponible dans Hugging Face.  
+Le FAT5 est une implémentation du [T5](https://arxiv.org/abs/1910.10683) en PyTorch avec un objectif [UL2](https://arxiv.org/abs/2205.05131) optimisé pour GPGPU développé avec [Boris ALBAR](https://b-albar.github.io/portfolio/).  
+Elle utilise des noyaux CUDA et Triton personnalisés ainsi que des optimisations spécifiques pour augmenter le débit et réduire l'utilisation de la mémoire pour l'entraînement et l'inférence d'un facteur 2 par rapport à l'implémentation originale disponible dans Hugging Face.  
 Nous l'avons appliquée en pré-entraînant un modèle en français de 147M paramètres en utilisant uniquement une A100. Nous estimons ainsi pouvoir ramener le prix de pré-entraînement d'un tel modèle à seulement 2200€ (estimation faite sur une instance OVH).   
 Le code de pré-entrainement est disponible sur [GitHub](https://github.com/catie-aq/flashT5) sous licence Apache-2.0 et les poids du modèle entraîné sur le compte [Hugging Face du CATIE](https://huggingface.co/CATIE-AQ). Un article de blog détaillant notre méthodologie est disponible [ici](https://huggingface.co/spaces/CATIE-AQ/FAT5-rapport).
 
 ## NER
-A compléter.
+Le NERmemBERT est un modèle de Reconnaissance d’Entités Nommées en français capable d’étiqueter jusqu’à 4 entités (Personnalités, Lieux, Organisations, Divers tel que des noms d’œuvre, de maladies, etc.). Il est disponible en taille base (110M de paramètres) et large (336M). Les poids sont disponibles gratuitement en open-source, tout comme les jeux de données ayant servis à l’entraînement. Le tout est disponible sur le compte [Hugging Face du CATIE](https://huggingface.co/collections/CATIE-AQ/catie-french-ner-pack-658aefafe3f7a2dcf0e4dbb4). Un article de blog détaillant la méthodologie adoptée est disponible [ici](https://lbourdois.github.io/blog/NER/).
 
 ## Question Answering
-A compléter.
+Le QAmemBERT est un modèle de réponse aux questions en français capable d’indiquer si la réponse à une question est présente ou pas dans un texte de contexte associé. Il est disponible en taille base (110M de paramètres) et large (335M). Les poids sont disponibles gratuitement en open-source, tout comme le jeu de données ayant servis à l’entraînement. Le tout est disponible sur le compte [Hugging Face du CATIE](https://huggingface.co/collections/CATIE-AQ/catie-french-qa-pack-650821750f44c341cdb8ec91). Un article de blog détaillant la méthodologie adoptée est disponible [ici](https://lbourdois.github.io/blog/QA/).
+
+## DFP
+*Dataset of French Prompts* (DFP) contient 113 129 978 lignes portant sur 30 tâches de NLP différentes.  
+724 prompts ont été écrits sous forme impérative, de tutoiement et de vouvoiement afin de couvrir autant que possible les données de pré-entraînement utilisées par le modèle qui utilisera ces données et qui nous sont inconnues.  
+Les colonnes *inputs* et *targets* suivent le même format que l'ensemble de données [xP3](https://huggingface.co/datasets/bigscience/xP3) de Muennighoff et al.
