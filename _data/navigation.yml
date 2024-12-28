@@ -12,6 +12,11 @@ main:
   - title: "Cours NYU"
     url: https://lbourdois.github.io/cours-dl-nyu/
 
+sidebar-misc:
+  - title: FUITES & DUPLICATIONS DANS LES JEUX DE DONNEES
+    url: /LLE/
+
+    
 sidebar-ssm:
   - title: INTRODUCTION AUX SSM ET AU S4
     url: /ssm/introduction_ssm/
