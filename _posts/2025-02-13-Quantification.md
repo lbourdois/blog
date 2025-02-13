@@ -123,8 +123,8 @@ Pour illustrer cet effet, nous pouvons prendre n'importe quelle image et n'utili
 <center>
 <figure class="image">
 <img src="https://raw.githubusercontent.com/lbourdois/blog/refs/heads/master/assets/images/Quantification/image_8.jpg">
-</figure>
 <figcaption>Image adaptée de l'original par <a href="https://pixabay.com/users/slava_web-designer-39623293/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=8668140">Slava Sidorov</a></figcaption>
+</figure>
 </center>
 
 
@@ -198,9 +198,9 @@ Un bon exemple d'une forme de quantification symétrique est la quantification v
 Notez que la plage de valeurs [-127, 127] représente la plage restreinte. La plage non restreinte est [-128, 127] et dépend de la méthode de quantification.  
 Comme il s'agit d'une correspondance linéaire centrée autour de 0, la formule est simple.  
 Nous calculons d'abord un ou plusieurs facteurs d'échelle en utilisant :  
-• β, le nombre d'octets que l'on veut quantifier à (8),  
+• $$b$$, le nombre d'octets que l'on veut quantifier à (8),  
 • α, la valeur absolue la plus élevée,  
-Ensuite, nous utilisons le $s$ pour quantifier l'entrée $x$ :  
+Ensuite, nous utilisons le $$s$$ pour quantifier l'entrée $$x$$ :  
 
 <center>
 <figure class="image">
@@ -379,8 +379,8 @@ Contrairement aux poids, les activations varient avec chaque donnée d'entrée i
 L'une des techniques de quantification les plus populaires est la quantification post-entraînement (PTQ). Il s'agit de quantifier les paramètres d'un modèle (poids et activations) après l'entraînement du modèle.  
 La quantification des poids est effectuée à l'aide d'une quantification symétrique ou asymétrique.  
 La quantification des activations, cependant, nécessite l'inférence du modèle pour obtenir leur distribution potentielle puisque nous ne connaissons pas leur portée.
-Il existe deux formes de quantification des activations :
-•	Quantification dynamique 
+Il existe deux formes de quantification des activations :  
+•	Quantification dynamique   
 •	Quantification statique 
 <br><br>
 
@@ -456,7 +456,7 @@ Ensuite, nous quantifions et déquantifions le poids de la première ligne de no
 </figure>
 </center>
 
-Ce processus nous permet de calculer l'erreur de quantification (q) que nous pouvons pondérer à l'aide de la hessienne inverse ($h_1$) que nous avons calculée au préalable.  
+Ce processus nous permet de calculer l'erreur de quantification (q) que nous pouvons pondérer à l'aide de la hessienne inverse ($$h_1$$) que nous avons calculée au préalable.  
 En somme, nous créons une erreur de quantification pondérée en fonction de l'importance des poids :
 
 <center>
@@ -466,7 +466,7 @@ En somme, nous créons une erreur de quantification pondérée en fonction de l'
 </center>
 
 Puis, nous redistribuons cette erreur de quantification pondérée sur les autres poids de la ligne. Cela permet de maintenir la fonction globale et la sortie du réseau.  
-Par exemple, si nous procédons ainsi pour le deuxième poids, à savoir 0,3 ($x_2$), nous ajoutons l'erreur de quantification (q) multipliée par la hessienne inverse du deuxième poids ($h_2$).
+Par exemple, si nous procédons ainsi pour le deuxième poids, à savoir 0,3 ($$x_2$$), nous ajoutons l'erreur de quantification (q) multipliée par la hessienne inverse du deuxième poids ($$h_2$$).
 
 <center>
 <figure class="image">
@@ -523,9 +523,9 @@ Pour illustrer notre propos, examinons quelques quantifications de niveaux diff�
     <tr>
         <td>Nom</td>
         <td>Quantification du poids</td>
-        <td>Echelle (&lt;font color=&quot;#D79617&quot;&gt;s&lt;/font&gt;)  de quantification (super)</td>
-        <td>Echelle (&lt;font color=&quot;#D79617&quot;&gt;s&lt;/font&gt;) de quantification (sous)</td>
-        <td>Bits par poids (&lt;font color=&quot;#B352FF&quot;&gt;w&lt;/font&gt;)</td>
+        <td>Echelle (<font color="#D79617">s</font>) de quantification (super)</td>
+        <td>Echelle (<font color="#D79617">s</font>) de quantification (sous)</td>
+        <td>Bits par poids (<font color="#B352FF">w</font>)</td>
         <td># Sous blocs</td>
         <td>Poids par bloc</td>
     </tr>
@@ -569,7 +569,7 @@ C'est là qu'intervient la quantification pendant l'entraînement (QAT pour *Qua
 
 <center>
 <figure class="image">
-<img src="https://raw.githubusercontent.com/lbourdois/blog/refs/heads/master/assets/images/Quantification/image_43".png>
+<img src="https://raw.githubusercontent.com/lbourdois/blog/refs/heads/master/assets/images/Quantification/image_43.png">
 </figure>
 </center>
 
@@ -733,7 +733,7 @@ Et c'est tout ! La quantification 1,58 bit nécessitait (principalement) deux as
 •	Ajouter l’option 0 pour créer des représentations ternaires [-1, 0, 1]  
 •	la quantification *absmean* pour les poids  
 
-« Le BitNet 13B b1.58 est plus efficace, en termes de latence, d'utilisation de la mémoire et de consommation d'énergie qu'un LLM 3B FP16 » 
+« Le BitNet 13B b1.58 est plus efficace, en termes de latence, d'utilisation de la mémoire et de consommation d'énergie qu'un LLM 3B FP16 »   
 En conséquence, nous obtenons des modèles légers car nous n'avons que 1,58 bits ce qui est efficace en termes de calcul !
 <br><br><br>
 
@@ -741,7 +741,7 @@ En conséquence, nous obtenons des modèles légers car nous n'avons que 1,58 bi
 Ainsi se termine notre voyage dans la quantification ! J'espère que cet article vous donnera une meilleure compréhension du potentiel de la quantification, de GPTQ, GGUF et du BitNet. Qui sait à quel point les modèles seront petits à l'avenir ?  
 Si vous voulez aller plus loin, je vous suggère les ressources suivantes :  
 •	Un [article de blog](https://hf.co/blog/hf-bitsandbytes-integration) d’Hugging Face sur la méthode de quantification [LLM.int8()](https://arxiv.org/abs/2208.07339).  
-•	Un [autre excellent article de blog d’Hugging Face sur [la quantification des *embeddings*](https://hf.co/blog/embedding-quantization).  
+•	Un [autre excellent article de blog](https://hf.co/blog/embedding-quantization) d’Hugging Face sur la quantification des *embeddings*.  
 •	Un [article de blog d’Eleuther.ai](https://blog.eleuther.ai/transformer-math/) décrivant les mathématiques de base liées au calcul et à l'utilisation de la mémoire pour les Transformers.  
 •	Cette [application](https://hf.co/spaces/NyxKrage/LLM-Model-VRAM-Calculator) et [celle-ci](https://vram.asmirnov.xyz/) sont deux bonnes ressources pour calculer la (V)RAM dont vous avez besoin pour un modèle donné.  
 •	Le papier sur le [QLoRA](https://arxiv.org/abs/2305.14314) pour de la quantification pour les méthodes PEFT.  
