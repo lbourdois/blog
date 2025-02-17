@@ -494,9 +494,11 @@ Si vous avez du temps et êtes intéressés par ce sujet, je vous invite forteme
 
 
 # <span style="color: #FF0000"> **Citation** </span>
-> @inproceedings{nlp_data_augmentation_blog_post,  
+```
+@inproceedings{nlp_data_augmentation_blog_post,  
   author    = {Loïck BOURDOIS},  
   title     = {L'augmentation de données en NLP},  
   year      = {2020},  
   url = {https://lbourdois.github.io/blog/nlp/Data-augmentation-in-NLP/}  
 }
+```
