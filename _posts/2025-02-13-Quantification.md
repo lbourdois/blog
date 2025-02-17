@@ -36,7 +36,7 @@ L'une des principales techniques dans ce domaine s'appelle la quantification.
 </figure>
 </center>
 
-Dans cet article, nous allons introduire le concept de la quantification dans le contexte de la modélisation du langage et explorer les concepts un par un pour en comprendre l’intuition. Nous explorerons diverses méthodologies, des cas d'utilisation et les principes qui sous-tendent la quantification, via plus de 50 visuels.
+Dans cet article, nous allons introduire le concept de la quantification dans le contexte de la modélisation du langage et explorer les concepts un par un pour en comprendre l’intuition. Nous explorerons diverses méthodologies, des cas d'utilisation et les principes qui sous-tendent la quantification, via plus de $$50$$ visuels.
 <br><br><br><br>
 
 # <span style="color: #FF0000"> **Partie 1 : Le « problème » des LLM** </span>
@@ -117,11 +117,11 @@ L'intervalle de nombres qu'une représentation donnée peut prendre est appelé 
 </figure>
 </center>
 
-Une caractéristique astucieuse de ces bits est que nous pouvons calculer la quantité de mémoire dont votre machine a besoin pour stocker une valeur donnée. Comme il y a 8 bits dans un octet, nous pouvons créer une formule basique pour la plupart des représentations en virgule flottante :  
-mémoire = nombre de paramètres × (nombre de bits) / 8.  
+Une caractéristique astucieuse de ces bits est que nous pouvons calculer la quantité de mémoire dont votre machine a besoin pour stocker une valeur donnée. Comme il y a $$8$$ bits dans un octet, nous pouvons créer une formule basique pour la plupart des représentations en virgule flottante :  
+mémoire = nombre de paramètres × (nombre de bits) / $$8$$.  
 En pratique, c’est un peu plus complexe. La quantité de (V)RAM nécessaire pour l’inférence, dépend aussi de la taille de contexte et de l'architecture.  
 
-Appliquons cette formule. Supposons que nous ayons un modèle de 70 milliards de paramètres. La plupart des modèles sont représentés nativement avec en FP32 (souvent appelé « pleine précision » ou *full-precision*), ce qui nécessiterait 280 Go de mémoire juste pour charger le modèle. En effet :  
+Appliquons cette formule. Supposons que nous ayons un modèle de $$70$$ milliards de paramètres. La plupart des modèles sont représentés nativement avec en FP32 (souvent appelé « pleine précision » ou *full-precision*), ce qui nécessiterait $$280$$ Go de mémoire juste pour charger le modèle. En effet :  
 -	**64 bits** = 70Mds × 64/8 ≈ **560** GB  
 -	**32 bits** = 70Mds × 32/8 ≈ **280** GB  
 -	**16 bits** = 70Mds × 16/8 ≈ **140** GB  
@@ -131,7 +131,7 @@ Nous voulons réduire le nombre de bits représentant des valeurs tout en conser
 <br><br><br>
 
 # <span style="color: #FF0000"> **Partie 2 : Introduction à la quantification** </span>
-La quantification vise à réduire la précision des paramètres d'un modèle en passant de largeurs de bits supérieures (comme la virgule flottante 32 bits) à des largeurs de bits inférieures (comme les entiers 8 bits).
+La quantification vise à réduire la précision des paramètres d'un modèle en passant de largeurs de bits supérieures (comme la virgule flottante $$32$$ bits) à des largeurs de bits inférieures (comme les entiers $$8$$ bits).
 
 <center>
 <figure class="image">
@@ -154,11 +154,11 @@ L'objectif principal de la quantification est de réduire le nombre de bits (cou
 <br><br>
 
 ## <span style="color: #FFBF00"> **Types de données courants** </span>
-Tout d'abord, examinons les types de données courants et l'impact de leur utilisation plutôt que des représentations en 32 bits (appelées FP32 pour *full-precision* soit la *pleine précision*).
+Tout d'abord, examinons les types de données courants et l'impact de leur utilisation plutôt que des représentations en $$32$$ bits (appelées FP32 pour *full-precision* soit la *pleine précision*).
 <br>
 
 ### <span style="color: #51C353"> **FP16** </span>
-Prenons l'exemple d'un passage de 32 à 16 bits (appelé FP16 ou *half precision* soit la *demi-précision*) :
+Prenons l'exemple d'un passage de $$32$$ à $$16$$ bits (appelé FP16 ou *half precision* soit la *demi-précision*) :
 
 <center>
 <figure class="image">
@@ -182,7 +182,7 @@ BF16 utilise la même quantité de bits que FP16, mais peut prendre une gamme pl
 <br>
 
 ### <span style="color: #51C353"> **INT8** </span>
-Lorsque nous réduisons encore davantage le nombre de bits, nous nous rapprochons du domaine de représentations basées sur des entiers plutôt que des représentations en virgule flottante. À titre d'exemple, le passage de FP32 à INT8, qui n'a que 8 bits, donne un quart du nombre de bits d'origine :
+Lorsque nous réduisons encore davantage le nombre de bits, nous nous rapprochons du domaine de représentations basées sur des entiers plutôt que des représentations en virgule flottante. À titre d'exemple, le passage de FP32 à INT8, qui n'a que $$8$$ bits, donne un quart du nombre de bits d'origine :
 
 <center>
 <figure class="image">
@@ -198,8 +198,8 @@ Explorons ces méthodes pour quantifier de FP32 à INT8.
 <br><br>
 
 ## <span style="color: #FFBF00"> **Quantification symétrique** </span>
-Dans la quantification symétrique, la plage de valeurs d'origine est mise en correspondance avec une plage symétrique autour de 0 dans l'espace quantifié. Dans les exemples précédents, remarquez que les plages avant et après la quantification restent centrées autour de 0.  
-Cela signifie que la valeur 0 dans l'espace à virgule flottante est aussi 0 dans l'espace quantifié.
+Dans la quantification symétrique, la plage de valeurs d'origine est mise en correspondance avec une plage symétrique autour de $$0$$ dans l'espace quantifié. Dans les exemples précédents, remarquez que les plages avant et après la quantification restent centrées autour de $$0$$.  
+Cela signifie que la valeur $$0$$ dans l'espace à virgule flottante est aussi $$0$$ dans l'espace quantifié.
 
 <center>
 <figure class="image">
@@ -219,7 +219,7 @@ Un bon exemple d'une forme de quantification symétrique est la quantification v
 
 Comme il s'agit d'une correspondance linéaire centrée autour de 0, la formule est simple.  
 Nous calculons d'abord un facteur d'échelle <span style="color:#D79515;">$$s$$</span> en utilisant :  
-• **$$b$$**, le nombre d'octets que l'on veut quantifier à (8),  
+• **$$b$$**, le nombre d'octets que l'on veut quantifier à ($$8$$),  
 • <span style="color:#02E1FF;">**$$α$$**</span>, la valeur absolue la plus élevée,  
 Ensuite, nous utilisons le <span style="color:#D79515;">**$$s$$**</span> pour quantifier l'entrée <span style="color:#8C00FF;">**$$x$$**</span> :  
 
@@ -253,7 +253,7 @@ L'application du processus de quantification puis de déquantification pour réc
 </figure>
 </center>
 
-Vous pouvez voir que certaines valeurs, telles que 3,08 et 3,02, sont assignées à l'INT8, c'est-à-dire 36 dans le graphique. Lorsque vous déquantifiez les valeurs pour revenir à FP32, elles perdent de la précision et ne sont plus distinguables.  
+Vous pouvez voir que certaines valeurs, telles que $$3,08$$ et $$3,02$$, sont assignées à l'INT8, c'est-à-dire $$36$$ dans le graphique. Lorsque vous déquantifiez les valeurs pour revenir à FP32, elles perdent de la précision et ne sont plus distinguables.  
 C'est ce que l'on appelle souvent l'*erreur de quantification*, que l'on peut calculer en déterminant la différence entre la valeur originale et la valeur déquantifiée.
 
 <center>
@@ -266,8 +266,8 @@ En général, plus le nombre de bits est faible, plus nous avons tendance à avo
 <br><br>
 
 ## <span style="color: #FFBF00"> **Quantification asymétrique** </span>
-La quantification asymétrique, en revanche, n'est pas symétrique autour de 0. Au lieu de cela, elle fait correspondre les valeurs minimales (<span style="color:#17AB53;">**$$β$$**</span>) et maximales (<span style="color:#02E1FF;">**$$α$$**</span>) de la plage flottante aux valeurs minimales et maximales de la plage quantifiée.  
-La méthode que nous allons explorer s'appelle la *quantification du point 0*.
+La quantification asymétrique, en revanche, n'est pas symétrique autour de $$0$$. Au lieu de cela, elle fait correspondre les valeurs minimales (<span style="color:#17AB53;">**$$β$$**</span>) et maximales (<span style="color:#02E1FF;">**$$α$$**</span>) de la plage flottante aux valeurs minimales et maximales de la plage quantifiée.  
+La méthode que nous allons explorer s'appelle la *quantification du point $$0$$*.
 
 <center>
 <figure class="image">
@@ -275,15 +275,15 @@ La méthode que nous allons explorer s'appelle la *quantification du point 0*.
 </figure>
 </center>
 
-Vous avez remarqué que le 0 a changé de position ? C'est pourquoi on parle de quantification asymétrique. Les valeurs min/max ont des distances différentes par rapport à 0 dans la plage [$$-7,59 ; 10,8$$].  
-En raison de sa position décalée, nous devons calculer le 0 pour la plage INT8 afin d'effectuer la correspondance linéaire. Comme précédemment, nous devons également calculer un facteur d'échelle (<span style="color:#D79515;">**$$s$$**</span>), mais en utilisant la différence de la plage INT8 à la place [$$-128 ; 127$$].  
+Vous avez remarqué que le $$0$$ a changé de position ? C'est pourquoi on parle de quantification asymétrique. Les valeurs min/max ont des distances différentes par rapport à $$0$$ dans la plage [$$-7,59 ; 10,8$$].  
+En raison de sa position décalée, nous devons calculer le $$0$$ pour la plage INT8 afin d'effectuer la correspondance linéaire. Comme précédemment, nous devons également calculer un facteur d'échelle (<span style="color:#D79515;">**$$s$$**</span>), mais en utilisant la différence de la plage INT8 à la place [$$-128 ; 127$$].  
 <center>
 <figure class="image">
 <img src="https://raw.githubusercontent.com/lbourdois/blog/refs/heads/master/assets/images/Quantification/image_20.png">
 </figure>
 </center>
 
-Remarquez que c'est un peu plus compliqué en raison de la nécessité de calculer le point du 0 (<span style="color:#1B89D8;">**$$z$$**</span>) pour la plage en INT8 afin de modifier les poids.  
+Remarquez que c'est un peu plus compliqué en raison de la nécessité de calculer le point du $$0$$ (<span style="color:#1B89D8;">**$$z$$**</span>) pour la plage en INT8 afin de modifier les poids.  
 Comme précédemment, remplissons la formule :
 
 <center>
@@ -292,7 +292,7 @@ Comme précédemment, remplissons la formule :
 </figure>
 </center>
 
-Pour déquantifier de INT8 à FP32, nous devrons utiliser le facteur d'échelle (<span style="color:#D79515;">**$$s$$**</span>) et point 0 (<span style="color:#1B89D8;">**$$z$$**</span>).
+Pour déquantifier de INT8 à FP32, nous devrons utiliser le facteur d'échelle (<span style="color:#D79515;">**$$s$$**</span>) et point $$0$$ (<span style="color:#1B89D8;">**$$z$$**</span>).
 En dehors de cela, la déquantification est simple :
 
 <center>
@@ -413,7 +413,7 @@ Une fois que les données passent par une couche cachée, ses activations sont c
 </figure>
 </center>
 
-Cette distribution des activations est ensuite utilisée pour calculer le point 0 (<span style="color:#1B89D8;">**$$z$$**</span>) et le facteur d'échelle (<span style="color:#D79515;">**$$s$$**</span>) valeurs nécessaires pour quantifier la sortie :
+Cette distribution des activations est ensuite utilisée pour calculer le point $$0$$ (<span style="color:#1B89D8;">**$$z$$**</span>) et le facteur d'échelle (<span style="color:#D79515;">**$$s$$**</span>) valeurs nécessaires pour quantifier la sortie :
 
 <center>
 <figure class="image">
@@ -425,7 +425,7 @@ Le processus est répété chaque fois que les données passent par une nouvelle
 <br><br>
 
 ## <span style="color: #FFBF00"> **Quantification statique** </span>
-Contrairement à la quantification dynamique, la quantification statique ne calcule pas le point 0 (<span style="color:#1B89D8;">**$$z$$**</span>) et le facteur d'échelle (<span style="color:#D79515;">**$$s$$**</span>) pendant l'inférence, mais avant.  
+Contrairement à la quantification dynamique, la quantification statique ne calcule pas le point $$0$$ (<span style="color:#1B89D8;">**$$z$$**</span>) et le facteur d'échelle (<span style="color:#D79515;">**$$s$$**</span>) pendant l'inférence, mais avant.  
 Pour trouver ces valeurs, un jeu de données d'étalonnage est utilisé et donné au modèle pour recueillir ces distributions potentielles.
 
 <center>
@@ -434,21 +434,21 @@ Pour trouver ces valeurs, un jeu de données d'étalonnage est utilisé et donn�
 </figure>
 </center>
 
-Une fois ces valeurs collectées, nous pouvons calculer les valeurs s et z nécessaires pour effectuer la quantification pendant l'inférence.  
+Une fois ces valeurs collectées, nous pouvons calculer les valeurs <span style="color:#D79515;">**$$s$$**</span> et <span style="color:#1B89D8;">**$$z$$**</span> nécessaires pour effectuer la quantification pendant l'inférence.  
 Lors de l'inférence, les valeurs <span style="color:#D79515;">**$$s$$**</span> et <span style="color:#1B89D8;">**$$z$$**</span> ne sont pas recalculées, mais sont utilisées globalement pour toutes les activations afin de les quantifier.  
 En général, la quantification dynamique est un peu plus précise car elle ne tente de calculer les valeurs <span style="color:#D79515;">**$$s$$**</span> et <span style="color:#1B89D8;">**$$z$$**</span> que pour chaque couche cachée. Nénamoins, elle peut entraîner une augmentation du temps de calcul car ces valeurs doivent être calculées pour chaque couche cachée.  
 Au contraire, la quantification statique est moins précise mais plus rapide car elle connaît déjà les valeurs <span style="color:#D79515;">**$$s$$**</span> et <span style="color:#1B89D8;">**$$z$$**</span> utilisées pour la quantification.
 <br><br>
 
 ## <span style="color: #FFBF00"> **Le royaume de la quantification 4 bits** </span>
-Descendre en dessous de la quantification à 8 bits s'est avéré être une tâche difficile car l'erreur de quantification augmente à chaque perte de bit. Heureusement, il existe plusieurs façons intelligentes de réduire les bits à 6, 4 et même 2 bits (bien qu'il ne soit généralement pas conseillé de descendre en dessous de 4 bits en utilisant ces méthodes).   
+Descendre en dessous de la quantification à $$8$$ bits s'est avéré être une tâche difficile car l'erreur de quantification augmente à chaque perte de bit. Heureusement, il existe plusieurs façons intelligentes de réduire les bits à $$6$$, $$4$$ et même $$2$$ bits (bien qu'il ne soit généralement pas conseillé de descendre en dessous de $$4$$ bits en utilisant ces méthodes).   
 Nous allons explorer deux méthodes qui sont couramment partagées sur Hugging Face :  
-•	[GPTQ](https://arxiv.org/abs/2210.17323) (modèle entier sur GPU)  
-•	[GGUF](https://github.com/ggml-org/ggml/blob/master/docs/gguf.md) (possibilité de décharger les couches sur le CPU)  
+•	[GPTQ](https://arxiv.org/abs/2210.17323) de FRANTAR et al. (2022) (modèle entier sur GPU)  
+•	[GGUF](https://github.com/ggml-org/ggml/blob/master/docs/gguf.md) de Georgi GERGANOV (2023) (possibilité de décharger les couches sur le CPU)  
 <br>
 
 ### <span style="color: #51C353"> **GPTQ** </span>
-GPTQ est sans doute l'une des méthodes les plus connues utilisées dans la pratique pour la quantification à 4 bits.  
+GPTQ est sans doute l'une des méthodes les plus connues utilisées dans la pratique pour la quantification à $$4$$ bits.  
 Elle utilise la quantification asymétrique et le fait couche par couche de sorte que chacune est traitée indépendamment avant de passer à la suivante :
 
 <center>
@@ -459,15 +459,15 @@ Elle utilise la quantification asymétrique et le fait couche par couche de sort
 
 Au cours de ce processus de quantification par couche, on convertit d'abord les poids de la couche de la hessienne inverse. Il s'agit d'une dérivée seconde de la fonction de perte du modèle, qui nous indique à quel point la sortie du modèle est sensible aux variations de chaque poids.  
 En simplifiant, cela démontre l'importance (inverse) de chaque poids dans une couche.  
-Les poids associés à des valeurs plus petites dans la matrice hessienne sont plus cruciaux, car de petites modifications de ces poids peuvent entraîner des changements significatifs dans les performances du modèle.
+Les poids associés à des valeurs plus petites dans la matrice hessienne sont plus cruciaux car de petites modifications de ces poids peuvent entraîner des changements significatifs dans les performances du modèle.
 
 <center>
 <figure class="image">
 <img src="https://raw.githubusercontent.com/lbourdois/blog/refs/heads/master/assets/images/Quantification/image_35.png">
+<figcaption>Dans la hessienne inverse, les valeurs les plus faibles indiquent des poids plus « importants ». </figcaption>
 </figure>
 </center>
-
-Dans la hessienne inverse, les valeurs les plus faibles indiquent des poids plus « importants ».  
+ 
 Ensuite, nous quantifions et déquantifions le poids de la première ligne de notre matrice de poids :
 
 <center>
@@ -476,7 +476,7 @@ Ensuite, nous quantifions et déquantifions le poids de la première ligne de no
 </figure>
 </center>
 
-Ce processus nous permet de calculer l'erreur de quantification (q) que nous pouvons pondérer à l'aide de la hessienne inverse ($$h_1$$) que nous avons calculée au préalable.  
+Ce processus nous permet de calculer l'erreur de quantification (<span style="color:#950000;">**$$q$$**</span>) que nous pouvons pondérer à l'aide de la hessienne inverse (<span style="color:#C5E0E3;">**$$h_1$$**</span>) que nous avons calculée au préalable.  
 En somme, nous créons une erreur de quantification pondérée en fonction de l'importance des poids :
 
 <center>
@@ -486,7 +486,7 @@ En somme, nous créons une erreur de quantification pondérée en fonction de l'
 </center>
 
 Puis, nous redistribuons cette erreur de quantification pondérée sur les autres poids de la ligne. Cela permet de maintenir la fonction globale et la sortie du réseau.  
-Par exemple, si nous procédons ainsi pour le deuxième poids, à savoir 0,3 ($$x_2$$), nous ajoutons l'erreur de quantification (q) multipliée par la hessienne inverse du deuxième poids ($$h_2$$).
+Par exemple, si nous procédons ainsi pour le deuxième poids, à savoir $$0,3$$ (<span style="color:#666814;">**$$x_2$$**</span>), nous ajoutons l'erreur de quantification (<span style="color:#950000;">**$$q$$**</span>) multipliée par la hessienne inverse du deuxième poids (<span style="color:#8EBFC2;">**$$h_2$$**</span>).
 
 <center>
 <figure class="image">
@@ -511,7 +511,7 @@ Notez que vous pouvez utiliser la librairie [EXLlama2](https://github.com/turbod
 Bien que GPTQ soit une excellente méthode de quantification pour exécuter votre LLM entier sur un GPU, il se peut que vous ne disposiez pas toujours de la capacité nécessaire. Au lieu de cela, nous pouvons utiliser GGUF pour décharger n'importe quelle couche du LLM sur le CPU.  
 Cela permet d'utiliser à la fois le CPU et le GPU lorsque la VRAM est insuffisante.  
 La méthode de quantification GGUF est fréquemment mise à jour et peut dépendre du niveau de quantification souhaité. Toutefois, le principe général est le suivant.  
-Tout d'abord, les poids d'une couche donnée sont divisés en super-blocs contenant chacun un ensemble de sous-blocs. De ces blocs, nous extrayons le facteur d'échelle (s) et l'alpha (α) :
+Tout d'abord, les poids d'une couche donnée sont divisés en super-blocs contenant chacun un ensemble de sous-blocs. De ces blocs, nous extrayons le facteur d'échelle (s) et l'alpha (<span style="color:#02E1FF;">**$$α$$**</span>) :
 
 <center>
 <figure class="image">
@@ -661,13 +661,13 @@ Une couche BitLineary, comme l’approche QAT, effectue une forme de « fausse �
 </figure>
 </center>
 
-Note : dans le papier les auteurs utilisent γ au lieu de α mais puisque nous avons utilisé α tout au long de nos exemples, nous poursuivons avec cette notation. De même, β n'est pas identique à ce que nous avons utilisée pour la quantification du point 0 mais la valeur absolue moyenne.  
+Note : dans le papier les auteurs utilisent γ au lieu de α mais puisque nous avons utilisé α tout au long de nos exemples, nous poursuivons avec cette notation. De même, β n'est pas identique à ce que nous avons utilisée pour la quantification du point $$0$$ mais la valeur absolue moyenne.  
 Passons en revue le BitLinear étape par étape.
 <br>
 
 ### <span style="color: #51C353"> **Quantification des poids** </span>
 Pendant l'entraînement, les poids sont stockés en INT8, puis quantifiés à 1 bit à l'aide d'une stratégie simple, appelée fonction [signe](https://fr.wikipedia.org/wiki/Fonction_signe).  
-En substance, on déplace la distribution des poids pour qu'elle soit centrée autour de 0, puis on attribue tout ce qui est à gauche de 0 à  -1 et tout ce qui est à droite à +1 :
+En substance, on déplace la distribution des poids pour qu'elle soit centrée autour de 0, puis on attribue tout ce qui est à gauche de $$0$$ à  -1 et tout ce qui est à droite à +1 :
 
 <center>
 <figure class="image">
@@ -700,18 +700,18 @@ Les activations de sortie sont redimensionnées avec {α, β} pour les déquanti
 </figure>
 </center>
 
-Et c'est tout ! Cette procédure est relativement simple et permet de représenter les modèles avec seulement deux valeurs : -1 ou 1.  
+Et c'est tout ! Cette procédure est relativement simple et permet de représenter les modèles avec seulement deux valeurs : $$-1$$ ou $$1$$.  
 En utilisant cette procédure, les auteurs ont observé que plus la taille du modèle augmente, plus l'écart de performance entre un modèle 1-bit et un modèle entraîné en FP16 se réduit.  
 Cependant, cela ne concerne que les modèles de grande taille (>30B paramètres) et l'écart avec les modèles plus petits reste assez important.
 <br><br>
 
 ## <span style="color: #FFBF00"> **Tous les LLM sont en 1,58 bits**</span>
 [BitNet 1.58b](https://arxiv.org/abs/2402.17764) a été introduit pour améliorer le problème de passage à l'échelle mentionné précédemment.  
-Dans cette nouvelle méthode, chaque poids du modèle n'est pas seulement -1 ou 1, mais peut désormais également prendre 0 comme valeur, ce qui le rend ternaire. Il est intéressant de noter que l'ajout du 0 améliore considérablement le BitNet et permet un calcul beaucoup plus rapide.
+Dans cette nouvelle méthode, chaque poids du modèle n'est pas seulement $$-1$$ ou $$1$$, mais peut désormais également prendre $$0$$ comme valeur, ce qui le rend ternaire. Il est intéressant de noter que l'ajout du $$0$$ améliore considérablement le BitNet et permet un calcul beaucoup plus rapide.
 <br>
 
 ### <span style="color: #51C353"> **Le pouvoir du 0** </span>
-Alors, pourquoi l'ajout de 0 est-il une amélioration si majeure ?  
+Alors, pourquoi l'ajout de $$0$$ est-il une amélioration si majeure ?  
 Tout est lié à la multiplication matricielle !  
 Tout d'abord, voyons comment fonctionne la multiplication matricielle en général. Lors du calcul de la sortie, nous multiplions une matrice de poids par un vecteur d'entrée. Ci-dessous, la première multiplication de la première couche d'une matrice de poids est visualisée :
 
@@ -740,7 +740,7 @@ En mettant un poids donné à 0, il est possible de l'ignorer au lieu d'ajouter 
 
 ### <span style="color: #51C353"> **Quantification** </span>
 Pour effectuer la quantification des poids, BitNet 1.58b utilise la quantification *absmean*  qui est une variante de la quantification *absmax* que nous avons vue précédemment.  
-Il compresse simplement la distribution des poids et utilise la moyenne absolue (α) pour quantifier les valeurs. Ils sont ensuite arrondis à -1, 0 ou 1 :
+Il compresse simplement la distribution des poids et utilise la moyenne absolue (<span style="color:#02E1FF;">**$$α$$**</span>) pour quantifier les valeurs. Ils sont ensuite arrondis à $$-1$$, $$0$$ ou $$1$$ :
 
 <center>
 <figure class="image">
@@ -748,9 +748,9 @@ Il compresse simplement la distribution des poids et utilise la moyenne absolue 
 </figure>
 </center>
 
-Par rapport à BitNet, la quantification de l'activation est la même à l'exception d'une chose. Au lieu d’étalonner les activations sur une plage  [0, 2b⁻¹], elles le sont sur [-2b⁻¹, 2b⁻¹] du fait de la quantification *absmax*.  
+Par rapport à BitNet, la quantification de l'activation est la même à l'exception d'une chose. Au lieu d’étalonner les activations sur une plage  [$$0 , 2b⁻¹$$], elles le sont sur [$$-2b⁻¹, 2b⁻¹$$] du fait de la quantification *absmax*.  
 Et c'est tout ! La quantification 1,58 bit nécessitait (principalement) deux astuces :  
-•	Ajouter l’option 0 pour créer des représentations ternaires [-1, 0, 1]  
+•	Ajouter l’option $$0$$ pour créer des représentations ternaires [$$-1, 0, 1$$]  
 •	la quantification *absmean* pour les poids  
 
 « Le BitNet 13B b1.58 est plus efficace, en termes de latence, d'utilisation de la mémoire et de consommation d'énergie qu'un LLM 3B FP16 »   
