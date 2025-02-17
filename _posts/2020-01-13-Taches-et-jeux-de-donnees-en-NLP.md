@@ -361,9 +361,11 @@ Les *benchmarks* francophones :
   
   
 # <span style="color: #FF0000"> **Citation** <span>
-> @inproceedings{tasks_and_datasets_nlp_blog_post,  
+```
+@inproceedings{tasks_and_datasets_nlp_blog_post,  
   author    = {Loïck BOURDOIS},  
   title     = {Tâches et jeux de données fréquemment utilisés dans les publications de NLP},  
   year      = {2020},  
   url = {https://lbourdois.github.io/blog/nlp/Taches-et-jeux-de-donnees-en-NLP/}  
 }
+```
