@@ -213,15 +213,15 @@ Un bon exemple d'une forme de quantification symétrique est la quantification v
 <center>
 <figure class="image">
 <img src="https://raw.githubusercontent.com/lbourdois/blog/refs/heads/master/assets/images/Quantification/image_13.png">
-<figcaption>Notez que la plage de valeurs [$$-127 ; 127$$] représente la plage restreinte. La plage non restreinte est [$$-128 ; 127$$] et dépend de la méthode de quantification.</figcaption>
+<figcaption>Notez que la plage de valeurs [-127 ; 127] représente la plage restreinte. La plage non restreinte est [-128 ; 127] et dépend de la méthode de quantification.</figcaption>
 </figure>
 </center>
 
 Comme il s'agit d'une correspondance linéaire centrée autour de 0, la formule est simple.  
 Nous calculons d'abord un facteur d'échelle <span style="color:#D79515;">$$s$$</span> en utilisant :  
-• $$b$$, le nombre d'octets que l'on veut quantifier à (8),  
-• <span style="color:#02E1FF;">$$α$$</span>, la valeur absolue la plus élevée,  
-Ensuite, nous utilisons le <span style="color:#D79515;">$$s$$</span> pour quantifier l'entrée <span style="color:#8C00FF;">$$x$$</span> :  
+• **$$b$$**, le nombre d'octets que l'on veut quantifier à (8),  
+• <span style="color:#02E1FF;">**$$α$$**</span>, la valeur absolue la plus élevée,  
+Ensuite, nous utilisons le <span style="color:#D79515;">**$$s$$**</span> pour quantifier l'entrée <span style="color:#8C00FF;">**$$x$$**</span> :  
 
 <center>
 <figure class="image">
@@ -237,7 +237,7 @@ En renseignant les valeurs, on obtient alors ce qui suit :
 </figure>
 </center>
 
-Pour retrouver les valeurs FP32 originales, nous pouvons utiliser le facteur d'échelle (<span style="color:#D79515;">$$s$$</span>) calculé précédemment pour déquantifier les valeurs quantifiées.
+Pour retrouver les valeurs FP32 originales, nous pouvons utiliser le facteur d'échelle (<span style="color:#D79515;">**$$s$$**</span>) calculé précédemment pour déquantifier les valeurs quantifiées.
 
 <center>
 <figure class="image">
@@ -266,7 +266,7 @@ En général, plus le nombre de bits est faible, plus nous avons tendance à avo
 <br><br>
 
 ## <span style="color: #FFBF00"> **Quantification asymétrique** </span>
-La quantification asymétrique, en revanche, n'est pas symétrique autour de 0. Au lieu de cela, elle fait correspondre les valeurs minimales (<span style="color:#17AB53;">$$β$$</span>) et maximales (<span style="color:#02E1FF;">$$α$$</span>) de la plage flottante aux valeurs minimales et maximales de la plage quantifiée.  
+La quantification asymétrique, en revanche, n'est pas symétrique autour de 0. Au lieu de cela, elle fait correspondre les valeurs minimales (<span style="color:#17AB53;">**$$β$$**</span>) et maximales (<span style="color:#02E1FF;">**$$α$$**</span>) de la plage flottante aux valeurs minimales et maximales de la plage quantifiée.  
 La méthode que nous allons explorer s'appelle la *quantification du point 0*.
 
 <center>
@@ -276,14 +276,14 @@ La méthode que nous allons explorer s'appelle la *quantification du point 0*.
 </center>
 
 Vous avez remarqué que le 0 a changé de position ? C'est pourquoi on parle de quantification asymétrique. Les valeurs min/max ont des distances différentes par rapport à 0 dans la plage [$$-7,59 ; 10,8$$].  
-En raison de sa position décalée, nous devons calculer le 0 pour la plage INT8 afin d'effectuer la correspondance linéaire. Comme précédemment, nous devons également calculer un facteur d'échelle (<span style="color:#D79515;">$$s$$</span>), mais en utilisant la différence de la plage INT8 à la place [$$-128 ; 127$$].  
+En raison de sa position décalée, nous devons calculer le 0 pour la plage INT8 afin d'effectuer la correspondance linéaire. Comme précédemment, nous devons également calculer un facteur d'échelle (<span style="color:#D79515;">**$$s$$**</span>), mais en utilisant la différence de la plage INT8 à la place [$$-128 ; 127$$].  
 <center>
 <figure class="image">
 <img src="https://raw.githubusercontent.com/lbourdois/blog/refs/heads/master/assets/images/Quantification/image_20.png">
 </figure>
 </center>
 
-Remarquez que c'est un peu plus compliqué en raison de la nécessité de calculer le point du 0 (<span style="color:#1B89D8;">$$z$$</span>) pour la plage en INT8 afin de modifier les poids.  
+Remarquez que c'est un peu plus compliqué en raison de la nécessité de calculer le point du 0 (<span style="color:#1B89D8;">**$$z$$**</span>) pour la plage en INT8 afin de modifier les poids.  
 Comme précédemment, remplissons la formule :
 
 <center>
@@ -292,7 +292,7 @@ Comme précédemment, remplissons la formule :
 </figure>
 </center>
 
-Pour déquantifier de INT8 à FP32, nous devrons utiliser le facteur d'échelle (<span style="color:#D79515;">$$s$$</span>) et point 0 (<span style="color:#1B89D8;">$$z$$</span>).
+Pour déquantifier de INT8 à FP32, nous devrons utiliser le facteur d'échelle (<span style="color:#D79515;">**$$s$$**</span>) et point 0 (<span style="color:#1B89D8;">**$$z$$**</span>).
 En dehors de cela, la déquantification est simple :
 
 <center>
