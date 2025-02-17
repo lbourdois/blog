@@ -21,7 +21,7 @@ classes: wide
 <script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"> </script> 
 
 # <span style="color: #FF0000"> **Avant-propos** </span>
-Cet article est une traduction de celui de Maarten Grootendorst : [A Visual Guide to Quantization](https://substack.com/home/post/p-145531349).<br>
+Cet article est une traduction de celui de Maarten GROOTENDORST : [A Visual Guide to Quantization](https://substack.com/home/post/p-145531349).<br>
 Maarten est co-auteur du livre [*Hands-On Large Language Models*](https://www.llm-book.com/).
 <br><br><br>
 
@@ -122,9 +122,9 @@ mémoire = nombre de paramètres × (nombre de bits) / $$8$$.
 En pratique, c’est un peu plus complexe. La quantité de (V)RAM nécessaire pour l’inférence, dépend aussi de la taille de contexte et de l'architecture.  
 
 Appliquons cette formule. Supposons que nous ayons un modèle de $$70$$ milliards de paramètres. La plupart des modèles sont représentés nativement avec en FP32 (souvent appelé « pleine précision » ou *full-precision*), ce qui nécessiterait $$280$$ Go de mémoire juste pour charger le modèle. En effet :  
--	$$**64 bits** = 70Mds × 64/8 ≈ **560** GB$$   
-- $$**32 bits** = 70Mds × 32/8 ≈ **280** GB$$   
--	$$**16 bits** = 70Mds × 16/8 ≈ **140** GB$$  
+-	**64 bits** = 70Mds × 64/8 ≈ **560** GB   
+- **32 bits** = 70Mds × 32/8 ≈ **280** GB     
+-	**16 bits** = 70Mds × 16/8 ≈ **140** GB  
 
 De ce fait, c’est très intéressant de pouvoir minimiser le nombre de bits pour représenter les paramètres de votre modèle (ainsi que pendant l'entraînement !). Cependant, à mesure que la précision diminue, l'*accuracy* des modèles décroit généralement aussi.  
 Nous voulons réduire le nombre de bits représentant des valeurs tout en conservant l'*accuracy*... C'est là qu'intervient la quantification !
@@ -537,7 +537,7 @@ Le facteur d'échelle est calculé à l'aide des informations du sous-bloc, mais
 </figure>
 </center>
 
-Cette quantification par bloc utilise le facteur d'échelle (<span style="color:#D79515;">**$$s_super$$**</span>) du super-bloc pour quantifier le facteur d'échelle (<span style="color:#D79515;">**$$s_sous$$**</span>) du sous-bloc.  
+Cette quantification par bloc utilise le facteur d'échelle (<span style="color:#D79515;">**$$s_{super}$$**</span>) du super-bloc pour quantifier le facteur d'échelle (<span style="color:#D79515;">**$$s_{sous}$$**</span>) du sous-bloc.  
 Le niveau de quantification de chaque facteur d'échelle peut être différent, le super-bloc ayant généralement une précision plus élevée que le facteur d'échelle du sous-bloc.  
 Pour illustrer notre propos, examinons quelques quantifications de niveaux différents ($$2$$ bits, $$4$$ bits et $$6$$ bits) :  
 
@@ -545,8 +545,8 @@ Pour illustrer notre propos, examinons quelques quantifications de niveaux diff�
     <tr>
         <td>Nom</td>
         <td>Quantification du poids</td>
-        <td>Echelle (<font color="#D79617">s</font>) de quantification (super)</td>
-        <td>Echelle (<font color="#D79617">s</font>) de quantification (sous)</td>
+        <td>Echelle de quantification (<font color="#D79617">$$s_{super}$$</font>)</td>
+        <td>Echelle de quantification (<font color="#D79617">$$s_{sous}$$</font>)</td>
         <td>Bits par poids (<font color="#B352FF">w</font>)</td>
         <td># Sous blocs</td>
         <td>Poids par bloc</td>
@@ -581,7 +581,7 @@ Pour illustrer notre propos, examinons quelques quantifications de niveaux diff�
 </table>
 
 <br>
-Note : Selon le type de quantification, une valeur minimale supplémentaire (m) est nécessaire pour ajuster le point 0.  
+Note : Selon le type de quantification, une valeur minimale supplémentaire ($$m$$) est nécessaire pour ajuster le point $$0$$.  
 
 Consultez la [*pull request*](https://github.com/ggerganov/llama.cpp/pull/1684) pour obtenir une vue d'ensemble de tous les niveaux de quantification. Consultez également [celle-ci](https://github.com/ggerganov/llama.cpp/pull/4861) pour plus d'informations sur la quantification à l'aide de matrices d'importance.
 <br><br><br>
@@ -628,7 +628,7 @@ Ainsi, bien que PTQ ait une perte plus faible en haute précision (par exemple, 
 
 ## <span style="color: #FFBF00"> **L'ère des LLM 1 bit : BitNet** </span>
 Passer à $$4$$ bits, comme nous l'avons vu précédemment, est déjà grosse réduction, mais que se passerait-il si nous réduisions encore plus ?  
-C'est là qu'intervient [BitNet](https://arxiv.org/abs/2310.11453) de WANG, MA et al. (2023), qui représente les poids d'un modèle avec 1 bit, en utilisant soit $$-1$$, soit $$1$$ pour un poids donné.  
+C'est là qu'intervient [BitNet](https://arxiv.org/abs/2310.11453) de WANG, MA et al. (2023), qui représente les poids d'un modèle avec $$1$$ bit, en utilisant soit $$-1$$, soit $$1$$ pour un poids donné.  
 Pour ce faire, le processus de quantification directement injecté dans l'architecture du [Transformer](https://lbourdois.github.io/blog/nlp/Transformer/).  
 Pour rappel, l'architecture Transformer est utilisée comme base de la plupart des LLM et est composée de calculs qui impliquent des couches linéaires :
 
@@ -661,9 +661,11 @@ Une couche BitLineary, comme l’approche QAT, effectue une forme de « fausse �
 <center>
 <figure class="image">
 <img src="https://raw.githubusercontent.com/lbourdois/blog/refs/heads/master/assets/images/Quantification/image_50.png">
+<figcaption>Dans le papier les auteurs utilisent γ au lieu de α mais puisque nous avons utilisé α tout au long de nos exemples, nous poursuivons avec cette notation. De même, β n'est pas identique à ce que nous avons utilisée pour la quantification du point 0 mais la valeur absolue moyenne. </figcaption>
 </figure>
-<figcaption>Note : dans le papier les auteurs utilisent γ au lieu de α mais puisque nous avons utilisé α tout au long de nos exemples, nous poursuivons avec cette notation. De même, β n'est pas identique à ce que nous avons utilisée pour la quantification du point 0 mais la valeur absolue moyenne. </figcaption>
 </center>
+
+<br>
 
 Passons en revue le BitLinear étape par étape.
 <br>
@@ -729,7 +731,7 @@ BitNet 1.58b, en revanche, parvient à se passer de la multiplication puisque le
 •	$$1$$ : Je veux ajouter cette valeur  
 •	$$0$$ : Je ne veux pas cette valeur  
 •	$$-1$$ : Je veux soustraire cette valeur  
-Par conséquent, vous n'avez besoin d'effectuer une addition que si vos poids sont quantifiés à $$1,58$$ bit :
+Par conséquent, vous n'avez besoin d'effectuer une addition que si vos poids sont quantifiés à 1,58 bit :
 
 <center>
 <figure class="image">
@@ -756,26 +758,28 @@ Et c'est tout ! La quantification 1,58 bit nécessitait (principalement) deux as
 •	Ajouter l’option $$0$$ pour créer des représentations ternaires [$$-1,0,1$$]  
 •	la quantification *absmean* pour les poids  
 
-> « Le BitNet 13B 1.58b est plus efficace, en termes de latence, d'utilisation de la mémoire et de consommation d'énergie qu'un LLM 3B FP16 »   
+> « Le BitNet 13B 1.58b est plus efficace, en termes de latence, d'utilisation de la mémoire et de consommation d'énergie qu'un LLM 3B FP16 »
+
 En conséquence, nous obtenons des modèles légers car nous n'avons que 1,58 bits ce qui est efficace en termes de calcul !
 <br><br><br>
 
 # <span style="color: #FF0000"> **Conclusion** </span>
 Ainsi se termine notre voyage dans la quantification ! J'espère que cet article vous donnera une meilleure compréhension du potentiel de la quantification, de GPTQ, GGUF et du BitNet. Qui sait à quel point les modèles seront petits à l'avenir ?  
+
 Si vous voulez aller plus loin, je vous suggère les ressources suivantes :  
-• Les articles de [blog d'Hugging Face](hf.co/blog) et notamment :
-    •	Cet [article](https://hf.co/blog/hf-bitsandbytes-integration) sur la méthode de quantification [LLM.int8()](https://arxiv.org/abs/2208.07339).  
-    •	Cet [article](https://hf.co/blog/embedding-quantization) sur la quantification des *embeddings*.  
-    •	Cet [article](https://huggingface.co/blog/1_58_llm_extreme_quantization) consacré au BitNet. 
-• Hugging Face a également un [cours sur les fondamentaux de la quantification](https://www.deeplearning.ai/short-courses/quantization-fundamentals-with-hugging-face/) sur DeepLearning.AI  
+• Les articles de [blog d'Hugging Face](hf.co/blog) et notamment :  
+&nbsp;&nbsp;&nbsp;•	Cet [article](https://hf.co/blog/hf-bitsandbytes-integration) sur la méthode de quantification [LLM.int8()](https://arxiv.org/abs/2208.07339).   
+&nbsp;&nbsp;&nbsp;•	Cet [article](https://hf.co/blog/embedding-quantization) sur la quantification des *embeddings*.  
+&nbsp;&nbsp;&nbsp;•	Cet [article](https://huggingface.co/blog/1_58_llm_extreme_quantization) consacré au BitNet.  
+• Hugging Face a également un [cours sur les fondamentaux de la quantification](https://www.deeplearning.ai/short-courses/quantization-fundamentals-with-hugging-face/) sur DeepLearning.AI.  
 •	Un [article de blog d’Eleuther.ai](https://blog.eleuther.ai/transformer-math/) décrivant les mathématiques de base liées au calcul et à l'utilisation de la mémoire pour les Transformers.  
 •	Cette [application](https://hf.co/spaces/NyxKrage/LLM-Model-VRAM-Calculator) et [celle-ci](https://vram.asmirnov.xyz/) sont deux bonnes ressources pour calculer la (V)RAM dont vous avez besoin pour un modèle donné.  
 •	Le papier sur le [QLoRA](https://arxiv.org/abs/2305.14314) pour de la quantification pour les méthodes PEFT.  
 •	Une [vidéo YouTube](https://www.youtube.com/watch?v=mii-xFaPCrA) sur GPTQ expliquée de manière incroyablement intuitive. 
 
-Nous vous invitions également à jeter un œil à des librairies pour dédiées au sujet comme :
-•	[bitsandbytes](https://github.com/bitsandbytes-foundation/bitsandbytes) (vous pouvez consulter [cet article](https://huggingface.co/blog/hf-bitsandbytes-integration) et [cet article](https://huggingface.co/blog/4bit-transformers-bitsandbytes))
-•	[AutoGPTQ](https://github.com/AutoGPTQ/AutoGPTQ) (vous pouvez consulter également [cet article](https://huggingface.co/blog/gptq-integration))
+Nous vous invitions également à jeter un œil à des librairies pour dédiées au sujet comme :  
+•	[bitsandbytes](https://github.com/bitsandbytes-foundation/bitsandbytes) (vous pouvez consulter [cet article](https://huggingface.co/blog/hf-bitsandbytes-integration) et [cet article](https://huggingface.co/blog/4bit-transformers-bitsandbytes))  
+•	[AutoGPTQ](https://github.com/AutoGPTQ/AutoGPTQ) (vous pouvez consulter également [cet article](https://huggingface.co/blog/gptq-integration))  
 •	[transfomers](https://github.com/huggingface/transformers) intègre également sous le capot ces deux librairies (vous pouvez lire [cet article de blog](https://huggingface.co/blog/overview-quantization-transformers) sur le sujet, et surtout le [documentation officielle](https://huggingface.co/docs/transformers/v4.49.0/quantization/overview))
 
 
@@ -783,7 +787,7 @@ Nous vous invitions également à jeter un œil à des librairies pour dédiées
 # <span style="color: #FF0000"> **Références** </span>
 - [A Visual Guide to Quantization](https://newsletter.maartengrootendorst.com/p/a-visual-guide-to-quantization) de Maarten GROOTENDORST (2024)
 - [The Llama 3 Herd of Models](https://arxiv.org/abs/2407.21783) de Meta (2024)
-- [GPTQ: Accurate Post-Training Quantization for Generative Pre-trained Transformers] d’Elias FRANTAR, Saleh ASHKBOOS, Torsten HOEFLER et Dan ALISTARH (2022)
+- [GPTQ: Accurate Post-Training Quantization for Generative Pre-trained Transformers](https://arxiv.org/abs/2210.17323) d’Elias FRANTAR, Saleh ASHKBOOS, Torsten HOEFLER et Dan ALISTARH (2022)
 - [GGUF](https://github.com/ggml-org/ggml/blob/master/docs/gguf.md) de Georgi GERGANOV (2023)
 - [BitNet: Scaling 1-bit Transformers for Large Language Models](https://arxiv.org/abs/2310.11453) de Hongyu WANG, Shuming MA, Li DONG, Shaohan HUANG, Huaijie WANG, Lingxiao MA, Fan YANG, Ruiping WANG, U, Furu WEI (2023)
 - [The Era of 1-bit LLMs: All Large Language Models are in 1.58 Bits](https://arxiv.org/abs/2402.17764) de Shuming MA, Hongyu WANG, Lingxiao Ma, Lei Wang, Wenhui Wang, Shaohan Huang, Li Dong, Ruiping Wang, Jilong XUE, Furu WEI (2024)
