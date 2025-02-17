@@ -66,9 +66,11 @@ Pensez également à vous tenir régulièrement informés sur les dernières nou
 
 
 # <span style="color: #FF0000"> **Citation** <span>
-> @inproceedings{architectures_transformers_blog_post,  
+```
+@inproceedings{architectures_transformers_blog_post,  
   author    = {Loïck BOURDOIS},  
   title     = {Les architectures issues du Transformer},  
   year      = {2020},  
   url = {https://lbourdois.github.io/blog/nlp/Les-architectures-transformers/}  
 }
+```
