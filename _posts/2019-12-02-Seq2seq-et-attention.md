@@ -241,7 +241,7 @@ Il donne des exemples d’application tel que la traduction ou encore la génér
 ```
 @inproceedings{seq_to_seq_blog_post,  
   author    = {Loïck BOURDOIS},  
-  title     = {Les architectures issues du Transformer},  
+  title     = {Le seq2seq et le processus d'attention},  
   year      = {2019},  
   url = {https://lbourdois.github.io/blog/nlp/Seq2seq-et-attention/}  
 }
