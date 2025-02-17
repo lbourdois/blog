@@ -86,22 +86,22 @@ Plus nous avons de bits disponibles, plus la plage de valeurs qui peut être rep
 <center>
 <table>
     <tr>
-        <td>**Original**</td>
+        <td><b>Original</b></td>
+        <td><b>75505.0</b></td>
+        <td><b>1.8e-42</b></td>
+    </tr>
+    <tr>
+        <td>64-bits</td>
         <td>75505.0</td>
         <td>1.8e-42</td>
     </tr>
     <tr>
-        <td>**64-bits**</td>
-        <td>75505.0</td>
-        <td>1.8e-42</td>
-    </tr>
-    <tr>
-        <td>**32-bits**</td>
+        <td>32-bits</td>
         <td>75505.0</td>
         <td>1.80066e-42</td>
     </tr>
     <tr>
-        <td>**16-bits**</td>
+        <td>16-bits</td>
         <td>inf</td>
         <td>0.0</td>
     </tr>
@@ -109,7 +109,7 @@ Plus nous avons de bits disponibles, plus la plage de valeurs qui peut être rep
 </center>
 
 <br>
-L'intervalle de nombres représentables qu'une représentation donnée peut prendre est appelé la **plage dynamique** (*dynamic range* en anglais) alors que la distance entre deux valeurs voisines est appelée la **précision**.
+L'intervalle de nombres qu'une représentation donnée peut prendre est appelé la **plage dynamique** (*dynamic range* en anglais) alors que la distance entre deux valeurs voisines est appelée la **précision**.
 
 <center>
 <figure class="image">
@@ -117,9 +117,11 @@ L'intervalle de nombres représentables qu'une représentation donnée peut pren
 </figure>
 </center>
 
-Une caractéristique astucieuse de ces bits est que nous pouvons calculer la quantité de mémoire dont votre appareil a besoin pour stocker une valeur donnée. Comme il y a 8 bits dans un octet, nous pouvons créer une formule basique pour la plupart des représentations en virgule flottante : mémoire = nombre de paramètres × (nombre de bits) / 8.  
-En pratique, c’est un peu plus complexe. La quantité de (V)RAM nécessaire pour l’inférence, dépend aussi de la taille du contexte et de l'architecture.    
-Appliquons cette formule. Supposons que nous ayons un modèle de 70 milliards de paramètres. La plupart des modèles sont représentés nativement avec en float 32 bits (souvent appelé pleine précision ou *full-precision*), ce qui nécessiterait 280 Go de mémoire juste pour charger le modèle. En effet :  
+Une caractéristique astucieuse de ces bits est que nous pouvons calculer la quantité de mémoire dont votre machine a besoin pour stocker une valeur donnée. Comme il y a 8 bits dans un octet, nous pouvons créer une formule basique pour la plupart des représentations en virgule flottante :  
+mémoire = nombre de paramètres × (nombre de bits) / 8.  
+En pratique, c’est un peu plus complexe. La quantité de (V)RAM nécessaire pour l’inférence, dépend aussi de la taille de contexte et de l'architecture.  
+
+Appliquons cette formule. Supposons que nous ayons un modèle de 70 milliards de paramètres. La plupart des modèles sont représentés nativement avec en FP32 (souvent appelé « pleine précision » ou *full-precision*), ce qui nécessiterait 280 Go de mémoire juste pour charger le modèle. En effet :  
 -	**64 bits** = 70Mds × 64/8 ≈ **560** GB  
 -	**32 bits** = 70Mds × 32/8 ≈ **280** GB  
 -	**16 bits** = 70Mds × 16/8 ≈ **140** GB  
@@ -147,8 +149,7 @@ Pour illustrer cet effet, nous pouvons prendre n'importe quelle image et n'utili
 </figure>
 </center>
 
-
-Remarquez que la partie zoomée semble plus « granuleuse » que l'originale puisque nous utilisons de couleurs pour la représenter.  
+Remarquez que la partie zoomée semble plus « granuleuse » que l'originale puisque nous utilisons moins de couleurs pour la représenter.  
 L'objectif principal de la quantification est de réduire le nombre de bits (couleurs) nécessaires pour représenter les paramètres d'origine tout en préservant au mieux la précision des paramètres d'origine. 
 <br><br>
 
@@ -197,7 +198,7 @@ Explorons ces méthodes pour quantifier de FP32 à INT8.
 <br><br>
 
 ## <span style="color: #FFBF00"> **Quantification symétrique** </span>
-Dans la quantification symétrique, la plage des valeurs en virgule flottante d'origine est mise en correspondance avec une plage symétrique autour de 0 dans l'espace quantifié. Dans les exemples précédents, remarquez que les plages avant et après la quantification restent centrées autour de 0.  
+Dans la quantification symétrique, la plage de valeurs d'origine est mise en correspondance avec une plage symétrique autour de 0 dans l'espace quantifié. Dans les exemples précédents, remarquez que les plages avant et après la quantification restent centrées autour de 0.  
 Cela signifie que la valeur 0 dans l'espace à virgule flottante est aussi 0 dans l'espace quantifié.
 
 <center>
@@ -207,20 +208,20 @@ Cela signifie que la valeur 0 dans l'espace à virgule flottante est aussi 0 dan
 </center>
 
 Un bon exemple d'une forme de quantification symétrique est la quantification via maximum absolu (absmax).  
-Étant donné une liste de valeurs, nous prenons la valeur absolue la plus élevée (<span style="color:#02E1FF;">α</span>) comme plage pour effectuer les correspondances linéaires.
+Étant donné une liste de valeurs, nous prenons la valeur absolue la plus élevée (<span style="color:#02E1FF;">**α**</span>) comme plage pour effectuer les correspondances linéaires.
 
 <center>
 <figure class="image">
 <img src="https://raw.githubusercontent.com/lbourdois/blog/refs/heads/master/assets/images/Quantification/image_13.png">
+<figcaption>Notez que la plage de valeurs [$$-127 ; 127$$] représente la plage restreinte. La plage non restreinte est [$$-128 ; 127$$] et dépend de la méthode de quantification.</figcaption>
 </figure>
 </center>
 
-Notez que la plage de valeurs [$$-127 ; 127$$] représente la plage restreinte. La plage non restreinte est [$$-128 ; 127$$] et dépend de la méthode de quantification.  
 Comme il s'agit d'une correspondance linéaire centrée autour de 0, la formule est simple.  
-Nous calculons d'abord un ou plusieurs facteurs d'échelle en utilisant :  
+Nous calculons d'abord un facteur d'échelle <span style="color:#D79515;">$$s$$</span> en utilisant :  
 • $$b$$, le nombre d'octets que l'on veut quantifier à (8),  
-• <span style="color:#02E1FF;">α</span>, la valeur absolue la plus élevée,  
-Ensuite, nous utilisons le <span style="color:#D79515;">$$s$$</span> pour quantifier l'entrée <span style="color:#8C00FF;">$$s$$</span> :  
+• <span style="color:#02E1FF;">$$α$$</span>, la valeur absolue la plus élevée,  
+Ensuite, nous utilisons le <span style="color:#D79515;">$$s$$</span> pour quantifier l'entrée <span style="color:#8C00FF;">$$x$$</span> :  
 
 <center>
 <figure class="image">
@@ -236,7 +237,7 @@ En renseignant les valeurs, on obtient alors ce qui suit :
 </figure>
 </center>
 
-Pour retrouver les valeurs FP32 originales, nous pouvons utiliser le facteur d'échelle (s) calculé précédemment pour déquantifier les valeurs quantifiées.
+Pour retrouver les valeurs FP32 originales, nous pouvons utiliser le facteur d'échelle (<span style="color:#D79515;">$$s$$</span>) calculé précédemment pour déquantifier les valeurs quantifiées.
 
 <center>
 <figure class="image">
@@ -252,7 +253,7 @@ L'application du processus de quantification puis de déquantification pour réc
 </figure>
 </center>
 
-Vous pouvez voir que certaines valeurs, telles que 3,08 et 3,02, sont assignées à l'INT8, à savoir 36. Lorsque vous déquantifiez les valeurs pour revenir à FP32, elles perdent de la précision et ne sont plus distinguables.  
+Vous pouvez voir que certaines valeurs, telles que 3,08 et 3,02, sont assignées à l'INT8, c'est-à-dire 36 dans le graphique. Lorsque vous déquantifiez les valeurs pour revenir à FP32, elles perdent de la précision et ne sont plus distinguables.  
 C'est ce que l'on appelle souvent l'*erreur de quantification*, que l'on peut calculer en déterminant la différence entre la valeur originale et la valeur déquantifiée.
 
 <center>
@@ -265,8 +266,8 @@ En général, plus le nombre de bits est faible, plus nous avons tendance à avo
 <br><br>
 
 ## <span style="color: #FFBF00"> **Quantification asymétrique** </span>
-La quantification asymétrique, en revanche, n'est pas symétrique autour de 0. Au lieu de cela, elle fait correspondre les valeurs minimales (β) et maximales (α) de la plage flottante aux valeurs minimales et maximales de la plage quantifiée.  
-La méthode que nous allons explorer s'appelle la quantification du point 0.
+La quantification asymétrique, en revanche, n'est pas symétrique autour de 0. Au lieu de cela, elle fait correspondre les valeurs minimales (<span style="color:#17AB53;">$$β$$</span>) et maximales (<span style="color:#02E1FF;">$$α$$</span>) de la plage flottante aux valeurs minimales et maximales de la plage quantifiée.  
+La méthode que nous allons explorer s'appelle la *quantification du point 0*.
 
 <center>
 <figure class="image">
@@ -274,16 +275,15 @@ La méthode que nous allons explorer s'appelle la quantification du point 0.
 </figure>
 </center>
 
-Vous avez remarqué que le 0 a changé de position ? C'est pourquoi on parle de quantification asymétrique. Les valeurs min/max ont des distances différentes par rapport à 0 dans la plage [-7,59 ; 10,8].  
-En raison de sa position décalée, nous devons calculer le 0 pour la plage INT8 afin d'effectuer la correspondance linéaire. Comme précédemment, nous devons également calculer un facteur d'échelle (s), mais en utilisant la différence de la plage INT8 à la place [-128, 127].  
-
+Vous avez remarqué que le 0 a changé de position ? C'est pourquoi on parle de quantification asymétrique. Les valeurs min/max ont des distances différentes par rapport à 0 dans la plage [$$-7,59 ; 10,8$$].  
+En raison de sa position décalée, nous devons calculer le 0 pour la plage INT8 afin d'effectuer la correspondance linéaire. Comme précédemment, nous devons également calculer un facteur d'échelle (<span style="color:#D79515;">$$s$$</span>), mais en utilisant la différence de la plage INT8 à la place [$$-128 ; 127$$].  
 <center>
 <figure class="image">
 <img src="https://raw.githubusercontent.com/lbourdois/blog/refs/heads/master/assets/images/Quantification/image_20.png">
 </figure>
 </center>
 
-Remarquez que c'est un peu plus compliqué en raison de la nécessité de calculer le point du 0 (z) pour la plage en INT8 afin de modifier les poids.  
+Remarquez que c'est un peu plus compliqué en raison de la nécessité de calculer le point du 0 (<span style="color:#1B89D8;">$$z$$</span>) pour la plage en INT8 afin de modifier les poids.  
 Comme précédemment, remplissons la formule :
 
 <center>
@@ -292,7 +292,7 @@ Comme précédemment, remplissons la formule :
 </figure>
 </center>
 
-Pour déquantifier de INT8 à FP32, nous devrons utiliser le facteur d'échelle (s) et point 0 (z).
+Pour déquantifier de INT8 à FP32, nous devrons utiliser le facteur d'échelle (<span style="color:#D79515;">$$s$$</span>) et point 0 (<span style="color:#1B89D8;">$$z$$</span>).
 En dehors de cela, la déquantification est simple :
 
 <center>
