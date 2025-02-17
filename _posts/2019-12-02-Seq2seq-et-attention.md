@@ -238,9 +238,11 @@ Il donne des exemples d’application tel que la traduction ou encore la génér
 
 
 # <span style="color: #FF0000"> **Citation** <span>
-> @inproceedings{seq_to_seq_blog_post,  
+```
+@inproceedings{seq_to_seq_blog_post,  
   author    = {Loïck BOURDOIS},  
   title     = {Les architectures issues du Transformer},  
   year      = {2019},  
   url = {https://lbourdois.github.io/blog/nlp/Seq2seq-et-attention/}  
 }
+```
