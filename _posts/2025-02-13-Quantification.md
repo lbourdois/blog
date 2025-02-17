@@ -311,7 +311,7 @@ Lorsque nous mettons la quantification symétrique et asymétrique côte à côt
 <br><br>
 
 ## <span style="color: #FFBF00"> **Elagage de la plage** </span>
-Dans nos exemples précédents, nous avons exploré comment la plage de valeurs d'un vecteur donné pouvait être associée à une représentation de bits inférieurs. Bien que cela permette de faire correspondre toute la gamme des valeurs vectorielles, cela présente un inconvénient majeur, à savoir les valeurs aberrantes.  
+Dans nos exemples précédents, nous avons exploré comment la plage de valeurs d'un vecteur donné pouvait être associée à une représentation avec moins de bits. Bien que cela permette de faire correspondre toute la gamme des valeurs vectorielles, cela présente un inconvénient majeur, à savoir les valeurs aberrantes.  
 Imaginez que vous ayez un vecteur avec les valeurs suivantes :
 
 <center>
@@ -320,17 +320,17 @@ Imaginez que vous ayez un vecteur avec les valeurs suivantes :
 </figure>
 </center>
 
-Notez qu'une valeur est beaucoup plus grande que toutes les autres et pourrait être considérée comme une valeur aberrante. Si nous devions représenter l’entièreté de la plage de ce vecteur, toutes les petites valeurs seraient représentées sur le même bit inférieur et perdraient leur facteur de différenciation :  
+On observe qu'une valeur est beaucoup plus grande que toutes les autres et pourrait être considérée comme une valeur aberrante. Si nous devions représenter l’entièreté de la plage de ce vecteur, toutes les petites valeurs seraient représentées sur le même bit et perdraient leur facteur de différenciation :  
 
 <center>
 <figure class="image">
 <img src="https://raw.githubusercontent.com/lbourdois/blog/refs/heads/master/assets/images/Quantification/image_25.png">
+<figcaption>Il s'agit de la méthode absmax que nous avons utilisée précédemment. Notez que le même comportement se produit avec la quantification asymétrique si nous n'appliquons pas d’élagage.</figcaption>
 </figure>
 </center>
 
-Il s'agit de la méthode absmax que nous avons utilisée précédemment. Notez que le même comportement se produit avec la quantification asymétrique si nous n'appliquons pas d’élagage.  
-Au lieu de cela, nous pouvons choisir de couper certaines valeurs. L’élagage implique la définition d'une plage dynamique différente des valeurs d'origine, de sorte que toutes les valeurs aberrantes obtiennent la même valeur.  
-Dans l'exemple ci-dessous, si nous devions définir manuellement la plage dynamique à [-5, 5], toutes les valeurs en dehors seront soit associées à -127, soit à 127, quelle que soit leur valeur :
+Au lieu de cela, nous pouvons choisir d'élaguer certaines valeurs. L’élagage implique la définition d'une plage dynamique différente des valeurs d'origine, de sorte que toutes les valeurs aberrantes obtiennent la même valeur.  
+Dans l'exemple ci-dessous, si nous devions définir manuellement la plage dynamique à [$$- 5; 5$$], toutes les valeurs en dehors seront soit associées à $$-127$$, soit à $$127$$, quelle que soit leur valeur :
 
 <center>
 <figure class="image">
@@ -342,12 +342,12 @@ L'avantage majeur est que l'erreur de quantification des valeurs non aberrantes 
 <br><br>
 
 ## <span style="color: #FFBF00"> **Étalonnage** </span>
-Dans l'exemple précédant,  nous avons montré une méthode naïve consistant à choisir une plage arbitraire de [-5, 5]. Le processus de sélection de cette plage est connu sous le nom d'étalonnage, où le but est de trouver une plage qui comprend les plus de valeurs possibles tout en minimisant l'erreur de quantification.  
+Dans l'exemple précédant,  nous avons montré une méthode naïve consistant à choisir une plage arbitraire de [$$- 5; 5$$]. Le processus de sélection de cette plage est connu sous le nom d'étalonnage, où le but est de trouver une plage qui comprend les plus de valeurs possibles tout en minimisant l'erreur de quantification.  
 La réalisation de cette étape n'est pas la même pour tous les types de paramètres. 
 <br>
 
 ### <span style="color: #51C353"> **Poids (et biais)** </span>
-Nous pouvons considérer les poids et les biais d'un LLM comme des valeurs statiques puisqu'ils sont connus avant l'exécution du modèle. Par exemple, le [fichier de ~20GB de Llama 3](https://huggingface.co/meta-llama/Meta-Llama-3-8B/tree/main) est composé principalement de ces derniers.
+Nous pouvons considérer les poids et les biais d'un LLM comme des valeurs statiques puisqu'ils sont connus avant l'exécution du modèle. Par exemple, le [fichier de ~20GB](https://huggingface.co/meta-llama/Meta-Llama-3-8B/tree/main) de [Llama 3](https://arxiv.org/abs/2407.21783) de Meta (2024) est composé principalement de ces derniers.
 
 <center>
 <figure class="image">
@@ -398,7 +398,7 @@ Contrairement aux poids, les activations varient avec chaque donnée d'entrée i
 # <span style="color: #FF0000"> **Partie 3 : Quantification post-entraînement** </span>
 L'une des techniques de quantification les plus populaires est la quantification post-entraînement (PTQ). Il s'agit de quantifier les paramètres d'un modèle (poids et activations) après l'entraînement du modèle.  
 La quantification des poids est effectuée à l'aide d'une quantification symétrique ou asymétrique.  
-La quantification des activations, cependant, nécessite l'inférence du modèle pour obtenir leur distribution potentielle puisque nous ne connaissons pas leur portée.
+La quantification des activations, quant à elle, nécessite l'inférence du modèle pour obtenir leur distribution potentielle puisque nous ne connaissons pas leur plage.  
 Il existe deux formes de quantification des activations :  
 •	Quantification dynamique   
 •	Quantification statique 
@@ -413,7 +413,7 @@ Une fois que les données passent par une couche cachée, ses activations sont c
 </figure>
 </center>
 
-Cette distribution des activations est ensuite utilisée pour calculer le point 0 (z) et le facteur d'échelle (s) valeurs nécessaires pour quantifier la sortie :
+Cette distribution des activations est ensuite utilisée pour calculer le point 0 (<span style="color:#1B89D8;">**$$z$$**</span>) et le facteur d'échelle (<span style="color:#D79515;">**$$s$$**</span>) valeurs nécessaires pour quantifier la sortie :
 
 <center>
 <figure class="image">
@@ -421,11 +421,11 @@ Cette distribution des activations est ensuite utilisée pour calculer le point 
 </figure>
 </center>
 
-Le processus est répété chaque fois que les données passent par une nouvelle couche. Par conséquent, chaque couche a ses propres valeurs z et s et donc des schémas de quantification différents.
+Le processus est répété chaque fois que les données passent par une nouvelle couche. Par conséquent, chaque couche a ses propres valeurs <span style="color:#D79515;">**$$s$$**</span> et <span style="color:#1B89D8;">**$$z$$**</span> et donc des schémas de quantification différents.
 <br><br>
 
 ## <span style="color: #FFBF00"> **Quantification statique** </span>
-Contrairement à la quantification dynamique, la quantification statique ne calcule pas le point 0 (z) et le facteur d'échelle (s) pendant l'inférence, mais avant.  
+Contrairement à la quantification dynamique, la quantification statique ne calcule pas le point 0 (<span style="color:#1B89D8;">**$$z$$**</span>) et le facteur d'échelle (<span style="color:#D79515;">**$$s$$**</span>) pendant l'inférence, mais avant.  
 Pour trouver ces valeurs, un jeu de données d'étalonnage est utilisé et donné au modèle pour recueillir ces distributions potentielles.
 
 <center>
@@ -435,9 +435,9 @@ Pour trouver ces valeurs, un jeu de données d'étalonnage est utilisé et donn�
 </center>
 
 Une fois ces valeurs collectées, nous pouvons calculer les valeurs s et z nécessaires pour effectuer la quantification pendant l'inférence.  
-Lors de l'inférence, les valeurs s et z ne sont pas recalculées, mais sont utilisées globalement pour toutes les activations afin de les quantifier.  
-En général, la quantification dynamique est un peu plus précise car elle ne tente de calculer les valeurs s et z que pour chaque couche cachée. Cependant, elle peut entraîner une augmentation du temps de calcul car ces valeurs doivent être calculées pour chaque couche cachée.  
-Au contraire, la quantification statique est moins précise mais plus rapide car elle connaît déjà les valeurs s et z utilisées pour la quantification.
+Lors de l'inférence, les valeurs <span style="color:#D79515;">**$$s$$**</span> et <span style="color:#1B89D8;">**$$z$$**</span> ne sont pas recalculées, mais sont utilisées globalement pour toutes les activations afin de les quantifier.  
+En général, la quantification dynamique est un peu plus précise car elle ne tente de calculer les valeurs <span style="color:#D79515;">**$$s$$**</span> et <span style="color:#1B89D8;">**$$z$$**</span> que pour chaque couche cachée. Nénamoins, elle peut entraîner une augmentation du temps de calcul car ces valeurs doivent être calculées pour chaque couche cachée.  
+Au contraire, la quantification statique est moins précise mais plus rapide car elle connaît déjà les valeurs <span style="color:#D79515;">**$$s$$**</span> et <span style="color:#1B89D8;">**$$z$$**</span> utilisées pour la quantification.
 <br><br>
 
 ## <span style="color: #FFBF00"> **Le royaume de la quantification 4 bits** </span>
