@@ -597,9 +597,11 @@ Pour les autres architectures, vous pouvez consulter une liste non exhaustive da
 
 
 # <span style="color: #FF0000"> **Citation** <span>
-> @inproceedings{transformer_blog_post,  
+```
+@inproceedings{transformer_blog_post,  
   author    = {Loïck BOURDOIS},  
   title     = {Illustration du Transformer},  
   year      = {2019},  
   url = {https://lbourdois.github.io/blog/nlp/Transformer/}  
 }
+```
