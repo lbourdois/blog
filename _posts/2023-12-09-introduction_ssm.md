@@ -419,9 +419,11 @@ Concernant la matrice $$HiPPO$$, vous pouvez consulter les ressources suivantes 
 
 
 # <span style="color: #FF0000"> **Citation** <span>
-> @inproceedings{ssm_introduction_blog_post,  
+```
+@inproceedings{ssm_introduction_blog_post,  
   author    = {Loïck BOURDOIS},  
   title     = {Introduction aux State Space Models (SSM) et au S4},  
   year      = {2023},  
   url = {https://lbourdois.github.io/blog/ssm/introduction_ssm}  
 }
+```
