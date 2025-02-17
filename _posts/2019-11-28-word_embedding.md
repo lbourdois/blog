@@ -605,9 +605,11 @@ Le nombre d’échantillons négatifs est un autre facteur du processus d’entr
 
 
 # <span style="color: #FF0000"> **Citation** <span>
-> @inproceedings{word_embeddings_blog_post,  
+```
+@inproceedings{word_embeddings_blog_post,  
   author    = {Loïck BOURDOIS},  
   title     = {Illustration du Word Embedding et du Word2vec},  
   year      = {2019},  
   url = {https://lbourdois.github.io/blog/nlp/word_embedding/}  
 }
+```
