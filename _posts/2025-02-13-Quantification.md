@@ -27,7 +27,8 @@ Maarten est co-auteur du livre [*Hands-On Large Language Models*](https://www.ll
 
 # <span style="color: #FF0000"> **Introduction** </span>
 Comme leur nom l'indique, les grands modèles de langage (LLM pour *Large Language Models*) sont souvent trop volumineux pour être exécutés sur du matériel grand public. Ces modèles peuvent dépasser des milliards de paramètres et ont généralement besoin de GPU avec de grandes quantités de VRAM pour l'inférence.  
-À ce titre, de plus en plus de recherches ont été axées sur la réduction de la taille de ces modèles grâce à une amélioration de l‘entraînement,  les adapteurs, etc. L'une des principales techniques dans ce domaine s'appelle la quantification.
+À ce titre, de plus en plus de recherches ont été axées sur la réduction de la taille de ces modèles grâce à une amélioration de l‘entraînement,  les adapteurs, etc.  
+L'une des principales techniques dans ce domaine s'appelle la quantification.
 
 <center>
 <figure class="image">
@@ -82,11 +83,30 @@ Plus nous utilisons de bits pour représenter une valeur, plus elle est généra
 ## <span style="color: #FFBF00"> **Contraintes de mémoire** </span>
 Plus nous avons de bits disponibles, plus la plage de valeurs qui peut être représentée est grande.
 
-| **Original** | 75505.0 | 1.8e-42 |
-| --- | --- | --- |
-| **64-bits** | 75505.0 | 1.8e-42 |
-| **32-bits** | 75505.0 | 1.80066e-42 |
-| **16-bits** | inf | 0.0 |
+<center>
+<table>
+    <tr>
+        <td>**Original**</td>
+        <td>75505.0</td>
+        <td>1.8e-42</td>
+    </tr>
+    <tr>
+        <td>**64-bits**</td>
+        <td>75505.0</td>
+        <td>1.8e-42</td>
+    </tr>
+    <tr>
+        <td>**32-bits**</td>
+        <td>75505.0</td>
+        <td>1.80066e-42</td>
+    </tr>
+    <tr>
+        <td>**16-bits**</td>
+        <td>inf</td>
+        <td>0.0</td>
+    </tr>
+</table>
+</center>
 
 <br>
 L'intervalle de nombres représentables qu'une représentation donnée peut prendre est appelé la **plage dynamique** (*dynamic range* en anglais) alors que la distance entre deux valeurs voisines est appelée la **précision**.
@@ -97,15 +117,15 @@ L'intervalle de nombres représentables qu'une représentation donnée peut pren
 </figure>
 </center>
 
-Une caractéristique astucieuse de ces bits est que nous pouvons calculer la quantité de mémoire dont votre appareil a besoin pour stocker une valeur donnée. Comme il y a 8 bits dans un octet de mémoire, nous pouvons créer une formule basique pour la plupart des représentations en virgule flottante : mémoire = nombre de paramètres × (nombre de bits) / 8.  
+Une caractéristique astucieuse de ces bits est que nous pouvons calculer la quantité de mémoire dont votre appareil a besoin pour stocker une valeur donnée. Comme il y a 8 bits dans un octet, nous pouvons créer une formule basique pour la plupart des représentations en virgule flottante : mémoire = nombre de paramètres × (nombre de bits) / 8.  
 En pratique, c’est un peu plus complexe. La quantité de (V)RAM nécessaire pour l’inférence, dépend aussi de la taille du contexte et de l'architecture.    
 Appliquons cette formule. Supposons que nous ayons un modèle de 70 milliards de paramètres. La plupart des modèles sont représentés nativement avec en float 32 bits (souvent appelé pleine précision ou *full-precision*), ce qui nécessiterait 280 Go de mémoire juste pour charger le modèle. En effet :  
 -	**64 bits** = 70Mds × 64/8 ≈ **560** GB  
 -	**32 bits** = 70Mds × 32/8 ≈ **280** GB  
 -	**16 bits** = 70Mds × 16/8 ≈ **140** GB  
 
-De ce fait, c’est très intéressant de pouvoir minimiser le nombre de bits pour représenter les paramètres de votre modèle (ainsi que pendant l'entraînement !). Cependant, à mesure que la précision diminue, l*accuracy* des modèles décroit généralement aussi.  
-Nous voulons réduire le nombre de bits représentant des valeurs tout en conservant la précision... C'est là qu'intervient la quantification !
+De ce fait, c’est très intéressant de pouvoir minimiser le nombre de bits pour représenter les paramètres de votre modèle (ainsi que pendant l'entraînement !). Cependant, à mesure que la précision diminue, l'*accuracy* des modèles décroit généralement aussi.  
+Nous voulons réduire le nombre de bits représentant des valeurs tout en conservant l'*accuracy*... C'est là qu'intervient la quantification !
 <br><br><br>
 
 # <span style="color: #FF0000"> **Partie 2 : Introduction à la quantification** </span>
@@ -123,7 +143,7 @@ Pour illustrer cet effet, nous pouvons prendre n'importe quelle image et n'utili
 <center>
 <figure class="image">
 <img src="https://raw.githubusercontent.com/lbourdois/blog/refs/heads/master/assets/images/Quantification/image_8.jpg">
-<figcaption>Image adaptée de l'original par <a href="https://pixabay.com/users/slava_web-designer-39623293/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=8668140">Slava Sidorov</a></figcaption>
+<figcaption>Image adaptée de celle de <a href="https://pixabay.com/users/slava_web-designer-39623293/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=8668140">Slava Sidorov</a></figcaption>
 </figure>
 </center>
 
@@ -137,7 +157,7 @@ Tout d'abord, examinons les types de données courants et l'impact de leur utili
 <br>
 
 ### <span style="color: #51C353"> **FP16** </span>
-Prenons l'exemple d'un passage de 32 bits à 16 bits (appelé FP16 ou *half precision* soit la *demi-précision*) :
+Prenons l'exemple d'un passage de 32 à 16 bits (appelé FP16 ou *half precision* soit la *demi-précision*) :
 
 <center>
 <figure class="image">
@@ -171,7 +191,7 @@ Lorsque nous réduisons encore davantage le nombre de bits, nous nous rapprochon
 
 Selon le matériel, les calculs basés sur des nombres entiers peuvent être plus rapides que les calculs en virgule flottante, mais ce n'est pas toujours le cas. Cependant, les calculs sont généralement plus rapides lorsque l'on utilise moins de bits.  
 Pour chaque réduction de bits, une correspondance est effectuée pour « comprimer » les représentations initiales de FP32 dans les bits inférieurs.  
-En pratique, nous n'avons pas besoin de faire correspondance toute la plage FP32 [-3.4e38, 3.4e38] dans INT8. Nous avons simplement besoin de trouver un moyen de faire correspondre la plage de nos données (les paramètres du modèle) dans INT8.  
+En pratique, nous n'avons pas besoin de faire correspondance toute la plage FP32 [$$-3,4e38 ; 3,4e38$$] dans INT8. Nous avons simplement besoin de trouver un moyen de faire correspondre la plage de nos données (les paramètres du modèle) dans INT8.  
 Les méthodes courantes de compression/correspondance sont la *quantification symétrique* et *asymétrique* qui sont des formes de correspondance linéaire.  
 Explorons ces méthodes pour quantifier de FP32 à INT8.
 <br><br>
@@ -187,7 +207,7 @@ Cela signifie que la valeur 0 dans l'espace à virgule flottante est aussi 0 dan
 </center>
 
 Un bon exemple d'une forme de quantification symétrique est la quantification via maximum absolu (absmax).  
-Étant donné une liste de valeurs, nous prenons la valeur absolue la plus élevée (α) comme plage pour effectuer les correspondances linéaires.
+Étant donné une liste de valeurs, nous prenons la valeur absolue la plus élevée (<span style="color:#02E1FF;">α</span>) comme plage pour effectuer les correspondances linéaires.
 
 <center>
 <figure class="image">
@@ -195,12 +215,12 @@ Un bon exemple d'une forme de quantification symétrique est la quantification v
 </figure>
 </center>
 
-Notez que la plage de valeurs [-127, 127] représente la plage restreinte. La plage non restreinte est [-128, 127] et dépend de la méthode de quantification.  
+Notez que la plage de valeurs [$$-127 ; 127$$] représente la plage restreinte. La plage non restreinte est [$$-128 ; 127$$] et dépend de la méthode de quantification.  
 Comme il s'agit d'une correspondance linéaire centrée autour de 0, la formule est simple.  
 Nous calculons d'abord un ou plusieurs facteurs d'échelle en utilisant :  
 • $$b$$, le nombre d'octets que l'on veut quantifier à (8),  
-• α, la valeur absolue la plus élevée,  
-Ensuite, nous utilisons le $$s$$ pour quantifier l'entrée $$x$$ :  
+• <span style="color:#02E1FF;">α</span>, la valeur absolue la plus élevée,  
+Ensuite, nous utilisons le <span style="color:#D79515;">$$s$$</span> pour quantifier l'entrée <span style="color:#8C00FF;">$$s$$</span> :  
 
 <center>
 <figure class="image">
