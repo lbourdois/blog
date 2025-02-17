@@ -196,9 +196,11 @@ Ce sont ainsi environ **1000 heures** d’audio qui sont disponibles afin d’en
 -	[VoxLingua107: a Dataset for Spoken Language Recognition](https://arxiv.org/abs/2011.12998) de Valk et Alumäe (2020)
 
 <br><br><br>
-> @inproceedings{french_audio_datasets_blog_post,  
+```
+@inproceedings{french_audio_datasets_blog_post,  
   author    = {Loïck BOURDOIS},  
   title     = {Jeux de données audio pour le français},  
   year      = {2023},  
   url = {https://lbourdois.github.io/blog/audio/dataset_audio_fr}  
 }
+```
