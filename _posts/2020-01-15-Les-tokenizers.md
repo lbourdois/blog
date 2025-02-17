@@ -392,9 +392,11 @@ Résumons l’article avec les principaux points évoqués :
 
 
 # <span style="color: #FF0000"> **Citation** <span>
-> @inproceedings{tokenizers_blog_post,  
+```
+@inproceedings{tokenizers_blog_post,  
   author    = {Loïck BOURDOIS},  
   title     = {Le prétraitement et les tokenizers en NLP},  
   year      = {2020},  
   url = {https://lbourdois.github.io/blog/nlp/Les-tokenizers/}  
 }
+```
