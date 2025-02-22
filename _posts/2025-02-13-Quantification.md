@@ -11,7 +11,7 @@ tags:
 excerpt : "Divers - Démystifier la compression des grands modèles de langage"
 header :
     overlay_color: "#1C2A4D"
-    teaser : "https://cdn-uploads.huggingface.co/production/uploads/613b0a62a14099d5afed7830/7LhmqkTxE5nq8BNNuxvVf.png"
+    teaser : "https://raw.githubusercontent.com/lbourdois/blog/refs/heads/master/assets/images/Quantification/image_1.png"
 author_profile: false
 sidebar:
     nav: sidebar-misc
