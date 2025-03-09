@@ -16,7 +16,7 @@ classes: wide
 # <span style="color: #FF0000"> **Avant-propos** </span>
 Cet article est une republication de celui que j'ai rédigé sur le [blog Vaniila](https://blog.vaniila.ai/Guide_eval_LLM/) pour le [CATIE](https://www.catie.fr/).  
 
-<br><br>  
+<br>
 
 # <span style="color: #FF0000"> **Contenu du guide** </span>
 
@@ -31,11 +31,15 @@ Il fournit notamment des informations détaillées sur différents sujets tel qu
 - un *notebook* montrant comment réaliser des expériences d'évaluation rapidement et suivre les bonnes pratiques 📓
 et bien plus encore 🎉
 
+<br>
+
 <video src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/guide_eval_LLM/Guilde-evaluation-LLM.webm" width="854" height="480" controls></video>
 
-[IMAGE OU VIDEO]
+<br>
 
-Pour accéder au guide sur Hugging Face 🤗 : [https://huggingface.co/spaces/CATIE-AQ/Guide_Evaluation_LLM](https://huggingface.co/spaces/CATIE-AQ/Guide_Evaluation_LLM ).
+Le lien pour accéder au guide sur Hugging Face 🤗 : [https://huggingface.co/spaces/CATIE-AQ/Guide_Evaluation_LLM](https://huggingface.co/spaces/CATIE-AQ/Guide_Evaluation_LLM ).
+
+<br>
 
 En complément de celui-ci, 5 autres ressources ont été traduites pour l’accompagner (3 articles de blog et 2 recettes sous forme de *notebook*) :
 -	[https://huggingface.co/blog/fr/evaluation-structured-outputs](https://huggingface.co/blog/fr/evaluation-structured-outputs)
@@ -44,7 +48,9 @@ En complément de celui-ci, 5 autres ressources ont été traduites pour l’acc
 -	[https://huggingface.co/learn/cookbook/fr/llm_judge](https://huggingface.co/learn/cookbook/fr/llm_judge)
 -	[https://huggingface.co/learn/cookbook/fr/structured_generation](https://huggingface.co/learn/cookbook/fr/structured_generation) 
 
-Un grand merci à Clémentine et à [Aymeric Roucher](https://huggingface.co/m-ric) pour la relecture des ressources 🤗
+Un grand merci à Clémentine et à [Aymeric Roucher](https://huggingface.co/m-ric) pour la relecture de ces ressources 🤗
+
+<br>
 
 En espérant que cela vous plaise et vous soit utile.  
 Bonne lecture !
