@@ -1,5 +1,5 @@
 ---
-title: "GUIDE EVALUATION LLM"
+title: "UN GUIDE ÉVALUATION DES LLM"
 tags:
   - NLP
   - Evaluation LLM
@@ -28,13 +28,13 @@ Il fournit notamment des informations détaillées sur différents sujets tel qu
 - un aperçu des avantages et des inconvénients des méthodes actuelles ⚖️
 - des conseils de dépannage 🔧
 - de nombreuses recommandations et astuces 👻
-- un *notebook* montrant comment réaliser des expériences d'évaluation rapidement et suivre les bonnes pratiques 📓
+- un *notebook* montrant comment réaliser des expériences d'évaluation rapidement et suivre les bonnes pratiques 📓  
 et bien plus encore 🎉
 
 <br>
-
+<center>
 <video src="https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/guide_eval_LLM/Guilde-evaluation-LLM.webm" width="854" height="480" controls></video>
-
+</center>
 <br>
 
 Le lien pour accéder au guide sur Hugging Face 🤗 : [https://huggingface.co/spaces/CATIE-AQ/Guide_Evaluation_LLM](https://huggingface.co/spaces/CATIE-AQ/Guide_Evaluation_LLM ).
