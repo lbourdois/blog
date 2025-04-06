@@ -17,7 +17,8 @@ sidebar-misc:
     url: /LLE/
   - title: UN GUIDE VISUEL SUR LA QUANTIFICATION
     url: /Quantification/
-
+  - title: UN GUIDE VISUEL SUR LE MELANGE D'EXPERTS
+    url: /MoE/
     
 sidebar-ssm:
   - title: INTRODUCTION AUX SSM ET AU S4
