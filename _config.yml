@@ -71,7 +71,7 @@ author:
       url: mailto:loick.bourdois@outlook.com
     - label: "LinkedIn"
       icon: "fab fa-fw fa-linkedin"      
-      url: "https://www.linkedin.com/in/lo%C3%AFck-bourdois-111488171/"
+      url: "https://www.linkedin.com/in/lbourdois"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
       # url: "https://github.com/lbourdois"
@@ -87,7 +87,7 @@ footer:
       url: mailto:loick.bourdois@outlook.com
     - label: "Linkedin"
       icon: "fab fa-fw fa-linkedin"    
-      url: "https://www.linkedin.com/in/lo%C3%AFck-bourdois-111488171/"
+      url: "https://www.linkedin.com/in/lbourdois"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
       url: "https://github.com/lbourdois"
