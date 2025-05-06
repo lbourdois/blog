@@ -47,10 +47,10 @@ Pour comprendre comment les LLM avec raisonnement sont créés, commençons par 
 <br><br><br>
 
 # <span style="color: #FF0000"> **Calculs à la phase d’entraînement** </span>
-Jusqu'à mi-2024, pour augmenter la performance des LLM pendant le pré-entraînement, les développeurs augmentaient souvent la taille :
-•	du modèle (le nombre de paramètres)
-•	du jeu de données (le nombre de tokens montrés au modèle)
-•	de la puissance de calcul (le nombre de FLOPs i.e. le nombre d’opérations à virgule flottantes exécutables par seconde par notre GPU)
+Jusqu'à mi-2024, pour augmenter la performance des LLM pendant le pré-entraînement, les développeurs augmentaient souvent la taille :  
+•	du modèle (le nombre de paramètres)  
+•	du jeu de données (le nombre de tokens montrés au modèle)  
+•	de la puissance de calcul (le nombre de FLOPs i.e. le nombre d’opérations à virgule flottantes exécutables par seconde par notre GPU)  
 L'ensemble s'appelle le calcul à la phase d'entraînement, ce qui renvoie à l'idée que les données de pré-entraînement sont le « carburant de l'intelligence artificielle ». En substance, plus votre budget de pré-entraînement est important, plus le modèle obtenu sera performant. 
 
 <center>
@@ -166,9 +166,9 @@ Nous explorerons ce point plus en détails lorsque nous nous plongerons sur le D
 ## <span style="color: #FFBF00"> **Les différentes catégories de calculs à l’inférence** </span>
 L'incroyable succès des modèles avec raisonnement tels que DeepSeek R-1 et OpenAI o1 montre qu'il existe d'autres techniques que la simple pensée « plus longue ».
 Comme nous le verrons, les calculs à l’inférence peuvent prendre différentes formes, notamment la chaîne de pensée, la révision de réponses, le retour en arrière, l'échantillonnage et bien d'autres choses.
-D’après [SNELL et al.](https://arxiv.org/abs/2408.03314) (2024), on peut les classer en deux grandes catégories :
-•	La vérification des recherches (échantillonnage des générations et sélection de la meilleure réponse)
-•	La modification de la distribution de la proposition (processus de « réflexion » entraîné)
+D’après [SNELL et al.](https://arxiv.org/abs/2408.03314) (2024), on peut les classer en deux grandes catégories :  
+•	La vérification des recherches (échantillonnage des générations et sélection de la meilleure réponse)  
+•	La modification de la distribution de la proposition (processus de « réflexion » entraîné)  
 
 <center>
 <figure class="image">
@@ -181,9 +181,9 @@ Ainsi, la vérification des recherches est axée sur la sortie, tandis que la mo
   <img src="https://raw.githubusercontent.com/lbourdois/blog/refs/heads/master/assets/images/LLM_raisonnement/image_18.png">
 </figure>
 </center>
-Il y a deux types de vérificateurs que nous allons étudier :
-•	Les Modèles de récompense des résultats (ORM pour *Outcome Reward Models*)
-•	Les Modèles de récompense des processus (PRM pour *Process Reward Models*)
+Il y a deux types de vérificateurs que nous allons étudier :  
+•	Les Modèles de récompense des résultats (ORM pour *Outcome Reward Models*)  
+•	Les Modèles de récompense des processus (PRM pour *Process Reward Models*)  
 Les ORM ne jugent que le résultat et ne se préoccupe pas du processus sous-jacent :
 <center>
 <figure class="image">
@@ -206,15 +206,15 @@ Notez que l'étape 2 est une étape de raisonnement médiocre et qu'elle est mal
 Maintenant que vous avez une vue générale de la différence entre ORM et PRM, voyons comment ils peuvent être appliqués dans différentes techniques de vérification !
 <br><br><br>
 # <span style="color: #FF0000"> **La vérification des recherches** </span>
-La vérification des recherches implique généralement deux étapes :
-•	Premièrement, plusieurs échantillons de raisonnement et de réponses sont créés
+La vérification des recherches implique généralement deux étapes :  
+•	Premièrement, plusieurs échantillons de raisonnement et de réponses sont créés  
 •	Deuxièmement, un vérificateur (modèle de récompense) évalue la sortie générée
 
 <center>
 <figure class="image">
   <img src="https://raw.githubusercontent.com/lbourdois/blog/refs/heads/master/assets/images/LLM_raisonnement/image_22.png">
 </figure>
-<center>
+</center>
 Le vérificateur est généralement un LLM, finetuné à juger le résultat (ORM) ou le processus (PRM).
 L'un des principaux avantages de l'utilisation de vérificateurs est qu'il n'est pas nécessaire de réentraîner ou de finetuner le LLM que vous utilisez pour répondre à la question.
 <br><br>
@@ -267,11 +267,11 @@ Cette méthode permet d'arrêter rapidement les chemins de « raisonnement » ne
 Les réponses obtenues sont ensuite pondérées à l'aide de l'approche *Best-of-N* que nous avons explorée précédemment.
 <br><br>
 ## <span style="color: #FFBF00"> **Recherche arborescente de Monte Carlo** </span>
-La [recherche arborescente de Monte Carlo]( https://fr.wikipedia.org/wiki/Recherche_arborescente_Monte-Carlo) est une excellente technique pour rendre les recherches arborescentes plus efficaces. Elle se compose de quatre étapes :
-•	Sélection (sélectionner une feuille donnée sur la base d'une formule prédéterminée)
-•	Expansion (créer des nœuds supplémentaires)
-•	Simulation (création aléatoire de nouveaux nœuds jusqu'à ce que vous atteigniez la fin)
-•	Rétropropagation (mise à jour des scores des nœuds parents sur la base des résultats)
+La [recherche arborescente de Monte Carlo]( https://fr.wikipedia.org/wiki/Recherche_arborescente_Monte-Carlo) est une excellente technique pour rendre les recherches arborescentes plus efficaces. Elle se compose de quatre étapes :  
+•	Sélection (sélectionner une feuille donnée sur la base d'une formule prédéterminée)  
+•	Expansion (créer des nœuds supplémentaires)  
+•	Simulation (création aléatoire de nouveaux nœuds jusqu'à ce que vous atteigniez la fin)  
+•	Rétropropagation (mise à jour des scores des nœuds parents sur la base des résultats)  
 L'objectif principal de ces étapes est de continuer à développer les meilleures étapes de raisonnement tout en explorant d'autres voies. 
 Il s'agit donc d'un équilibre entre l'**exploration** et l'**exploitation**. Voici un exemple de la manière dont les nœuds sont notés et sélectionnés :
 <center>
@@ -377,9 +377,9 @@ Pour ce faire, ils commencent par un *prompt* très simple (similaire à un *pro
 </figure>
 </center>
 Notez qu'ils mentionnent explicitement que le processus de raisonnement doit se dérouler entre les balises <think>, mais qu'ils ne précisent pas à quoi doit ressembler le processus de raisonnement.
-Lors de la phase d'apprentissage par renforcement, deux récompenses spécifiques basées sur des règles ont été créées :
-•	Récompenses pour la précision : Récompense la **réponse** en la testant.
-•	Récompenses pour le format : Récompense l’utilisation des balises <thinking> et <answer>.
+Lors de la phase d'apprentissage par renforcement, deux récompenses spécifiques basées sur des règles ont été créées :  
+•	Récompenses pour la précision : Récompense la **réponse** en la testant.  
+•	Récompenses pour le format : Récompense l’utilisation des balises <thinking> et <answer>.  
 L'algorithme d’apprentissage par renforcement utilisé dans ce processus est appelé le [*Group Relative Policy Optimization* (GRPO)](https://arxiv.org/abs/2402.03300) de SHAO, WANG, ZHU, GUO et al. (2024). L'intuition qui sous-tend cet algorithme est qu'il rend plus ou moins probables tous les choix qui ont conduit à une réponse correcte ou incorrecte. Ces choix peuvent être à la fois des ensembles de *tokens* et des étapes de raisonnement.
 <center>
 <figure class="image">
@@ -401,12 +401,12 @@ En utilisant ce pipeline, les auteurs ont constaté que le modèle découvre de 
 Cependant, le modèle présentait encore un inconvénient de taille. Il était peu lisible et avait tendance à mélanger les langues. Ils ont donc exploré une autre solution, qui a abouti au désormais célèbre DeepSeek-R1. <br><br>
 
 ## <span style="color: #FFBF00"> **DeepSeek-R1** </span>
-Voyons comment ils ont stabilisé le processus de raisonnement !
-Pour créer DeepSeek-R1, les auteurs ont suivi cinq étapes :
-1.	Démarrage à froid
-2.	Apprentissage par renforcement axé sur le raisonnement
-3.	Filtrage des données
-4.	Finetuning supervisé
+Voyons comment ils ont stabilisé le processus de raisonnement !  
+Pour créer DeepSeek-R1, les auteurs ont suivi cinq étapes :  
+1.	Démarrage à froid  
+2.	Apprentissage par renforcement axé sur le raisonnement  
+3.	Filtrage des données  
+4.	Finetuning supervisé  
 5.	Apprentissage par renforcement pour tous les scénarios
 
 Dans l'étape 1, DeepSeek-V3-Base a été finetuné avec un petit jeu de données de raisonnement de haute qualité (≈ 5 000 tokens). Cela a été fait pour éviter le problème de démarrage à froid qui entraîne une mauvaise lisibilité. 
@@ -474,11 +474,28 @@ Cela ne signifie pas que ces techniques ne sont pas valables, mais cela donne un
 
 # <span style="color: #FF0000"> **Conclusion** </span>
 Ceci conclut notre voyage sur les LLM avec raisonnement. Nous espérons que cet article vous a permis de mieux comprendre le potentiel de la mise à l'échelle des calculs lors de la phase d’inférence.
-J’espère que cette introduction a été accessible. Si vous souhaitez aller plus loin sur ce sujet, je vous suggère les ressources suivantes : 
-•	L’article [*The Illustrated DeepSeek-R1*](https://newsletter.languagemodels.co/p/the-illustrated-deepseek-r1) est un guide sur DeepSeek-R1 par Jay ALAMMAR.
-•	Cet **excellent** [article d’Hugging Face](https://hf.co/spaces/HuggingFaceH4/blogpost-scaling-test-time-compute) sur la mise à l’échelle des calculs lors de la phase d’inférence avec des expériences intéressantes.
+J’espère que cette introduction a été accessible. Si vous souhaitez aller plus loin sur ce sujet, je vous suggère les ressources suivantes :  
+•	L’article [*The Illustrated DeepSeek-R1*](https://newsletter.languagemodels.co/p/the-illustrated-deepseek-r1) est un guide sur DeepSeek-R1 par Jay ALAMMAR.  
+•	Cet **excellent** [article d’Hugging Face](https://hf.co/spaces/HuggingFaceH4/blogpost-scaling-test-time-compute) sur la mise à l’échelle des calculs lors de la phase d’inférence avec des expériences intéressantes.  
 •	Cette [vidéo](https://www.youtube.com/watch?v=6PEJ96k1kiw) de Sasha RUSH, est un excellent support pour entrer dans les détails techniques des techniques courantes de calcul de la phase d’inférence. 
 
 <br><br><br>
 
 # <span style="color: #FF0000"> **Références** </span>
+- [*A Visual Guide to Reasoning LLMs*](https://newsletter.maartengrootendorst.com/p/a-visual-guide-to-reasoning-llms) de Maarten GROOTENDORST (2025) 
+- [*Scaling Laws for Neural Language Models*](https://arxiv.org/abs/2001.08361) de Jared KAPLAN, Sam MCCLANDLISH, Tom HENIGHAN, Tom B. BROWN, Benjamin CHESS, Rewon CHILD, Scott GRAY, Alec RADFORD, Jeffrey WU et Dario AMODEI (2020)  
+- [*Training Compute-Optimal Large Language Models*](https://arxiv.org/abs/2203.15556) de Jordan HOFFMANN, Sebastian BORGEAUD, Arthur MENSCH, Elena BUCHATSKAYA, Trevor CAI, Eliza RUTHERFORD, Diego DE LAS CASAS, Lisa Anne HENDRICKS, Johannes WELBL, Aidan CLARK, Tom HENNIGAN, Eric NOLAND, Katie MILLICAN, George VAN DEN DRIESSCHE, Bogdan DAMOC, Aurelia GUY, Simon OSINDERO, Karen SIMONYAN, Erich ELSEN, Jack W. RAE, Oriol VINYALS et Laurent SIFRE (2022)
+- [*Scaling Scaling Laws with Board Games*](https://arxiv.org/abs/2104.03113) d'Andy L. JONES (2021)
+- [*Mastering Chess and Shogi by Self-Play with a General Reinforcement Learning Algorithm*](https://arxiv.org/abs/1712.01815) de David SILVER, Thomas HUBERT, Julian SCHRITTWIESER, Ioannis ANTONOGLOU, Matthew LAI, Arthur GUEZ, Marc LANCTOT, Laurent SIFRE, Dharshan KUMARAN, Thore GRAEPEL, Timothy LILLICRAP, Karen SIMONYAN et Demis HASSABIS (2017)
+- [*Scaling LLM Test-Time Compute Optimally can be More Effective than Scaling Model Parameters*](https://arxiv.org/abs/2408.03314) de Charlie SNELL, Jaehoon LEE, Kelvin XU, Aviral KUMAR (2024)
+
+<br><br><br>
+# <span style="color: #FF0000"> **Citation** </span>
+```
+@inproceedings{MoE_blog_post,
+author = {Loïck BOURDOIS},
+title = {Un guide visuel sur les LLM avec raisonnement},
+year = {2025},
+url = {https://lbourdois.github.io/blog/LLM_raisonnement/}
+}
+```
