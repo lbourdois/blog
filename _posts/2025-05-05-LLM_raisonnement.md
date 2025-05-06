@@ -3,7 +3,7 @@ title: "UN GUIDE VISUEL SUR LES LLM AVEC RAISONNEMENT"
 tags:
   - NLP
   - Reasoning LLM
-excerpt : "Divers – Explorer le concept de raisonnement chez les LLM"
+excerpt : "NLP – Explorer le concept de raisonnement chez les LLM"
 header :
     overlay_color: "#1C2A4D"
     teaser : "https://raw.githubusercontent.com/lbourdois/blog/refs/heads/master/assets/images/LLM_raisonnement/image_0.png"
