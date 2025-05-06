@@ -576,11 +576,11 @@ J’espère que cette introduction a été accessible. Si vous souhaitez aller p
 - [*DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning*](https://arxiv.org/abs/2501.12948) de DeepSeek
 - [*DeepSeek-V3 Technical Report*](https://arxiv.org/abs/2412.19437) de DeepSeek
 - [*DeepSeekMath: Pushing the Limits of Mathematical Reasoning in Open Language Models*](https://arxiv.org/abs/2402.03300) de Zhihong SHAO, Peiyi WANG, Qihao ZHU, Runxin XU, Junxiao SONG, Xiao BI, Haowei ZHANG, Mingchuan ZHANG, Y.K. LI, Y. WU, Daya GUO (2024)
-- 
+  
 <br><br><br>
 # <span style="color: #FF0000"> **Citation** </span>
 ```
-@inproceedings{MoE_blog_post,
+@inproceedings{LLM_raisonnement_blog_post,
 author = {Loïck BOURDOIS},
 title = {Un guide visuel sur les LLM avec raisonnement},
 year = {2025},
