@@ -9,7 +9,7 @@ header :
     teaser : "https://raw.githubusercontent.com/lbourdois/blog/refs/heads/master/assets/images/LLM_raisonnement/image_0.png"
 author_profile: false
 sidebar:
-    nav: sidebar-misc
+    nav: sidebar-sample
 classes: wide
 ---
 
