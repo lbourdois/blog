@@ -57,7 +57,9 @@ sidebar-sample:
     url: /nlp/Taches-et-jeux-de-donnees-en-NLP/
   - title: "L'AUGMENTATION DE DONNÉES EN NLP"
     url: /nlp/Data-augmentation-in-NLP/
-
+  - title: "UN GUIDE VISUEL SUR LES LLM AVEC RAISONNEMENT"
+    url: /nlp/LLM_raisonnement/
+    
 sidebar-ssl-images:
   - title: TACHES DE PRETEXTE EN VISION
     url: /ssl-images/pretext-in-vision/
