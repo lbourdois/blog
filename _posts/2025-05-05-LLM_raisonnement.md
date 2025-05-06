@@ -263,7 +263,7 @@ Cette méthode est également appelée [autoconsistance](https://arxiv.org/abs/2
 <br><br>
 
 ## <span style="color: #FFBF00"> **Meilleur échantillon parmi N** </span>
-La méthode Meilleur échantillon parmi N (*Best-of-N samples*) génère $$N$$ échantillons et utilise ensuite un vérificateur (ORM) pour évaluer chaque réponse :
+La méthode Meilleur échantillon parmi $$N$$ (*Best-of-$$N$$ samples*) génère $$N$$ échantillons et utilise ensuite un vérificateur (ORM) pour évaluer chaque réponse :
 -	Tout d'abord, le LLM (souvent appelé l’Offrant) génère plusieurs réponses en utilisant une température élevée ou variable. 
 
 <center>
@@ -288,7 +288,7 @@ Au lieu de juger la réponse, on peut également juger le processus de raisonnem
 </figure>
 </center>
 
-Avec les deux types de vérifications, nous pouvons également pondérer chaque réponse candidate et choisir celle qui a le poids total le plus élevé. C'est ce qu'on appelle les échantillons *Best-of-N* pondérés :
+Avec les deux types de vérifications, nous pouvons également pondérer chaque réponse candidate et choisir celle qui a le poids total le plus élevé. C'est ce qu'on appelle les échantillons *Best-of-$$N$$* pondérés :
 
 <center>
 <figure class="image">
@@ -307,7 +307,7 @@ Ce processus de génération de réponses et d'étapes intermédiaires peut êtr
 </center>
 
 Cette méthode permet d'arrêter rapidement les chemins de « raisonnement » ne s'avèrant pas fructueux (mal notés par le MRP). 
-Les réponses obtenues sont ensuite pondérées à l'aide de l'approche *Best-of-N* que nous avons explorée précédemment.
+Les réponses obtenues sont ensuite pondérées à l'aide de l'approche *Best-of-$$N$$* que nous avons explorée précédemment.
 <br><br>
 
 ## <span style="color: #FFBF00"> **Recherche arborescente de Monte Carlo** </span>
@@ -373,8 +373,8 @@ Lorsque nous modifions la distribution des propositions (i.e. la distribution de
 </figure>
 </center>
 
-Il existe plusieurs méthodes pour modifier la distribution pouvant être classées en deux grandes catégories :
-•	Modifier l’instruction (i.e. le *prompt*)
+Il existe plusieurs méthodes pour modifier la distribution pouvant être classées en deux grandes catégories :  
+•	Modifier l’instruction (i.e. le *prompt*)  
 •	Entraîner le modèle à se concentrer sur les *tokens*/processus de raisonnement
 <br><br>
 
@@ -441,8 +441,8 @@ Pour ce faire, ils commencent par un *prompt* très simple (similaire à un *pro
 </figure>
 </center>
 
-Notez qu'ils mentionnent explicitement que le processus de raisonnement doit se dérouler entre les balises <think>, mais qu'ils ne précisent pas à quoi doit ressembler le processus de raisonnement.
-Lors de la phase d'apprentissage par renforcement, deux récompenses spécifiques basées sur des règles ont été créées :  
+Notez qu'ils mentionnent explicitement que le processus de raisonnement doit se dérouler entre les balises `<think>`, mais qu'ils ne précisent pas à quoi doit ressembler le processus de raisonnement.
+Lors de la phase d'apprentissage par renforcement, deux récompenses spécifiques basées sur des règles ont été créées :    
 •	Récompenses pour la précision : Récompense la **réponse** en la testant.  
 •	Récompenses pour le format : Récompense l’utilisation des balises <thinking> et <answer>.  
 L'algorithme d’apprentissage par renforcement utilisé dans ce processus est appelé le [*Group Relative Policy Optimization* (GRPO)](https://arxiv.org/abs/2402.03300) de SHAO, WANG, ZHU, GUO et al. (2024). L'intuition qui sous-tend cet algorithme est qu'il rend plus ou moins probables tous les choix qui ont conduit à une réponse correcte ou incorrecte. Ces choix peuvent être à la fois des ensembles de *tokens* et des étapes de raisonnement.
@@ -453,7 +453,7 @@ L'algorithme d’apprentissage par renforcement utilisé dans ce processus est a
 </figure>
 </center>
 
-Il est intéressant de noter qu'aucun exemple n'a été donné sur la manière dont le processus <think> devrait se dérouler. Il est simplement indiqué qu'il faut utiliser les balises <think>, et rien de plus !
+Il est intéressant de noter qu'aucun exemple n'a été donné sur la manière dont le processus `<think>` devrait se dérouler. Il est simplement indiqué qu'il faut utiliser les balises `<think>`, et rien de plus !
 En fournissant ces récompenses indirectes liées au comportement de la chaîne de pensée, le modèle a appris par lui-même que plus le processus de raisonnement est long et complexe, plus la réponse a de chances d'être correcte.
 
 <center>
@@ -550,7 +550,7 @@ Les modèles distillés qui en résultent sont très performants puisqu'ils n'on
 ## <span style="color: #FFBF00"> **Tentatives infructueuses** </span>
 Nous avons parlé plus haut des modèles de récompense de processus (PRM) et de la recherche arborescente de Monte Carlo. Il s'avère que DeepSeek a également essayé ces techniques pour inculquer le raisonnement au modèle mais sans succès. 
 Avec la recherche arborescente de Monte Carlo, les auteurs ont rencontré des problèmes liés au vaste espace de recherche et ont dû limiter les expansions de nœuds. 
-Avec les PRM pour les techniques *Best-of-N*, ils ont rencontré des problèmes de surcharge de calcul en raison du réentraînement permanent du modèle de récompense afin d'empêcher le piratage des récompenses. 
+Avec les PRM pour les techniques *Best-of-$$N$$*, ils ont rencontré des problèmes de surcharge de calcul en raison du réentraînement permanent du modèle de récompense afin d'empêcher le piratage des récompenses. 
 Cela ne signifie pas que ces techniques ne sont pas valables, mais cela donne un aperçu intéressant des limites de ces techniques !
 <br><br><br>
 
@@ -569,7 +569,14 @@ J’espère que cette introduction a été accessible. Si vous souhaitez aller p
 - [*Scaling Scaling Laws with Board Games*](https://arxiv.org/abs/2104.03113) d'Andy L. JONES (2021)
 - [*Mastering Chess and Shogi by Self-Play with a General Reinforcement Learning Algorithm*](https://arxiv.org/abs/1712.01815) de David SILVER, Thomas HUBERT, Julian SCHRITTWIESER, Ioannis ANTONOGLOU, Matthew LAI, Arthur GUEZ, Marc LANCTOT, Laurent SIFRE, Dharshan KUMARAN, Thore GRAEPEL, Timothy LILLICRAP, Karen SIMONYAN et Demis HASSABIS (2017)
 - [*Scaling LLM Test-Time Compute Optimally can be More Effective than Scaling Model Parameters*](https://arxiv.org/abs/2408.03314) de Charlie SNELL, Jaehoon LEE, Kelvin XU, Aviral KUMAR (2024)
-
+- [*Self-Consistency Improves Chain of Thought Reasoning in Language Models*](https://arxiv.org/abs/2203.11171) de Xuezhi WANG, Jason WEI, Dale SCHUURMANS, Quoc LE, Ed CHI, Sharan NARANG, Aakanksha CHOWDHERY, Denny ZHOU (2022)
+- [*Tree of Thoughts: Deliberate Problem Solving with Large Language Models*] de Shunyu YAO, Dian YU, Jeffrey ZHAO, Izhak SHAFRAN, Tom GRIFFITHS, Yuan CAO, Karthik NARASIMHAN (2023)
+- [*Large Language Models are Zero-Shot Reasoners*](https://arxiv.org/abs/2205.11916) de Takeshi KOJIMA, Shixiang Shane GU, Machel REID, Yutaka MATSUO, Yusuke IWASAWA (2022)
+- [*STaR: Bootstrapping Reasoning With Reasoning*](https://arxiv.org/abs/2203.14465) d'Eric ZELIKMAN, Yuhuai WU, Jesse MU, Noah D. GOODMAN (2022)
+- [*DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning*](https://arxiv.org/abs/2501.12948) de DeepSeek
+- [*DeepSeek-V3 Technical Report*](https://arxiv.org/abs/2412.19437) de DeepSeek
+- [*DeepSeekMath: Pushing the Limits of Mathematical Reasoning in Open Language Models*](https://arxiv.org/abs/2402.03300) de Zhihong SHAO, Peiyi WANG, Qihao ZHU, Runxin XU, Junxiao SONG, Xiao BI, Haowei ZHANG, Mingchuan ZHANG, Y.K. LI, Y. WU, Daya GUO (2024)
+- 
 <br><br><br>
 # <span style="color: #FF0000"> **Citation** </span>
 ```
