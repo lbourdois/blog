@@ -444,7 +444,7 @@ Pour ce faire, ils commencent par un *prompt* très simple (similaire à un *pro
 Notez qu'ils mentionnent explicitement que le processus de raisonnement doit se dérouler entre les balises `<think>`, mais qu'ils ne précisent pas à quoi doit ressembler le processus de raisonnement.
 Lors de la phase d'apprentissage par renforcement, deux récompenses spécifiques basées sur des règles ont été créées :    
 •	Récompenses pour la précision : Récompense la **réponse** en la testant.  
-•	Récompenses pour le format : Récompense l’utilisation des balises <thinking> et <answer>.  
+•	Récompenses pour le format : Récompense l’utilisation des balises `<thinking>` et `<answer>`.  
 L'algorithme d’apprentissage par renforcement utilisé dans ce processus est appelé le [*Group Relative Policy Optimization* (GRPO)](https://arxiv.org/abs/2402.03300) de SHAO, WANG, ZHU, GUO et al. (2024). L'intuition qui sous-tend cet algorithme est qu'il rend plus ou moins probables tous les choix qui ont conduit à une réponse correcte ou incorrecte. Ces choix peuvent être à la fois des ensembles de *tokens* et des étapes de raisonnement.
 
 <center>
