@@ -66,14 +66,14 @@ Par exemple, face à une question de mathématiques, le LLM peut décider d'util
 </center>
 Ce « LLM augmenté » est-il donc un agent ?  Non ! Mais peut-être un peu oui...  
 
-Commençons en donnant la définition des agents de [Russell & Norvig](https://www.pearson.fr/fr/book/?GCOI=27440100705580)  (2016) : 
+Commençons en donnant la définition des agents de [Russell & Norvig](https://www.pearson.fr/fr/book/?GCOI=27440100705580)  (2016) :
 > Un agent est tout ce qui peut être considéré comme percevant son environnement par le biais de capteurs et agissant sur cet environnement par le biais d'actionneurs.  
 
 Les agents interagissent avec leur environnement et se composent généralement de plusieurs éléments importants :  
-- Environnements - Le monde avec lequel l'agent interagit  
-- Capteurs - Utilisés pour observer l'environnement  
-- Actionneurs - Outils utilisés pour interagir avec l'environnement  
-- Effecteurs - Le « cerveau » ou les règles qui décident comment passer des observations aux actions.
+- Environnements : le monde avec lequel l'agent interagit  
+- Capteurs : utilisés pour observer l'environnement  
+- Actionneurs : outils utilisés pour interagir avec l'environnement  
+- Effecteurs : le « cerveau » ou les règles qui décident comment passer des observations aux actions.
 <center>
 <figure class="image">
   <img src="https://raw.githubusercontent.com/lbourdois/blog/refs/heads/master/assets/images/Agents/image_7.png">
@@ -242,8 +242,8 @@ En d'autres termes, la sortie des étapes intermédiaires est réinjectée dans 
 L'utilisation d'outils est une technique puissante pour renforcer les capacités des LLM et compenser leurs désavantages. C'est pourquoi les recherches sur l'utilisation d'outils et l'apprentissage ont connu un essor rapide ces dernières années.
 <center>
 <figure class="image">
-  <img src="https://raw.githubusercontent.com/lbourdois/blog/refs/heads/master/assets/images/Agents/image_29. jpg">
-<figcaption> Image annotée et recadrée tirée du papier <i>Tool Learning with Large Language Models : A Survey</i> de QU et al. (2024). L'accent étant mis de plus en plus sur l'utilisation d'outils, les LLM (agentiques) devraient devenir plus puissants.
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/refs/heads/master/assets/images/Agents/image_29.jpg">
+<figcaption> Image annotée et recadrée tirée du papier <i>Tool Learning with Large Language Models : A Survey</i> de Qu et al. (2024). L'accent étant mis de plus en plus sur l'utilisation d'outils, les LLM (agentiques) devraient devenir plus puissants.
 </figcaption></figure>
 </center>
 Une grande partie de cette recherche consiste non seulement à inciter les LLM à utiliser des outils, mais aussi à les entraîner spécifiquement à l'utilisation d'outils.
@@ -462,7 +462,7 @@ L'un des papiers les plus influents sur les multi-agents s'intitule [*Generative
 Dans cet article, les auteurs ont créé des agents qui simulent un comportement humain crédible, qu'ils appellent agents génératifs. 
 <center>
 <figure class="image">
-  <img src="https://raw.githubusercontent.com/lbourdois/blog/refs/heads/master/assets/images/Agents/image_55. jpg">
+  <img src="https://raw.githubusercontent.com/lbourdois/blog/refs/heads/master/assets/images/Agents/image_55.jpg">
 </figure>
 </center>
 Le profil attribué à chaque agent génératif lui permet de se comporter de manière unique et de créer un comportement plus intéressant et plus dynamique. 
@@ -483,8 +483,7 @@ Ensemble, ils permettent aux agents de se comporter librement et d'interagir les
 <center>
 <figure class="image">
   <img src="https://raw.githubusercontent.com/lbourdois/blog/refs/heads/master/assets/images/Agents/image_58.png">
-<figcaption> Image annotée de la <a href="https://reverie.herokuapp.com/arXiv_Demo/>démonstration interactive</a>.
-</figcaption>
+<figcaption> Image annotée de la démonstration interactive : https://reverie.herokuapp.com/arXiv_Demo/</figcaption>
 </figure>
 </center>
 Il y a plusieurs éléments très intéressants dans leur papier dont nous conseillons la lecture. Détaillons un peu leur méthode d'évaluation.
