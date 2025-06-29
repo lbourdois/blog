@@ -18,11 +18,11 @@ Le code de pré-entrainement est disponible sur [GitHub](https://github.com/cati
 
 ## NER
 Les NERmemBERT constituent une famille de modèles de Reconnaissance d’Entités Nommées en français capable d’étiqueter jusqu’à 4 entités (Personnalités, Lieux, Organisations, Divers tel que des noms d’œuvre, de maladies, etc.). Ils sont disponibles en taille base (110M ou 136M de paramètres) et large (336M), gérant des contextes allant de 512 à 8192 tokens. Les poids sont disponibles gratuitement en open-source, tout comme les jeux de données ayant servis à l’entraînement. Le tout est disponible sur le compte [Hugging Face du CATIE](https://huggingface.co/collections/CATIE-AQ/catie-french-ner-pack-658aefafe3f7a2dcf0e4dbb4). Un article de blog détaillant la méthodologie adoptée est disponible [ici](https://lbourdois.github.io/blog/NER/).<br>
-Ils ont été téléchargés plus de 170 000 fois depuis leur mise en ligne.
+Ils ont été téléchargés plus de 180 000 fois depuis leur mise en ligne.
 
 ## Question Answering
 Les QAmemBERT constituent une famille de réponse aux questions en français capable d’indiquer si la réponse à une question est présente ou pas dans un texte de contexte associé. Ils sont disponibles en taille base (110M ou 136M de paramètres) et large (335M), gérant des contextes allant de 512 à 8192 tokens. Les poids sont disponibles gratuitement en open-source, tout comme le jeu de données ayant servis à l’entraînement. Le tout est disponible sur le compte [Hugging Face du CATIE](https://huggingface.co/collections/CATIE-AQ/catie-french-qa-pack-650821750f44c341cdb8ec91). Un article de blog détaillant la méthodologie adoptée est disponible [ici](https://lbourdois.github.io/blog/QA/).<br>
-Ils ont été téléchargés plus de 150 000 fois depuis leur mise en ligne.
+Ils ont été téléchargés plus de 155 000 fois depuis leur mise en ligne.
 
 ## DFP
 *Dataset of French Prompts* (DFP) contient 113 129 978 lignes portant sur 30 tâches de NLP différentes.  
@@ -30,7 +30,7 @@ Ils ont été téléchargés plus de 150 000 fois depuis leur mise en ligne.
 
 Les colonnes *inputs* et *targets* suivent le même format que l'ensemble de données [xP3](https://huggingface.co/datasets/bigscience/xP3) de Muennighoff et al.  
 L'ensemble des détails est disponible sur [Hugging Face](https://huggingface.co/datasets/CATIE-AQ/DFP).<br>
-Il a été téléchargé plus de 30 000 fois depuis sa mise en ligne.
+Il a été téléchargé plus de 65 000 fois depuis sa mise en ligne.
 
 ## La marmite
 Projet toujours en cours.  
