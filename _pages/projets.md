@@ -6,6 +6,8 @@ classes: wide
 
 Sur cette page vous pouvez trouver les contenus sur lesquels j'ai travaillé (à titre personnel ou professionnel) mais qui sont référencés sur d'autres sites que mon blog personnel. Il s'agit principalement de traductions de cours, et des créations de jeux de données et de modèles.
 
+<br><br>
+
 # Modèles et jeux de données en français
 
 ## FAT5
@@ -35,7 +37,8 @@ Projet toujours en cours.
 Il s'agit de proposer un équivalent en français du jeu de données [*the cauldron*](https://huggingface.co/datasets/HuggingFaceM4/the_cauldron) afin de pouvoir entraîner un VLM en français.  
 Ce jeu de données prendra en compte des données d'OCR (voir celles déjà disponibles en ligne [ici](https://huggingface.co/collections/lbourdois/french-ocr-datasets-67c8d3152330f11227e0d108)), de captionning (voir celles déjà disponibles en ligne [ici](https://huggingface.co/collections/lbourdois/french-caption-datasets-67c8d2227284a5daa00c50b9)), de VQA (voir celles déjà disponibles en ligne [ici](https://huggingface.co/collections/lbourdois/french-vqa-datasets-67c8d1a162a23ef0e9a2bc89)) et de raisonnement.  
 Les sous-jeux de données déjà en ligne ont été téléchargé plus de 15 000 fois depuis leur mise en ligne.
-<br><br>
+
+<br><br><br>
 
 # Traductions
 ## Cours de Yann Le Cun et Alfredo Canziani de la NYU
