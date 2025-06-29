@@ -3,8 +3,8 @@ main:
     url: /ssm/
   - title: "NLP"
     url: /nlp/
-  - title: "Autre"
-    url: /other/
+  - title: "Projets"
+    url: /projets/
   - title: "Posts"
     url: /posts/
   - title: "A propos"
