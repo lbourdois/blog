@@ -61,3 +61,8 @@ Vous pouvez retrouver toutes ces ressources sur le site de [Hugging Face](https:
 En 2023, j'ai traduit le cours sur les modèles de diffusion de Hugging Face.  
 Le contenu est structuré en 4 chapitres portant sur 17 pages web 🌐 et 8 notebooks Jupyter 📓 (en PyTorch).  
 Vous pouvez retrouver toutes ces ressources sur le GitHub de [Hugging Face](https://github.com/huggingface/diffusion-models-class/tree/main/units/fr) (le contenu n'ayant pas encore été propagé sur le site officiel).
+
+### Cours sur les agents IA
+En 2025, j'ai participé avec [Kim NOEL](https://github.com/knoel99) à la traduction du cours sur les agents IA de Hugging Face.  
+Le contenu est structuré en 4 unités (+ 3 bonus) réparties sur 74 pages web 🌐 et 16 notebooks Jupyter 📓.  
+Vous pouvez retrouver toutes ces ressources sur le site de [Hugging Face](https://huggingface.co/learn/agents-course/fr).
