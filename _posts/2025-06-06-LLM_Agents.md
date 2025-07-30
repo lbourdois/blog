@@ -17,7 +17,9 @@ classes: wide
 
 # <span style="color: #FF0000"> **Avant-propos** </span>
 Cet article est une traduction de celui de Maarten Grootendorst : [A Visual Guide to LLM Agents](https://newsletter.maartengrootendorst.com/p/a-visual-guide-to-llm-agents).<br>
-Maarten est co-auteur du livre [*Hands-On Large Language Models*](https://www.llm-book.com/).
+Maarten est co-auteur du livre [*Hands-On Large Language Models*](https://www.llm-book.com/).  
+
+Cet article aborde la partie « théorique » du fonctionnement des agents. Pour une partie davantage « pratique », vous pouvez consultez le [cours d'Hugging Face](https://huggingface.co/learn/agents-course/fr) sur le sujet dont j'ai participé à la traduction en français. Il aborde notamment comment implémenter des agents avec les librairies [smolagents](https://github.com/huggingface/smolagents), [LlamaIndex](https://github.com/run-llama/llama_index) ou encore [LangGraph](https://github.com/langchain-ai/langgraph).
 <br><br><br>
 
 # <span style="color: #FF0000"> **Introduction** </span>
@@ -528,7 +530,9 @@ L'année 2025  pourrait donc être celle des agents qui continuent de se dévelo
 <br><br><br>
 
 # <span style="color: #FF0000"> **Conclusion** </span>
-Ceci conclut notre voyage autour du thème des agents, en espérant que cela permette de mieux comprendre comment les agents LLM sont construits. 
+Ceci conclut notre voyage autour du thème des agents, en espérant que cela permette de mieux comprendre comment les agents LLM sont construits.   
+
+Pour une partie davantage « pratique », vous pouvez consultez le [cours d'Hugging Face](https://huggingface.co/learn/agents-course/fr) qui aborde notamment comment implémenter des agents avec les librairies [smolagents](https://github.com/huggingface/smolagents), [LlamaIndex](https://github.com/run-llama/llama_index) ou encore [LangGraph](https://github.com/langchain-ai/langgraph).
 <br><br><br>
 
 # <span style="color: #FF0000"> **Références** </span>
