@@ -7,6 +7,8 @@ classes: wide
 Sur cette page vous pouvez trouver les contenus sur lesquels j'ai travaillé (à titre personnel ou professionnel) mais qui sont référencés sur d'autres sites que mon blog personnel. Il s'agit principalement de traductions de cours, et des créations de jeux de données et de modèles.
 
 <br><br>
+
+<!--
 # Vue d'ensemble
 
 <iframe
@@ -17,6 +19,7 @@ Sur cette page vous pouvez trouver les contenus sur lesquels j'ai travaillé (à
 ></iframe>
 
 <br><br><br>
+-->
 
 # Modèles et jeux de données en français
 
