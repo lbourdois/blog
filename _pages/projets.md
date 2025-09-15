@@ -66,7 +66,7 @@ Le contenu est structuré en 10 chapitres comprenant un total de 76 vidéos 🎥
 Vous pouvez retrouver toutes ces ressources sur le site de [Hugging Face](https://huggingface.co/learn/nlp-course/fr/chapter1/1).
 
 ### Cours d'audio
-En 2023, j'ai traduit le cours de traitement automatique du langage de Hugging Face.  
+En 2023, j'ai traduit le cours d'audio de Hugging Face.  
 Le contenu est structuré en 8 unités réparties sur 46 pages web 🌐.  
 Vous pouvez retrouver toutes ces ressources sur le site de [Hugging Face](https://huggingface.co/learn/audio-course/fr/).
 
