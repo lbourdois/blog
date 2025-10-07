@@ -43,15 +43,19 @@ layout: single
 
 h1 {
     color: red; /* Rouge */
+    font-weight: bold;
 }
 
 h2 {
     color: #FFBF00; /* Jaune-orangé (eFFBF00 est souvent interprété comme FFBF00, qui est une nuance jaune-orangé) */
+    font-weight: bold;
 }
 
 h3 {
     color: #51C353; /* Vert clair */
+    font-weight: bold;
 }
+
 </style>
 
 <div style="width: 100%; margin: 0; padding: 0;">
@@ -79,17 +83,17 @@ Ces derniers représentant à eux seuls 77,89% de tous les téléchargements du 
 
 Le tout a finalement été stocké dans un dataframe ressemblant à ceci :</p>
 
+<figure>
+  <center>  
 <iframe
   src="https://huggingface.co/datasets/lbourdois/huggingface_downloads_October_2025"
   width="100%"
   height="600"
   frameborder="0"
 ></iframe>
-
-<figure>
-<figcaption><center>       
+<figcaption>     
 Figure 1: Jeu de données utilisé, disponible  <a href="https://huggingface.co/datasets/lbourdois/huggingface_downloads_October_2025" target="_blank">ici</a>
-</center></figcaption>
+</figcaption></center>
 </figure>
 
 <br>
@@ -107,7 +111,7 @@ L'objectif ici est surtout de connaître les ordres de grandeurs plutôt que de 
     </figcaption>
 </figure>
 
-<br>
+<br><br><br>
 
 <h1>Graphiques</h1>
 
@@ -122,12 +126,13 @@ Ainsi, nous proposons un graphique <em>global</em> permettant de comparer entre-
 <br>
 
 <b>Vision globale</b>
+
 <figure>
-    <iframe
+<iframe 
         class="full-width-iframe"
         src="{{ '/assets/images/hf_models_stats/huggingface_downloads.html' | relative_url }}" 
         allowfullscreen
-    ></iframe>
+    </iframe>
     <figcaption>
         Figure 3: Top 50 des entités par nombre total de téléchargements
     </figcaption>
@@ -233,3 +238,4 @@ Ainsi, nous proposons un graphique <em>global</em> permettant de comparer entre-
 
 
 </div>
+
