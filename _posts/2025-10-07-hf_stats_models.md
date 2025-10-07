@@ -83,18 +83,14 @@ Ces derniers représentant à eux seuls 77,89% de tous les téléchargements du 
 
 Le tout a finalement été stocké dans un dataframe ressemblant à ceci :</p>
 
-<figure>
-  <center>  
 <iframe
   src="https://huggingface.co/datasets/lbourdois/huggingface_downloads_October_2025"
   width="100%"
   height="600"
   frameborder="0"
 ></iframe>
-<figcaption>     
 Figure 1: Jeu de données utilisé, disponible  <a href="https://huggingface.co/datasets/lbourdois/huggingface_downloads_October_2025" target="_blank">ici</a>
-</figcaption></center>
-</figure>
+
 
 <br>
 
@@ -127,31 +123,26 @@ Ainsi, nous proposons un graphique <em>global</em> permettant de comparer entre-
 
 <b>Vision globale</b>
 
-<figure>
-<iframe 
-        class="full-width-iframe"
-        src="{{ '/assets/images/hf_models_stats/huggingface_downloads.html' | relative_url }}" 
-        allowfullscreen
-    </iframe>
-    <figcaption>
-        Figure 3: Top 50 des entités par nombre total de téléchargements
-    </figcaption>
-</figure>
+<iframe
+    class="full-width-iframe"
+    src="{{ '/assets/images/hf_models_stats/huggingface_downloads.html' | relative_url }}" 
+    allowfullscreen
+></iframe>
+Figure 3: Top 50 des entités par nombre total de téléchargements
 
 <br>
 
 <b>Vision par sous-comptes</b>
 
-<figure>
-    <iframe
-        class="full-width-iframe"
-        src="{{ '/assets/images/hf_models_stats/huggingface_downloads_breakdown.html' | relative_url }}" 
-        allowfullscreen
-    ></iframe>
-    <figcaption>
+
+<iframe
+    class="full-width-iframe"
+    src="{{ '/assets/images/hf_models_stats/huggingface_downloads_breakdown.html' | relative_url }}" 
+    allowfullscreen
+></iframe>
         Figure 4: Top 50 des entités par nombre total de téléchargements (détaillé au niveau des sous-comptes)
-    </figcaption>
-</figure>
+
+<br>
 
 <details>
     <summary>Un mot sur chacune des entités</summary>
@@ -238,4 +229,5 @@ Ainsi, nous proposons un graphique <em>global</em> permettant de comparer entre-
 
 
 </div>
+
 
