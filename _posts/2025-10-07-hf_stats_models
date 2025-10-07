@@ -200,7 +200,7 @@ Ainsi, nous proposons un graphique <em>global</em> permettant de comparer entre-
     <p>50. colbert-ir est principalement téléchargé pour son modèle <a href="https://huggingface.co/colbert-ir/colbertv2.0">colbertv2.0</a>.</p>
 </details>
 
-<br>
+<br><br><br>
 
 <h2>Vision par pays d'origine du compte</h2>
 <p>Pour le pays d'origine, nous nous intéressons dans cette version, aux localisations de l'individu et du siège social de son entreprise. Le but ici est d'estimer le nombre de pays disposant d'un environnement permettant de créer les modèles les plus téléchargés.</p>
@@ -231,6 +231,7 @@ Ainsi, nous proposons un graphique <em>global</em> permettant de comparer entre-
 
 
 </div>
+
 
 
 
