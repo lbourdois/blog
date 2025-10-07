@@ -102,7 +102,7 @@ L'objectif ici est surtout de connaître les ordres de grandeurs plutôt que de 
 <figure>
     <img src="https://cdn-uploads.huggingface.co/production/uploads/613b0a62a14099d5afed7830/bJTNpy1u_HxRw3AfpTepK.png" alt="Download stats issue example" style="max-width:70%;">
     <figcaption>
-        Figure 2: Exemple de ce que l'on peut observer pour les modèles où le Hub n'affiche pas correctement le nombre de téléchargement
+        <i>Figure 2: Exemple de ce que l'on peut observer pour les modèles où le Hub n'affiche pas correctement le nombre de téléchargement</i>
     </figcaption>
 </figure>
 
@@ -122,16 +122,16 @@ Ainsi, nous proposons un graphique <em>global</em> permettant de comparer entre-
 
 <b>Vision globale</b>
 
-<br>
+<br><br>
 
 <iframe
     class="full-width-iframe"
     src="{{ '/assets/images/hf_models_stats/huggingface_downloads.html' | relative_url }}" 
     allowfullscreen
 ></iframe>
-Figure 3: Top 50 des entités par nombre total de téléchargements
+<center><i>Figure 3: Top 50 des entités par nombre total de téléchargements</i></center>
 
-<br>
+<br><br>
 
 <b>Vision par sous-comptes</b>
 
@@ -142,9 +142,9 @@ Figure 3: Top 50 des entités par nombre total de téléchargements
     src="{{ '/assets/images/hf_models_stats/huggingface_downloads_breakdown.html' | relative_url }}" 
     allowfullscreen
 ></iframe>
-        Figure 4: Top 50 des entités par nombre total de téléchargements (détaillé au niveau des sous-comptes)
+<center><i>Figure 4: Top 50 des entités par nombre total de téléchargements (détaillé au niveau des sous-comptes)</i></center>
 
-<br>
+<br><br>
 
 <details>
     <summary>Un mot sur chacune des entités</summary>
@@ -231,6 +231,7 @@ Figure 3: Top 50 des entités par nombre total de téléchargements
 
 
 </div>
+
 
 
 
