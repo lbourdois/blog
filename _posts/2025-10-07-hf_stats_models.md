@@ -28,7 +28,7 @@ layout: single
 /* Optimiser l'iframe pour la responsivité */
 .full-width-iframe {
     width: 100%;
-    height: 600px;
+    height: 1200px;
     border: none;
     margin: 0;
     padding: 0;
@@ -89,10 +89,9 @@ Le tout a finalement été stocké dans un dataframe ressemblant à ceci :</p>
   height="600"
   frameborder="0"
 ></iframe>
-Figure 1: Jeu de données utilisé, disponible  <a href="https://huggingface.co/datasets/lbourdois/huggingface_downloads_October_2025" target="_blank">ici</a>
+<center><i>Figure 1: Jeu de données utilisé, disponible  <a href="https://huggingface.co/datasets/lbourdois/huggingface_downloads_October_2025" target="_blank">ici</a></i></center>
 
-
-<br>
+<br><br>
 
 <p>C'est à partir de celui-ci que nous générons l'ensemble des graphiques visibles ci-après.<br><br>
 
@@ -123,6 +122,8 @@ Ainsi, nous proposons un graphique <em>global</em> permettant de comparer entre-
 
 <b>Vision globale</b>
 
+<br>
+
 <iframe
     class="full-width-iframe"
     src="{{ '/assets/images/hf_models_stats/huggingface_downloads.html' | relative_url }}" 
@@ -134,6 +135,7 @@ Figure 3: Top 50 des entités par nombre total de téléchargements
 
 <b>Vision par sous-comptes</b>
 
+<br>
 
 <iframe
     class="full-width-iframe"
@@ -229,5 +231,6 @@ Figure 3: Top 50 des entités par nombre total de téléchargements
 
 
 </div>
+
 
 
