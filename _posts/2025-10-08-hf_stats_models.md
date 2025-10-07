@@ -109,9 +109,9 @@ L'objectif ici est surtout de connaître les ordres de grandeurs plutôt que de 
 
 <br>
 
-<h2>Graphiques</h2>
+<h1>Graphiques</h1>
 
-<h3>Aperçu global</h3>
+<h2>Aperçu global</h2>
 <p>Dans cette première section, nous affichons les téléchargements globaux de chacune des 50 principales entités contribuant à l'open-source, 
 ainsi que leur type de catégorie et leur pays d'origine. Nous revenons sur ces deux derniers points dans des sections dédiées.<br><br>
 
@@ -125,7 +125,7 @@ Ainsi, nous proposons un graphique <em>global</em> permettant de comparer entre-
 <figure>
     <iframe
         class="full-width-iframe"
-        src="{{ '/assets/images/test/huggingface_downloads.html' | relative_url }}" 
+        src="{{ '/assets/images/hf_models_stats/huggingface_downloads.html' | relative_url }}" 
         allowfullscreen
     ></iframe>
     <figcaption>
@@ -140,11 +140,11 @@ Ainsi, nous proposons un graphique <em>global</em> permettant de comparer entre-
 <figure>
     <iframe
         class="full-width-iframe"
-        src="{{ '/assets/images/test/huggingface_downloads_breakdown.html' | relative_url }}" 
+        src="{{ '/assets/images/hf_models_stats/huggingface_downloads_breakdown.html' | relative_url }}" 
         allowfullscreen
     ></iframe>
     <figcaption>
-        Figure 3: Top 50 des entités par nombre total de téléchargements (détaillé au niveau des sous-comptes)
+        Figure 4: Top 50 des entités par nombre total de téléchargements (détaillé au niveau des sous-comptes)
     </figcaption>
 </figure>
 
@@ -208,8 +208,7 @@ Ainsi, nous proposons un graphique <em>global</em> permettant de comparer entre-
 <p>Pour le pays d'origine, nous nous intéressons dans cette version, aux localisations de l'individu et du siège social de son entreprise. Le but ici est d'estimer le nombre de pays disposant d'un environnement permettant de créer les modèles les plus téléchargés.</p>
 
 
-
-<h3>Résumé</h3>
+<h1>Résumé</h1>
 <p>L'analyse des 50 entités les plus téléchargées sur le Hub d'Hugging Face (80,22% du total des téléchargements du Hub) montre que :</p>
 
 <ol>
