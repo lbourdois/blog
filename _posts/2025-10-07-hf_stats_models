@@ -2,7 +2,7 @@
 title: "TEST"
 tags:
   - Hugging Face
-excerpt: "Divers – Explorer les composants principaux des agents individuels et multiples"
+excerpt: "Divers –  Statistiques des modèles des 50 entités les plus téléchargées sur Hugging Face"
 header:
     overlay_color: "#1C2A4D"
     teaser: "https://raw.githubusercontent.com/lbourdois/blog/refs/heads/master/assets/images/Agents/image_0.png"
@@ -54,6 +54,31 @@ h2 {
 h3 {
     color: #51C353; /* Vert clair */
     font-weight: bold;
+}
+
+/* Styling for the Note Block (similar to the !NOTE directive) */
+.note-block {
+            border-left: 5px solid #007bff; /* Blue line on the left */
+            background-color: #e9f5ff; /* Light blue background */
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+            color: #333;
+        }
+
+/* Styling for the header part (like the [!NOTE] part) */
+.note-header {
+    font-weight: bold;
+    color: #0056b3; /* Darker blue for the header text */
+    margin-bottom: 10px;
+    font-size: 1.1em;
+    text-transform: uppercase;
+}
+
+/* The actual content of the note */
+.note-content {
+    line-height: 1.6;
 }
 
 </style>
@@ -203,8 +228,233 @@ Ainsi, nous proposons un graphique <em>global</em> permettant de comparer entre-
 <br><br><br>
 
 <h2>Vision par pays d'origine du compte</h2>
-<p>Pour le pays d'origine, nous nous intéressons dans cette version, aux localisations de l'individu et du siège social de son entreprise. Le but ici est d'estimer le nombre de pays disposant d'un environnement permettant de créer les modèles les plus téléchargés.</p>
+<p>Pour le pays d'origine, nous nous intéressons dans cette version, aux localisations de l'individu et du siège social de son entreprise. 
+Le but ici est d'estimer le nombre de pays disposant d'un environnement permettant de créer les modèles les plus téléchargés.</p>
 
+<br><br>
+
+<h3>Vision par pays (individuels)</h3>
+
+<br>
+
+<iframe
+    class="full-width-iframe"
+    src="{{ '/assets/images/hf_models_stats/huggingface_downloads_breakdown.html' | relative_url }}" 
+    allowfullscreen
+></iframe>
+<center><i>Figure 5 : Total des téléchargements par pays (pays individuels)</i></center>
+
+<br>
+
+<p>
+Avec plus de 20,6 milliards de téléchargements, les États-Unis représentent 56,4% des téléchargements des 50 entités open-source les plus téléchargées sur Hugging Face. Ils sont notamment portés par les Big Tech et leur densité importante regroupant 18 entités sur les 50.<br>
+Quatre fois moins importante, l'Allemagne est deuxième avec 13,2% du total avec 4,8 milliards de téléchargements porté à 79% par sentence-transformers. Elle regroupe 8 entités sur les 50.<br>
+La France est troisième avec 3,4 milliards de téléchargements représentant 9,3% du total. Présente avec 5 entités, sa répartition des contributions des différents acteurs est un peu plus équilibrée.<br>
+En quatrième position, la Chine représente 1,9 milliard de téléchargements, soit 5,2% du total, présente elle aussi avec 5 entités (4 si on considère `intfloat` comme lié à Microsoft).<br>
+A l'exception du Royaume-Uni composé également de 4 entités, tous les autres pays sont représentés par une seule entité.  
+</p>
+
+<br>
+
+<div class="note-block">
+<div class="note-header">
+    Note
+</div>
+<div class="note-content">
+    Il peut être étonnant d'observer que la Chine n'est que quatrième en termes de téléchargements. Cela peut s'expliquer par le fait qu'Hugging Face n'y est pas accessible, privant les entités de ce pays d'une comptabilisation des usagers locaux en plus des internationaux.
+    <br><br>
+    Dans la suite du post, l'analyse des chiffres collectés permet de mettre en avant d'autres explications possibles à cette observation (voir la section sur la taille des modèles ou celle sur les modalités).
+</div>
+</div>
+
+<br><br>
+
+<h3>Vision par pays (UE regroupée)</h3>
+
+<br>
+
+<iframe
+    class="full-width-iframe"
+    src="{{ '/assets/images/hf_models_stats/huggingface_downloads_breakdown.html' | relative_url }}" 
+    allowfullscreen
+></iframe>
+<center><i>Figure 6 : Total des téléchargements par pays (UE regroupée)</i></center>
+
+<br>
+
+<p>En regroupant les pays de l'Union Européenne (13 entités), leur part dans le total des téléchargements passe alors à 24 %.</p>
+
+<br><br>
+
+<h3>Vision par pays (continents)</h3>
+
+<br>
+
+<iframe
+    class="full-width-iframe"
+    src="{{ '/assets/images/hf_models_stats/huggingface_downloads_breakdown.html' | relative_url }}" 
+    allowfullscreen
+></iframe>
+<center><i>Figure 7 : Total des téléchargements par pays (continents)</i></center>
+
+<br>
+
+<p>Une comparaison au niveau des continents permet de mettre en évidence que l'Amérique du Nord concentre 56,7% des téléchargements des modèles open-source du top 50 (et 19 entités), l'Europe 29% (19 entités), l'Asie 8,9% (8 entités) et l'Amérique du Sud 4,9% (2 entités). Le reste étant indéterminé ou composé d'initiatives internationales (2 entités).</p>
+
+<br><br>
+
+<h2>Vision par type d'entités</h2>
+
+<br>
+
+<p>
+    Le type de l'entité est déterminé via ce qu'elle a elle-même choisi parmi les possibilités offertes par Hugging Face lors de la <a href="https://huggingface.co/organizations/new" target="_blank">création d'une organisation</a> (<em>Compagny</em>, <em>University</em>, <em>Classroom</em>, <em>Non-profit</em>, <em>Governement</em>, <em>Community</em>). Nous y avons ajouté <em>Individual</em> pour désigner les individus proposant des modèles sous leur propre nom en dehors d'une organisation. À noter également un particulier, HFL, qui est un laboratoire commun entre une université et une entreprise. Nous avons donc dû créer une catégorie <em>Hybrid Lab</em> non disponible sur Hugging Face.
+</p>
+
+<br>
+
+<iframe
+    class="full-width-iframe"
+    src="{{ '/assets/images/hf_models_stats/huggingface_downloads_breakdown.html' | relative_url }}" 
+    allowfullscreen
+></iframe>
+<center><i>Figure 8 : Total des téléchargements par type d'entité (continents)</i></center>
+
+<br>
+
+<p>Les entreprises (20 entités sur les 50) représentent 63,2% des téléchargements de modèles open-source du top 50, les universités (10 entités) 20,7%, les individuels (16 entités sur) 12,1%, les structures non-profit (4 entités) 3,8% et les laboratoires hybrides 0,3% (1 entité).</p>
+
+<div class="note-block">
+<div class="note-header">
+    Note
+</div>
+<div class="note-content">
+En consultant l'activité des différentes entités sur le Hub, on peut constater que globalement la plupart d'entre elles sont encore actives en 2025. Une exception notable est la catégorie <i>Individual</i>. En effet, sur les 16 entités de ce type, seulement 6 ont publié de nouveaux modèles en 2025.<br>
+Il apparaît donc que contrairement aux autres catégories de types, la contribution d'individuels à l'open-source n'est pas une activité pérenne dans le temps. Ce phénomène peut être compensé par un renouvellement des contributeurs, néanmoins il serait intéressant de connaître les raisons pour lesquelles ces personnes se détournent de l'open source pour trouver une façon de les soutenir et remédier à ce problème.<br><br>
+La forte part des entreprises dans le modèle open-source pourrait être aussi une vulnérabilité du modèle si ces dernières décident à l'avenir de se retirer et de ne plus y contribuer comme certaines en ont fait le choix par le passé.
+</div>
+</div>
+
+<br><br>
+
+<h2>Croisement type x pays</h2>
+
+<br>
+
+<h3>Vision par pays (individuels)</h3>
+
+<br>
+
+<iframe
+    class="full-width-iframe"
+    src="{{ '/assets/images/hf_models_stats/huggingface_downloads_breakdown.html' | relative_url }}" 
+    allowfullscreen
+></iframe>
+<center><i>Figure 9 : Total des téléchargements par type d'entité (pays individuels)</i></center>
+
+<br>
+
+<p>
+Les États-Unis sont présents dans les 4 types de catégories : premier de très loin chez les entreprises avec 76,3% des téléchargements, deuxième chez les universités avec 30% de la catégorie, troisième à 12,5% des individuels et troisième des non-profit à 15,3%.<br>
+L'Allemagne est également dans 4 types de catégories : sixième chez les entreprises avec 1,4% des téléchargements, première chez les universités avec 54,1%, à 2,5% chez les individuels et deuxième à 20,3% chez les non-profit.  <br>
+La Chine est également dans 4 types de catégories : quatrième des entreprises à 3,7%, absente des universités (seules) mais seul cas de laboratoire hybride université/entreprise dans ce top 50, à 3,6% chez les individuels (le cas `intfloat`) et enfin première chez les non-profit à 57,5%.  <br>
+La France est présente dans 3 types de catégories : deuxième des entreprises avec 12,7%, sixième des universités à 1,2% et quatrième des individuels à 8,9%.  <br>
+Le Royaume-Uni est classé dans 3 types de catégories : cinquième chez les entreprises avec 1,9% des téléchargements, troisième chez les universités avec 7,4% et à 5,4% chez les individuels.   <br>
+Tous les autres pays ne sont représentés qu'une seule fois dans une catégorie spécifique.
+</p>
+
+<br>
+
+<div class="note-block">
+<div class="note-header">
+    Note
+</div>
+<div class="note-content">
+    Non appliqué dans cette première version, un système de pondération des différents montants avancés serait à appliquer. En effet, le nombre de téléchargements d'un pays peut être influencé par la taille de sa population, le nombre d'entreprises dans le pays, le taux d'usage de l'IA dans la population, etc.  
+    <br><br>
+    C'est pourquoi, par exemple, nous proposons en plus des graphiques individuels, des graphiques au niveau de l'UE ou des continents. 
+    <br><br>
+    De plus, des échanges ont lieu avec les équipes d'Hugging Face pour essayer de connaître la localisation des téléchargements des modèles, pour ainsi déterminer ce qui révèle de la « consommation intérieure » et de l'« export ».
+</div>
+</div>
+
+<br>
+
+<h3>Vision par pays (UE regroupée)</h3>
+
+<br>
+
+<iframe
+    class="full-width-iframe"
+    src="{{ '/assets/images/hf_models_stats/huggingface_downloads_breakdown.html' | relative_url }}" 
+    allowfullscreen
+></iframe>
+<center><i>Figure 10 : Total des téléchargements par type d'entité (UE regroupée)</i></center>
+
+<br>
+
+<p>Dans cette configuration, l'Union Européenne est deuxième chez les entreprises open-source à 14,1%, première chez les universités à 60%, troisième chez les individuels à 15,6% et deuxième chez les non-profit à 20,3%.</p>
+
+<br>
+
+<h3>Vision par pays (UE regroupée)</h3>
+
+<br>
+
+<iframe
+    class="full-width-iframe"
+    src="{{ '/assets/images/hf_models_stats/huggingface_downloads_breakdown.html' | relative_url }}" 
+    allowfullscreen
+></iframe>
+<center><i>Figure 11 : Total des téléchargements par type d'entité (continents)</i></center>
+
+<br>
+
+<p>
+Au niveau des continents, le positionnement de l'Amérique du Nord est sensiblement le même que celui listé pour les États-Unis. Seule la part des individuels passe de 12,5 à 14,4% en comptabilisant le Canada.  <br>
+L'Europe bénéficie alors des chiffres du Royaume-Uni et de l'Ukraine, donnant, pour les entreprises deuxième à 16%, première des universités à 67,4%, deuxième des individuels à 34,3% et deuxième des non-profit toujours à 20,3%.  <br>
+L'Asie est troisième des entreprises à 7,7%, troisième des universités à 2,6%, quatrième des individus à 8,6%, première chez les non-profit à 57,4% et seule sur le segment des laboratoires hybrides.    <br>
+Notons finalement que l'Amérique du Sud se démarque par des contributions individuelles où elle est première à 40,7% du total.
+</p>
+
+
+<br><br>
+
+<h2>Vision par modalité</h2>
+
+<br>
+
+<h3>Vision globale</h3>
+
+<br>
+
+<iframe
+    class="full-width-iframe"
+    src="{{ '/assets/images/hf_models_stats/huggingface_downloads_breakdown.html' | relative_url }}" 
+    allowfullscreen
+></iframe>
+<center><i>Figure 12 : Contrivutions des entités aux modalités</i></center>
+
+<br>
+
+<p>
+On peut constater que le NLP est la modalité la plus téléchargée parmi ce top 50 avec 58,1% des téléchargements, suivie par la CV à 21,2% et l'audio à 15,1%.<br>  
+La modalité « *Unknow* » regroupe tous les modèles dont le tag de langue n'était pas spécifié et n'a pas pu être corrigé.</p>
+
+<div class="note-block">
+<div class="note-header">
+    Note
+</div>
+<div class="note-content">
+Le nombre de téléchargements d'une modalité semble lié au fait ou non qu'Hugging Face intègre également un modèle de la modalité en question dans sa librairie <code>transformers</code>. 
+    <br><br>
+Le NLP apparaît ainsi plutôt favorisé (Hugging Face étant à la base connu pour cette modalité). Il n'est pas évident que les praticiens des autres modalités utilisent cette librairie pour leur cas d'usage. Par exemple, il existe plusieurs alternatives en vision avec les outils d'open-mmlab, de roboflow, etc. Dans la modalité vision, le modèle le plus téléchargé étant CLIP, intégré dans <code>transformers</code>.
+</div>
+</div>
+
+
+
+<br><br><br>
 
 <h1>Résumé</h1>
 <p>L'analyse des 50 entités les plus téléchargées sur le Hub d'Hugging Face (80,22% du total des téléchargements du Hub) montre que :</p>
@@ -231,8 +481,3 @@ Ainsi, nous proposons un graphique <em>global</em> permettant de comparer entre-
 
 
 </div>
-
-
-
-
-
