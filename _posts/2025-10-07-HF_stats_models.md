@@ -44,7 +44,7 @@ layout: single
 
 .full-width-iframe-treemap {
     width: 100%;
-    height: 790px;
+    height: 750px;
     border: none;
     margin: 0;
     padding: 0;
@@ -959,6 +959,7 @@ Comme évoqué en introduction, les téléchargements de certains modèles sont 
 
 Enfin, nous envisageons de réaliser un article similaire à celui pour les jeux de données en place des modèles.</p>
 </div>
+
 
 
 
