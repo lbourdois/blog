@@ -302,7 +302,7 @@ A l'exception du Royaume-Uni composé également de 4 entités, tous les autres 
 
 <br><br>
 
-<p>Une comparaison au niveau des continents permet de mettre en évidence que l'Amérique du Nord concentre 56,7% des téléchargements des modèles open-source du top 50 (et 19 entités), l'Europe 29% (19 entités), l'Asie 8,9% (8 entités) et l'Amérique du Sud 4,9% (2 entités). Le reste étant indéterminé ou composé d'initiatives internationales (2 entités).</p>
+<p>Une comparaison au niveau des continents permet de mettre en évidence que l'Amérique du Nord concentre 56,7% des téléchargements des modèles open-source du top 50 (et 19 entités), l'Europe 29% (20 entités), l'Asie 8,9% (8 entités) et l'Amérique du Sud 4,9% (2 entités). Le reste étant indéterminé ou composé d'initiatives internationales (2 entités).</p>
 
 <br><br>
 
@@ -930,7 +930,7 @@ L'UE est majoritaire sur les modèles de moins de 25M de paramètres, là où le
     <li>L'anglais représente plus de 79,46% des téléchargements des modèles (monolingues ou multilingues) utilisant une langue (et même 92,85% si on ne considère que les modèles possédant un tag de langue). Cette langue est loin devant les autres. Par exemple, le français qui arrive en deuxième position ne l'est qu'avec 17,48% (20,43% des modèles possédant un tag de langue).</li>
     <li>Les entreprises sont le contributeur majoritaire à l'open-source avec 63,2% des téléchargements (20 entités sur les 50), suivies à 20,7% par les universités (10 entités), puis par des individuels à 12,1% (16 entités), par des structures non-profit à 3,8% (4 entités) et enfin par les laboratoires hybrides à 0,3% (1 entité).</li>
     <li>Les États-Unis sont présents partout, maillant toutes les modalités (NLP, vision, audio, séries temporelles, multimodalités) et toutes les tailles de modèles (de moins de 5M de paramètres aux dizaines/centaines de milliards). Ils sont notamment portés par leurs entreprises open-source (écrasant toute concurrence sur ce segment) mais disposent également d'atouts dans tous les types d'organisation existantes (hors laboratoires hybrides) puisqu'ils sont représentés à 18 reprises dans ce top 50.<br>
-    L'Europe (l'Allemagne, la France et le Royaume-Uni notamment) se positionne également dans tous les types d'organisation existantes hors laboratoires hybrides (présente à 19 reprises) mais se démarque par l'impact de ses universités spécialisées sur des modèles de petites tailles (&lt;200M de paramètres). Elle est aussi présente sur toutes les modalités à l'exception des séries temporelles.<br>
+    L'Europe (l'Allemagne, la France et le Royaume-Uni notamment) se positionne également dans tous les types d'organisation existantes hors laboratoires hybrides (présente à 20 reprises) mais se démarque par l'impact de ses universités spécialisées sur des modèles de petites tailles (&lt;200M de paramètres). Elle est aussi présente sur toutes les modalités à l'exception des séries temporelles.<br>
     La Chine (représentée par 5 entités) est bien présente sur le segment des grands modèles open-source (31,8% vs 43,1% pour les États-Unis et 24% pour l'Europe sur les modèles de plus de 7,5 milliards de paramètres). Elle est cependant mal placée sur toutes les autres tranches de tailles des modèles (seulement 130M de téléchargements de modèles de moins de 100M de paramètres contre 7,05 milliards pour les États-Unis et 5,3 milliards pour l'Europe). Son non-positionnement sur la vision (à peine 4 millions de téléchargements) et l'audio (0 téléchargements) la pénalise également. Il ne s'agit pas de modalités sur lesquelles elle est connue pour avoir du retard, mais force est de constater qu'elle ne produit pas, à l'heure actuelle, de contenus open-source dans ces modalités sur Hugging Face (plateforme non accessible dans le pays). Elle domine le secteur des organisations non-profit et est seule sur celui des laboratoires hybrides universités/entreprises.<br>
     Enfin, les autres pays ne bénéficient uniquement d'un acteur spécialisé sur une modalité donnée.</li>
 </ol>
@@ -961,6 +961,7 @@ Comme évoqué en introduction, les téléchargements de certains modèles sont 
 
 Enfin, nous envisageons de réaliser un article similaire à celui pour les jeux de données en place des modèles.</p>
 </div>
+
 
 
 
