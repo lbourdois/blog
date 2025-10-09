@@ -346,7 +346,7 @@ La forte part des entreprises dans le modèle open-source pourrait être aussi u
 
 <iframe
     class="full-width-iframe-treemap"
-    src="{{ '/assets/images/hf_models_stats/huggingface_treemap_entities_countries_individuals.hmtl' | relative_url }}" 
+    src="{{ '/assets/images/hf_models_stats/huggingface_treemap_entities_countries_individuals.html' | relative_url }}" 
     allowfullscreen
 ></iframe>
 <center><i>Figure 9 : Total des téléchargements par type d'entité (pays individuels)</i></center>
@@ -429,7 +429,7 @@ Notons finalement que l'Amérique du Sud se démarque par des contributions indi
     src="{{ '/assets/images/hf_models_stats/huggingface_treemap_modalities.html' | relative_url }}" 
     allowfullscreen
 ></iframe>
-<center><i>Figure 12 : Contrivutions des entités aux modalités</i></center>
+<center><i>Figure 12 : Contributions des entités aux modalités</i></center>
 
 <br><br>
 
@@ -477,7 +477,7 @@ Nous observons que peu d'entités sont diversifiées. Chacune semble avoir une s
 
 <iframe
     class="full-width-iframe"
-    src="{{ '/assets/images/hf_models_stats/huggingface_downloads_modalities_breakdown.html' | relative_url }}" 
+    src="{{ '/assets/images/hf_models_stats/huggingface_downloads_modalities_breakdown_sub_accounts.html' | relative_url }}" 
     allowfullscreen
 ></iframe>
 <center><i>Figure 14 : Top 50 des entités Hugging Face par nombre total de téléchargements avec décomposition par modalité (et par sous-comptes)</i></center>
@@ -959,6 +959,7 @@ Comme évoqué en introduction, les téléchargements de certains modèles sont 
 
 Enfin, nous envisageons de réaliser un article similaire à celui pour les jeux de données en place des modèles.</p>
 </div>
+
 
 
 
