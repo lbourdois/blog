@@ -67,15 +67,6 @@ h3 {
             color: #333;
         }
 
-/* Styling for the header part (like the [!NOTE] part) */
-.note-header {
-    font-weight: bold;
-    color: #0056b3; /* Darker blue for the header text */
-    margin-bottom: 10px;
-    font-size: 1.1em;
-    text-transform: uppercase;
-}
-
 /* The actual content of the note */
 .note-content {
     line-height: 1.6;
@@ -126,10 +117,8 @@ L'objectif ici est surtout de connaître les ordres de grandeurs plutôt que de 
 
 <figure>
     <img src="https://cdn-uploads.huggingface.co/production/uploads/613b0a62a14099d5afed7830/bJTNpy1u_HxRw3AfpTepK.png" alt="Download stats issue example" style="max-width:70%;">
-    <figcaption>
-        <i>Figure 2: Exemple de ce que l'on peut observer pour les modèles où le Hub n'affiche pas correctement le nombre de téléchargement</i>
-    </figcaption>
 </figure>
+<center><i>Figure 2: Exemple de ce que l'on peut observer pour les modèles où le Hub n'affiche pas correctement le nombre de téléchargement</i></center>
 
 <br><br><br>
 
@@ -156,7 +145,7 @@ Ainsi, nous proposons un graphique <em>global</em> permettant de comparer entre-
 ></iframe>
 <center><i>Figure 3: Top 50 des entités par nombre total de téléchargements</i></center>
 
-<br><br>
+<br><br><br>
 
 <b>Vision par sous-comptes</b>
 
@@ -231,7 +220,7 @@ Ainsi, nous proposons un graphique <em>global</em> permettant de comparer entre-
 <p>Pour le pays d'origine, nous nous intéressons dans cette version, aux localisations de l'individu et du siège social de son entreprise. 
 Le but ici est d'estimer le nombre de pays disposant d'un environnement permettant de créer les modèles les plus téléchargés.</p>
 
-<br><br>
+<br>
 
 <h3>Vision par pays (individuels)</h3>
 
@@ -244,7 +233,7 @@ Le but ici est d'estimer le nombre de pays disposant d'un environnement permetta
 ></iframe>
 <center><i>Figure 5 : Total des téléchargements par pays (pays individuels)</i></center>
 
-<br>
+<br><br>
 
 <p>
 Avec plus de 20,6 milliards de téléchargements, les États-Unis représentent 56,4% des téléchargements des 50 entités open-source les plus téléchargées sur Hugging Face. Ils sont notamment portés par les Big Tech et leur densité importante regroupant 18 entités sur les 50.<br>
@@ -257,9 +246,6 @@ A l'exception du Royaume-Uni composé également de 4 entités, tous les autres 
 <br>
 
 <div class="note-block">
-<div class="note-header">
-    Note
-</div>
 <div class="note-content">
     Il peut être étonnant d'observer que la Chine n'est que quatrième en termes de téléchargements. Cela peut s'expliquer par le fait qu'Hugging Face n'y est pas accessible, privant les entités de ce pays d'une comptabilisation des usagers locaux en plus des internationaux.
     <br><br>
@@ -280,7 +266,7 @@ A l'exception du Royaume-Uni composé également de 4 entités, tous les autres 
 ></iframe>
 <center><i>Figure 6 : Total des téléchargements par pays (UE regroupée)</i></center>
 
-<br>
+<br><br>
 
 <p>En regroupant les pays de l'Union Européenne (13 entités), leur part dans le total des téléchargements passe alors à 24 %.</p>
 
@@ -297,7 +283,7 @@ A l'exception du Royaume-Uni composé également de 4 entités, tous les autres 
 ></iframe>
 <center><i>Figure 7 : Total des téléchargements par pays (continents)</i></center>
 
-<br>
+<br><br>
 
 <p>Une comparaison au niveau des continents permet de mettre en évidence que l'Amérique du Nord concentre 56,7% des téléchargements des modèles open-source du top 50 (et 19 entités), l'Europe 29% (19 entités), l'Asie 8,9% (8 entités) et l'Amérique du Sud 4,9% (2 entités). Le reste étant indéterminé ou composé d'initiatives internationales (2 entités).</p>
 
@@ -320,14 +306,11 @@ A l'exception du Royaume-Uni composé également de 4 entités, tous les autres 
 ></iframe>
 <center><i>Figure 8 : Total des téléchargements par type d'entité (continents)</i></center>
 
-<br>
+<br><br>
 
 <p>Les entreprises (20 entités sur les 50) représentent 63,2% des téléchargements de modèles open-source du top 50, les universités (10 entités) 20,7%, les individuels (16 entités sur) 12,1%, les structures non-profit (4 entités) 3,8% et les laboratoires hybrides 0,3% (1 entité).</p>
 
 <div class="note-block">
-<div class="note-header">
-    Note
-</div>
 <div class="note-content">
 En consultant l'activité des différentes entités sur le Hub, on peut constater que globalement la plupart d'entre elles sont encore actives en 2025. Une exception notable est la catégorie <i>Individual</i>. En effet, sur les 16 entités de ce type, seulement 6 ont publié de nouveaux modèles en 2025.<br>
 Il apparaît donc que contrairement aux autres catégories de types, la contribution d'individuels à l'open-source n'est pas une activité pérenne dans le temps. Ce phénomène peut être compensé par un renouvellement des contributeurs, néanmoins il serait intéressant de connaître les raisons pour lesquelles ces personnes se détournent de l'open source pour trouver une façon de les soutenir et remédier à ce problème.<br><br>
@@ -352,7 +335,7 @@ La forte part des entreprises dans le modèle open-source pourrait être aussi u
 ></iframe>
 <center><i>Figure 9 : Total des téléchargements par type d'entité (pays individuels)</i></center>
 
-<br>
+<br><br>
 
 <p>
 Les États-Unis sont présents dans les 4 types de catégories : premier de très loin chez les entreprises avec 76,3% des téléchargements, deuxième chez les universités avec 30% de la catégorie, troisième à 12,5% des individuels et troisième des non-profit à 15,3%.<br>
@@ -366,9 +349,6 @@ Tous les autres pays ne sont représentés qu'une seule fois dans une catégorie
 <br>
 
 <div class="note-block">
-<div class="note-header">
-    Note
-</div>
 <div class="note-content">
     Non appliqué dans cette première version, un système de pondération des différents montants avancés serait à appliquer. En effet, le nombre de téléchargements d'un pays peut être influencé par la taille de sa population, le nombre d'entreprises dans le pays, le taux d'usage de l'IA dans la population, etc.  
     <br><br>
@@ -391,7 +371,7 @@ Tous les autres pays ne sont représentés qu'une seule fois dans une catégorie
 ></iframe>
 <center><i>Figure 10 : Total des téléchargements par type d'entité (UE regroupée)</i></center>
 
-<br>
+<br><br>
 
 <p>Dans cette configuration, l'Union Européenne est deuxième chez les entreprises open-source à 14,1%, première chez les universités à 60%, troisième chez les individuels à 15,6% et deuxième chez les non-profit à 20,3%.</p>
 
@@ -408,7 +388,7 @@ Tous les autres pays ne sont représentés qu'une seule fois dans une catégorie
 ></iframe>
 <center><i>Figure 11 : Total des téléchargements par type d'entité (continents)</i></center>
 
-<br>
+<br><br>
 
 <p>
 Au niveau des continents, le positionnement de l'Amérique du Nord est sensiblement le même que celui listé pour les États-Unis. Seule la part des individuels passe de 12,5 à 14,4% en comptabilisant le Canada.  <br>
@@ -435,16 +415,13 @@ Notons finalement que l'Amérique du Sud se démarque par des contributions indi
 ></iframe>
 <center><i>Figure 12 : Contrivutions des entités aux modalités</i></center>
 
-<br>
+<br><br>
 
 <p>
 On peut constater que le NLP est la modalité la plus téléchargée parmi ce top 50 avec 58,1% des téléchargements, suivie par la CV à 21,2% et l'audio à 15,1%.<br>  
-La modalité « *Unknow* » regroupe tous les modèles dont le tag de langue n'était pas spécifié et n'a pas pu être corrigé.</p>
+La modalité « <i>Unknow</i> » regroupe tous les modèles dont le tag de langue n'était pas spécifié et n'a pas pu être corrigé.</p>
 
 <div class="note-block">
-<div class="note-header">
-    Note
-</div>
 <div class="note-content">
 Le nombre de téléchargements d'une modalité semble lié au fait ou non qu'Hugging Face intègre également un modèle de la modalité en question dans sa librairie <code>transformers</code>. 
     <br><br>
@@ -609,6 +586,8 @@ pipeline_tag_to_modality = {
 </code></pre>
 </details>
 
+<br>
+
 <p>Dans cette section, nous affichons les différentes tâches par modalité afin d’obtenir un meilleur aperçu des plus populaires.</p>
 
 <br>
@@ -618,9 +597,9 @@ pipeline_tag_to_modality = {
 <br>
 
 <p>
-<p>Les tâches de NLP sont différentes variantes de bleu, celles de vision des variantes de jaune, et celles d'audio des variantes de rouge.</p><br>
-<p>Sur conseil de Tom Aarseen, nous avons fusionné les tags de pipeline <code>sentence-similarity</code> et <code>feature-extraction</code>.</p><br>
-<p>Enfin nous n'avons pas regroupé <code>text2text-generation</code> avec <code>text-generation</code>. Le premier tag est surtout utilisé par les modèles encodeurs-décodeurs générant du texte (T5, BART) alors que le second est utilisé par les modèles uniquement décodeur. L'objectif ici était de montrer que ces encodeurs-décodeurs représentent autant de téléchargements que les Qwen d'Alibaba et davantage que les Llamas de Meta.</p>
+<p>Les tâches de NLP sont différentes variantes de bleu, celles de vision des variantes de jaune, et celles d'audio des variantes de rouge.<br>
+Sur conseil de Tom Aarseen, nous avons fusionné les tags de pipeline <code>sentence-similarity</code> et <code>feature-extraction</code>.<br>
+Enfin nous n'avons pas regroupé <code>text2text-generation</code> avec <code>text-generation</code>. Le premier tag est surtout utilisé par les modèles encodeurs-décodeurs générant du texte (T5, BART) alors que le second est utilisé par les modèles uniquement décodeur. L'objectif ici était de montrer que ces encodeurs-décodeurs représentent autant de téléchargements que les Qwen d'Alibaba et davantage que les Llamas de Meta.</p>
 
 <br>
 
@@ -633,11 +612,9 @@ pipeline_tag_to_modality = {
 
 <br>
 
-<p>Les modèles de base purement encodeurs visibles via la tâche <code>fill-mask</code> sont de loin les modèles les plus téléchargés avec 22,3%. Leur finetunings représentent 22,7% des téléchargements, principalement sur la tâche de <code>sentence-similarity</code> (à laquelle nous avons hésité de fusionner aussi celle de <code>text-ranking</code>) puis de <code>text-classification</code>, de <code>token-classification</code>, <code>zero-shot-classication</code> et enfin de <code>question-answering</code>.</p><br>
-
-<p>Les modèles de génération purement décodeur représentent 9,5% des téléchargements.</p><br>
-
-<p>Les modèles encodeur-décodeur représentent 1,4% auxquels on peut ajouter la tâche de <code>traduction</code> à 1,6% pour lesquels ils sont principalement utilisés.</p><br>
+<p>Les modèles de base purement encodeurs visibles via la tâche <code>fill-mask</code> sont de loin les modèles les plus téléchargés avec 22,3%. Leur finetunings représentent 22,7% des téléchargements, principalement sur la tâche de <code>sentence-similarity</code> (à laquelle nous avons hésité de fusionner aussi celle de <code>text-ranking</code>) puis de <code>text-classification</code>, de <code>token-classification</code>, <code>zero-shot-classication</code> et enfin de <code>question-answering</code>.<br>
+Les modèles de génération purement décodeur représentent 9,5% des téléchargements.<br>
+Les modèles encodeur-décodeur représentent 1,4% auxquels on peut ajouter la tâche de <code>traduction</code> à 1,6% pour lesquels ils sont principalement utilisés.</p><br>
 
 <p>Viens ensuite la vision avec 11,1% des téléchargements en <code>classification</code>, 6,4% en <code>zero-shot-classification</code> (les CLIP et dérivés), 1,8% en <code>image-feature-extraction</code>, 0,9% en <code>détection d'objet</code> et 0,5% en <code>segmentation d'objet</code> (le reste des tâches n'étant pas significatives).</p><br>
 
@@ -667,9 +644,9 @@ pipeline_tag_to_modality = {
 <br>
 
 <p>Dans cette section nous nous intéressons qu'aux modèles liés à des tâches où l'utilisation d'une langue est applicable (les tâches de NLP, l'ASR, text-to-image, etc.). Cela représente 24 592 908 565 téléchargements sur les 36 450 707 797 initiaux du top 50 soit 67,47%.
-En pratique il s'avère que pour 14,42% de ces 24,6 milliards de téléchargements, le tag de langue n'est pas renseigné pour ces modèles.<p><br>
+En pratique il s'avère que pour 14,42% de ces 24,6 milliards de téléchargements, le tag de langue n'est pas renseigné pour ces modèles.<br>
 
-<p>Après analyse, 184 langues sont référencées dans ce top 50 (224 autres valeurs ont été trouvées mais ne sont pas des tags ISO639-1 ou ISO639-3). Ici aussi, pour des questions de visibilité, seules les 20 premières langues sont affichées dans le graphique suivant. L'ensemble des chiffres est retrouvable dans le jeu de données disponible <a href="https://huggingface.co/datasets/lbourdois/huggingface_languages_October_2025">ici</a>.</p>
+Après analyse, 184 langues sont référencées dans ce top 50 (224 autres valeurs ont été trouvées mais ne sont pas des tags ISO639-1 ou ISO639-3). Ici aussi, pour des questions de visibilité, seules les 20 premières langues sont affichées dans le graphique suivant. L'ensemble des chiffres est retrouvable dans le jeu de données disponible <a href="https://huggingface.co/datasets/lbourdois/huggingface_languages_October_2025">ici</a>.</p>
 
 <iframe
     class="full-width-iframe"
@@ -678,6 +655,7 @@ En pratique il s'avère que pour 14,42% de ces 24,6 milliards de téléchargemen
 ></iframe>
 <center><i>Figure 20 : Nombre total de téléchargements par langues</i></center>
 
+<br>
 
 <p>On peut ainsi remarquer que parmi tous les modèles disponibles dans le top 50 reposant sur une langue, l'anglais représente plus de 79,46% des téléchargements des modèles (monolingues ou multilingues) utilisant une langue (et même 92,85% des modèles possédant un tag de langue). Elle est loin devant les autres langues. Par exemple, le français qui arrive en deuxième position ne l'est qu'avec 17,48% (20,43% des modèles possédant un tag de langue).  
 <br>
@@ -729,9 +707,6 @@ En détaillant davantage :
 <br>
 
 <div class="note-block">
-<div class="note-header">
-    Note
-</div>
 <div class="note-content">
 Les LLM ne sont ainsi pas des modèles massivement téléchargés (en open-source du moins).<br>    
 Une hypothèse est que l'explication pourrait venir du profil des utilisateurs d'Hugging Face (notamment de leur capacité de calcul pouvant être renseignée <a href="https://huggingface.co/settings/local-apps">ici</a> mais nous n'avons pas trouvé de moyen de récupérer ces informations de manière automatique.<br>
@@ -757,7 +732,7 @@ Etant donné que 92,5% des téléchargements portent sur les modèles de moins d
 ></iframe>
 <center><i>Figure 23 : Nombre total de téléchargements en fonction de la taille du modèle et du type de l'entité</i></center>
 
-<br>
+<br><br>
 
 <p>
 Les entreprises sont présentes dans toutes les tranches de tailles de modèles. Elles représentent une part importante pour les modèles de moins de 5 millions de paramètres (94% des téléchargements de la tranche) et au-delà de 500M de paramètres (77 à 85% des téléchargements).<br>
@@ -777,7 +752,7 @@ Entre 5M de paramètres et 500M (plutôt 200M), les modèles des universités pe
 ></iframe>
 <center><i>Figure 24 : Nombre total de téléchargements en fonction de la taille du modèle et de la modalité</i></center>
 
-<br>
+<br><br>
 
 <p>
 Le NLP est présent dans toutes les tranches de tailles, notamment de 100 à 500M de paramètres.  <br>
@@ -799,7 +774,7 @@ Les séries temporelles pour les modèles de moins de 50M de paramètres.
 ></iframe>
 <center><i>Figure 25 : Nombre total de téléchargements en fonction de la taille du modèle et de la tâche</i></center>
 
-<br>
+<br><br>
 
 <p>
 Nous disposons d'un peu plus de détails au niveau des tâches (par exemple pour la vision on peut s’apercevoir que les modèles <100M sont plutôt de la classification alors qu'entre 100 et 500M il s'agit plutôt des CLIP).<br>
@@ -819,7 +794,7 @@ Le lecteur peut faire ses propres analyses en se basant sur le fait que les tâc
 ></iframe>
 <center><i>Figure 26 : Nombre total de téléchargements en fonction de la taille du modèle et de l'entité</i></center>
 
-<br>
+<br><br>
 
 <p>
 Nous invitons le lecteur à cliquer sur la légende pour ne garder que les entités qui l'intéressent. Cela permet à une entité donnée de voir la répartition des téléchargements de ses modèles en fonction des différentes tranches et ainsi faire apparaître son profil, ou encore de comparer <i>n</i> entités différentes.
@@ -849,7 +824,7 @@ Nous invitons le lecteur à cliquer sur la légende pour ne garder que les entit
 ></iframe>
 <center><i>Figure 28 : Nombre total de téléchargements en fonction de la taille du modèle et de l'entité (modèles de plus d'un milliard de paramètre)</i></center>
 
-<br>
+<br><br>
       
 <p>Dans cet exemple se focalisant uniquement sur les acteurs de LLM du top 50 qui dépassent les 5% de téléchargements sur l'une des tranches supérieures à 1B de paramètres (à savoir Google, Meta, Microsoft, Alibaba, Mistral, Unsloth, Deepseek + les individuels proposant les versions quantifiées des modèles comme TheBloke et Maziyar Panahi), on peut constater :  <br>
 - sur la tranche 1B-3B :  <br>
@@ -864,13 +839,11 @@ Meta est le plus téléchargé avec 23,2% de la tranche, devant Alibaba à 20%, 
 </p>
 
 <div class="note-block">
-<div class="note-header">
-    Note
-</div>
 <div class="note-content">
 15,6% de la tranche est captée par des individus qui proposent les poids quantifiés des modèles de base. Les entités à l'origine de ces modèles pourraient capter ces téléchargements si lors des mises en ligne, elles mettaient directement ces versions quantifiées à disposition plutôt que laisser cela à la communauté. <br>
 Sans sortie de nouveaux modèles de la part de Meta en open-source prochainement, d'après une estimation très naïve (extrapolation linéaire à partir des téléchargements des comptes de <code>Qwen</code> et de <code>meta-llama</code> entre le 21 septembre et 1er octobre 2025), Alibaba devrait devenir premier sur cette tranche d'ici la fin du mois de novembre. Son modèle <code>Qwen/Qwen2.5-1.5B-Instruct</code> étant déjà le LLM textuel le plus téléchargé devant <code>meta-llama/Llama-3.1-8B-Instruct</code> (les modèles les plus petits étant les plus téléchargés). <br>
 Un acteur chinois serait alors premier sur cette métrique (et sur le segment des LLM open-source), bien que les États-Unis dans leur ensemble ont encore de la marge par rapport aux acteurs chinois dans leur ensemble (49,8% pour les États-Unis sur la tranche 1B et + contre 24,2% pour la Chine et 43,1% vs 31,8% sur la tranche 7,5B et +).
+</div>
 </div>
 
 <br>
@@ -886,7 +859,6 @@ Un acteur chinois serait alors premier sur cette métrique (et sur le segment de
 ></iframe>
 <center><i>Figure 29 : Nombre total de téléchargements en fonction de la taille du modèle et du pays</i></center>
 
-
 <br>
 
 <h3>Vision par pays (UE regroupée)</h3>
@@ -900,7 +872,7 @@ Un acteur chinois serait alors premier sur cette métrique (et sur le segment de
 ></iframe>
 <center><i>Figure 30 : Nombre total de téléchargements en fonction de la taille du modèle et du pays (UE regroupée)</i></center>
 
-<br>
+<br><br>
 
 <p>
 Les États-Unis et l'Union Européenne sont présents sur l'ensemble des tranches de tailles de modèles.  <br>
@@ -951,12 +923,12 @@ L'UE est majoritaire sur les modèles de moins de 25M de paramètres, là où le
 
 <h1>Suite</h1>
 
-<p>Dans une actualisation de ce travail (qui nécessitera d'analyser un nombre important de publications), nous souhaiterions rajouter deux strates supplémentaires à savoir la ville où se situent les auteurs du modèle ainsi que leur nationalité. L’objectif sera de déterminer dans quelles villes les modèles les plus téléchargés se développent ainsi que les pays avec le système éducatif générant les auteurs les plus téléchargés.</p>
+<p>Dans une actualisation de ce travail (qui nécessitera d'analyser un nombre important de publications), nous souhaiterions rajouter deux strates supplémentaires à savoir la ville où se situent les auteurs du modèle ainsi que leur nationalité. L’objectif sera de déterminer dans quelles villes les modèles les plus téléchargés se développent ainsi que les pays avec le système éducatif générant les auteurs les plus téléchargés.
 <br>
-<p>Par exemple, les téléchargements du LLaMA 1 ne seraient pas comptabilisés à 100% comme américain mais à 12/14 français (Paris), 1/14 américain (San Francisco) et 1/14 pakistanais (Londres). Plusieurs systèmes de pondérations pourraient être appliqués comme telle une pondération plus forte sur les auteurs principaux par exemple).</p> 
+Par exemple, les téléchargements du LLaMA 1 ne seraient pas comptabilisés à 100% comme américain mais à 12/14 français (Paris), 1/14 américain (San Francisco) et 1/14 pakistanais (Londres). Plusieurs systèmes de pondérations pourraient être appliqués comme telle une pondération plus forte sur les auteurs principaux par exemple).
 <br><br>
 <p>Nous souhaiterions également proposer une vue permettant de distinguer l'impact d'un modèle dans l'écosystème, c'est-à-dire en plus des téléchargements propres à un modèle donné y ajouter tous les téléchargements issus des finetunings/merges/adaptateurs/quantifications. Pour cela nous avons déjà procédé à quelques expériences en utilisant le <em>Model tree</em> mais il s'avère que celui-ci est souvent incomplet, surtout pour les modèles les plus anciens.</p><br>
-<p>Une méthode consisterait à analyser le nom des têtes de finetuning utilisées par les modèles, si ce n'est le modèle de base, au moins son architecture de base.</p><br>
+<p>Une méthode consisterait à analyser le nom des têtes de finetuning utilisées par les modèles, si ce n'est le modèle de base, au moins son architecture de base.<br>
 <p>L'objectif est alors de déterminer quels modèles de base sont les plus impactants (cet article de <a href="https://huggingface.co/spaces/transformers-community/Transformers-tenets">blog</a> par les équipes d'Hugging Face et qui vient de sortir serait une bonne base).</p>
 
 <figure>
@@ -972,9 +944,10 @@ L'UE est majoritaire sur les modèles de moins de 25M de paramètres, là où le
 
 <br>
 <p>
-Comme évoqué en introduction, les téléchargements de certains modèles sont mal comptabilisés actuellement sur le Hub. Cela pourrait ainsi dévaluer certaines entités. Nous sommes actuellement en contact avec les équipes d'Hugging Face pour corriger du mieux possible ce point.<br>
+Comme évoqué en introduction, les téléchargements de certains modèles sont mal comptabilisés actuellement sur le Hub. Cela pourrait ainsi dévaluer certaines entités. Nous sommes actuellement en contact avec les équipes d'Hugging Face pour corriger du mieux possible ce point.<br><br>
 
 Enfin, nous envisageons de réaliser un article similaire à celui pour les jeux de données en place des modèles.</p>
 </div>
+
 
 
