@@ -491,8 +491,8 @@ Nous observons que peu d'entités sont diversifiées. Chacune semble avoir une s
 <br>
 
 <iframe
-    class="full-width-iframe"
-    src="{{ '/assets/images/hf_models_stats/huggingface_individuals_to_modalities.hmtl' | relative_url }}" 
+    class="full-width-iframe-treemap"
+    src="{{ '/assets/images/hf_models_stats/huggingface_individuals_to_modalities.html' | relative_url }}" 
     allowfullscreen
 ></iframe>
 <center><i>Figure 15 : Contribution des pays (individuels) aux modalités</i></center>
@@ -512,7 +512,7 @@ La Chine pour sa part est absente des modalités CV et audio. Cela pourrait expl
 <br>
 
 <iframe
-    class="full-width-iframe"
+    class="full-width-iframe-treemap"
     src="{{ '/assets/images/hf_models_stats/huggingface_eu_to_modalities.html' | relative_url }}" 
     allowfullscreen
 ></iframe>
@@ -529,7 +529,7 @@ La Chine pour sa part est absente des modalités CV et audio. Cela pourrait expl
 <br>
 
 <iframe
-    class="full-width-iframe"
+    class="full-width-iframe-treemap"
     src="{{ '/assets/images/hf_models_stats/huggingface_continental_to_modalities.html' | relative_url }}" 
     allowfullscreen
 ></iframe>
@@ -621,7 +621,7 @@ Enfin nous n'avons pas regroupé <code>text2text-generation</code> avec <code>te
 <br>
 
 <iframe
-    class="full-width-iframe"
+    class="full-width-iframe-treemap"
     src="{{ '/assets/images/hf_models_stats/huggingface_entities_to_tasks.html' | relative_url }}" 
     allowfullscreen
 ></iframe>
@@ -961,6 +961,7 @@ Comme évoqué en introduction, les téléchargements de certains modèles sont 
 
 Enfin, nous envisageons de réaliser un article similaire à celui pour les jeux de données en place des modèles.</p>
 </div>
+
 
 
 
