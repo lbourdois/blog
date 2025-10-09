@@ -111,25 +111,6 @@ h3 {
     word-break: break-all;
 }
 
-.copy-button {
-    /* Style du bouton */
-    position: absolute;
-    top: 5px;
-    right: 5px;
-    padding: 5px 10px;
-    background-color: #555; /* Fond du bouton sombre */
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 0.8em;
-    z-index: 10; /* Assure que le bouton est au-dessus du code */
-    transition: background-color 0.2s;
-}
-
-.copy-button:hover {
-    background-color: #007bff; /* Changement de couleur au survol */
-}
 </style>
 
 <div style="width: 100%; margin: 0; padding: 0;">
@@ -1016,7 +997,6 @@ Enfin, nous envisageons de réaliser un article similaire à celui pour les jeux
 <h1>Citation</h1>
 
 <div class="bibtex-citation-container">
-    <button class="copy-button" onclick="copyBibTeX()">Copy</button>
     <pre class="bibtex-code-dark" id="bibtexContent"><code>
     @inproceedings{HF_models_stats_blog_post,  
       author    = {Loïck BOURDOIS},  
@@ -1028,4 +1008,3 @@ Enfin, nous envisageons de réaliser un article similaire à celui pour les jeux
 </div>
 
 </div>
-
