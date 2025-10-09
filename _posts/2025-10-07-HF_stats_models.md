@@ -452,90 +452,101 @@ Le NLP apparaît ainsi plutôt favorisé (Hugging Face étant à la base connu p
 </div>
 </div>
 
+<br>
 
-#### Vision par entité
-
-Dans le graphique suivant, nous affichons pour chacune des entités, la part de chacune des modalités dans ses téléchargements.
-
-<figure>
-  <img src="https://cdn-uploads.huggingface.co/production/uploads/613b0a62a14099d5afed7830/qZw3S94rtE7aKizppYZFn.png" 
-       alt="Diagram example" 
-       style="max-width:100%; height:auto;">
-  <figcaption>
-    <center>
-    Figure 13: Top 50 Hugging Face Entities by Total Downloads with Modality Breakdown<br>Dynamic version available 
-    <a href="https://lbourdois.github.io/blog/assets/images/test/huggingface_downloads_by_modalities_breakdown.html" target="_blank">here</a></center>
-  </figcaption>
-</figure>
-
-Nous observons que peu d'entités sont diversifiées. Chacune semble avoir une spécialité.  
-32 font majoritairement du NLP, 10 de la vision (paradoxalement Hugging Face avec le rachat de `timm` et OpenAI par conséquence de n'avoir mis de modèles de NLP en open-source depuis le gpt2 avant août 2025), 4 d'audios, 2 de multimodal nlp/vision, 1 de séries temporelles et 1 non déterminé (`mradermacher` proposant des versions quantifiées de modèles, cela serait vraisemblablement du NLP).
-
-#### Vision par sous-comptes
-
-Le graphique ci-dessous donne un peu plus de détails en affichant les répartitions par sous-comptes de chacune des entités.
-
-<figure>
-  <img src="https://cdn-uploads.huggingface.co/production/uploads/613b0a62a14099d5afed7830/VBGvjzGiht459_TZfhBra.png" 
-       alt="Diagram example" 
-       style="max-width:100%; height:auto;">
-  <figcaption>
-    <center>
-    Figure 14: Top 50 Hugging Face Entities by Total Downloads with Modality Breakdown (with sub-account breakdown)<br>Dynamic version available 
-    <a href="https://lbourdois.github.io/blog/assets/images/test/huggingface_downloads_by_modalities_breakdown_sub_accounts.hmtl" target="_blank">here</a></center>
-  </figcaption>
-</figure>
-
-#### Vision par pays (individuels)
-
-<figure>
-  <img src="https://cdn-uploads.huggingface.co/production/uploads/613b0a62a14099d5afed7830/yYGrSRMIx0XECvTDDCRrO.png" 
-       alt="Diagram example" 
-       style="max-width:100%; height:auto;">
-  <figcaption>
-    <center>
-    Figure 15: Contribution of Countries to the Modalities<br>Dynamic version available 
-    <a href="https://lbourdois.github.io/blog/assets/images/test/Contribution_individual_to_Modalities.html" target="_blank">here</a></center>
-  </figcaption>
-</figure>
-
-On peut remarquer que les États-Unis sont premiers dans la totalité des modalités. Excepté en vision où ils n’obtiennent « que » 46,6% de la modalité, ils captent la majorité dans l'ensemble de celles-ci.  
-La France est quant à elle placée en deuxième ou troisième position des modalités NLP, vision et audio.  
-La Chine pour sa part est absente des modalités CV et audio. Cela pourrait expliquer l'observation faite précédemment. Elle n'est « que » quatrième dans l'ensemble des téléchargements ou plutôt que l'Allemagne (présente en NLP et vision) et la France comptabilisent plus de téléchargements.
-
-#### Vision par pays (UE regroupée)
-
-<figure>
-  <img src="https://cdn-uploads.huggingface.co/production/uploads/613b0a62a14099d5afed7830/DD7ezbJLMKzTAdDtQEyR1.png" 
-       alt="Diagram example" 
-       style="max-width:100%; height:auto;">
-  <figcaption>
-    <center>
-    Figure 16: Contribution of Countries (EU grouped) to the Modalities<br>Dynamic version available 
-    <a href="https://lbourdois.github.io/blog/assets/images/test/Contribution_eu_to_Modalities.html" target="_blank">here</a></center>
-  </figcaption>
-</figure>
-
-L'Union Européenne se positionne alors en deuxième ou troisième position des modalités NLP, vision et audio.  
-
-#### Vision par pays (continents)
-
-<figure>
-  <img src="https://cdn-uploads.huggingface.co/production/uploads/613b0a62a14099d5afed7830/Rk1I0PaSKlNHI3o2G6GrG.png" 
-       alt="Diagram example" 
-       style="max-width:100%; height:auto;">
-  <figcaption>
-    <center>
-    Figure 17: Contribution of Continents to the Modalities<br>Dynamic version available 
-    <a href="https://lbourdois.github.io/blog/assets/images/test/Contribution_continental_to_Modalities.html" target="_blank">here</a></center>
-  </figcaption>
-</figure>
+<h3>Vision par entité</h3>
 
 <br>
 
-### Vision par tâche
+<p>Dans le graphique suivant, nous affichons pour chacune des entités, la part de chacune des modalités dans ses téléchargements.</p>
 
-Les graphiques des modalités ont pu être obtenus à partir des pipelines de tags en utilisant les associations disponibles dans le dictionnaire suivant.
+<iframe
+    class="full-width-iframe"
+    src="{{ '/assets/images/hf_models_stats/huggingface_downloads_by_modalities_breakdown.html' | relative_url }}" 
+    allowfullscreen
+></iframe>
+<center><i>Figure 13 : Top 50 des entités Hugging Face par nombre total de téléchargements avec décomposition par modalité</i></center>
+
+<br>
+
+<p>
+Nous observons que peu d'entités sont diversifiées. Chacune semble avoir une spécialité.<br> 
+32 font majoritairement du NLP, 10 de la vision (paradoxalement Hugging Face avec le rachat de `timm` et OpenAI par conséquence de n'avoir mis de modèles de NLP en open-source depuis le gpt2 avant août 2025), 4 d'audios, 2 de multimodal nlp/vision, 1 de séries temporelles et 1 non déterminé (`mradermacher` proposant des versions quantifiées de modèles, cela serait vraisemblablement du NLP).
+</p>
+
+<br>
+
+<h3>Vision par sous-comptes</h3>
+
+<br>
+
+<p>Le graphique ci-dessous donne un peu plus de détails en affichant les répartitions par sous-comptes de chacune des entités.</p>
+
+<iframe
+    class="full-width-iframe"
+    src="{{ '/assets/images/hf_models_stats/huggingface_downloads_by_modalities_breakdown.html' | relative_url }}" 
+    allowfullscreen
+></iframe>
+<center><i>Figure 14 : Top 50 des entités Hugging Face par nombre total de téléchargements avec décomposition par modalité (et par sous-comptes)</i></center>
+
+<br>
+
+<h3>Vision par pays (individuels)</h3>
+
+<br>
+
+<iframe
+    class="full-width-iframe"
+    src="{{ '/assets/images/hf_models_stats/huggingface_downloads_by_modalities_breakdown.html' | relative_url }}" 
+    allowfullscreen
+></iframe>
+<center><i>Figure 15 : Contribution des pays (individuels) aux modalités</i></center>
+
+<br>
+
+<p>
+On peut remarquer que les États-Unis sont premiers dans la totalité des modalités. Excepté en vision où ils n’obtiennent « que » 46,6% de la modalité, ils captent la majorité dans l'ensemble de celles-ci.  <br>
+La France est quant à elle placée en deuxième ou troisième position des modalités NLP, vision et audio.<br>
+La Chine pour sa part est absente des modalités CV et audio. Cela pourrait expliquer l'observation faite précédemment. Elle n'est « que » quatrième dans l'ensemble des téléchargements ou plutôt que l'Allemagne (présente en NLP et vision) et la France comptabilisent plus de téléchargements.
+</p>
+
+<br>
+
+<h3>Vision par pays (UE regroupée)</h3>
+
+<br>
+
+<iframe
+    class="full-width-iframe"
+    src="{{ '/assets/images/hf_models_stats/huggingface_downloads_by_modalities_breakdown.html' | relative_url }}" 
+    allowfullscreen
+></iframe>
+<center><i>Figure 16 : Contribution des pays (UE regroupée) aux modalités</i></center>
+
+<br>
+
+<p>L'Union Européenne se positionne alors en deuxième ou troisième position des modalités NLP, vision et audio.</p>
+
+<br>
+
+<h3>Vision par pays (continents)</h3>
+
+<br>
+
+<iframe
+    class="full-width-iframe"
+    src="{{ '/assets/images/hf_models_stats/huggingface_downloads_by_modalities_breakdown.html' | relative_url }}" 
+    allowfullscreen
+></iframe>
+<center><i>Figure 17 : Contribution des pays (continents) aux modalités</i></center>
+
+<br><br>
+
+<h2>Vision par tâche</h2>
+
+<br>
+
+<p>Les graphiques des modalités ont pu être obtenus à partir des pipelines de tags en utilisant les associations disponibles dans le dictionnaire suivant.</p>
 
 <details>
   <summary>Afficher le dictionnaire</summary>
@@ -597,273 +608,318 @@ pipeline_tag_to_modality = {
 }
 </code></pre>
 </details>
-  
-Dans cette section, nous affichons les différentes tâches par modalité afin d’obtenir un meilleur aperçu des plus populaires.
 
-
-#### Vision globale
-
-Les tâches de NLP sont différentes variantes de bleu, celles de vision des variantes de jaune, et celles d'audio des variantes de rouge.
-
-Sur conseil de Tom Aarseen, nous avons fusionné les tags de pipeline `sentence-similarity` et `feature-extraction`.
-
-Enfin nous n'avons pas regroupé `text2text-generation` avec `text-generation`. Le premier tag est surtout utilisé par les modèles encodeurs-décodeurs générant du texte (T5, BART) alors que le second est utilisé par les modèles uniquement décodeur. L'objectif ici était de montrer que ces encodeurs-décodeurs représentent autant de téléchargements que les Qwen d'Alibaba et davantage que les Llamas de Meta.
-
-<figure>
-  <img src="https://cdn-uploads.huggingface.co/production/uploads/613b0a62a14099d5afed7830/oGUhLCtiEKTNkIszRnUeN.png" 
-       alt="Diagram example" 
-       style="max-width:100%; height:auto;">
-  <figcaption>
-    <center>
-    Figure 18: Contribution of Entities to Pipeline Tags<br>Dynamic version available 
-    <a href="https://lbourdois.github.io/blog/assets/images/test/Contribution_Entities_to_PipelineTags.html" target="_blank">here</a></center>
-  </figcaption>
-</figure>
-
-Les modèles de base purement encodeurs visibles via la tâche `fill-mask` sont de loin les modèles les plus téléchargés avec 22,3%.  Leurs finetunings représentent 22,7% des téléchargements, principalement sur la tâche de `sentence-similarity` (à laquelle nous avons hésité de fusionner aussi celle de `text-ranking`) puis de `text-classification`, de `token-classification`, `zero-shot-classication` et enfin de `question-answering`.
-Les modèles de génération purement décodeur représentent 9,5% des téléchargements.  
-Les modèles encodeur-décodeur représentent 1,4% auxquels on peut ajouter la tâche de `traduction` à 1,6% pour lesquels ils sont principalement utilisés.  
-Viens ensuite la vision avec 11,1% des téléchargements en `classification`, 6,4% en `zero-shot-classification` (les CLIP et dérivés), 1,8% en `image-feature-extraction`, 0,9% en `détection d'objet` et 0,5% en `segmentation d'objet` (le reste des tâches n'étant pas significatives).
-
-Pour l'audio, on a 7% d'`ASR`, 6% de `classification` et 1,2% de `détection d'activité`.
-
-#### Vision par entité
-
-<figure>
-  <img src="https://cdn-uploads.huggingface.co/production/uploads/613b0a62a14099d5afed7830/y5btAAESWsYkN2o6iD1A5.png" 
-       alt="Diagram example" 
-       style="max-width:100%; height:auto;">
-  <figcaption>
-    <center>
-    Figure 19: Top 50 Hugging Face Entities by Total Downloads with Pipeline Tag Breakdown<br>Dynamic version available 
-    <a href="https://lbourdois.github.io/blog/assets/images/test/huggingface_downloads_by_pipelinetag_breakdown.html" target="_blank">here</a></center>
-  </figcaption>
-</figure>
-
-Les graphique par sous-comptes etpar pays, ne sont pas affichés. Ils sont en effet totalement illisibles avec plus de 50 tâches comptabilisées au total.
+<p>Dans cette section, nous affichons les différentes tâches par modalité afin d’obtenir un meilleur aperçu des plus populaires.</p>
 
 <br>
 
-### Vision par langue
+<h3>Vision globale</h3>
 
-Dans cette section nous nous intéressons qu'aux modèles liés à des tâches où l'utilisation d'une langue est applicable (les tâches de NLP, l'ASR, text-to-image, etc.). Cela représente 24 592 908 565 téléchargements sur les 36 450 707 797 initiaux du top 50 soit 67,47%.
-En pratique il s'avère que pour 14,42% de ces 24,6 milliards de téléchargements, le tag de langue n'est pas renseigné pour ces modèles.
+<br>
 
-Après analyse, 184 langues sont référencées dans ce top 50 (224 autres valeurs ont été trouvées mais ne sont pas des tags ISO639-1 ou ISO639-3). Ici aussi, pour des questions de visibilité, seules les 20 premières langues sont affichées dans le graphique suivant. L'ensemble des chiffres est retrouvable dans le jeu de données disponible [ici](https://huggingface.co/datasets/lbourdois/huggingface_languages_October_2025).
+<p>
+<p>Les tâches de NLP sont différentes variantes de bleu, celles de vision des variantes de jaune, et celles d'audio des variantes de rouge.</p><br>
+<p>Sur conseil de Tom Aarseen, nous avons fusionné les tags de pipeline <code>sentence-similarity</code> et <code>feature-extraction</code>.</p><br>
+<p>Enfin nous n'avons pas regroupé <code>text2text-generation</code> avec <code>text-generation</code>. Le premier tag est surtout utilisé par les modèles encodeurs-décodeurs générant du texte (T5, BART) alors que le second est utilisé par les modèles uniquement décodeur. L'objectif ici était de montrer que ces encodeurs-décodeurs représentent autant de téléchargements que les Qwen d'Alibaba et davantage que les Llamas de Meta.</p>
 
-<figure>
-  <img src="https://cdn-uploads.huggingface.co/production/uploads/613b0a62a14099d5afed7830/FJJHu26KHZhQFvMxhyNZ8.png" 
-       alt="Diagram example" 
-       style="max-width:100%; height:auto;">
-  <figcaption>
-    <center>
-    Figure 20: Total Downloads by Language<br>Dynamic version available 
-    <a href="https://lbourdois.github.io/blog/assets/images/test/TODO.html" target="_blank">here</a></center>
-  </figcaption>
-</figure>
+<br>
 
-On peut ainsi remarquer que parmi tous les modèles disponibles dans le top 50 reposant sur une langue, l'anglais représente plus de 79,46% des téléchargements des modèles (monolingues ou multilingues) utilisant une langue (et même 92,85% des modèles possédant un tag de langue). Elle est loin devant les autres langues. Par exemple, le français qui arrive en deuxième position ne l'est qu'avec 17,48% (20,43% des modèles possédant un tag de langue).  
+<iframe
+    class="full-width-iframe"
+    src="{{ '/assets/images/hf_models_stats/huggingface_downloads_by_modalities_breakdown.html' | relative_url }}" 
+    allowfullscreen
+></iframe>
+<center><i>Figure 18 : Contribution des entités aux tâches</i></center>
+
+<br>
+
+<p>Les modèles de base purement encodeurs visibles via la tâche <code>fill-mask</code> sont de loin les modèles les plus téléchargés avec 22,3%. Leur finetunings représentent 22,7% des téléchargements, principalement sur la tâche de <code>sentence-similarity</code> (à laquelle nous avons hésité de fusionner aussi celle de <code>text-ranking</code>) puis de <code>text-classification</code>, de <code>token-classification</code>, <code>zero-shot-classication</code> et enfin de <code>question-answering</code>.</p><br>
+
+<p>Les modèles de génération purement décodeur représentent 9,5% des téléchargements.</p><br>
+
+<p>Les modèles encodeur-décodeur représentent 1,4% auxquels on peut ajouter la tâche de <code>traduction</code> à 1,6% pour lesquels ils sont principalement utilisés.</p><br>
+
+<p>Viens ensuite la vision avec 11,1% des téléchargements en <code>classification</code>, 6,4% en <code>zero-shot-classification</code> (les CLIP et dérivés), 1,8% en <code>image-feature-extraction</code>, 0,9% en <code>détection d'objet</code> et 0,5% en <code>segmentation d'objet</code> (le reste des tâches n'étant pas significatives).</p><br>
+
+<p>Pour l'audio, on a 7% d'<code>ASR</code>, 6% de <code>classification</code> et 1,2% de <code>détection d'activité</code>.</p>
+
+<br>
+
+<h3>Vision par entité</h3>
+
+<br>
+
+<iframe
+    class="full-width-iframe"
+    src="{{ '/assets/images/hf_models_stats/huggingface_downloads_by_modalities_breakdown.html' | relative_url }}" 
+    allowfullscreen
+></iframe>
+<center><i>Figure 19 : Top 50 des entités Hugging Face par nombre total de téléchargements avec décomposition par tâche</i></center>
+
+<br>
+
+<p>Les graphique par sous-comptes etpar pays, ne sont pas affichés. Ils sont en effet totalement illisibles avec plus de 50 tâches comptabilisées au total.</p>
+
+<br><br>
+
+<h2>Vision par langue</h2>
+
+<br>
+
+<p>Dans cette section nous nous intéressons qu'aux modèles liés à des tâches où l'utilisation d'une langue est applicable (les tâches de NLP, l'ASR, text-to-image, etc.). Cela représente 24 592 908 565 téléchargements sur les 36 450 707 797 initiaux du top 50 soit 67,47%.
+En pratique il s'avère que pour 14,42% de ces 24,6 milliards de téléchargements, le tag de langue n'est pas renseigné pour ces modèles.<p><br>
+
+<p>Après analyse, 184 langues sont référencées dans ce top 50 (224 autres valeurs ont été trouvées mais ne sont pas des tags ISO639-1 ou ISO639-3). Ici aussi, pour des questions de visibilité, seules les 20 premières langues sont affichées dans le graphique suivant. L'ensemble des chiffres est retrouvable dans le jeu de données disponible <a href="https://huggingface.co/datasets/lbourdois/huggingface_languages_October_2025">ici</a>.</p>
+
+<iframe
+    class="full-width-iframe"
+    src="{{ '/assets/images/hf_models_stats/huggingface_downloads_by_modalities_breakdown.html' | relative_url }}" 
+    allowfullscreen
+></iframe>
+<center><i>Figure 20 : Nombre total de téléchargements par langues</i></center>
+
+
+<p>On peut ainsi remarquer que parmi tous les modèles disponibles dans le top 50 reposant sur une langue, l'anglais représente plus de 79,46% des téléchargements des modèles (monolingues ou multilingues) utilisant une langue (et même 92,85% des modèles possédant un tag de langue). Elle est loin devant les autres langues. Par exemple, le français qui arrive en deuxième position ne l'est qu'avec 17,48% (20,43% des modèles possédant un tag de langue).  
+<br>
 Sur ce top 20, les langues à alphabet latin accaparent les premières positions mais ne sont que 8 sur 20, montrant que les modèles multilingues sont plutôt divers.
+</p>
+
+<br><br>
+
+<h2>Vision par taille de modèle</h2>
 
 <br>
 
-### Vision par taille de modèle
+<p>Dans cette section, nous nous intéressons uniquement aux 11 263 modèles pour lesquels nous avons pu déterminer une taille au modèle.
+Ils représentent 35 333 543 289 téléchargements sur 36 450 707 797, soit 96,94 ou 77,76% du total.</p>
 
-Dans cette section, nous nous intéressons uniquement aux 11 263 modèles pour lesquels nous avons pu déterminer une taille au modèle.
-Ils représentent 35 333 543 289 téléchargements sur 36 450 707 797, soit 96,94 ou 77,76% du total.
+<br>
 
+<h3>Vision globale</h3>
 
-#### Vision globale
-<figure>
-  <img src="https://cdn-uploads.huggingface.co/production/uploads/613b0a62a14099d5afed7830/ZtnZBqPyfgociJ1dErRJU.png" 
-       alt="Diagram example" 
-       style="max-width:100%; height:auto;">
-  <figcaption>
-    <center>
-    Figure 21: Total Downloads by Model Size<br>Dynamic version available 
-    <a href="https://lbourdois.github.io/blog/assets/images/test/huggingface_totaldownloads_modelsize_5bins.html" target="_blank">here</a></center>
-  </figcaption>
-</figure>
+<br>
 
-On peut constater que :     
-- 92,48% des téléchargements portent sur des modèles de moins d'un milliard de paramètres,
-- 86,33% sur des modèles de moins de 500 millions de paramètres,  
-- 69,83% sur des modèles de moins de 200 millions de paramètres,  
-- 40,17% sur des modèles de de moins de 100 millions de paramètres.
+<iframe
+    class="full-width-iframe"
+    src="{{ '/assets/images/hf_models_stats/huggingface_downloads_by_modalities_breakdown.html' | relative_url }}" 
+    allowfullscreen
+></iframe>
+<center><i>Figure 21 : Nombre total de téléchargements en fonction de la taille du modèle</i></center>
+
+<br>
+
+<p>On peut constater que :  <br>   
+- 92,48% des téléchargements portent sur des modèles de moins d'un milliard de paramètres,<br> 
+- 86,33% sur des modèles de moins de 500 millions de paramètres,  <br> 
+- 69,83% sur des modèles de moins de 200 millions de paramètres,  <br> 
+- 40,17% sur des modèles de de moins de 100 millions de paramètres.<br> <br> 
 
 En détaillant davantage : 
+<p>
 
-<figure>
-  <img src="https://cdn-uploads.huggingface.co/production/uploads/613b0a62a14099d5afed7830/EkrTjaQbCnr5EKZKJGMSW.png" 
-       alt="Diagram example" 
-       style="max-width:100%; height:auto;">
-  <figcaption>
-    <center>
-    Figure 22: Total Downloads by Model Size (more detailed)<br>Dynamic version available 
-    <a href="https://lbourdois.github.io/blog/assets/images/test/huggingface_totaldownloads_modelsize_10bins.html" target="_blank">here</a></center>
-  </figcaption>
-</figure>
+<br>
 
+<iframe
+    class="full-width-iframe"
+    src="{{ '/assets/images/hf_models_stats/huggingface_downloads_by_modalities_breakdown.html' | relative_url }}" 
+    allowfullscreen
+></iframe>
+<center><i>Figure 22 : Nombre total de téléchargements en fonction de la taille du modèle (plus de strates)</i></center>
 
-> [!NOTE]
-> Les LLM ne sont ainsi pas des modèles massivement téléchargés (en open-source du moins).    
-> Une hypothèse est que l'explication pourrait venir du profil des utilisateurs d'Hugging Face (notamment de leur capacité de calcul pouvant être renseignée [ici](https://huggingface.co/settings/local-apps)) mais nous n'avons pas trouvé de moyen de récupérer ces informations de manière automatique.  
-> Quoi qu'il en soit, une entité souhaitant être impactante en open-source doit probablement proposer des modèles inférieurs à 500M de paramètres voire probablement plutôt 200M pour être téléchargée par une grande cible d'utilisateurs.  
-> Etant donné que 92,5% des téléchargements portent sur les modèles de moins d'un milliard de paramètres, il serait intéressant qu'Hugging Face permette d'affiner les possibilités de filtrage.
-> <center><figure>
+<br>
+
+<div class="note-block">
+<div class="note-header">
+    Note
+</div>
+<div class="note-content">
+Les LLM ne sont ainsi pas des modèles massivement téléchargés (en open-source du moins).<br>    
+Une hypothèse est que l'explication pourrait venir du profil des utilisateurs d'Hugging Face (notamment de leur capacité de calcul pouvant être renseignée <a href="https://huggingface.co/settings/local-apps">ici</a> mais nous n'avons pas trouvé de moyen de récupérer ces informations de manière automatique.<br>
+Quoi qu'il en soit, une entité souhaitant être impactante en open-source doit probablement proposer des modèles inférieurs à 500M de paramètres voire probablement plutôt 200M pour être téléchargée par une grande cible d'utilisateurs.<br>
+Etant donné que 92,5% des téléchargements portent sur les modèles de moins d'un milliard de paramètres, il serait intéressant qu'Hugging Face permette d'affiner les possibilités de filtrage.<br>
+<center><figure>
   <img src="https://cdn-uploads.huggingface.co/production/uploads/613b0a62a14099d5afed7830/UhEqosU0E8wn477iJ1yIh.png" 
        alt="Diagram example" 
        style="max-width:50%; height:auto;">
-</figure></center>
+</figure></center></div>
+</div>
 
-#### Vision par type d'entités
-<figure>
-  <img src="https://cdn-uploads.huggingface.co/production/uploads/613b0a62a14099d5afed7830/-77QWDo_kwDk9VDrFTxtI.png" 
-       alt="Diagram example" 
-       style="max-width:100%; height:auto;">
-  <figcaption>
-    <center>
-    Figure 23: Total Downloads by Model Size and Entity Type<br>Dynamic version available 
-    <a href="https://lbourdois.github.io/blog/assets/images/test/huggingface_totaldownloads_modelsize_type_entities.html" target="_blank">here</a></center>
-  </figcaption>
-</figure>
+<br>
 
-Les entreprises sont présentes dans toutes les tranches de tailles de modèles. Elles représentent une part importante pour les modèles de moins de 5 millions de paramètres (94% des téléchargements de la tranche) et au-delà de 500M de paramètres (77 à 85% des téléchargements).
+<h3>Vision par type d'entités</h3>
+
+<br>
+
+<iframe
+    class="full-width-iframe"
+    src="{{ '/assets/images/hf_models_stats/huggingface_downloads_by_modalities_breakdown.html' | relative_url }}" 
+    allowfullscreen
+></iframe>
+<center><i>Figure 23 : Nombre total de téléchargements en fonction de la taille du modèle et du type de l'entité</i></center>
+
+<br>
+
+<p>
+Les entreprises sont présentes dans toutes les tranches de tailles de modèles. Elles représentent une part importante pour les modèles de moins de 5 millions de paramètres (94% des téléchargements de la tranche) et au-delà de 500M de paramètres (77 à 85% des téléchargements).<br>
 Entre 5M de paramètres et 500M (plutôt 200M), les modèles des universités peuvent se présenter comme des alternatives à ceux des entreprises. 
+</p>
 
+<br>
 
-#### Vision par modalité
-<figure>
-  <img src="https://cdn-uploads.huggingface.co/production/uploads/613b0a62a14099d5afed7830/7CKy82oGjjzhY2bVuXDKz.png" 
-       alt="Diagram example" 
-       style="max-width:100%; height:auto;">
-  <figcaption>
-    <center>
-    Figure 24: Total Downloads by Model Size and Modality<br>Dynamic version available 
-    <a href="https://lbourdois.github.io/blog/assets/images/test/huggingface_totaldownloads_modelsize_modalities.html" target="_blank">here</a></center>
-  </figcaption>
-</figure>
+<h3>Vision par modalité</h3>
 
-Le NLP est présent dans toutes les tranches de tailles, notamment de 100 à 500M de paramètres.  
-La CV est principalement portée par des modèles de moins de 100 de paramètres bien qu'également présente entre 100 et 500M.  
-L'audio est principalement réparti de <5 à 500M de paramètres mais étonnement absent sur la tranche 100 à 200M.  
+<br>
+
+<iframe
+    class="full-width-iframe"
+    src="{{ '/assets/images/hf_models_stats/huggingface_totaldownloads_modelsize_modalities.html' | relative_url }}" 
+    allowfullscreen
+></iframe>
+<center><i>Figure 24 : Nombre total de téléchargements en fonction de la taille du modèle et de la modalité</i></center>
+
+<br>
+
+<p>
+Le NLP est présent dans toutes les tranches de tailles, notamment de 100 à 500M de paramètres.  <br>
+La CV est principalement portée par des modèles de moins de 100 de paramètres bien qu'également présente entre 100 et 500M.  <br>
+L'audio est principalement réparti de <5 à 500M de paramètres mais étonnement absent sur la tranche 100 à 200M.  <br>
 Les séries temporelles pour les modèles de moins de 50M de paramètres.
+</p>
 
-#### Vision par tâche
-<figure>
-  <img src="https://cdn-uploads.huggingface.co/production/uploads/613b0a62a14099d5afed7830/By-nRzERG3VjWQ7OtTq5G.png" 
-       alt="Diagram example" 
-       style="max-width:100%; height:auto;">
-  <figcaption>
-    <center>
-    Figure 25: Total Downloads by Model Size and Task (Pipeline Tag)<br>Dynamic version available 
-    <a href="https://lbourdois.github.io/blog/assets/images/test/huggingface_totaldownloads_modelsize_tasks.html" target="_blank">here</a></center>
-  </figcaption>
-</figure>
+<br>
 
-Nous disposons d'un peu plus de détails au niveau des tâches (par exemple pour la vision on peut s’apercevoir que les modèles <100M sont plutôt de la classification alors qu'entre 100 et 500M il s'agit plutôt des CLIP).
+<h3>Vision par tâche</h3>
+
+<br>
+
+<iframe
+    class="full-width-iframe"
+    src="{{ '/assets/images/hf_models_stats/huggingface_totaldownloads_modelsize_modalities.html' | relative_url }}" 
+    allowfullscreen
+></iframe>
+<center><i>Figure 25 : Nombre total de téléchargements en fonction de la taille du modèle et de la tâche</i></center>
+
+<br>
+
+<p>
+Nous disposons d'un peu plus de détails au niveau des tâches (par exemple pour la vision on peut s’apercevoir que les modèles <100M sont plutôt de la classification alors qu'entre 100 et 500M il s'agit plutôt des CLIP).<br>
 Le lecteur peut faire ses propres analyses en se basant sur le fait que les tâches de NLP sont différentes variantes de bleu, celles de vision des variantes de jaune, et celles d'audio des variantes de rouge.
+</p>
 
+<br>
 
-#### Vision par entité
+<h3>Vision par entité</h3>
 
-<figure>
-  <img src="https://cdn-uploads.huggingface.co/production/uploads/613b0a62a14099d5afed7830/F-D5Zr7u38ZLlfQcqWvch.png" 
-       alt="Diagram example" 
-       style="max-width:100%; height:auto;">
-  <figcaption>
-    <center>
-    Figure 26: Total Downloads by Model Size and Entity<br>Dynamic version available 
-    <a href="https://lbourdois.github.io/blog/assets/images/test/huggingface_totaldownloads_modelsize_entities.html" target="_blank">here</a></center>
-  </figcaption>
-</figure>
+<br>
 
-Nous invitons le lecteur à cliquer sur la légende pour ne garder que les entités qui l'intéressent. Cela permet à une entité donnée de voir la répartition des téléchargements de ses modèles en fonction des différentes tranches et ainsi faire apparaître son profil, ou encore de comparer *n* entités différentes.
+<iframe
+    class="full-width-iframe"
+    src="{{ '/assets/images/hf_models_stats/huggingface_totaldownloads_modelsize_entities.html' | relative_url }}" 
+    allowfullscreen
+></iframe>
+<center><i>Figure 26 : Nombre total de téléchargements en fonction de la taille du modèle et de l'entité</i></center>
 
-<figure>
-  <img src="https://cdn-uploads.huggingface.co/production/uploads/613b0a62a14099d5afed7830/-FJAdzQE60DqvNuo0CZGt.png" 
-       alt="Diagram example" 
-       style="max-width:100%; height:auto;">
-  <figcaption>
-    <center>
-    Figure 27: Total Downloads by Model Size and Entity (focus Google and Meta)
-  </figcaption>
-</figure>
+<br>
 
-Par exemple, si l'on compare Google et Meta qui sont les deux entités open-source les plus téléchargées, Google domine sur les modèles <200M de paramètres (et est extrêmement fort sur la tranche 100-200M), là où sur les modèles de 200M et plus, c'est Meta qui domine les propos.
+<p>
+Nous invitons le lecteur à cliquer sur la légende pour ne garder que les entités qui l'intéressent. Cela permet à une entité donnée de voir la répartition des téléchargements de ses modèles en fonction des différentes tranches et ainsi faire apparaître son profil, ou encore de comparer <i>n</i> entités différentes.
+</p>
 
-Il est aussi possible de zoomer :
+<br>
 
-<figure>
-  <img src="https://cdn-uploads.huggingface.co/production/uploads/613b0a62a14099d5afed7830/D5w_p2ZXuwSbv6zG-65YR.png" 
-       alt="Diagram example" 
-       style="max-width:100%; height:auto;">
-  <figcaption>
-    <center>
-    Figure 28: Total Downloads by Model Size and Entity (1B parameters and more models)
-  </figcaption>
-</figure>
+<iframe
+    class="full-width-iframe"
+    src="{{ '/assets/images/hf_models_stats/huggingface_totaldownloads_modelsize_entities.html' | relative_url }}" 
+    allowfullscreen
+></iframe>
+<center><i>Figure 27 : Nombre total de téléchargements en fonction de la taille du modèle et de l'entité (focus sur Google et Meta)</i></center>
+
+<br>
+
+<p>Par exemple, si l'on compare Google et Meta qui sont les deux entités open-source les plus téléchargées, Google domine sur les modèles <200M de paramètres (et est extrêmement fort sur la tranche 100-200M), là où sur les modèles de 200M et plus, c'est Meta qui domine les propos.</p>
+
+<br>
+
+<p>Il est aussi possible de zoomer :</p>
+
+<iframe
+    class="full-width-iframe"
+    src="{{ '/assets/images/hf_models_stats/huggingface_totaldownloads_modelsize_entities.html' | relative_url }}" 
+    allowfullscreen
+></iframe>
+<center><i>Figure 28 : Nombre total de téléchargements en fonction de la taille du modèle et de l'entité (modèles de plus d'un milliard de paramètre)</i></center>
+
+<br>
       
-Dans cet exemple se focalisant uniquement sur les acteurs de LLM du top 50 qui dépassent les 5% de téléchargements sur l'une des tranches supérieures à 1B de paramètres (à savoir Google, Meta, Microsoft, Alibaba, Mistral, Unsloth, Deepseek + les individuels proposant les versions quantifiées des modèles comme TheBloke et Maziyar Panahi), on peut constater :  
-- sur la tranche 1B-3B :  
-  Alibaba est le plus téléchargé sur la tranche avec 20,2%, devant Meta à 16,3%, Google à 11,7%, TheBlock à 11,4% et Maziyar Panahi à 6,3%
-- sur la tranche 3B-7,5B :  
-  Meta est le plus téléchargé sur la tranche avec 31,4%, devant Mistral à 14,6%, Alibaba à 12,3%, Maziyar Panahi à 9,7%, Microsoft à 7,6% et Unsloth à 7,2%
-- sur la tranche 7,5B et + :  
-  Alibaba est le plus téléchargé sur la tranche avec 24,6%, devant Meta à 23,2%, Maziyar Panahi à 15,5%, Mistral à 7,1%, Deepseek à 6,9% et Google à 5,9%
-
-Au global (non affiché sur ce graphique), sur la tranche 1B et + :  
+<p>Dans cet exemple se focalisant uniquement sur les acteurs de LLM du top 50 qui dépassent les 5% de téléchargements sur l'une des tranches supérieures à 1B de paramètres (à savoir Google, Meta, Microsoft, Alibaba, Mistral, Unsloth, Deepseek + les individuels proposant les versions quantifiées des modèles comme TheBloke et Maziyar Panahi), on peut constater :  <br>
+- sur la tranche 1B-3B :  <br>
+  Alibaba est le plus téléchargé sur la tranche avec 20,2%, devant Meta à 16,3%, Google à 11,7%, TheBlock à 11,4% et Maziyar Panahi à 6,3%<br>
+- sur la tranche 3B-7,5B :  <br>
+  Meta est le plus téléchargé sur la tranche avec 31,4%, devant Mistral à 14,6%, Alibaba à 12,3%, Maziyar Panahi à 9,7%, Microsoft à 7,6% et Unsloth à 7,2%<br>
+- sur la tranche 7,5B et + :  <br>
+  Alibaba est le plus téléchargé sur la tranche avec 24,6%, devant Meta à 23,2%, Maziyar Panahi à 15,5%, Mistral à 7,1%, Deepseek à 6,9% et Google à 5,9%<br>
+<br><br>
+Au global (non affiché sur ce graphique), sur la tranche 1B et + :  <br>
 Meta est le plus téléchargé avec 23,2% de la tranche, devant Alibaba à 20%, Maziyar Panahi à 11,1%, Google à 7%, Mistral à 6,8%, TheBloke à 4,5%, Deepseek à 3,8% et Microsoft à 3,3%.
+</p>
 
-> [!NOTE]
-> 15,6% de la tranche est captée par des individus qui proposent les poids quantifiés des modèles de base. Les entités à l'origine de ces modèles pourraient capter ces téléchargements si lors des mises en ligne, elles mettaient directement ces versions quantifiées à disposition plutôt que laisser cela à la communauté.  
-> Sans sortie de nouveaux modèles de la part de Meta en open-source prochainement, d'après une estimation très naïve (extrapolation linéaire à partir des téléchargements des comptes de `Qwen` et de `meta-llama` entre le 21 septembre et 1er octobre 2025), Alibaba devrait devenir premier sur cette tranche d'ici la fin du mois de novembre. Son modèle `Qwen/Qwen2.5-1.5B-Instruct` étant déjà le LLM textuel le plus téléchargé devant `meta-llama/Llama-3.1-8B-Instruct` (les modèles les plus petits étant les plus téléchargés).  
-> Un acteur chinois serait alors premier sur cette métrique (et sur le segment des LLM open-source), bien que les États-Unis dans leur ensemble ont encore de la marge par rapport aux acteurs chinois dans leur ensemble (49,8% pour les États-Unis sur la tranche 1B et + contre 24,2% pour la Chine et 43,1% vs 31,8% sur la tranche 7,5B et +).
+<div class="note-block">
+<div class="note-header">
+    Note
+</div>
+<div class="note-content">
+15,6% de la tranche est captée par des individus qui proposent les poids quantifiés des modèles de base. Les entités à l'origine de ces modèles pourraient capter ces téléchargements si lors des mises en ligne, elles mettaient directement ces versions quantifiées à disposition plutôt que laisser cela à la communauté. <br>
+Sans sortie de nouveaux modèles de la part de Meta en open-source prochainement, d'après une estimation très naïve (extrapolation linéaire à partir des téléchargements des comptes de <code>Qwen</code> et de <code>meta-llama</code> entre le 21 septembre et 1er octobre 2025), Alibaba devrait devenir premier sur cette tranche d'ici la fin du mois de novembre. Son modèle <code>Qwen/Qwen2.5-1.5B-Instruct</code> étant déjà le LLM textuel le plus téléchargé devant <code>meta-llama/Llama-3.1-8B-Instruct</code> (les modèles les plus petits étant les plus téléchargés). <br>
+Un acteur chinois serait alors premier sur cette métrique (et sur le segment des LLM open-source), bien que les États-Unis dans leur ensemble ont encore de la marge par rapport aux acteurs chinois dans leur ensemble (49,8% pour les États-Unis sur la tranche 1B et + contre 24,2% pour la Chine et 43,1% vs 31,8% sur la tranche 7,5B et +).
+</div>
+
+<br>
+
+<h3>Vision par pays (individuels)</h3>
+
+<br>
+
+<iframe
+    class="full-width-iframe"
+    src="{{ '/assets/images/hf_models_stats/huggingface_totaldownloads_modelsize_entities.html' | relative_url }}" 
+    allowfullscreen
+></iframe>
+<center><i>Figure 29 : Nombre total de téléchargements en fonction de la taille du modèle et du pays</i></center>
 
 
-#### Vision par pays (individuels)
+<br>
 
-<figure>
-  <img src="https://cdn-uploads.huggingface.co/production/uploads/613b0a62a14099d5afed7830/nv9B2r15f4H5EKXhmVehj.png" 
-       alt="Diagram example" 
-       style="max-width:100%; height:auto;">
-  <figcaption>
-    <center>
-    Figure 29: Total Downloads by Model Size and Countries<br>Dynamic version available 
-    <a href="https://lbourdois.github.io/blog/assets/images/test/huggingface_totaldownloads_modelsize_countries_individuals.html" target="_blank">here</a></center>
-  </figcaption>
-</figure>
+<h3>Vision par pays (UE regroupée)</h3>
 
+<br>
 
-#### Vision par pays (UE regroupée)
+<iframe
+    class="full-width-iframe"
+    src="{{ '/assets/images/hf_models_stats/huggingface_totaldownloads_modelsize_entities.html' | relative_url }}" 
+    allowfullscreen
+></iframe>
+<center><i>Figure 30 : Nombre total de téléchargements en fonction de la taille du modèle et du pays (UE regroupée)</i></center>
 
-<figure>
-  <img src="https://cdn-uploads.huggingface.co/production/uploads/613b0a62a14099d5afed7830/FVsr2hn48fterpeB9k4ZD.png" 
-       alt="Diagram example" 
-       style="max-width:100%; height:auto;">
-  <figcaption>
-    <center>
-    Figure 30: Total Downloads by Model Size and Country (EU Countries Grouped)<br>Dynamic version available 
-    <a href="https://lbourdois.github.io/blog/assets/images/test/huggingface_totaldownloads_modelsize_countries_eu.html" target="_blank">here</a></center>
-  </figcaption>
-</figure>
+<br>
 
-Les États-Unis et l'Union Européenne sont présents sur l'ensemble des tranches de tailles de modèles.  
-L'UE est majoritaire sur les modèles de moins de 25M de paramètres, là où les États-Unis sont premiers sur toutes les autres.  
+<p>
+Les États-Unis et l'Union Européenne sont présents sur l'ensemble des tranches de tailles de modèles.  <br>
+L'UE est majoritaire sur les modèles de moins de 25M de paramètres, là où les États-Unis sont premiers sur toutes les autres.  <br>
 À noter que la Chine est absente (à peine 130M de téléchargements) des modèles de moins de 100M de paramètres. Sachant qu'il s'agit de ceux-ci qui sont les plus téléchargés, cela explique l'observation faite au début de l'article comme quoi le pays n'est que quatrième des téléchargements globaux derrière l'Allemagne et la France, alors qu'elle est deuxième sur les modèles d'un milliard de paramètres et plus, qui sont peu téléchargés en open-source.
+</p>
 
+<br>
 
-#### Vision par pays (continents)
-<figure>
-  <img src="https://cdn-uploads.huggingface.co/production/uploads/613b0a62a14099d5afed7830/TV_L2PS9UA2GdsYT_0Tap.png" 
-       alt="Diagram example" 
-       style="max-width:100%; height:auto;">
-  <figcaption>
-    <center>
-    Figure 31: Total Downloads by Model Size and Continents<br>Dynamic version available 
-    <a href="https://lbourdois.github.io/blog/assets/images/test/huggingface_totaldownloads_modelsize_countries_continents.html" target="_blank">here</a></center>
-  </figcaption>
-</figure>
+<h3>Vision par pays (continents)</h3>
+
+<br>
+
+<iframe
+    class="full-width-iframe"
+    src="{{ '/assets/images/hf_models_stats/huggingface_totaldownloads_modelsize_entities.html' | relative_url }}" 
+    allowfullscreen
+></iframe>
+<center><i>Figure 31 : Nombre total de téléchargements en fonction de la taille du modèle et du pays (Continents)</i></center>
 
 <br><br><br>
 
@@ -920,4 +976,5 @@ Comme évoqué en introduction, les téléchargements de certains modèles sont 
 
 Enfin, nous envisageons de réaliser un article similaire à celui pour les jeux de données en place des modèles.</p>
 </div>
+
 
