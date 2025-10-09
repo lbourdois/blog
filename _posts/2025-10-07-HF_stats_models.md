@@ -86,7 +86,7 @@ h3 {
 /* The actual content of the note */
 .note-content {
     line-height: 1.6;
-    font-size: 12px; 
+    font-size: 20px; 
 }
 
 </style>
@@ -871,7 +871,7 @@ Un acteur chinois serait alors premier sur cette métrique (et sur le segment de
 
 <iframe
     class="full-width-iframe-model_size"
-    src="{{ '/assets/images/hf_models_stats/huggingface_totaldownloads_modelsize_entities.html' | relative_url }}" 
+    src="{{ '/assets/images/hf_models_stats/huggingface_totaldownloads_modelsize_countries_individuals.html' | relative_url }}" 
     allowfullscreen
 ></iframe>
 <center><i>Figure 29 : Nombre total de téléchargements en fonction de la taille du modèle et du pays</i></center>
@@ -884,7 +884,7 @@ Un acteur chinois serait alors premier sur cette métrique (et sur le segment de
 
 <iframe
     class="full-width-iframe-model_size"
-    src="{{ '/assets/images/hf_models_stats/huggingface_totaldownloads_modelsize_entities.html' | relative_url }}" 
+    src="{{ '/assets/images/hf_models_stats/huggingface_totaldownloads_modelsize_countries_eu.html' | relative_url }}" 
     allowfullscreen
 ></iframe>
 <center><i>Figure 30 : Nombre total de téléchargements en fonction de la taille du modèle et du pays (UE regroupée)</i></center>
@@ -905,7 +905,7 @@ L'UE est majoritaire sur les modèles de moins de 25M de paramètres, là où le
 
 <iframe
     class="full-width-iframe-model_size"
-    src="{{ '/assets/images/hf_models_stats/huggingface_totaldownloads_modelsize_entities.html' | relative_url }}" 
+    src="{{ '/assets/images/hf_models_stats/huggingface_totaldownloads_modelsize_countries_continents.html' | relative_url }}" 
     allowfullscreen
 ></iframe>
 <center><i>Figure 31 : Nombre total de téléchargements en fonction de la taille du modèle et du pays (Continents)</i></center>
@@ -961,6 +961,7 @@ Comme évoqué en introduction, les téléchargements de certains modèles sont 
 
 Enfin, nous envisageons de réaliser un article similaire à celui pour les jeux de données en place des modèles.</p>
 </div>
+
 
 
 
