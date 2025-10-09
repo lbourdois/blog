@@ -228,7 +228,7 @@ Le but ici est d'estimer le nombre de pays disposant d'un environnement permetta
 
 <iframe
     class="full-width-iframe"
-    src="{{ '/assets/images/hf_models_stats/huggingface_downloads_breakdown.html' | relative_url }}" 
+    src="{{ '/assets/images/hf_models_stats/huggingface_treemap_countries.html' | relative_url }}" 
     allowfullscreen
 ></iframe>
 <center><i>Figure 5 : Total des téléchargements par pays (pays individuels)</i></center>
@@ -261,7 +261,7 @@ A l'exception du Royaume-Uni composé également de 4 entités, tous les autres 
 
 <iframe
     class="full-width-iframe"
-    src="{{ '/assets/images/hf_models_stats/huggingface_downloads_breakdown.html' | relative_url }}" 
+    src="{{ '/assets/images/hf_models_stats/huggingface_treemap_eu.html' | relative_url }}" 
     allowfullscreen
 ></iframe>
 <center><i>Figure 6 : Total des téléchargements par pays (UE regroupée)</i></center>
@@ -278,7 +278,7 @@ A l'exception du Royaume-Uni composé également de 4 entités, tous les autres 
 
 <iframe
     class="full-width-iframe"
-    src="{{ '/assets/images/hf_models_stats/huggingface_downloads_breakdown.html' | relative_url }}" 
+    src="{{ '/assets/images/hf_models_stats/huggingface_treemap_continental.html' | relative_url }}" 
     allowfullscreen
 ></iframe>
 <center><i>Figure 7 : Total des téléchargements par pays (continents)</i></center>
@@ -943,3 +943,4 @@ Comme évoqué en introduction, les téléchargements de certains modèles sont 
 
 Enfin, nous envisageons de réaliser un article similaire à celui pour les jeux de données en place des modèles.</p>
 </div>
+
