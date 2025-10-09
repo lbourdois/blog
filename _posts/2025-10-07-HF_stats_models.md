@@ -86,6 +86,7 @@ h3 {
 /* The actual content of the note */
 .note-content {
     line-height: 1.6;
+    font-size: 12px; 
 }
 
 </style>
@@ -465,7 +466,7 @@ Le NLP apparaît ainsi plutôt favorisé (Hugging Face étant à la base connu p
 
 <p>
 Nous observons que peu d'entités sont diversifiées. Chacune semble avoir une spécialité.<br> 
-32 font majoritairement du NLP, 10 de la vision (paradoxalement Hugging Face avec le rachat de `timm` et OpenAI par conséquence de n'avoir mis de modèles de NLP en open-source depuis le gpt2 avant août 2025), 4 d'audios, 2 de multimodal nlp/vision, 1 de séries temporelles et 1 non déterminé (`mradermacher` proposant des versions quantifiées de modèles, cela serait vraisemblablement du NLP).
+32 font majoritairement du NLP, 10 de la vision (paradoxalement Hugging Face avec le rachat de <code>timm</code> et OpenAI par conséquence de n'avoir mis de modèles de NLP en open-source depuis le gpt2 avant août 2025), 4 d'audios, 2 de multimodal nlp/vision, 1 de séries temporelles et 1 non déterminé (`mradermacher` proposant des versions quantifiées de modèles, cela serait vraisemblablement du NLP).
 </p>
 
 <br>
@@ -949,7 +950,7 @@ L'objectif est alors de déterminer quels modèles de base sont les plus impacta
   <center>
   <img src="https://cdn-uploads.huggingface.co/production/uploads/613b0a62a14099d5afed7830/-gczIrRFbuQ-0RJ7qd_HQ.png" 
        alt="Diagram example" 
-       style="max-width:70%; height:auto;"></center>
+       style="max-width:60%; height:auto;"></center>
 </figure>
 <center><i>Figure 32 : Model tree de google-bert/bert-base-uncased</i></center>
 
@@ -960,6 +961,7 @@ Comme évoqué en introduction, les téléchargements de certains modèles sont 
 
 Enfin, nous envisageons de réaliser un article similaire à celui pour les jeux de données en place des modèles.</p>
 </div>
+
 
 
 
