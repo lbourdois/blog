@@ -89,42 +89,32 @@ h3 {
     font-size: 20px; 
 }
 
-.bibtex-container {
+.bibtex-citation-dark {
     /* Marge pour séparer du contenu du blog */
     margin: 2em 0; 
     /* Conteneur principal */
-    border: 1px solid #dfe6e9; /* Bordure légère */
-    border-radius: 6px; /* Coins arrondis pour un look moderne */
-    overflow: hidden; /* S'assure que le contenu reste dans la bordure */
-    background-color: #f6f8fa; /* Fond très clair, typique des blocs de code */
+    border: 1px solid #555; /* Bordure plus claire pour le fond sombre */
+    border-radius: 6px; 
+    overflow: hidden; 
+    background-color: #282c34; /* Couleur de fond noir/sombre pour le code */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); /* Ombre pour faire ressortir le bloc */
 }
 
-.bibtex-code {
+.bibtex-code-dark {
     /* Ciblage de la balise <pre> */
     margin: 0; 
     padding: 15px 20px;
-    font-family: 'Consolas', 'Monaco', monospace; /* Police de code */
-    font-size: 0.9em; 
-    color: #333; /* Couleur de texte sombre */
-    white-space: pre-wrap; /* Permet aux lignes trop longues de revenir à la ligne */
+    font-family: 'Consolas', 'Monaco', monospace; 
+    font-size: 0.95em; 
+    color: #abb2bf; /* Couleur de texte gris-clair, lisible sur fond sombre */
+    white-space: pre-wrap; 
     word-break: break-all;
 }
 
-/* Vous pouvez ajouter une légère coloration syntaxique si vous le souhaitez */
-.bibtex-code code {
-    /* Style pour les clés et les valeurs */
-    color: #333; 
+/* Optionnel : légère coloration syntaxique pour améliorer la lisibilité */
+.bibtex-code-dark code {
+    color: inherit;
 }
-.bibtex-code code .bib-key { 
-    /* Style optionnel si vous ajoutez des span autour de {ssm...} */
-    color: #0077aa; /* Bleu */
-}
-.bibtex-code code .bib-type {
-    /* Style optionnel si vous ajoutez des span autour de @inproceedings */
-    font-weight: bold;
-    color: #8959a8; /* Violet */
-}
-
 </style>
 
 <div style="width: 100%; margin: 0; padding: 0;">
@@ -1010,36 +1000,15 @@ Enfin, nous envisageons de réaliser un article similaire à celui pour les jeux
 
 <h2>Citation</h2>
 
-<div class="bibtex-container">
-    <pre class="bibtex-code"><code>
-@inproceedings{ssm_introduction_blog_post,  
+<div class="bibtex-citation-dark">
+    <pre class="bibtex-code-dark"><code>
+@inproceedings{HF_models_stats_blog_post,  
   author    = {Loïck BOURDOIS},  
-  title     = {Introduction aux State Space Models (SSM) et au S4},  
-  year      = {2023},  
-  url       = {https://lbourdois.github.io/blog/ssm/introduction_ssm}  
+  title     = {Statistiques des modèles des 50 entités les plus téléchargées sur Hugging Face },  
+  year      = {2025},  
+  url       = {https://lbourdois.github.io/blog/HF_stats_models/}  
 }
     </code></pre>
 </div>
 
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
