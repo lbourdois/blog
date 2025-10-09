@@ -34,6 +34,22 @@ layout: single
     padding: 0;
 }
 
+.full-width-iframe-model_size {
+    width: 100%;
+    height: 1200px;
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+
+.full-width-iframe-treemap {
+    width: 100%;
+    height: 800px;
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+  
 /* Media query pour les écrans plus petits */
 @media (max-width: 768px) {
     .full-width-iframe {
@@ -227,7 +243,7 @@ Le but ici est d'estimer le nombre de pays disposant d'un environnement permetta
 <br>
 
 <iframe
-    class="full-width-iframe"
+    class="full-width-iframe-treemap"
     src="{{ '/assets/images/hf_models_stats/huggingface_treemap_countries.html' | relative_url }}" 
     allowfullscreen
 ></iframe>
@@ -260,7 +276,7 @@ A l'exception du Royaume-Uni composé également de 4 entités, tous les autres 
 <br>
 
 <iframe
-    class="full-width-iframe"
+    class="full-width-iframe-treemap"
     src="{{ '/assets/images/hf_models_stats/huggingface_treemap_eu.html' | relative_url }}" 
     allowfullscreen
 ></iframe>
@@ -277,7 +293,7 @@ A l'exception du Royaume-Uni composé également de 4 entités, tous les autres 
 <br>
 
 <iframe
-    class="full-width-iframe"
+    class="full-width-iframe-treemap"
     src="{{ '/assets/images/hf_models_stats/huggingface_treemap_continental.html' | relative_url }}" 
     allowfullscreen
 ></iframe>
@@ -300,7 +316,7 @@ A l'exception du Royaume-Uni composé également de 4 entités, tous les autres 
 <br>
 
 <iframe
-    class="full-width-iframe"
+    class="full-width-iframe-treemap"
     src="{{ '/assets/images/hf_models_stats/huggingface_treemap_entity_type.html' | relative_url }}" 
     allowfullscreen
 ></iframe>
@@ -943,5 +959,6 @@ Comme évoqué en introduction, les téléchargements de certains modèles sont 
 
 Enfin, nous envisageons de réaliser un article similaire à celui pour les jeux de données en place des modèles.</p>
 </div>
+
 
 
