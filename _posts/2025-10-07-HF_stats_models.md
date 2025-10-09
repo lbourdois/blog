@@ -596,7 +596,6 @@ pipeline_tag_to_modality = {
 
 <br>
 
-<p>
 <p>Les tâches de NLP sont différentes variantes de bleu, celles de vision des variantes de jaune, et celles d'audio des variantes de rouge.<br>
 Sur conseil de Tom Aarseen, nous avons fusionné les tags de pipeline <code>sentence-similarity</code> et <code>feature-extraction</code>.<br>
 Enfin nous n'avons pas regroupé <code>text2text-generation</code> avec <code>text-generation</code>. Le premier tag est surtout utilisé par les modèles encodeurs-décodeurs générant du texte (T5, BART) alors que le second est utilisé par les modèles uniquement décodeur. L'objectif ici était de montrer que ces encodeurs-décodeurs représentent autant de téléchargements que les Qwen d'Alibaba et davantage que les Llamas de Meta.</p>
@@ -686,14 +685,14 @@ Ils représentent 35 333 543 289 téléchargements sur 36 450 707 797, soit 96,9
 
 <br>
 
-<p>On peut constater que :  <br>   
+<p>On peut constater que :<br>   
 - 92,48% des téléchargements portent sur des modèles de moins d'un milliard de paramètres,<br> 
 - 86,33% sur des modèles de moins de 500 millions de paramètres,  <br> 
 - 69,83% sur des modèles de moins de 200 millions de paramètres,  <br> 
 - 40,17% sur des modèles de de moins de 100 millions de paramètres.<br> <br> 
 
 En détaillant davantage : 
-<p>
+</p>
 
 <br>
 
@@ -923,13 +922,11 @@ L'UE est majoritaire sur les modèles de moins de 25M de paramètres, là où le
 
 <h1>Suite</h1>
 
-<p>Dans une actualisation de ce travail (qui nécessitera d'analyser un nombre important de publications), nous souhaiterions rajouter deux strates supplémentaires à savoir la ville où se situent les auteurs du modèle ainsi que leur nationalité. L’objectif sera de déterminer dans quelles villes les modèles les plus téléchargés se développent ainsi que les pays avec le système éducatif générant les auteurs les plus téléchargés.
-<br>
-Par exemple, les téléchargements du LLaMA 1 ne seraient pas comptabilisés à 100% comme américain mais à 12/14 français (Paris), 1/14 américain (San Francisco) et 1/14 pakistanais (Londres). Plusieurs systèmes de pondérations pourraient être appliqués comme telle une pondération plus forte sur les auteurs principaux par exemple).
-<br><br>
-<p>Nous souhaiterions également proposer une vue permettant de distinguer l'impact d'un modèle dans l'écosystème, c'est-à-dire en plus des téléchargements propres à un modèle donné y ajouter tous les téléchargements issus des finetunings/merges/adaptateurs/quantifications. Pour cela nous avons déjà procédé à quelques expériences en utilisant le <em>Model tree</em> mais il s'avère que celui-ci est souvent incomplet, surtout pour les modèles les plus anciens.</p><br>
-<p>Une méthode consisterait à analyser le nom des têtes de finetuning utilisées par les modèles, si ce n'est le modèle de base, au moins son architecture de base.<br>
-<p>L'objectif est alors de déterminer quels modèles de base sont les plus impactants (cet article de <a href="https://huggingface.co/spaces/transformers-community/Transformers-tenets">blog</a> par les équipes d'Hugging Face et qui vient de sortir serait une bonne base).</p>
+<p>Dans une actualisation de ce travail (qui nécessitera d'analyser un nombre important de publications), nous souhaiterions rajouter deux strates supplémentaires à savoir la ville où se situent les auteurs du modèle ainsi que leur nationalité. L’objectif sera de déterminer dans quelles villes les modèles les plus téléchargés se développent ainsi que les pays avec le système éducatif générant les auteurs les plus téléchargés.<br>
+Par exemple, les téléchargements du LLaMA 1 ne seraient pas comptabilisés à 100% comme américain mais à 12/14 français (Paris), 1/14 américain (San Francisco) et 1/14 pakistanais (Londres). Plusieurs systèmes de pondérations pourraient être appliqués comme telle une pondération plus forte sur les auteurs principaux par exemple).<br><br>
+Nous souhaiterions également proposer une vue permettant de distinguer l'impact d'un modèle dans l'écosystème, c'est-à-dire en plus des téléchargements propres à un modèle donné y ajouter tous les téléchargements issus des finetunings/merges/adaptateurs/quantifications. Pour cela nous avons déjà procédé à quelques expériences en utilisant le <em>Model tree</em> mais il s'avère que celui-ci est souvent incomplet, surtout pour les modèles les plus anciens.<br>
+Une méthode consisterait à analyser le nom des têtes de finetuning utilisées par les modèles, si ce n'est le modèle de base, au moins son architecture de base.<br>
+L'objectif est alors de déterminer quels modèles de base sont les plus impactants (cet article de <a href="https://huggingface.co/spaces/transformers-community/Transformers-tenets">blog</a> par les équipes d'Hugging Face et qui vient de sortir serait une bonne base).</p>
 
 <figure>
   <center>
@@ -948,6 +945,7 @@ Comme évoqué en introduction, les téléchargements de certains modèles sont 
 
 Enfin, nous envisageons de réaliser un article similaire à celui pour les jeux de données en place des modèles.</p>
 </div>
+
 
 
 
