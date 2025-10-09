@@ -666,7 +666,7 @@ Après analyse, 184 langues sont référencées dans ce top 50 (224 autres valeu
 
 <iframe
     class="full-width-iframe"
-    src="{{ '/assets/images/hf_models_stats/huggingface_downloads_by_modalities_breakdown.html' | relative_url }}" 
+    src="{{ '/assets/images/hf_models_stats/huggingface_language.html' | relative_url }}" 
     allowfullscreen
 ></iframe>
 <center><i>Figure 20 : Nombre total de téléchargements par langues</i></center>
@@ -960,6 +960,7 @@ Comme évoqué en introduction, les téléchargements de certains modèles sont 
 
 Enfin, nous envisageons de réaliser un article similaire à celui pour les jeux de données en place des modèles.</p>
 </div>
+
 
 
 
