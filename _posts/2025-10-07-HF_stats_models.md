@@ -665,7 +665,7 @@ En pratique il s'avère que pour 14,42% de ces 24,6 milliards de téléchargemen
 Après analyse, 184 langues sont référencées dans ce top 50 (224 autres valeurs ont été trouvées mais ne sont pas des tags ISO639-1 ou ISO639-3). Ici aussi, pour des questions de visibilité, seules les 20 premières langues sont affichées dans le graphique suivant. L'ensemble des chiffres est retrouvable dans le jeu de données disponible <a href="https://huggingface.co/datasets/lbourdois/huggingface_languages_October_2025">ici</a>.</p>
 
 <iframe
-    class="full-width-iframe"
+    class="full-width-iframe-model_size"
     src="{{ '/assets/images/hf_models_stats/huggingface_language.html' | relative_url }}" 
     allowfullscreen
 ></iframe>
@@ -694,7 +694,7 @@ Ils représentent 35 333 543 289 téléchargements sur 36 450 707 797, soit 96,9
 <br>
 
 <iframe
-    class="full-width-iframe"
+    class="full-width-iframe-model_size"
     src="{{ '/assets/images/hf_models_stats/huggingface_downloads_by_modalities_breakdown.html' | relative_url }}" 
     allowfullscreen
 ></iframe>
@@ -714,7 +714,7 @@ En détaillant davantage :
 <br>
 
 <iframe
-    class="full-width-iframe"
+    class="full-width-iframe-model_size"
     src="{{ '/assets/images/hf_models_stats/huggingface_downloads_by_modalities_breakdown.html' | relative_url }}" 
     allowfullscreen
 ></iframe>
@@ -742,7 +742,7 @@ Etant donné que 92,5% des téléchargements portent sur les modèles de moins d
 <br>
 
 <iframe
-    class="full-width-iframe"
+    class="full-width-iframe-model_size"
     src="{{ '/assets/images/hf_models_stats/huggingface_downloads_by_modalities_breakdown.html' | relative_url }}" 
     allowfullscreen
 ></iframe>
@@ -762,7 +762,7 @@ Entre 5M de paramètres et 500M (plutôt 200M), les modèles des universités pe
 <br>
 
 <iframe
-    class="full-width-iframe"
+    class="full-width-iframe-model_size"
     src="{{ '/assets/images/hf_models_stats/huggingface_totaldownloads_modelsize_modalities.html' | relative_url }}" 
     allowfullscreen
 ></iframe>
@@ -784,7 +784,7 @@ Les séries temporelles pour les modèles de moins de 50M de paramètres.
 <br>
 
 <iframe
-    class="full-width-iframe"
+    class="full-width-iframe-model_size"
     src="{{ '/assets/images/hf_models_stats/huggingface_totaldownloads_modelsize_modalities.html' | relative_url }}" 
     allowfullscreen
 ></iframe>
@@ -804,7 +804,7 @@ Le lecteur peut faire ses propres analyses en se basant sur le fait que les tâc
 <br>
 
 <iframe
-    class="full-width-iframe"
+    class="full-width-iframe-model_size"
     src="{{ '/assets/images/hf_models_stats/huggingface_totaldownloads_modelsize_entities.html' | relative_url }}" 
     allowfullscreen
 ></iframe>
@@ -819,7 +819,7 @@ Nous invitons le lecteur à cliquer sur la légende pour ne garder que les entit
 <br>
 
 <iframe
-    class="full-width-iframe"
+    class="full-width-iframe-model_size"
     src="{{ '/assets/images/hf_models_stats/huggingface_totaldownloads_modelsize_entities.html' | relative_url }}" 
     allowfullscreen
 ></iframe>
@@ -834,7 +834,7 @@ Nous invitons le lecteur à cliquer sur la légende pour ne garder que les entit
 <p>Il est aussi possible de zoomer :</p>
 
 <iframe
-    class="full-width-iframe"
+    class="full-width-iframe-model_size"
     src="{{ '/assets/images/hf_models_stats/huggingface_totaldownloads_modelsize_entities.html' | relative_url }}" 
     allowfullscreen
 ></iframe>
@@ -869,7 +869,7 @@ Un acteur chinois serait alors premier sur cette métrique (et sur le segment de
 <br>
 
 <iframe
-    class="full-width-iframe"
+    class="full-width-iframe-model_size"
     src="{{ '/assets/images/hf_models_stats/huggingface_totaldownloads_modelsize_entities.html' | relative_url }}" 
     allowfullscreen
 ></iframe>
@@ -882,7 +882,7 @@ Un acteur chinois serait alors premier sur cette métrique (et sur le segment de
 <br>
 
 <iframe
-    class="full-width-iframe"
+    class="full-width-iframe-model_size"
     src="{{ '/assets/images/hf_models_stats/huggingface_totaldownloads_modelsize_entities.html' | relative_url }}" 
     allowfullscreen
 ></iframe>
@@ -903,7 +903,7 @@ L'UE est majoritaire sur les modèles de moins de 25M de paramètres, là où le
 <br>
 
 <iframe
-    class="full-width-iframe"
+    class="full-width-iframe-model_size"
     src="{{ '/assets/images/hf_models_stats/huggingface_totaldownloads_modelsize_entities.html' | relative_url }}" 
     allowfullscreen
 ></iframe>
@@ -960,6 +960,7 @@ Comme évoqué en introduction, les téléchargements de certains modèles sont 
 
 Enfin, nous envisageons de réaliser un article similaire à celui pour les jeux de données en place des modèles.</p>
 </div>
+
 
 
 
