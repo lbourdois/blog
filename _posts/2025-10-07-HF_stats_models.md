@@ -301,7 +301,7 @@ A l'exception du Royaume-Uni composé également de 4 entités, tous les autres 
 
 <iframe
     class="full-width-iframe"
-    src="{{ '/assets/images/hf_models_stats/huggingface_downloads_breakdown.html' | relative_url }}" 
+    src="{{ '/assets/images/hf_models_stats/huggingface_treemap_entity_type.html' | relative_url }}" 
     allowfullscreen
 ></iframe>
 <center><i>Figure 8 : Total des téléchargements par type d'entité (continents)</i></center>
@@ -943,4 +943,5 @@ Comme évoqué en introduction, les téléchargements de certains modèles sont 
 
 Enfin, nous envisageons de réaliser un article similaire à celui pour les jeux de données en place des modèles.</p>
 </div>
+
 
