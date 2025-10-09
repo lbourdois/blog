@@ -93,6 +93,13 @@ h3 {
 
 <div style="width: 100%; margin: 0; padding: 0;">
 
+<h1>Avant-propos</h1>
+<p>Dans ce qui suit, les textes dans un encadré bleu expriment uniquement mon opinion personnelle, là où dans le reste je me limite à décrire les graphiques.<br>
+
+A noter que pour les lecteurs sur téléphone, les figures 3, 4, 13, 14 et 19 s'afficheront mal (encore des choses à apprendre dans plotly visiblement).</p>
+
+<br><br><br>
+
 <h1>Introduction</h1>
 <p>Dans cet article de blog, nous nous intéressons à analyser les <strong>modèles open-source les plus impactants en pratique</strong>.
 Pour cela nous nous focalisons sur une métrique très pragmatique : « quels sont les modèles les plus téléchargés sur le Hub d'Hugging Face ? ».
@@ -961,6 +968,7 @@ Comme évoqué en introduction, les téléchargements de certains modèles sont 
 
 Enfin, nous envisageons de réaliser un article similaire à celui pour les jeux de données en place des modèles.</p>
 </div>
+
 
 
 
