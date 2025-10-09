@@ -44,7 +44,7 @@ layout: single
 
 .full-width-iframe-treemap {
     width: 100%;
-    height: 750px;
+    height: 800px;
     border: none;
     margin: 0;
     padding: 0;
@@ -380,9 +380,10 @@ Tous les autres pays ne sont représentés qu'une seule fois dans une catégorie
 
 <br>
 
+
 <iframe
     class="full-width-iframe-treemap"
-    src="{{ '/assets/images/hf_models_stats/huggingface_treemap_entities_countries_eu.hmtl' | relative_url }}" 
+    src="{{ '/assets/images/hf_models_stats/huggingface_treemap_entities_countries_eu.html' | relative_url }}" 
     allowfullscreen
 ></iframe>
 <center><i>Figure 10 : Total des téléchargements par type d'entité (UE regroupée)</i></center>
@@ -393,13 +394,13 @@ Tous les autres pays ne sont représentés qu'une seule fois dans une catégorie
 
 <br>
 
-<h3>Vision par pays (UE regroupée)</h3>
+<h3>Vision par pays (continents)</h3>
 
 <br>
 
 <iframe
     class="full-width-iframe-treemap"
-    src="{{ '/assets/images/hf_models_stats/huggingface_treemap_entities_countries_continents.hmtl' | relative_url }}" 
+    src="{{ '/assets/images/hf_models_stats/huggingface_treemap_entities_countries_continents.html' | relative_url }}" 
     allowfullscreen
 ></iframe>
 <center><i>Figure 11 : Total des téléchargements par type d'entité (continents)</i></center>
@@ -455,7 +456,7 @@ Le NLP apparaît ainsi plutôt favorisé (Hugging Face étant à la base connu p
 
 <iframe
     class="full-width-iframe"
-    src="{{ '/assets/images/hf_models_stats/huggingface_downloads_modalities.html' | relative_url }}" 
+    src="{{ '/assets/images/hf_models_stats/huggingface_downloads_modalities_breakdown.html' | relative_url }}" 
     allowfullscreen
 ></iframe>
 <center><i>Figure 13 : Top 50 des entités Hugging Face par nombre total de téléchargements avec décomposition par modalité</i></center>
@@ -490,7 +491,7 @@ Nous observons que peu d'entités sont diversifiées. Chacune semble avoir une s
 
 <iframe
     class="full-width-iframe"
-    src="{{ '/assets/images/hf_models_stats/huggingface_downloads_by_modalities_breakdown.html' | relative_url }}" 
+    src="{{ '/assets/images/hf_models_stats/toto.hmtl' | relative_url }}" 
     allowfullscreen
 ></iframe>
 <center><i>Figure 15 : Contribution des pays (individuels) aux modalités</i></center>
@@ -959,6 +960,7 @@ Comme évoqué en introduction, les téléchargements de certains modèles sont 
 
 Enfin, nous envisageons de réaliser un article similaire à celui pour les jeux de données en place des modèles.</p>
 </div>
+
 
 
 
