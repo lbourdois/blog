@@ -89,31 +89,46 @@ h3 {
     font-size: 20px; 
 }
 
-.bibtex-citation-dark {
-    /* Marge pour séparer du contenu du blog */
+.bibtex-citation-container {
+    /* Conteneur pour positionner le bouton au coin */
+    position: relative; 
     margin: 2em 0; 
-    /* Conteneur principal */
-    border: 1px solid #555; /* Bordure plus claire pour le fond sombre */
     border-radius: 6px; 
     overflow: hidden; 
-    background-color: #282c34; /* Couleur de fond noir/sombre pour le code */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); /* Ombre pour faire ressortir le bloc */
+    border: 1px solid #555; 
 }
 
 .bibtex-code-dark {
-    /* Ciblage de la balise <pre> */
+    /* Style du code (dark mode) */
     margin: 0; 
     padding: 15px 20px;
+    padding-top: 40px; /* Ajoute de l'espace pour le bouton */
     font-family: 'Consolas', 'Monaco', monospace; 
     font-size: 0.95em; 
-    color: #abb2bf; /* Couleur de texte gris-clair, lisible sur fond sombre */
+    color: #abb2bf; 
+    background-color: #282c34; 
     white-space: pre-wrap; 
     word-break: break-all;
 }
 
-/* Optionnel : légère coloration syntaxique pour améliorer la lisibilité */
-.bibtex-code-dark code {
-    color: inherit;
+.copy-button {
+    /* Style du bouton */
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    padding: 5px 10px;
+    background-color: #555; /* Fond du bouton sombre */
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.8em;
+    z-index: 10; /* Assure que le bouton est au-dessus du code */
+    transition: background-color 0.2s;
+}
+
+.copy-button:hover {
+    background-color: #007bff; /* Changement de couleur au survol */
 }
 </style>
 
@@ -998,17 +1013,19 @@ Enfin, nous envisageons de réaliser un article similaire à celui pour les jeux
 
 <br><br><br>
 
-<h2>Citation</h2>
+<h1>Citation</h1>
 
-<div class="bibtex-citation-dark">
-    <pre class="bibtex-code-dark"><code>
-@inproceedings{HF_models_stats_blog_post,  
-  author    = {Loïck BOURDOIS},  
-  title     = {Statistiques des modèles des 50 entités les plus téléchargées sur Hugging Face },  
-  year      = {2025},  
-  url       = {https://lbourdois.github.io/blog/HF_stats_models/}  
-}
+<div class="bibtex-citation-container">
+    <button class="copy-button" onclick="copyBibTeX()">Copy</button>
+    <pre class="bibtex-code-dark" id="bibtexContent"><code>
+    @inproceedings{HF_models_stats_blog_post,  
+      author    = {Loïck BOURDOIS},  
+      title     = {Statistiques des modèles des 50 entités les plus téléchargées sur Hugging Face },  
+      year      = {2025},  
+      url       = {https://lbourdois.github.io/blog/HF_stats_models/}  
+      }
     </code></pre>
 </div>
 
 </div>
+
