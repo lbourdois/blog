@@ -47,7 +47,7 @@ h1 {
 }
 
 h2 {
-    color: #FFBF00; /* Jaune-orangé (eFFBF00 est souvent interprété comme FFBF00, qui est une nuance jaune-orangé) */
+    color: #FFBF00; /* Jaune-orangé */
     font-weight: bold;
 }
 
@@ -56,7 +56,7 @@ h3 {
     font-weight: bold;
 }
 
-/* Styling for the Note Block (similar to the !NOTE directive) */
+/* Styling for the Note Block (similar to the markdown !NOTE) */
 .note-block {
             border-left: 5px solid #007bff; /* Blue line on the left */
             background-color: #e9f5ff; /* Light blue background */
@@ -933,11 +933,9 @@ L'objectif est alors de déterminer quels modèles de base sont les plus impacta
   <img src="https://cdn-uploads.huggingface.co/production/uploads/613b0a62a14099d5afed7830/-gczIrRFbuQ-0RJ7qd_HQ.png" 
        alt="Diagram example" 
        style="max-width:70%; height:auto;"></center>
-  <figcaption>
-    <center>
-    Figure 32: <i>Model tree</i> de google-bert/bert-base-uncased</center>
-  </figcaption>
 </figure>
+<center><i>Figure 32 : Model tree de google-bert/bert-base-uncased</i></center>
+
 
 <br>
 <p>
@@ -945,7 +943,3 @@ Comme évoqué en introduction, les téléchargements de certains modèles sont 
 
 Enfin, nous envisageons de réaliser un article similaire à celui pour les jeux de données en place des modèles.</p>
 </div>
-
-
-
-
