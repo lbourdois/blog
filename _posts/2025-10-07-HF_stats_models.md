@@ -696,7 +696,7 @@ Ils représentent 35 333 543 289 téléchargements sur 36 450 707 797, soit 96,9
 
 <iframe
     class="full-width-iframe-model_size"
-    src="{{ '/assets/images/hf_models_stats/huggingface_downloads_by_modalities_breakdown.html' | relative_url }}" 
+    src="{{ '/assets/images/hf_models_stats/huggingface_totaldownloads_modelsize_5bins.html' | relative_url }}" 
     allowfullscreen
 ></iframe>
 <center><i>Figure 21 : Nombre total de téléchargements en fonction de la taille du modèle</i></center>
@@ -716,7 +716,7 @@ En détaillant davantage :
 
 <iframe
     class="full-width-iframe-model_size"
-    src="{{ '/assets/images/hf_models_stats/huggingface_downloads_by_modalities_breakdown.html' | relative_url }}" 
+    src="{{ '/assets/images/hf_models_stats/huggingface_totaldownloads_modelsize_10bins.html' | relative_url }}" 
     allowfullscreen
 ></iframe>
 <center><i>Figure 22 : Nombre total de téléchargements en fonction de la taille du modèle (plus de strates)</i></center>
@@ -786,7 +786,7 @@ Les séries temporelles pour les modèles de moins de 50M de paramètres.
 
 <iframe
     class="full-width-iframe-model_size"
-    src="{{ '/assets/images/hf_models_stats/huggingface_totaldownloads_modelsize_modalities.html' | relative_url }}" 
+    src="{{ '/assets/images/hf_models_stats/huggingface_totaldownloads_modelsize_tasks.html' | relative_url }}" 
     allowfullscreen
 ></iframe>
 <center><i>Figure 25 : Nombre total de téléchargements en fonction de la taille du modèle et de la tâche</i></center>
@@ -819,11 +819,11 @@ Nous invitons le lecteur à cliquer sur la légende pour ne garder que les entit
 
 <br>
 
-<iframe
-    class="full-width-iframe-model_size"
-    src="{{ '/assets/images/hf_models_stats/huggingface_totaldownloads_modelsize_entities.html' | relative_url }}" 
-    allowfullscreen
-></iframe>
+<figure>
+  <img src="https://cdn-uploads.huggingface.co/production/uploads/613b0a62a14099d5afed7830/-FJAdzQE60DqvNuo0CZGt.png" 
+       alt="Diagram example" 
+       style="max-width:100%; height:auto;">
+</figure>
 <center><i>Figure 27 : Nombre total de téléchargements en fonction de la taille du modèle et de l'entité (focus sur Google et Meta)</i></center>
 
 <br>
@@ -834,11 +834,11 @@ Nous invitons le lecteur à cliquer sur la légende pour ne garder que les entit
 
 <p>Il est aussi possible de zoomer :</p>
 
-<iframe
-    class="full-width-iframe-model_size"
-    src="{{ '/assets/images/hf_models_stats/huggingface_totaldownloads_modelsize_entities.html' | relative_url }}" 
-    allowfullscreen
-></iframe>
+<figure>
+  <img src="https://cdn-uploads.huggingface.co/production/uploads/613b0a62a14099d5afed7830/D5w_p2ZXuwSbv6zG-65YR.png" 
+       alt="Diagram example" 
+       style="max-width:100%; height:auto;">
+</figure>
 <center><i>Figure 28 : Nombre total de téléchargements en fonction de la taille du modèle et de l'entité (modèles de plus d'un milliard de paramètre)</i></center>
 
 <br><br>
@@ -961,6 +961,7 @@ Comme évoqué en introduction, les téléchargements de certains modèles sont 
 
 Enfin, nous envisageons de réaliser un article similaire à celui pour les jeux de données en place des modèles.</p>
 </div>
+
 
 
 
