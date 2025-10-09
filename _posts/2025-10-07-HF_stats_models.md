@@ -425,8 +425,8 @@ Notons finalement que l'Amérique du Sud se démarque par des contributions indi
 <br>
 
 <iframe
-    class="full-width-iframe"
-    src="{{ '/assets/images/hf_models_stats/huggingface_downloads_breakdown.html' | relative_url }}" 
+    class="full-width-iframe-treemap"
+    src="{{ '/assets/images/hf_models_stats/huggingface_treemap_modalities.html' | relative_url }}" 
     allowfullscreen
 ></iframe>
 <center><i>Figure 12 : Contrivutions des entités aux modalités</i></center>
@@ -455,7 +455,7 @@ Le NLP apparaît ainsi plutôt favorisé (Hugging Face étant à la base connu p
 
 <iframe
     class="full-width-iframe"
-    src="{{ '/assets/images/hf_models_stats/huggingface_downloads_by_modalities_breakdown.html' | relative_url }}" 
+    src="{{ '/assets/images/hf_models_stats/huggingface_downloads_modalities.html' | relative_url }}" 
     allowfullscreen
 ></iframe>
 <center><i>Figure 13 : Top 50 des entités Hugging Face par nombre total de téléchargements avec décomposition par modalité</i></center>
@@ -477,7 +477,7 @@ Nous observons que peu d'entités sont diversifiées. Chacune semble avoir une s
 
 <iframe
     class="full-width-iframe"
-    src="{{ '/assets/images/hf_models_stats/huggingface_downloads_by_modalities_breakdown.html' | relative_url }}" 
+    src="{{ '/assets/images/hf_models_stats/huggingface_downloads_modalities_breakdown.html' | relative_url }}" 
     allowfullscreen
 ></iframe>
 <center><i>Figure 14 : Top 50 des entités Hugging Face par nombre total de téléchargements avec décomposition par modalité (et par sous-comptes)</i></center>
@@ -959,6 +959,7 @@ Comme évoqué en introduction, les téléchargements de certains modèles sont 
 
 Enfin, nous envisageons de réaliser un article similaire à celui pour les jeux de données en place des modèles.</p>
 </div>
+
 
 
 
