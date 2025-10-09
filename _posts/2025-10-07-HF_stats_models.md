@@ -492,7 +492,7 @@ Nous observons que peu d'entités sont diversifiées. Chacune semble avoir une s
 
 <iframe
     class="full-width-iframe"
-    src="{{ '/assets/images/hf_models_stats/toto.hmtl' | relative_url }}" 
+    src="{{ '/assets/images/hf_models_stats/huggingface_individuals_to_modalities.hmtl' | relative_url }}" 
     allowfullscreen
 ></iframe>
 <center><i>Figure 15 : Contribution des pays (individuels) aux modalités</i></center>
@@ -513,7 +513,7 @@ La Chine pour sa part est absente des modalités CV et audio. Cela pourrait expl
 
 <iframe
     class="full-width-iframe"
-    src="{{ '/assets/images/hf_models_stats/huggingface_downloads_by_modalities_breakdown.html' | relative_url }}" 
+    src="{{ '/assets/images/hf_models_stats/huggingface_eu_to_modalities.html' | relative_url }}" 
     allowfullscreen
 ></iframe>
 <center><i>Figure 16 : Contribution des pays (UE regroupée) aux modalités</i></center>
@@ -530,7 +530,7 @@ La Chine pour sa part est absente des modalités CV et audio. Cela pourrait expl
 
 <iframe
     class="full-width-iframe"
-    src="{{ '/assets/images/hf_models_stats/huggingface_downloads_by_modalities_breakdown.html' | relative_url }}" 
+    src="{{ '/assets/images/hf_models_stats/huggingface_continental_to_modalities.html' | relative_url }}" 
     allowfullscreen
 ></iframe>
 <center><i>Figure 17 : Contribution des pays (continents) aux modalités</i></center>
@@ -622,7 +622,7 @@ Enfin nous n'avons pas regroupé <code>text2text-generation</code> avec <code>te
 
 <iframe
     class="full-width-iframe"
-    src="{{ '/assets/images/hf_models_stats/huggingface_downloads_by_modalities_breakdown.html' | relative_url }}" 
+    src="{{ '/assets/images/hf_models_stats/huggingface_entities_to_tasks.html' | relative_url }}" 
     allowfullscreen
 ></iframe>
 <center><i>Figure 18 : Contribution des entités aux tâches</i></center>
@@ -645,7 +645,7 @@ Les modèles encodeur-décodeur représentent 1,4% auxquels on peut ajouter la t
 
 <iframe
     class="full-width-iframe"
-    src="{{ '/assets/images/hf_models_stats/huggingface_downloads_by_modalities_breakdown.html' | relative_url }}" 
+    src="{{ '/assets/images/hf_models_stats/huggingface_downloads_by_pipelinetag_breakdown.html' | relative_url }}" 
     allowfullscreen
 ></iframe>
 <center><i>Figure 19 : Top 50 des entités Hugging Face par nombre total de téléchargements avec décomposition par tâche</i></center>
@@ -961,6 +961,7 @@ Comme évoqué en introduction, les téléchargements de certains modèles sont 
 
 Enfin, nous envisageons de réaliser un article similaire à celui pour les jeux de données en place des modèles.</p>
 </div>
+
 
 
 
