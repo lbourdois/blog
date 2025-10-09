@@ -1,8 +1,8 @@
 ---
-title: "TEST"
+title: "Statistiques des modèles des 50 entités les plus téléchargées sur Hugging Face"
 tags:
   - Hugging Face
-excerpt: "Divers –  Statistiques des modèles des 50 entités les plus téléchargées sur Hugging Face"
+excerpt: "Divers –  Analyse des données du Hub d'Hugging Face"
 header:
     overlay_color: "#1C2A4D"
     teaser: "https://raw.githubusercontent.com/lbourdois/blog/refs/heads/master/assets/images/Agents/image_0.png"
@@ -89,15 +89,52 @@ h3 {
     font-size: 20px; 
 }
 
+.bibtex-container {
+    /* Marge pour séparer du contenu du blog */
+    margin: 2em 0; 
+    /* Conteneur principal */
+    border: 1px solid #dfe6e9; /* Bordure légère */
+    border-radius: 6px; /* Coins arrondis pour un look moderne */
+    overflow: hidden; /* S'assure que le contenu reste dans la bordure */
+    background-color: #f6f8fa; /* Fond très clair, typique des blocs de code */
+}
+
+.bibtex-code {
+    /* Ciblage de la balise <pre> */
+    margin: 0; 
+    padding: 15px 20px;
+    font-family: 'Consolas', 'Monaco', monospace; /* Police de code */
+    font-size: 0.9em; 
+    color: #333; /* Couleur de texte sombre */
+    white-space: pre-wrap; /* Permet aux lignes trop longues de revenir à la ligne */
+    word-break: break-all;
+}
+
+/* Vous pouvez ajouter une légère coloration syntaxique si vous le souhaitez */
+.bibtex-code code {
+    /* Style pour les clés et les valeurs */
+    color: #333; 
+}
+.bibtex-code code .bib-key { 
+    /* Style optionnel si vous ajoutez des span autour de {ssm...} */
+    color: #0077aa; /* Bleu */
+}
+.bibtex-code code .bib-type {
+    /* Style optionnel si vous ajoutez des span autour de @inproceedings */
+    font-weight: bold;
+    color: #8959a8; /* Violet */
+}
+
 </style>
 
 <div style="width: 100%; margin: 0; padding: 0;">
 
 <h1>Avant-propos</h1>
-<p>Dans ce qui suit, les textes dans un encadré bleu expriment uniquement mon opinion personnelle, là où dans le reste je me limite à décrire les graphiques.<br>
+<p>Dans ce qui suit, les textes dans un encadré bleu expriment uniquement notre opinion personnelle, là où dans le reste je me limite à décrire les graphiques.<br>
 
-A noter que pour les lecteurs sur téléphone, les figures 3, 4, 13, 14 et 19 s'afficheront mal (encore des choses à apprendre dans plotly visiblement).</p>
+A noter que pour les lecteurs sur téléphone, les figures 3, 4, 13, 14 et 19 s'afficheront mal (encore des choses à apprendre dans plotly visiblement).<br>
 
+Enfin, il faut noter que le 9 octobre dernier, Elastic a annoncé l'acquisition de Jina.ai. Nous n'avons pas eu le temps de modifier les différents graphiques pour tenir compte de ce fait.</p>
 <br><br><br>
 
 <h1>Introduction</h1>
@@ -318,7 +355,7 @@ A l'exception du Royaume-Uni composé également de 4 entités, tous les autres 
 <br>
 
 <p>
-    Le type de l'entité est déterminé via ce qu'elle a elle-même choisi parmi les possibilités offertes par Hugging Face lors de la <a href="https://huggingface.co/organizations/new" target="_blank">création d'une organisation</a> (<em>Compagny</em>, <em>University</em>, <em>Classroom</em>, <em>Non-profit</em>, <em>Governement</em>, <em>Community</em>). Nous y avons ajouté <em>Individual</em> pour désigner les individus proposant des modèles sous leur propre nom en dehors d'une organisation. À noter également un particulier, HFL, qui est un laboratoire commun entre une université et une entreprise. Nous avons donc dû créer une catégorie <em>Hybrid Lab</em> non disponible sur Hugging Face.
+    Le type de l'entité est déterminé via ce qu'elle a elle-même choisi parmi les possibilités offertes par Hugging Face lors de la <a href="https://huggingface.co/organizations/new" target="_blank">création d'une organisation</a> (<em>Compagny</em>, <em>University</em>, <em>Classroom</em>, <em>Non-profit</em>, <em>Governement</em>, <em>Community</em>). Nous y avons ajouté <em>Individual</em> pour désigner les individus proposant des modèles sous leur propre nom en dehors d'une organisation. À noter également un cas particulier, HFL, qui est un laboratoire commun entre une université et une entreprise. Nous avons donc dû créer une catégorie <em>Hybrid Lab</em> non disponible sur Hugging Face.
 </p>
 
 <br>
@@ -362,8 +399,8 @@ La forte part des entreprises dans le modèle open-source pourrait être aussi u
 <br><br>
 
 <p>
-Les États-Unis sont présents dans les 4 types de catégories : premier de très loin chez les entreprises avec 76,3% des téléchargements, deuxième chez les universités avec 30% de la catégorie, troisième à 12,5% des individuels et troisième des non-profit à 15,3%.<br>
-L'Allemagne est également dans 4 types de catégories : sixième chez les entreprises avec 1,4% des téléchargements, première chez les universités avec 54,1%, à 2,5% chez les individuels et deuxième à 20,3% chez les non-profit.  <br>
+Les États-Unis sont présents dans 4 types de catégories : premier de très loin chez les entreprises avec 76,3% des téléchargements, deuxième chez les universités avec 30% de la catégorie, troisième à 12,5% des individuels et troisième des non-profit à 15,3%.<br>
+L'Allemagne est aussi dans 4 types de catégories : sixième chez les entreprises avec 1,4% des téléchargements, première chez les universités avec 54,1%, à 2,5% chez les individuels et deuxième à 20,3% chez les non-profit.  <br>
 La Chine est également dans 4 types de catégories : quatrième des entreprises à 3,7%, absente des universités (seules) mais seul cas de laboratoire hybride université/entreprise dans ce top 50, à 3,6% chez les individuels (le cas `intfloat`) et enfin première chez les non-profit à 57,5%.  <br>
 La France est présente dans 3 types de catégories : deuxième des entreprises avec 12,7%, sixième des universités à 1,2% et quatrième des individuels à 8,9%.  <br>
 Le Royaume-Uni est classé dans 3 types de catégories : cinquième chez les entreprises avec 1,9% des téléchargements, troisième chez les universités avec 7,4% et à 5,4% chez les individuels.   <br>
@@ -681,7 +718,7 @@ Après analyse, 184 langues sont référencées dans ce top 50 (224 autres valeu
 
 <br>
 
-<p>On peut ainsi remarquer que parmi tous les modèles disponibles dans le top 50 reposant sur une langue, l'anglais représente plus de 79,46% des téléchargements des modèles (monolingues ou multilingues) utilisant une langue (et même 92,85% des modèles possédant un tag de langue). Elle est loin devant les autres langues. Par exemple, le français qui arrive en deuxième position ne l'est qu'avec 17,48% (20,43% des modèles possédant un tag de langue).  
+<p>On peut ainsi remarquer que parmi tous les modèles disponibles dans le top 50 reposant sur une langue, l'anglais représente plus de 79,46% des téléchargements de ces modèles (monolingues ou multilingues) et même 92,85% des modèles possédant un tag de langue. Elle est loin devant les autres langues. Par exemple, le français qui arrive en deuxième position ne l'est qu'avec 17,48% (20,43% des modèles possédant un tag de langue).  
 <br>
 Sur ce top 20, les langues à alphabet latin accaparent les premières positions mais ne sont que 8 sur 20, montrant que les modèles multilingues sont plutôt divers.
 </p>
@@ -850,7 +887,7 @@ Nous invitons le lecteur à cliquer sur la légende pour ne garder que les entit
 
 <br><br>
       
-<p>Dans cet exemple se focalisant uniquement sur les acteurs de LLM du top 50 qui dépassent les 5% de téléchargements sur l'une des tranches supérieures à 1B de paramètres (à savoir Google, Meta, Microsoft, Alibaba, Mistral, Unsloth, Deepseek + les individuels proposant les versions quantifiées des modèles comme TheBloke et Maziyar Panahi), on peut constater :  <br>
+<p>Dans cet exemple se focalisant uniquement sur les acteurs de grands modèles du top 50 qui dépassent les 5% de téléchargements sur l'une des tranches supérieures à 1B de paramètres (à savoir Google, Meta, Microsoft, Alibaba, Mistral, Unsloth, Deepseek + les individuels proposant les versions quantifiées des modèles comme TheBloke et Maziyar Panahi), on peut constater :  <br>
 - sur la tranche 1B-3B :  <br>
   Alibaba est le plus téléchargé sur la tranche avec 20,2%, devant Meta à 16,3%, Google à 11,7%, TheBlock à 11,4% et Maziyar Panahi à 6,3%<br>
 - sur la tranche 3B-7,5B :  <br>
@@ -967,7 +1004,25 @@ L'objectif est alors de déterminer quels modèles de base sont les plus impacta
 Comme évoqué en introduction, les téléchargements de certains modèles sont mal comptabilisés actuellement sur le Hub. Cela pourrait ainsi dévaluer certaines entités. Nous sommes actuellement en contact avec les équipes d'Hugging Face pour corriger du mieux possible ce point.<br><br>
 
 Enfin, nous envisageons de réaliser un article similaire à celui pour les jeux de données en place des modèles.</p>
+
+
+<br><br><br>
+
+<h2>Citation</h2>
+
+<div class="bibtex-container">
+    <pre class="bibtex-code"><code>
+@inproceedings{ssm_introduction_blog_post,  
+  author    = {Loïck BOURDOIS},  
+  title     = {Introduction aux State Space Models (SSM) et au S4},  
+  year      = {2023},  
+  url       = {https://lbourdois.github.io/blog/ssm/introduction_ssm}  
+}
+    </code></pre>
 </div>
+
+</div>
+
 
 
 
