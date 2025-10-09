@@ -36,7 +36,7 @@ layout: single
 
 .full-width-iframe-model_size {
     width: 100%;
-    height: 1200px;
+    height: 500px;
     border: none;
     margin: 0;
     padding: 0;
@@ -44,7 +44,7 @@ layout: single
 
 .full-width-iframe-treemap {
     width: 100%;
-    height: 800px;
+    height: 810px;
     border: none;
     margin: 0;
     padding: 0;
@@ -345,8 +345,8 @@ La forte part des entreprises dans le modèle open-source pourrait être aussi u
 <br>
 
 <iframe
-    class="full-width-iframe"
-    src="{{ '/assets/images/hf_models_stats/huggingface_downloads_breakdown.html' | relative_url }}" 
+    class="full-width-iframe-treemap"
+    src="{{ '/assets/images/hf_models_stats/huggingface_treemap_entities_countries_individuals.hmtl' | relative_url }}" 
     allowfullscreen
 ></iframe>
 <center><i>Figure 9 : Total des téléchargements par type d'entité (pays individuels)</i></center>
@@ -381,8 +381,8 @@ Tous les autres pays ne sont représentés qu'une seule fois dans une catégorie
 <br>
 
 <iframe
-    class="full-width-iframe"
-    src="{{ '/assets/images/hf_models_stats/huggingface_downloads_breakdown.html' | relative_url }}" 
+    class="full-width-iframe-treemap"
+    src="{{ '/assets/images/hf_models_stats/huggingface_treemap_entities_countries_eu.hmtl' | relative_url }}" 
     allowfullscreen
 ></iframe>
 <center><i>Figure 10 : Total des téléchargements par type d'entité (UE regroupée)</i></center>
@@ -398,8 +398,8 @@ Tous les autres pays ne sont représentés qu'une seule fois dans une catégorie
 <br>
 
 <iframe
-    class="full-width-iframe"
-    src="{{ '/assets/images/hf_models_stats/huggingface_downloads_breakdown.html' | relative_url }}" 
+    class="full-width-iframe-treemap"
+    src="{{ '/assets/images/hf_models_stats/huggingface_treemap_entities_countries_continents.hmtl' | relative_url }}" 
     allowfullscreen
 ></iframe>
 <center><i>Figure 11 : Total des téléchargements par type d'entité (continents)</i></center>
@@ -959,6 +959,7 @@ Comme évoqué en introduction, les téléchargements de certains modèles sont 
 
 Enfin, nous envisageons de réaliser un article similaire à celui pour les jeux de données en place des modèles.</p>
 </div>
+
 
 
 
