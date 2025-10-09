@@ -1,5 +1,5 @@
 ---
-title: "Statistiques des modèles des 50 entités les plus téléchargées sur Hugging Face"
+title: "STATISTIQUES DES MODELES DES 50 ENTITES LES PLUS TELECHARGEES SUR HUGGING FACE"
 tags:
   - Hugging Face
 excerpt: "Divers –  Analyse des données du Hub d'Hugging Face"
@@ -1008,3 +1008,4 @@ Enfin, nous envisageons de réaliser un article similaire à celui pour les jeux
 </div>
 
 </div>
+
