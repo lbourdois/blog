@@ -744,7 +744,7 @@ Etant donné que 92,5% des téléchargements portent sur les modèles de moins d
 
 <iframe
     class="full-width-iframe-model_size"
-    src="{{ '/assets/images/hf_models_stats/huggingface_totaldownloads_modelsize_entities.html' | relative_url }}" 
+    src="{{ '/assets/images/hf_models_stats/huggingface_totaldownloads_modelsize_type_entities.html' | relative_url }}" 
     allowfullscreen
 ></iframe>
 <center><i>Figure 23 : Nombre total de téléchargements en fonction de la taille du modèle et du type de l'entité</i></center>
@@ -961,6 +961,7 @@ Comme évoqué en introduction, les téléchargements de certains modèles sont 
 
 Enfin, nous envisageons de réaliser un article similaire à celui pour les jeux de données en place des modèles.</p>
 </div>
+
 
 
 
