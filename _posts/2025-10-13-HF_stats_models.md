@@ -645,7 +645,7 @@ pipeline_tag_to_modality = {
 <br>
 
 <p>Les tâches de NLP sont différentes variantes de bleu, celles de vision des variantes de jaune, et celles d'audio des variantes de rouge.<br>
-Sur conseil de Tom Aarseen, nous avons fusionné les tags de pipeline <code>sentence-similarity</code> et <code>feature-extraction</code>.<br>
+Après échange les équipes d'Hugging Face, nous avons fusionné les tags de pipeline <code>sentence-similarity</code> et <code>feature-extraction</code>.<br>
 Enfin nous n'avons pas regroupé <code>text2text-generation</code> avec <code>text-generation</code>. Le premier tag est surtout utilisé par les modèles encodeurs-décodeurs générant du texte (T5, BART) alors que le second est utilisé par les modèles uniquement décodeur. L'objectif ici était de montrer que ces encodeurs-décodeurs représentent autant de téléchargements que les Qwen d'Alibaba et davantage que les Llamas de Meta.</p>
 
 <br>
@@ -1008,4 +1008,5 @@ Enfin, nous envisageons de réaliser un article similaire à celui pour les jeux
 </div>
 
 </div>
+
 
