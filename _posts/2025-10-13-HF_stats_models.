@@ -116,11 +116,11 @@ h3 {
 <div style="width: 100%; margin: 0; padding: 0;">
 
 <h1>Avant-propos</h1>
-<p>Dans ce qui suit, les textes dans un encadré bleu expriment uniquement notre opinion personnelle, là où dans le reste je me limite à décrire les graphiques.<br>
+<p>Dans cet article, les textes dans un encadré bleu expriment uniquement notre opinion personnelle.<br>
 
-A noter que pour les lecteurs sur téléphone, les figures 3, 4, 13, 14 et 19 s'afficheront mal (encore des choses à apprendre dans plotly visiblement).<br>
+A titre d'information, pour les lecteurs sur téléphone, l'affichage des figures 3, 4, 13, 14 et 19 sera incomplet (nous avons visiblement encore des choses à apprendre sur plotly).<br>
 
-Enfin, il faut noter que le 9 octobre dernier, Elastic a annoncé l'acquisition de Jina.ai. Nous n'avons pas eu le temps de modifier les différents graphiques pour tenir compte de ce fait.</p>
+Enfin, à noter que le 9 octobre dernier, Elastic a annoncé l'acquisition de Jina.ai. Nous n'avons pas eu le temps de modifier les différents graphiques pour tenir compte de cette actualité.</p>
 <br><br><br>
 
 <h1>Introduction</h1>
@@ -1008,5 +1008,6 @@ Enfin, nous envisageons de réaliser un article similaire à celui pour les jeux
 </div>
 
 </div>
+
 
 
