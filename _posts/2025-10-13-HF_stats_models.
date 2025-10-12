@@ -243,7 +243,7 @@ Ainsi, nous proposons un graphique <em>global</em> permettant de comparer entre-
     <p>32. CIDAS est très utilisé pour son modèle de segmentation <a href="https://huggingface.co/collections/CIDAS/clipseg-rd64-refined">clipseg-rd64-refined</a>.</p>
     <p>33. Emily Alsentzer a connu un certain succès avec son <a href="https://huggingface.co/collections/emilyalsentzer/Bio_ClinicalBERT">Bio_ClinicalBERT</a>. Elle n'a plus publié de modèles depuis 2020.</p>
     <p>34. NVIDIA est extrêmement équilibrée (ce n'est pas un unique modèle qui tire tous les téléchargements de l'entité). Son modèle <a href="https://huggingface.co/collections/nvidia/speakerverification_en_titanet_large">speakerverification_en_titanet_large</a> se démarque légèrement des autres.</p>
-    <p>35. LM Studio est composée de <a href="https://huggingface.co/lmstudio-community">lmstudio-community</a> (44,1%), <a href="https://huggingface.co/bartowski">bartowski</a> (55,8%) et <a href="https://huggingface.co/lmstudio-ai">lmstudio-ai</a>.</p>
+    <p>35. LM Studio est composée de <a href="https://huggingface.co/lmstudio-community">lmstudio-community</a> (44,1%), <a href="https://huggingface.co/bartowski">bartowski</a> (55,8%) et <a href="https://huggingface.co/lmstudio-ai">lmstudio-ai</a>.<br> A noter que nous avons vraiment hésiter à intégrer le compte bartowski à cette entité. Il se définit sur Hugging Face comme « Official model curator for https://lmstudio.ai/ » mais est surtout « Research Engineer at arcee.ai ». De plus, il est situé au Canada alors que LM Studio est au Etats-Unis. Le choix était de soit les assembler soit n'inclure aucun des deux car individuellement ne sont pas dans le top 50 (<code>answerdotai</code> étant la 51ème entité).</p>
     <p>36. David S. Lim est téléchargé pour ses modèles de NER en anglais. Il n'a plus publié de modèles depuis 2024.</p>
     <p>37. Unsloth est principalement téléchargé pour ses versions quantifiées de LLM.</p>
     <p>38. mradermacher est principalement téléchargé pour ses versions quantifiées de LLM. C'est un groupe d'individuels encore actif en 2025.</p>
@@ -1008,6 +1008,7 @@ Enfin, nous envisageons de réaliser un article similaire à celui pour les jeux
 </div>
 
 </div>
+
 
 
 
