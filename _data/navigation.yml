@@ -3,12 +3,10 @@ main:
     url: /ssm/
   - title: "NLP"
     url: /nlp/
-  - title: "Projets"
-    url: /projets/
   - title: "Posts"
     url: /posts/
   - title: "A propos"
-    url: /about/    
+    url: https://lbourdois.github.io/  
   - title: "Cours NYU"
     url: https://lbourdois.github.io/cours-dl-nyu/
 
