@@ -116,7 +116,7 @@ h3 {
 <div style="width: 100%; margin: 0; padding: 0;">
 
 <h1>Avant-propos</h1>
-<p>Dans cet article, les textes dans un encadré bleu expriment uniquement notre opinion personnelle.<br>
+<p>Dans cet article, les textes dans un encadré bleu expriment uniquement nos réflexions personnelles.<br>
 
 A titre d'information, pour les lecteurs sur téléphone, l'affichage des figures 3, 4, 13, 14 et 19 sera incomplet (nous avons visiblement encore des choses à apprendre sur plotly).<br>
 
@@ -1008,6 +1008,7 @@ Enfin, nous envisageons de réaliser un article similaire à celui pour les jeux
 </div>
 
 </div>
+
 
 
 
