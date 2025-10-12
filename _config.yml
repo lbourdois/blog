@@ -88,12 +88,13 @@ footer:
     - label: "Linkedin"
       icon: "fab fa-fw fa-linkedin"    
       url: "https://www.linkedin.com/in/lbourdois"
-    - label: "GitHub"
-      icon: "fab fa-fw fa-github"
-      url: "https://github.com/lbourdois"
     - label: " Hugging Face"
       # icon: fab fa-fw fa-face-smiling-hands"  # no free icon
       url: "https://huggingface.co/lbourdois"
+    - label: "GitHub"
+      icon: "fab fa-fw fa-github"
+      url: "https://github.com/lbourdois"
+
 
 
 defaults:
