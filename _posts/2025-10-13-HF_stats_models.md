@@ -147,10 +147,10 @@ Ces derniers représentant à eux seuls 77,89% de tous les téléchargements du 
 Le tout a finalement été stocké dans un dataframe ressemblant à ceci :</p>
 
 <iframe
-  src="https://huggingface.co/datasets/lbourdois/huggingface_downloads_October_2025"
-  width="100%"
-  height="600"
+  src="https://huggingface.co/datasets/lbourdois/huggingface_downloads_October_2025/embed/viewer/default/train"
   frameborder="0"
+  width="100%"
+  height="560px"
 ></iframe>
 <center><i>Figure 1: Jeu de données utilisé, disponible  <a href="https://huggingface.co/datasets/lbourdois/huggingface_downloads_October_2025" target="_blank">ici</a></i></center>
 
@@ -188,6 +188,7 @@ Ainsi, nous proposons un graphique <em>global</em> permettant de comparer entre-
 <iframe
     class="full-width-iframe"
     src="{{ '/assets/images/hf_models_stats/huggingface_downloads.html' | relative_url }}" 
+    title="Top 50 des entités par nombre total de téléchargements"
     allowfullscreen
 ></iframe>
 <center><i>Figure 3: Top 50 des entités par nombre total de téléchargements</i></center>
@@ -359,6 +360,7 @@ A l'exception du Royaume-Uni composé également de 4 entités, tous les autres 
 
 <div class="note-block">
 <div class="note-content">
+Pour les universités, la plupart des entités sont en réalité uniquement des équipes ou groupes de recherche au sein de l'Université donnée et non pas l'Université/Insitution entière. Le fait de ne pas pouvoir créer des sous-équipes dans une grande organisation Hugging Face entraîne la création de plusieurs organisations (une par équipe ou bien des personnes publiant sous leur nom propre plutôt que celui de l'Université) ayant pour conséquence d'éclater les comptes et leur faire perdre en visibilité. <br>Par exemple un CNRS (pas techniquement une université), n'est pas représenté dans le top-50 alors que pyannote y a été créé par Hervé Bredin, Maziyar Panahi y travaille et Bloom de Big Science a été entraîné sur ses serveurs.<br><br>
 En consultant l'activité des différentes entités sur le Hub, on peut constater que globalement la plupart d'entre elles sont encore actives en 2025. Une exception notable est la catégorie <i>Individual</i>. En effet, sur les 16 entités de ce type, seulement 6 ont publié de nouveaux modèles en 2025.<br>
 Il apparaît donc que contrairement aux autres catégories de types, la contribution d'individuels à l'open-source n'est pas une activité pérenne dans le temps. Ce phénomène peut être compensé par un renouvellement des contributeurs, néanmoins il serait intéressant de connaître les raisons pour lesquelles ces personnes se détournent de l'open source pour trouver une façon de les soutenir et remédier à ce problème.<br><br>
 La forte part des entreprises dans le modèle open-source pourrait être aussi une vulnérabilité du modèle si ces dernières décident à l'avenir de se retirer et de ne plus y contribuer comme certaines en ont fait le choix par le passé.
@@ -1008,6 +1010,7 @@ Enfin, nous envisageons de réaliser un article similaire à celui pour les jeux
 </div>
 
 </div>
+
 
 
 
