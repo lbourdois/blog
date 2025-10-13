@@ -202,6 +202,7 @@ Ainsi, nous proposons un graphique <em>global</em> permettant de comparer entre-
 <iframe
     class="full-width-iframe"
     src="{{ '/assets/images/hf_models_stats/huggingface_downloads_breakdown.html' | relative_url }}" 
+    title="Top 50 des entités par nombre total de téléchargements (détaillé au niveau des sous-comptes)"
     allowfullscreen
 ></iframe>
 <center><i>Figure 4: Top 50 des entités par nombre total de téléchargements (détaillé au niveau des sous-comptes)</i></center>
@@ -277,6 +278,7 @@ Le but ici est d'estimer le nombre de pays disposant d'un environnement permetta
 <iframe
     class="full-width-iframe-treemap"
     src="{{ '/assets/images/hf_models_stats/huggingface_treemap_countries.html' | relative_url }}" 
+    title="Total des téléchargements par pays (pays individuels)"
     allowfullscreen
 ></iframe>
 <center><i>Figure 5 : Total des téléchargements par pays (pays individuels)</i></center>
@@ -310,6 +312,7 @@ A l'exception du Royaume-Uni composé également de 4 entités, tous les autres 
 <iframe
     class="full-width-iframe-treemap"
     src="{{ '/assets/images/hf_models_stats/huggingface_treemap_eu.html' | relative_url }}" 
+    title="Total des téléchargements par pays (UE regroupée)"
     allowfullscreen
 ></iframe>
 <center><i>Figure 6 : Total des téléchargements par pays (UE regroupée)</i></center>
@@ -327,6 +330,7 @@ A l'exception du Royaume-Uni composé également de 4 entités, tous les autres 
 <iframe
     class="full-width-iframe-treemap"
     src="{{ '/assets/images/hf_models_stats/huggingface_treemap_continental.html' | relative_url }}" 
+    title="Total des téléchargements par pays (continents)"
     allowfullscreen
 ></iframe>
 <center><i>Figure 7 : Total des téléchargements par pays (continents)</i></center>
@@ -350,9 +354,10 @@ A l'exception du Royaume-Uni composé également de 4 entités, tous les autres 
 <iframe
     class="full-width-iframe-treemap"
     src="{{ '/assets/images/hf_models_stats/huggingface_treemap_entity_type.html' | relative_url }}" 
+    title="Total des téléchargements par type d'entité"
     allowfullscreen
 ></iframe>
-<center><i>Figure 8 : Total des téléchargements par type d'entité (continents)</i></center>
+<center><i>Figure 8 : Total des téléchargements par type d'entité</i></center>
 
 <br><br>
 
@@ -380,6 +385,7 @@ La forte part des entreprises dans le modèle open-source pourrait être aussi u
 <iframe
     class="full-width-iframe-treemap"
     src="{{ '/assets/images/hf_models_stats/huggingface_treemap_entities_countries_individuals.html' | relative_url }}" 
+    title="Total des téléchargements par type d'entité (pays individuels)"
     allowfullscreen
 ></iframe>
 <center><i>Figure 9 : Total des téléchargements par type d'entité (pays individuels)</i></center>
@@ -417,6 +423,7 @@ Tous les autres pays ne sont représentés qu'une seule fois dans une catégorie
 <iframe
     class="full-width-iframe-treemap"
     src="{{ '/assets/images/hf_models_stats/huggingface_treemap_entities_countries_eu.html' | relative_url }}" 
+    title="Total des téléchargements par type d'entité (UE regroupée)"
     allowfullscreen
 ></iframe>
 <center><i>Figure 10 : Total des téléchargements par type d'entité (UE regroupée)</i></center>
@@ -434,6 +441,7 @@ Tous les autres pays ne sont représentés qu'une seule fois dans une catégorie
 <iframe
     class="full-width-iframe-treemap"
     src="{{ '/assets/images/hf_models_stats/huggingface_treemap_entities_countries_continents.html' | relative_url }}" 
+    title="Total des téléchargements par type d'entité (continents)"
     allowfullscreen
 ></iframe>
 <center><i>Figure 11 : Total des téléchargements par type d'entité (continents)</i></center>
@@ -461,6 +469,7 @@ Notons finalement que l'Amérique du Sud se démarque par des contributions indi
 <iframe
     class="full-width-iframe-treemap"
     src="{{ '/assets/images/hf_models_stats/huggingface_treemap_modalities.html' | relative_url }}" 
+    title="Contributions des entités aux modalités"
     allowfullscreen
 ></iframe>
 <center><i>Figure 12 : Contributions des entités aux modalités</i></center>
@@ -490,6 +499,7 @@ Le NLP apparaît ainsi plutôt favorisé (Hugging Face étant à la base connu p
 <iframe
     class="full-width-iframe"
     src="{{ '/assets/images/hf_models_stats/huggingface_downloads_modalities_breakdown.html' | relative_url }}" 
+    title="Top 50 des entités Hugging Face par nombre total de téléchargements avec décomposition par modalité"
     allowfullscreen
 ></iframe>
 <center><i>Figure 13 : Top 50 des entités Hugging Face par nombre total de téléchargements avec décomposition par modalité</i></center>
@@ -512,6 +522,7 @@ Nous observons que peu d'entités sont diversifiées. Chacune semble avoir une s
 <iframe
     class="full-width-iframe"
     src="{{ '/assets/images/hf_models_stats/huggingface_downloads_modalities_breakdown_sub_accounts.html' | relative_url }}" 
+    title="Top 50 des entités Hugging Face par nombre total de téléchargements avec décomposition par modalité (et par sous-comptes)"
     allowfullscreen
 ></iframe>
 <center><i>Figure 14 : Top 50 des entités Hugging Face par nombre total de téléchargements avec décomposition par modalité (et par sous-comptes)</i></center>
@@ -525,6 +536,7 @@ Nous observons que peu d'entités sont diversifiées. Chacune semble avoir une s
 <iframe
     class="full-width-iframe-treemap"
     src="{{ '/assets/images/hf_models_stats/huggingface_individuals_to_modalities.html' | relative_url }}" 
+    title="Contribution des pays (individuels) aux modalités"
     allowfullscreen
 ></iframe>
 <center><i>Figure 15 : Contribution des pays (individuels) aux modalités</i></center>
@@ -546,6 +558,7 @@ La Chine pour sa part est absente des modalités CV et audio. Cela pourrait expl
 <iframe
     class="full-width-iframe-treemap"
     src="{{ '/assets/images/hf_models_stats/huggingface_eu_to_modalities.html' | relative_url }}" 
+    title="Contribution des pays (UE regroupée) aux modalités"
     allowfullscreen
 ></iframe>
 <center><i>Figure 16 : Contribution des pays (UE regroupée) aux modalités</i></center>
@@ -563,6 +576,7 @@ La Chine pour sa part est absente des modalités CV et audio. Cela pourrait expl
 <iframe
     class="full-width-iframe-treemap"
     src="{{ '/assets/images/hf_models_stats/huggingface_continental_to_modalities.html' | relative_url }}" 
+    title="Contribution des pays (continents) aux modalités"
     allowfullscreen
 ></iframe>
 <center><i>Figure 17 : Contribution des pays (continents) aux modalités</i></center>
@@ -655,6 +669,7 @@ Enfin nous n'avons pas regroupé <code>text2text-generation</code> avec <code>te
 <iframe
     class="full-width-iframe-treemap"
     src="{{ '/assets/images/hf_models_stats/huggingface_entities_to_tasks.html' | relative_url }}" 
+    title="Contribution des entités aux tâches"
     allowfullscreen
 ></iframe>
 <center><i>Figure 18 : Contribution des entités aux tâches</i></center>
@@ -678,6 +693,7 @@ Les modèles encodeur-décodeur représentent 1,4% auxquels on peut ajouter la t
 <iframe
     class="full-width-iframe"
     src="{{ '/assets/images/hf_models_stats/huggingface_downloads_by_pipelinetag_breakdown.html' | relative_url }}" 
+    title="Top 50 des entités Hugging Face par nombre total de téléchargements avec décomposition par tâche"
     allowfullscreen
 ></iframe>
 <center><i>Figure 19 : Top 50 des entités Hugging Face par nombre total de téléchargements avec décomposition par tâche</i></center>
@@ -700,6 +716,7 @@ Après analyse, 184 langues sont référencées dans ce top 50 (224 autres valeu
 <iframe
     class="full-width-iframe-model_size"
     src="{{ '/assets/images/hf_models_stats/huggingface_language.html' | relative_url }}" 
+    title="Nombre total de téléchargements par langues"
     allowfullscreen
 ></iframe>
 <center><i>Figure 20 : Nombre total de téléchargements par langues</i></center>
@@ -729,6 +746,7 @@ Ils représentent 35 333 543 289 téléchargements sur 36 450 707 797, soit 96,9
 <iframe
     class="full-width-iframe-model_size"
     src="{{ '/assets/images/hf_models_stats/huggingface_totaldownloads_modelsize_5bins.html' | relative_url }}" 
+    title="Nombre total de téléchargements en fonction de la taille du modèle"
     allowfullscreen
 ></iframe>
 <center><i>Figure 21 : Nombre total de téléchargements en fonction de la taille du modèle</i></center>
@@ -749,6 +767,7 @@ En détaillant davantage :
 <iframe
     class="full-width-iframe-model_size"
     src="{{ '/assets/images/hf_models_stats/huggingface_totaldownloads_modelsize_10bins.html' | relative_url }}" 
+    title="Nombre total de téléchargements en fonction de la taille du modèle (plus de strates)"
     allowfullscreen
 ></iframe>
 <center><i>Figure 22 : Nombre total de téléchargements en fonction de la taille du modèle (plus de strates)</i></center>
@@ -777,6 +796,7 @@ Etant donné que 92,5% des téléchargements portent sur les modèles de moins d
 <iframe
     class="full-width-iframe-model_size"
     src="{{ '/assets/images/hf_models_stats/huggingface_totaldownloads_modelsize_type_entities.html' | relative_url }}" 
+    title="Nombre total de téléchargements en fonction de la taille du modèle et du type de l'entité"
     allowfullscreen
 ></iframe>
 <center><i>Figure 23 : Nombre total de téléchargements en fonction de la taille du modèle et du type de l'entité</i></center>
@@ -797,6 +817,7 @@ Entre 5M de paramètres et 500M (plutôt 200M), les modèles des universités pe
 <iframe
     class="full-width-iframe-model_size"
     src="{{ '/assets/images/hf_models_stats/huggingface_totaldownloads_modelsize_modalities.html' | relative_url }}" 
+    title="Nombre total de téléchargements en fonction de la taille du modèle et de la modalité"
     allowfullscreen
 ></iframe>
 <center><i>Figure 24 : Nombre total de téléchargements en fonction de la taille du modèle et de la modalité</i></center>
@@ -819,6 +840,7 @@ Les séries temporelles pour les modèles de moins de 50M de paramètres.
 <iframe
     class="full-width-iframe-model_size"
     src="{{ '/assets/images/hf_models_stats/huggingface_totaldownloads_modelsize_tasks.html' | relative_url }}" 
+    title="Nombre total de téléchargements en fonction de la taille du modèle et de la tâche"
     allowfullscreen
 ></iframe>
 <center><i>Figure 25 : Nombre total de téléchargements en fonction de la taille du modèle et de la tâche</i></center>
@@ -839,6 +861,7 @@ Le lecteur peut faire ses propres analyses en se basant sur le fait que les tâc
 <iframe
     class="full-width-iframe-model_size"
     src="{{ '/assets/images/hf_models_stats/huggingface_totaldownloads_modelsize_entities.html' | relative_url }}" 
+    title="Nombre total de téléchargements en fonction de la taille du modèle et de l'entité"
     allowfullscreen
 ></iframe>
 <center><i>Figure 26 : Nombre total de téléchargements en fonction de la taille du modèle et de l'entité</i></center>
@@ -853,7 +876,7 @@ Nous invitons le lecteur à cliquer sur la légende pour ne garder que les entit
 
 <figure>
   <img src="https://cdn-uploads.huggingface.co/production/uploads/613b0a62a14099d5afed7830/-FJAdzQE60DqvNuo0CZGt.png" 
-       alt="Diagram example" 
+       alt="Nombre total de téléchargements en fonction de la taille du modèle et de l'entité (focus sur Google et Meta)" 
        style="max-width:100%; height:auto;">
 </figure>
 <center><i>Figure 27 : Nombre total de téléchargements en fonction de la taille du modèle et de l'entité (focus sur Google et Meta)</i></center>
@@ -868,10 +891,10 @@ Nous invitons le lecteur à cliquer sur la légende pour ne garder que les entit
 
 <figure>
   <img src="https://cdn-uploads.huggingface.co/production/uploads/613b0a62a14099d5afed7830/D5w_p2ZXuwSbv6zG-65YR.png" 
-       alt="Diagram example" 
+       alt="Nombre total de téléchargements en fonction de la taille du modèle et de l'entité (modèles de plus d'un milliard de paramètres)" 
        style="max-width:100%; height:auto;">
 </figure>
-<center><i>Figure 28 : Nombre total de téléchargements en fonction de la taille du modèle et de l'entité (modèles de plus d'un milliard de paramètre)</i></center>
+<center><i>Figure 28 : Nombre total de téléchargements en fonction de la taille du modèle et de l'entité (modèles de plus d'un milliard de paramètres)</i></center>
 
 <br><br>
       
@@ -904,6 +927,7 @@ Un acteur chinois serait alors premier sur cette métrique (et sur le segment de
 <iframe
     class="full-width-iframe-model_size"
     src="{{ '/assets/images/hf_models_stats/huggingface_totaldownloads_modelsize_countries_individuals.html' | relative_url }}" 
+    title="Nombre total de téléchargements en fonction de la taille du modèle et du pays"
     allowfullscreen
 ></iframe>
 <center><i>Figure 29 : Nombre total de téléchargements en fonction de la taille du modèle et du pays</i></center>
@@ -917,6 +941,7 @@ Un acteur chinois serait alors premier sur cette métrique (et sur le segment de
 <iframe
     class="full-width-iframe-model_size"
     src="{{ '/assets/images/hf_models_stats/huggingface_totaldownloads_modelsize_countries_eu.html' | relative_url }}" 
+    title="Nombre total de téléchargements en fonction de la taille du modèle et du pays (UE regroupée)"
     allowfullscreen
 ></iframe>
 <center><i>Figure 30 : Nombre total de téléchargements en fonction de la taille du modèle et du pays (UE regroupée)</i></center>
@@ -938,6 +963,7 @@ L'UE est majoritaire sur les modèles de moins de 25M de paramètres, là où le
 <iframe
     class="full-width-iframe-model_size"
     src="{{ '/assets/images/hf_models_stats/huggingface_totaldownloads_modelsize_countries_continents.html' | relative_url }}" 
+    title="Nombre total de téléchargements en fonction de la taille du modèle et du pays (Continents)"
     allowfullscreen
 ></iframe>
 <center><i>Figure 31 : Nombre total de téléchargements en fonction de la taille du modèle et du pays (Continents)</i></center>
@@ -981,7 +1007,7 @@ L'objectif est alors de déterminer quels modèles de base sont les plus impacta
 <figure>
   <center>
   <img src="https://cdn-uploads.huggingface.co/production/uploads/613b0a62a14099d5afed7830/-gczIrRFbuQ-0RJ7qd_HQ.png" 
-       alt="Diagram example" 
+       alt="Model tree de google-bert/bert-base-uncased" 
        style="max-width:60%; height:auto;"></center>
 </figure>
 <center><i>Figure 32 : Model tree de google-bert/bert-base-uncased</i></center>
@@ -1010,6 +1036,7 @@ Enfin, nous envisageons de réaliser un article similaire à celui pour les jeux
 </div>
 
 </div>
+
 
 
 
