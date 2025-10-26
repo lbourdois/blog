@@ -210,7 +210,7 @@ Nous priviliègierons la vue convolutive pour l'entraînement pour un entraînem
 
 # <span style="color: #FF0000"> **Apprentissage des matrices** </span>
 
-Dans le noyau de convolution développé plus haut, $$\mathbf{\bar{C}}$$ et $$\mathbf{\bar{B}}$$, sont des scalaires apprenables.   
+Dans le noyau de convolution développé plus haut, $$\mathbf{\bar{C}}$$ (matrice ligne) et $$\mathbf{\bar{B}}$$ (matrice colonne), sont apprenables.   
 Concernant $$\mathbf{\bar{A}}$$, nous avons vu que dans notre noyau de convolution, elle s’exprime comme une puissance de $$k$$ au temps $$k$$. Cela peut être très long à calculer c’est pourquoi, on cherche à avoir $$\mathbf{\bar{A}}$$ fixe. Pour cela, la meilleure option est de l'avoir diagonale :
 
 $$
@@ -260,7 +260,9 @@ $$
 \end{cases}
 $$
 
-Cette matrice n'est pas normale mais elle peut être décomposée sous la forme d'une matrice normale plus une matrice de rang inférieur (résumé dans le papier par NPLR pour *Normal Plus Low Rank*). Les auteurs prouvent dans leur papier que ce type de matrice peut être calculé efficacement via trois techniques (voir l'algorithme 1 dans le papier) : [série génératrice tronquée](https://fr.wikipedia.org/wiki/S%C3%A9rie_g%C3%A9n%C3%A9ratrice), [noyaux de Cauchy](https://en.wikipedia.org/wiki/Cauchy_matrix) et [identité de Woodbury](https://en.wikipedia.org/wiki/Woodbury_matrix_identity).   
+Note : il s'agit ici de la version HiPPO-LegT, consultez la figure 4 de l'article de [blog suivant](https://lbourdois.github.io/blog/ssm/ssm_en_2022/) pour en savoir plus sur les différentes versions existantes.  
+
+Cette matrice n'est pas normale mais elle peut être décomposée sous la forme d'une matrice normale plus une matrice de rang inférieur (résumé dans le papier par NPLR pour *Normal Plus Low Rank*). Les auteurs prouvent dans leur papier que ce type de matrice (et notamment ses puissances) peut être calculé efficacement via trois techniques (voir l'algorithme 1 dans le papier) : [série génératrice tronquée](https://fr.wikipedia.org/wiki/S%C3%A9rie_g%C3%A9n%C3%A9ratrice), [noyaux de Cauchy](https://en.wikipedia.org/wiki/Cauchy_matrix) et [identité de Woodbury](https://en.wikipedia.org/wiki/Woodbury_matrix_identity).   
 
 <!--
 Elle permet, in fine, de réécrire la vue réccurente sous la forme suivante :
