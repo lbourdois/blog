@@ -72,12 +72,12 @@ author:
     - label: "LinkedIn"
       icon: "fab fa-fw fa-linkedin"      
       url: "https://www.linkedin.com/in/lbourdois"
+    - label: " Hugging Face"
+      icon: "fa-brands fa-hugging-face"
+      url: "https://huggingface.co/lbourdois"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
-      # url: "https://github.com/lbourdois"
-    - label: " Hugging Face"
-      # icon: fab fa-fw fa-face-smiling-hands"  # no free icon
-      url: "https://huggingface.co/lbourdois"
+      url: "https://github.com/lbourdois"
       
 # Site Footer
 footer:
@@ -89,7 +89,7 @@ footer:
       icon: "fab fa-fw fa-linkedin"    
       url: "https://www.linkedin.com/in/lbourdois"
     - label: " Hugging Face"
-      # icon: fab fa-fw fa-face-smiling-hands"  # no free icon
+      icon: "fa-brands fa-hugging-face"
       url: "https://huggingface.co/lbourdois"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
