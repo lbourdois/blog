@@ -5,7 +5,7 @@ tags:
 excerpt: "Divers –  Analyse des données du Hub d'Hugging Face"
 header:
     overlay_color: "#1C2A4D"
-    teaser: "https://raw.githubusercontent.com/lbourdois/blog/refs/heads/master/assets/images/Agents/image_0.png"
+    teaser: "https://cdn-uploads.huggingface.co/production/uploads/613b0a62a14099d5afed7830/oDotFbXCgcgc_nm8vUBJM.png"
 author_profile: false
 sidebar: false
 classes: wide
@@ -1036,6 +1036,7 @@ Enfin, nous envisageons de réaliser un article similaire à celui pour les jeux
 </div>
 
 </div>
+
 
 
 
