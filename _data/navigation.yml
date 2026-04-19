@@ -7,8 +7,8 @@ main:
     url: /posts/
   - title: "A propos"
     url: https://lbourdois.github.io/  
-  - title: "Cours NYU"
-    url: https://lbourdois.github.io/cours-dl-nyu/
+  - title: "Cours"
+    url: https://lbourdois.github.io/cours/
 
 sidebar-misc:
   - title: FUITES & DUPLICATIONS DANS LES JEUX DE DONNEES
