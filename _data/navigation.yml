@@ -10,6 +10,18 @@ main:
   - title: "Cours"
     url: https://lbourdois.github.io/cours/
 
+sidebar-reduction:
+  - title: UN GUIDE VISUEL SUR LA QUANTIFICATION
+    url: /Quantification/
+  - title: INTRODUCTION AU TRIMMING
+    url: /Trimming/
+
+sidebar-cours:
+  - title: COURS SUR L’APPRENTISSAGE PROFOND (EDITION 2020) DE YANN LE CUN ET ALFREDO CANZIANI
+    url: /projets/cours-dl-nyu/
+  - title: COURS SUR L’APPRENTISSAGE PROFOND (EDITION 2021) DE YANN LE CUN ET ALFREDO CANZIANI
+    url: /projets/cours-dl-21-nyu/
+    
 sidebar-misc:
   - title: FUITES & DUPLICATIONS DANS LES JEUX DE DONNEES
     url: /LLE/
@@ -94,14 +106,11 @@ sidebar-ssl-images:
       - title: "VICReg"
         url: /ssl-images/VICREG/
 
-
 sidebar-ssl-nlp:
   - title: TACHES DE PRETEXTE EN TEXTE
     url: /ssl-images/pretext-in-text/
   - title: AUTOSUPERVISE EN TEXTE
     url: /ssl-images/SSL-in-text/
-
-
 
 sidebar-ssl-audio:
   - title: TACHES DE PRETEXTE EN AUDIO
