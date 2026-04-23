@@ -14,6 +14,8 @@ header :
     overlay_image: "https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/NLP_radom_blog.png"
     teaser: "https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/DLSP20/NYU%20Deep%20Learning.png"
 author_profile: false
+sidebar:
+    nav: sidebar-cours
 classes: wide
 ---
 
@@ -53,7 +55,7 @@ Le programme de cette édition 2020 du cours porte sur :
 et pleins d'autres choses !
 <br><br>
 
-Toutes les informations utiles à connaître (choix des traductions, temps à consacrer au cours, licence du cours, etc.) sont disponibles sur cette [page](https://atcold.github.io/pytorch-Deep-Learning/fr/faq/).<br><br>
+Toutes les informations utiles à connaître (choix des traductions, temps à consacrer au cours, licence du cours, etc.) sont disponibles sur cette [page](https://atcold.github.io/NYU-DLSP20/fr/faq/).<br><br>
 
 En espérant que cela vous plaise et vous soit utile.<br>
 Bon visionnage et bonne lecture ! :)
