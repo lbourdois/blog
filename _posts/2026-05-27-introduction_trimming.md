@@ -1666,6 +1666,8 @@ Nous évaluons ce dernier point également sur de l'anglais en comparant un mmBE
 
 <center>Figure 1 : Ordre du trimming</center>
 
+<br>
+
 D'après ces expérimentations, dans le cadre du mmBERT, il est impératif de trimmer le modèle original puis finetuner le modèle résultant plutôt que de finetuner le modèle original puis de le trimmer.  
 Au-delà d'éviter un effondrement des performances, finetuner un modèle trimmé est aussi plus rapide que de finetuner un modèle original car le modèle est plus petit.
 
@@ -1726,6 +1728,7 @@ Ayant découvert le *trimming* il y a quelques années via l'article Medium de D
 }
 </style>
 
+<table>
 <thead>
     <tr style="background-color:#2d3748;">
       <th style="padding:12px;text-align:center;font-weight:600;color:#ffffff;white-space:nowrap;">Modèle</th>
@@ -1788,6 +1791,8 @@ Ayant découvert le *trimming* il y a quelques années via l'article Medium de D
 </div>
   
 <center>Figure 1 : Impact de la base de données de textes de minage</center>
+
+<br>
 
 Nous pouvons observer des résultats similaires entre les deux corpus, quel que soit le nombre de *tokens* gardé dans le vocabulaire.  
 Pour notre part, et ceci pour l'ensemble des résultats présentés dans cet article ainsi que pour les 5526 modèles générés, nous avons utilisé Fineweb 2.  
