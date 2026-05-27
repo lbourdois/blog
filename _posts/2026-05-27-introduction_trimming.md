@@ -342,7 +342,27 @@ Concernant les benchmarks, nous évaluons les modèles sur de l'anglais et du n�
 
 #### Réductions de paramètres observées
   
-<div style="overflow-x:auto; margin:1.5rem 0;" style="font-size:1.05rem;">
+<div id="table-reductions-parametres" style="overflow-x:auto; margin:1.5rem 0; max-width:100%;">
+<style>
+#table-reductions-parametres table {
+  width: 100%;
+  font-size: 0.72rem !important;
+}
+
+#table-reductions-parametres th,
+#table-reductions-parametres td {
+  padding: 6px 8px !important;
+  line-height: 1.25 !important;
+}
+
+#table-reductions-parametres th:first-child,
+#table-reductions-parametres td:first-child {
+  max-width: 190px;
+  white-space: normal !important;
+  overflow-wrap: anywhere;
+}
+</style>
+
   <table style="border-collapse:collapse;width:100%;font-size:0.95rem;box-shadow:0 2px 7px rgba(0,0,0,0.12);border-radius:8px;overflow:hidden;">
     <thead>
       <tr style="background-color:#2d3748;">
