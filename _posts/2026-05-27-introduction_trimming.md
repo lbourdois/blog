@@ -18,13 +18,15 @@ classes: wide
 
 <center>An English version is available on <a href="https://huggingface.co/blog/lbourdois/introduction-to-trimming">Hugging Face</a>.</center>
 
+<br>
+
 # <span style="color: #FF0000"> **Avant-Propos** </span> 
 
 Cet article est une republication de celui que j’ai rédigé sur le blog d'[AlphaEdge](https://huggingface.co/alphaedge-ai).  
 Je les remercie de m'avoir permis de travailler sur ce sujet.
 
 Le *trimming* étant particulièrement intéressant pour le multilinguisme, ce travail a été l'occasion d'une collaboration avec différents Hugging Face Fellows pour évaluer cette approche sur d'autres langues que le français ou l'anglais.
-À savoir Tom AARSEN (anglais/néerlandais), Bram VANROY (néerlandais), Christopher AKIKI (arabe/allemand), Woojun JUNG (coréen), Manuel ROMERO (espagnol) et Prithiv SAKTHI (Tamil).  
+À savoir [Tom AARSEN](https://huggingface.co/tomaarsen) (anglais/néerlandais), [Bram VANROY](https://huggingface.co/BramVanroy) (néerlandais), [Christopher AKIKI](https://huggingface.co/christopher) (arabe/allemand), [Woojun JUNG](https://huggingface.co/woojun-jung) (coréen), [Manuel ROMERO](https://huggingface.co/mrm8488) (espagnol) et [Prithiv SAKTHI](https://huggingface.co/prithivMLmods) (Tamil).  
 
 Je tiens finalement à indiquer que l'estimation du temps de lecture est fortement surestimée du fait de nombreux tableaux de résultats, références ou d'exemples de textes pour montrer les sorties obtenues avec les modèles trimmés (ainsi que potentiellement leur traduction en français quand ces exemples portent sur une autre langue)
 <br><br>
@@ -46,10 +48,10 @@ Ainsi, **pour le *trimming*, nous supprimons des *tokens* dans le vocabulaire or
 
 <br>
 
-#### À quoi sert le *trimming* ? 
+**À quoi sert le *trimming* ?**  
 
 Considérons un modèle avec une taille de vocabulaire donnée.
-Cette taille peut ne pas être pertinente pour deux raisons principales :
+Cette taille peut ne pas être pertinente pour deux raisons principales :  
 1) Si notre modèle est multilingue ;  
     En effet, toutes les langues ne nous intéressent pas forcément. Il est alors possible de supprimer celles qui sont inutiles pour notre cas d'usage.
 2) Si la taille du vocabulaire n'est pas un multiple de 8 ou de 64.  
@@ -285,7 +287,7 @@ for name, param in model.named_parameters():
 Les **85 056 000** paramètres (les 12 blocs transformer + la `LayerNorm` finale) ne sont pas modifiés dans le cadre du *trimming* (il faudrait faire du *pruning* pour réduire cette partie), de même que les **786 432** paramètres de l'encodage positionnel (`wpe.weight`).  
 Par contre, avec cette technique, nous pouvons modifier les **38 597 376** paramètres de la couche d'*embedding* (`wte.weight`). Dans la sortie détaillée, nous pouvons voir que cette couche est de taille `[50257, 768]` soit un vocabulaire de taille 50 257 où chaque token est représenté sur 768 dimensions.  
 
-<div class="notice--info" markdown="1">
+<div class="notice--info" markdown="1" style="font-size:1.05rem;">
 📝 **Note**
 
 Cette information est également trouvable sur le Hub d'Hugging Face sans avoir à télécharger le modèle. Il faut consulter le *widget "Files infos"* qui est disponible pour tous les modèles du Hub dont les poids ont été poussés au format `safetensors`. Par exemple pour le GPT2, nous pouvons consulter [cette page](https://huggingface.co/openai-community/gpt2?show_file_info=model.safetensors). En passant votre curseur sur la ligne `wpe.weight` vous verrez même l'information indiquant que cette couche représente 28,17% de la taille totale du modèle.
@@ -304,7 +306,7 @@ Pour y répondre, nous avons analysé 16 modèles portant sur des architectures 
 
 ## <span style="color: #FFBF00"> **Pratique 👨‍💻** </span>
 
-#### Comment faire du trimming en pratique ?  
+**Comment faire du trimming en pratique ?**    
 Plusieurs auteurs se sont intéressés au problème ces dernières années, et parmi ceux qui ont partagé leur code voire proposé une librairie dédiée au sujet, nous pouvons lister : 
 - `smaller-transformers` de Geotrend permettant de trimmer un mBERT, la version multilingue du [BERT](https://arxiv.org/abs/1810.04805) de DEVLIN et al. (2018). Une publication est disponible [ici](https://arxiv.org/abs/2010.05609) par ABDAOUI et al. (2021), de même qu'un répertoire [GitHub](https://github.com/Geotrend-research/smaller-transformers) et certains modèles bilingues/*n*-lingues sur leur [compte Hugging Face](https://huggingface.co/Geotrend). Mais leur approche se limite à ce modèle et les vocabulaires sont de tailles différentes en fonction de la langue considérée et jamais un multiple de 64.
 - David DALE dans un [article Medium](https://towardsdatascience.com/how-to-adapt-a-multilingual-t5-model-for-a-single-language-b9f94f3d9c90/) (2021) montre comment trimmer un mT5 pour ne garder que l’anglais et le russe. Une approche manuelle pour un contrôle total, mais encore une fois, cela se limite à un modèle particulier.
@@ -318,7 +320,8 @@ Dans ce qui suit, nous testons l'ensemble des modèles sur une diversité de lan
 
 <br>
 
-### Modèles d'embeddings textuels
+
+### <span style="color: #51C353"> **Modèles d'embeddings textuels** </span>
 
 Observons l'impact du *trimming* sur les performances de différents types de modèles en commençant avec les modèles d'*embedding* textuels.
 
@@ -337,8 +340,8 @@ Concernant les benchmarks, nous évaluons les modèles sur de l'anglais et du n�
 
 
 #### Réductions de paramètres observées
-
-<div style="overflow-x:auto; margin:1.5rem 0;">
+  
+<div style="overflow-x:auto; margin:1.5rem 0;" style="font-size:1.05rem;">
   <table style="border-collapse:collapse;width:100%;font-size:0.95rem;box-shadow:0 2px 7px rgba(0,0,0,0.12);border-radius:8px;overflow:hidden;">
     <thead>
       <tr style="background-color:#2d3748;">
