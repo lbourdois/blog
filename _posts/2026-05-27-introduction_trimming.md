@@ -1786,8 +1786,6 @@ Sur ce point du fond, notez que les modèles montrés ici servent à illustrer l
   </p>
 </div>
 
-<br>
-
 
 ##### Coréen
 
