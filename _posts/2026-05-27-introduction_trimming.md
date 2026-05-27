@@ -651,7 +651,7 @@ Nous nous sommes concentrés sur l'anglais et le néerlandais dans le cadre de c
 Pour chaque, nous les fournissons en versions 16 384 *tokens* et 32 768 *tokens*, ainsi que dans l'ensemble des tailles disponibles.  
 Certains acteurs ne fournissant pas la liste complète des langues gérées par leur modèle, nous avons généré du mieux que nous pouvions à partir de l'analyse des caractères unicode trouvés dans le tokenizer du modèle original.
 
-<div style="line-height:1.25; background:#2e1f47; border-left:0.35rem solid #a78bfa; color:#f5f3ff; padding:1rem; border-radius:4px;">
+<div style="line-height:1.25; background:#2e1f47; color:#f5f3ff; padding:1rem; border-radius:4px;">
   <p style="font-size:0.9rem;"><strong>🎁 Important</strong></p>
   <p style="font-size:0.9rem;">
     La collection rassemblant les <strong>48</strong> modèles (<strong>12</strong> langues différentes) trimmés à partir des granite-embedding est disponible <a href="https://huggingface.co/collections/alphaedge-ai/trimming-granite-embedding" style="color:#c4b5fd;">ici</a>.<br>
@@ -1061,10 +1061,10 @@ Nous reprenons ainsi les chiffres que les auteurs indiquent dans leur publicatio
 Nous pouvons noter qu'à l'exécution des tâches QQP et CoLA, les résultats du mmBERT small trimmé sont supérieurs au DistilBERT.  
 Cela s'explique sûrement par le fait que le mmBERT small non trimmé score à 84,7 sur ce benchmark.  
 
-<div class="notice--primary" style="line-height:1.25;">
+<div style="line-height:1.25; background:#2e1f47; color:#f5f3ff; padding:1rem; border-radius:4px;">
   <p style="font-size:0.9rem;"><strong>🎁 Important</strong></p>
   <p style="font-size:0.9rem;">
-    Pour l'anglais, le <a href="https://huggingface.co/alphaedge-ai/mmBERT-small-eng-32768">mmBERT small trimmé</a> de 54,8M de paramètres se présente comme une alternative au DistilBERT tout en étant 18,2% plus petit, capable de gérer 8192 *tokens* au lieu de 512, et de proposer des résultats plus performants.<br>
+    Pour l'anglais, le <a href="https://huggingface.co/alphaedge-ai/mmBERT-small-eng-32768" style="color:#c4b5fd;">mmBERT small trimmé</a> de 54,8M de paramètres se présente comme une alternative au DistilBERT tout en étant 18,2% plus petit, capable de gérer 8192 <em>tokens</em> au lieu de 512, et de proposer des résultats plus performants.<br>
   </p>
 </div>
 
@@ -1087,10 +1087,10 @@ Cela s'explique sûrement par le fait que le mmBERT small non trimmé score à 8
 
 #### Collections
 
-<div class="notice--primary" style="line-height:1.25;">
+<div style="line-height:1.25; background:#2e1f47; color:#f5f3ff; padding:1rem; border-radius:4px;">
   <p style="font-size:0.9rem;"><strong>🎁 Important</strong></p>
   <p style="font-size:0.9rem;">
-    La collection rassemblant les <strong>514</strong> modèles (<strong>124</strong> langues différentes) trimmés à partir des mmBERT est disponible <a href="https://huggingface.co/collections/alphaedge-ai/trimming-mmbert">ici</a>.
+    La collection rassemblant les <strong>514</strong> modèles (<strong>124</strong> langues différentes) trimmés à partir des mmBERT est disponible <a href="https://huggingface.co/collections/alphaedge-ai/trimming-mmbert" style="color:#c4b5fd;">ici</a>.
   </p>
 </div>
 
@@ -1290,11 +1290,11 @@ Pour le mBART, au lieu de générer la version 16 384 *tokens*, nous avons chois
 
 #### Collections
 
-<div class="notice--primary" style="line-height:1.25;">
+<div style="line-height:1.25; background:#2e1f47; color:#f5f3ff; padding:1rem; border-radius:4px;">
   <p style="font-size:0.9rem;"><strong>🎁 Important</strong></p>
   <p style="font-size:0.9rem;">
-    Une collection rassemblant <strong>392</strong> modèles (<strong>98</strong> langues différentes) trimmés à partir des mt5 est disponible <a href="https://huggingface.co/collections/alphaedge-ai/trimming-mt5">ici</a>.<br>
-    Une collection rassemblant <strong>104</strong> modèles (<strong>52</strong> langues différentes) trimmés à partir du mbart est disponible <a href="https://huggingface.co/collections/alphaedge-ai/trimming-mbart">ici</a>.
+    Une collection rassemblant <strong>392</strong> modèles (<strong>98</strong> langues différentes) trimmés à partir des mt5 est disponible <a href="https://huggingface.co/collections/alphaedge-ai/trimming-mt5" style="color:#c4b5fd;">ici</a>.<br>
+    Une collection rassemblant <strong>104</strong> modèles (<strong>52</strong> langues différentes) trimmés à partir du mbart est disponible <a href="https://huggingface.co/collections/alphaedge-ai/trimming-mbart" style="color:#c4b5fd;">ici</a>.
   </p>
 </div>
 
@@ -1820,13 +1820,13 @@ De toutes nos expériences (environ 90 modèles trimmés testés), c'est le seul
 
 #### Collections
 
-<div class="notice--primary" style="line-height:1.25;">
+<div style="line-height:1.25; background:#2e1f47; color:#f5f3ff; padding:1rem; border-radius:4px;">
   <p style="font-size:0.9rem;"><strong>🎁 Important</strong></p>
   <p style="font-size:0.9rem;">
-    Une collection rassemblant <strong>96</strong> modèles (<strong>12</strong> langues différentes) trimmés à partir des granite 4.0 est disponible <a href="https://huggingface.co/collections/alphaedge-ai/trimming-granite-40">ici</a>.<br>
-    Une collection rassemblant <strong>332</strong> modèles (<strong>83</strong> langues différentes) trimmés à partir des Qwen 3 est disponible <a href="https://huggingface.co/collections/alphaedge-ai/trimming-qwen3">ici</a>.<br>
-    Une collection rassemblant <strong>486</strong> modèles (<strong>122</strong> langues différentes) trimmés à partir des Gemma 3 est disponible <a href="https://huggingface.co/collections/alphaedge-ai/trimming-gemma-3">ici</a>.<br>
-    Une collection rassemblant <strong>16</strong> modèles (<strong>8</strong> langues différentes) trimmés à partir du smolLM3 est disponible <a href="https://huggingface.co/collections/alphaedge-ai/trimming-smollm3">ici</a>.
+    Une collection rassemblant <strong>96</strong> modèles (<strong>12</strong> langues différentes) trimmés à partir des granite 4.0 est disponible <a href="https://huggingface.co/collections/alphaedge-ai/trimming-granite-40" style="color:#c4b5fd;">ici</a>.<br>
+    Une collection rassemblant <strong>332</strong> modèles (<strong>83</strong> langues différentes) trimmés à partir des Qwen 3 est disponible <a href="https://huggingface.co/collections/alphaedge-ai/trimming-qwen3" style="color:#c4b5fd;">ici</a>.<br>
+    Une collection rassemblant <strong>486</strong> modèles (<strong>122</strong> langues différentes) trimmés à partir des Gemma 3 est disponible <a href="https://huggingface.co/collections/alphaedge-ai/trimming-gemma-3" style="color:#c4b5fd;">ici</a>.<br>
+    Une collection rassemblant <strong>16</strong> modèles (<strong>8</strong> langues différentes) trimmés à partir du smolLM3 est disponible <a href="https://huggingface.co/collections/alphaedge-ai/trimming-smollm3" style="color:#c4b5fd;">ici</a>.
   </p>
 </div>
 
@@ -2377,11 +2377,12 @@ Notons que la trace de l'exemple du Qwen 3.5 4B en français a été générée 
 
 
 #### Collections
-<div class="notice--primary" style="line-height:1.25;">
+
+<div style="line-height:1.25; background:#2e1f47; color:#f5f3ff; padding:1rem; border-radius:4px;">
   <p style="font-size:0.9rem;"><strong>🎁 Important</strong></p>
   <p style="font-size:0.9rem;">
-    Une collection rassemblant <strong>498</strong> modèles (<strong>83</strong> langues différentes) trimmés à partir du Qwen 3.5 est disponible <a href="https://huggingface.co/collections/alphaedge-ai/trimming-qwen35">ici</a>.<br>
-    Une collection rassemblant <strong>243</strong> modèles (<strong>122</strong> langues différentes) trimmés à partir du Gemma 3 multimodal est disponible <a href="https://huggingface.co/collections/alphaedge-ai/trimming-gemma3-vlm">ici</a>.
+    Une collection rassemblant <strong>498</strong> modèles (<strong>83</strong> langues différentes) trimmés à partir du Qwen 3.5 est disponible <a href="https://huggingface.co/collections/alphaedge-ai/trimming-qwen35" style="color:#c4b5fd;">ici</a>.<br>
+    Une collection rassemblant <strong>243</strong> modèles (<strong>122</strong> langues différentes) trimmés à partir du Gemma 3 multimodal est disponible <a href="https://huggingface.co/collections/alphaedge-ai/trimming-gemma3-vlm" style="color:#c4b5fd;">ici</a>.
   </p>
 </div>
 
@@ -2852,11 +2853,11 @@ Nous avons cette fois des modèles trimmés faisant mieux que l'original, et la 
 
 #### Collections
 
-<div class="notice--primary" style="line-height:1.25;">
+<div style="line-height:1.25; background:#2e1f47; color:#f5f3ff; padding:1rem; border-radius:4px;">
   <p style="font-size:0.9rem;"><strong>🎁 Important</strong></p>
   <p style="font-size:0.9rem;">
-    Une collection rassemblant <strong>98</strong> modèles (<strong>49</strong> langues différentes) trimmés à partir du clip-ViT-B-32-multilingual-v1 est disponible <a href="https://huggingface.co/collections/alphaedge-ai/trimming-clip-vit-b-32-multilingual-v1">ici</a>.<br>
-    Une collection rassemblant <strong>1&nbsp;152</strong> modèles (<strong>97</strong> langues différentes) trimmés à partir des MetaCLIP2 est disponible <a href="https://huggingface.co/collections/alphaedge-ai/trimming-metaclip2">ici</a>.
+    Une collection rassemblant <strong>98</strong> modèles (<strong>49</strong> langues différentes) trimmés à partir du clip-ViT-B-32-multilingual-v1 est disponible <a href="https://huggingface.co/collections/alphaedge-ai/trimming-clip-vit-b-32-multilingual-v1" style="color:#c4b5fd;">ici</a>.<br>
+    Une collection rassemblant <strong>1&nbsp;152</strong> modèles (<strong>97</strong> langues différentes) trimmés à partir des MetaCLIP2 est disponible <a href="https://huggingface.co/collections/alphaedge-ai/trimming-metaclip2" style="color:#c4b5fd;">ici</a>.
   </p>
 </div>
 
