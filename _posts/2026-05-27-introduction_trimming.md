@@ -287,10 +287,11 @@ for name, param in model.named_parameters():
 Les **85 056 000** paramètres (les 12 blocs transformer + la `LayerNorm` finale) ne sont pas modifiés dans le cadre du *trimming* (il faudrait faire du *pruning* pour réduire cette partie), de même que les **786 432** paramètres de l'encodage positionnel (`wpe.weight`).  
 Par contre, avec cette technique, nous pouvons modifier les **38 597 376** paramètres de la couche d'*embedding* (`wte.weight`). Dans la sortie détaillée, nous pouvons voir que cette couche est de taille `[50257, 768]` soit un vocabulaire de taille 50 257 où chaque token est représenté sur 768 dimensions.  
 
-<div class="notice--info" markdown="1" style="font-size:1.15rem; line-height:1.6;">
-📝 **Note**
-
-Cette information est également trouvable sur le Hub d'Hugging Face sans avoir à télécharger le modèle. Il faut consulter le *widget "Files infos"* qui est disponible pour tous les modèles du Hub dont les poids ont été poussés au format `safetensors`. Par exemple pour le GPT2, nous pouvons consulter [cette page](https://huggingface.co/openai-community/gpt2?show_file_info=model.safetensors). En passant votre curseur sur la ligne `wpe.weight` vous verrez même l'information indiquant que cette couche représente 28,17% de la taille totale du modèle.
+<div class="notice--info" style="line-height:1.6;">
+  <p style="font-size:1.15rem;"><strong>📝 Note</strong></p>
+  <p style="font-size:1.15rem;">
+    Cette information est également trouvable sur le Hub d'Hugging Face sans avoir à télécharger le modèle. Il faut consulter le <em>widget "Files infos"</em> qui est disponible pour tous les modèles du Hub dont les poids ont été poussés au format <code>safetensors</code>. Par exemple pour le GPT2, nous pouvons consulter <a href="https://huggingface.co/openai-community/gpt2?show_file_info=model.safetensors">cette page</a>. En passant votre curseur sur la ligne <code>wpe.weight</code> vous verrez même l'information indiquant que cette couche représente 28,17% de la taille totale du modèle.
+  </p>
 </div>
 
 Nous pouvons constater que la taille du vocabulaire n'est pas un multiple de 64 ! Appliquer du *trimming* sur ce modèle pourrait être pertinent.  
