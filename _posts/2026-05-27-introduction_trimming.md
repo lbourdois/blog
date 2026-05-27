@@ -946,6 +946,7 @@ Dans le tableau ci-dessus, et pour l'ensemble de l'article, nous donnons des chi
     </tr>
   </tbody>
 </table>
+</div>
 
 <center>Figure 1 : Résultats sur MTEB des modèles d'embedding en anglais</center>
 
@@ -966,7 +967,7 @@ L'explication que nous avançons, et nous avons donc laissé ce modèle pour ill
   </figcaption></center>
 </figure>
 
-Pour cette même raison, nous présentons ici uniquement des modèles bi-encodeurs. En effet, nos expérimentations sur des *rerankers* ont toutes échoué du fait de la couche de classification située au-dessus de celle d*'embedding* dans ces types de modèles.  
+Pour cette même raison, nous présentons ici uniquement des modèles bi-encodeurs. En effet, nos expérimentations sur des *rerankers* ont toutes échoué du fait de la couche de classification située au-dessus de celle d'*embedding* dans ces types de modèles.  
 Avec l'embeddinggemma, nous souhaitions illustrer la seule limite que nous avons identifiée à la méthode du *trimming*.  
 
 <div class="notice--info" style="line-height:1.25;">
@@ -1344,9 +1345,7 @@ Ainsi, nous avons également relancé MTEB-NL sur les modèles originaux pour qu
     </tr>
   </tbody>
 </table>
-  
-
-
+</div>
 
 <center>Figure 1 : Résultats sur MTEB-NL des modèles d'embedding en néerlandais</center>
 
