@@ -2433,16 +2433,119 @@ Nous pensions initialement proposer également la version <code>large</code> du 
 
 **Coréen**
 
-<figure>
-  <center>
-  <img src="https://cdn-uploads.huggingface.co/production/uploads/613b0a62a14099d5afed7830/bjK2Hjpc_LuNXXdGQGPAa.png" 
-       alt="Résultats de la tâche de génération de question via un encodeur-décodeur" 
-       style="max-width:55%; height:auto;">
-  <figcaption>
-    <center>
-    Figure 1 : Résultats de la tâche de génération de question via encodeur-décodeur</center>
-  </figcaption></center>
-</figure>
+<div id="table-reductions-parametres" style="overflow-x:auto; margin:1.5rem 0; max-width:100%;">
+<style>
+#table-reductions-parametres table {
+  border-collapse: collapse;
+  width: 100%;
+  table-layout: fixed;
+  font-size: 0.72rem !important;
+  box-shadow: 0 2px 7px rgba(0,0,0,0.12);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+#table-reductions-parametres th,
+#table-reductions-parametres td {
+  padding: 7px 6px !important;
+  line-height: 1.25 !important;
+  text-align: center !important;
+  vertical-align: middle !important;
+  white-space: normal !important;
+  word-break: normal !important;
+  overflow-wrap: normal !important;
+}
+
+#table-reductions-parametres th {
+  font-weight: 700 !important;
+}
+
+#table-reductions-parametres th:first-child,
+#table-reductions-parametres td:first-child {
+  width: 24%;
+  text-align: left !important;
+}
+
+#table-reductions-parametres th:not(:first-child),
+#table-reductions-parametres td:not(:first-child) {
+  width: 12.6%;
+}
+</style>
+
+<table>
+   <thead>
+      <tr style="background-color:#2d3748;">
+        <th style="padding:12px 12px;text-align:center;font-weight:600;color:#ffffff;white-space:nowrap;">Modèle</th>
+        <th style="padding:12px 12px;text-align:center;font-weight:600;color:#ffffff;">Paramètres</th>
+        <th style="padding:12px 12px;text-align:center;font-weight:600;color:#ffffff;">BLEU</th>
+        <th style="padding:12px 12px;text-align:center;font-weight:600;color:#ffffff;">ROUGE-L</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- google/mt5 — vert sauge -->
+      <tr style="background-color:#fde4e1;">
+        <td style="padding:12px 12px;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">mt5-small</td>
+        <td style="padding:12px 12px;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">300,2M</td>
+        <td style="padding:12px 12px;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">13,71</td>
+        <td style="padding:12px 12px;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">16,92</td>
+      </tr>
+      <tr style="background-color:#fde4e1;">
+        <td style="padding:12px 12px;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">mt5-small-kor-32768</td>
+        <td style="padding:12px 12px;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">77,6M</td>
+        <td style="padding:12px 12px;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">13,78</td>
+        <td style="padding:12px 12px;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">16,61</td>
+      </tr>
+      <tr style="background-color:#fde4e1;">
+        <td style="padding:12px 12px;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">mt5-small-kor-16384</td>
+        <td style="padding:12px 12px;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">60,8M</td>
+        <td style="padding:12px 12px;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">13,87</td>
+        <td style="padding:12px 12px;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">16,61</td>
+      </tr>
+      <tr><td colspan="11" style="padding:3px 0;background-color:#94a3b8;"></td></tr>
+      <tr style="background-color:#fde4e1;">
+        <td style="padding:12px 12px;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">mt5-base</td>
+        <td style="padding:12px 12px;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">582,4M</td>
+        <td style="padding:12px 12px;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">16,16</td>
+        <td style="padding:12px 12px;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">18,49</td>
+      </tr>
+      <tr style="background-color:#fde4e1;">
+        <td style="padding:12px 12px;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">mt5-base-kor-32768</td>
+        <td style="padding:12px 12px;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">248,6M</td>
+        <td style="padding:12px 12px;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;"><b>16,29</b></td>
+        <td style="padding:12px 12px;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;"><b>18,67</b></td>
+      </tr>
+      <tr style="background-color:#fde4e1;">
+        <td style="padding:12px 12px;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">mt5-base-kor-16384</td>
+        <td style="padding:12px 12px;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">223,4M</td>
+        <td style="padding:12px 12px;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">16,10</td>
+        <td style="padding:12px 12px;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">18,56</td>
+      </tr>
+      <tr><td colspan="11" style="padding:3px 0;background-color:#94a3b8;"></td></tr>
+      <tr style="background-color:#e2e8f8;">
+        <td style="padding:12px 12px;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">mbart-large-50</td>
+        <td style="padding:12px 12px;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">610,9M</td>
+        <td style="padding:12px 12px;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">15,76</td>
+        <td style="padding:12px 12px;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">17,75</td>
+      </tr>
+      <tr style="background-color:#e2e8f8;">
+        <td style="padding:12px 12px;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">mbart-large-50-kor-32768</td>
+        <td style="padding:12px 12px;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">388,4M</td>
+        <td style="padding:12px 12px;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">15,04</td>
+        <td style="padding:12px 12px;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">17,32</td>
+      </tr>
+      <tr style="background-color:#e2e8f8;">
+        <td style="padding:12px 12px;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">mbart-large-50-kor-16384</td>
+        <td style="padding:12px 12px;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">371,6M</td>
+        <td style="padding:12px 12px;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">15,15</td>
+        <td style="padding:12px 12px;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">17,29</td>
+      </tr>
+    </tbody>
+  </table>
+</body>
+
+<center>Figure 1 : Résultats de la tâche de génération de question via encodeur-décodeur</center>
+
+<br>
 
 Pour le mT5 `small`, nous pouvons voir une légère amélioration sur la métrique BLEU et une légère dégradation sur la métrique ROUGE-L.  
 Pour le mt5 `base`, la version 32 768 donne les meilleurs résultats tout modèle (originaux ou trimmés) confondu.  
@@ -2453,16 +2556,109 @@ Le mBART se comporte moins bien que le mT5 puisque nous pouvons constater une d�
 
 **Arabe-Allemand**
 
-<figure>
-  <center>
-  <img src="https://cdn-uploads.huggingface.co/production/uploads/613b0a62a14099d5afed7830/zY_AdP2XROS0rYNHkp6aS.png" 
-       alt="Résultats de la tâche de traduction via un encodeur-décodeur" 
-       style="max-width:55%; height:auto;">
-  <figcaption>
-    <center>
-    Figure 1 : Résultats de la tâche de traduction via un encodeur-décodeur</center>
-  </figcaption></center>
-</figure>
+<div id="table-reductions-parametres" style="overflow-x:auto; margin:1.5rem 0; max-width:100%;">
+<style>
+#table-reductions-parametres table {
+  border-collapse: collapse;
+  width: 100%;
+  table-layout: fixed;
+  font-size: 0.72rem !important;
+  box-shadow: 0 2px 7px rgba(0,0,0,0.12);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+#table-reductions-parametres th,
+#table-reductions-parametres td {
+  padding: 7px 6px !important;
+  line-height: 1.25 !important;
+  text-align: center !important;
+  vertical-align: middle !important;
+  white-space: normal !important;
+  word-break: normal !important;
+  overflow-wrap: normal !important;
+}
+
+#table-reductions-parametres th {
+  font-weight: 700 !important;
+}
+
+#table-reductions-parametres th:first-child,
+#table-reductions-parametres td:first-child {
+  width: 24%;
+  text-align: left !important;
+}
+
+#table-reductions-parametres th:not(:first-child),
+#table-reductions-parametres td:not(:first-child) {
+  width: 12.6%;
+}
+</style>
+
+<table>
+   <thead>
+      <tr style="background-color:#2d3748;">
+        <th style="padding:12px 12px;text-align:center;font-weight:600;color:#ffffff;white-space:nowrap;">Modèle</th>
+        <th style="padding:12px 12px;text-align:center;font-weight:600;color:#ffffff;">Paramètres</th>
+        <th style="padding:12px 12px;text-align:center;font-weight:600;color:#ffffff;">BLEU</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- google/mt5 — vert sauge -->
+      <tr style="background-color:#fde4e1;">
+        <td style="padding:12px 12px;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">mt5-small</td>
+        <td style="padding:12px 12px;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">300,2M</td>
+        <td style="padding:12px 12px;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;"><b>40,24</b></td>
+      </tr>
+      <tr style="background-color:#fde4e1;">
+        <td style="padding:12px 12px;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">mT5-small-arb-deu-32768</td>
+        <td style="padding:12px 12px;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">77,6M</td>
+        <td style="padding:12px 12px;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">40,02</td>
+      </tr>
+      <tr style="background-color:#fde4e1;">
+        <td style="padding:12px 12px;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">mT5-small-arb-deu-16384</td>
+        <td style="padding:12px 12px;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">60,8M</td>
+        <td style="padding:12px 12px;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">39,55</td>
+      </tr>
+    <tr><td colspan="11" style="padding:3px 0;background-color:#94a3b8;"></td></tr>
+      <tr style="background-color:#fde4e1;">
+        <td style="padding:12px 12px;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">mt5-base</td>
+        <td style="padding:12px 12px;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">582,4M</td>
+        <td style="padding:12px 12px;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">49,49</td>
+      </tr>
+      <tr style="background-color:#fde4e1;">
+        <td style="padding:12px 12px;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">mt5-base-arb-deu-32768</td>
+        <td style="padding:12px 12px;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">248,6M</td>
+        <td style="padding:12px 12px;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;"><b>49,54</b></td>
+      </tr>
+      <tr style="background-color:#fde4e1;">
+        <td style="padding:12px 12px;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">mt5-base-arb-deu-16384</td>
+        <td style="padding:12px 12px;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">223,4M</td>
+        <td style="padding:12px 12px;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">49,49</td>
+      </tr>
+    <tr><td colspan="11" style="padding:3px 0;background-color:#94a3b8;"></td></tr>
+      <tr style="background-color:#e2e8f8;">
+        <td style="padding:12px 12px;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">mbart-large-50</td>
+        <td style="padding:12px 12px;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">610,9M</td>
+        <td style="padding:12px 12px;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">58,77</td>
+      </tr>
+      <tr style="background-color:#e2e8f8;">
+        <td style="padding:12px 12px;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">mbart-large-50-arb-deu-32768</td>
+        <td style="padding:12px 12px;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">388,4M</td>
+        <td style="padding:12px 12px;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">58,45</td>
+      </tr>
+      <tr style="background-color:#e2e8f8;">
+        <td style="padding:12px 12px;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">mbart-large-50-arb-deu-32768</td>
+        <td style="padding:12px 12px;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">388,4M</td>
+        <td style="padding:12px 12px;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;"><b>60,53</b></td>
+      </tr>
+    </tbody>
+  </table>
+</body>
+
+<center>Figure 1 : Résultats de la tâche de traduction via un encodeur-décodeur</center>
+
+<br>
 
 Pour les mT5, nous pouvons observer une légère dégradation pour la version `small` (surtout en version 16 384 *tokens*) et un match voire une légère amélioration pour la version `base`.  
 
