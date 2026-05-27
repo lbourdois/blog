@@ -381,6 +381,9 @@ Concernant les benchmarks, nous évaluons les modèles sur de l'anglais et du n�
 </style>
 
 <table>
+  <caption style="caption-side:bottom; padding-top:0.6rem; font-size:0.85rem; color:#cbd5e1; text-align:center;">
+  Tableau 1 : Réductions de paramètres observées sur les modèles d'embeddings
+  </caption>
     <thead>
       <tr style="background-color:#2d3748;">
         <th style="padding:12px 12px;text-align:center;font-weight:600;color:#ffffff;">Modèle</th>
@@ -600,6 +603,9 @@ Dans le tableau ci-dessus, et pour l'ensemble de l'article, nous donnons des chi
 </style>
 
 <table>
+    <caption style="caption-side:bottom; padding-top:0.6rem; font-size:0.85rem; color:#cbd5e1; text-align:center;">
+  Tableau 2 : Résultats sur MTEB des modèles d'embedding en anglais
+  </caption>
   <thead>
     <tr style="background-color:#2d3748;">
       <th style="padding:12px 12px;text-align:center;font-weight:600;color:#ffffff;white-space:nowrap;">Modèle</th>
@@ -947,8 +953,6 @@ Dans le tableau ci-dessus, et pour l'ensemble de l'article, nous donnons des chi
 </table>
 </div>
 
-<center>Figure 1 : Résultats sur MTEB des modèles d'embedding en anglais</center>
-
 <br>
 
 Nous pouvons constater que globalement le *trimming* permet de maintenir les performances du modèle original tout en ayant des modèles plus petits. Dans 5 cas sur 8, nous avons même un modèle de 32 768 *tokens* qui est légèrement meilleur que le modèle original. Notre hypothèse est que la suppression de *tokens* parasites bénéficie au modèle.    
@@ -962,7 +966,7 @@ L'explication que nous avançons, et nous avons donc laissé ce modèle pour ill
        style="max-width:100%; height:auto;">
   <figcaption>
     <center>
-    Figure 1 : Embeddinggemma original et trimmé (32 768) avec 2 couche denses au sommet</center>
+    Figure 2 : Embeddinggemma original et trimmé (32 768) avec 2 couche denses au sommet</center>
   </figcaption></center>
 </figure>
 
@@ -1027,6 +1031,9 @@ Ainsi, nous avons également relancé MTEB-NL sur les modèles originaux pour qu
 </style>
 
 <table>
+    <caption style="caption-side:bottom; padding-top:0.6rem; font-size:0.85rem; color:#cbd5e1; text-align:center;">
+  Tableau 3 : Résultats sur MTEB-NL des modèles d'embedding en néerlandais
+  </caption>
   <thead>
     <tr style="background-color:#2d3748;">
       <th style="padding:12px 12px;text-align:center;font-weight:600;color:#ffffff;white-space:nowrap;">Modèle</th>
@@ -1348,8 +1355,6 @@ Ainsi, nous avons également relancé MTEB-NL sur les modèles originaux pour qu
 </table>
 </div>
 
-<center>Figure 1 : Résultats sur MTEB-NL des modèles d'embedding en néerlandais</center>
-
 <br>
 
 Comme pour l'anglais, nous pouvons constater que le *trimming* matche voire permet un très léger gain (généralement inférieur à 0,1 point) de performance lorsque nous gardons 32 768 *tokens*.
@@ -1458,6 +1463,9 @@ Nous évaluons ce dernier point également sur de l'anglais en comparant un mmBE
 </style>
 
 <table>
+  <caption style="caption-side:bottom; padding-top:0.6rem; font-size:0.85rem; color:#cbd5e1; text-align:center;">
+  Tableau 4 : Réductions de paramètres observées sur les modèles encodeur
+  </caption>
     <thead>
       <tr style="background-color:#2d3748;">
         <th style="padding:12px 12px;text-align:center;font-weight:600;color:#ffffff;">Modèle</th>
@@ -1576,6 +1584,9 @@ Nous évaluons ce dernier point également sur de l'anglais en comparant un mmBE
 </style>
 
 <table>
+  <caption style="caption-side:bottom; padding-top:0.6rem; font-size:0.85rem; color:#cbd5e1; text-align:center;">
+  Tableau 5 : Ordre du trimming
+  </caption>
 <thead>
     <tr style="background-color:#2d3748;">
       <th style="padding:12px;text-align:center;font-weight:600;color:#ffffff;white-space:nowrap;">Modèle</th>
@@ -1665,8 +1676,6 @@ Nous évaluons ce dernier point également sur de l'anglais en comparant un mmBE
   </table>
 </div>
 
-<center>Figure 1 : Ordre du trimming</center>
-
 <br>
 
 D'après ces expérimentations, dans le cadre du mmBERT, il est impératif de trimmer le modèle original puis finetuner le modèle résultant plutôt que de finetuner le modèle original puis de le trimmer.  
@@ -1730,6 +1739,9 @@ Ayant découvert le *trimming* il y a quelques années via l'article Medium de D
 </style>
 
 <table>
+  <caption style="caption-side:bottom; padding-top:0.6rem; font-size:0.85rem; color:#cbd5e1; text-align:center;">
+  Tableau 6 : Impact de la base de données de textes de minage
+  </caption>
 <thead>
     <tr style="background-color:#2d3748;">
       <th style="padding:12px;text-align:center;font-weight:600;color:#ffffff;white-space:nowrap;">Modèle</th>
@@ -1790,8 +1802,6 @@ Ayant découvert le *trimming* il y a quelques années via l'article Medium de D
     </tbody>
   </table>
 </div>
-  
-<center>Figure 1 : Impact de la base de données de textes de minage</center>
 
 <br>
 
@@ -1845,6 +1855,9 @@ Nous venons de voir que la source utilisée pour miner les *tokens* n'avait pas 
 </style>
 
 <table>
+  <caption style="caption-side:bottom; padding-top:0.6rem; font-size:0.85rem; color:#cbd5e1; text-align:center;">
+  Tableau 7 : Impact de la base de données de textes de minage
+  </caption>
 <thead>
     <tr style="background-color:#2d3748;">
       <th style="padding:12px;text-align:center;font-weight:600;color:#ffffff;white-space:nowrap;">Modèle</th>
@@ -1896,8 +1909,6 @@ Nous venons de voir que la source utilisée pour miner les *tokens* n'avait pas 
 </tbody>
 </table>
 </div>
-
-<center>Figure 1 : Impact de la base de données de textes de minage</center>
 
 <br>
 
@@ -1976,6 +1987,9 @@ Pour le français, il existe une version entraînée de zéro du modernBERT : le
 </style>
 
 <table>
+  <caption style="caption-side:bottom; padding-top:0.6rem; font-size:0.85rem; color:#cbd5e1; text-align:center;">
+  Tableau 8 : Comparaison avec un modèle entraîné de zéro
+  </caption>
 <thead>
     <tr style="background-color:#2d3748;">
       <th style="padding:12px;text-align:center;font-weight:600;color:#ffffff;white-space:nowrap;">Modèle</th>
@@ -2014,8 +2028,6 @@ Pour le français, il existe une version entraînée de zéro du modernBERT : le
     </tbody>
   </table>
 </div>
-  
-<center>Figure 1 : Comparaison avec un modèle entraîné de zéro</center>
 
 <br>
 
@@ -2069,6 +2081,9 @@ Pour comparer un modèle trimmé à un modèle obtenu par distillation, utilison
 </style>
 
 <table>
+  <caption style="caption-side:bottom; padding-top:0.6rem; font-size:0.85rem; color:#cbd5e1; text-align:center;">
+  Tableau 9 : Comparaison avec la distillation
+  </caption>
 <thead>
     <tr style="background-color:#2d3748;">
       <th style="padding:12px;text-align:center;font-weight:600;color:#ffffff;white-space:nowrap;">Modèle</th>
@@ -2123,8 +2138,6 @@ Pour comparer un modèle trimmé à un modèle obtenu par distillation, utilison
     </tbody>
   </table>
 </div>
-
-<center>Figure 1 : Comparaison avec la distillation</center>
 
 <br>
 
@@ -2200,6 +2213,9 @@ Nous reprenons ainsi les chiffres que les auteurs indiquent dans leur publicatio
 </style>
 
 <table>
+  <caption style="caption-side:bottom; padding-top:0.6rem; font-size:0.85rem; color:#cbd5e1; text-align:center;">
+  Tableau 10 : Comparaison avec la distillation (anglais)
+  </caption>
     <thead>
       <tr style="background-color:#2d3748;">
         <th style="padding:12px;text-align:center;font-weight:600;color:#ffffff;">Modèle</th>
