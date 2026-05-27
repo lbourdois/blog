@@ -53,7 +53,7 @@ Ainsi, **pour le *trimming*, nous supprimons des *tokens* dans le vocabulaire or
 Considérons un modèle avec une taille de vocabulaire donnée.
 Cette taille peut ne pas être pertinente pour deux raisons principales :  
 1) Si notre modèle est multilingue ;  
-    En effet, toutes les langues ne nous intéressent pas forcément. Il est alors possible de supprimer celles qui sont inutiles pour notre cas d'usage.
+    En effet, toutes les langues ne nous intéressent pas forcément. Il est alors possible de supprimer celles qui sont inutiles pour notre cas d'usage.  
 2) Si la taille du vocabulaire n'est pas un multiple de 8 ou de 64.  
     En effet, pour optimiser l'usage de ses GPU, ces multiples sont à privilégier (lire notamment [ici](https://docs.nvidia.com/deeplearning/performance/dl-performance-matrix-multiplication/index.html#requirements-tc) et [ici](https://developer.nvidia.com/blog/optimizing-gpu-performance-tensor-cores/)).  
    Cette préconisation simple permet d'accélérer facilement l'entraînement d'un modèle (de 25% d'après les observations de [Karpathy](https://x.com/karpathy/status/1621578354024677377)). Notons que depuis 2023-2024, c'est un usage qui s'est répandu et les modèles utilisent ainsi généralement de base un multiple de 8 ou de 64 pour le vocabulaire. Cependant pour des modèles plus anciens, il peut être intéressant de modifier la taille (nous verrons ci-dessous dans la partie **Pratique 👨‍💻** que 7 des 16 modèles testés ont ce problème).
@@ -287,7 +287,7 @@ for name, param in model.named_parameters():
 Les **85 056 000** paramètres (les 12 blocs transformer + la `LayerNorm` finale) ne sont pas modifiés dans le cadre du *trimming* (il faudrait faire du *pruning* pour réduire cette partie), de même que les **786 432** paramètres de l'encodage positionnel (`wpe.weight`).  
 Par contre, avec cette technique, nous pouvons modifier les **38 597 376** paramètres de la couche d'*embedding* (`wte.weight`). Dans la sortie détaillée, nous pouvons voir que cette couche est de taille `[50257, 768]` soit un vocabulaire de taille 50 257 où chaque token est représenté sur 768 dimensions.  
 
-<div class="notice--info" markdown="1" style="font-size:1.25em; line-height:1.6;">
+<div class="notice--info" markdown="1" style="font-size:1.15rem; line-height:1.6;">
 📝 **Note**
 
 Cette information est également trouvable sur le Hub d'Hugging Face sans avoir à télécharger le modèle. Il faut consulter le *widget "Files infos"* qui est disponible pour tous les modèles du Hub dont les poids ont été poussés au format `safetensors`. Par exemple pour le GPT2, nous pouvons consulter [cette page](https://huggingface.co/openai-community/gpt2?show_file_info=model.safetensors). En passant votre curseur sur la ligne `wpe.weight` vous verrez même l'information indiquant que cette couche représente 28,17% de la taille totale du modèle.
