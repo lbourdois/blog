@@ -28,7 +28,7 @@ Je les remercie de m'avoir permis de travailler sur ce sujet.
 Le *trimming* étant particulièrement intéressant pour le multilinguisme, ce travail a été l'occasion d'une collaboration avec différents Hugging Face Fellows pour évaluer cette approche sur d'autres langues que le français ou l'anglais.
 À savoir [Tom AARSEN](https://huggingface.co/tomaarsen) (anglais/néerlandais), [Bram VANROY](https://huggingface.co/BramVanroy) (néerlandais), [Christopher AKIKI](https://huggingface.co/christopher) (arabe/allemand), [Woojun JUNG](https://huggingface.co/woojun-jung) (coréen), [Manuel ROMERO](https://huggingface.co/mrm8488) (espagnol) et [Prithiv SAKTHI](https://huggingface.co/prithivMLmods) (Tamil).  
 
-Je tiens finalement à indiquer que l'estimation du temps de lecture est fortement surestimée du fait de nombreux tableaux de résultats, références ou d'exemples de textes pour montrer les sorties obtenues avec les modèles trimmés (ainsi que potentiellement leur traduction en français quand ces exemples portent sur une autre langue)
+Je tiens finalement à indiquer que l'estimation du temps de lecture est fortement surestimée du fait de nombreux tableaux de résultats (en html plutôt qu'en image), de références ou d'exemples de textes pour montrer les sorties obtenues avec les modèles trimmés (ainsi que potentiellement leur traduction en français quand ces exemples portent sur une autre langue)
 <br><br><br>
 
 # <span style="color: #FF0000"> **Introduction** </span>
