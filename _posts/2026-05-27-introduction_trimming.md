@@ -345,25 +345,44 @@ Concernant les benchmarks, nous évaluons les modèles sur de l'anglais et du n�
 <div id="table-reductions-parametres" style="overflow-x:auto; margin:1.5rem 0; max-width:100%;">
 <style>
 #table-reductions-parametres table {
+  border-collapse: collapse;
   width: 100%;
-  font-size: 0.72rem !important;
+  min-width: 900px;
+  font-size: 0.9rem;
+  box-shadow: 0 2px 7px rgba(0,0,0,0.12);
+  border-radius: 8px;
+  overflow: hidden;
 }
 
 #table-reductions-parametres th,
 #table-reductions-parametres td {
-  padding: 6px 8px !important;
-  line-height: 1.25 !important;
+  padding: 12px 14px !important;
+  line-height: 1.35 !important;
+  vertical-align: top;
 }
 
-#table-reductions-parametres th:first-child,
-#table-reductions-parametres td:first-child {
-  max-width: 190px;
-  white-space: normal !important;
-  overflow-wrap: anywhere;
+#table-reductions-parametres th {
+  text-align: center;
+  font-weight: 700;
+}
+
+#table-reductions-parametres td:first-child,
+#table-reductions-parametres th:first-child {
+  width: 240px;
+  min-width: 220px;
+  white-space: normal;
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+#table-reductions-parametres td:not(:first-child),
+#table-reductions-parametres th:not(:first-child) {
+  white-space: nowrap;
+  text-align: center;
 }
 </style>
 
-  <table style="border-collapse:collapse;width:100%;font-size:0.95rem;box-shadow:0 2px 7px rgba(0,0,0,0.12);border-radius:8px;overflow:hidden;">
+  <table>
     <thead>
       <tr style="background-color:#2d3748;">
         <th style="padding:12px 12px;text-align:center;font-weight:600;color:#ffffff;white-space:nowrap;">Modèle</th>
