@@ -545,11 +545,15 @@ Concernant les benchmarks, nous évaluons les modèles sur de l'anglais et du n�
       </tr>
     </tbody>
   </table>
-</div>
 
-> [!NOTE]
-> **📝 Note**  
-> Les granite-embedding, mE5, BGE-M3 et Qwen3-Embedding ayant une taille de vocabulaire n'étant pas un multiple de 64, le *trimming* semble particulièrement adapté même dans le cas où nous ne souhaitons pas spécifiquement créer un modèle monolingue/*n*-lingue.
+  
+</div>
+<div class="notice--info" style="line-height:1.25;">
+  <p style="font-size:0.9rem;"><strong>📝 Note</strong></p>
+  <p style="font-size:0.9rem;">
+    Les granite-embedding, mE5, BGE-M3 et Qwen3-Embedding ayant une taille de vocabulaire n'étant pas un multiple de 64, le <i>trimming</i> semble particulièrement adapté même dans le cas où nous ne souhaitons pas spécifiquement créer un modèle monolingue/<i>n</i>-lingue.
+  </p>
+</div>
 
 Dans le tableau ci-dessus, et pour l'ensemble de l'article, nous donnons des chiffres pour des vocabulaires de taille 16 384 et 32 768 *tokens*. Nous revenons dans la section de l'article, **Questions ouvertes❓**, sur ce choix et plus généralement sur le défi du nombre de *tokens* à conserver dans le vocabulaire du modèle trimmé.
 
@@ -587,13 +591,14 @@ L'explication que nous avançons, et nous avons donc laissé ce modèle pour ill
 Pour cette même raison, nous présentons ici uniquement des modèles bi-encodeurs. En effet, nos expérimentations sur des *rerankers* ont toutes échoué du fait de la couche de classification située au-dessus de celle d*'embedding* dans ces types de modèles.  
 Avec l'embeddinggemma, nous souhaitions illustrer la seule limite que nous avons identifiée à la méthode du *trimming*.  
 
-> [!NOTE]
-> 📝 **Note**  
-> Nous avons choisi de tout de même proposer des versions monolingues de l'embeddinggemma pour deux raisons :
-> 1) Pour l'anglais, la version 32 768 reste meilleure que le Qwen3-Embedding (original ou trimmé) même avec cette dégradation.
-> 2) La dégradation de 2,5 à 5,5 points (en fonction de la configuration retenue) est probablement la plus extrême du fait que le modèle est principalement entraîné sur de l'anglais. Sur d'autres langues testées, la dégradation est ramenée à 1,7 pour le français (65,13 en 32 768 vs. 66,87 pour l'original) et à 0,6 point pour le néerlandais (cf. paragraphe suivant).
-
-
+<div class="notice--info" style="line-height:1.25;">
+  <p style="font-size:0.9rem;"><strong>📝 Note</strong></p>
+  <p style="font-size:0.9rem;">
+Nous avons choisi de tout de même proposer des versions monolingues de l'embeddinggemma pour deux raisons :<br>
+1) Pour l'anglais, la version 32 768 reste meilleure que le Qwen3-Embedding (original ou trimmé) même avec cette dégradation.<br>
+2) La dégradation de 2,5 à 5,5 points (en fonction de la configuration retenue) est probablement la plus extrême du fait que le modèle est principalement entraîné sur de l'anglais. Sur d'autres langues testées, la dégradation est ramenée à 1,7 pour le français (65,13 en 32 768 vs. 66,87 pour l'original) et à 0,6 point pour le néerlandais (cf. paragraphe suivant).
+  </p>
+</div>
 
 ##### Néerlandais
 
@@ -619,11 +624,14 @@ Comme pour l'anglais, nous pouvons constater que le *trimming* matche voire perm
 Un résultat encore plus intéressant est que si l'on conserve davantage de *tokens* (50 002 par les auteurs du MTEB-NL, mais nous pouvons penser que 50 048 serait un nombre plus pertinent vis-à-vis du matériel), le gain monte entre 0,4 et 0,6 point pour les mE5. Sans aucun réentraînement.  
 Si en plus, nous finetunons le modèle trimmé, nous pouvons constater que le gain monte alors de 2,5 à 3,1 points par rapport au modèle original.  
 
-> [!NOTE]
-> 📝 **Note**  
-> Nous voyons que garder 50 002 *tokens* semble plus intéressant que d'en garder 32 768.    
-> Suite à ces résultats, nous nous sommes questionnés sur le fait de savoir si nous devions ou non proposer des modèles avec un vocabulaire de 50 048 *tokens*. Nous ne l'avons finalement pas fait. D'une part parce que dans le cadre de cet article de blog, notre objectif est de proposer une simple introduction à la méthode du *trimming* et non pas les meilleurs modèles possibles pour illustrer nos propos. D'autre part parce que cette question de savoir quel est le nombre de *tokens* optimal pour un *tokenizer* n'est pas évidente.
-> Nous revenons sur ce dernier point dans une partie dédiée dans la dernière section de cet article de blog portant sur les **Questions ouvertes❓**.
+<div class="notice--info" style="line-height:1.25;">
+  <p style="font-size:0.9rem;"><strong>📝 Note</strong></p>
+  <p style="font-size:0.9rem;">
+Nous voyons que garder 50 002 <i>tokens</i> semble plus intéressant que d'en garder 32 768.<br> 
+Suite à ces résultats, nous nous sommes questionnés sur le fait de savoir si nous devions ou non proposer des modèles avec un vocabulaire de 50 048 <i>tokens</i>. Nous ne l'avons finalement pas fait. D'une part parce que dans le cadre de cet article de blog, notre objectif est de proposer une simple introduction à la méthode du <i>trimming</i> et non pas les meilleurs modèles possibles pour illustrer nos propos. D'autre part parce que cette question de savoir quel est le nombre de *tokens* optimal pour un <i>tokenizer</i> n'est pas évidente.<br> 
+Nous revenons sur ce dernier point dans une partie dédiée dans la dernière section de cet article de blog portant sur les <b>Questions ouvertes❓</b>.
+  </p>
+</div>
 
 
 > [!TIP]  
@@ -766,9 +774,13 @@ Nous évaluons ce dernier point également sur de l'anglais en comparant un mmBE
 
 D'après ces expérimentations, dans le cadre du mmBERT, il est impératif de trimmer le modèle original puis finetuner le modèle résultant plutôt que de finetuner le modèle original puis de le trimmer.  
 Au-delà d'éviter un effondrement des performances, finetuner un modèle trimmé est aussi plus rapide que de finetuner un modèle original car le modèle est plus petit.
-> [!NOTE]
-> **📝 Note**  
-> Nous revenons sur ce point de l'ordre du *trimming* dans une partie dédiée dans la dernière section de l'article portant sur les **Questions ouvertes❓**.
+
+<div class="notice--info" style="line-height:1.25;">
+  <p style="font-size:0.9rem;"><strong>📝 Note</strong></p>
+  <p style="font-size:0.9rem;">
+Nous revenons sur ce point de l'ordre du <i>trimming</i> dans une partie dédiée dans la dernière section de l'article portant sur less <b>Questions ouvertes❓</b>.
+  </p>
+</div>
 
 Nous pouvons noter que comme pour les modèles d'*embeddings* textuels, garder 32 768 *tokens* donne des résultats semblables au modèle d'origine (petite baisse sur l'entité Organisations à souligner), et qu'en garder 16 384 fait légèrement moins bien.  
 
@@ -824,13 +836,19 @@ Le nombre choisi a cependant un impact sur le temps d'exécution du minage. En e
 > 2) Bien que nous ayons voulu tester le *trimming* sur plusieurs langues portant sur divers alphabets, nous avons évalué exclusivement des langues richement dotées en ressources. C'est-à-dire des langues avec un nombre suffisamment de *tokens* dans le modèle original qui, in fine, impacte les performances du modèle trimmé, et qui disposent également de jeux de données d'évaluation pour plusieurs tâches.  
 Nous n'avons pas pu vérifier l'impact du nombre de textes sur les langues peu dotées en ressources. Une observation qui nous a invité à rédiger cet encart est que pour les mmBERT nous avons pu par exemple générer un modèle en tchétchène en 16 384 *tokens* mais pas en 32 768 par manque de *tokens* (unique langue néanmoins où ce phénomène s'est produit).
 
-> [!NOTE]
-> **📝 Note**  
-> Le jeu de données Fineweb 2 étant lourd (540GB pour les 360M lignes en français par exemple et plus de 8,67 TB au total), et comme nous venons de le voir, le nombre de lignes vues lors du minage n'influençant pas les performances, nous avons créé **un sous-ensemble de Fineweb 2 pour 124 langues disponible [ici](https://huggingface.co/datasets/lbourdois/fineweb-2-trimming)** (seulement 44GB). Ces 124 langues correspondent à l'intersection des langues proposées par le mBERT et le XLM-RoBERTa.
+<div class="notice--info" style="line-height:1.25;">
+  <p style="font-size:0.9rem;"><strong>📝 Note</strong></p>
+  <p style="font-size:0.9rem;">
+  Le jeu de données Fineweb 2 étant lourd (540GB pour les 360M lignes en français par exemple et plus de 8,67 TB au total), et comme nous venons de le voir, le nombre de lignes vues lors du minage n'influençant pas les performances, nous avons créé <strong>un sous-ensemble de Fineweb 2 pour 124 langues disponible <a href="https://huggingface.co/datasets/lbourdois/fineweb-2-trimming" target="_blank">ici</a></strong> (seulement 44GB). Ces 124 langues correspondent à l'intersection des langues proposées par le mBERT et le XLM-RoBERTa.
+  </p>
+</div>
 
-> [!NOTE]
-> **📝 Note**  
-> Nous nous focalisions ici sur des textes génériques issus de Fineweb 2. Nous n'avons pas eu le temps d'effectuer l'expérience, mais le fait que seuls 20 000 textes soient nécessaires pour le *trimming* ouvre la porte à un minage sur des données spécialisées sur un domaine donné (médecine, banque, industrie, etc.) qui sont généralement moins nombreuses que les généralistes. Cela permettrait de ne garder que les *tokens* indispensables au domaine et qu'ils soient alignés avec le jeu de données nécessaire pour réaliser l'adaptation au domaine via un pré-entraînement supplémentaire.
+<div class="notice--info" style="line-height:1.25;">
+  <p style="font-size:0.9rem;"><strong>📝 Note</strong></p>
+  <p style="font-size:0.9rem;">
+Nous nous focalisions ici sur des textes génériques issus de Fineweb 2. Nous n'avons pas eu le temps d'effectuer l'expérience, mais le fait que seuls 20 000 textes soient nécessaires pour le <i>trimming</i> ouvre la porte à un minage sur des données spécialisées sur un domaine donné (médecine, banque, industrie, etc.) qui sont généralement moins nombreuses que les généralistes. Cela permettrait de ne garder que les <i>tokens</i> indispensables au domaine et qu'ils soient alignés avec le jeu de données nécessaire pour réaliser l'adaptation au domaine via un pré-entraînement supplémentaire.
+  </p>
+</div>
 
 </br>
 
@@ -1067,14 +1085,19 @@ Nous les évaluons également sur de l'arabe et de l'allemand dans le cadre d'un
   </table>
 </div>
 
-> [!NOTE]
-> **📝 Note**  
-> Le mBART ayant une taille de vocabulaire n'étant pas un multiple de 64, le *trimming* semble particulièrement adapté même dans le cas où nous ne souhaitons pas spécifiquement créer un modèle monolingue/*n*-lingue.
+<div class="notice--info" style="line-height:1.25;">
+  <p style="font-size:0.9rem;"><strong>📝 Note</strong></p>
+  <p style="font-size:0.9rem;">
+Le mBART ayant une taille de vocabulaire n'étant pas un multiple de 64, le <i>trimming</i> semble particulièrement adapté même dans le cas où nous ne souhaitons pas spécifiquement créer un modèle monolingue/<i>n</i>-lingue.
+  </p>
+</div>
 
-> [!NOTE]
-> **📝 Note**  
-> Nous pensions initialement proposer également la version `large` du mt5 (réduction du nombre de paramètres de 1,230B à 784,5M soit -36,20%) mais y avons finalement renoncé pour proposer à la place des modèles décodeurs plus récents (voir la section suivante).
-
+<div class="notice--info" style="line-height:1.25;">
+  <p style="font-size:0.9rem;"><strong>📝 Note</strong></p>
+  <p style="font-size:0.9rem;">
+Nous pensions initialement proposer également la version <code>large</code> du mt5 (réduction du nombre de paramètres de 1,230B à 784,5M soit -36,20%) mais y avons finalement renoncé pour proposer à la place des modèles décodeurs plus récents (voir la section suivante).
+  </p>
+</div>
 
 #### Résultats
 
@@ -2307,9 +2330,12 @@ Nous nous focalisons notamment sur la recherche d'images et la classification d'
   </table>
 </div>
 
-> [!NOTE]
-> **📝 Note**  
-> Le clip-ViT-B-32-multilingual-v1 et le MetaCLIP-2 ayant une taille de vocabulaire n'étant pas un multiple de 64, le *trimming* semble particulièrement adapté même dans le cas où nous ne souhaitons pas spécifiquement créer un modèle monolingue/*n*-lingue.
+<div class="notice--info" style="line-height:1.25;">
+  <p style="font-size:0.9rem;"><strong>📝 Note</strong></p>
+  <p style="font-size:0.9rem;">
+Le clip-ViT-B-32-multilingual-v1 et le MetaCLIP-2 ayant une taille de vocabulaire n'étant pas un multiple de 64, le <i>trimming</i> semble particulièrement adapté même dans le cas où nous ne souhaitons pas spécifiquement créer un modèle monolingue/<i>n</i>-lingue.
+  </p>
+</div>
  
 #### Résultats
 
@@ -2531,9 +2557,13 @@ Cet exemple laisse supposer que le *trimming* sur les CLIP donne des résultats 
 
 Nous avons cette fois des modèles trimmés faisant mieux que l'original, et la version BF16 faisant mieux que la FP32 pour le modèle original. À nouveau, la combinaison du *trimming* et de la quantification apparaît comme très pertinente.
 
-> [!NOTE]
-> **📝 Note**  
-> Deux autres *notebooks* sont disponibles. L'un sur de la [déduplication d'images exactes ou similaires](https://github.com/huggingface/sentence-transformers/blob/main/examples/sentence_transformer/applications/image-search/Image_Duplicates.ipynb) et l'autre sur du [clustering d'images](https://github.com/huggingface/sentence-transformers/blob/main/examples/sentence_transformer/applications/image-search/Image_Clustering.ipynb).  
+<div class="notice--info" style="line-height:1.25;">
+  <p style="font-size:0.9rem;"><strong>📝 Note</strong></p>
+  <p style="font-size:0.9rem;">
+  Deux autres <em>notebooks</em> sont disponibles. L'un sur de la
+  <a href="https://github.com/huggingface/sentence-transformers/blob/main/examples/sentence_transformer/applications/image-search/Image_Duplicates.ipynb" target="_blank">déduplication d'images exactes ou similaires</a> et l'autre sur du <a href="https://github.com/huggingface/sentence-transformers/blob/main/examples/sentence_transformer/applications/image-search/Image_Clustering.ipynb" target="_blank">clustering d'images</a>.
+  </p>
+</div>
 
 > [!TIP]  
 > 🧠 **À retenir**  
