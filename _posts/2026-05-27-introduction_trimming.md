@@ -2282,7 +2282,7 @@ Cela s'explique sûrement par le fait que le mmBERT small non trimmé score à 8
   </p>
 </div>
 
-<br>
+<br><br>
 
 
 ### <span style="color: #51C353"> **Modèles encodeur-décodeur** </span>
@@ -2541,7 +2541,7 @@ Nous pensions initialement proposer également la version <code>large</code> du 
       </tr>
     </tbody>
   </table>
-</body>
+</div>
 
 <center>Figure 1 : Résultats de la tâche de génération de question via encodeur-décodeur</center>
 
@@ -2654,7 +2654,7 @@ Le mBART se comporte moins bien que le mT5 puisque nous pouvons constater une d�
       </tr>
     </tbody>
   </table>
-</body>
+</div>
 
 <center>Figure 1 : Résultats de la tâche de traduction via un encodeur-décodeur</center>
 
@@ -2682,7 +2682,7 @@ Pour le mBART, au lieu de générer la version 16 384 *tokens*, nous avons chois
   </p>
 </div>
 
-<br>
+<br><br>
 
 ### <span style="color: #51C353"> **Modèles décodeur** </span>
 
