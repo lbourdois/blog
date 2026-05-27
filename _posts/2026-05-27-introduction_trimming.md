@@ -29,14 +29,13 @@ Le *trimming* étant particulièrement intéressant pour le multilinguisme, ce t
 À savoir [Tom AARSEN](https://huggingface.co/tomaarsen) (anglais/néerlandais), [Bram VANROY](https://huggingface.co/BramVanroy) (néerlandais), [Christopher AKIKI](https://huggingface.co/christopher) (arabe/allemand), [Woojun JUNG](https://huggingface.co/woojun-jung) (coréen), [Manuel ROMERO](https://huggingface.co/mrm8488) (espagnol) et [Prithiv SAKTHI](https://huggingface.co/prithivMLmods) (Tamil).  
 
 Je tiens finalement à indiquer que l'estimation du temps de lecture est fortement surestimée du fait de nombreux tableaux de résultats, références ou d'exemples de textes pour montrer les sorties obtenues avec les modèles trimmés (ainsi que potentiellement leur traduction en français quand ces exemples portent sur une autre langue)
-<br><br>
+<br><br><br>
 
 # <span style="color: #FF0000"> **Introduction** </span>
 
 Dans cet article de blog, nous procédons à une introduction à la technique du *trimming*. Cette méthode simple, ne nécessitant pas de réentraînement et s'exécutant sur un simple CPU, permet d'obtenir un modèle plus léger que l'original tout en maintenant ses performances.  
 Dans la partie **Pratique 👨‍💻** où nous avons effectué des expérimentations, nous listons les points essentiels dans des encadrés **🧠 À retenir**. Une synthèse de tous les avantages de cette approche est également trouvable dans la conclusion.  
 Pour accompagner nos propos, nous dévoilons [5526 modèles](https://huggingface.co/spaces/alphaedge-ai/Trimming_models_search) issus de l'application de cette technique.
-
 
 <br><br>
 
@@ -2823,9 +2822,10 @@ Nous avons cette fois des modèles trimmés faisant mieux que l'original, et la 
 <br><br>
 
 
-## Questions ouvertes❓
+## <span style="color: #FFBF00"> **Questions ouvertes❓** </span>
 
-#### Nombre de *tokens* à conserver
+### <span style="color: #51C353"> **Nombre de *tokens* à conserver** </span>
+
 La question s’est posée de savoir quelle est la meilleure taille de modèle pour le vocabulaire du modèle trimmé. Il s’avère que plus nous avons creusé la question, plus nous remettions en cause notre compréhension des *tokenizers*. En effet, il semble que la taille à conserver dépend de beaucoup de facteurs :
 
 1) Le modèle original  
@@ -2889,14 +2889,14 @@ Comment se fait-il que les modèles d’ASR fonctionnent avec si peu de *tokens*
 
 <br>
 
-#### Modèles incluant du code 
+### <span style="color: #51C353"> **Modèles incluant du code** </span>
 
 Dans le cadre de cet article nous nous sommes focalisés exclusivement sur des modèles trimmés portant sur des langues.  
 Un cas d'usage fréquent des décodeurs / VLM étant la génération de code, il faudrait mener des vérifications que le *trimming* fonctionne bien avec les langages informatiques pour pouvoir construire des modèles langue de l'utilisateur / langage(s) informatique(s) spécifique à un utilisateur travaillant dans l'informatique dans un pays donné.
 
 <br>
 
-#### Ordre du *trimming*
+### <span style="color: #51C353"> **Ordre du *trimming*** </span>
 
 Dans la section sur les encodeurs nous trouvons qu'il vaut mieux faire du VT (*vocabulary trimming*) puis du FT (*finetuning*) pour éviter un effondrement des performances (i.e. des modèles ne marchant plus du tout). Il s'avère que nous avons observé les mêmes résultats pour des encodeurs-décodeurs, des décodeurs et des VLM (les performances ne s'effondrant pas forcément au point que le modèle ne soit plus utilisable mais avec de grosses pertes de performances de l'ordre de 10 à 20 points en fonction de la tâche).  
 Le gain de performances des auteurs du MTEB-NL sur les modèles d'*embeddings* trimmés puis finetunés que nous avons également reproduits, semble aussi aller dans le sens d'adopter cet ordre opératoire. 
@@ -2909,7 +2909,7 @@ Notons cependant que toutes ces comparaisons ne sont pas effectuées avec le mê
 
 <br>
 
-#### Impact du trimming sur les biais
+### <span style="color: #51C353"> **Impact du trimming sur les biais** </span>
 
 Dans leur papier, les auteurs de `vocabtrimmer` (voir la section 6 notamment) constatent qu'un modèle anglais issu d'un modèle multilingue trimmé semble présenter moins de préjugés sociaux (notamment raciaux) qu'un modèle anglais entraîné de zéro. Ce résultat va dans le sens de travaux antérieurs ([AHN et OH (2021)](https://aclanthology.org/2021.emnlp-main.42/). L'intuition des auteurs est qu'un modèle entraîné avec davantage de langues est alors exposé à une plus grande diversité culturelle et ainsi que des points de vue divergents se compensent mutuellement.  
 
@@ -2918,7 +2918,7 @@ Il faudrait alors tester cette hypothèse sur d'autres langues (la question de l
 
 <br>
 
-#### Le code pour trimmer
+### <span style="color: #51C353"> **Le code pour trimmer** </span>
 
 Nous avons présenté dans cet article de blog plus de 16 modèles différents. Nous proposons les versions monolingues de chacun d'eux via 5526 modèles disponibles [ici](https://huggingface.co/spaces/alphaedge-ai/Trimming_models_search).   
 Néanmoins, comment faire si de votre côté vous souhaitez construire votre propre modèle trimmé portant sur *l* langues de votre choix conservant *t* *tokens* de votre choix ?  
@@ -2927,9 +2927,9 @@ Pour limiter le stockage, il suffirait alors de charger d'un côté le *backbone
 Il serait aussi probablement nécessaire de revoir un peu notre code actuel afin de proposer, en plus de l'option du nombre de *tokens* fixés par l'utilisateur, l'option de trouver automatiquement la puissance de 64 la plus proche d'un seuil de recouvrement fixé par l'utilisateur. Comme évoqué plus haut dans cette section, le seuil de recouvrement (par exemple 95% ou 99%) étant le nombre de *tokens* dans le vocabulaire pour recouvrir *x* % des *tokens* de la base de minage. Cela permettrait ainsi d'avoir des tailles de vocabulaire plus spécifiques à chacune des langues.   
 En attendant de converger vers une solution, vous pouvez effectuer des demandes particulières [ici](https://huggingface.co/spaces/alphaedge-ai/Trimming_models_search/discussions) où, à l'instar de ce qui se fait pour la quantification (avec [mradermacher](https://huggingface.co/mradermacher/model_requests) par exemple), nous pourrons répondre aux requêtes populaires.
 
-<br><br>
+<br><br><br>
 
-## Conclusion
+# <span style="color: #FF0000"> **Conclusion** </span>
 
 Nous avons effectué un tour d'horizon de la méthode du *trimming* permettant de réduire très simplement la taille d'un modèle que ce soit en termes de nombre de paramètres ou de tailles mémoires.  
 Cette méthode, fonctionnant uniquement si la couche d'*embedding* est la dernière du réseau, a de nombreux avantages :  
@@ -2944,13 +2944,13 @@ Cette méthode, fonctionnant uniquement si la couche d'*embedding* est la derni�
 
 Des questions restent ouvertes comme le nombre de *tokens* à garder pour une langue donnée / modalité donnée / tâche donnée, l'ordre du *trimming* ou encore l'impact sur les biais.  
 
-Nous travaillons à faciliter l'usage de cette méthode via un outil. En attendant, nous vous invitons à explorer les
-5526 modèles disponibles via ce [Space](https://huggingface.co/spaces/alphaedge-ai/Trimming_models_search).
+Nous travaillons à faciliter l'usage de cette méthode via un outil. En attendant, nous vous invitons à explorer les 5526 modèles disponibles via ce [Space](https://huggingface.co/spaces/alphaedge-ai/Trimming_models_search).
 
 
-<br><br>
+<br><br><br>
 
-## Références
+# <span style="color: #FF0000"> **Références** </span>
+
 - [Language Models are Unsupervised Multitask Learners](https://cdn.openai.com/better-language-models/language_models_are_unsupervised_multitask_learners.pdf) de Alec RADFORD, Jeffrey WU, Rewon CHILD, David LUAN, Dario AMODEI et Ilya SUTSKEVER (2019)
 - [BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding](https://arxiv.org/abs/1810.04805) de Jacob DEVLIN, Ming-Wei CHANG, Kenton LEE et Kristina TOUTANOVA (2018)
 - [Load What You Need: Smaller Versions of Multilingual BERT](https://arxiv.org/abs/2010.05609) d'Amine ABDAOUI, Camille PRADEL et Grégoire SIGEL (2020)
@@ -2999,6 +2999,15 @@ Nous travaillons à faciliter l'usage de cette méthode via un outil. En attenda
   
 <br><br>
 
-## Citation
-> [!WARNING]
-> Blabla
+<br><br><br>
+
+# <span style="color: #FF0000"> **Citation** </span>
+
+```
+@misc{hf_blogpost_trimming,
+      title={Introduction to Trimming}, 
+      author={Loïck BOURDOIS and Tom AARSEN and Bram VANROY and Christopher AKIKI and Woojun JUNG and Manuel ROMERO and Prithiv SAKTHI},
+      year={2026},
+      url={https://huggingface.co/blog/lbourdois/introduction-to-trimming}, 
+}
+```
