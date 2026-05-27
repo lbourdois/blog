@@ -12,19 +12,24 @@ sidebar:
     nav: sidebar-reduction
 classes: wide
 ---
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
 
-# Introduction au Trimming ✂
-  
-## Avant-propos
+<center>An English version is available on <a href="https://huggingface.co/blog/lbourdois/introduction-to-trimming">Hugging Face</a>.</center>
 
-Le *trimming* étant particulièrement intéressant pour le multilinguisme, ce travail a été l'occasion d'une collaboration de différents Hugging Face Fellows pour évaluer cette approche sur d'autres langues que l'anglais.
-À savoir Loïck BOURDOIS (français), Tom AARSEN (anglais/néerlandais), Bram VANROY (néerlandais), Christopher AKIKI (arabe/allemand), Woojun JUNG (coréen), Manuel ROMERO (espagnol) et Prithiv SAKTHI (Tamil).  
+# <span style="color: #FF0000"> **Avant-Propos** </span> 
 
-Ayant permis à Loïck d'effectuer ce travail sur son temps professionnel plutôt que personnel, nous tenons également à remercier l'entreprise [AlphaEdge](https://huggingface.co/alphaedge-ai).
+Cet article est une republication de celui que j’ai rédigé sur le blog d'[AlphaEdge](https://huggingface.co/alphaedge-ai).  
+Je les remercie de m'avoir permis de travailler sur ce sujet.
 
+Le *trimming* étant particulièrement intéressant pour le multilinguisme, ce travail a été l'occasion d'une collaboration avec différents Hugging Face Fellows pour évaluer cette approche sur d'autres langues que le français ou l'anglais.
+À savoir Tom AARSEN (anglais/néerlandais), Bram VANROY (néerlandais), Christopher AKIKI (arabe/allemand), Woojun JUNG (coréen), Manuel ROMERO (espagnol) et Prithiv SAKTHI (Tamil).  
+
+Je tiens finalement à indiquer que l'estimation du temps de lecture est fortement surestimée du fait de nombreux tableaux de résultats, références ou d'exemples de textes pour montrer les sorties obtenues avec les modèles trimmés (ainsi que potentiellement leur traduction en français quand ces exemples portent sur une autre langue)
 <br><br>
 
-## Introduction
+# <span style="color: #FF0000"> **Introduction** </span>
 
 Dans cet article de blog, nous procédons à une introduction à la technique du *trimming*. Cette méthode simple, ne nécessitant pas de réentraînement et s'exécutant sur un simple CPU, permet d'obtenir un modèle plus léger que l'original tout en maintenant ses performances.  
 Dans la partie **Pratique 👨‍💻** où nous avons effectué des expérimentations, nous listons les points essentiels dans des encadrés **🧠 À retenir**. Une synthèse de tous les avantages de cette approche est également trouvable dans la conclusion.  
@@ -33,7 +38,7 @@ Pour accompagner nos propos, nous dévoilons [5526 modèles](https://huggingface
 
 <br><br>
 
-## Théorie 👨‍🏫
+## <span style="color: #FFBF00"> **Théorie 👨‍🏫** </span>
 
 Le *trimming* peut être vu comme un sous-ensemble du *pruning*. En effet, comme pour ce dernier, le but de la technique est de modifier/supprimer des poids du modèle pour le rendre in fine plus léger (que ce soit le nombre de paramètres ou sa taille mémoire).   
 Néanmoins la spécificité de cette méthode est que nous nous **focalisons uniquement sur les parties de l'architecture en lien avec le vocabulaire**, là où dans le cadre du *pruning* nous modifions généralement plutôt les poids/couches du reste de l'architecture (i.e. le *backbone*).  
@@ -223,6 +228,8 @@ for name, param in model.named_parameters():
 
 </details>
 
+<br>
+
 **Sortie groupée par composant** :
 ```python
 # ── Embeddings ──────────────────────────────
@@ -259,6 +266,8 @@ for name, param in model.named_parameters():
 # Total unique : 124,439,808
 ```
 
+<br>
+
 **Vue graphique** :
 <figure>
   <center>
@@ -276,9 +285,11 @@ for name, param in model.named_parameters():
 Les **85 056 000** paramètres (les 12 blocs transformer + la `LayerNorm` finale) ne sont pas modifiés dans le cadre du *trimming* (il faudrait faire du *pruning* pour réduire cette partie), de même que les **786 432** paramètres de l'encodage positionnel (`wpe.weight`).  
 Par contre, avec cette technique, nous pouvons modifier les **38 597 376** paramètres de la couche d'*embedding* (`wte.weight`). Dans la sortie détaillée, nous pouvons voir que cette couche est de taille `[50257, 768]` soit un vocabulaire de taille 50 257 où chaque token est représenté sur 768 dimensions.  
 
-> [!NOTE]
-> 📝 **Note**  
-> Cette information est également trouvable sur le Hub d'Hugging Face sans avoir à télécharger le modèle. Il faut consulter le *widget "Files infos"* qui est disponible pour tous les modèles du Hub dont les poids ont été poussés au format `safetensors`. Par exemple pour le GPT2, nous pouvons consulter https://huggingface.co/openai-community/gpt2?show_file_info=model.safetensors. En passant votre curseur sur la ligne `wpe.weight` vous verrez même l'information indiquant que cette couche représente 28,17% de la taille totale du modèle.
+<div class="notice--info" markdown="1">
+📝 **Note**
+
+Cette information est également trouvable sur le Hub d'Hugging Face sans avoir à télécharger le modèle. Il faut consulter le *widget "Files infos"* qui est disponible pour tous les modèles du Hub dont les poids ont été poussés au format `safetensors`. Par exemple pour le GPT2, nous pouvons consulter [cette page](https://huggingface.co/openai-community/gpt2?show_file_info=model.safetensors). En passant votre curseur sur la ligne `wpe.weight` vous verrez même l'information indiquant que cette couche représente 28,17% de la taille totale du modèle.
+</div>
 
 Nous pouvons constater que la taille du vocabulaire n'est pas un multiple de 64 ! Appliquer du *trimming* sur ce modèle pourrait être pertinent.  
 Prenons un exemple théorique. Si nous ramenons la taille de vocabulaire de **50 257** à **32 768** (512 × 64), les 38 597 376 paramètres sont alors réduits à **32 768 × 768 = 25 165 824**. Soit **13 431 552** de paramètres en moins.    
@@ -291,7 +302,7 @@ Une question que nous pouvons alors nous poser est : *quel est l'impact de cette
 Pour y répondre, nous avons analysé 16 modèles portant sur des architectures et des modalités différentes : encodeurs textuels, encodeur-décodeur textuels, décodeurs textuels, modèles d'*embeddings* textuels, modèle d'*embeddings* visuels, encodeur-décodeur textuels/visuels (VLM).  
 <br><br>
 
-## Pratique 👨‍💻
+## <span style="color: #FFBF00"> **Pratique 👨‍💻** </span>
 
 #### Comment faire du trimming en pratique ?  
 Plusieurs auteurs se sont intéressés au problème ces dernières années, et parmi ceux qui ont partagé leur code voire proposé une librairie dédiée au sujet, nous pouvons lister : 
