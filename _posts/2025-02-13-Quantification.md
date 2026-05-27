@@ -14,7 +14,7 @@ header :
     teaser : "https://raw.githubusercontent.com/lbourdois/blog/refs/heads/master/assets/images/Quantification/image_1.png"
 author_profile: false
 sidebar:
-    nav: sidebar-misc
+    nav: sidebar-reduction
 classes: wide
 ---
 
