@@ -3410,18 +3410,228 @@ Sur ce point du fond, notez que les modèles montrés ici servent à illustrer l
   </p>
 </div>
 
+<br>
+
 **Coréen**
 
-<figure>
-  <center>
-  <img src="https://cdn-uploads.huggingface.co/production/uploads/613b0a62a14099d5afed7830/IWAQCcevTDilvp7DpaPY8.png" 
-       alt="Résultats sur le benchmark KoBEST" 
-       style="max-width:100%; height:auto;">
-  <figcaption>
-    <center>
-    Figure 1 : Résultats sur le benchmark KoBEST</center>
-  </figcaption></center>
-</figure>
+<div id="table-reductions-parametres" style="overflow-x:auto; margin:1.5rem 0; max-width:100%;">
+<style>
+#table-reductions-parametres table {
+  border-collapse: collapse;
+  width: 100%;
+  table-layout: fixed;
+  font-size: 0.72rem !important;
+  box-shadow: 0 2px 7px rgba(0,0,0,0.12);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+#table-reductions-parametres th,
+#table-reductions-parametres td {
+  padding: 7px 6px !important;
+  line-height: 1.25 !important;
+  text-align: center !important;
+  vertical-align: middle !important;
+  white-space: normal !important;
+  word-break: normal !important;
+  overflow-wrap: normal !important;
+}
+
+#table-reductions-parametres th {
+  font-weight: 700 !important;
+}
+
+#table-reductions-parametres th:first-child,
+#table-reductions-parametres td:first-child {
+  width: 24%;
+  text-align: left !important;
+}
+
+#table-reductions-parametres th:not(:first-child),
+#table-reductions-parametres td:not(:first-child) {
+  width: 12.6%;
+}
+</style>
+
+<table>
+    <thead>
+      <tr style="background-color:#2d3748;">
+        <th style="padding:12px;text-align:center;font-weight:600;color:#ffffff;white-space:nowrap;">Modèle</th>
+        <th style="padding:12px;text-align:center;font-weight:600;color:#ffffff;">Moyenne<br><small style="font-weight:400;">macro / micro</small></th>
+        <th style="padding:12px;text-align:center;font-weight:600;color:#ffffff;">boolq<br>(Questions-réponses booléennes)<br><small style="font-weight:400;">précision</small></th>
+        <th style="padding:12px;text-align:center;font-weight:600;color:#ffffff;">copa<br>(Raisonnement causal)<br><small style="font-weight:400;">précision</small></th>
+        <th style="padding:12px;text-align:center;font-weight:600;color:#ffffff;">hellaswag<br>(Sens commun)<br><small style="font-weight:400;">précision</small></th>
+        <th style="padding:12px;text-align:center;font-weight:600;color:#ffffff;">sentineg<br>(Analyse de sentiment)<br><small style="font-weight:400;">précision</small></th>
+        <th style="padding:12px;text-align:center;font-weight:600;color:#ffffff;">wic<br>(Désambiguïsation)<br><small style="font-weight:400;">précision</small></th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Pair 1: granite-4.0-350m — base wins on macro, copa, hellaswag, sentineg ; boolq and wic tie -->
+      <tr style="background-color:#d9eeff;">
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);">granite-4.0-350m</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;font-weight:600;">49,08<br><small style="font-weight:normal;color:#555;">49,09</small></td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;font-weight:600;">50,21</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;font-weight:600;">50,30</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;font-weight:600;">33,60</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;font-weight:600;">62,47</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;font-weight:600;">48,81</td>
+      </tr>
+      <tr style="background-color:#d9eeff;">
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);">granite-4.0-350m-kor-32768</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;font-weight:400;">48,25<br><small style="color:#555;">48,52</small></td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;font-weight:600;">50,21</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;font-weight:400;">49,10</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;font-weight:400;">31,40</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;font-weight:400;">61,71</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;font-weight:600;">48,81</td>
+      </tr>
+      <tr><td colspan="7" style="padding:3px 0;background-color:#94a3b8;"></td></tr>
+      <!-- Pair 2: granite-4.0-h-350m — base wins on macro, copa, hellaswag, wic ; kor wins on sentineg ; boolq tie -->
+      <tr style="background-color:#d9eeff;">
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);">granite-4.0-h-350m</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;font-weight:600;">52,94<br><small style="font-weight:normal;color:#555;">51,59</small></td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;font-weight:600;">50,21</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;font-weight:600;">50,60</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;font-weight:600;">34,20</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;font-weight:400;">76,83</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;font-weight:600;">52,86</td>
+      </tr>
+      <tr style="background-color:#d9eeff;">
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);">granite-4.0-h-350m-kor-32768</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;font-weight:400;">52,83<br><small style="color:#555;">51,41</small></td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;font-weight:600;">50,21</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;font-weight:400;">50,40</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;font-weight:400;">33,00</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;font-weight:600;">78,09</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;font-weight:400;">52,46</td>
+      </tr>
+      <tr><td colspan="7" style="padding:3px 0;background-color:#94a3b8;"></td></tr>
+      <!-- Pair 3: granite-4.0-1b — base wins everywhere except wic (kor) -->
+      <tr style="background-color:#d9eeff;">
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);">granite-4.0-1b</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;font-weight:600;">56,19<br><small style="font-weight:normal;color:#555;">53,26</small></td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;font-weight:600;">50,36</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;font-weight:600;">54,00</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;font-weight:600;">38,00</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;font-weight:600;">87,41</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;font-weight:400;">51,19</td>
+      </tr>
+      <tr style="background-color:#d9eeff;">
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);">granite-4.0-1b-kor-32768</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;font-weight:400;">55,50<br><small style="color:#555;">52,73</small></td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;font-weight:400;">50,21</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;font-weight:400;">52,60</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;font-weight:400;">37,00</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;font-weight:400;">86,40</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;font-weight:600;">51,27</td>
+      </tr>
+      <tr><td colspan="7" style="padding:3px 0;background-color:#94a3b8;"></td></tr>
+      <!-- Pair 4: granite-4.0-h-1b — base wins everywhere -->
+      <tr style="background-color:#d9eeff;">
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);">granite-4.0-h-1b</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;font-weight:600;">58,79<br><small style="font-weight:normal;color:#555;">57,05</small></td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;font-weight:600;">62,39</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;font-weight:600;">53,90</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;font-weight:600;">37,40</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;font-weight:600;">88,92</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;font-weight:600;">51,35</td>
+      </tr>
+      <tr style="background-color:#d9eeff;">
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);">granite-4.0-h-1b-kor-32768</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;font-weight:400;">55,88<br><small style="color:#555;">52,99</small></td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;font-weight:400;">50,50</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;font-weight:400;">53,00</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;font-weight:400;">36,80</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;font-weight:400;">87,91</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;font-weight:400;">51,19</td>
+      </tr>
+      <tr><td colspan="7" style="padding:3px 0;background-color:#94a3b8;"></td></tr>
+      <!-- Pair 5: Qwen3-0.6B — kor wins on macro, sentineg, wic ; boolq, copa, hellaswag tie -->
+      <tr style="background-color:#ece8ff;">
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);">Qwen3-0.6B</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;font-weight:400;">54,52<br><small style="color:#555;">52,09</small></td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;font-weight:600;">50,21</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;font-weight:600;">53,50</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;font-weight:600;">35,60</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;font-weight:400;">83,63</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;font-weight:400;">49,68</td>
+      </tr>
+      <tr style="background-color:#ece8ff;">
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);">Qwen3-0.6B-kor-32768</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;font-weight:600;">54,69<br><small style="font-weight:normal;color:#555;">52,27</small></td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;font-weight:600;">50,21</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;font-weight:600;">53,50</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;font-weight:600;">35,60</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;font-weight:600;">83,88</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;font-weight:600;">50,24</td>
+      </tr>
+      <tr><td colspan="7" style="padding:3px 0;background-color:#94a3b8;"></td></tr>
+      <!-- Pair 6: Qwen3-1.7B — base wins on macro, copa, sentineg ; kor wins on boolq ; hellaswag, wic tie -->
+      <tr style="background-color:#ece8ff;">
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);">Qwen3-1.7B</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;font-weight:600;">58,09<br><small style="font-weight:normal;color:#555;">55,38</small></td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;font-weight:400;">50,21</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;font-weight:600;">56,30</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;font-weight:600;">37,60</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;font-weight:600;">89,67</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;font-weight:600;">56,67</td>
+      </tr>
+      <tr style="background-color:#ece8ff;">
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);">Qwen3-1.7B-kor-32768</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;font-weight:400;">58,03<br><small style="color:#555;">55,36</small></td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;font-weight:600;">50,28</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;font-weight:400;">56,20</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;font-weight:600;">37,60</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;font-weight:400;">89,42</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;font-weight:600;">56,67</td>
+      </tr>
+      <tr><td colspan="7" style="padding:3px 0;background-color:#94a3b8;"></td></tr>
+      <!-- Pair 7: gemma-3-270m-it — base wins on macro, boolq ; copa, hellaswag, sentineg, wic tie -->
+      <tr style="background-color:#fde4e1;">
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);">gemma-3-270m-it</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;font-weight:600;">53,24<br><small style="font-weight:normal;color:#555;">50,93</small></td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;font-weight:600;">50,36</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;font-weight:600;">50,70</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;font-weight:600;">31,20</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;font-weight:600;">85,14</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;font-weight:600;">48,81</td>
+      </tr>
+      <tr style="background-color:#fde4e1;">
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);">gemma-3-270m-it-kor-32768</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;font-weight:400;">53,20<br><small style="color:#555;">50,87</small></td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;font-weight:400;">50,14</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;font-weight:600;">50,70</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;font-weight:600;">31,20</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;font-weight:600;">85,14</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;font-weight:600;">48,81</td>
+      </tr>
+      <tr><td colspan="7" style="padding:3px 0;background-color:#94a3b8;"></td></tr>
+      <!-- Pair 8: gemma-3-1b-it — kor wins on macro, copa, sentineg ; base wins on boolq, hellaswag ; wic tie -->
+      <tr style="background-color:#fde4e1;">
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);">gemma-3-1b-it</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;font-weight:400;">60,26<br><small style="color:#555;">58,21</small></td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;font-weight:600;">63,25</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;font-weight:400;">60,10</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;font-weight:600;">36,60</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;font-weight:400;">92,44</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;font-weight:600;">48,89</td>
+      </tr>
+      <tr style="background-color:#fde4e1;">
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);">gemma-3-1b-it-kor-32768</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;font-weight:600;">60,30<br><small style="font-weight:normal;color:#555;">58,25</small></td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;font-weight:400;">63,11</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;font-weight:600;">60,60</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;font-weight:400;">36,20</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;font-weight:600;">92,70</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;font-weight:600;">48,89</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<center>Figure 1 : Résultats sur le benchmark KoBEST</center>
+
+<br>
 
 Pour le coréen, nous observons que nous obtenons des résultats similaires aux modèles originaux à une exception : le granite 4.0-h où nous avons une dégradation de 3 points (ce que nous n'avons pas sur le néerlandais). Nous pouvons voir que c'est dû au jeu de données `boolq` sur lequel nous perdons 12 points. En analysant les résultats, il s'avère que le modèle trimmé s'effondre sur cette tâche sans que nous réussissions à modifier ce comportement (via le *prompt*, un changement des labels à trouver, ou encore de nombre de *shots*).  
 De toutes nos expériences (environ 90 modèles trimmés testés), c'est le seul modèle où nous observons une dégradation non attendue. C'est donc un cas isolé mais pouvant illustrer un cas limite du *trimming*.
@@ -3780,7 +3990,7 @@ Pour le gemma-3, le modèle original est un peu plus verbeux (ajoute davantage d
   <center>
   <img src="https://cdn-uploads.huggingface.co/production/uploads/613b0a62a14099d5afed7830/BsZ9lvJyoYvpVav4Xlpu-.png" 
        alt="Photo par Merve Noyan" 
-       style="max-width:70%; height:auto;">
+       style="max-width:60%; height:auto;">
   <figcaption>
     <center>
     Figure 1 : Photo par Merve NOYAN</center>
@@ -3798,7 +4008,7 @@ Prompt utilisé pour tous les modèles : « Esto es lo que tengo en mi mano. Si 
 </tr>
 <tr>
   <td width="50%" valign="top">Tengo 4 caramelos, 2 de cada color. Si me los da un caramelo de cada color, me quedarán 2 caramelos.<br><br>
-  <i>J'ai 4 bonbons, 2 de chaque couleur. S'il m'en donne un de chaque couleur, il m'en restera 2.</i>
+  <i>J'ai 4 bonbons, 2 de chaque couleur. S'il m'en donne un de chaque couleur, il m'en restera 2.</i></td>
   <td width="50%" valign="top">Tengo 4 caramelos de colores diferentes. Si me los come uno por uno, me quedarán 3 caramelos.<br><br>
   <i>J'ai 4 bonbons de couleurs différentes. Si je les mange un par un, il m'en restera 3.</i></td>
 </tr>
