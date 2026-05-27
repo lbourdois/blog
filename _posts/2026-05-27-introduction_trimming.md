@@ -561,17 +561,355 @@ Dans le tableau ci-dessus, et pour l'ensemble de l'article, nous donnons des chi
 ##### Anglais
 
 
-<figure>
-  <center>
-  <img src="https://cdn-uploads.huggingface.co/production/uploads/613b0a62a14099d5afed7830/Vl1Mhq-ZOFBsxdx0X1CV1.png" 
-       alt="Résultats sur MTEB des modèles d'embedding en anglais" 
-       style="max-width:100%; height:auto;">
-  <figcaption>
-    <center>
-    Figure 1 : Résultats sur MTEB des modèles d'embedding en anglais</center>
-  </figcaption></center>
-</figure>
+<table style="border-collapse:collapse;width:100%;font-size:0.98rem;box-shadow:0 2px 8px rgba(0,0,0,0.12);">
+  <thead>
+    <tr style="background-color:#2d3748;">
+      <th style="padding:12px 12px;text-align:center;font-weight:600;color:#ffffff;white-space:nowrap;">Modèle</th>
+      <th style="padding:12px 12px;text-align:center;font-weight:600;color:#ffffff;white-space:nowrap;">#</th>
+      <th style="padding:12px 12px;text-align:center;font-weight:600;color:#ffffff;white-space:nowrap;">Mean<br>(Task)</th>
+      <th style="padding:12px 12px;text-align:center;font-weight:600;color:#ffffff;white-space:nowrap;">Mean<br>(Task<br>Type)</th>
+      <th style="padding:12px 12px;text-align:center;font-weight:600;color:#ffffff;white-space:nowrap;">Cla</th>
+      <th style="padding:12px 12px;text-align:center;font-weight:600;color:#ffffff;white-space:nowrap;">Clu</th>
+      <th style="padding:12px 12px;text-align:center;font-weight:600;color:#ffffff;white-space:nowrap;">Pai</th>
+      <th style="padding:12px 12px;text-align:center;font-weight:600;color:#ffffff;white-space:nowrap;">Rer</th>
+      <th style="padding:12px 12px;text-align:center;font-weight:600;color:#ffffff;white-space:nowrap;">Ret</th>
+      <th style="padding:12px 12px;text-align:center;font-weight:600;color:#ffffff;white-space:nowrap;">STS</th>
+      <th style="padding:12px 12px;text-align:center;font-weight:600;color:#ffffff;white-space:nowrap;">Sum</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- granite 107m — bleu IBM -->
+    <tr style="background-color:#d9eeff;">
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);"><span style="color:#000000;">granite-embedding-107m-multilingual</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">107,0M</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">58,81</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">55,59</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">68,77</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">42,61</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">80,46</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">46,10</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">47,92</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">75,53</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">27,77</strong></td>
+    </tr>
+    <tr style="background-color:#d9eeff;">
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);"><span style="color:#000000;">granite-embedding-107m-eng-32768</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">23,6M</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">58,91</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">55,59</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">68,78</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">43,06</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">80,37</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">46,11</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">48,11</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">75,43</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">27,27</span></td>
+    </tr>
+    <tr style="background-color:#d9eeff;">
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);"><span style="color:#000000;">granite-embedding-107m-eng-16384</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">17,3M</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">58,52</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">54,94</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">68,54</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">42,39</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">79,78</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">45,75</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">47,79</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">75,34</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">24,98</span></td>
+    </tr>
+    <tr><td colspan="11" style="padding:3px 0;background-color:#94a3b8;"></td></tr>
+    <!-- granite 278m — bleu IBM -->
+    <tr style="background-color:#d9eeff;">
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);"><span style="color:#000000;">granite-embedding-278m-multilingual</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">278,0M</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">60,37</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">56,96</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">69,81</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">43,29</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">81,37</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">46,46</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">51,44</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">76,56</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">29,78</strong></td>
+    </tr>
+    <tr style="background-color:#d9eeff;">
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);"><span style="color:#000000;">granite-embedding-278m-eng-32768</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">111,2M</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">60,40</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">59,91</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">69,81</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">43,62</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">81,31</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">46,47</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">51,45</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">76,49</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">29,22</span></td>
+    </tr>
+    <tr style="background-color:#d9eeff;">
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);"><span style="color:#000000;">granite-embedding-278m-eng-16384</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">98,6M</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">60,07</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">56,65</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">69,56</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">42,76</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">80,76</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">46,07</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">51,27</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">76,39</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">29,72</span></td>
+    </tr>
+    <tr><td colspan="11" style="padding:3px 0;background-color:#94a3b8;"></td></tr>
+    <!-- e5-small — doré -->
+    <tr style="background-color:#fdf3d0;">
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);"><span style="color:#000000;">multilingual-e5-small</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">117,7M</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">58,90</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">55,72</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">70,51</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">41,65</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">83,85</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">43,59</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">41,35</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">79,85</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">29,23</span></td>
+    </tr>
+    <tr style="background-color:#fdf3d0;">
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);"><span style="color:#000000;">multilingual-e5-small-eng-32768</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">34,2M</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">58,77</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">55,89</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">70,51</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">40,70</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">83,86</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">43,58</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">43,34</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">79,83</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">29,42</strong></td>
+    </tr>
+    <tr style="background-color:#fdf3d0;">
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);"><span style="color:#000000;">multilingual-e5-small-eng-16384</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">27,9M</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">58,58</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">55,61</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">70,68</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">40,79</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">83,08</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">42,99</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">42,88</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">79,67</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">29,18</span></td>
+    </tr>
+    <tr><td colspan="11" style="padding:3px 0;background-color:#94a3b8;"></td></tr>
+    <!-- e5-base — doré -->
+    <tr style="background-color:#fdf3d0;">
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);"><span style="color:#000000;">multilingual-e5-base</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">278,0M</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">59,48</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">55,77</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">73,84</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">42,09</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">83,74</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">43,87</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">40,27</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">80,49</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">26,08</strong></td>
+    </tr>
+    <tr style="background-color:#fdf3d0;">
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);"><span style="color:#000000;">multilingual-e5-base-eng-32768</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">124,4M</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">59,66</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">56,02</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">73,81</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">41,66</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">83,69</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">43,85</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">43,38</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">80,49</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">25,22</span></td>
+    </tr>
+    <tr style="background-color:#fdf3d0;">
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);"><span style="color:#000000;">multilingual-e5-base-eng-16384</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">98,6M</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">59,31</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">55,70</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">73,44</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">41,50</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">82,83</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">43,32</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">42,89</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">80,27</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">25,66</span></td>
+    </tr>
+    <tr><td colspan="11" style="padding:3px 0;background-color:#94a3b8;"></td></tr>
+    <!-- e5-large — doré -->
+    <tr style="background-color:#fdf3d0;">
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);"><span style="color:#000000;">multilingual-e5-large</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">559,9M</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">60,52</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">56,62</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">74,89</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">41,62</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">84,33</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">44,32</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">43,38</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">81,12</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">26,67</span></td>
+    </tr>
+    <tr style="background-color:#fdf3d0;">
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);"><span style="color:#000000;">multilingual-e5-large-eng-32768</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">337,4M</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">60,85</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">57,09</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">74,90</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">41,82</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">84,33</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">44,33</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">46,25</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">81,12</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">26,92</strong></td>
+    </tr>
+    <tr style="background-color:#fdf3d0;">
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);"><span style="color:#000000;">multilingual-e5-large-eng-16384</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">320,7M</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">60,53</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">56,72</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">74,67</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">41,32</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">84,10</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">43,70</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">45,79</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">81,07</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">26,40</span></td>
+    </tr>
+    <tr><td colspan="11" style="padding:3px 0;background-color:#94a3b8;"></td></tr>
+    <!-- embeddinggemma — rouge Google -->
+    <tr style="background-color:#fde4e1;">
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);"><span style="color:#000000;">embeddinggemma</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">307,6M</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">68,13</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">63,58</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">87,51</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">53,39</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">84,83</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">46,93</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">51,75</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">82,91</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">37,77</strong></td>
+    </tr>
+    <tr style="background-color:#fde4e1;">
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);"><span style="color:#000000;">embeddinggemma-eng-32768</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">131,4M</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">65,46</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">61,18</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">86,32</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">49,43</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">81,37</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">45,17</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">50,80</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">80,05</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">35,08</span></td>
+    </tr>
+    <tr style="background-color:#fde4e1;">
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);"><span style="color:#000000;">embeddinggemma-eng-16384</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">118,8M</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">62,63</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">58,60</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">84,00</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">46,53</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">79,81</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">44,28</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">47,66</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">76,39</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">31,55</span></td>
+    </tr>
+    <tr><td colspan="11" style="padding:3px 0;background-color:#94a3b8;"></td></tr>
+    <!-- bge-m3 — indigo BAAI -->
+    <tr style="background-color:#e2e8f8;">
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);"><span style="color:#000000;">bge-m3</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">567,8M</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">62,17</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">59,12</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">77,37</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">40,71</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">84,48</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">45,99</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">49,61</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">80,91</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">34,79</span></td>
+    </tr>
+    <tr style="background-color:#e2e8f8;">
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);"><span style="color:#000000;">bge-m3-eng-32768</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">345,3M</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">62,29</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">59,28</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">77,38</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">40,99</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">84,50</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">46,00</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">49,80</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">80,91</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">35,38</span></td>
+    </tr>
+    <tr style="background-color:#e2e8f8;">
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);"><span style="color:#000000;">bge-m3-eng-16384</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">328,5M</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">62,19</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">59,20</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">77,39</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">40,86</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">84,22</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">45,36</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">49,70</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">80,81</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">36,07</strong></td>
+    </tr>
+    <tr><td colspan="11" style="padding:3px 0;background-color:#94a3b8;"></td></tr>
+    <!-- Qwen3 — violet -->
+    <tr style="background-color:#ece8ff;">
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);"><span style="color:#000000;">Qwen3-Embedding-0.6B</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">595,8M</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">65,28</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">59,78</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">74,62</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">47,55</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">80,16</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">46,16</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">60,64</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">81,33</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">28,02</span></td>
+    </tr>
+    <tr style="background-color:#ece8ff;">
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);"><span style="color:#000000;">Qwen3-Embedding-eng-32768</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">474,0M</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">65,14</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">59,82</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">74,69</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">47,27</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">79,88</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">46,05</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">60,34</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">81,19</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">29,29</strong></td>
+    </tr>
+    <tr style="background-color:#ece8ff;">
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);"><span style="color:#000000;">Qwen3-Embedding-eng-16384</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">457,2M</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">65,06</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">59,45</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">74,80</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">47,05</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">79,51</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">45,55</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">60,04</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">80,92</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">28,25</span></td>
+    </tr>
+  </tbody>
+</table>
 
+<center>Figure 1 : Résultats sur MTEB des modèles d'embedding en anglais</center>
+    
 Nous pouvons constater que globalement le *trimming* permet de maintenir les performances du modèle original tout en ayant des modèles plus petits. Dans 5 cas sur 8, nous avons même un modèle de 32 768 *tokens* qui est légèrement meilleur que le modèle original. Notre hypothèse est que la suppression de *tokens* parasites bénéficie au modèle.    
 Notons un problème néanmoins, la détérioration des performances de l'embeddinggemma. Nous pensions initialement avoir fait une erreur dans notre code, mais avons exclu cette possibilité lorsque nous nous sommes intéressés au gemma-3 (voir les parties sur les décodeurs et les VLM) qui utilise le même *tokenizer* et où nous n'observons pas de baisse de performances (il s'agit même probablement d'un des modèles les plus robustes au *trimming*).
 L'explication que nous avançons, et nous avons donc laissé ce modèle pour illustrer ce phénomène, est que le *trimming* ne fonctionne que si la couche d'*embedding* est la dernière couche du réseau (ou également la première en cas d'*embeddings* partagés). Là où cette couche d'*embedding* est bien la dernière (hors *pooling*) pour tous les autres modèles présentés, pour l'embeddinggemma, il y a [deux couches *denses* supplémentaires](https://huggingface.co/google/embeddinggemma-300m/tree/main). 
