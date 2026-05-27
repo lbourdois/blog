@@ -651,14 +651,14 @@ Nous nous sommes concentrés sur l'anglais et le néerlandais dans le cadre de c
 Pour chaque, nous les fournissons en versions 16 384 *tokens* et 32 768 *tokens*, ainsi que dans l'ensemble des tailles disponibles.  
 Certains acteurs ne fournissant pas la liste complète des langues gérées par leur modèle, nous avons généré du mieux que nous pouvions à partir de l'analyse des caractères unicode trouvés dans le tokenizer du modèle original.
 
-<div class="notice--primary" style="line-height:1.25;">
+<div style="line-height:1.25; background:#2e1f47; border-left:0.35rem solid #a78bfa; color:#f5f3ff; padding:1rem; border-radius:4px;">
   <p style="font-size:0.9rem;"><strong>🎁 Important</strong></p>
   <p style="font-size:0.9rem;">
-    La collection rassemblant les <strong>48</strong> modèles (<strong>12</strong> langues différentes) trimmés à partir des granite-embedding est disponible <a href="https://huggingface.co/collections/alphaedge-ai/trimming-granite-embedding">ici</a>.<br>
-    La collection rassemblant les <strong>948</strong> modèles (<strong>119</strong> langues différentes) trimmés à partir des multilingual-e5 est disponible <a href="https://huggingface.co/collections/alphaedge-ai/trimming-multilingual-e5">ici</a>.<br>
-    La collection rassemblant les <strong>243</strong> modèles (<strong>122</strong> langues différentes) trimmés à partir de l'embeddinggemma est disponible <a href="https://huggingface.co/collections/alphaedge-ai/trimming-embeddinggemma">ici</a>.<br>
-    La collection rassemblant les <strong>178</strong> modèles (<strong>89</strong> langues différentes) trimmés à partir du bge-m3 est disponible <a href="https://huggingface.co/collections/alphaedge-ai/trimming-bge-m3">ici</a>.<br>
-    La collection rassemblant les <strong>166</strong> modèles (<strong>83</strong> langues différentes) trimmés à partir du qwen3-embedding est disponible <a href="https://huggingface.co/collections/alphaedge-ai/trimming-multilingual-qwen3-embedding-06b">ici</a>.
+    La collection rassemblant les <strong>48</strong> modèles (<strong>12</strong> langues différentes) trimmés à partir des granite-embedding est disponible <a href="https://huggingface.co/collections/alphaedge-ai/trimming-granite-embedding" style="color:#c4b5fd;">ici</a>.<br>
+    La collection rassemblant les <strong>948</strong> modèles (<strong>119</strong> langues différentes) trimmés à partir des multilingual-e5 est disponible <a href="https://huggingface.co/collections/alphaedge-ai/trimming-multilingual-e5" style="color:#c4b5fd;">ici</a>.<br>
+    La collection rassemblant les <strong>243</strong> modèles (<strong>122</strong> langues différentes) trimmés à partir de l'embeddinggemma est disponible <a href="https://huggingface.co/collections/alphaedge-ai/trimming-embeddinggemma" style="color:#c4b5fd;">ici</a>.<br>
+    La collection rassemblant les <strong>178</strong> modèles (<strong>89</strong> langues différentes) trimmés à partir du bge-m3 est disponible <a href="https://huggingface.co/collections/alphaedge-ai/trimming-bge-m3" style="color:#c4b5fd;">ici</a>.<br>
+    La collection rassemblant les <strong>166</strong> modèles (<strong>83</strong> langues différentes) trimmés à partir du qwen3-embedding est disponible <a href="https://huggingface.co/collections/alphaedge-ai/trimming-multilingual-qwen3-embedding-06b" style="color:#c4b5fd;">ici</a>.
   </p>
 </div>
 
