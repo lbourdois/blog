@@ -4546,7 +4546,7 @@ En appliquant, à nouveau le modèle trimmé sur l'espagnol, nous pouvons consta
        style="max-width:100%; height:auto;">
   <figcaption>
     <center>
-    Figure 1 : Classification multilingue (alphabets latins et non latins) d'images en 0-shot avec clip-ViT-B-32-multilingual-v1-spa-32768</center>
+    Figure 8 : Classification multilingue (alphabets latins et non latins) d'images en 0-shot avec clip-ViT-B-32-multilingual-v1-spa-32768</center>
   </figcaption></center>
 </figure>
 
@@ -4563,7 +4563,7 @@ Prenons un exemple consistant à faire de la classification 0-*shot* sur l'image
        style="max-width:70%; height:auto;">
   <figcaption>
     <center>
-    Figure 8 : Image provenant de COCO (Val 2017) de LIN et al. (2014)</center>
+    Figure 9 : Image provenant de COCO (Val 2017) de LIN et al. (2014)</center>
   </figcaption></center>
 </figure>
 
@@ -4823,7 +4823,7 @@ La question s’est posée de savoir quelle est la meilleure taille de modèle p
        style="max-width:100%; height:auto;">
   <figcaption>
     <center>
-    Figure 9 : Nombre de tokens pour couvrir un certain pourcent du jeu de données de minage pour le modèle mmBERT-small sur l'anglais</center>
+    Figure 10 : Nombre de tokens pour couvrir un certain pourcent du jeu de données de minage pour le modèle mmBERT-small sur l'anglais</center>
   </figcaption></center>
 </figure>
 
@@ -4874,9 +4874,8 @@ Les choses se corsent quand nous analysons les 14 autres architectures :
 
 <table>
     <caption style="caption-side:bottom; padding-top:0.6rem; font-size:0.85rem; color:#cbd5e1; text-align:center;">
-    Figure 21 : Nombre de tokens pour couvrir un certain pourcent du jeu de données de minage pour le modèle mmBERT-small sur l'anglais
+    Tableau 21 : Nombre de tokens pour couvrir un certain pourcent du jeu de données de minage pour le modèle mmBERT-small sur l'anglais
   </caption>
-  
     <thead>
       <tr style="background-color:#1a202c;">
         <th style="padding:12px 12px;text-align:center;font-weight:600;color:#ffffff;white-space:nowrap;">Architectures</th>
@@ -4978,7 +4977,7 @@ En s’intéressant aux langues n’utilisant pas l’alphabet latin, nous pouvo
        style="max-width:100%; height:auto;">
   <figcaption>
     <center>
-    Figure 10 : Nombre de tokens pour couvrir un certain pourcent du jeu de données de minage pour le modèle mmBERT-small sur le coréen</center>
+    Figure 11 : Nombre de tokens pour couvrir un certain pourcent du jeu de données de minage pour le modèle mmBERT-small sur le coréen</center>
   </figcaption></center>
 </figure>
 
