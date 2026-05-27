@@ -347,8 +347,8 @@ Concernant les benchmarks, nous évaluons les modèles sur de l'anglais et du n�
 #table-reductions-parametres table {
   border-collapse: collapse;
   width: 100%;
-  min-width: 900px;
-  font-size: 0.9rem;
+  table-layout: fixed;
+  font-size: 0.72rem !important;
   box-shadow: 0 2px 7px rgba(0,0,0,0.12);
   border-radius: 8px;
   overflow: hidden;
@@ -356,33 +356,32 @@ Concernant les benchmarks, nous évaluons les modèles sur de l'anglais et du n�
 
 #table-reductions-parametres th,
 #table-reductions-parametres td {
-  padding: 12px 14px !important;
-  line-height: 1.35 !important;
-  vertical-align: top;
+  padding: 7px 6px !important;
+  line-height: 1.25 !important;
+  text-align: center !important;
+  vertical-align: middle !important;
+  white-space: normal !important;
+  word-break: normal !important;
+  overflow-wrap: normal !important;
 }
 
 #table-reductions-parametres th {
-  text-align: center;
-  font-weight: 700;
+  font-weight: 700 !important;
 }
 
-#table-reductions-parametres td:first-child,
-#table-reductions-parametres th:first-child {
-  width: 240px;
-  min-width: 220px;
-  white-space: normal;
-  overflow-wrap: normal;
-  word-break: normal;
+#table-reductions-parametres th:first-child,
+#table-reductions-parametres td:first-child {
+  width: 24%;
+  text-align: left !important;
 }
 
-#table-reductions-parametres td:not(:first-child),
-#table-reductions-parametres th:not(:first-child) {
-  white-space: nowrap;
-  text-align: center;
+#table-reductions-parametres th:not(:first-child),
+#table-reductions-parametres td:not(:first-child) {
+  width: 12.6%;
 }
 </style>
 
-  <table>
+<table>
     <thead>
       <tr style="background-color:#2d3748;">
         <th style="padding:12px 12px;text-align:center;font-weight:600;color:#ffffff;white-space:nowrap;">Modèle</th>
