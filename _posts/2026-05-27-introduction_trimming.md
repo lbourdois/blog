@@ -288,8 +288,8 @@ Les **85 056 000** paramètres (les 12 blocs transformer + la `LayerNorm` fi
 Par contre, avec cette technique, nous pouvons modifier les **38 597 376** paramètres de la couche d'*embedding* (`wte.weight`). Dans la sortie détaillée, nous pouvons voir que cette couche est de taille `[50257, 768]` soit un vocabulaire de taille 50 257 où chaque token est représenté sur 768 dimensions.  
 
 <div class="notice--info" style="line-height:1;">
-  <p style="font-size:0.5rem;"><strong>📝 Note</strong></p>
-  <p style="font-size:0.5rem;">
+  <p style="font-size:0.8rem;"><strong>📝 Note</strong></p>
+  <p style="font-size:0.8rem;">
     Cette information est également trouvable sur le Hub d'Hugging Face sans avoir à télécharger le modèle. Il faut consulter le <em>widget "Files infos"</em> qui est disponible pour tous les modèles du Hub dont les poids ont été poussés au format <code>safetensors</code>. Par exemple pour le GPT2, nous pouvons consulter <a href="https://huggingface.co/openai-community/gpt2?show_file_info=model.safetensors">cette page</a>. En passant votre curseur sur la ligne <code>wpe.weight</code> vous verrez même l'information indiquant que cette couche représente 28,17% de la taille totale du modèle.
   </p>
 </div>
