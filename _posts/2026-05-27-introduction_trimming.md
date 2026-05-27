@@ -1560,7 +1560,7 @@ Nous pouvons également observer que nos exécutions semblent nettement meilleur
 
 Notez que pour vérifier le Qwen3, nous avons effectué un peu de *vibechecking* pour nous faire une idée des capacités qualitatives des modèles. Nous en avons profité pour en faire avec l'ensemble des modèles. Vous pouvez déplier ci-dessous les sorties que nous obtenons avec le *prompt* *Geef me een korte introductie over grote taalmodellen.* (Donne moi une courte introduction aux modèles de langage.) :
 
-<details>
+<details markdown="1">
 <summary>granite-4.0-350m : Voir la comparaison original / trimmé</summary>
 <table>
 <tr>
@@ -1580,7 +1580,7 @@ Les grands modèles de langage sont des modèles d'apprentissage automatique qui
 </table>
 </details>
 
-<details>
+<details markdown="1">
 <summary>granite-4.0-h-350m : Voir la comparaison original / trimmé</summary>
 <table>
 <tr>
@@ -1596,7 +1596,7 @@ Les grands modèles de langage sont des modèles d'apprentissage automatique qui
 </table>
 </details>
 
-<details>
+<details markdown="1">
 <summary>granite-4.0-1b : Voir la comparaison original / trimmé</summary>
 <table>
 <tr>
@@ -1636,7 +1636,7 @@ Les grands modèles de langage ont eu un impact significatif sur la manière don
 </table>
 </details>
 
-<details>
+<details markdown="1">
 <summary>granite-4.0-h-1b : Voir la comparaison original / trimmé</summary>
 <table>
 <tr>
@@ -1652,7 +1652,7 @@ Les grands modèles de langage ont eu un impact significatif sur la manière don
 </table>
 </details>
 
-<details>
+<details markdown="1">
 <summary>Qwen3-0.6B : Voir la comparaison original / trimmé</summary>
 <table>
 <tr>
@@ -1668,7 +1668,7 @@ Les grands modèles de langage ont eu un impact significatif sur la manière don
 </table>
 </details>
 
-<details>
+<details markdown="1">
 <summary>Qwen3-1.7B : Voir la comparaison original / trimmé</summary>
 <table>
 <tr>
@@ -1684,7 +1684,7 @@ Les grands modèles de langage ont eu un impact significatif sur la manière don
 </details>
 
 
-<details>
+<details markdown="1">
 <summary>gemma-3-270m-it : Voir la comparaison original / trimmé</summary>
 <table>
 <tr>
@@ -1704,7 +1704,7 @@ Les grands modèles de langage (LLM) constituent une forme d'apprentissage autom
 </table>
 </details>
 
-<details>
+<details markdown="1">
 <summary>gemma-3-1b-it : Voir la comparaison original / trimmé</summary>
 <table>
 <tr>
@@ -1769,6 +1769,8 @@ Les grands modèles de langage (LLM) constituent une forme d'apprentissage autom
 </tr>
 </table>
 </details>
+
+<br>
 
 Sur la forme, les textes issus des modèles trimmés ne sont jamais sortis du sujet et sont donc semblables aux originaux.  
 Sur le fond, que ce soit les modèles trimmés ou originaux, les sorties générées ont tendance à traduire des termes techniques en lien avec les LLM/l'IA de l'anglais vers le néerlandais mais le font mal. Nous avons aussi observé que les modèles ont du mal avec le pluriel de certains mots. Concrètement, nos évaluateurs indiquent que les textes originaux ou trimmés ressemblent à des rédactions d'enfants pouvant parfois ici ou là utiliser quelques termes sophistiqués.
@@ -1989,7 +1991,7 @@ Pour une question de place, nous exposons un exemple pour le français et un pou
 
 Prompt utilisé pour tous les modèles : « Décris cette image en détail. »
 
-<details>
+<details markdown="1">
 <summary>Qwen3.5 0.8B : Voir la comparaison original / trimmé</summary>
 <table>
 <tr>
@@ -2003,7 +2005,7 @@ Prompt utilisé pour tous les modèles : « Décris cette image en détail. »
 </table>
 </details>
 
-<details>
+<details markdown="1">
 <summary>Qwen3.5 2B : Voir la comparaison original / trimmé</summary>
 <table>
 <tr>
@@ -2017,7 +2019,7 @@ Prompt utilisé pour tous les modèles : « Décris cette image en détail. »
 </table>
 </details>
 
-<details>
+<details markdown="1">
 <summary>Qwen3.5 4B : Voir la comparaison original / trimmé</summary>
 <table>
 <tr>
@@ -2031,7 +2033,7 @@ Prompt utilisé pour tous les modèles : « Décris cette image en détail. »
 </table>
 </details>
 
-<details>
+<details markdown="1">
 <summary>Qwen3.5 4B (<i>thinking</i>) : Voir la comparaison original / trimmé</summary>
 <table>
 <tr>
@@ -2126,7 +2128,7 @@ Cette image capture une scène de jardin en gros plan, centrée sur une magnifiq
 </details>
 
 
-<details>
+<details markdown="1">
 <summary>Gemma3 4B : Voir la comparaison original / trimmé</summary>
 <table>
 <tr>
@@ -2166,7 +2168,7 @@ Pour le gemma-3, le modèle original est un peu plus verbeux (ajoute davantage d
 
 Prompt utilisé pour tous les modèles : « Esto es lo que tengo en mi mano. Si como un caramelo de cada color, ¿cuántos caramelos me quedarán al final? » (*Voici ce que j'ai dans ma main. Si je mange un bonbon de chaque couleur, combien me restera t'il de bonbon à la fin ?*)
 
-<details>
+<details markdown="1">
 <summary>Qwen3.5 0.8B : Voir la comparaison original / trimmé</summary>
 <table>
 <tr>
@@ -2182,7 +2184,7 @@ Prompt utilisé pour tous les modèles : « Esto es lo que tengo en mi mano. Si 
 </table>
 </details>
 
-<details>
+<details markdown="1">
 <summary>Qwen3.5 2B : Voir la comparaison original / trimmé</summary>
 <table>
 <tr>
@@ -2198,7 +2200,7 @@ Prompt utilisé pour tous les modèles : « Esto es lo que tengo en mi mano. Si 
 </table>
 </details>
 
-<details>
+<details markdown="1">
 <summary>Qwen3.5 4B : Voir la comparaison original / trimmé</summary>
 <table>
 <tr>
@@ -2215,7 +2217,7 @@ Prompt utilisé pour tous les modèles : « Esto es lo que tengo en mi mano. Si 
 </table>
 </details>
 
-<details>
+<details markdown="1">
 <summary>Qwen3.5 4B (<i>thinking</i>) : Voir la comparaison original / trimmé</summary>
 <table>
 <tr>
@@ -2325,7 +2327,7 @@ Tienes 5 caramelos en total (2 azules, 2 naranjas y 1 verde). Si comes un carame
 </details>
 
 
-<details>
+<details markdown="1">
 <summary>Gemma3 4B : Voir la comparaison original / trimmé</summary>
 <table>
 <tr>
