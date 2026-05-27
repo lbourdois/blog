@@ -1535,16 +1535,136 @@ Nous évaluons ce dernier point également sur de l'anglais en comparant un mmBE
 
 **Ordre du trimming** :
 
-<figure>
-  <center>
-  <img src="https://cdn-uploads.huggingface.co/production/uploads/613b0a62a14099d5afed7830/6IF3xzixCUiQr3yq5OlEL.png" 
-       alt="Ordre du trimming" 
-       style="max-width:100%; height:auto;">
-  <figcaption>
-    <center>
-    Figure 1 : Ordre du trimming</center>
-  </figcaption></center>
-</figure>
+<div id="table-reductions-parametres" style="overflow-x:auto; margin:1.5rem 0; max-width:100%;">
+<style>
+#table-reductions-parametres table {
+  border-collapse: collapse;
+  width: 100%;
+  table-layout: fixed;
+  font-size: 0.72rem !important;
+  box-shadow: 0 2px 7px rgba(0,0,0,0.12);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+#table-reductions-parametres th,
+#table-reductions-parametres td {
+  padding: 7px 6px !important;
+  line-height: 1.25 !important;
+  text-align: center !important;
+  vertical-align: middle !important;
+  white-space: normal !important;
+  word-break: normal !important;
+  overflow-wrap: normal !important;
+}
+
+#table-reductions-parametres th {
+  font-weight: 700 !important;
+}
+
+#table-reductions-parametres th:first-child,
+#table-reductions-parametres td:first-child {
+  width: 24%;
+  text-align: left !important;
+}
+
+#table-reductions-parametres th:not(:first-child),
+#table-reductions-parametres td:not(:first-child) {
+  width: 12.6%;
+}
+</style>
+
+<table>
+<thead>
+    <tr style="background-color:#2d3748;">
+      <th style="padding:12px;text-align:center;font-weight:600;color:#ffffff;white-space:nowrap;">Modèle</th>
+      <th style="padding:12px;text-align:center;font-weight:600;color:#ffffff;">Paramètres</th>
+      <th style="padding:12px;text-align:center;font-weight:600;color:#ffffff;">Ordre</th>
+      <th style="padding:12px;text-align:center;font-weight:600;color:#ffffff;">Contexte</th>
+      <th style="padding:12px;text-align:center;font-weight:600;color:#ffffff;">Personnes</th>
+      <th style="padding:12px;text-align:center;font-weight:600;color:#ffffff;">Lieux</th>
+      <th style="padding:12px;text-align:center;font-weight:600;color:#ffffff;">Organisations</th>
+    </tr>
+</thead>
+<tbody>
+    <tr style="background-color:#dff5de;">
+        <td style="padding:10px;text-align:left;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">mmBERT-base</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">306,9M</td>
+        <td style="padding:10px;text-align:left;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">modèle original non trimmé, seulement finetuné</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">8 192</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">0,964</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">0,939</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">0,878</td>
+    </tr>
+    <tr style="background-color:#dff5de;">
+        <td style="padding:10px;text-align:left;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">mmBERT-base (32768)</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;"> 	135,5M</td>
+        <td style="padding:10px;text-align:left;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">modèle original finetuné (i.e le modèle de la ligne ci-dessus) puis trimmé</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">8 192</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">0,354</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">0,047</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">0,292</td>
+    </tr>
+    <tr style="background-color:#dff5de;">
+        <td style="padding:10px;text-align:left;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">mmBERT-base-fra-32768</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;"> 	135,5M</td>
+        <td style="padding:10px;text-align:left;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">modèle original trimmé puis finetuné</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">8 192</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">0,964</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">0,940</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">0,874</td>
+    </tr>
+    <tr style="background-color:#dff5de;">
+        <td style="padding:10px;text-align:left;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">mmBERT-base (16384)</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;"> 	135,5M</td>
+        <td style="padding:10px;text-align:left;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">modèle original finetuné (i.e le modèle de la 1ère ligne du tableau) puis trimmé</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">8 192</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">0,000</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">0,257</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">0,055</td>
+    </tr>
+    <tr style="background-color:#dff5de;">
+        <td style="padding:10px;text-align:left;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">mmBERT-base-fra-16384</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;"> 	122,9M</td>
+        <td style="padding:10px;text-align:left;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">modèle original trimmé puis finetuné</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">8 192</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">0,963</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">0,938</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">0,871</td>
+    </tr>
+    <tr><td colspan="11" style="padding:3px 0;background-color:#94a3b8;"></td></tr>
+    <tr style="background-color:#ffe8cc;">
+        <td style="padding:10px;text-align:left;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">mmbert-32k-yarn</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">306,9M</td>
+        <td style="padding:10px;text-align:left;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">modèle original non trimmé, seulement finetuné</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">32 768</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">0,960</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">0,934</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">0,865</td>
+    </tr>
+    <tr style="background-color:#ffe8cc;">
+        <td style="padding:10px;text-align:left;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">mmBERT-base-32k-yarn-fra-32768</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;"> 	135,5M</td>
+        <td style="padding:10px;text-align:left;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">modèle original finetuné (i.e le modèle de la ligne ci-dessus) puis trimmé</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">32 768</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">0,283</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">0,127</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">0,000</td>
+    </tr>
+    <tr style="background-color:#ffe8cc;">
+        <td style="padding:10px;text-align:left;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">mmBERT-base-32k-yarn-fra-32768</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;"> 	135,5M</td>
+        <td style="padding:10px;text-align:left;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">modèle original trimmé puis finetuné</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">32 768</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">0,960</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">0,933</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">0,860</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<center>Figure 1 : Ordre du trimming</center>
 
 D'après ces expérimentations, dans le cadre du mmBERT, il est impératif de trimmer le modèle original puis finetuner le modèle résultant plutôt que de finetuner le modèle original puis de le trimmer.  
 Au-delà d'éviter un effondrement des performances, finetuner un modèle trimmé est aussi plus rapide que de finetuner un modèle original car le modèle est plus petit.
@@ -1567,16 +1687,107 @@ Enfin le modèle YaRN apparaît comme moins performant que le modèle original n
 Ayant découvert le *trimming* il y a quelques années via l'article Medium de David DALE, nous utilisons comme lui le [Leipzig Corpora](https://corpora.uni-leipzig.de) de [GOLDHAHN et al.](http://www.lrec-conf.org/proceedings/lrec2012/pdf/327_Paper.pdf) (2012) pour le minage des *tokens*.  
 À l'occasion de cet article de blog, nous nous sommes intéressés à explorer l'impact des données de minage sur les performances des modèles. Dans cette partie, nous comparons donc le Leipzig Corpora à [Fineweb 2](https://huggingface.co/datasets/HuggingFaceFW/fineweb-2) de [PENEDO et al.](https://arxiv.org/abs/2506.20920) (2025) publié il y a quelques mois. Pour Leipzig Corpora nous avons utilisé les 200 000 premières données du jeu de données `fra_wikipedia_2021` et pour Fineweb 2 les 200 000 premières données du *split* `fra_Latn`.
 
-<figure>
-  <center>
-  <img src="https://cdn-uploads.huggingface.co/production/uploads/613b0a62a14099d5afed7830/JeCR5a03WChL7HiQ1Mp9e.png" 
-       alt="Impact de la base de données de textes de minage" 
-       style="max-width:95%; height:auto;">
-  <figcaption>
-    <center>
-    Figure 1 : Impact de la base de données de textes de minage</center>
-  </figcaption></center>
-</figure>
+<div id="table-reductions-parametres" style="overflow-x:auto; margin:1.5rem 0; max-width:100%;">
+<style>
+#table-reductions-parametres table {
+  border-collapse: collapse;
+  width: 100%;
+  table-layout: fixed;
+  font-size: 0.72rem !important;
+  box-shadow: 0 2px 7px rgba(0,0,0,0.12);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+#table-reductions-parametres th,
+#table-reductions-parametres td {
+  padding: 7px 6px !important;
+  line-height: 1.25 !important;
+  text-align: center !important;
+  vertical-align: middle !important;
+  white-space: normal !important;
+  word-break: normal !important;
+  overflow-wrap: normal !important;
+}
+
+#table-reductions-parametres th {
+  font-weight: 700 !important;
+}
+
+#table-reductions-parametres th:first-child,
+#table-reductions-parametres td:first-child {
+  width: 24%;
+  text-align: left !important;
+}
+
+#table-reductions-parametres th:not(:first-child),
+#table-reductions-parametres td:not(:first-child) {
+  width: 12.6%;
+}
+</style>
+
+<thead>
+    <tr style="background-color:#2d3748;">
+      <th style="padding:12px;text-align:center;font-weight:600;color:#ffffff;white-space:nowrap;">Modèle</th>
+      <th style="padding:12px;text-align:center;font-weight:600;color:#ffffff;">Paramètres</th>
+      <th style="padding:12px;text-align:center;font-weight:600;color:#ffffff;">Jeu de données</th>
+      <th style="padding:12px;text-align:center;font-weight:600;color:#ffffff;">Contexte</th>
+      <th style="padding:12px;text-align:center;font-weight:600;color:#ffffff;">Personnes</th>
+      <th style="padding:12px;text-align:center;font-weight:600;color:#ffffff;">Lieux</th>
+      <th style="padding:12px;text-align:center;font-weight:600;color:#ffffff;">Organisations</th>
+    </tr>
+</thead>
+<tbody>
+    <tr style="background-color:#dff5de;">
+        <td style="padding:10px;text-align:left;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">mmBERT-base</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">306,9M</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">Fineweb 2</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">8 192</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">0,964</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">0,939</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">0,878</td>
+    </tr>
+    <tr style="background-color:#dff5de;">
+        <td style="padding:10px;text-align:left;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">mmBERT-base-fra-32768</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">136M</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">Fineweb 2</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">8 192</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">0,964</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">0,940</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">0,874</td>
+    </tr>
+    <tr style="background-color:#dff5de;">
+        <td style="padding:10px;text-align:left;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">mmBERT-base-fra-32768</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">136M</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">Liepzig</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">8 192</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">0,963</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">0,939</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">0,875</td>
+    </tr>
+    <tr style="background-color:#dff5de;">
+        <td style="padding:10px;text-align:left;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">mmBERT-base-fra-16384</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">124M</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">Fineweb 2</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">8 192</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">0,963</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">0,938</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">0,871</td>
+    </tr>
+    <tr style="background-color:#dff5de;">
+        <td style="padding:10px;text-align:left;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">mmBERT-base-fra-16384</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">124M</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">Liepzig</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">8 192</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">0,963</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">0,937</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">0,871</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+  
+<center>Figure 1 : Impact de la base de données de textes de minage</center>
 
 Nous pouvons observer des résultats similaires entre les deux corpus, quel que soit le nombre de *tokens* gardé dans le vocabulaire.  
 Pour notre part, et ceci pour l'ensemble des résultats présentés dans cet article ainsi que pour les 5526 modèles générés, nous avons utilisé Fineweb 2.  
