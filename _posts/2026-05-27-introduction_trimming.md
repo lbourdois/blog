@@ -325,7 +325,7 @@ Dans ce qui suit, nous testons l'ensemble des modèles sur une diversité de lan
 
 Observons l'impact du *trimming* sur les performances de différents types de modèles en commençant avec les modèles d'*embedding* textuels.
 
-#### Modèles et benchmarks sélectionnés 
+### Modèles et benchmarks sélectionnés 
 Dans cette section, nous focalisons notamment sur  :
 - Les [granite embedding](https://huggingface.co/collections/ibm-granite/granite-embedding-models) de Granite Team (2025) disponibles en [107M](https://huggingface.co/ibm-granite/granite-embedding-107m-multilingual) et [278M](https://huggingface.co/ibm-granite/granite-embedding-278m-multilingual) de paramètres ;
 - Les [multilingual-e5](https://huggingface.co/collections/intfloat/multilingual-e5-text-embeddings) de [WANG et al.](https://arxiv.org/abs/2402.05672) (2024) disponibles en taille `small`, `base`, `large` et `instruct` ;
@@ -339,7 +339,7 @@ Concernant les benchmarks, nous évaluons les modèles sur de l'anglais et du n�
 - Le [MTEB-NL](https://huggingface.co/collections/clips/mteb-nl) de [BANAR, LOTFI et al.](https://arxiv.org/abs/2509.12340) (2025). Nous avons choisi cette langue car avec ce benchmark, ces auteurs ont également introduit les modèles [e5-NL](https://huggingface.co/collections/clips/e5-nl) qui ont été construit en utilisant la technique du *trimming*.
 
 
-#### Réductions de paramètres observées
+### Réductions de paramètres observées
   
 <div id="table-reductions-parametres" style="overflow-x:auto; margin:1.5rem 0; max-width:100%;">
 <style>
@@ -556,7 +556,7 @@ Concernant les benchmarks, nous évaluons les modèles sur de l'anglais et du n�
 
 Dans le tableau ci-dessus, et pour l'ensemble de l'article, nous donnons des chiffres pour des vocabulaires de taille 16 384 et 32 768 *tokens*. Nous revenons dans la section de l'article, **Questions ouvertes❓**, sur ce choix et plus généralement sur le défi du nombre de *tokens* à conserver dans le vocabulaire du modèle trimmé.
 
-#### Résultats
+### Résultats
 
 **Anglais**
 
@@ -1379,7 +1379,7 @@ Nous revenons sur ce dernier point dans une partie dédiée dans la dernière se
 
 <br>
 
-#### Collections
+### Collections
 
 Nous nous sommes concentrés sur l'anglais et le néerlandais dans le cadre de cet article de blog. Néanmoins, pour chacun des 5 modèles listés ci-dessus, nous avons généré l'ensemble des modèles monolingues possibles à partir des langues gérées par chacun des modèles originaux.  
 Pour chaque, nous les fournissons en versions 16 384 *tokens* et 32 768 *tokens*, ainsi que dans l'ensemble des tailles disponibles.  
@@ -1403,7 +1403,7 @@ Certains acteurs ne fournissant pas la liste complète des langues gérées par 
 
 Continuons d'analyser l'impact du *trimming* sur les performances de différents types de modèles en passant à présent aux modèles encodeur.
 
-#### Modèles et benchmarks sélectionnés 
+### Modèles et benchmarks sélectionnés 
 Dans cette section, nous nous focalisons sur le [mmBERT](https://huggingface.co/collections/jhu-clsp/mmbert-a-modern-multilingual-encoder) de MARONE, WELLER et al. (2025) et plus particulièrement la version [small](https://huggingface.co/jhu-clsp/mmBERT-small) et la version [base](https://huggingface.co/jhu-clsp/mmBERT-base), mais aussi la [version 32k](https://huggingface.co/llm-semantic-router/mmbert-32k-yarn) de vLLM Semantic Router Team (2026).  
 
 Nous évaluons l'ensemble de ces modèles sur du français, et plus particulièrement sur la tâche de reconnaissance d'entités nommées et le jeu de données [frenchNER_3entities](https://huggingface.co/datasets/CATIE-AQ/frenchNER_3entities) de BOURDOIS (2024) portant sur les entités Personnes, Lieux et Organisations. L'idée ici est de se concentrer sur un seul jeu de données mais de mener plusieurs expériences dessus pour déterminer :
@@ -1416,7 +1416,7 @@ Nous évaluons l'ensemble de ces modèles sur du français, et plus particulièr
 Nous évaluons ce dernier point également sur de l'anglais en comparant un mmBERT `small` trimmé sur de l'anglais avec le [DistilBERT](https://huggingface.co/distilbert/distilbert-base-uncased) de [SANH et al.](https://arxiv.org/abs/1910.01108) (2019) sur le benchmark [GLUE](https://arxiv.org/abs/1804.07461) de WANG et al. (2018). L'idée étant ici à l'inverse de se concentrer sur un seul modèle mais l'évaluer sur plusieurs tâches.
 
 
-#### Réductions de paramètres observées
+### Réductions de paramètres observées
 
 <div id="table-reductions-parametres" style="overflow-x:auto; margin:1.5rem 0; max-width:100%;">
 <style>
@@ -1530,11 +1530,11 @@ Nous évaluons ce dernier point également sur de l'anglais en comparant un mmBE
   </table>
 </div>
 
-#### Résultats
+### Résultats
 
 **Français**
 
-Ordre du trimming :
+• Ordre du trimming :
 
 <div id="table-reductions-parametres" style="overflow-x:auto; margin:1.5rem 0; max-width:100%;">
 <style>
@@ -1685,7 +1685,7 @@ Enfin le modèle YaRN apparaît comme moins performant que le modèle original n
 
 <br>
 
-Impact de la base de données de textes de minage :
+• Impact de la base de données de textes de minage :
 
 Ayant découvert le *trimming* il y a quelques années via l'article Medium de David DALE, nous utilisons comme lui le [Leipzig Corpora](https://corpora.uni-leipzig.de) de [GOLDHAHN et al.](http://www.lrec-conf.org/proceedings/lrec2012/pdf/327_Paper.pdf) (2012) pour le minage des *tokens*.  
 À l'occasion de cet article de blog, nous nous sommes intéressés à explorer l'impact des données de minage sur les performances des modèles. Dans cette partie, nous comparons donc le Leipzig Corpora à [Fineweb 2](https://huggingface.co/datasets/HuggingFaceFW/fineweb-2) de [PENEDO et al.](https://arxiv.org/abs/2506.20920) (2025) publié il y a quelques mois. Pour Leipzig Corpora nous avons utilisé les 200 000 premières données du jeu de données `fra_wikipedia_2021` et pour Fineweb 2 les 200 000 premières données du *split* `fra_Latn`.
@@ -1801,7 +1801,7 @@ Ce choix s'est imposé uniquement d'un point de vue pratique. En effet, Fineweb 
 
 <br>
 
-Impact du nombre de textes lors du minage :
+• Impact du nombre de textes lors du minage :
 
 Nous venons de voir que la source utilisée pour miner les *tokens* n'avait pas une grande importance sur les performances. Qu'en est-il du nombre de textes utilisés ?
 
@@ -1931,7 +1931,7 @@ Nous nous focalisions ici sur des textes génériques issus de Fineweb 2. Nous n
 
 <br>
 
-Comparaison avec un modèle entraîné de zéro :
+• Comparaison avec un modèle entraîné de zéro :
 
 Pour cette comparaison d'un modèle monolingue entraîné de zéro vs. un modèle multilingue trimmé, il nous semblait important de comparer des modèles partageant exactement la même architecture à savoir celle du modernBERT (plutôt qu'un modernBERT trimmé vs. un BERT/RoBERTa/DeBERTa entraîné de zéro par exemple).  
 Pour le français, il existe une version entraînée de zéro du modernBERT : le [ModernCamemBERT](https://huggingface.co/almanach/moderncamembert-cv2-base) d'[ANTOUN et al.](https://arxiv.org/abs/2504.08716) (2025).
@@ -2010,6 +2010,7 @@ Pour le français, il existe une version entraînée de zéro du modernBERT : le
         <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;"><b>0,969</b></td>
         <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;"><b>0,944</b></td>
         <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;"><b>0,881</b></td>
+      </tr>
     </tbody>
   </table>
 </div>
@@ -2024,7 +2025,7 @@ Accessoirement, vous profiterez également d'une optimisation du nombre de *toke
 
 <br>
 
-Comparaison avec la distillation :
+• Comparaison avec la distillation :
 
 Pour comparer un modèle trimmé à un modèle obtenu par distillation, utilisons le [distilCamemBERT](https://huggingface.co/cmarkea/distilcamembert-base) de [DELESTRE et AMAR](https://hal.archives-ouvertes.fr/hal-03674695/file/cap2022.pdf) (2022) distillé à partir du [CamemBERT base](https://arxiv.org/abs/1911.03894) de MARTIN, MULLER, ORTIZ SUÁREZ, et al. (2019). Pour cela, en plus des options en 16 384 et 32 768 *tokens*, nous avons également généré un modèle de 67 476 *tokens* pour avoir une version trimmée possédant le même nombre de paramètres que distilCamemBERT à savoir 67,5M.
 
@@ -2272,7 +2273,7 @@ Cela s'explique sûrement par le fait que le mmBERT small non trimmé score à 8
 </div>
 
 
-#### Collections
+### Collections
 
 <div style="line-height:1.25; background:#2e1f47; color:#f5f3ff; padding:1rem; border-radius:4px;">
   <p style="font-size:0.9rem;"><strong>🎁 Important</strong></p>
@@ -2288,7 +2289,7 @@ Cela s'explique sûrement par le fait que le mmBERT small non trimmé score à 8
 
 Intéressons-nous à présent aux modèles encodeur-décodeur. 
 
-#### Modèles et benchmarks sélectionnés 
+### Modèles et benchmarks sélectionnés 
 
 Pour les modèles encodeur-décodeur, nous nous concentrons sur :
 - Le [mT5](https://huggingface.co/collections/google/mt5-release) de XUE, CONSTANT, ROBERTS et al. (2021) et plus particulièrement la version [small](https://huggingface.co/google/mt5-small) et la version [base](https://huggingface.co/google/mt5-base);
@@ -2300,7 +2301,7 @@ Nous effectuons les évaluations de ces modèles sur du coréen et plus précis�
 Nous les évaluons également sur de l'arabe et de l'allemand dans le cadre d'une tâche de traduction. En effet, jusqu'ici nous avons montré des usages du *trimming* pour générer des modèles monolingues à partir d'un modèle multilingue. Notre souhait est de montrer que la méthode peut s'appliquer aussi pour générer des modèles *n*-lingues à partir d'un modèle multilingue. Le jeu de données retenu pour la traduction est la partie `ar-de` de [MultiUN](https://huggingface.co/datasets/Helsinki-NLP/multiun) d'[EISELE et CHEN](http://www.lrec-conf.org/proceedings/lrec2010/pdf/686_Paper.pdf) (2010) où nous avons gardé les 100 000 premiers échantillons que nous avons divisé en 90% *train*, 5% éval et 5% *test*.
 
 
-#### Réductions de paramètres observées
+### Réductions de paramètres observées
 
 <div id="table-reductions-parametres" style="overflow-x:auto; margin:1.5rem 0; max-width:100%;">
 <style>
@@ -2428,7 +2429,7 @@ Nous pensions initialement proposer également la version <code>large</code> du 
   </p>
 </div>
 
-#### Résultats
+### Résultats
 
 **Coréen**
 
@@ -2475,7 +2476,7 @@ Pour le mBART, au lieu de générer la version 16 384 *tokens*, nous avons chois
   </p>
 </div>
 
-#### Collections
+### Collections
 
 <div style="line-height:1.25; background:#2e1f47; color:#f5f3ff; padding:1rem; border-radius:4px;">
   <p style="font-size:0.9rem;"><strong>🎁 Important</strong></p>
@@ -2491,7 +2492,7 @@ Pour le mBART, au lieu de générer la version 16 384 *tokens*, nous avons chois
 
 Poursuivons nos expérimentations avec les modèles décodeur.
 
-#### Modèles et benchmarks sélectionnés 
+### Modèles et benchmarks sélectionnés 
 
 Nous nous intéressons ici à quatre familles de décodeurs : 
 - Les [Granite 4.0](https://huggingface.co/collections/ibm-granite/granite-40-language-models) d'IBM Research (2025) dans ses tailles `350m` et `1b` (que ce soit en version attention ou hybride) ;
@@ -2504,7 +2505,7 @@ Pour le néerlandais, nous utilisons l'échantillon portant sur cette langue du 
 Pour le coréen, nous appliquons les modèles sur le benchmark [KoBEST](https://huggingface.co/datasets/skt/kobest_v1) de [KIM et al.](https://arxiv.org/abs/2204.04541) (2022) où nous avons procédé à une configuration 5-*shots*.
 
 
-#### Réductions de paramètres observées
+### Réductions de paramètres observées
 
 <div id="table-reductions-parametres" style="overflow-x:auto; margin:1.5rem 0; max-width:100%;">
 <style>
@@ -2728,7 +2729,7 @@ Pour le coréen, nous appliquons les modèles sur le benchmark [KoBEST](https://
   </table>
 </div>
 
-#### Résultats
+### Résultats
 
 **Néerlandais**
 
@@ -3005,7 +3006,7 @@ De toutes nos expériences (environ 90 modèles trimmés testés), c'est le seul
 </div>
 
 
-#### Collections
+### Collections
 
 <div style="line-height:1.25; background:#2e1f47; color:#f5f3ff; padding:1rem; border-radius:4px;">
   <p style="font-size:0.9rem;"><strong>🎁 Important</strong></p>
@@ -3023,7 +3024,7 @@ De toutes nos expériences (environ 90 modèles trimmés testés), c'est le seul
 
 Observons à présent l'impact du *trimming* sur les performances des VLM.  
 
-#### Modèles et benchmarks sélectionnés 
+### Modèles et benchmarks sélectionnés 
 
 Nous nous sommes dirigés sur deux VLM pour cette section :
 - Les [Qwen 3.5](https://huggingface.co/collections/Qwen/qwen35) de Qwen Team (2026) en taille `0.8B`, `2B` et `4B` ;
@@ -3033,7 +3034,7 @@ Ne disposant pas de *benchmarks* pour évaluer ces modèles dans d'autres langue
 Pour une question de place, nous exposons un exemple pour le français et un pour l'espagnol. 
 
 
-#### Réductions de paramètres observées
+### Réductions de paramètres observées
 
 <div id="table-reductions-parametres" style="overflow-x:auto; margin:1.5rem 0; max-width:100%;">
 <style>
@@ -3165,7 +3166,7 @@ Pour une question de place, nous exposons un exemple pour le français et un pou
   </table>
 </div>
 
-#### Résultats
+### Résultats
 
 **Français**
 
@@ -3563,7 +3564,7 @@ Notons que la trace de l'exemple du Qwen 3.5 4B en français a été générée 
 </div>
 
 
-#### Collections
+### Collections
 
 <div style="line-height:1.25; background:#2e1f47; color:#f5f3ff; padding:1rem; border-radius:4px;">
   <p style="font-size:0.9rem;"><strong>🎁 Important</strong></p>
@@ -3580,7 +3581,7 @@ Notons que la trace de l'exemple du Qwen 3.5 4B en français a été générée 
 
 Concluons nos expériences en nous intéressant aux modèles d'*embeddings* visuels.
 
-#### Modèles et benchmarks sélectionnés 
+### Modèles et benchmarks sélectionnés 
 
 Dans cette section de l'article, nous analysons les modèles suivants : 
 - Le [clip-ViT-B-32-multilingual-v1](https://huggingface.co/sentence-transformers/clip-ViT-B-32-multilingual-v1) de REIMERS et GUREVYCH (2021) ;
@@ -3590,7 +3591,7 @@ Concernant l'évaluation, les benchmarks non anglais étant rares, nous avons fa
 Nous nous focalisons notamment sur la recherche d'images et la classification d'image en 0-*shot*.
 
 
-#### Réductions de paramètres observées
+### Réductions de paramètres observées
 
 <div id="table-reductions-parametres" style="overflow-x:auto; margin:1.5rem 0; max-width:100%;">
 <style>
@@ -3801,7 +3802,7 @@ Le clip-ViT-B-32-multilingual-v1 et le MetaCLIP-2 ayant une taille de vocabulair
   </p>
 </div>
  
-#### Résultats
+### Résultats
 
 ##### Recherche d'images
 
@@ -4038,7 +4039,7 @@ Nous avons cette fois des modèles trimmés faisant mieux que l'original, et la 
   </p>
 </div>
 
-#### Collections
+### Collections
 
 <div style="line-height:1.25; background:#2e1f47; color:#f5f3ff; padding:1rem; border-radius:4px;">
   <p style="font-size:0.9rem;"><strong>🎁 Important</strong></p>
