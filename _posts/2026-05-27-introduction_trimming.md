@@ -2359,6 +2359,9 @@ Nous les évaluons également sur de l'arabe et de l'allemand dans le cadre d'un
 </style>
 
 <table>
+  <caption style="caption-side:bottom; padding-top:0.6rem; font-size:0.85rem; color:#cbd5e1; text-align:center;">
+  Tableau 11 : Réductions de paramètres observées sur les encodeur-décodeur
+  </caption>
     <thead>
       <tr style="background-color:#2d3748;">
         <th style="padding:12px 12px;text-align:center;font-weight:600;color:#ffffff;">Modèle</th>
@@ -2489,6 +2492,9 @@ Nous pensions initialement proposer également la version <code>large</code> du 
 </style>
 
 <table>
+  <caption style="caption-side:bottom; padding-top:0.6rem; font-size:0.85rem; color:#cbd5e1; text-align:center;">
+  Tableau 12 : Résultats de la tâche de génération de question via encodeur-décodeur
+  </caption>
    <thead>
       <tr style="background-color:#2d3748;">
         <th style="padding:12px 12px;text-align:center;font-weight:600;color:#ffffff;white-space:nowrap;">Modèle</th>
@@ -2559,8 +2565,6 @@ Nous pensions initialement proposer également la version <code>large</code> du 
   </table>
 </div>
 
-<center>Figure 1 : Résultats de la tâche de génération de question via encodeur-décodeur</center>
-
 <br>
 
 Pour le mT5 `small`, nous pouvons voir une légère amélioration sur la métrique BLEU et une légère dégradation sur la métrique ROUGE-L.  
@@ -2612,6 +2616,9 @@ Le mBART se comporte moins bien que le mT5 puisque nous pouvons constater une d�
 </style>
 
 <table>
+  <caption style="caption-side:bottom; padding-top:0.6rem; font-size:0.85rem; color:#cbd5e1; text-align:center;">
+  Tableau 13 : Résultats de la tâche de traduction via un encodeur-décodeur
+  </caption>
    <thead>
       <tr style="background-color:#2d3748;">
         <th style="padding:12px 12px;text-align:center;font-weight:600;color:#ffffff;white-space:nowrap;">Modèle</th>
@@ -2671,8 +2678,6 @@ Le mBART se comporte moins bien que le mT5 puisque nous pouvons constater une d�
     </tbody>
   </table>
 </div>
-
-<center>Figure 1 : Résultats de la tâche de traduction via un encodeur-décodeur</center>
 
 <br>
 
@@ -2759,6 +2764,9 @@ Pour le coréen, nous appliquons les modèles sur le benchmark [KoBEST](https://
 </style>
 
 <table>
+  <caption style="caption-side:bottom; padding-top:0.6rem; font-size:0.85rem; color:#cbd5e1; text-align:center;">
+  Tableau 14 : Réductions de paramètres observées sur les modèles décodeur
+  </caption>
     <thead>
       <tr style="background-color:#2d3748;">
         <th style="padding:12px 12px;text-align:center;font-weight:600;color:#ffffff;">Modèle</th>
@@ -2988,6 +2996,9 @@ Nous donnons également les chiffres des exécutions effectuées par les équipe
 </style>
 
 <table>
+  <caption style="caption-side:bottom; padding-top:0.6rem; font-size:0.85rem; color:#cbd5e1; text-align:center;">
+  Tableau 15 : Résultats sur l'échantillon néerlandais d'EuroEval
+  </caption>
       <thead>
       <tr style="background-color:#2d3748;">
         <th style="padding:12px;text-align:center;font-weight:600;color:#ffffff;white-space:nowrap;">Modèle</th>
@@ -3184,8 +3195,6 @@ Nous donnons également les chiffres des exécutions effectuées par les équipe
     </tbody>
   </table>
 </div>
-
-<center>Figure 1 : Résultats sur l'échantillon néerlandais d'EuroEval</center>
 
 <br>
 
@@ -3470,6 +3479,9 @@ Sur ce point du fond, notez que les modèles montrés ici servent à illustrer l
 </style>
 
 <table>
+  <caption style="caption-side:bottom; padding-top:0.6rem; font-size:0.85rem; color:#cbd5e1; text-align:center;">
+  Tableau 16 : Résultats sur le benchmark KoBEST
+  </caption>
     <thead>
       <tr style="background-color:#2d3748;">
         <th style="padding:12px;text-align:center;font-weight:600;color:#ffffff;white-space:nowrap;">Modèle</th>
@@ -3645,8 +3657,6 @@ Sur ce point du fond, notez que les modèles montrés ici servent à illustrer l
   </table>
 </div>
 
-<center>Figure 1 : Résultats sur le benchmark KoBEST</center>
-
 <br>
 
 Pour le coréen, nous observons que nous obtenons des résultats similaires aux modèles originaux à une exception : le granite 4.0-h où nous avons une dégradation de 3 points (ce que nous n'avons pas sur le néerlandais). Nous pouvons voir que c'est dû au jeu de données `boolq` sur lequel nous perdons 12 points. En analysant les résultats, il s'avère que le modèle trimmé s'effondre sur cette tâche sans que nous réussissions à modifier ce comportement (via le *prompt*, un changement des labels à trouver, ou encore de nombre de *shots*).  
@@ -3734,6 +3744,9 @@ Pour une question de place, nous exposons un exemple pour le français et un pou
 </style>
 
 <table>
+  <caption style="caption-side:bottom; padding-top:0.6rem; font-size:0.85rem; color:#cbd5e1; text-align:center;">
+  Tableau 17 : Réductions de paramètres observées sur les modèles VLM
+  </caption>
     <thead>
       <tr style="background-color:#2d3748;">
         <th style="padding:12px 12px;text-align:center;font-weight:600;color:#ffffff;">Modèle</th>
@@ -3835,7 +3848,7 @@ Pour une question de place, nous exposons un exemple pour le français et un pou
        style="max-width:70%; height:auto;">
   <figcaption>
     <center>
-    Figure 1 : Photo par Merve NOYAN</center>
+    Figure 3 : Photo par Merve NOYAN</center>
   </figcaption></center>
 </figure>
 
@@ -4013,7 +4026,7 @@ Pour le gemma-3, le modèle original est un peu plus verbeux (ajoute davantage d
        style="max-width:55%; height:auto;">
   <figcaption>
     <center>
-    Figure 1 : Photo par Merve NOYAN</center>
+    Figure 4 : Photo par Merve NOYAN</center>
   </figcaption></center>
 </figure>
 
@@ -4291,6 +4304,9 @@ Nous nous focalisons notamment sur la recherche d'images et la classification d'
 </style>
 
 <table>
+  <caption style="caption-side:bottom; padding-top:0.6rem; font-size:0.85rem; color:#cbd5e1; text-align:center;">
+  Tableau 18 : Réductions de paramètres observées sur les modèles d’embeddings visuels (CLIP)
+  </caption>
     <thead>
       <tr style="background-color:#2d3748;">
         <th style="padding:12px 12px;text-align:center;font-weight:600;color:#ffffff;">Modèle</th>
@@ -4489,7 +4505,7 @@ Par exemple, si nous utilisons le `clip-ViT-B-32-multilingual-v1` avec les class
        style="max-width:85%; height:auto;">
   <figcaption>
     <center>
-    Figure 1 : Classification multilingue d'images en 0-shot avec clip-ViT-B-32-multilingual-v1</center>
+    Figure 5 : Classification multilingue d'images en 0-shot avec clip-ViT-B-32-multilingual-v1</center>
   </figcaption></center>
 </figure>
 
@@ -4502,7 +4518,7 @@ Et si nous refaisons le même test mais avec à la place la version trimmée du 
        style="max-width:100%; height:auto;">
   <figcaption>
     <center>
-    Figure 1 : Classification multilingue d'images en 0-shot avec clip-ViT-B-32-multilingual-v1-spa-32768</center>
+    Figure 6 : Classification multilingue d'images en 0-shot avec clip-ViT-B-32-multilingual-v1-spa-32768</center>
   </figcaption></center>
 </figure>
 
@@ -4517,7 +4533,7 @@ Refaisons la même expérience sur des langues utilisant un alphabet différent 
        style="max-width:100%; height:auto;">
   <figcaption>
     <center>
-    Figure 1 : Classification multilingue (alphabets latins et non latins) d'images en 0-shot avec clip-ViT-B-32-multilingual-v1</center>
+    Figure 7 : Classification multilingue (alphabets latins et non latins) d'images en 0-shot avec clip-ViT-B-32-multilingual-v1</center>
   </figcaption></center>
 </figure>
 
@@ -4547,7 +4563,7 @@ Prenons un exemple consistant à faire de la classification 0-*shot* sur l'image
        style="max-width:70%; height:auto;">
   <figcaption>
     <center>
-    Figure 1 : Image provenant de COCO (Val 2017) de LIN et al. (2014)</center>
+    Figure 8 : Image provenant de COCO (Val 2017) de LIN et al. (2014)</center>
   </figcaption></center>
 </figure>
 
@@ -4594,6 +4610,9 @@ Faisons un test sur le tamoul avec les classes பூனைகள் (Chats), �
 </style>
 
 <table>
+  <caption style="caption-side:bottom; padding-top:0.6rem; font-size:0.85rem; color:#cbd5e1; text-align:center;">
+  Tableau 19 : metaclip-2-worldwide-s16-384 sur du tamoul
+  </caption>
     <thead>
       <tr style="background-color:#2d3748;">
         <th style="padding:12px 12px;text-align:center;font-weight:600;color:#ffffff;width:130px;">Configuration</th>
@@ -4698,6 +4717,9 @@ Cet exemple laisse supposer que le *trimming* sur les CLIP donne des résultats 
 </style>
 
 <table>
+  <caption style="caption-side:bottom; padding-top:0.6rem; font-size:0.85rem; color:#cbd5e1; text-align:center;">
+  Tableau 20 : metaclip-2-worldwide-s16-384 sur du français
+  </caption>
     <thead>
       <tr style="background-color:#2d3748;">
         <th style="padding:12px 12px;text-align:center;font-weight:600;color:#ffffff;width:130px;">Configuration</th>
@@ -4801,7 +4823,7 @@ La question s’est posée de savoir quelle est la meilleure taille de modèle p
        style="max-width:100%; height:auto;">
   <figcaption>
     <center>
-    Figure 1 : Nombre de tokens pour couvrir un certain pourcent du jeu de données de minage pour le modèle mmBERT-small sur l'anglais</center>
+    Figure 9 : Nombre de tokens pour couvrir un certain pourcent du jeu de données de minage pour le modèle mmBERT-small sur l'anglais</center>
   </figcaption></center>
 </figure>
 
@@ -4852,7 +4874,7 @@ Les choses se corsent quand nous analysons les 14 autres architectures :
 
 <table>
     <caption style="caption-side:bottom; padding-top:0.6rem; font-size:0.85rem; color:#cbd5e1; text-align:center;">
-    Figure 1 : Nombre de tokens pour couvrir un certain pourcent du jeu de données de minage pour le modèle mmBERT-small sur l'anglais
+    Figure 21 : Nombre de tokens pour couvrir un certain pourcent du jeu de données de minage pour le modèle mmBERT-small sur l'anglais
   </caption>
   
     <thead>
@@ -4956,7 +4978,7 @@ En s’intéressant aux langues n’utilisant pas l’alphabet latin, nous pouvo
        style="max-width:100%; height:auto;">
   <figcaption>
     <center>
-    Figure 1 : Nombre de tokens pour couvrir un certain pourcent du jeu de données de minage pour le modèle mmBERT-small sur le coréen</center>
+    Figure 10 : Nombre de tokens pour couvrir un certain pourcent du jeu de données de minage pour le modèle mmBERT-small sur le coréen</center>
   </figcaption></center>
 </figure>
 
