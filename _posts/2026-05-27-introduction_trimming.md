@@ -869,20 +869,13 @@ Nous venons de voir que la source utilisée pour miner les *tokens* n'avait pas 
 Il s'avère que le nombre de textes n'a pas non plus une grande importance sur les performances.  
 Le nombre choisi a cependant un impact sur le temps d'exécution du minage. En effet, obtenir la version trimmée sur 20 000 textes a pris 2 min 04s sur un CPU Intel(R) Core(TM) Ultra 7 255H (2.00 GHz) pour l'ensemble du processus (minage des *tokens*, modification des fichiers de vocabulaire et des couches de l'architecture, pousser le modèle sur le Hub). La version trimmée sur 200 000 textes a pris 8 min 56s. Enfin la version trimmée sur 2 000 000 textes a pris 2h 26min 21s.  
 
-<div class="notice--warning" style="line-height:1.25;">
+<div style="line-height:1.25; background:#241216; color:#e5e7eb; padding:1rem; border-radius:4px;">
   <p style="font-size:0.9rem;"><strong>Vigilance ⚠️</strong></p>
-
   <p style="font-size:0.9rem;">
     Nous avons choisi pour notre part de miner l'ensemble des modèles présentés dans cet article de blog sur 200 000 textes au lieu de 20 000 (moins si Fineweb 2 ne propose pas 200 000 textes pour la langue en question).<br>
-    En effet, nous voulions sécuriser les choses vis-à-vis de deux points que nous n'avons pas pu tester :
-  </p>
-
-  <ol style="font-size:0.9rem; margin-top:0.4rem; margin-bottom:0.6rem; padding-left:1.2rem;">
-    <li>Nous avons miné jusqu'à 32 768 <em>tokens</em> dans le cadre de cet article de blog, mais est-ce que 20 000 textes suffisent si nous souhaitons garder par exemple 65&nbsp;536 <em>tokens</em> ?</li>
-    <li>Bien que nous ayons voulu tester le <em>trimming</em> sur plusieurs langues portant sur divers alphabets, nous avons évalué exclusivement des langues richement dotées en ressources. C'est-à-dire des langues avec un nombre suffisamment de <em>tokens</em> dans le modèle original qui, in fine, impacte les performances du modèle trimmé, et qui disposent également de jeux de données d'évaluation pour plusieurs tâches.</li>
-  </ol>
-
-  <p style="font-size:0.9rem;">
+    En effet, nous voulions sécuriser les choses vis-à-vis de deux points que nous n'avons pas pu tester :<br>
+    1) Nous avons miné jusqu'à 32 768 <em>tokens</em> dans le cadre de cet article de blog, mais est-ce que 20 000 textes suffisent si nous souhaitons garder par exemple 65&nbsp;536 <em>tokens</em> ?<br>
+    2) Bien que nous ayons voulu tester le <em>trimming</em> sur plusieurs langues portant sur divers alphabets, nous avons évalué exclusivement des langues richement dotées en ressources. C'est-à-dire des langues avec un nombre suffisamment de <em>tokens</em> dans le modèle original qui, in fine, impacte les performances du modèle trimmé, et qui disposent également de jeux de données d'évaluation pour plusieurs tâches.<br>
     Nous n'avons pas pu vérifier l'impact du nombre de textes sur les langues peu dotées en ressources. Une observation qui nous a invité à rédiger cet encart est que pour les mmBERT nous avons pu par exemple générer un modèle en tchétchène en 16 384 <em>tokens</em> mais pas en 32 768 par manque de <em>tokens</em> (unique langue néanmoins où ce phénomène s'est produit).
   </p>
 </div>
@@ -1781,13 +1774,13 @@ Sur la forme, les textes issus des modèles trimmés ne sont jamais sortis du su
 Sur le fond, que ce soit les modèles trimmés ou originaux, les sorties générées ont tendance à traduire des termes techniques en lien avec les LLM/l'IA de l'anglais vers le néerlandais mais le font mal. Nous avons aussi observé que les modèles ont du mal avec le pluriel de certains mots. Concrètement, nos évaluateurs indiquent que les textes originaux ou trimmés ressemblent à des rédactions d'enfants pouvant parfois ici ou là utiliser quelques termes sophistiqués.
 Sur ce point du fond, notez que les modèles montrés ici servent à illustrer le principe du *trimming*. En pratique, ces différents modèles datent un peu à présent et ne sont sûrement pas les plus utiles. Au moment où nous écrivons ces lignes, le granite 4.1, le gemma 4 et le qwen 3.6 viennent de sortir et seront probablement meilleurs (dans la section suivante nous pouvons déjà voir que le 3.5 est meilleur que le 3).
 
-<div class="notice--warning" style="line-height:1.25;">
+<div style="line-height:1.25; background:#241216; color:#e5e7eb; padding:1rem; border-radius:4px;">
   <p style="font-size:0.9rem;"><strong>Vigilance ⚠️</strong></p>
 
   <p style="font-size:0.9rem;">
     Nos expériences de <em>vibechecking</em> ont également porté sur les traces et les <em>prompts</em> systèmes.<br>
     Nous observons que lorsqu'un modèle passe sous la barre des 300M de paramètres une fois trimmé, il a tendance à répondre en anglais par défaut (le Gemma 3 270M non trimmé a ainsi également ce comportement) ou bien pas dans la bonne langue. Il faut alors spécifier dans le <em>prompt</em> système la langue qu'il doit utiliser pour forcer la génération dans celle-ci. Là où pour les modèles plus grands que 300M de paramètres, il n'est pas nécessaire de modifier leur <em>prompt</em> original.<br>
-    Concernant les traces, pour les modèles trimmés pour lesquels il est possible d'activer / désactiver le mode <em>thinking</em>, à savoir les Qwen 3 et le SmolLM3, les comportements sont variables. Le SmolLM3 générera systématiquement sa trace en anglais. Pour le Qwen 3, nous avons un comportement variable. Le modèle peut ne plus en générer, en générer en anglais ou bien en générer dans la langue trimmée. Ce dernier point nous semblait intéressant pour pouvoir par exemple générer directement des traces dans une langue d'intérêt (au lieu de devoir en générer en anglais puis les traduire). Cependant ce comportement ne semble pas se produire sur toutes les langues. Nous pouvons l'observer par exemple sur du <a href="https://huggingface.co/alphaedge-ai/Qwen3-1.7B-fra-32768/blob/main/Qwen3_French_trace.ipynb">français</a> qui est proche de l'anglais mais nous n'avons pas réussi à observer ce phénomène sur des alphabets non latins testés comme le coréen, l'arabe ou le tamil. Cela semble aussi dépendre de la difficulté de la tâche.
+    Concernant les traces, pour les modèles trimmés pour lesquels il est possible d'activer / désactiver le mode <em>thinking</em>, à savoir les Qwen 3 et le SmolLM3, les comportements sont variables. Le SmolLM3 générera systématiquement sa trace en anglais. Pour le Qwen 3, nous avons un comportement variable. Le modèle peut ne plus en générer, en générer en anglais ou bien en générer dans la langue trimmée. Ce dernier point nous semblait intéressant pour pouvoir par exemple générer directement des traces dans une langue d'intérêt (au lieu de devoir en générer en anglais puis les traduire). Cependant ce comportement ne semble pas se produire sur toutes les langues. Nous pouvons l'observer par exemple sur du <a href="https://huggingface.co/alphaedge-ai/Qwen3-1.7B-fra-32768/blob/main/Qwen3_French_trace.ipynb" style="color:#fca5a5;">français</a> qui est proche de l'anglais mais nous n'avons pas réussi à observer ce phénomène sur des alphabets non latins testés comme le coréen, l'arabe ou le tamil. Cela semble aussi dépendre de la difficulté de la tâche.
   </p>
 </div>
 
@@ -2358,7 +2351,7 @@ Une observation intéressante se situe au niveau de la trace. Celle du modèle t
 C'est le phénomène que nous décrivions dans la section précédente pour les Qwen3.  
 Notons que la trace de l'exemple du Qwen 3.5 4B en français a été générée en anglais et non en français. Ainsi, comme pour les décodeurs, il apparaît comme possible de générer des traces dans la langue du modèle trimmé mais que la consistance de cette génération n'est pas acquise. Nous aurions souhaité pouvoir mener des expériences plus poussées sur le sujet en faisant varier les langues, les types de questions et les tailles de modèles pour savoir si, par exemple, à partir d'une certaine taille, ce phénomène deviendrait possible de manière systématique.
 
-<div class="notice--warning" style="line-height:1.25;">
+<div style="line-height:1.25; background:#241216; color:#e5e7eb; padding:1rem; border-radius:4px;">
   <p style="font-size:0.9rem;"><strong>Vigilance ⚠️</strong></p>
   <p style="font-size:0.9rem;">
     Nous sommes gênés de ne pas disposer de benchmark pour cette partie et de devoir ainsi nous limiter à du <em>vibechecking</em>. Nous invitons fortement le lecteur à effectuer des tests par lui-même de son côté.<br>
@@ -2944,10 +2937,10 @@ Dans la section sur les encodeurs nous trouvons qu'il vaut mieux faire du VT (*v
 Le gain de performances des auteurs du MTEB-NL sur les modèles d'*embeddings* trimmés puis finetunés que nous avons également reproduits, semble aussi aller dans le sens d'adopter cet ordre opératoire. 
 Enfin, en considérant le fait qu'un modèle trimmé se finetune plus rapidement que le modèle original car plus petit, **nous conseillons, et ceci n'engage que nous, de toujours trimmer un modèle puis de le finetuner**.
 
-<div class="notice--warning" style="line-height:1.25;">
+<div style="line-height:1.25; background:#241216; color:#e5e7eb; padding:1rem; border-radius:4px;">
   <p style="font-size:0.9rem;"><strong>Vigilance ⚠️</strong></p>
   <p style="font-size:0.9rem;">
-    Néanmoins, nous devons signaler que les auteurs de <code>vocabtrimmer</code> (dans les tableaux 1 et 2 de leur <a href="https://arxiv.org/abs/2305.15020">papier</a>) trouvent des résultats contradictoires en fonction de la tâche ou de la langue considérée, mais aussi du modèle (tests sur un mT5, mBART et XLM-RoBERTa).<br>
+    Néanmoins, nous devons signaler que les auteurs de <code>vocabtrimmer</code> (dans les tableaux 1 et 2 de leur <a href="https://arxiv.org/abs/2305.15020" style="color:#fca5a5;">papier</a>) trouvent des résultats contradictoires en fonction de la tâche ou de la langue considérée, mais aussi du modèle (tests sur un mT5, mBART et XLM-RoBERTa).<br>
     Notons cependant que toutes ces comparaisons ne sont pas effectuées avec le même nombre de <em>tokens</em> par langue et par modèle.
   </p>
 </div>
