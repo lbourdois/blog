@@ -948,11 +948,13 @@ Dans le tableau ci-dessus, et pour l'ensemble de l'article, nous donnons des chi
 </table>
 
 <center>Figure 1 : Résultats sur MTEB des modèles d'embedding en anglais</center>
-    
+
+<br>
+
 Nous pouvons constater que globalement le *trimming* permet de maintenir les performances du modèle original tout en ayant des modèles plus petits. Dans 5 cas sur 8, nous avons même un modèle de 32 768 *tokens* qui est légèrement meilleur que le modèle original. Notre hypothèse est que la suppression de *tokens* parasites bénéficie au modèle.    
 Notons un problème néanmoins, la détérioration des performances de l'embeddinggemma. Nous pensions initialement avoir fait une erreur dans notre code, mais avons exclu cette possibilité lorsque nous nous sommes intéressés au gemma-3 (voir les parties sur les décodeurs et les VLM) qui utilise le même *tokenizer* et où nous n'observons pas de baisse de performances (il s'agit même probablement d'un des modèles les plus robustes au *trimming*).
 L'explication que nous avançons, et nous avons donc laissé ce modèle pour illustrer ce phénomène, est que le *trimming* ne fonctionne que si la couche d'*embedding* est la dernière couche du réseau (ou également la première en cas d'*embeddings* partagés). Là où cette couche d'*embedding* est bien la dernière (hors *pooling*) pour tous les autres modèles présentés, pour l'embeddinggemma, il y a [deux couches *denses* supplémentaires](https://huggingface.co/google/embeddinggemma-300m/tree/main). 
-
+  
 <figure>
   <center>
   <img src="https://cdn-uploads.huggingface.co/production/uploads/613b0a62a14099d5afed7830/gghbbAdtyMldL8p-dr22p.png" 
@@ -983,17 +985,372 @@ Dans le tableau ci-dessous, les modèles ayant le suffixe `-trm` correspondent a
 À noter que les résultats diffèrent légèrement de ceux disponibles sur le [*leaderboard*](https://huggingface.co/spaces/mteb/leaderboard) car nous n'avons pu obtenir des résultats que pour 39 des 40 jeux de données constituant le MTEB-NL. Plus précisément, il n'a pas été possible d'évaluer sur `BelebeleRetrieval` du fait d'une erreur de configuration de la langue dans l'API de MTEB. La colonne `Ret` ci-dessous est donc un peu sous-évaluée par rapport au *leaderboard*. 
 Ainsi, nous avons également relancé MTEB-NL sur les modèles originaux pour que l'ensemble des modèles soient comparés sur 39 jeux de données.  
 
-<figure>
-  <center>
-  <img src="https://cdn-uploads.huggingface.co/production/uploads/613b0a62a14099d5afed7830/KQVCrHtXc6iNlBgwzUaim.png" 
-       alt="Résultats sur MTEB-NL des modèles d'embedding en néerlandais" 
-       style="max-width:100%; height:auto;">
-  <figcaption>
-    <center>
-    Figure 1 : Résultats sur MTEB-NL des modèles d'embedding en néerlandais</center>
-  </figcaption></center>
-</figure>
+<div id="table-reductions-parametres" style="overflow-x:auto; margin:1.5rem 0; max-width:100%;">
+<style>
+#table-reductions-parametres table {
+  border-collapse: collapse;
+  width: 100%;
+  table-layout: fixed;
+  font-size: 0.72rem !important;
+  box-shadow: 0 2px 7px rgba(0,0,0,0.12);
+  border-radius: 8px;
+  overflow: hidden;
+}
 
+#table-reductions-parametres th,
+#table-reductions-parametres td {
+  padding: 7px 6px !important;
+  line-height: 1.25 !important;
+  text-align: center !important;
+  vertical-align: middle !important;
+  white-space: normal !important;
+  word-break: normal !important;
+  overflow-wrap: normal !important;
+}
+
+#table-reductions-parametres th {
+  font-weight: 700 !important;
+}
+
+#table-reductions-parametres th:first-child,
+#table-reductions-parametres td:first-child {
+  width: 24%;
+  text-align: left !important;
+}
+
+#table-reductions-parametres th:not(:first-child),
+#table-reductions-parametres td:not(:first-child) {
+  width: 12.6%;
+}
+</style>
+
+<table>
+  <thead>
+    <tr style="background-color:#2d3748;">
+      <th style="padding:12px 12px;text-align:center;font-weight:600;color:#ffffff;white-space:nowrap;">Modèle</th>
+      <th style="padding:12px 12px;text-align:center;font-weight:600;color:#ffffff;white-space:nowrap;">#</th>
+      <th style="padding:12px 12px;text-align:center;font-weight:600;color:#ffffff;white-space:nowrap;">Mean<br>(Task)</th>
+      <th style="padding:12px 12px;text-align:center;font-weight:600;color:#ffffff;white-space:nowrap;">Mean<br>(Task<br>Type)</th>
+      <th style="padding:12px 12px;text-align:center;font-weight:600;color:#ffffff;white-space:nowrap;">Cla</th>
+      <th style="padding:12px 12px;text-align:center;font-weight:600;color:#ffffff;white-space:nowrap;">Clu</th>
+      <th style="padding:12px 12px;text-align:center;font-weight:600;color:#ffffff;white-space:nowrap;">Mul</th>
+      <th style="padding:12px 12px;text-align:center;font-weight:600;color:#ffffff;white-space:nowrap;">Pai</th>
+      <th style="padding:12px 12px;text-align:center;font-weight:600;color:#ffffff;white-space:nowrap;">Rer</th>
+      <th style="padding:12px 12px;text-align:center;font-weight:600;color:#ffffff;white-space:nowrap;">Ret</th>
+      <th style="padding:12px 12px;text-align:center;font-weight:600;color:#ffffff;white-space:nowrap;">STS</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- granite 107m — bleu IBM -->
+    <tr style="background-color:#d9eeff;">
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);"><span style="color:#000000;">granite-embedding-107m-multilingual</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">107,0M</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">48,07</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">55,43</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">54,95</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">29,57</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">33,30</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">70,07</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">84,66</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">47,02</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">68,41</span></td>
+    </tr>
+    <tr style="background-color:#d9eeff;">
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);"><span style="color:#000000;">granite-embedding-107m-nld-32768</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">23,6M</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">48,11</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">55,47</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">54,97</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">29,68</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">33,28</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">70,07</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">84,78</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">47,05</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">68,45</strong></td>
+    </tr>
+    <tr><td colspan="11" style="padding:3px 0;background-color:#94a3b8;"></td></tr>
+    <!-- granite 278m — bleu IBM -->
+    <tr style="background-color:#d9eeff;">
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);"><span style="color:#000000;">granite-embedding-278m-multilingual</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">278,0M</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">49,29</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">56,49</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">55,64</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">30,59</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">34,38</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">71,03</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">85,66</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">49,19</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">68,91</span></td>
+    </tr>
+    <tr style="background-color:#d9eeff;">
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);"><span style="color:#000000;">granite-embedding-278m-nld-32768</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">111,2M</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">49,30</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">56,47</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">55,64</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">30,73</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">34,19</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">71,02</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">85,54</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">49,21</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">68,93</strong></td>
+    </tr>
+    <tr><td colspan="11" style="padding:3px 0;background-color:#94a3b8;"></td></tr>
+    <!-- e5-small — doré -->
+    <tr style="background-color:#fdf3d0;">
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);"><span style="color:#000000;">multilingual-e5-small</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">117,7M</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">49,10</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">57,84</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">56,96</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">27,75</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">34,79</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">76,46</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">87,85</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">46,92</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">74,18</span></td>
+    </tr>
+    <tr style="background-color:#fdf3d0;">
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);"><span style="color:#000000;">multilingual-e5-small-nld-32768</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">34,2M</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">49,17</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">57,90</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">56,96</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">27,94</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">34,80</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">76,46</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">87,93</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">46,99</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">74,22</span></td>
+    </tr>
+    <tr style="background-color:#fdf3d0;">
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);"><span style="color:#000000;">e5-small-trm</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">40,8M</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">49,79</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">58,13</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">56,99</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">27,66</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">34,81</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">76,46</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">87,33</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">49,43</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">74,20</span></td>
+    </tr>
+    <tr style="background-color:#fdf3d0;">
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);"><span style="color:#000000;">e5-small-trm-nl</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">40,8M</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">52,35</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">59,61</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">58,74</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">32,81</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">35,48</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">76,01</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">86,96</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">52,69</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">74,60</strong></td>
+    </tr>
+    <tr><td colspan="11" style="padding:3px 0;background-color:#94a3b8;"></td></tr>
+    <!-- e5-base — doré -->
+    <tr style="background-color:#fdf3d0;">
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);"><span style="color:#000000;">multilingual-e5-base</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">278,0M</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">50,96</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">59,09</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">58,76</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">28,19</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">34,82</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">76,75</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">89,30</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">50,90</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">74,90</span></td>
+    </tr>
+    <tr style="background-color:#fdf3d0;">
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);"><span style="color:#000000;">multilingual-e5-base-nld-32768</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">111,2M</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">50,91</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">59,05</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">58,66</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">28,15</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">34,77</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">76,76</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">89,25</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">50,85</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">74,91</span></td>
+    </tr>
+    <tr style="background-color:#fdf3d0;">
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);"><span style="color:#000000;">e5-base-trm</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">124,4M</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">51,38</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">59,21</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">58,75</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">28,27</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">34,82</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">76,75</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">88,58</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">52,40</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">74,90</span></td>
+    </tr>
+    <tr style="background-color:#fdf3d0;">
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);"><span style="color:#000000;">e5-base-trm-nl</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">124,4M</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">53,48</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">60,77</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">60,12</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">34,46</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">35,94</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">78,43</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">87,49</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">53,16</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">75,77</strong></td>
+    </tr>
+    <tr><td colspan="11" style="padding:3px 0;background-color:#94a3b8;"></td></tr>
+    <!-- e5-large — doré -->
+    <tr style="background-color:#fdf3d0;">
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);"><span style="color:#000000;">multilingual-e5-large</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">559,9M</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">53,15</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">61,44</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">60,76</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">29,01</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">35,70</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">80,31</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">91,38</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">54,07</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">78,83</span></td>
+    </tr>
+    <tr style="background-color:#fdf3d0;">
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);"><span style="color:#000000;">multilingual-e5-large-nld-32768</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">337,4M</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">53,23</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">61,52</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">60,76</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">29,27</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">35,86</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">80,33</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">91,43</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">54,12</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">78,85</strong></td>
+    </tr>
+    <tr style="background-color:#fdf3d0;">
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);"><span style="color:#000000;">e5-large-trm</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">355,1M</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">53,67</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">61,59</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">60,73</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">29,40</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">35,73</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">80,31</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">90,34</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">55,74</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">78,84</span></td>
+    </tr>
+    <tr style="background-color:#fdf3d0;">
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);"><span style="color:#000000;">e5-large-trm-nl</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">355,1M</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">55,48</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">62,59</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">62,71</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">35,80</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">37,87</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">81,42</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">87,18</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">54,96</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">78,19</span></td>
+    </tr>
+    <tr><td colspan="11" style="padding:3px 0;background-color:#94a3b8;"></td></tr>
+    <!-- embeddinggemma — rouge Google -->
+    <tr style="background-color:#fde4e1;">
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);"><span style="color:#000000;">embeddinggemma</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">307,6M</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">56,77</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">63,22</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">64,53</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">34,56</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">36,89</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">78,31</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">89,65</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">58,78</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">79,80</strong></td>
+    </tr>
+    <tr style="background-color:#fde4e1;">
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);"><span style="color:#000000;">embeddinggemma-nld-32768</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">131,4M</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">56,17</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">62,69</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">63,94</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">34,95</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">36,88</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">77,99</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">89,26</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">57,33</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">78,51</span></td>
+    </tr>
+    <tr><td colspan="11" style="padding:3px 0;background-color:#94a3b8;"></td></tr>
+    <!-- bge-m3 — indigo BAAI -->
+    <tr style="background-color:#e2e8f8;">
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);"><span style="color:#000000;">bge-m3</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">567,8M</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">53,88</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">61,11</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">61,40</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">28,74</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">35,56</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">78,30</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">88,73</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">56,96</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">78,09</span></td>
+    </tr>
+    <tr style="background-color:#e2e8f8;">
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);"><span style="color:#000000;">bge-m3-nld-32768</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">345,3M</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">53,88</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">61,12</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">61,41</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">28,75</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">35,64</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">78,30</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">88,77</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">56,91</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">78,10</strong></td>
+    </tr>
+    <tr><td colspan="11" style="padding:3px 0;background-color:#94a3b8;"></td></tr>
+    <!-- Qwen3 — violet -->
+    <tr style="background-color:#ece8ff;">
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);"><span style="color:#000000;">Qwen3-Embedding-0.6B</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">595,8M</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">51,50</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">57,91</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">58,41</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">29,46</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">34,64</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">71,24</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">85,91</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">54,26</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">71,43</strong></td>
+    </tr>
+    <tr style="background-color:#ece8ff;">
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);"><span style="color:#000000;">Qwen3-Embedding-nld-32768</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">474,0M</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">51,40</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">57,87</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">58,36</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">29,35</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">34,73</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">71,27</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><strong style="color:#000000;">85,97</strong></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">54,02</span></td>
+      <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:right;"><span style="color:#000000;">71,37</span></td>
+    </tr>
+  </tbody>
+</table>
+  
+
+
+
+<center>Figure 1 : Résultats sur MTEB-NL des modèles d'embedding en néerlandais</center>
+
+<br>
 
 Comme pour l'anglais, nous pouvons constater que le *trimming* matche voire permet un très léger gain (généralement inférieur à 0,1 point) de performance lorsque nous gardons 32 768 *tokens*.
 
