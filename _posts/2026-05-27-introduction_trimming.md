@@ -2932,16 +2932,246 @@ Pour le coréen, nous appliquons les modèles sur le benchmark [KoBEST](https://
 EuroEval proposant des intervalles de confiance, dans le tableau ci-dessous les moyennes en bleu indiquent que les intervalles des modèles originaux/trimmés se chevauchent. S'ils ne se chevauchent pas le meilleur modèle est indiqué en vert et le moins bon en orange.  
 Nous donnons également les chiffres des exécutions effectuées par les équipes d'EuroEval quand elles existent.
 
-<figure>
-  <center>
-  <img src="https://cdn-uploads.huggingface.co/production/uploads/613b0a62a14099d5afed7830/3RXgsxxpAlHgrcpZqN5TP.png" 
-       alt="Résultats sur l'échantillon néerlandais d'EuroEval" 
-       style="max-width:100%; height:auto;">
-  <figcaption>
-    <center>
-    Figure 1 : Résultats sur l'échantillon néerlandais d'EuroEval</center>
-  </figcaption></center>
-</figure>
+<div id="table-reductions-parametres" style="overflow-x:auto; margin:1.5rem 0; max-width:100%;">
+<style>
+#table-reductions-parametres table {
+  border-collapse: collapse;
+  width: 100%;
+  table-layout: fixed;
+  font-size: 0.72rem !important;
+  box-shadow: 0 2px 7px rgba(0,0,0,0.12);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+#table-reductions-parametres th,
+#table-reductions-parametres td {
+  padding: 7px 6px !important;
+  line-height: 1.25 !important;
+  text-align: center !important;
+  vertical-align: middle !important;
+  white-space: normal !important;
+  word-break: normal !important;
+  overflow-wrap: normal !important;
+}
+
+#table-reductions-parametres th {
+  font-weight: 700 !important;
+}
+
+#table-reductions-parametres th:first-child,
+#table-reductions-parametres td:first-child {
+  width: 24%;
+  text-align: left !important;
+}
+
+#table-reductions-parametres th:not(:first-child),
+#table-reductions-parametres td:not(:first-child) {
+  width: 12.6%;
+}
+</style>
+
+<table>
+      <thead>
+      <tr style="background-color:#2d3748;">
+        <th style="padding:12px;text-align:center;font-weight:600;color:#ffffff;white-space:nowrap;">Modèle</th>
+        <th style="padding:12px;text-align:center;font-weight:600;color:#ffffff;">Moyenne</th>
+        <th style="padding:12px;text-align:center;font-weight:600;color:#ffffff;">duidelijke-taal<br>(Simplification) <br>meteor / sari</th>
+        <th style="padding:12px;text-align:center;font-weight:600;color:#ffffff;">hellaswag<br>(Sens commun)<br>mcc / accuracy</th>
+        <th style="padding:12px;text-align:center;font-weight:600;color:#ffffff;">mmlu<br>(Connaissance)<br>mcc / accuracy</th>
+        <th style="padding:12px;text-align:center;font-weight:600;color:#ffffff;">scala<br>(Acceptabilité)<br>mcc / macro_f1</th>
+        <th style="padding:12px;text-align:center;font-weight:600;color:#ffffff;">wiki-lingua<br>(Résumé)<br>chr_f3pp / chr_f4pp</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- ibm-granite/granite-4.0 — bleu acier -->
+      <tr style="background-color:#d9eeff;">
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);"><span style="color:#000;">granite-4.0-350m</span></td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;font-weight:600;"><span style="color:#2563eb">25.21 ± 0.75</span></td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;color:#000;">41.87 ± 1.50<br>62.80 ± 1.53</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;color:#000;">0.61 ± 1.96<br>25.55 ± 1.73</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;color:#000;">1.90 ± 1.53<br>26.05 ± 1.33</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;color:#000;">1.14 ± 3.22<br>39.96 ± 3.72</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;color:#000;">25.05 ± 2.67<br>27.13 ± 3.11</td>
+      </tr>
+      <tr style="background-color:#d9eeff;">
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);"><span style="color:#000;">granite-4.0-350m-nld-32768</span></td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;font-weight:600;"><span style="color:#2563eb">26.02 ± 1.04</span></td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;color:#000;">42.09 ± 1.18<br>63.76 ± 1.44</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;color:#000;">2.83 ± 2.66<br>25.98 ± 2.34</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;color:#000;">1.99 ± 3.77<br>27.34 ± 2.95</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;color:#000;">0.47 ± 6.16<br>42.30 ± 5.05</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;color:#000;">25.41 ± 1.68<br>28.04 ± 1.92</td>
+      </tr>
+          <tr><td colspan="11" style="padding:3px 0;background-color:#94a3b8;"></td></tr>
+      <tr style="background-color:#d9eeff;">
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);"><span style="color:#000;">granite-4.0-h-350m</span></td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;font-weight:600;"><span style="color:#2563eb">25.02 ± 0.68</span></td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;color:#000;">41.62 ± 1.72<br>63.05 ± 1.45</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;color:#000;">0.68 ± 3.29<br>25.90 ± 2.10</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;color:#000;">2.82 ± 2.20<br>23.67 ± 2.12</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;color:#000;">3.27 ± 2.66<br>33.73 ± 1.07</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;color:#000;">26.94 ± 1.98<br>28.56 ± 2.25</td>
+      </tr>
+      <tr style="background-color:#d9eeff;">
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);"><span style="color:#000;">granite-4.0-h-350m-nld-32768</span></td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;font-weight:600;"><span style="color:#2563eb">24.72 ± 0.71</span></td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;color:#000;">40.79 ± 1.79<br>63.47 ± 1.17</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;color:#000;">1.59 ± 3.52<br>27.38 ± 1.62</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;color:#000;">3.25 ± 3.76<br>23.79 ± 2.93</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;color:#000;">-0.87 ± 1.44<br>33.16 ± 1.00</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;color:#000;">26.56 ± 1.59<br>28.04 ± 1.79</td>
+      </tr>
+          <tr><td colspan="11" style="padding:3px 0;background-color:#94a3b8;"></td></tr>
+      <tr style="background-color:#d9eeff;">
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);"><span style="color:#000;">granite-4.0-1b</span></td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;font-weight:600;"><span style="color:#2563eb">38.62 ± 0.74</span></td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;color:#000;">43.83 ± 1.94<br>64.39 ± 1.18</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;color:#000;">24.21 ± 2.82<br>43.05 ± 1.65</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;color:#000;">26.57 ± 3.42<br>45.12 ± 2.61</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;color:#000;">19.73 ± 3.75<br>59.30 ± 1.81</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;color:#000;">29.24 ± 1.29<br>30.72 ± 1.39</td>
+      </tr>
+      <tr style="background-color:#d9eeff;">
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);"><span style="color:#000;">granite-4.0-1b-nld-32768</span></td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;font-weight:600;"><span style="color:#2563eb">37.96 ± 0.92</span></td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;color:#000;">41.49 ± 1.59<br>63.47 ± 1.01</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;color:#000;">25.60 ± 2.43<br>43.87 ± 1.69</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;color:#000;">28.01 ± 3.99<br>45.98 ± 3.10</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;color:#000;">18.41 ± 5.46<br>58.78 ± 2.92</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;color:#000;">26.44 ± 1.94<br>27.55 ± 2.06</td>
+      </tr>
+          <tr><td colspan="11" style="padding:3px 0;background-color:#94a3b8;"></td></tr>
+      <tr style="background-color:#d9eeff;">
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);"><span style="color:#000;">granite-4.0-h-1b</span></td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;font-weight:600;"><span style="color:#2563eb">38.60 ± 0.90</span></td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;color:#000;">48.22 ± 0.86<br>66.02 ± 0.84</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;color:#000;">26.92 ± 2.50<br>43.98 ± 2.05</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;color:#000;">34.04 ± 3.05<br>50.51 ± 2.27</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;color:#000;">8.12 ± 6.00<br>39.92 ± 4.30</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;color:#000;">33.16 ± 0.58<br>35.15 ± 0.64</td>
+      </tr>
+      <tr style="background-color:#d9eeff;">
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);"><span style="color:#000;">granite-4.0-h-1b-nld-32768</span></td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;font-weight:600;"><span style="color:#2563eb">37.54 ± 0.56</span></td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;color:#000;">47.71 ± 1.15<br>65.86 ± 0.75</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;color:#000;">27.95 ± 1.98<br>44.49 ± 1.63</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;color:#000;">32.60 ± 1.97<br>49.26 ± 1.47</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;color:#000;">3.77 ± 2.88<br>35.79 ± 2.74</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;color:#000;">32.86 ± 0.53<br>35.14 ± 0.63</td>
+      </tr>
+          <tr><td colspan="11" style="padding:3px 0;background-color:#94a3b8;"></td></tr>
+      <!-- Qwen/Qwen3 — lavande -->
+      <tr style="background-color:#ece8ff;">
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);"><span style="color:#000;">Qwen3-0.6B</span></td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;font-weight:600;"><span style="color:#15803d">33.73 ± 0.82</span></td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;color:#000;">35.28 ± 2.03<br>60.24 ± 1.40</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;color:#000;">8.78 ± 3.49<br>32.07 ± 2.60</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;color:#000;">28.10 ± 2.74<br>45.90 ± 2.07</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;color:#000;">10.59 ± 4.58<br>49.57 ± 2.88</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;color:#000;">32.03 ± 0.54<br>34.75 ± 0.56</td>
+      </tr>
+      <tr style="background-color:#ece8ff;">
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);"><span style="color:#000;">Qwen3-0.6B-nld-32768</span></td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;font-weight:600;"><span style="color:#b45309">31.33 ± 0.92</span></td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;color:#000;">34.01 ± 2.32<br>59.42 ± 1.57</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;color:#000;">9.79 ± 3.32<br>32.54 ± 2.23</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;color:#000;">18.16 ± 2.62<br>38.20 ± 2.00</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;color:#000;">7.52 ± 5.85<br>47.83 ± 3.86</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;color:#000;">31.50 ± 0.34<br>34.34 ± 0.35</td>
+      </tr>
+      <tr style="background-color:#ece8ff;">
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);"><span style="color:#000;">Qwen/Qwen3-0.6B (EuroEval Dutch run)</span></td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;font-weight:600;color:#000;">28.71 ± 0.57</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;color:#000;">39.86 ± 1.64<br>63.37 ± 1.26</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;color:#000;">5.10 ± 1.76<br>27.41 ± 1.27</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;color:#000;">10.98 ± 1.24<br>32.49 ± 0.93</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;color:#000;">1.23 ± 2.74<br>38.12 ± 3.63</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;color:#000;">32.71 ± 0.44<br>35.82 ± 0.54</td>
+      </tr>
+          <tr><td colspan="11" style="padding:3px 0;background-color:#94a3b8;"></td></tr>
+      <tr style="background-color:#ece8ff;">
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);"><span style="color:#000;">Qwen3-1.7B</span></td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;font-weight:600;"><span style="color:#15803d">46.22 ± 0.91</span></td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;color:#000;">42.80 ± 1.43<br>64.35 ± 0.84</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;color:#000;">27.01 ± 3.00<br>45.43 ± 2.16</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;color:#000;">55.24 ± 2.04<br>66.02 ± 1.67</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;color:#000;">28.56 ± 6.89<br>63.76 ± 3.50</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;color:#000;">32.47 ± 0.48<br>36.56 ± 0.40</td>
+      </tr>
+      <tr style="background-color:#ece8ff;">
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);"><span style="color:#000;">Qwen3-1.7B-nld-32768</span></td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;font-weight:600;"><span style="color:#b45309">44.40 ± 0.90</span></td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;color:#000;">43.97 ± 1.80<br>64.91 ± 1.23</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;color:#000;">26.69 ± 2.41<br>45.00 ± 1.80</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;color:#000;">48.80 ± 4.11<br>61.17 ± 3.28</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;color:#000;">26.17 ± 5.50<br>61.64 ± 2.62</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;color:#000;">30.87 ± 0.84<br>34.81 ± 0.93</td>
+      </tr>
+      <tr style="background-color:#ece8ff;">
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);"><span style="color:#000;">Qwen/Qwen3-1.7B (EuroEval Dutch run)</span></td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;font-weight:600;color:#000;">42.41 ± 0.65</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;color:#000;">50.22 ± 1.22<br>66.69 ± 1.30</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;color:#000;">24.98 ± 1.89<br>42.31 ± 2.28</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;color:#000;">29.27 ± 0.92<br>46.66 ± 0.80</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;color:#000;">31.21 ± 2.84<br>60.79 ± 4.46</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;color:#000;">34.18 ± 0.40<br>37.74 ± 0.32</td>
+      </tr>
+          <tr><td colspan="11" style="padding:3px 0;background-color:#94a3b8;"></td></tr>
+      <!-- google/gemma-3 — terracotta -->
+      <tr style="background-color:#fde4e1;">
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);"><span style="color:#000;">gemma-3-270m-it</span></td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;font-weight:600;"><span style="color:#2563eb">25.02 ± 0.89</span></td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;color:#000;">37.63 ± 2.56<br>61.13 ± 1.68</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;color:#000;">-2.46 ± 4.30<br>25.70 ± 2.04</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;color:#000;">3.46 ± 3.16<br>27.97 ± 2.67</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;color:#000;">1.79 ± 1.80<br>40.69 ± 4.54</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;color:#000;">25.78 ± 1.58<br>28.50 ± 1.93</td>
+      </tr>
+      <tr style="background-color:#fde4e1;">
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);"><span style="color:#000;">gemma-3-270m-it-nld-32768</span></td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;font-weight:600;"><span style="color:#2563eb">24.79 ± 0.91</span></td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;color:#000;">37.86 ± 2.87<br>61.32 ± 1.74</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;color:#000;">-2.69 ± 3.51<br>25.39 ± 1.61</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;color:#000;">3.70 ± 3.10<br>28.01 ± 2.62</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;color:#000;">0.44 ± 3.54<br>40.45 ± 4.61</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;color:#000;">25.42 ± 1.63<br>28.02 ± 1.98</td>
+      </tr>
+          <tr><td colspan="11" style="padding:3px 0;background-color:#94a3b8;"></td></tr>
+      <tr style="background-color:#fde4e1;">
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);"><span style="color:#000;">gemma-3-1b-it</span></td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;font-weight:600;"><span style="color:#2563eb">31.77 ± 0.79</span></td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;color:#000;">40.46 ± 1.21<br>63.47 ± 0.90</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;color:#000;">12.15 ± 2.66<br>33.16 ± 1.77</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;color:#000;">7.93 ± 3.26<br>31.48 ± 1.22</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;color:#000;">11.85 ± 4.39<br>50.30 ± 4.21</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;color:#000;">31.81 ± 0.35<br>35.04 ± 0.42</td>
+      </tr>
+      <tr style="background-color:#fde4e1;">
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);"><span style="color:#000;">gemma-3-1b-it-nld-32768</span></td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;font-weight:600;"><span style="color:#2563eb">31.51 ± 0.89</span></td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;color:#000;">40.14 ± 0.98<br>63.40 ± 0.95</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;color:#000;">11.09 ± 3.26<br>32.38 ± 2.51</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;color:#000;">8.09 ± 3.29<br>31.64 ± 1.03</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;color:#000;">11.19 ± 5.08<br>50.56 ± 4.73</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;color:#000;">31.71 ± 0.43<br>34.91 ± 0.53</td>
+      </tr>
+      <tr style="background-color:#fde4e1;">
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);"><span style="color:#000;">gemma-3-1b-it (EuroEval Dutch run)</span></td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;font-weight:600;color:#000;">23.92 ± 0.40</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;color:#000;">23.27 ± 0.61<br>39.34 ± 0.30</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;color:#000;">9.71 ± 0.86<br>31.53 ± 0.45</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;color:#000;">12.97 ± 0.65<br>0.00 ± 0.00</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;color:#000;">6.77 ± 1.87<br>48.20 ± 3.20</td>
+        <td style="padding:12px;border-bottom:1px solid rgba(0,0,0,0.07);text-align:center;color:#000;">32.14 ± 0.25<br>35.22 ± 0.32</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<center>Figure 1 : Résultats sur l'échantillon néerlandais d'EuroEval</center>
+
+<br>
 
 Nous pouvons constater que les modèles trimmés font légèrement moins bien que les originaux mais restent dans l'intervalle de confiance à l'exception des Qwen3 où le modèle trimmé fait systématiquement moins bien.  
 En analysant de plus près, cela semble dû à la tâche MMLU où nous observons une dégradation, contrairement aux autres où les modèles originaux et trimmés continuent de se chevaucher.
@@ -3167,6 +3397,8 @@ Sur la forme, les textes issus des modèles trimmés ne sont jamais sortis du su
 Sur le fond, que ce soit les modèles trimmés ou originaux, les sorties générées ont tendance à traduire des termes techniques en lien avec les LLM/l'IA de l'anglais vers le néerlandais mais le font mal. Nous avons aussi observé que les modèles ont du mal avec le pluriel de certains mots. Concrètement, nos évaluateurs indiquent que les textes originaux ou trimmés ressemblent à des rédactions d'enfants pouvant parfois ici ou là utiliser quelques termes sophistiqués.
 Sur ce point du fond, notez que les modèles montrés ici servent à illustrer le principe du *trimming*. En pratique, ces différents modèles datent un peu à présent et ne sont sûrement pas les plus utiles. Au moment où nous écrivons ces lignes, le granite 4.1, le gemma 4 et le qwen 3.6 viennent de sortir et seront probablement meilleurs (dans la section suivante nous pouvons déjà voir que le 3.5 est meilleur que le 3).
 
+<br>
+
 <div style="line-height:1.25; background:#f8deda; color:#111827; padding:1rem; border-radius:4px;">
   <p style="font-size:0.9rem;"><strong>⚠️ Vigilance</strong></p>
 
@@ -3176,7 +3408,6 @@ Sur ce point du fond, notez que les modèles montrés ici servent à illustrer l
     Concernant les traces, pour les modèles trimmés pour lesquels il est possible d'activer / désactiver le mode <em>thinking</em>, à savoir les Qwen 3 et le SmolLM3, les comportements sont variables. Le SmolLM3 générera systématiquement sa trace en anglais. Pour le Qwen 3, nous avons un comportement variable. Le modèle peut ne plus en générer, en générer en anglais ou bien en générer dans la langue trimmée. Ce dernier point nous semblait intéressant pour pouvoir par exemple générer directement des traces dans une langue d'intérêt (au lieu de devoir en générer en anglais puis les traduire). Cependant ce comportement ne semble pas se produire sur toutes les langues. Nous pouvons l'observer par exemple sur du <a href="https://huggingface.co/alphaedge-ai/Qwen3-1.7B-fra-32768/blob/main/Qwen3_French_trace.ipynb" style="color:#d71920;">français</a> qui est proche de l'anglais mais nous n'avons pas réussi à observer ce phénomène sur des alphabets non latins testés comme le coréen, l'arabe ou le tamil. Cela semble aussi dépendre de la difficulté de la tâche.
   </p>
 </div>
-
 
 **Coréen**
 
