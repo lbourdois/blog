@@ -64,7 +64,7 @@ for name, param in model.named_parameters():
     print(f"{name:50s} {str(param.shape):25s} {param.numel():>12,}")
 ```
 
-<details>
+<details markdown="1">
 <summary><b>Sortie complète :</b></summary>
 
 ```python
@@ -327,7 +327,7 @@ Concernant les benchmarks, nous évaluons les modèles sur de l'anglais et du n�
 
 #### Réductions de paramètres observées
 
-<body style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#ffffff;padding:2rem;">
+<div style="overflow-x:auto; margin:1.5rem 0;">
   <table style="border-collapse:collapse;width:100%;font-size:0.95rem;box-shadow:0 2px 7px rgba(0,0,0,0.12);border-radius:8px;overflow:hidden;">
     <thead>
       <tr style="background-color:#2d3748;">
@@ -492,7 +492,7 @@ Concernant les benchmarks, nous évaluons les modèles sur de l'anglais et du n�
       </tr>
     </tbody>
   </table>
-</body>
+</div>
 
 > [!NOTE]
 > **📝 Note**  
@@ -620,7 +620,7 @@ Nous évaluons ce dernier point également sur de l'anglais en comparant un mmBE
 
 #### Réductions de paramètres observées
 
-<body style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#ffffff;padding:2rem;">
+<div style="overflow-x:auto; margin:1.5rem 0;">
   <table style="border-collapse:collapse;width:100%;font-size:0.95rem;box-shadow:0 2px 7px rgba(0,0,0,0.12);border-radius:8px;overflow:hidden;">
     <thead>
       <tr style="background-color:#2d3748;">
@@ -692,7 +692,7 @@ Nous évaluons ce dernier point également sur de l'anglais en comparant un mmBE
       </tr>
     </tbody>
   </table>
-</body>
+</div>
 
 #### Résultats
 
@@ -845,7 +845,7 @@ Pour l'anglais, nous nous focalisons sur un seul modèle mais faisons une compar
 Précisons ici que pour le finetuning, l'entraînement est effectué sur l'échantillon `train` et le test sur l'échantillon `dev` et non sur celui de `test`. Nous procédons de la sorte surtout pour pouvoir nous comparer au DistilBERT qui a suivi cette méthodologie.  
 Nous reprenons ainsi les chiffres que les auteurs indiquent dans leur publication.  
 
-<body style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#ffffff;padding:2rem;">
+<div style="overflow-x:auto; margin:1.5rem 0;">
   <table style="border-collapse:collapse;width:100%;font-size:0.95rem;box-shadow:0 2px 7px rgba(0,0,0,0.12);border-radius:8px;overflow:hidden;">
     <thead>
       <tr style="background-color:#2d3748;">
@@ -891,7 +891,7 @@ Nous reprenons ainsi les chiffres que les auteurs indiquent dans leur publicatio
       </tr>
     </tbody>
   </table>
-</body>
+</div>
 
 Nous pouvons noter qu'à l'exécution des tâches QQP et CoLA, les résultats du mmBERT small trimmé sont supérieurs au DistilBERT.  
 Cela s'explique sûrement par le fait que le mmBERT small non trimmé score à 84,7 sur ce benchmark.  
@@ -940,7 +940,7 @@ Nous les évaluons également sur de l'arabe et de l'allemand dans le cadre d'un
 
 #### Réductions de paramètres observées
 
-<body style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#ffffff;padding:2rem;">
+<div style="overflow-x:auto; margin:1.5rem 0;">
   <table style="border-collapse:collapse;width:100%;font-size:0.95rem;box-shadow:0 2px 7px rgba(0,0,0,0.12);border-radius:8px;overflow:hidden;">
     <thead>
       <tr style="background-color:#2d3748;">
@@ -1012,7 +1012,7 @@ Nous les évaluons également sur de l'arabe et de l'allemand dans le cadre d'un
       </tr>
     </tbody>
   </table>
-</body>
+</div>
 
 > [!NOTE]
 > **📝 Note**  
@@ -1097,7 +1097,7 @@ Pour le coréen, nous appliquons les modèles sur le benchmark [KoBEST](https://
 
 #### Réductions de paramètres observées
 
-<body style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#ffffff;padding:2rem;">
+<div style="overflow-x:auto; margin:1.5rem 0;">
   <table style="border-collapse:collapse;width:100%;font-size:0.95rem;box-shadow:0 2px 7px rgba(0,0,0,0.12);border-radius:8px;overflow:hidden;">
     <thead>
       <tr style="background-color:#2d3748;">
@@ -1279,7 +1279,7 @@ Pour le coréen, nous appliquons les modèles sur le benchmark [KoBEST](https://
       </tr>
     </tbody>
   </table>
-</body>
+</div>
 
 #### Résultats
 
@@ -1579,7 +1579,7 @@ Pour une question de place, nous exposons un exemple pour le français et un pou
 
 #### Réductions de paramètres observées
 
-<body style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#ffffff;padding:2rem;">
+<div style="overflow-x:auto; margin:1.5rem 0;">
   <table style="border-collapse:collapse;width:100%;font-size:0.95rem;box-shadow:0 2px 7px rgba(0,0,0,0.12);border-radius:8px;overflow:hidden;">
     <thead>
       <tr style="background-color:#2d3748;">
@@ -1669,7 +1669,7 @@ Pour une question de place, nous exposons un exemple pour le français et un pou
       </tr>
     </tbody>
   </table>
-</body>
+</div>
 
 #### Résultats
 
@@ -2090,7 +2090,7 @@ Nous nous focalisons notamment sur la recherche d'images et la classification d'
 
 #### Réductions de paramètres observées
 
-<body style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#ffffff;padding:2rem;">
+<div style="overflow-x:auto; margin:1.5rem 0;">
   <table style="border-collapse:collapse;width:100%;font-size:0.95rem;box-shadow:0 2px 7px rgba(0,0,0,0.12);border-radius:8px;overflow:hidden;">
     <thead>
       <tr style="background-color:#2d3748;">
@@ -2252,7 +2252,7 @@ Nous nous focalisons notamment sur la recherche d'images et la classification d'
       </tr>
     </tbody>
   </table>
-</body>
+</div>
 
 > [!NOTE]
 > **📝 Note**  
@@ -2352,7 +2352,7 @@ Prenons un exemple consistant à faire de la classification 0-*shot* sur l'image
 
 Faisons un test sur le tamoul avec les classes பூனைகள் (Chats), சிங்கங்கள் (Lions) et புலிகள் (Tigres), et le modèle `metaclip-2-worldwide-s16-384`. Les résultats sont les suivants : 
 
-<body style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#ffffff;padding:2rem;">
+<div style="overflow-x:auto; margin:1.5rem 0;">
   <table style="border-collapse:collapse;width:100%;font-size:0.95rem;box-shadow:0 2px 7px rgba(0,0,0,0.12);border-radius:8px;overflow:hidden;">
     <thead>
       <tr style="background-color:#2d3748;">
@@ -2408,7 +2408,7 @@ Faisons un test sur le tamoul avec les classes பூனைகள் (Chats), �
       </tr>
     </tbody>
   </table>
-</body>
+</div>
 
 Nous avons laissé délibérément tous les chiffres pour illustrer que le *trimming* est extrêmement robuste sur les *embeddings* visuels.
 Nous pouvons voir qu'il n'y a aucune dégradation entre modèle original (FP32) et ses variantes trimmées en 32 768 et 16 384 *tokens*. Le passage en BF16 dégrade très légèrement les résultats mais pas de quoi remettre en cause les conclusions de la classification.  
@@ -2418,7 +2418,7 @@ Mais en combinant les deux approches, *trimming* et quantification permettent de
 
 Cet exemple laisse supposer que le *trimming* sur les CLIP donne des résultats identiques au modèle original. C'est un exemple extrême avec le tamoul qui nécessite peu de *tokens* minés pour cette tâche (voir la partie **Nombre de *tokens* à conserver** ci-après). En recommençant la même chose mais cette fois avec le français, nous obtenons :
 
-<body style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#ffffff;padding:2rem;">
+<div style="overflow-x:auto; margin:1.5rem 0;">
   <table style="border-collapse:collapse;width:100%;font-size:0.95rem;box-shadow:0 2px 7px rgba(0,0,0,0.12);border-radius:8px;overflow:hidden;">
     <thead>
       <tr style="background-color:#2d3748;">
@@ -2474,7 +2474,7 @@ Cet exemple laisse supposer que le *trimming* sur les CLIP donne des résultats 
       </tr>
     </tbody>
   </table>
-</body>
+</div>
 
 Nous avons cette fois des modèles trimmés faisant mieux que l'original, et la version BF16 faisant mieux que la FP32 pour le modèle original. À nouveau, la combinaison du *trimming* et de la quantification apparaît comme très pertinente.
 
