@@ -558,8 +558,7 @@ Dans le tableau ci-dessus, et pour l'ensemble de l'article, nous donnons des chi
 
 #### Résultats
 
-##### Anglais
-
+**Anglais**
 
 <div id="table-reductions-parametres" style="overflow-x:auto; margin:1.5rem 0; max-width:100%;">
 <style>
@@ -979,7 +978,9 @@ Nous avons choisi de tout de même proposer des versions monolingues de l'embedd
   </p>
 </div>
 
-##### Néerlandais
+<br>
+
+**Néerlandais**
 
 Dans le tableau ci-dessous, les modèles ayant le suffixe `-trm` correspondent aux modèles trimmés par les auteurs des e5-NL. Ils utilisent pour leur part 50 002 *tokens* (qui n'est pas un multiple de 64). Les modèles ayant le suffixe `-trm-nl` sont les modèles trimmés évoqués à l'instant sur lesquels les auteurs ont appliqué un finetuning sur 950 000 données (réelles et synthétiques) supplémentaires.
 
@@ -1395,7 +1396,7 @@ Certains acteurs ne fournissant pas la liste complète des langues gérées par 
   </p>
 </div>
 
-<br>
+<br><br>
 
 
 ### <span style="color: #51C353"> **Modèles encodeur** </span>
@@ -1531,9 +1532,9 @@ Nous évaluons ce dernier point également sur de l'anglais en comparant un mmBE
 
 #### Résultats
 
-##### Français
+**Français**
 
-**Ordre du trimming** :
+Ordre du trimming :
 
 <div id="table-reductions-parametres" style="overflow-x:auto; margin:1.5rem 0; max-width:100%;">
 <style>
@@ -1684,7 +1685,7 @@ Enfin le modèle YaRN apparaît comme moins performant que le modèle original n
 
 <br>
 
-**Impact de la base de données de textes de minage** :
+Impact de la base de données de textes de minage :
 
 Ayant découvert le *trimming* il y a quelques années via l'article Medium de David DALE, nous utilisons comme lui le [Leipzig Corpora](https://corpora.uni-leipzig.de) de [GOLDHAHN et al.](http://www.lrec-conf.org/proceedings/lrec2012/pdf/327_Paper.pdf) (2012) pour le minage des *tokens*.  
 À l'occasion de cet article de blog, nous nous sommes intéressés à explorer l'impact des données de minage sur les performances des modèles. Dans cette partie, nous comparons donc le Leipzig Corpora à [Fineweb 2](https://huggingface.co/datasets/HuggingFaceFW/fineweb-2) de [PENEDO et al.](https://arxiv.org/abs/2506.20920) (2025) publié il y a quelques mois. Pour Leipzig Corpora nous avons utilisé les 200 000 premières données du jeu de données `fra_wikipedia_2021` et pour Fineweb 2 les 200 000 premières données du *split* `fra_Latn`.
@@ -1800,20 +1801,105 @@ Ce choix s'est imposé uniquement d'un point de vue pratique. En effet, Fineweb 
 
 <br>
 
-**Impact du nombre de textes lors du minage** :
+Impact du nombre de textes lors du minage :
 
 Nous venons de voir que la source utilisée pour miner les *tokens* n'avait pas une grande importance sur les performances. Qu'en est-il du nombre de textes utilisés ?
 
-<figure>
-  <center>
-  <img src="https://cdn-uploads.huggingface.co/production/uploads/613b0a62a14099d5afed7830/0rWAy3CAsc9nNYmyBfcHt.png" 
-       alt="Impact de la base de données de textes de minage" 
-       style="max-width:95%; height:auto;">
-  <figcaption>
-    <center>
-    Figure 1 : Impact de la base de données de textes de minage</center>
-  </figcaption></center>
-</figure>
+<div id="table-reductions-parametres" style="overflow-x:auto; margin:1.5rem 0; max-width:100%;">
+<style>
+#table-reductions-parametres table {
+  border-collapse: collapse;
+  width: 100%;
+  table-layout: fixed;
+  font-size: 0.72rem !important;
+  box-shadow: 0 2px 7px rgba(0,0,0,0.12);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+#table-reductions-parametres th,
+#table-reductions-parametres td {
+  padding: 7px 6px !important;
+  line-height: 1.25 !important;
+  text-align: center !important;
+  vertical-align: middle !important;
+  white-space: normal !important;
+  word-break: normal !important;
+  overflow-wrap: normal !important;
+}
+
+#table-reductions-parametres th {
+  font-weight: 700 !important;
+}
+
+#table-reductions-parametres th:first-child,
+#table-reductions-parametres td:first-child {
+  width: 24%;
+  text-align: left !important;
+}
+
+#table-reductions-parametres th:not(:first-child),
+#table-reductions-parametres td:not(:first-child) {
+  width: 12.6%;
+}
+</style>
+
+<table>
+<thead>
+    <tr style="background-color:#2d3748;">
+      <th style="padding:12px;text-align:center;font-weight:600;color:#ffffff;white-space:nowrap;">Modèle</th>
+      <th style="padding:12px;text-align:center;font-weight:600;color:#ffffff;">Paramètres</th>
+      <th style="padding:12px;text-align:center;font-weight:600;color:#ffffff;">Nombre de textes</th>
+      <th style="padding:12px;text-align:center;font-weight:600;color:#ffffff;">Contexte</th>
+      <th style="padding:12px;text-align:center;font-weight:600;color:#ffffff;">Personnes</th>
+      <th style="padding:12px;text-align:center;font-weight:600;color:#ffffff;">Lieux</th>
+      <th style="padding:12px;text-align:center;font-weight:600;color:#ffffff;">Organisations</th>
+    </tr>
+</thead>
+<tbody>
+    <tr style="background-color:#dff5de;">
+        <td style="padding:10px;text-align:left;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">mmBERT-base</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">308M</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;"> </td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">8 192</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">0,964</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">0,939</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">0,878</td>
+    </tr>
+    <tr style="background-color:#dff5de;">
+        <td style="padding:10px;text-align:left;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">mmBERT-base-fra-32768</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">136M</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">2 000 000</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">8 192</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">0,963</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">0,941</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">0,875</td>
+    </tr>
+    <tr style="background-color:#dff5de;">
+        <td style="padding:10px;text-align:left;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">mmBERT-base-fra-32768</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">136M</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">200 000</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">8 192</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">0,964</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">0,940</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">0,874</td>
+    </tr>
+    <tr style="background-color:#dff5de;">
+        <td style="padding:10px;text-align:left;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">mmBERT-base-fra-32768</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">136M</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">20 000</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">8192</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">0,964</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">0,940</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">0,875</td>
+    </tr>
+</tbody>
+</table>
+</div>
+
+<center>Figure 1 : Impact de la base de données de textes de minage</center>
+
+<br>
 
 Il s'avère que le nombre de textes n'a pas non plus une grande importance sur les performances.  
 Le nombre choisi a cependant un impact sur le temps d'exécution du minage. En effet, obtenir la version trimmée sur 20 000 textes a pris 2 min 04s sur un CPU Intel(R) Core(TM) Ultra 7 255H (2.00 GHz) pour l'ensemble du processus (minage des *tokens*, modification des fichiers de vocabulaire et des couches de l'architecture, pousser le modèle sur le Hub). La version trimmée sur 200 000 textes a pris 8 min 56s. Enfin la version trimmée sur 2 000 000 textes a pris 2h 26min 21s.  
@@ -1845,21 +1931,92 @@ Nous nous focalisions ici sur des textes génériques issus de Fineweb 2. Nous n
 
 <br>
 
-**Comparaison avec un modèle entraîné de zéro** :
+Comparaison avec un modèle entraîné de zéro :
 
 Pour cette comparaison d'un modèle monolingue entraîné de zéro vs. un modèle multilingue trimmé, il nous semblait important de comparer des modèles partageant exactement la même architecture à savoir celle du modernBERT (plutôt qu'un modernBERT trimmé vs. un BERT/RoBERTa/DeBERTa entraîné de zéro par exemple).  
 Pour le français, il existe une version entraînée de zéro du modernBERT : le [ModernCamemBERT](https://huggingface.co/almanach/moderncamembert-cv2-base) d'[ANTOUN et al.](https://arxiv.org/abs/2504.08716) (2025).
 
-<figure>
-  <center>
-  <img src="https://cdn-uploads.huggingface.co/production/uploads/613b0a62a14099d5afed7830/u1QvikbNPrh10ssfY7pLY.png" 
-       alt="Ordre du trimming" 
-       style="max-width:80%; height:auto;">
-  <figcaption>
-    <center>
-    Figure 1 : Comparaison avec un modèle entraîné de zéro</center>
-  </figcaption></center>
-</figure>
+<div id="table-reductions-parametres" style="overflow-x:auto; margin:1.5rem 0; max-width:100%;">
+<style>
+#table-reductions-parametres table {
+  border-collapse: collapse;
+  width: 100%;
+  table-layout: fixed;
+  font-size: 0.72rem !important;
+  box-shadow: 0 2px 7px rgba(0,0,0,0.12);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+#table-reductions-parametres th,
+#table-reductions-parametres td {
+  padding: 7px 6px !important;
+  line-height: 1.25 !important;
+  text-align: center !important;
+  vertical-align: middle !important;
+  white-space: normal !important;
+  word-break: normal !important;
+  overflow-wrap: normal !important;
+}
+
+#table-reductions-parametres th {
+  font-weight: 700 !important;
+}
+
+#table-reductions-parametres th:first-child,
+#table-reductions-parametres td:first-child {
+  width: 24%;
+  text-align: left !important;
+}
+
+#table-reductions-parametres th:not(:first-child),
+#table-reductions-parametres td:not(:first-child) {
+  width: 12.6%;
+}
+</style>
+
+<table>
+<thead>
+    <tr style="background-color:#2d3748;">
+      <th style="padding:12px;text-align:center;font-weight:600;color:#ffffff;white-space:nowrap;">Modèle</th>
+      <th style="padding:12px;text-align:center;font-weight:600;color:#ffffff;">Paramètres</th>
+      <th style="padding:12px;text-align:center;font-weight:600;color:#ffffff;">Contexte</th>
+      <th style="padding:12px;text-align:center;font-weight:600;color:#ffffff;">Personnes</th>
+      <th style="padding:12px;text-align:center;font-weight:600;color:#ffffff;">Lieux</th>
+      <th style="padding:12px;text-align:center;font-weight:600;color:#ffffff;">Organisations</th>
+    </tr>
+</thead>
+<tbody>
+    <tr style="background-color:#dff5de;">
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">mmBERT-base</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">306,9M</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">8 192</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">0,964</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">0,939</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">0,878</td>
+    </tr>
+    <tr style="background-color:#dff5de;">
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">mmBERT-base-fra-32768</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">135,5M</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">8 192</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">0,964</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">0,940</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">0,874</td>
+    </tr>
+    <tr style="background-color:#f8f9fa;">
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">Moderncamembert_3entities</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">135,5M</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">8 192</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;"><b>0,969</b></td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;"><b>0,944</b></td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;"><b>0,881</b></td>
+    </tbody>
+  </table>
+</div>
+  
+<center>Figure 1 : Comparaison avec un modèle entraîné de zéro</center>
+
+<br>
 
 Nous pouvons clairement voir que le modèle monolingue entraîné de zéro surpasse le modèle multilingue original ainsi que sa version trimmée.  
 Dès lors, lorsqu'il existe une version monolingue d'un modèle dans votre langue, nous conseillons de l'utiliser.   Dans le cas contraire, une version trimmée peut être une alternative simple en attendant un modèle monolingue entraîné de zéro.  
@@ -1867,20 +2024,108 @@ Accessoirement, vous profiterez également d'une optimisation du nombre de *toke
 
 <br>
 
-**Comparaison avec la distillation :**
+Comparaison avec la distillation :
 
 Pour comparer un modèle trimmé à un modèle obtenu par distillation, utilisons le [distilCamemBERT](https://huggingface.co/cmarkea/distilcamembert-base) de [DELESTRE et AMAR](https://hal.archives-ouvertes.fr/hal-03674695/file/cap2022.pdf) (2022) distillé à partir du [CamemBERT base](https://arxiv.org/abs/1911.03894) de MARTIN, MULLER, ORTIZ SUÁREZ, et al. (2019). Pour cela, en plus des options en 16 384 et 32 768 *tokens*, nous avons également généré un modèle de 67 476 *tokens* pour avoir une version trimmée possédant le même nombre de paramètres que distilCamemBERT à savoir 67,5M.
 
-<figure>
-  <center>
-  <img src="https://cdn-uploads.huggingface.co/production/uploads/613b0a62a14099d5afed7830/_xqO3QbLONtH8irEazj3B.png" 
-       alt="Comparaison avec la distillation" 
-       style="max-width:80%; height:auto;">
-  <figcaption>
-    <center>
-    Figure 1 : Comparaison avec la distillation</center>
-  </figcaption></center>
-</figure>
+<div id="table-reductions-parametres" style="overflow-x:auto; margin:1.5rem 0; max-width:100%;">
+<style>
+#table-reductions-parametres table {
+  border-collapse: collapse;
+  width: 100%;
+  table-layout: fixed;
+  font-size: 0.72rem !important;
+  box-shadow: 0 2px 7px rgba(0,0,0,0.12);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+#table-reductions-parametres th,
+#table-reductions-parametres td {
+  padding: 7px 6px !important;
+  line-height: 1.25 !important;
+  text-align: center !important;
+  vertical-align: middle !important;
+  white-space: normal !important;
+  word-break: normal !important;
+  overflow-wrap: normal !important;
+}
+
+#table-reductions-parametres th {
+  font-weight: 700 !important;
+}
+
+#table-reductions-parametres th:first-child,
+#table-reductions-parametres td:first-child {
+  width: 24%;
+  text-align: left !important;
+}
+
+#table-reductions-parametres th:not(:first-child),
+#table-reductions-parametres td:not(:first-child) {
+  width: 12.6%;
+}
+</style>
+
+<table>
+<thead>
+    <tr style="background-color:#2d3748;">
+      <th style="padding:12px;text-align:center;font-weight:600;color:#ffffff;white-space:nowrap;">Modèle</th>
+      <th style="padding:12px;text-align:center;font-weight:600;color:#ffffff;">Paramètres</th>
+      <th style="padding:12px;text-align:center;font-weight:600;color:#ffffff;">Contexte</th>
+      <th style="padding:12px;text-align:center;font-weight:600;color:#ffffff;">Personnes</th>
+      <th style="padding:12px;text-align:center;font-weight:600;color:#ffffff;">Lieux</th>
+      <th style="padding:12px;text-align:center;font-weight:600;color:#ffffff;">Organisations</th>
+    </tr>
+</thead>
+<tbody>
+    <tr style="background-color:#dff5de;">
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">mmBERT-small</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">140,5M</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">8192</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">0,960</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">0,935</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">0,871</td>
+    </tr>
+    <tr style="background-color:#dff5de;">
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">mmBERT-small-fra-32768</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">54,8M</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">8192</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">0,958</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">0,931</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">0,868</td>
+    </tr>
+    <tr style="background-color:#dff5de;">
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">mmBERT-small-fra-16384</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">48,5M</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">8192</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">0,959</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">0,932</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">0,861</td>
+    </tr>
+    <tr style="background-color:#dff5de;">
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">mmBERT-small-fra-67456</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">67,5M</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">8192</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">0,961</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">0,936</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">0,869</td>
+    </tr>
+    <tr style="background-color:#f8f9fa;">
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">distilcamembert-base</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">67,5M</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">512</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">0,961</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">0,935</td>
+        <td style="padding:10px;text-align:center;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">0,866</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<center>Figure 1 : Comparaison avec la distillation</center>
+
+<br>
 
 Nous pouvons remarquer que le modèle distillé fait presque jeu égal avec le modèle mmBERT original. Cela va dans le sens du point précédent qu'un modèle monolingue entraîné de zéro est supérieur à un modèle multilingue.  
 Une autre observation est que le modèle trimmé à 67 476 *tokens*, ayant le même nombre de paramètres que la version distillée, performe de manière équivalente à la distillation.  
@@ -1906,9 +2151,9 @@ Accessoirement le modèle trimmé gère une taille de contexte 16 fois plus long
 
 <br>
 
-##### Anglais
+**Anglais**
 
-**Comparaison avec la distillation :**
+Comparaison avec la distillation :
 
 Pour l'anglais, nous nous focalisons sur un seul modèle mais faisons une comparaison incluant plusieurs tâches (à savoir 8 tâches du benchmark GLUE).  
 Précisons ici que pour le finetuning, l'entraînement est effectué sur l'échantillon `train` et le test sur l'échantillon `dev` et non sur celui de `test`. Nous procédons de la sorte surtout pour pouvoir nous comparer au DistilBERT qui a suivi cette méthodologie.  
@@ -2185,7 +2430,7 @@ Nous pensions initialement proposer également la version <code>large</code> du 
 
 #### Résultats
 
-##### Coréen
+**Coréen**
 
 <figure>
   <center>
@@ -2205,7 +2450,7 @@ Le mBART se comporte moins bien que le mT5 puisque nous pouvons constater une d�
 
 <br>
 
-##### Arabe-Allemand
+**Arabe-Allemand**
 
 <figure>
   <center>
@@ -2485,7 +2730,7 @@ Pour le coréen, nous appliquons les modèles sur le benchmark [KoBEST](https://
 
 #### Résultats
 
-##### Néerlandais
+**Néerlandais**
 
 EuroEval proposant des intervalles de confiance, dans le tableau ci-dessous les moyennes en bleu indiquent que les intervalles des modèles originaux/trimmés se chevauchent. S'ils ne se chevauchent pas le meilleur modèle est indiqué en vert et le moins bon en orange.  
 Nous donnons également les chiffres des exécutions effectuées par les équipes d'EuroEval quand elles existent.
@@ -2736,7 +2981,7 @@ Sur ce point du fond, notez que les modèles montrés ici servent à illustrer l
 </div>
 
 
-##### Coréen
+**Coréen**
 
 <figure>
   <center>
@@ -2922,7 +3167,7 @@ Pour une question de place, nous exposons un exemple pour le français et un pou
 
 #### Résultats
 
-##### Français
+**Français**
 
 <figure>
   <center>
@@ -3100,7 +3345,7 @@ Pour le gemma-3, le modèle original est un peu plus verbeux (ajoute davantage d
 
 <br>
 
-##### Espagnol
+**Espagnol**
 
 <figure>
   <center>
