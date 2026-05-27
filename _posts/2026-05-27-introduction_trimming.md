@@ -4835,6 +4835,10 @@ Les choses se corsent quand nous analysons les 14 autres architectures :
 </style>
 
 <table>
+    <caption style="caption-side:bottom; padding-top:0.6rem; font-size:0.85rem; color:#cbd5e1; text-align:center;">
+    Figure 1 : Nombre de tokens pour couvrir un certain pourcent du jeu de données de minage pour le modèle mmBERT-small sur l'anglais
+  </caption>
+  
     <thead>
       <tr style="background-color:#1a202c;">
         <th style="padding:12px 12px;text-align:center;font-weight:600;color:#ffffff;white-space:nowrap;">Architectures</th>
@@ -4916,17 +4920,11 @@ Les choses se corsent quand nous analysons les 14 autres architectures :
         <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;text-align:right;">62 304</td>
         <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;text-align:right;">131 478</td>
       </tr>
-      <tr style="background-color:#fde4e1;">
-        <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);color:#c5221f;font-weight:500;">Siglip2</td>
-        <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;text-align:right;">27 648</td>
-        <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;text-align:right;">69 939</td>
-        <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;text-align:right;">155 376</td>
-      </tr>
     </tbody>
   </table>
 </div>
 
-<center>Figure 1 : Nombre de tokens pour couvrir un certain pourcent du jeu de données de minage pour le modèle mmBERT-small sur l'anglais</center>
+<br>
 
 Nous pouvons voir que pour une langue donnée nous n’avons donc pas un nombre de *tokens* universel à conserver qui ferait l’affaire pour toutes les architectures. Mais vous pouvez constater que le 32 768 est à chaque fois compris entre 95% et 99%. 
 À noter que pour les autres langues utilisant l’alphabet latin que nous avons évaluées dans cet article, nous constatons qu’à l’exception des gemmas, 32 768 *tokens* suffisent pour être situé entre 99% et 100%. Notre hypothèse étant que l’anglais étant le cas limite puisqu’est la langue la plus dotée en ressources. 
