@@ -4216,10 +4216,10 @@ Notons que la trace de l'exemple du Qwen 3.5 4B en français a été générée 
   </p>
 </div>
 
-<br>
+<br><br>
 
 
-### Modèles d'embeddings visuels (CLIP)
+### <span style="color: #51C353"> **Modèles d'embeddings visuels (CLIP)** </span>
 
 Concluons nos expériences en nous intéressant aux modèles d'*embeddings* visuels.
 
@@ -4795,16 +4795,138 @@ Sur les 256 000 *tokens* d’origine, nous pouvons passer de **101 730** *toke
 
 Les choses se corsent quand nous analysons les 14 autres architectures :
 
-<figure>
-  <center>
-  <img src="https://cdn-uploads.huggingface.co/production/uploads/613b0a62a14099d5afed7830/q_hLLHhofSu2aDQETIYH0.png" 
-       alt="Nombre de tokens pour couvrir un certain pourcent du jeu de données de minage en fonction de l'architecture considérée pour l'anglais" 
-       style="max-width:100%; height:auto;">
-  <figcaption>
-    <center>
-    Figure 1 : Nombre de tokens pour couvrir un certain pourcent du jeu de données de minage pour le modèle mmBERT-small sur l'anglais</center>
-  </figcaption></center>
-</figure>
+<div id="table-reductions-parametres" style="overflow-x:auto; margin:1.5rem 0; max-width:100%;">
+<style>
+#table-reductions-parametres table {
+  border-collapse: collapse;
+  width: 100%;
+  table-layout: fixed;
+  font-size: 0.72rem !important;
+  box-shadow: 0 2px 7px rgba(0,0,0,0.12);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+#table-reductions-parametres th,
+#table-reductions-parametres td {
+  padding: 7px 6px !important;
+  line-height: 1.25 !important;
+  text-align: center !important;
+  vertical-align: middle !important;
+  white-space: normal !important;
+  word-break: normal !important;
+  overflow-wrap: normal !important;
+}
+
+#table-reductions-parametres th {
+  font-weight: 700 !important;
+}
+
+#table-reductions-parametres th:first-child,
+#table-reductions-parametres td:first-child {
+  width: 24%;
+  text-align: left !important;
+}
+
+#table-reductions-parametres th:not(:first-child),
+#table-reductions-parametres td:not(:first-child) {
+  width: 12.6%;
+}
+</style>
+
+<table>
+    <thead>
+      <tr style="background-color:#1a202c;">
+        <th style="padding:12px 12px;text-align:center;font-weight:600;color:#ffffff;white-space:nowrap;">Architectures</th>
+        <th style="padding:12px 12px;text-align:center;font-weight:600;color:#ffffff;">Tokens pour couvrir 95% de la base de minage</th>
+        <th style="padding:12px 12px;text-align:center;font-weight:600;color:#ffffff;">Tokens pour couvrir 99% de la base de minage</th>
+        <th style="padding:12px 12px;text-align:center;font-weight:600;color:#ffffff;">Tokens pour couvrir 100% de la base de minage</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="background-color:#d9eeff;">
+        <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);color:#0043a4;font-weight:500;">granite-embedding</td>
+        <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;text-align:right;">10 357</td>
+        <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;text-align:right;">20 201</td>
+        <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;text-align:right;">62 161</td>
+      </tr>
+      <tr style="background-color:#e2e8f8;">
+        <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);color:#1a3a8f;font-weight:500;">bge-m3</td>
+        <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;text-align:right;">10 357</td>
+        <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;text-align:right;">20 201</td>
+        <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;text-align:right;">62 161</td>
+      </tr>
+      <tr style="background-color:#fdf3d0;">
+        <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">multilingual-e5</td>
+        <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;text-align:right;">10 365</td>
+        <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;text-align:right;">20 213</td>
+        <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;text-align:right;">62 184</td>
+      </tr>
+      <tr style="background-color:#dff5de;">
+        <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;">mbart-large-50</td>
+        <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;text-align:right;">10 365</td>
+        <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;text-align:right;">20 213</td>
+        <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;text-align:right;">62 184</td>
+      </tr>
+      <tr style="background-color:#fdebd0;">
+        <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);color:#6b5a2d;font-weight:500;">Clip multilingual</td>
+        <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;text-align:right;">10 676</td>
+        <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;text-align:right;">19 407</td>
+        <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;text-align:right;">52 631</td>
+      </tr>
+      <tr style="background-color:#fde4e1;">
+        <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);color:#c5221f;">mt5</td>
+        <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;text-align:right;">13 660</td>
+        <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;text-align:right;">34 704</td>
+        <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;text-align:right;">105 572</td>
+      </tr>
+      <tr style="background-color:#d9eeff;">
+        <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);color:#0043a4;font-weight:500;">Granite 4.0</td>
+        <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;text-align:right;">21 374</td>
+        <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;text-align:right;">40 613</td>
+        <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;text-align:right;">69 276</td>
+      </tr>
+      <tr style="background-color:#ece8ff;">
+        <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);color:#4a2db5;font-weight:500;">Qwen3-embedding et Qwen 3</td>
+        <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;text-align:right;">21 764</td>
+        <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;text-align:right;">41 643</td>
+        <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;text-align:right;">82 820</td>
+      </tr>
+      <tr style="background-color:#ece8ff;">
+        <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);color:#4a2db5;font-weight:500;">Qwen 3.5</td>
+        <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;text-align:right;">22 207</td>
+        <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;text-align:right;">43 869</td>
+        <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;text-align:right;">103 980</td>
+      </tr>
+      <tr style="background-color:#fdebd0;">
+        <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);color:#6b5a2d;font-weight:500;">SmolLM</td>
+        <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;text-align:right;">22 956</td>
+        <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;text-align:right;">43 122</td>
+        <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;text-align:right;">85 099</td>
+      </tr>
+      <tr style="background-color:#e2e8f8;">
+        <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);color:#1a3a8f;font-weight:500;">Metaclip-2</td>
+        <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;text-align:right;">25 351</td>
+        <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;text-align:right;">57 687</td>
+        <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;text-align:right;">168 441</td>
+      </tr>
+      <tr style="background-color:#fde4e1;">
+        <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);color:#c5221f;font-weight:500;">embeddinggemma et gemma 3</td>
+        <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;text-align:right;">26 146</td>
+        <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;text-align:right;">62 304</td>
+        <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;text-align:right;">131 478</td>
+      </tr>
+      <tr style="background-color:#fde4e1;">
+        <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);color:#c5221f;font-weight:500;">Siglip2</td>
+        <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;text-align:right;">27 648</td>
+        <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;text-align:right;">69 939</td>
+        <td style="padding:9px 11px;border-bottom:1px solid rgba(0,0,0,0.07);color:#000000;text-align:right;">155 376</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<center>Figure 1 : Nombre de tokens pour couvrir un certain pourcent du jeu de données de minage pour le modèle mmBERT-small sur l'anglais</center>
 
 Nous pouvons voir que pour une langue donnée nous n’avons donc pas un nombre de *tokens* universel à conserver qui ferait l’affaire pour toutes les architectures. Mais vous pouvez constater que le 32 768 est à chaque fois compris entre 95% et 99%. 
 À noter que pour les autres langues utilisant l’alphabet latin que nous avons évaluées dans cet article, nous constatons qu’à l’exception des gemmas, 32 768 *tokens* suffisent pour être situé entre 99% et 100%. Notre hypothèse étant que l’anglais étant le cas limite puisqu’est la langue la plus dotée en ressources. 
