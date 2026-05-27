@@ -3681,11 +3681,11 @@ Pour une question de place, nous exposons un exemple pour le français et un pou
   width: 100%;
   table-layout: fixed;
   font-size: 0.72rem !important;
+  color: #000000 !important;
   box-shadow: 0 2px 7px rgba(0,0,0,0.12);
   border-radius: 8px;
   overflow: hidden;
 }
-
 #table-reductions-parametres th,
 #table-reductions-parametres td {
   padding: 7px 6px !important;
@@ -3696,17 +3696,21 @@ Pour une question de place, nous exposons un exemple pour le français et un pou
   word-break: normal !important;
   overflow-wrap: normal !important;
 }
-
 #table-reductions-parametres th {
+  color: #ffffff !important;
   font-weight: 700 !important;
 }
-
+#table-reductions-parametres td {
+  color: #000000 !important;
+}
+#table-reductions-parametres td small {
+  color: #555555 !important;
+}
 #table-reductions-parametres th:first-child,
 #table-reductions-parametres td:first-child {
   width: 24%;
   text-align: left !important;
 }
-
 #table-reductions-parametres th:not(:first-child),
 #table-reductions-parametres td:not(:first-child) {
   width: 12.6%;
@@ -3990,7 +3994,7 @@ Pour le gemma-3, le modèle original est un peu plus verbeux (ajoute davantage d
   <center>
   <img src="https://cdn-uploads.huggingface.co/production/uploads/613b0a62a14099d5afed7830/BsZ9lvJyoYvpVav4Xlpu-.png" 
        alt="Photo par Merve Noyan" 
-       style="max-width:60%; height:auto;">
+       style="max-width:55%; height:auto;">
   <figcaption>
     <center>
     Figure 1 : Photo par Merve NOYAN</center>
@@ -4465,8 +4469,8 @@ Par exemple, si nous utilisons le `clip-ViT-B-32-multilingual-v1` avec les class
 <figure>
   <center>
   <img src="https://cdn-uploads.huggingface.co/production/uploads/613b0a62a14099d5afed7830/87JAwrEk8gdBfPBWVBzLY.png" 
-       alt="Résultats traduction encodeur-décodeur" 
-       style="max-width:100%; height:auto;">
+       alt="Classification multilingue d'images en 0-shot avec clip-ViT-B-32-multilingual-v1" 
+       style="max-width:85%; height:auto;">
   <figcaption>
     <center>
     Figure 1 : Classification multilingue d'images en 0-shot avec clip-ViT-B-32-multilingual-v1</center>
@@ -4534,8 +4538,46 @@ Prenons un exemple consistant à faire de la classification 0-*shot* sur l'image
 
 Faisons un test sur le tamoul avec les classes பூனைகள் (Chats), சிங்கங்கள் (Lions) et புலிகள் (Tigres), et le modèle `metaclip-2-worldwide-s16-384`. Les résultats sont les suivants : 
 
-<div style="overflow-x:auto; margin:1.5rem 0;">
-  <table style="border-collapse:collapse;width:100%;font-size:0.95rem;box-shadow:0 2px 7px rgba(0,0,0,0.12);border-radius:8px;overflow:hidden;">
+<div id="table-reductions-parametres" style="overflow-x:auto; margin:1.5rem 0; max-width:100%;">
+<style>
+#table-reductions-parametres table {
+  border-collapse: collapse;
+  width: 100%;
+  table-layout: fixed;
+  font-size: 0.72rem !important;
+  box-shadow: 0 2px 7px rgba(0,0,0,0.12);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+#table-reductions-parametres th,
+#table-reductions-parametres td {
+  padding: 7px 6px !important;
+  line-height: 1.25 !important;
+  text-align: center !important;
+  vertical-align: middle !important;
+  white-space: normal !important;
+  word-break: normal !important;
+  overflow-wrap: normal !important;
+}
+
+#table-reductions-parametres th {
+  font-weight: 700 !important;
+}
+
+#table-reductions-parametres th:first-child,
+#table-reductions-parametres td:first-child {
+  width: 24%;
+  text-align: left !important;
+}
+
+#table-reductions-parametres th:not(:first-child),
+#table-reductions-parametres td:not(:first-child) {
+  width: 12.6%;
+}
+</style>
+
+<table>
     <thead>
       <tr style="background-color:#2d3748;">
         <th style="padding:12px 12px;text-align:center;font-weight:600;color:#ffffff;width:130px;">Configuration</th>
@@ -4600,8 +4642,46 @@ Mais en combinant les deux approches, *trimming* et quantification permettent de
 
 Cet exemple laisse supposer que le *trimming* sur les CLIP donne des résultats identiques au modèle original. C'est un exemple extrême avec le tamoul qui nécessite peu de *tokens* minés pour cette tâche (voir la partie **Nombre de *tokens* à conserver** ci-après). En recommençant la même chose mais cette fois avec le français, nous obtenons :
 
-<div style="overflow-x:auto; margin:1.5rem 0;">
-  <table style="border-collapse:collapse;width:100%;font-size:0.95rem;box-shadow:0 2px 7px rgba(0,0,0,0.12);border-radius:8px;overflow:hidden;">
+<div id="table-reductions-parametres" style="overflow-x:auto; margin:1.5rem 0; max-width:100%;">
+<style>
+#table-reductions-parametres table {
+  border-collapse: collapse;
+  width: 100%;
+  table-layout: fixed;
+  font-size: 0.72rem !important;
+  box-shadow: 0 2px 7px rgba(0,0,0,0.12);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+#table-reductions-parametres th,
+#table-reductions-parametres td {
+  padding: 7px 6px !important;
+  line-height: 1.25 !important;
+  text-align: center !important;
+  vertical-align: middle !important;
+  white-space: normal !important;
+  word-break: normal !important;
+  overflow-wrap: normal !important;
+}
+
+#table-reductions-parametres th {
+  font-weight: 700 !important;
+}
+
+#table-reductions-parametres th:first-child,
+#table-reductions-parametres td:first-child {
+  width: 24%;
+  text-align: left !important;
+}
+
+#table-reductions-parametres th:not(:first-child),
+#table-reductions-parametres td:not(:first-child) {
+  width: 12.6%;
+}
+</style>
+
+<table>
     <thead>
       <tr style="background-color:#2d3748;">
         <th style="padding:12px 12px;text-align:center;font-weight:600;color:#ffffff;width:130px;">Configuration</th>
@@ -4773,7 +4853,7 @@ Enfin, en considérant le fait qu'un modèle trimmé se finetune plus rapidement
 <div style="line-height:1.25; background:#f8deda; color:#111827; padding:1rem; border-radius:4px;">
   <p style="font-size:0.9rem;"><strong>⚠️ Vigilance</strong></p>
   <p style="font-size:0.9rem;">
-    Néanmoins, nous devons signaler que les auteurs de <code>vocabtrimmer</code> (dans les tableaux 1 et 2 de leur <a href="https://arxiv.org/abs/2305.15020" style="color:#d71920;">papier</a>) trouvent des résultats contradictoires en fonction de la tâche ou de la langue considérée, mais aussi du modèle (tests sur un mT5, mBART et XLM-RoBERTa).<br>
+    Néanmoins, nous devons signaler que les auteurs de vocabtrimmer (dans les tableaux 1 et 2 de leur <a href="https://arxiv.org/abs/2305.15020" style="color:#d71920;">papier</a>) trouvent des résultats contradictoires en fonction de la tâche ou de la langue considérée, mais aussi du modèle (tests sur un mT5, mBART et XLM-RoBERTa).<br>
     Notons cependant que toutes ces comparaisons ne sont pas effectuées avec le même nombre de <em>tokens</em> par langue et par modèle.
   </p>
 </div>
@@ -4868,8 +4948,6 @@ Nous travaillons à faciliter l'usage de cette méthode via un outil. En attenda
 - [Robust Speech Recognition via Large-Scale Weak Supervision](https://arxiv.org/abs/2212.04356) d'Alec RADFORD, Jong Wook KIM, Tao XU, Greg BROCKMAN, Christine MCLEAVEY, Ilya SUTSKEVER (2022)
 - [Mitigating Language-Dependent Ethnic Bias in BERT](https://aclanthology.org/2021.emnlp-main.42/) de Jaimeen AHN et Alice OH (2021)
   
-<br><br>
-
 <br><br><br>
 
 # <span style="color: #FF0000"> **Citation** </span>
