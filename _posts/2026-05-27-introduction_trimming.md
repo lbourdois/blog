@@ -1366,7 +1366,7 @@ Si en plus, nous finetunons le modèle trimmé, nous pouvons constater que le ga
   <p style="font-size:0.9rem;"><strong>📝 Note</strong></p>
   <p style="font-size:0.9rem;">
 Nous voyons que garder 50 002 <i>tokens</i> semble plus intéressant que d'en garder 32 768.<br> 
-Suite à ces résultats, nous nous sommes questionnés sur le fait de savoir si nous devions ou non proposer des modèles avec un vocabulaire de 50 048 <i>tokens</i>. Nous ne l'avons finalement pas fait. D'une part parce que dans le cadre de cet article de blog, notre objectif est de proposer une simple introduction à la méthode du <i>trimming</i> et non pas les meilleurs modèles possibles pour illustrer nos propos. D'autre part parce que cette question de savoir quel est le nombre de *tokens* optimal pour un <i>tokenizer</i> n'est pas évidente.<br> 
+Suite à ces résultats, nous nous sommes questionnés sur le fait de savoir si nous devions ou non proposer des modèles avec un vocabulaire de 50 048 <i>tokens</i>. Nous ne l'avons finalement pas fait. D'une part parce que dans le cadre de cet article de blog, notre objectif est de proposer une simple introduction à la méthode du <i>trimming</i> et non pas les meilleurs modèles possibles pour illustrer nos propos. D'autre part parce que cette question de savoir quel est le nombre de <i>tokens</i> optimal pour un <i>tokenizer</i> n'est pas évidente.<br> 
 Nous revenons sur ce dernier point dans une partie dédiée dans la dernière section de cet article de blog portant sur les <b>Questions ouvertes❓</b>.
   </p>
 </div>
@@ -1374,10 +1374,10 @@ Nous revenons sur ce dernier point dans une partie dédiée dans la dernière se
 <div class="notice--success" style="line-height:1.25;">
   <p style="font-size:0.9rem;"><strong>🧠 À retenir</strong></p>
   <p style="font-size:0.9rem;">
-    Pour les modèles d'<em>embeddings</em> textuels, <strong>le <em>trimming</em> permet d'obtenir un modèle monolingue léger par rapport à un modèle multilingue plus gros</strong>.
+    Pour les modèles d'<em>embeddings</em> textuels, <strong>le <em>trimming</em> permet d'obtenir un modèle monolingue léger par rapport à un modèle multilingue plus gros</strong>.<br>
     Nous pouvons notamment constater que <strong>les performances sont conservées voire légèrement améliorées</strong>.<br>
     <strong>Si vous observez une légère baisse, il est conseillé d'effectuer un finetuning pour retrouver les performances originales, voire les surpasser</strong>.<br>
-    Ce gain de performance via finetuning s'avère même rapide à obtenir car <strong>le modèle trimmé étant plus petit que l'original, le temps d'entraînement est accéléré</strong>. À budget de calcul équivalent, cela ouvre alors la possibilité de montrer davantage de données au modèle trimmé qu'à un modèle original qu'on finetunerait (nous menons cette expérience plus bas dans la partie sur les encodeurs-décodeurs).
+    Ce gain de performance via finetuning s'avère même rapide à obtenir car <strong>le modèle trimmé étant plus petit que l'original, le temps d'entraînement est accéléré</strong>. À budget de calcul équivalent, cela ouvre alors la possibilité de montrer davantage de données au modèle trimmé qu'à un modèle original qu'on finetunerait (nous menons cette expérience plus bas dans la partie sur les encodeurs-décodeurs).<br>
     À noter que <strong>les avantages listés ci-dessus ne sont applicables qu'à des modèles où la couche d'<em>embedding</em> est la dernière du réseau. Le <em>trimming</em> ne fonctionnera pas s'il y a des couches positionnées au-dessus de celle d'<em>embedding</em></strong>.
   </p>
 </div>
