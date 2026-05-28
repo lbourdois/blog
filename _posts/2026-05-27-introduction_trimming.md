@@ -3,7 +3,7 @@ title: "INTRODUCTION AU TRIMMING"
 tags:
   - NLP
   - Trimming
-excerpt : "Trimming - Une introduction à une technique permettant de réudire le nombre de paramètres d'un modèle tout en maintenant ses performances d'origine"
+excerpt : "Trimming - Une introduction à une technique permettant de réduire le nombre de paramètres d'un modèle tout en maintenant ses performances d'origine"
 header :
     overlay_color: "#1C2A4D"
     teaser : "https://raw.githubusercontent.com/lbourdois/blog/refs/heads/master/assets/images/Trimming/thumbnail_trimming.png"
