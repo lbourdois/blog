@@ -6,10 +6,10 @@ tags:
 excerpt : "Sparseup-fr - Réplication de l'approche de Linkup pour créer un modèle d'embedding sparse SOTA en français"
 header :
     overlay_color: "#1C2A4D"
-    teaser : "https://raw.githubusercontent.com/lbourdois/blog/refs/heads/master/assets/images/Trimming/thumbnail_trimming.png"
+    teaser : "https://raw.githubusercontent.com/lbourdois/blog/refs/heads/master/assets/images/sparseup/sparseup-fr.png"
 author_profile: false
 sidebar:
-    nav: sidebar-reduction
+    nav: sidebar-ae
 classes: wide
 ---
 <script type="text/javascript" async
