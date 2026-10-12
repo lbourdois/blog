@@ -1,5 +1,5 @@
 ---
-title: "Sparseup-fr : application au français de la méthodologie de Linkup"
+title: "SPARSEUP-FR : APPLICATION AU FRANÇAIS DE LA MÉTHODOLOGIE DE LINKUP"
 tags:
   - NLP
   - Sparse
@@ -17,7 +17,7 @@ classes: wide
 </script>
 
 <center>An English version is available on <a href="https://huggingface.co/blog/alphaedge-ai/french-sparseup">Hugging Face</a>.</center>
-
+<br><br><br>
 
 # <span style="color: #FF0000"> **Avant-Propos** </span> 
 
@@ -54,11 +54,13 @@ Nous mettons la version de ce benchmark à disposition sur [notre profil Hugging
 
 Concernant les modèles, nous nous intéressons à deux comparaisons.  
 Premièrement, nous évaluons le modèle obtenu face au mLateOn et au mDenseOn, comme l'ont fait les équipes de Linkup. En effet, comme ils utilisent les *backbones* et les données de LightOn, cela permet de comparer pleinement les différentes grandes approches architecturales en IR (recherche d'information). Pour l'anglais, ils observent que le LateOn (late interaction) est nettement plus performant que le DenseOn (dense), qui lui-même est légèrement au-dessus de leur modèle sparse. Nous souhaitons alors déterminer si nous observons ou non les mêmes tendances en français.  
-Deuxièmement, nous comparons le modèle entraîné aux autres modèles sparse en français disponibles sur le Hub d'Hugging Face, afin de se faire une idée de sa position parmi les solutions open source existantes. Plus précisément, il s'agit du [splade-camembert-base-v2](https://huggingface.co/sparse-encoder/splade-camembert-base-v2) [\[10\]](#ref10) d'Arthur Bresnu, qui est monolingue, et de l'[opensearch-neural-sparse-encoding-multilingual-v1](https://huggingface.co/opensearch-project/opensearch-neural-sparse-encoding-multilingual-v1) [\[11\]](#ref11) d'Amazon/Linux, qui est multilingue et inclut le français.
+Deuxièmement, nous comparons le modèle entraîné aux autres modèles sparse en français disponibles sur le Hub d'Hugging Face, afin de se faire une idée de sa position parmi les solutions open source existantes. Plus précisément, il s'agit du [splade-camembert-base-v2](https://huggingface.co/sparse-encoder/splade-camembert-base-v2) [\[10\]](#ref10) d'Arthur BRESNU, qui est monolingue, et de l'[opensearch-neural-sparse-encoding-multilingual-v1](https://huggingface.co/opensearch-project/opensearch-neural-sparse-encoding-multilingual-v1) [\[11\]](#ref11) d'Amazon/Linux, qui est multilingue et inclut le français.
 
 À noter  que nous avons lancé les évaluations sur deux configurations différentes : l'une où les documents sont découpés à la taille maximale de ce que chacun des modèles peut prendre en contexte, et l'autre où l'on applique une fenêtre coulissante sur l'ensemble du document, avec une taille de fenêtre égale à la taille de contexte, plus un chevauchement de 64 tokens. Ce dernier cas de figure, qui de surcroît ressemble davantage à un vrai cas de RAG, doit permettre d'évaluer plus justement les différents modèles sparse, qui ont une taille de requête et de document plus faible que les modèles de LightOn.
 
 Finalement, nous précisons que dans les tableaux suivants, les cellules bleues indiquent la performance du meilleur modèle toutes familles confondues, là où les cellules vertes indiquent la performance du meilleur modèle sparse sur le benchmark.
+
+<br><br>
 
 ## <span style="color: #FFBF00"> **Configuration avec troncage** </span>
 
@@ -95,6 +97,8 @@ Finalement, nous précisons que dans les tableaux suivants, les cellules bleues 
 </table>
 <center>Tableau 1 : nDCG@10 pour NanoBEIR-fr dans la configuration avec troncage</center>
 
+<br><br>
+
 ## <span style="color: #FFBF00"> **Configuration avec fenêtre coulissante** </span>
 
 <table>
@@ -130,19 +134,22 @@ Finalement, nous précisons que dans les tableaux suivants, les cellules bleues 
 </table>
 <center>Tableau 2 : nDCG@10 pour NanoBEIR-fr dans la configuration avec fenêtre coulissante</center>
 
+<br><br>
 ## <span style="color: #FFBF00"> **Observations** </span>
 
 Nous pouvons constater, comme les équipes de Linkup, que le modèle à late interaction performe mieux que le dense, et lui-même mieux que les différents modèles sparse. L'usage d'une fenêtre coulissante n'améliore pas les modèles de LightOn, qui bénéficient déjà d'une taille de contexte de requête et de document de 8 192 tokens. Elle apparaît légèrement bénéfique aux modèles sparse français, mais dégrade étrangement ceux de Sparseup. Nous ne rapportons pas les résultats ici car nous faisons un focus sur le français, mais pour vérifier ce comportement nous avons aussi évalué les modèles sur le NanoBEIR-en nettoyé et avons alors observé que la fenêtre coulissante bénéficie bien à Sparseup (permettant également alors de surpasser le mDenseOn).
 
-Concernant les modèles en français, le modèle entraîné surpasse les deux autres disponibles jusqu'à présent sur le Hub de plus de 3 points pour le splade-camembert-base-v2 (notre modèle étant néanmoins 35 % plus gros) et de 2 points pour l'opensearch-neural-sparse-encoding-multilingual-v1 (en étant cette fois 11 % plus petit). Il est premier sur 8 jeux de données de NanoBEIR-fr, là où opensearch l'est sur 3 et splade-camembert-base-v2 sur 2.  
+Concernant les modèles en français, le modèle entraîné surpasse les deux autres disponibles jusqu'à présent sur le Hub de plus de 3 points pour le `splade-camembert-base-v2` (notre modèle étant néanmoins 35 % plus gros) et de 2 points pour l'`opensearch-neural-sparse-encoding-multilingual-v1` (en étant cette fois 11 % plus petit). Il est premier sur 8 jeux de données de NanoBEIR-fr, là où `opensearch` l'est sur 3 et `splade-camembert-base-v2` sur 2.  
 Le Sparseup ets en dessous mais c'est attendu car monolingue anglais (fait tout de même mieux qu'un bm25).  
 
-À noter que pour une comparaison à nombre de paramètres équivalent, on pourrait envisager de réentraîner deux modèles (un en ne gardant que 32 768 tokens pour atteindre la taille du splade-camembert-base-v2 et un autre en gardant 73 556 tokens pour atteindre celle de l'opensearch-neural-sparse-encoding-multilingual-v1), mais cela nécessiterait à nouveau plusieurs dizaines d'heures GPU d'entraînement que nous n'avions pas pour cette première expérimentation consistant simplement à vérifier la méthodologie appliquée par Linkup.
+À noter que pour une comparaison à nombre de paramètres équivalent, on pourrait envisager de réentraîner deux modèles (un en ne gardant que 32 768 tokens pour atteindre la taille du `splade-camembert-base-v2` et un autre en gardant 73 556 tokens pour atteindre celle de l'`opensearch-neural-sparse-encoding-multilingual-v1`), mais cela nécessiterait à nouveau plusieurs dizaines d'heures GPU d'entraînement que nous n'avions pas pour cette première expérimentation consistant simplement à vérifier la méthodologie appliquée par Linkup.
+<br><br>
 
 ## <span style="color: #FFBF00"> **Retours d'expérience** </span>
 
 Nous voulions initialement pouvoir présenter un modèle à la Linkup en français, issu d'une fusion de plusieurs poids sauvegardés. Nous nous sommes rendu compte à la fin de l'entraînement que beaucoup de sauvegardes n'avaient pas été effectuées.  
 Il s'avère que la fonction `push_to_hub` refuse de pousser les poids lorsque le README fait plus de 1 Mo. La librairie `sentence_transformers` écrivant les résultats intermédiaires dans les métadonnées YAML du README à chaque évaluation, ce problème peut alors apparaître si vous faites trop de sauvegardes. Nous vous invitons ainsi à faire attention à ce point en rédigeant un petit patch dans votre code d'entraînement pour ne pas sauvegarder les résultats dans le YAML.
+<br><br><br>
 
 # <span style="color: #FF0000"> **Conclusion et suite** </span>
 
@@ -152,6 +159,7 @@ Forts de ce premier retour, nous envisageons de pousser plus loin les expérimen
 En l'état, nous mettons à disposition cette v0, dans cette [collection Hugging Face](https://huggingface.co/collections/alphaedge-ai/sparse-models-french-sparseup), le modèle entraîné ainsi que le benchmark nettoyé.
 
 En espérant que cela vous soit utile :)
+<br><br><br>
 
 # <span style="color: #FF0000"> **Références** </span>
 
@@ -167,6 +175,7 @@ En espérant que cela vous soit utile :)
 10. <a id="ref10"></a>*splade-camembert-base-v2* d'Arthur BRESNU (2025). [lien](https://huggingface.co/sparse-encoder/splade-camembert-base-v2)
 11. <a id="ref11"></a>*Towards Competitive Search Relevance For Inference-Free Learned Sparse Retrievers* de Zhichao GENG, Yiwen WANG, Dongyu RU, Yang YANG (2025). [lien](https://arxiv.org/abs/2411.04403)
 
+<br><br><br>
 # <span style="color: #FF0000"> **Citation** </span>
 
 ```
