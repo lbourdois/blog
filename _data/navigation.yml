@@ -10,6 +10,12 @@ main:
   - title: "Cours"
     url: https://lbourdois.github.io/cours/
 
+sidebar-ae:
+  - title: INTRODUCTION AU TRIMMING
+    url: /Trimming/
+  - title: SPARSEUP-FR
+    url: /sparseup-fr/
+    
 sidebar-reduction:
   - title: UN GUIDE VISUEL SUR LA QUANTIFICATION
     url: /Quantification/
